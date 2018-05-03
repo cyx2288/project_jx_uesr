@@ -1,0 +1,66 @@
+{
+  "pages":[
+    "pages/wages/index/index",
+    "pages/user/mine/mine",
+
+    "example/index",
+
+    "example/button/button",
+    "example/list/list",
+    "example/input/input",
+    "example/slider/slider",
+    "example/uploader/uploader",
+
+    "example/article/article",
+    "example/badge/badge",
+    "example/flex/flex",
+    "example/footer/footer",
+    "example/gallery/gallery",
+    "example/grid/grid",
+    "example/icons/icons",
+    "example/loadmore/loadmore",
+    "example/panel/panel",
+    "example/preview/preview",
+    "example/progress/progress",
+
+    "example/actionsheet/actionsheet",
+    "example/dialog/dialog",
+    "example/msg/msg",
+    "example/msg/msg_success",
+    "example/msg/msg_fail",
+    "example/picker/picker",
+    "example/toast/toast",
+
+    "example/navbar/navbar",
+    "example/tabbar/tabbar",
+
+    "example/searchbar/searchbar"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "嘉薪",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color":"#ababab",
+    "selectedColor":"#eb5e26",
+    "list": [{
+      "pagePath": "pages/wages/index/index",
+      "text": "工资",
+      "iconPath":"static/icon/index_tab/jx_wages_grey.png",
+      "selectedIconPath":"static/icon/index_tab/jx_wages_orange.png"
+    }, {
+      "pagePath": "pages/user/mine/mine",
+      "text": "我的",
+      "iconPath":"static/icon/index_tab/jx_mine_grey.png",
+      "selectedIconPath":"static/icon/index_tab/jx_mine_orange.png"
+    },
+      {
+        "pagePath": "example/index",
+        "text": "demo"
+      }
+    ]
+  },
+  "debug": true
+}
