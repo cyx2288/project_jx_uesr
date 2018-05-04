@@ -1,0 +1,126 @@
+
+
+page{
+    background-color: #ebebeb;
+    width: 100%;
+    height: 100%;
+}
+
+.jx_asset{
+
+    background-color: #FFF2E8;
+    width: 100%;
+    height: 22%;
+    text-align: center;
+
+}
+
+.asset_money {
+    padding: 25px 15px 10px 15px;
+    color: #8a8a8a;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.money_number{
+
+    color: #ff4646;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.payment_seller{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*下拉选择*/
+
+.phone_personal{
+    width: 100%;
+    color: #8a8a8a;
+    line-height:100rpx;
+    padding: 0 20px;
+}
+.phone_one{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    background-color:#fff;
+    width:100%;
+    border-bottom:1rpx solid #ebebeb;
+
+}
+.person_box{
+    position: relative;
+}
+.phone_select{
+    margin-top:0;
+    z-index: 100;
+    position: absolute;
+}
+
+.select_one:hover{
+    color: #E87B17;
+}
+
+
+.select_one{
+    text-align: center;
+    background-color: #fff;
+    width:420rpx;
+    height:80rpx;
+    line-height:60rpx;
+    color: #4a4a4a;
+    box-shadow: 0 2px 3px #E9E9E9;
+
+}
+
+.personal_image, .jx_open{
+    z-index: 100;
+    position: absolute;
+    width: 50rpx;
+    height: 50rpx;
+    margin:30rpx 0 0 120rpx;
+    transition: All 0.4s ease;
+    -webkit-transition: All 0.4s ease;
+}
+.jx_open{
+     margin:0 auto;
+     text-align: center;
+     margin-left: -25rpx;
+
+
+
+}
+
+/*工资列表*/
+
+.weui_title{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+
+}
+.weui_confirm{
+    color: #ababab
+}
+.orange{
+    color: #E87B17;
+}
+
+.weui-panel{
+   /* margin: 10px auto;
+    width: 96%;
+    border-radius: 10px;*/
+margin: 0;
+}
+
+
+
