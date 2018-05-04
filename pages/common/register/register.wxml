@@ -1,0 +1,47 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入手机号" value="{{mobile}}" bindchange="telFn"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入验证码" value="{{checkCode}}" bindchange="codeFn"/>
+            </view>
+            <view class="weui-cell__ft">
+                <view class="weui-vcode-btn" bindtap="registmsg">点击获取</view>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">密码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" password="true" placeholder="请输入密码" value="{{password}}" bindchange="passwordFn"/>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="register">注册</button>
+    </view>
+
+
+    <view class="register_text">
+        <text>点击注册，即表示您同意</text><text class="register_text_code">《用户注册协议》</text>
+
+    </view>
+
+
+
+</view>
