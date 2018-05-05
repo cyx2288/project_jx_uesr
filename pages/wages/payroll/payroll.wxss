@@ -1,0 +1,29 @@
+@import "../index/index.wxss";
+
+.company{
+    padding: 5px 15px 10px 15px;
+}
+
+.weui_title:active:hover{
+
+    opacity: .6;
+}
+
+
+/*button*/
+
+/*
+.page__bd .page__bd_spacing .weui-bth{
+    margin-top: 20px;
+    background-color: linear-gradient(#f2835c, #f8ab60);
+}*/
+
+.page__bd{
+    text-align: center;
+}
+text.payroll_prompt{
+
+    display: block;
+    padding-top: 10px;
+    color: #bbb;
+}

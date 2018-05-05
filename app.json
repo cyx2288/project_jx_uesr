@@ -1,7 +1,17 @@
 {
   "pages":[
+
+
     "pages/wages/index/index",
+
+    "pages/common/signin/signin",
+    "pages/common/register/register",
+
+
     "pages/user/mine/mine",
+
+    "pages/wages/empty/empty",
+    "pages/wages/payroll/payroll",
 
     "example/index",
 

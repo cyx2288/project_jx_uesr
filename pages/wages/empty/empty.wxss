@@ -1,0 +1,5 @@
+@import "../index/index.wxss";
+
+.wages_title_empty{
+    margin: 300rpx auto;
+}

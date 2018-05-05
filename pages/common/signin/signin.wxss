@@ -1,0 +1,6 @@
+.place_input:active{
+
+    opacity: .6;
+
+
+}

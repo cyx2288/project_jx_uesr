@@ -1,0 +1,119 @@
+
+<!--工资明细-->
+
+
+<view class="jx_asset">
+
+
+    <text class="asset_money">总资产（元）</text>
+
+    <!--金额显示-->
+    <text class="money_number">500.00</text>
+
+    <text class="asset_money company">广略服务有限公司</text>
+
+
+</view>
+
+
+
+<view class="wages_middle">
+
+    <!--明细-->
+    <view class="weui-panel">
+
+        <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">基本工资</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">岗位工资</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">其他加款</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">请假扣款</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">其他扣款</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">医疗保险</view>
+                <view class="weui_confirm">500.00</view>
+            </view>
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">公积金</view>
+                    <view class="weui_confirm">500.00</view>
+             </view>
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">个税</view>
+                    <view class="weui_confirm">500.00</view>
+                </view>
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
+                    <view class="weui_confirm">500.00</view>
+                </view>
+
+
+
+    </view>
+
+    </view>
+
+
+</view>
+
+<!--button-->
+
+<view class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <button class="weui-btn" type="primary">确认工资条</button>
+
+    <!--提示-->
+    <text class="payroll_prompt" >7天后将自动确认以上信息</text>
+</view>
+
+
+
+
+
+<!--已确认-->
+<!--
+<view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary">已确认</button>
+</view>
+-->
+
+
+
+
+
