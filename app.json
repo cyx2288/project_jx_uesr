@@ -1,10 +1,10 @@
 {
   "pages":[
 
-
+    "pages/common/signin/signin",
     "pages/wages/index/index",
 
-    "pages/common/signin/signin",
+
     "pages/common/register/register",
 
 
