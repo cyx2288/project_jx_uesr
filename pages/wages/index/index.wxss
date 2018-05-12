@@ -8,15 +8,15 @@ page{
 
 .jx_asset{
 
+    padding: 20rpx 0;
     background-color: #FFF2E8;
     width: 100%;
-    height: 22%;
     text-align: center;
 
 }
 
 .asset_money {
-    padding: 25px 15px 10px 15px;
+    padding: 20rpx 0;
     color: #8a8a8a;
     display: flex;
     justify-content: center;
@@ -32,7 +32,11 @@ page{
     justify-content: center;
 
 }
+.see_number{
 
+    width: 100%;
+    height: 50rpx
+}
 .payment_seller{
     width: 100%;
     height: 100%;
@@ -64,6 +68,7 @@ page{
     margin-top:0;
     z-index: 100;
     position: absolute;
+    box-shadow: 2px 2px 2px #ddd;
 }
 
 .select_one:hover{
@@ -76,28 +81,33 @@ page{
     background-color: #fff;
     width:420rpx;
     height:80rpx;
-    line-height:60rpx;
+    line-height:80rpx;
     color: #4a4a4a;
-    box-shadow: 0 2px 3px #E9E9E9;
-
+    border-bottom:1rpx solid #ddd;
 }
 
-.personal_image, .jx_open{
+.select_one:last-child{
+    border-bottom: none;
+}
+
+.personal_image,.jx_open{
     z-index: 100;
-    position: absolute;
     width: 50rpx;
     height: 50rpx;
-    margin:30rpx 0 0 120rpx;
+    vertical-align: middle;
     transition: All 0.4s ease;
     -webkit-transition: All 0.4s ease;
+
 }
 .jx_open{
-     margin:0 auto;
+     margin:20rpx auto;
      text-align: center;
-     margin-left: -25rpx;
+     display: block;
 
+}
 
-
+.rotateRight{
+    transform: rotate(180deg);
 }
 
 /*工资列表*/

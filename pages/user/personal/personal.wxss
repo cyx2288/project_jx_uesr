@@ -1,0 +1,7 @@
+@import "../mine/mine.wxss";
+
+.account_information_tel{
+
+    font-size: 14px;
+
+}

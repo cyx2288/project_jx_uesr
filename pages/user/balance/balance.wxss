@@ -1,0 +1,6 @@
+@import "../../wages/index/index.wxss";
+@import "../mine/mine.wxss";
+
+.account_information_mime{
+    margin: 0 auto;
+}

@@ -1,0 +1,166 @@
+
+
+       <!--提现-->
+
+       <!--<view class="cash_card">
+
+                &lt;!&ndash;银行卡&ndash;&gt;
+                <view class="weui-panel">
+
+
+
+                    <view class="weui-media-box weui-media-box_text" >
+
+
+
+                        <view class="weui_title">
+
+                            <image src="../../../static/icon/wages/bank.jpg"  class="reset_go" />
+
+                            <view class="weui_left">
+                                <view class="weui-media-box__title weui-media-box__title_in-text">工商银行</view>
+                                <view class="title">储蓄卡</view>
+                            </view>
+
+                            <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+                        </view>
+
+
+                        <text class="details_date">6222 3001 3447 984</text>
+
+                    </view>
+
+                    <hr/>
+
+                    &lt;!&ndash;更多&ndash;&gt;
+
+                    <view type="default" bindtap="open"  class="weui-cell weui-cell_access weui-cell_link">
+                        <view class="weui-cell__bd">更多</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </view>
+
+              </view>
+
+                &lt;!&ndash;输入金额&ndash;&gt;
+                <view url="../payroll/payroll" class="weui-panel">
+
+                     <view class="weui-panel__bd">
+
+                         <view class="weui-media-box ">
+
+
+
+                            <view class="weui-media-box__desc">单笔￥100.00 - ￥5000.00（手续费0.1%）</view>
+
+                            <view class="weui-media-box__info">￥
+
+                                &lt;!&ndash;<label>
+                                    <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="请输入金额" placeholder-style="color:#999, font-size:14px " maxlength="18"  />
+                                </label>&ndash;&gt;
+
+                                &lt;!&ndash;点击全部提现显示&ndash;&gt;
+
+                                <text class="cash_money">800.00</text>
+                                <icon class="icon_canel" type="cancel" size="16" color="#8a8a8a"></icon>
+                             </view>
+
+                                 <view class="weui_title">
+
+                                    <view class="weui-media-box__title weui-media-box__title_in-text">可提额度800.00元 </view>
+
+                                    <image src="../../../static/icon/wages/jx_ask.png"  class="ask" />
+
+                                 &lt;!&ndash;问号弹出&ndash;&gt;
+                                 &lt;!&ndash;  <modal class="modal" hidden="{{modalFlag}}"  no-cancel bindconfirm="modalOk"   bindtap="onclick">
+                                     <view class="dew">
+                                         <view class="page">
+
+                                             <view class="weui-loadmore">
+                                                 <view class="icon-box">
+
+                                                     <view class="cash_text">提现限额说明</view>
+                                                     <view class="weui-loadmore__tips">单卡单笔50000.00元，当日100000.00元，当月300000.00元</view>
+                                                 </view>
+                                             </view>
+
+                                         </view>
+
+                                     </view>
+                                 </modal>&ndash;&gt;
+
+
+
+
+                                 <view class="weui_confirm orange">全部提现</view>
+
+                             </view>
+
+                         </view>
+                     </view>
+                </view>
+
+
+                &lt;!&ndash;button&ndash;&gt;
+                <navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
+                    <button class="weui-btn" type="primary">确认提现</button>
+                    &lt;!&ndash;提示&ndash;&gt;
+                    <text class="payroll_prompt " style="color: #E87B17; font-size:14px;" >联系客服</text>
+                </navigator>
+
+
+
+                &lt;!&ndash;温馨提示&ndash;&gt;
+              <view class="weui-prompt weui-panel_access">
+
+
+                   <view class="weui-media-box weui-media-box_text">
+
+                       <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
+
+                       <view class="cash_prompt">
+                         <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                         <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行</view>
+                       </view>
+                       <view class="cash_prompt">
+                           <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                           <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
+                       </view>
+                   </view>
+
+
+
+
+
+
+
+
+              </view>
+       </view>-->
+
+
+       <!--未实名认证提现-->
+
+    <!--   <view class="unauthorized">
+
+           <modal title="" concel-text="关闭" confirm-text="去认证" hidden="{{mHidden}}" bindconfirm="changeModel" bindcanel="modelcanel">
+
+                  当前账户尚未进行实名认证，完成认证后方可提现
+
+           </modal>
+
+       </view>-->
+
+
+
+       <!--未绑定银行卡提现-->
+
+       <view class="unbound_bank">
+
+           <modal title="" concel-text="关闭" confirm-text="添加银行卡" hidden="{{mHidden}}" bindconfirm="changeModel" bindcanel="modelcanel">
+
+              你还没有可用于提现的银行卡，请先添加一张储蓄卡
+
+           </modal>
+
+       </view>
