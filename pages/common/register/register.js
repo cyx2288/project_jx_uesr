@@ -4,12 +4,6 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const md5 = require( '../../../static/libs/script/md5.js' );//md5加密
 
-
-
-
-
-
-
 const registerUrl='/jx/action/register';//注册的url地址
 
 const registmsg='/jx/action/registmsg';//发送短信验证码
@@ -36,7 +30,14 @@ Page({
             code:this.data.checkCode
         }))
 
-        wx.request({//注册
+        /**
+         * 接口：注册
+         * 请求方式：POST
+         * 接口：/jx/action/register
+         * 入参：mobile，password，code
+         **/
+
+        wx.request({
 
             url:  url,
 
@@ -66,6 +67,13 @@ Page({
         })
 
     },
+
+    /**
+     * 接口：
+     * 请求方式：
+     * 接口：GET
+     * 入参：
+     **/
 
     registmsg:function () {
 

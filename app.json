@@ -1,20 +1,46 @@
 {
   "pages":[
 
-    "pages/common/signin/signin",
+
+    "pages/user/personal/personal",
+
+    "pages/user/mine/mine",
+
+    "pages/user/balance/balance",
+
+    "pages/user/details/details",
+
     "pages/wages/index/index",
+
+    "pages/common/signin/signin",
+
+
+
+
+
+    "pages/wages/payroll/payroll",
+
+    "pages/common/authentication/authentication",
+
 
 
     "pages/common/register/register",
 
-
-    "pages/user/mine/mine",
-
     "pages/wages/empty/empty",
-    "pages/wages/payroll/payroll",
+
+
+
+
+
+    "pages/user/certification/certification",
+
+    "pages/user/cash/cash",
+
+    "pages/user/record/record",
+
+
 
     "example/index",
-
     "example/button/button",
     "example/list/list",
     "example/input/input",

@@ -1,2 +1,11 @@
 {
-  "navigationBarTitleText": "工资"}
+  "navigationBarTitleText": "工资",
+
+  "backgroundTextStyle":"#ababab",
+
+  "enablePullDownRefresh": true
+
+
+
+
+}

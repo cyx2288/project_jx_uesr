@@ -1,40 +1,34 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 
-
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">手机号</view>
+                <view class="weui-label">手机</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入手机号" value="{{mobile}}" bindchange="telFn"/>
+                <input class="weui-input" value="{{mobile}}" bindchange="telFn" placeholder="请输入您的手机号"/>
             </view>
         </view>
 
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label">密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" password="true" placeholder="请输入密码" value="{{password}}"
-                       bindchange="passwordFn"/>
+                <input class="weui-input" password='true' value="{{password}}" bindchange="passwordFn" placeholder="请输入密码"/>
             </view>
         </view>
+
     </view>
 
 
-    <view class="weui-btn-area">
+    <view class="page__bd page__bd_spacing">
         <button class="weui-btn" type="primary" bindtap="signin">登录</button>
     </view>
-
-<view class="weui-flex">
-    <view class="weui-flex__item">
-        <navigator url='../register/register' class="placeholder place_input" style="text-align: left;padding:10px 15px;">忘记密码</navigator>
-    </view>
-    <view class="weui-flex__item">
-        <navigator url='../register/register' class="placeholder place_input" style="text-align: right;padding:10px 15px;">免费注册</navigator>
-    </view>
-</view>
 
 
 </view>

@@ -27,3 +27,11 @@ text.payroll_prompt{
     padding-top: 10px;
     color: #bbb;
 }
+
+.weui-btn.confrim{
+
+    background: #ddd;
+    color: #ababab;
+    pointer-events: none;
+
+}

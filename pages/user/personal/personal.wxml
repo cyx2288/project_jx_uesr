@@ -1,0 +1,86 @@
+<!--个人中心-->
+
+<!--已认证-->
+<view class="personal_authenticated">
+<view class="account_information_mime">
+
+    <!--账号-->
+    <view class="mine_welfare">
+
+        <text class="password_image">账号</text>
+
+        <text class="account_information_tel">136****6259</text>
+
+    </view>
+    <hr/>
+
+    <!--实名认证-->
+    <navigator url="../certification/certification" class="mine_welfare">
+
+        <text class="password_image">实名认证</text>
+
+        <view class="password_image">
+
+            <text class="reset_money"> 已认证 </text>
+
+            <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+        </view>
+
+    </navigator>
+
+</view>
+
+
+
+<!--button-->
+<navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <button class="weui-btn" type="primary">退出登录</button>
+
+</navigator>
+
+</view>
+
+
+<!--未认证-->
+<view class="personal_unauthorized">
+
+    <view class="account_information_mime">
+
+        <!--账号-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">账号</text>
+
+            <text class="account_information_tel">136****6259</text>
+
+        </view>
+        <hr/>
+
+        <!--实名认证-->
+        <navigator url="../certification/certification" class="mine_welfare">
+
+            <text class="password_image">实名认证</text>
+
+            <view class="password_image">
+
+                <text class="reset_money"> 未认证 </text>
+
+                <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+            </view>
+
+        </navigator>
+
+    </view>
+
+
+
+    <!--button-->
+    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+        <button class="weui-btn" type="primary">退出登录</button>
+
+    </navigator>
+
+</view>
+

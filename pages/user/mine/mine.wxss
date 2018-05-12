@@ -1,0 +1,104 @@
+page{
+
+    background-color: #ebebeb;
+    height:100%;
+    width: 100%;
+
+}
+
+
+.wechat_mine_personal{
+
+    padding-top: 20px;
+    text-align: center;
+
+}
+.register_circle{
+
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 2px 3px #E9E9E9;
+
+
+}
+
+.register_logo{
+
+    width: 50%;
+    height: 50%;
+    margin-top: 25px;
+
+
+}
+
+.account_message{
+padding: 15px 0;
+}
+
+
+.account_information_tel{
+
+    font-size: 16px;
+
+}
+
+
+/*工资余额*/
+
+.account_information_mime{
+    margin: 10px auto;
+    background-color: white;
+    box-shadow: 0 2px 3px #E9E9E9;
+
+}
+
+.mine_welfare{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+
+}
+
+.password_image{
+
+    font-size: 14px;
+    color: #4a4a4a;
+    vertical-align: middle;
+    display: inline-flex;
+    width: 50%;
+    justify-content: space-between;
+}
+view.password_image{
+    justify-content: flex-end;
+}
+
+.reset_icon{
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+
+}
+
+.reset_go{
+    width: 26px;
+    height: 26px;
+}
+
+.reset_money{
+    color: #ff4646;
+    font-size: 14px;
+
+}
+hr {
+    display: block;
+    transform: scaleY(0.6);
+    width: 92%;
+    height: 1px;
+    border: none;
+    z-index: 100;
+    margin-left: 15px;
+
+}

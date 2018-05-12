@@ -1,0 +1,95 @@
+@import "../mine/mine.wxss";
+@import "../details/details.wxss";
+@import "../certification/certification.wxss";
+
+.details_date{
+
+color: #4a4a4a;
+    padding-left: 45px;
+
+}
+
+.weui_left{
+    display: flex;
+    justify-content: space-between;
+     width: 40%;
+     margin-right: 135px;
+}
+
+.title{
+
+    color: #ababab;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 35px;
+    vertical-align: middle;
+    padding-top: 3px;
+
+}
+
+.weui-panel{
+    margin-bottom: 15px;
+}
+
+.weui-media-box__info {
+    display: flex;
+    color: #E87B17;
+    font-size: 28px;
+    padding: 15px 0;
+}
+
+.weui-media-box__desc{
+
+    color: #8a8a8a;
+
+}
+.weui_title{
+    font-size: 14px;
+}
+
+.weui-media-box__title {
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.ask{
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 185px;
+    padding-top: 2px;
+    vertical-align: middle;
+
+}
+
+.weui-prompt{
+
+    position: relative;
+    bottom: 0;
+}
+
+.weui-media-box_text{
+    margin-top: 60px;
+}
+
+.icon_canel{
+
+
+    padding-left: 250px;
+}
+
+.cash_prompt{
+    display: flex;
+    vertical-align: middle;
+    padding-top: 10px;
+
+}
+
+.cash_text{
+    color: #4a4a4a;
+    font-size: 16px;
+}
+
+
+/*未实名认证提现*/
+

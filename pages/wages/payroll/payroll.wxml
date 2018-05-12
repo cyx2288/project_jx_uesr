@@ -5,12 +5,12 @@
 <view class="jx_asset">
 
 
-    <text class="asset_money">总资产（元）</text>
+    <text class="asset_money">{{salaryMonth}}工资（元）</text>
 
     <!--金额显示-->
-    <text class="money_number">500.00</text>
+    <text class="money_number">{{realAmount}}</text>
 
-    <text class="asset_money company">广略服务有限公司</text>
+    <text class="asset_money company">{{entName}}</text>
 
 
 </view>
@@ -24,12 +24,44 @@
 
         <view class="weui-media-box weui-media-box_text">
 
-                <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">基本工资</view>
-                <view class="weui_confirm">500.00</view>
+            <!-- 基本信息 -->
+
+            <view class="weui_title" wx:for="{{addAmount}}">
+
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+
+                <view class="weui_confirm">{{item.record}}</view>
+
             </view>
 
-                <view class="weui_title">
+            <!-- 应发发金额 -->
+
+            <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">应发金额</view>
+
+                <view class="weui_confirm">{{payableAmount}}</view>
+
+            </view>
+
+            <!-- 扣除信息 -->
+
+            <view class="weui_title" wx:for="{{subtractAmount}}">
+
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+
+                <view class="weui_confirm">{{item.record}}</view>
+
+            </view>
+
+            <!-- 实发金额 -->
+            <view class="weui_title">
+                <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
+
+                <view class="weui_confirm">{{realAmount}}</view>
+
+            </view>
+
+<!--                <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">岗位工资</view>
                 <view class="weui_confirm">500.00</view>
             </view>
@@ -82,7 +114,7 @@
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
                     <view class="weui_confirm">500.00</view>
-                </view>
+                </view>-->
 
 
 
@@ -96,22 +128,24 @@
 <!--button-->
 
 <view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button class="weui-btn" type="primary">确认工资条</button>
+
+    <!--需要确认-->
+
+    <button wx:if="{{comfrimBtn==0}}" class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
+
+    <!--确认中-->
+
+    <button wx:elif="{{comfrimBtn==1}}" class="weui-btn" type="primary">确认中</button>
+
+
+    <!--已确认-->
+
+    <button class="weui-btn confrim" wx:else type="primary">已确认</button>
 
     <!--提示-->
     <text class="payroll_prompt" >7天后将自动确认以上信息</text>
 </view>
 
-
-
-
-
-<!--已确认-->
-<!--
-<view class="page__bd page__bd_spacing">
-    <button class="weui-btn" type="primary">已确认</button>
-</view>
--->
 
 
 
