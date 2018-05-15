@@ -1,0 +1,39 @@
+@import "../../wages/payroll/payroll.wxss";
+@import "../mine/mine.wxss";
+
+.weui-panel{
+    padding: 15px;
+
+}
+
+.reset_go{
+    padding-top: 10px;
+
+}
+
+.mine_bill{
+     display: flex;
+    justify-content: space-between;
+    color: #4a4a4a;
+
+}
+.bill_left{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.details_date{
+    color: #ababab;
+}
+
+.bill_right{
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+}
+
+.details_money{
+    float: right;
+    display: flex;
+}
