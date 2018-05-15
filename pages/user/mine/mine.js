@@ -5,6 +5,8 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const mineUrl ='/user/center/usercenter';//登录的url
 
+const joinEntURL = '/user/workunit/selectisjoinent'//有带加入企业
+
 
 
 
@@ -15,7 +17,9 @@ Page({
 
         mobile:'',//个人中心手机号
 
-        wages:''//工资余额
+        wages:'',//工资余额
+
+        hasJoinEnt:true,//默认不显示有新的邀请 true为不显示 false为显示
 
 
     },
@@ -23,6 +27,8 @@ Page({
     onLoad:function () {
 
         var thisMineurl = app.globalData.URL+ mineUrl;
+
+        var thisJoinEntURL = app.globalData.URL + joinEntURL;
 
         var that = this;
 
@@ -82,7 +88,73 @@ Page({
 
         })
 
+
+        /**
+         * 接口：有待加入企业
+         * 请求方式：GET
+         * 接口：/user/workunit/selectisjoinent
+         * 入参：null
+         **/
+        wx.request({
+
+            url:  thisJoinEntURL,
+
+            method:'GET',
+
+            header: {
+
+                'jx_sid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function(res) {
+
+                console.log(res.data);
+
+
+                //判断是否显示有新邀请
+
+                var hasEntType = res.data.data.type;
+
+                if(hasEntType=='1'){
+
+                    that.setData({
+
+                        hasJoinEnt:false,
+
+                    })
+
+                }
+
+                else {
+
+                    that.setData({
+
+                        hasJoinEnt:true
+
+                    })
+
+                }
+
+
+
+
+
+
+            },
+
+            fail:function (res) {
+
+                console.log(res)
+            }
+
+        })
+
     },
+
+
 
 
 

@@ -25,8 +25,11 @@ Page({
 
         salaryMonth: '',//发薪企业年月
 
-        comfrimBtn:0//其中0是待确认、1是确认中、其他为已确认
+        comfrimBtn:0,//其中0是待确认、1是确认中、其他为已确认
 
+        isHiddenBtn:true,//是否显示确认按钮
+
+        state:''//工资确认状态 1是已确认 0是未确认
 
     },
 
@@ -46,10 +49,10 @@ Page({
 
 
         /**
-         * 接口：用户中心
-         * 请求方式：POST
-         * 接口：/user/center/usercenter
-         * 入参：null
+         * 接口：工资发放明细
+         * 请求方式：GET
+         * 接口：/salary/home/salarydetail
+         * 入参： salaryDetailId
          **/
         wx.request({
 
@@ -76,6 +79,9 @@ Page({
 
 
                 console.log(res.data);
+
+
+                var _state = res.data.data[0].state;
 
                 //将给的数据转成字符串
                 var _addAmount=JSON.parse(res.data.data[0].addAmount);
@@ -134,6 +140,31 @@ Page({
                     realAmount:res.data.data[0].realAmount//实发金额
 
                 });
+
+
+                    if(_state=='1'){
+
+                        that.setData({
+
+                            comfrimBtn:2,
+
+                            isHiddenBtn:false
+
+                        })
+
+                    }
+
+                    else if(_state=='0'){
+
+                        that.setData({
+
+                            comfrimBtn:0,
+
+                            isHiddenBtn:false
+
+                        })
+
+                    }
 
 
 

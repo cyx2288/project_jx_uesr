@@ -2,9 +2,9 @@
 
        <!--提现-->
 
-       <!--<view class="cash_card">
+       <view class="cash_card">
 
-                &lt;!&ndash;银行卡&ndash;&gt;
+                <!--银行卡-->
                 <view class="weui-panel">
 
 
@@ -33,7 +33,7 @@
 
                     <hr/>
 
-                    &lt;!&ndash;更多&ndash;&gt;
+                    <!--更多-->
 
                     <view type="default" bindtap="open"  class="weui-cell weui-cell_access weui-cell_link">
                         <view class="weui-cell__bd">更多</view>
@@ -42,7 +42,7 @@
 
               </view>
 
-                &lt;!&ndash;输入金额&ndash;&gt;
+                <!--输入金额-->
                 <view url="../payroll/payroll" class="weui-panel">
 
                      <view class="weui-panel__bd">
@@ -55,13 +55,13 @@
 
                             <view class="weui-media-box__info">￥
 
-                                &lt;!&ndash;<label>
+                                <label>
                                     <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="请输入金额" placeholder-style="color:#999, font-size:14px " maxlength="18"  />
-                                </label>&ndash;&gt;
+                                </label>
 
-                                &lt;!&ndash;点击全部提现显示&ndash;&gt;
+                                <!--点击全部提现显示-->
 
-                                <text class="cash_money">800.00</text>
+                              <!--  <text class="cash_money">800.00</text>-->
                                 <icon class="icon_canel" type="cancel" size="16" color="#8a8a8a"></icon>
                              </view>
 
@@ -71,8 +71,8 @@
 
                                     <image src="../../../static/icon/wages/jx_ask.png"  class="ask" />
 
-                                 &lt;!&ndash;问号弹出&ndash;&gt;
-                                 &lt;!&ndash;  <modal class="modal" hidden="{{modalFlag}}"  no-cancel bindconfirm="modalOk"   bindtap="onclick">
+                                 <!--问号弹出-->
+                                 <!--  <modal class="modal" hidden="{{modalFlag}}"  no-cancel bindconfirm="modalOk"   bindtap="onclick">
                                      <view class="dew">
                                          <view class="page">
 
@@ -87,7 +87,7 @@
                                          </view>
 
                                      </view>
-                                 </modal>&ndash;&gt;
+                                 </modal>-->
 
 
 
@@ -101,16 +101,16 @@
                 </view>
 
 
-                &lt;!&ndash;button&ndash;&gt;
+                <!--button-->
                 <navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
                     <button class="weui-btn" type="primary">确认提现</button>
-                    &lt;!&ndash;提示&ndash;&gt;
+                    <!--提示-->
                     <text class="payroll_prompt " style="color: #E87B17; font-size:14px;" >联系客服</text>
                 </navigator>
 
 
 
-                &lt;!&ndash;温馨提示&ndash;&gt;
+                <!--温馨提示-->
               <view class="weui-prompt weui-panel_access">
 
 
@@ -136,7 +136,7 @@
 
 
               </view>
-       </view>-->
+       </view>
 
 
        <!--未实名认证提现-->
@@ -151,16 +151,3 @@
 
        </view>-->
 
-
-
-       <!--未绑定银行卡提现-->
-
-       <view class="unbound_bank">
-
-           <modal title="" concel-text="关闭" confirm-text="添加银行卡" hidden="{{mHidden}}" bindconfirm="changeModel" bindcanel="modelcanel">
-
-              你还没有可用于提现的银行卡，请先添加一张储蓄卡
-
-           </modal>
-
-       </view>

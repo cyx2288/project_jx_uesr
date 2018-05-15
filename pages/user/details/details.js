@@ -1,25 +1,49 @@
-
 const app = getApp();
 
-const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
+const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const clearingUrl ='/user/account/clearing';//登录的url
-
-
+const clearingUrl = '/user/account/clearing';//登录的url
 
 
 Page({
 
-    data:{
+    data: {
+
+        balanceList: [
+
+            {
+
+                operation: '提现',//
+
+                detail: '+500.00',
+
+                date: '2019-10-12 20:11:11'
 
 
+            },
+
+
+            {
+
+                operation: '庄中煲餐饮有限公司工资发放',//
+
+                detail: '+51100.00',
+
+                date: '2019-10-12 20:11:11'
+
+
+            }
+
+
+
+        ],//工资明细
 
 
     },
 
-    onLoad:function () {
+    onLoad: function () {
 
-        var thisClearingurl = app.globalData.URL+ clearingUrl;
+        var thisClearingurl = app.globalData.URL + clearingUrl;
 
         var that = this;
 
@@ -39,31 +63,31 @@ Page({
          **/
         wx.request({
 
-            url:  thisClearingurl,
+            url: thisClearingurl,
 
-            method:'GET',
+            method: 'GET',
 
-            data:{
+            data: {
 
-                userClearId:thisUserClearId
+                userClearId: thisUserClearId
 
             },
 
             header: {
 
-                'jx_sid':jx_sid,
+                'jx_sid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
 
@@ -72,7 +96,6 @@ Page({
         })
 
     },
-
 
 
 });

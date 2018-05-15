@@ -15,7 +15,6 @@ const noSeeUrl = '/salary/home/updateselectsalary';//暂不查看工资单
 const noJoinUrl = '/salary/home/updatejoinentstatus';//暂不加入企业
 
 
-/*下拉选择*/
 Page({
 
     data: {
@@ -32,12 +31,29 @@ Page({
 
         wagesList: [],//发薪企业列表
 
-        selectSalaryOptions:[],//获取企业列表
+        thisWagesListLength: 0,//获取当前发薪企业列表的长度
 
-        entId:''//发薪企业id
+        selectSalaryOptions: [],//获取企业列表
+
+        isAllCom:true,//判断是不是全部企业
+
+        entId: '',//发薪企业id
+
+        pageNum: 1,//初始值为2
+
+        pageSize: 10,//一页的数量
+
+        hasMoreData: true,//是否可以加载更多
+
+        noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+        userName:'',//姓名
+
+        idNumber:'',//身份证号码
 
 
     },
+
     onLoad: function (options) {
 
         // 页面初始化 options为页面跳转所带来的参数
@@ -63,6 +79,7 @@ Page({
         var jx_sid = wx.getStorageSync('jx_sid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
         //获取entId
         var thisEntId = wx.getStorageSync('entId');
@@ -292,57 +309,6 @@ Page({
 
         }
 
-        //工资条发放列表
-        /*function salaryInfo() {
-
-            /!**
-             * 接口：工资条发放列表
-             * 请求方式：GET
-             * 接口：/salary/home/salaryinfo
-             * 入参：entId,pageNum,pageSize
-             **!/
-            wx.request({
-
-                url: thisInfoUrl,
-
-                method: 'GET',
-
-                data: {
-
-                    /!*entId: thisEntId*!/
-
-                },
-
-                header: {
-
-                    'jx_sid': jx_sid,
-
-                    'Authorization': Authorization
-
-                },
-
-                success: function (res) {
-
-                    console.log(res.data);
-
-                    var thislist = res.data.data.list;
-
-                    that.setData({
-
-                        wagesList: thislist
-
-                    })
-
-                },
-
-
-                fail: function (res) {
-                    console.log(res)
-                }
-
-            })
-
-        }*/
 
         //发薪企业
         function getSelectEnt() {
@@ -383,7 +349,6 @@ Page({
                     })
 
 
-
                 },
 
 
@@ -396,8 +361,9 @@ Page({
 
         }
 
-        that.salaryInfo();
+        //that.salaryInfo('',that.data.pageSize,1);
 
+        that.chooseEntId();
 
         getSelectEnt();
 
@@ -423,17 +389,15 @@ Page({
 
             success: function (res) {
 
-                 wx.setStorageSync('wages',res.data.data);
+                wx.setStorageSync('wages', res.data.data);
 
                 console.log(res.data);
-
 
                 that.setData({
 
                     wages: res.data.data//用户余额
 
                 });
-
 
 
             },
@@ -450,8 +414,8 @@ Page({
 
     },
 
-    //工资条发放列表 入参数企业id
-    salaryInfo:function (thisSalaryEntId) {
+    //工资条发放列表 入参数企业id,分页数，
+    salaryInfo: function (thisSalaryEntId, thisPageSize, thisPageNum, fn) {
 
         var that = this;
 
@@ -464,14 +428,21 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
+
+
+
+        //修改入参
         var thisIdData = {};
 
+        if (thisSalaryEntId) {
 
-        if(thisSalaryEntId){
+            thisIdData = {
 
-            thisIdData={
+                entId: thisSalaryEntId,
 
-                entId: thisSalaryEntId
+                pageNum: thisPageNum,
+
+                pageSize: thisPageSize
 
             }
 
@@ -479,59 +450,119 @@ Page({
 
         else {
 
-            thisIdData={}
+            thisIdData = {
+
+                pageNum: thisPageNum,
+
+                pageSize: thisPageSize
+            }
+
         }
 
-    /**
-     * 接口：工资条发放列表
-     * 请求方式：GET
-     * 接口：/salary/home/salaryinfo
-     * 入参：entId,pageNum,pageSize
-     **/
-    wx.request({
 
-        url: thisInfoUrl,
+        /**
+         * 接口：工资条发放列表
+         * 请求方式：GET
+         * 接口：/salary/home/salaryinfo
+         * 入参：entId,pageNum,pageSize
+         **/
+        wx.request({
 
-        method: 'GET',
+            url: thisInfoUrl,
 
-        data: thisIdData,
+            method: 'GET',
 
-        header: {
+            data: thisIdData,
 
-            'jx_sid': jx_sid,
+            header: {
 
-            'Authorization': Authorization
+                'jx_sid': jx_sid,
 
-        },
+                'Authorization': Authorization
 
-        success: function (res) {
+            },
 
-            console.log(res.data);
+            success: function (res) {
 
-            var thislist = res.data.data.list;
-
-            that.setData({
-
-                wagesList: thislist
-
-            })
-
-        },
+                console.log(res.data);
 
 
-        fail: function (res) {
-            console.log(res)
-        }
+                //获取现在的list
+                var thislist = res.data.data.list;
 
-    })
+                var wagesListLength;
 
-},
+                if (thislist) {
+
+                    //获取现在list的长度
+                    wagesListLength = thislist.length;
+
+                    //上一次获取到的list
+
+                    var lastList = that.data.wagesList;
+
+                    //把获取到的list合并成一个数组
+                    var nowList = lastList.concat(thislist);
+
+
+                    that.setData({
+
+                        thisWagesListLength: wagesListLength
+
+                    });
+
+
+
+                    //判空
+                    if (fn) {
+                        //数据加载之后使用的方法
+                        fn();
+                    }
+
+
+
+                    that.setData({
+
+                        wagesList: nowList,
+
+                    });
+
+
+                }
+
+                else {
+
+                    that.setData({
+
+                        hasMoreData: false,
+
+                        noData: false
+
+
+                    });
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+                console.log(res)
+            }
+
+        })
+
+    },
 
     //点击选择企业
     clickSalary: function () {
 
         var thisSelectSalary = this.data.selectSalary;
-        
+
         if (thisSelectSalary == true) {
 
             this.setData({
@@ -556,11 +587,16 @@ Page({
     mySelect: function (e) {
 
 
-        this.setData({
+        var that = this;
 
+        that.setData({
+
+
+            //选择的企业名称回显
             firstOptions: e.target.dataset.salary,
 
-            entId:e.target.dataset.id,
+            //存取企业id
+            entId: e.target.dataset.id,
 
             selectSalary: true,
 
@@ -568,16 +604,33 @@ Page({
 
         });
 
-        this.salaryInfo(this.data.entId);
+        //分页数据初始化
+        that.setData({
 
+            isAllCom:false,//不是全部企业
+
+            pageNum: 1,//初始值为2
+
+            hasMoreData: true,//是否可以加载更多
+
+            noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+            wagesList: [],//发薪企业列表
+
+        });
+
+        //在渲染数据
+        //that.salaryInfo(that.data.entId,that.data.pageSize,1);
+
+        that.chooseEntId();
 
 
     },
 
     //点击查看工资条跳转链接
-    clickSeeList:function (e) {
+    clickSeeList: function (e) {
 
-        wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
+        wx.setStorageSync('salaryDetailId', e.currentTarget.dataset.detail);
 
         wx.navigateTo({
 
@@ -589,7 +642,44 @@ Page({
     },
 
     //下拉刷新
-    onPullDownRefresh:function () {
+    onPullDownRefresh: function () {
+
+        this.setData({
+
+            firstOptions: '筛选',//默认选项
+
+            selectSalary: true,//选择企业 true为隐藏 false为显示
+
+            selectArea: false,
+
+            wages: '',//获取用户余额信息
+
+            salaryDetailId: '',//发薪企业明细id
+
+            wagesList: [],//发薪企业列表
+
+            thisWagesListLength: 0,//获取当前发薪企业列表的长度
+
+            selectSalaryOptions: [],//获取企业列表
+
+            entId: '',//发薪企业id
+
+            pageNum: 1,//初始值为2
+
+            pageSize: 10,//一页的数量
+
+            hasMoreData: true,//是否可以加载更多
+
+            noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+            isAllCom:true,//判断是不是全部企业
+
+            userName:'',//姓名
+
+            idNumber:'',//身份证号码
+
+
+        });
 
         this.onLoad();
 
@@ -597,11 +687,144 @@ Page({
 
     },
 
+    //上拉加载分页
+    onReachBottom: function () {
+
+        var that = this;
+
+        that.chooseEntId();
+
+    },
+
+    //分页方法
+    chooseEntId: function () {
+
+        var that = this;
+
+        //console.log('到底');
+
+        if (that.data.hasMoreData) {
+
+            that.setData({
+
+                hasMoreData: false,
+
+            });
+
+
+            //判断后面是否要加载分页
+            var useFn = function () {
+
+                //console.log(that.data.thisWagesListLength +'<'+ that.data.pageSize);
+
+                //如果现在列表页的长度小于一页数量
+                if (that.data.thisWagesListLength < that.data.pageSize) {
+
+                    that.setData({
+
+                        hasMoreData: false,
+
+                        noData: false
+
+
+                    });
+
+
+                }
+
+                else {
+
+
+                    //页数加1
+                    that.setData({
+
+                        pageNum: that.data.pageNum + 1
+
+                    });
+
+                    //可以加载
+                    setTimeout(function () {
+
+                        that.setData({
+
+                            hasMoreData: true
+
+
+                        });
+
+
+                    }, 500)
+
+
+                }
+
+
+            };
+
+
+            //如果查看全部企业
+            if(that.data.isAllCom){
+
+                that.salaryInfo('', that.data.pageSize, that.data.pageNum, useFn);
+
+            }
+
+            //如果看单独企业
+            else{
+
+                that.salaryInfo(that.data.entId, that.data.pageSize, that.data.pageNum, useFn);
+
+            }
+
+
+
+        }
+    },
+
     onReady: function () {
         // 页面渲染完成
     },
     onShow: function () {
         // 页面显示
+        this.setData({
+
+            firstOptions: '筛选',//默认选项
+
+            selectSalary: true,//选择企业 true为隐藏 false为显示
+
+            selectArea: false,
+
+            wages: '',//获取用户余额信息
+
+            salaryDetailId: '',//发薪企业明细id
+
+            wagesList: [],//发薪企业列表
+
+            thisWagesListLength: 0,//获取当前发薪企业列表的长度
+
+            selectSalaryOptions: [],//获取企业列表
+
+            entId: '',//发薪企业id
+
+            pageNum: 1,//初始值为2
+
+            pageSize: 10,//一页的数量
+
+            hasMoreData: true,//是否可以加载更多
+
+            noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+            isAllCom:true,//判断是不是全部企业
+
+            userName:'',//姓名
+
+            idNumber:'',//身份证号码
+
+
+        });
+
+        this.onLoad();
+
     },
     onHide: function () {
         // 页面隐藏

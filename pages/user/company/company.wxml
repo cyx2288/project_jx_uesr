@@ -1,0 +1,31 @@
+<!--工资列表-->
+<view class="wages_form">
+
+    <!--<view class="asset_money">还未收到工资哦~</view>-->
+
+        <navigator class="weui-panel" wx:for="{{workUnitList}}" bindtap="isJoinEntFn" url="{{item.state==1 ? '' :'../company_authentication/authentication'}}">
+
+            <view class="weui-panel__bd">
+
+                <view class="weui-media-box weui-media-box_text">
+
+                    <view class="weui_title">
+
+                        <view class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}</view>
+
+                        <view wx:if="{{item.state==1}}"class="weui_confirm">已加入</view>
+
+                        <view wx:else class="weui_confirm orange">待同意</view>
+
+                    </view>
+
+                    <view class="weui-media-box__info">
+                      <view class="weui-media-box__info__meta">邀请时间：{{item.jionEntDate}}</view>
+                    </view>
+
+                </view>
+            </view>
+        </navigator>
+
+
+</view>

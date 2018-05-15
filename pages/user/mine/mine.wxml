@@ -50,17 +50,23 @@
     <hr/>
 
     <!--我的工作单位-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../company/company" class="mine_welfare">
 
         <text class="password_image">我的工作单位</text>
 
+        <view class="password_image">
+
+        <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>
+
         <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+        </view>
 
     </navigator>
     <hr/>
 
     <!--银行卡-->
-    <navigator url="../" class="mine_welfare">
+    <navigator url="" class="mine_welfare">
 
         <text class="password_image">银行卡</text>
 
@@ -70,7 +76,7 @@
     <hr/>
 
     <!--设置-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../setting/setting" class="mine_welfare">
 
         <text class="password_image">设置</text>
 
