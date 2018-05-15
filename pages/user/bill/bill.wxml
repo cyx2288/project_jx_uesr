@@ -1,0 +1,167 @@
+<!--我的账单-->
+
+<view class="wages_middle">
+
+    <!--余额提现-->
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+                 <view class="bill_left">
+                 <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+                 <view class="bill_right">
+                    <view class="bill_title">待支付</view>
+                    <text class="details_money">-55.00</text>
+                 </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+            <view class="bill_left">
+                <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+            <view class="bill_right">
+                <view class="bill_title">支付失败</view>
+                <text class="details_money">-55.00</text>
+            </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+            <view class="bill_left">
+                <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+            <view class="bill_right">
+                <view class="bill_title">成功</view>
+                <text class="details_money">-55.00</text>
+            </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+            <view class="bill_left">
+                <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+            <view class="bill_right">
+                <view class="bill_title">处理中</view>
+                <text class="details_money">-55.00</text>
+            </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+            <view class="bill_left">
+                <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+            <view class="bill_right">
+                <view class="bill_title">退款中</view>
+                <text class="details_money">-55.00</text>
+            </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+
+        <view class="mine_bill">
+
+            <view class="bill_left">
+                <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+
+
+                <view class="bill_balance">
+                    <view class="bill_title">余额提现</view>
+                    <text class="details_date">2018-05-10  21:09:10</text>
+                </view>
+
+
+            </view>
+
+            <view class="bill_right">
+                <view class="bill_title">已退款</view>
+                <text class="details_money">-55.00</text>
+            </view>
+
+        </view>
+        <hr/>
+
+    </view>
+    <hr/>
+</view>
