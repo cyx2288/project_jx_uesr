@@ -32,7 +32,7 @@
 
 <!--未认证-未收到企业邀请-->
 
-<view class="no_invitation" wx:els>
+<view class="no_invitation" wx:else>
 
     <view class="account_information_mime">
         <!--姓名-->
@@ -40,10 +40,11 @@
 
             <text class="password_image">姓名</text>
 
-            <!--<text class="account_information_tel">{{userName}}</text>-->
 
-            <label>
-                <input class="account_information_tel" pattern="[0-9]*" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
+            <text wx:if="{{hasUserName}}" class="account_information_tel">{{userName}}</text>
+
+           <label wx:else>
+                <input class="account_information_tel" pattern="[0-9]*" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
             </label>
 
         </view>
@@ -56,7 +57,7 @@
             <text class="password_image">身份证号</text>
 
             <label>
-                <input class="account_information_tel" value="{{idNumber}}" pattern="[0-9]*" placeholder="请输入身份证号" placeholder-style="color:#bbb" maxlength="18"/>
+                <input style="text-align: right" class="account_information_tel" value="{{idNumber}}" pattern="[0-9]*" placeholder="请输入身份证号" placeholder-style="color:#bbb" maxlength="18"/>
             </label>
 
         </view>

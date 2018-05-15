@@ -9,11 +9,14 @@ Page({
 
     data: {
 
-        code:'',//是否认证成功
+        code:'',//是否已认证
 
         userName:'',//姓名
 
-        idNumber:''//身份证
+        idNumber:'',//身份证
+
+        //hasUserName:true,//
+
 
 
     },
@@ -33,6 +36,10 @@ Page({
         var thisUserName = wx.getStorageSync('userName');
 
         var thisIdNumber = wx.getStorageSync('idNumber');
+
+        console.log(thisIdNumber)
+
+        console.log(thisUserName)
 
 
         /**
@@ -66,9 +73,15 @@ Page({
             },
 
 
+
             success: function (res) {
 
                 console.log(res.data);
+
+
+                //console.log(this.data.userName)
+
+                //console.log(this.data.idNumber)
 
                 var _code = res.data.code;
 
@@ -76,17 +89,22 @@ Page({
 
                 if(_code=='0000'){
 
+
                     that.setData({
 
                         userName:thisUserName,
 
-                        idNumber:thisIdNumber
+                        idNumber:thisIdNumber,
+
+                        code:_code,
                     })
+
                 }
 
                 else {
 
 
+                    //登录页有返回身份证号码 显示名称
                     if(thisIdNumber){
 
 
@@ -94,7 +112,8 @@ Page({
 
                             userName:thisUserName,
 
-                            idNumber:thisIdNumber
+                            idNumber:thisIdNumber,
+
 
                         })
 

@@ -18,8 +18,10 @@
 
 </view>
 
+<view hidden="{{!isDataShow}}" class="asset_money">还未收到工资哦~</view>
 
-<view class="wages_middle">
+
+<view class="wages_middle" hidden="{{isDataShow}}">
 
     <!--下拉选择-->
     <view class="phone_one" bindtap="clickSalary">
@@ -33,11 +35,9 @@
         </view>
     </view>
 
-
     <!--工资列表-->
     <view class="wages_form">
 
-        <!--<view class="asset_money">还未收到工资哦~</view>-->
 
         <block wx:for="{{wagesList}}">
             <view class="weui-panel" bindtap="clickSeeList" data-detail="{{item.salaryDetailId}}">
@@ -63,7 +63,6 @@
                 </view>
             </view>
         </block>
-
 
         <view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
             <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
@@ -116,7 +115,6 @@
     </navigator>-->
 
     </view>
-
 
 
 </view>

@@ -3,7 +3,7 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const mineUrl ='/user/center/usercenter';//登录的url
+const mineUrl ='/user/center/usercenter';//用户中心
 
 const joinEntURL = '/user/workunit/selectisjoinent'//有带加入企业
 
@@ -52,12 +52,6 @@ Page({
 
             method:'POST',
 
-            data: json2FormFn.json2Form({
-
-                mobile:this.data.mobile,
-
-            }),
-
             header: {
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
@@ -72,8 +66,8 @@ Page({
                 console.log(res.data);
 
                 //存储手机号码
-                that.setData({
-                    mobile:res.data.data[0]
+               that.setData({
+                    mobile:res.data.data.mobile
                 });
 
                 //存储余额
@@ -83,6 +77,7 @@ Page({
             },
 
             fail:function (res) {
+
                 console.log(res)
             }
 
