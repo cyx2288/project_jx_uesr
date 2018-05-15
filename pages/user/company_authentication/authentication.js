@@ -102,12 +102,11 @@ Page({
                 else if (thisCode == '0000'){
 
                     //关闭当前页面
-                    wx.redirectTo({
 
-                        url:'../../wages/payroll/payroll'
+                    wx.navigateBack({
+                        delta: 1
 
-                    });
-
+                    })
                 }
 
 

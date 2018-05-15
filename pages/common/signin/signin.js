@@ -61,17 +61,6 @@ data:{
 
                  console.log(res.data)
 
-                 /*console.log(res.data.msg)
-
-                console.log(res.data.code);
-
-                 console.log(Authorization)
-
-                 console.log(jx_sid)
-
-                 console.log(Authorization)*/
-
-
 
 
                  if(code == '-1'){
@@ -90,16 +79,25 @@ data:{
 
                  else if(code == '0000'){
 
-
-
                      var Authorization = res.data.token.access_token;//Authorization数据
 
                      var jx_sid = res.header.jx_sid;//jx_sid数据
+
+                     //console.log(res.data.data.idNumber)
+
+                     //console.log(res.data.data.userName)
 
                      //存储数据
                      wx.setStorageSync('jx_sid', jx_sid);
 
                      wx.setStorageSync('Authorization', Authorization);
+
+                     wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                     wx.setStorageSync('userName', res.data.data.userName);
+
+
+
 
                      //console.log(header.header(Authorization,jx_sid));
 

@@ -2,78 +2,74 @@
 
 <!--未认证-未收到企业邀请-->
 
-<view class="no_invitation">
+<view class="no_invitation" wx:if="{{code=='0000'}}">
+
 
     <view class="account_information_mime">
-    <!--姓名-->
+        <!--姓名-->
         <view  class="mine_welfare">
 
-        <text class="password_image">姓名</text>
+            <text class="password_image">姓名</text>
 
-        <text class="account_information_tel">橙子橙</text>
+            <text class="account_information_tel">{{userName}}</text>
 
-    </view>
+        </view>
 
         <hr/>
-    <!--身份证号-->
+        <!--身份证号-->
         <view  class="mine_welfare">
 
             <text class="password_image">身份证号</text>
 
-            <label>
-                <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="340223198712131529" placeholder-style="color:#8a8a8a" maxlength="18"  />
-            </label>
+            <text class="account_information_tel">{{idNumber}}</text>
 
         </view>
-</view>
 
-<!--button-->
-<navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
-
-    <button class="weui-btn" type="primary">提交</button>
-
-</navigator>
+    </view>
 
 </view>
 
 
 <!--未认证-未收到企业邀请-->
 
-<view class="no_invitation">
+<view class="no_invitation" wx:els>
 
-
-       <view class="account_information_mime">
+    <view class="account_information_mime">
         <!--姓名-->
-           <view  class="mine_welfare">
+        <view  class="mine_welfare">
 
             <text class="password_image">姓名</text>
 
+            <!--<text class="account_information_tel">{{userName}}</text>-->
+
             <label>
-                <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
+                <input class="account_information_tel" pattern="[0-9]*" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
             </label>
+
         </view>
 
-           <hr/>
+        <hr/>
 
         <!--身份证号-->
-           <view  class="mine_welfare">
+        <view  class="mine_welfare">
 
             <text class="password_image">身份证号</text>
 
             <label>
-                <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="请输入身份证号" placeholder-style="color:#bbb" maxlength="18"  />
+                <input class="account_information_tel" value="{{idNumber}}" pattern="[0-9]*" placeholder="请输入身份证号" placeholder-style="color:#bbb" maxlength="18"/>
             </label>
 
         </view>
 
-       </view>
+    </view>
 
     <!--button-->
-    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <view url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
 
         <button class="weui-btn" type="primary">提交</button>
 
-    </navigator>
+    </view>
+
 
 </view>
 
@@ -185,34 +181,3 @@
     </view>
 </modal>-->
 
-
-
-<!--退出登录-->
-
-<modal class="modal" hidden="{{modalFlag}}"  bindconfirm="modalOk"  bindtap="onclick">
-    <view class="dew">
-        <view class="page">
-
-                <view class="weui-loadmore">
-                    <view class="icon-box">
-                        <icon type="warn" size="56" color="#FFBE00"></icon>
-
-                    <view class="weui-loadmore__tips">确认要退出登录？</view>
-                    </view>
-                </view>
-
-            </view>
-
-       <!-- <view class="po_w">
-
-            <block wx:for="{{agentList}}" wx:for-item="a" wx:key="a.name">
-                <view class="ved">
-                    <view class="titd">{{a.name}}</view>
-                    <view class="addd">{{a.cityName}}{{a.districtName}}{{a.address}}</view>
-                </view>
-            </block>
-
-        </view>-->
-
-    </view>
-</modal>

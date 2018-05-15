@@ -127,23 +127,36 @@
 
 <!--button-->
 
-<view class="page__bd page__bd_spacing" style="margin-top: 25px">
+<view class="page__bd page__bd_spacing" hidden="{{isHiddenBtn}}" style="margin-top: 25px">
 
-    <!--需要确认-->
 
-    <button wx:if="{{comfrimBtn==0}}" class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
+    <viwe wx:if="{{comfrimBtn==0}}">
+
+        <!--需要确认-->
+
+        <button class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
+
+        <!--提示-->
+        <text class="payroll_prompt" >7天后将自动确认以上信息</text>
+
+    </viwe>
+
 
     <!--确认中-->
 
     <button wx:elif="{{comfrimBtn==1}}" class="weui-btn" type="primary">确认中</button>
 
 
+
+
+
     <!--已确认-->
 
     <button class="weui-btn confrim" wx:else type="primary">已确认</button>
 
-    <!--提示-->
-    <text class="payroll_prompt" >7天后将自动确认以上信息</text>
+
+
+
 </view>
 
 
