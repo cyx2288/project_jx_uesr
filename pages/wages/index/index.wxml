@@ -18,13 +18,13 @@
 
 </view>
 
-<view hidden="{{!isDataShow}}" class="asset_money">还未收到工资哦~</view>
 
 
-<view class="wages_middle" hidden="{{isDataShow}}">
+
+
 
     <!--下拉选择-->
-    <view class="phone_one" bindtap="clickSalary">
+    <view hidden="{{hasCompany}}" class="phone_one" bindtap="clickSalary">
         <view class="phone_personal"><span>{{firstOptions}}</span><image src="../../../static/icon/wages/go.png" class="personal_image {{selectArea ? 'rotateRight' :''}}"/></view>
 
     </view>
@@ -34,6 +34,10 @@
             <view wx:for='{{selectSalaryOptions}}' class="select_one" data-id="{{item.entId}}" data-salary="{{item.entName}}" bindtap="mySelect">{{item.entName}}</view>
         </view>
     </view>
+
+    <view  wx:if='{{dataText==false}}' class="asset_money">还未收到工资哦~</view>
+
+    <view  wx:else class="wages_middle">
 
     <!--工资列表-->
     <view class="wages_form">
