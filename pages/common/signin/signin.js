@@ -83,10 +83,6 @@ data:{
 
                      var jx_sid = res.header.jx_sid;//jx_sid数据
 
-                     //console.log(res.data.data.idNumber)
-
-                     //console.log(res.data.data.userName)
-
                      //存储数据
                      wx.setStorageSync('jx_sid', jx_sid);
 
@@ -97,7 +93,9 @@ data:{
                      wx.setStorageSync('userName', res.data.data.userName);
 
 
+                     console.log('用户姓名:'+ wx.getStorageSync('userName'));
 
+                     console.log('用户身份证:'+ wx.getStorageSync('idNumber'));
 
                      //console.log(header.header(Authorization,jx_sid));
 

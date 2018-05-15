@@ -25,7 +25,7 @@ Page({
 
         selectArea: false,
 
-        wages: '',//获取用户余额信息
+        wages: '暂无数据',//获取用户余额信息
 
         salaryDetailId: '',//发薪企业明细id
 
@@ -51,12 +51,20 @@ Page({
 
         idNumber:'',//身份证号码
 
+        isDateshow:true,//true默认不显示 false为显示
+
 
     },
 
     onLoad: function (options) {
 
         // 页面初始化 options为页面跳转所带来的参数
+    },
+    onShow: function () {
+
+        // 页面显示
+        console.log('返回更新数据');
+
         var that = this;
 
         //工资提醒
@@ -128,6 +136,7 @@ Page({
 
                     var thisSalaryMonth = res.data.data[0].salaryMonth;
 
+
                     wx.showModal({
                         title: '提示',
                         content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
@@ -163,6 +172,17 @@ Page({
 
                     var thisEnName = res.data.data[0].entName;
 
+
+                    //未加入企业列表显示暂无数据
+
+                    this.setData({
+
+                        isDateshow:false,//true默认不显示 false为显示
+
+                    });
+
+
+
                     wx.showModal({
                         title: '提示',
                         content: thisEnName + '邀请您加入企业，便捷查看工资和工资条',
@@ -197,7 +217,7 @@ Page({
                 else if (thisType == 0) {
 
                     //调用发薪企业
-                    getSelectEnt();
+                    //getSelectEnt();
 
                     //调用工资条发放列表
                     //salaryInfo();
@@ -309,7 +329,6 @@ Page({
 
         }
 
-
         //发薪企业
         function getSelectEnt() {
 
@@ -353,7 +372,9 @@ Page({
 
 
                 fail: function (res) {
+
                     console.log(res)
+
                 }
 
             })
@@ -361,11 +382,13 @@ Page({
 
         }
 
-        //that.salaryInfo('',that.data.pageSize,1);
 
+        //分页
         that.chooseEntId();
 
+        //发薪企业
         getSelectEnt();
+
 
         /**
          * 接口：获取用户余额
@@ -784,48 +807,7 @@ Page({
     onReady: function () {
         // 页面渲染完成
     },
-    onShow: function () {
-        // 页面显示
-        this.setData({
 
-            firstOptions: '筛选',//默认选项
-
-            selectSalary: true,//选择企业 true为隐藏 false为显示
-
-            selectArea: false,
-
-            wages: '',//获取用户余额信息
-
-            salaryDetailId: '',//发薪企业明细id
-
-            wagesList: [],//发薪企业列表
-
-            thisWagesListLength: 0,//获取当前发薪企业列表的长度
-
-            selectSalaryOptions: [],//获取企业列表
-
-            entId: '',//发薪企业id
-
-            pageNum: 1,//初始值为2
-
-            pageSize: 10,//一页的数量
-
-            hasMoreData: true,//是否可以加载更多
-
-            noData: true,//是否显示暂无数据 true为隐藏 false为显示
-
-            isAllCom:true,//判断是不是全部企业
-
-            userName:'',//姓名
-
-            idNumber:'',//身份证号码
-
-
-        });
-
-        this.onLoad();
-
-    },
     onHide: function () {
         // 页面隐藏
     },
