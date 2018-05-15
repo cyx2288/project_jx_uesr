@@ -31,7 +31,7 @@
 
             <text class="reset_money">{{wages}}</text>
 
-            <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
         </view>
 
@@ -44,7 +44,7 @@
 
             <text class="password_image">我的账单</text>
 
-            <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
     </navigator>
     <hr/>
@@ -58,7 +58,7 @@
 
         <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>
 
-        <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
         </view>
 
@@ -70,7 +70,7 @@
 
         <text class="password_image">银行卡</text>
 
-        <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
     </navigator>
     <hr/>
@@ -80,7 +80,7 @@
 
         <text class="password_image">设置</text>
 
-        <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
     </navigator>
     <hr/>
@@ -90,7 +90,7 @@
 
         <text class="password_image">帮助与客服</text>
 
-        <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
     </navigator>
 

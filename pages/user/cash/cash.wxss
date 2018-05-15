@@ -12,18 +12,15 @@ color: #4a4a4a;
 .weui_left{
     display: flex;
     justify-content: space-between;
-     width: 40%;
-     margin-right: 135px;
+     width: 45%;
+     margin-right: 30%;
 }
 
 .title{
-
     color: #ababab;
     font-size: 14px;
     display: inline-block;
-    margin-right: 35px;
     vertical-align: middle;
-    padding-top: 3px;
 
 }
 
@@ -39,7 +36,6 @@ color: #4a4a4a;
 }
 
 .weui-media-box__desc{
-
     color: #8a8a8a;
 
 }
@@ -50,32 +46,25 @@ color: #4a4a4a;
 .weui-media-box__title {
     color: #8a8a8a;
     font-size: 14px;
+
 }
 
 .ask{
     width: 18px;
     height: 18px;
     display: inline-block;
-    margin-right: 185px;
+    margin-right: 30%;
     padding-top: 2px;
     vertical-align: middle;
-
 }
 
 .weui-prompt{
-
     position: relative;
     bottom: 0;
 }
 
-.weui-media-box_text{
-    margin-top: 60px;
-}
-
 .icon_canel{
-
-
-    padding-left: 250px;
+    padding-left: 200px;
 }
 
 .cash_prompt{
@@ -91,5 +80,5 @@ color: #4a4a4a;
 }
 
 
-/*未实名认证提现*/
+
 

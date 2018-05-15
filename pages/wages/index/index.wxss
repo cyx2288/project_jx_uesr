@@ -119,7 +119,9 @@ page{
 
 }
 .weui_confirm{
+
     color: #ababab
+
 }
 .orange{
     color: #E87B17;
