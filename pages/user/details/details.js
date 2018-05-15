@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const getDate=require('../../../static/libs/script/date.js');
+
 const clearingUrl = '/user/account/clearing';//登录的url
 
 
@@ -9,34 +11,9 @@ Page({
 
     data: {
 
-        balanceList: [
-
-            {
-
-                operation: '提现',//
-
-                detail: '+500.00',
-
-                date: '2019-10-12 20:11:11'
+        balanceList: [],//工资明细
 
 
-            },
-
-
-            {
-
-                operation: '庄中煲餐饮有限公司工资发放',//
-
-                detail: '+51100.00',
-
-                date: '2019-10-12 20:11:11'
-
-
-            }
-
-
-
-        ],//工资明细
 
 
     },
@@ -84,6 +61,21 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                var _balanceList = res.data.data.list;
+
+
+
+                that.setData({
+
+                    balanceList:_balanceList
+
+                })
+
+
+
+
+
 
             },
 

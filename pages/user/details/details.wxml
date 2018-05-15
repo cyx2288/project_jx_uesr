@@ -1,3 +1,5 @@
+
+<wxs module="dateFr" src="../../../static/libs/script/date.js"></wxs>
 <!--工资-->
 
 <view class="wages_middle">
@@ -8,11 +10,18 @@
         <view class="weui-media-box weui-media-box_text">
 
             <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">{{item.operation}}</view>
-                <view class="weui_confirm">{{item.detail}}</view>
+
+                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}工资发放</view>
+
+                <view wx:elif="{{item.transType==8}}"class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
+
+                <view wx:elif="{{item.transType==4}}"class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
+
+
+                <view class="weui_confirm">{{item.transAmt}}</view>
             </view>
 
-            <text class="details_date">{{item.date}}</text>
+            <text class="details_date">{{dateFr.getTime(item.clearingDate,':')}}</text>
 
         </view>
 

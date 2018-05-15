@@ -51,7 +51,9 @@ Page({
 
         idNumber:'',//身份证号码
 
-        isDateshow:true,//true默认不显示 false为显示
+        dataText:true,//true为隐藏 false为显示
+
+        hasCompany:false,
 
 
     },
@@ -171,16 +173,6 @@ Page({
 
 
                     var thisEnName = res.data.data[0].entName;
-
-
-                    //未加入企业列表显示暂无数据
-
-                    this.setData({
-
-                        isDateshow:false,//true默认不显示 false为显示
-
-                    });
-
 
 
                     wx.showModal({
@@ -450,10 +442,6 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-
-
-
-
         //修改入参
         var thisIdData = {};
 
@@ -509,46 +497,25 @@ Page({
 
                 console.log(res.data);
 
-
                 //获取现在的list
                 var thislist = res.data.data.list;
 
                 var wagesListLength;
 
-                if (thislist) {
-
-                    //获取现在list的长度
-                    wagesListLength = thislist.length;
-
-                    //上一次获取到的list
-
-                    var lastList = that.data.wagesList;
-
-                    //把获取到的list合并成一个数组
-                    var nowList = lastList.concat(thislist);
+                var _dataText = res.data.data.hasOwnProperty('list')
 
 
-                    that.setData({
+                //判断有没有列表数据
 
-                        thisWagesListLength: wagesListLength
+                if(!_dataText){
 
-                    });
+                  that.setData({
+
+                      dataText:_dataText,
 
 
 
-                    //判空
-                    if (fn) {
-                        //数据加载之后使用的方法
-                        fn();
-                    }
-
-
-
-                    that.setData({
-
-                        wagesList: nowList,
-
-                    });
+                  })
 
 
                 }
@@ -557,15 +524,71 @@ Page({
 
                     that.setData({
 
-                        hasMoreData: false,
-
-                        noData: false
+                        dataText:_dataText,
 
 
-                    });
+
+
+                    })
+
+                    if (thislist) {
+
+
+                        //获取现在list的长度
+                        wagesListLength = thislist.length;
+
+                        //上一次获取到的list
+
+                        var lastList = that.data.wagesList;
+
+                        //把获取到的list合并成一个数组
+                        var nowList = lastList.concat(thislist);
+
+
+                        that.setData({
+
+                            thisWagesListLength: wagesListLength
+
+                        });
+
+
+
+                        //判空
+                        if (fn) {
+                            //数据加载之后使用的方法
+                            fn();
+                        }
+
+
+
+                        that.setData({
+
+                            wagesList: nowList,
+
+                        });
+
+
+
+                    }
+
+                    else {
+
+                        that.setData({
+
+                            hasMoreData: false,
+
+                            noData: false,
+
+
+                        });
+
+
+                    }
 
 
                 }
+
+
 
 
 
@@ -704,7 +727,7 @@ Page({
 
         });
 
-        this.onLoad();
+        this.onShow();
 
         wx.stopPullDownRefresh();
 
@@ -803,6 +826,8 @@ Page({
 
         }
     },
+
+    //
 
     onReady: function () {
         // 页面渲染完成
