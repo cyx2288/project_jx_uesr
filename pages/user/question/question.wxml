@@ -1,0 +1,27 @@
+<!--提现常见问题-->
+
+<view class="wages_middle">
+
+    <!--明细-->
+    <navigator url="" class="weui-panel">
+        <text class="question">提现到账时间？</text>
+    </navigator>
+    <hr/>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">提现提交后，可以撤回吗？</text>
+    </navigator>
+    <hr/>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">提现失败如何处理？</text>
+        </navigator>
+    <hr/>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">提现限额？</text>
+        </navigator>
+
+    <text class="payroll_prompt" >联系客服</text>
+
+</view>

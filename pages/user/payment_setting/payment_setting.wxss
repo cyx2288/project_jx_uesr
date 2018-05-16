@@ -1,0 +1,6 @@
+@import "../mine/mine.wxss";
+
+.weui-cells{
+    font-size: 14px;
+}
+

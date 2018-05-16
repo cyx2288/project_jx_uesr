@@ -8,10 +8,7 @@
                 <view class="weui-panel">
 
 
-
-                    <view class="weui-media-box weui-media-box_text" >
-
-
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="weui-media-box weui-media-box_text" >
 
                         <view class="weui_title">
 
@@ -26,10 +23,9 @@
 
                         </view>
 
-
                         <text class="details_date">6222 3001 3447 984</text>
 
-                    </view>
+                    </picker>
 
                     <hr/>
 
@@ -58,9 +54,7 @@
                                 </label>
 
 
-
                               <!--点击全部提现显示-->
-
                               <!--  <text class="cash_money">800.00</text>-->
                                 <icon class="icon_canel" type="cancel" size="16" color="#8a8a8a"></icon>
                                 </view>
@@ -89,9 +83,6 @@
                                      </view>
                                  </modal>-->
 
-
-
-
                                  <view class="weui_confirm orange">全部提现</view>
 
                              </view>
@@ -100,32 +91,31 @@
                      </view>
                 </view>
 
-
                 <!--button-->
                 <navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
-                    <button class="weui-btn" type="primary">确认提现</button>
+                    <button class="weui-btn" type="primary" style="background-color: #E87B17;">确认提现</button>
                     <!--提示-->
                     <text class="payroll_prompt " style="color: #E87B17; font-size:14px;" >联系客服</text>
                 </navigator>
 
 
-
                 <!--温馨提示-->
               <view class="weui-prompt weui-panel_access">
-
 
                    <view class="weui-media-box weui-media-box_text">
 
                        <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
 
-                       <view class="cash_prompt">
-                         <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                         <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行</view>
-                       </view>
-                       <view class="cash_prompt">
-                           <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                           <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
-                       </view>
+                          <view class="cash_prompt">
+                            <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                            <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行</view>
+                          </view>
+
+                          <view class="cash_prompt">
+                              <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                              <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
+                          </view>
+
                    </view>
 
               </view>
@@ -133,7 +123,6 @@
 
 
        <!--未实名认证提现-->
-
     <!--   <view class="unauthorized">
 
            <modal title="" concel-text="关闭" confirm-text="去认证" hidden="{{mHidden}}" bindconfirm="changeModel" bindcanel="modelcanel">

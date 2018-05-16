@@ -21,7 +21,6 @@ color: #4a4a4a;
     font-size: 14px;
     display: inline-block;
     vertical-align: middle;
-
 }
 
 .weui-panel{
