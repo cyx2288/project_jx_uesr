@@ -40,7 +40,7 @@
 
 
     <!--我的账单-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../bill/bill" class="mine_welfare">
 
             <text class="password_image">我的账单</text>
 
@@ -86,7 +86,7 @@
     <hr/>
 
     <!--帮助与客服-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../help_service/help_service" class="mine_welfare">
 
         <text class="password_image">帮助与客服</text>
 

@@ -1,0 +1,58 @@
+@import "../../wages/index/index.wxss";
+
+
+page{
+
+    background-color: #ebebeb;
+    height:100%;
+    width: 100%;
+    font-size: 14px;
+
+}
+
+
+
+.weui-media-box__hd_in-appmsg {
+
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 10px;
+}
+.weui-media-box__hd{
+    width: 25%;
+
+}
+
+
+
+.service_title{
+display: block;
+    width: 100%;
+}
+
+
+.help_service{
+    background-color: #fff;
+}
+
+.jx_cash{
+    width: 60rpx;
+    height: 60rpx;
+ padding-left: 15px;
+
+}
+
+.weui-help{
+    width: 75%;
+    line-height: 30px;
+}
+
+
+hr {
+    display: block;
+    transform: scaleY(0.4);
+    width: 90%;
+    border:.5px solid #dddddd;
+}
