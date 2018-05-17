@@ -1,1 +1,37 @@
 
+<!--设置支付验证-->
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">短信动态验证</view>
+        <view class="weui-cell__ft">
+            <switch checked />
+        </view>
+    </view>
+</view>
+
+<hr/>
+
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">短信动态验证</view>
+        <view class="weui-cell__ft">
+            <switch checked />
+        </view>
+    </view>
+</view>
+
+
+
+<!--未设置支付密码-->
+
+<view class="">
+
+
+
+
+</view>
+
+
+<!--未设置实名认证-->
+
+
