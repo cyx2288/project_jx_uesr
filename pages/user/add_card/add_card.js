@@ -30,7 +30,7 @@ Page({
 
         openBank:'',//开户行
 
-        bankName:'',//银行名称
+        bankName:'',//银行名称&所属银行
 
         bankBranch:'',//卡户支行
 
@@ -40,17 +40,15 @@ Page({
 
         userName:'',//用户姓名
 
+        thisBankSort:'',//卡类
+
         multiArray: [
 
             ['中国银行', '农业银行','建设银行', '交通银行','中国邮政储蓄银行','广发银行','浦发银行','浙江泰隆商业银行'],
 
-            ['储蓄卡', '信用卡'],
+            ['储蓄卡', '信用卡']
 
-
-        ],
-
-
-
+        ]
 
 
     },
@@ -62,16 +60,11 @@ Page({
         var _userName = wx.getStorageSync('userName');
 
         that.setData({
+
             userName:_userName,
 
         })
 
-
-
-
-    },
-    //编辑银行卡
-    editBank:function () {
 
 
 
@@ -107,17 +100,17 @@ Page({
 
             data:json2FormFn.json2Form({
 
-                bankNo:that.data.bankNo,
+                bankNo:that.data.bankNo,//银行卡号
 
-                openBank:that.data.openBank,
+                //openBank:that.data.openBank,//开户行
 
-                bankName:that.data.bankName,
+                bankName:that.data.bankName,//银行名称&所属银行
 
-                bankBranch:that.data.bankBranch,
+                //bankBranch:that.data.bankBranch,//卡户支行
 
-                province:that.data.province,
+                //province:that.data.province,//开户省份
 
-                city:that.data.city
+                //city:that.data.city//开户城市
 
             }),
 
@@ -134,6 +127,8 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                console.log(that.data.bankNo)
 
                 //银行卡添加成功 toast提示成功
 
@@ -175,7 +170,7 @@ Page({
                     else if(that.data.bankNo){
 
                         //判断卡号是否有误
-                        if(regNeg.test(that.data.bankNo)){
+                        if(!regNeg.test(that.data.bankNo)){
 
                             wx.showToast({
 
@@ -188,7 +183,7 @@ Page({
                         }
 
                         //判断是否写了所属银行
-                        if(!that.data.bankName){
+                        else if(!that.data.bankName){
 
                             wx.showToast({
 
@@ -216,14 +211,12 @@ Page({
 
 
     },
-    //监听银行卡号
 
+
+    //监听银行卡号
     bankNoFn:function (e) {
 
-        var thisGetBankName = app.globalData.URL+getBankName;
-
         var that = this;
-
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jx_sid');
@@ -240,7 +233,6 @@ Page({
     },
 
     //判断卡号
-
     getBankNoFn:function (e) {
 
         var thisGetBankName = app.globalData.URL+getBankName;
@@ -285,6 +277,14 @@ Page({
 
          console.log(res.data);
 
+         console.log(res.data.data.bankName)
+
+             that.setData({
+
+                 bankName:res.data.data.bankName,
+
+             })
+
 
          },
 
@@ -301,12 +301,43 @@ Page({
     },
 
     //监听开户行
-    
-    bbankNameFn:function () {
+
+    bindMultiPickerChange: function(e) {
+
+        var that = this;
+
+        console.log(e.detail.value[0])
+
+        console.log(e.detail.value[1])
+
+        console.log(that.data.multiArray[0])
+
+        console.log(that.data.multiArray[1])
+
+        console.log(that.data.multiArray[0][e.detail.value[0]])
+
+        console.log(that.data.multiArray[1][e.detail.value[1]])
+
+        that.setData({
+
+            thisBank:that.data.multiArray[0][e.detail.value[0]],
+
+            thisBankSort:that.data.multiArray[1][e.detail.value[1]]
 
 
-        
+        })
+
+
+
+
+
+
     },
+
+    bindMultiPickerColumnChange: function (e) {
+        console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+
+    }
 
 
     //银行名称

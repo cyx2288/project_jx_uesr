@@ -9,6 +9,11 @@
 
 }
 
+.card_middle .weui_middle{
+
+    width: 100%;
+}
+
 .card_middle .page__bd_spacing{
 
     margin-top: 20px;
