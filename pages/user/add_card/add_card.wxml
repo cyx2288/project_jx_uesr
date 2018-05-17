@@ -18,41 +18,39 @@
                 <view class="weui-label">*卡号</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入卡号"/>
+                <input class="weui-input" placeholder="请输入卡号" maxlength="18" bindinput="bankNoFn" bindblur="getBankNoFn"/>
             </view>
         </view>
 
         <!-- 选择银行卡-->
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">*所属银行</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                        <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
-                    </picker>
-                </view>
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">*所属银行</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                    <view class="weui-select weui-select_in-select-after">{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}</view>
+                </picker>
             </view>
         </view>
 
+
     </view>
+
 
     <view class="weui-cells__title">信息填写完整可加快到账速度</view>
 
     <view class="weui-cells weui-cells_after-title">
 
         <!-- 选择银行卡-->
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">开户地区</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                        <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
-                    </picker>
-                </view>
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">*开户地区</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker placeholder="请选择开户所在地（选填）" bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                </picker>
             </view>
         </view>
 
@@ -63,9 +61,7 @@
                     <view class="weui-label">开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                        <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
-                    </picker>
+                    <input class="weui-input" placeholder="请输入开户支行（选填）"/>
                 </view>
             </view>
         </view>
