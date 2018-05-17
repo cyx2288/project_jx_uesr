@@ -29,7 +29,7 @@
 
         <button class="weui-btn" type="primary" bindtap="addCardFn">添加银行卡</button>
 
-        <button class="weui-btn" type="primary">编辑</button>
+        <button class="weui-btn" type="primary" bindtap="editCardFn">编辑</button>
 
     </view>
 

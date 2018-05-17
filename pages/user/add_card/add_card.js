@@ -1,30 +1,55 @@
 /**
  * Created by ZHUANGYI on 2018/5/14.
  */
+var addBankList = {
 
+    addBankArray: [
+
+        ['中国银行', '农业银行','建设银行', '交通银行','中国邮政储蓄银行','广发银行','浦发银行','浙江泰隆商业银行'],
+
+        ['储蓄卡', '信用卡'],
+
+    ],
+
+
+
+}
 const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
 const addBankUrl = '/user/bank/addbankcardinfo';
 
+const getBankName = '/user/bank/getbankname';
+
 Page({
 
     data:{
 
-        bankNo:'6259000000000000000',
+        bankNo:'',//银行卡号
 
-        openBank:'11',
+        openBank:'',//开户行
 
-        bankName:'11',
+        bankName:'',//银行名称
 
-        bankBranch:'11',
+        bankBranch:'',//卡户支行
 
-        province:'11',
+        province:'',//开户省份
 
-        city:'11',
+        city:'',//开户城市
 
-        userName:''
+        userName:'',//用户姓名
+
+        multiArray: [
+
+            ['中国银行', '农业银行','建设银行', '交通银行','中国邮政储蓄银行','广发银行','浦发银行','浙江泰隆商业银行'],
+
+            ['储蓄卡', '信用卡'],
+
+
+        ],
+
+
 
 
 
@@ -45,7 +70,14 @@ Page({
 
 
     },
+    //编辑银行卡
+    editBank:function () {
 
+
+
+    },
+
+    //点击添加银行卡号
     addBankFn:function () {
 
         var thisAddBankUrl = app.globalData.URL+addBankUrl;
@@ -58,8 +90,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-
-
+        var regNeg = /^([1-9]{1})(\d{15}|\d{18})$/;
 
         /**
          * 接口：添加用户银行卡信息
@@ -104,7 +135,9 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='-1'){
+                //银行卡添加成功 toast提示成功
+
+                if(res.data.code=='0000'){
 
                     wx.showToast({
 
@@ -112,6 +145,60 @@ Page({
                         icon: 'none',
 
                     })
+
+                    wx.redirectTo({
+
+                        url:'../card/card'
+
+                    })
+
+
+                }
+
+
+                else {
+
+                    //判断银行卡是否为空
+                    if(!that.data.bankNo){
+
+                        wx.showToast({
+
+                            title: '请填写银行卡号',
+                            icon: 'none',
+
+                        })
+
+
+                    }
+
+                    //如果有值的话 判断是否是数字、15位或者18位
+                    else if(that.data.bankNo){
+
+                        //判断卡号是否有误
+                        if(regNeg.test(that.data.bankNo)){
+
+                            wx.showToast({
+
+                                title: '卡号填写错误',
+
+                                icon: 'none',
+
+                            })
+
+                        }
+
+                        //判断是否写了所属银行
+                        if(!that.data.bankName){
+
+                            wx.showToast({
+
+                                title: '请选择所属银行',
+                                icon: 'none',
+
+                            })
+                        }
+
+                    }
 
 
 
@@ -133,17 +220,94 @@ Page({
 
     bankNoFn:function (e) {
 
+        var thisGetBankName = app.globalData.URL+getBankName;
+
         var that = this;
+
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jx_sid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
         that.setData({
 
             bankNo:e.detail.value,
 
-        })
+        });
+
+
+    },
+
+    //判断卡号
+
+    getBankNoFn:function (e) {
+
+        var thisGetBankName = app.globalData.URL+getBankName;
+
+        var that = this;
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jx_sid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：卡号识别所属银行
+         * 请求方式：POST
+         * 接口：/user/bank/getbankname
+         * 入参：null
+         * */
+
+        wx.request({
+
+         url: thisGetBankName,
+
+         method: 'POST',
+
+         data:{
+
+         bankNo:e.detail.value,
+
+         },
+
+         header:{
+
+         'content-type': 'application/x-www-form-urlencoded', // post请求
+
+         'jx_sid':jx_sid,
+
+         'Authorization':Authorization
+
+         },
+
+         success: function (res) {
+
+         console.log(res.data);
+
+
+         },
+
+
+         fail: function (res) {
+         console.log(res)
+         }
+
+         })
+
+
+
 
     },
 
     //监听开户行
+    
+    bbankNameFn:function () {
+
+
+        
+    },
+
 
     //银行名称
 
