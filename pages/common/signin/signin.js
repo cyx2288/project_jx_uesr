@@ -51,6 +51,7 @@ data:{
              }),
 
             header: {
+
                  'content-type': 'application/x-www-form-urlencoded' // post请求
 
              },
@@ -92,10 +93,17 @@ data:{
 
                      wx.setStorageSync('userName', res.data.data.userName);
 
+                     wx.setStorageSync('isVerify',res.data.data.isVerify);
+
+
 
                      console.log('用户姓名:'+ wx.getStorageSync('userName'));
 
                      console.log('用户身份证:'+ wx.getStorageSync('idNumber'));
+
+                     console.log('是否已注册:'+ wx.getStorageSync('isVerify'));
+
+
 
                      //console.log(header.header(Authorization,jx_sid));
 

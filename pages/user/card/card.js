@@ -2,7 +2,7 @@
  * Created by ZHUANGYI on 2018/5/14.
  */
 
-var bankList = {
+/*var bankList = {
 
     data:[
         {
@@ -155,7 +155,7 @@ var bankList = {
 
 
 
-}
+}*/
 
 const app = getApp();
 
@@ -163,11 +163,19 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const bankUrl = '/user/bank/getbankcardinfo';
 
+const detBankUrl = '/user/bank/deletebankcardinfo';
+
 Page({
 
     data:{
 
         bankList:[],
+
+        bankCardId:'',
+
+        bankNo:'',
+
+
 
     },
 
@@ -177,6 +185,107 @@ Page({
 
         var that = this;
 
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jx_sid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
+            /**
+             * 接口：获取用户银行卡信息
+             * 请求方式：GET
+             * 接口：/user/bank/getbankcardinfo
+             * 入参：null
+             * */
+
+            wx.request({
+
+                url: thisBankUrl,
+
+                method: 'GET',
+
+                header:{
+
+                    'jx_sid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+
+                    that.setData({
+
+                        bankList:res.data.data,
+
+                    })
+
+
+                },
+
+
+                fail: function (res) {
+                    console.log(res)
+                }
+
+            })
+
+
+    },
+
+    addCardFn:function () {
+
+        var _isVerify = wx.getStorageSync('isVerify');
+
+        //判断是否认证
+        if(_isVerify=='0'){
+
+            wx.showModal({
+                title: '提示',
+                content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
+                cancelText: '取消',
+                confirmText: '去认证',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+
+
+                    }
+
+                    else if (res.cancel) {
+
+
+
+                    }
+                }
+            });
+
+
+        }
+
+        else {
+
+            wx.navigateTo({
+
+                url: '../add_card/add_card'
+
+            })
+
+
+        }
+
+
+    },
+
+    detCardFn:function (e) {
+
+        var thisDetBankUrl = app.globalData.URL+detBankUrl;
+
+        var that = this;
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jx_sid');
@@ -184,60 +293,106 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
-        /**
-         * 接口：身份验证
-         * 请求方式：GET
-         * 接口：/salary/home/selectidnumber
-         * 入参：null
-         * */
+        that.setData({
 
-        wx.request({
+            bankCardId:e.target.dataset.card,
 
-            url: thisBankUrl,
+            bankNo:e.target.dataset.num,
 
-            method: 'GET',
 
-            header:{
+        })
 
-                'jx_sid':jx_sid,
 
-                'Authorization':Authorization
+        //取后银行卡四位
+        var str= that.data.bankNo;
 
-            },
+        var _thisBankNo = str.substr(str.length-4)
 
+        console.log(that.data.bankCardId)
+
+
+       wx.showModal({
+            title: '提示',
+            content: '确认删除尾号是'+ _thisBankNo +'的银行卡',
+            cancelText: '取消',
+            confirmText: '确定',
             success: function (res) {
 
-                console.log(res.data);
+                if (res.confirm) {
 
+                    delCard()
 
-                that.setData({
+                }
 
-                    bankList:res.data.data,
-
-                })
-
+                else if (res.cancel) {
 
 
 
-            },
-
-
-            fail: function (res) {
-                console.log(res)
+                }
             }
+        });
 
-        })
+
+        function delCard() {
 
 
-    },
+            /**
+             * 接口：删除银行卡信息
+             * 请求方式：GET
+             * 接口：/user/bank/deletebankcardinfo
+             * 入参：bankCardId
+             * */
 
-    addCardFn:function () {
+            wx.request({
 
-        wx.navigateTo({
+                url: thisDetBankUrl,
 
-            url: '../add_card/add_card'
+                method: 'GET',
 
-        })
+                data:{
+
+                    bankCardId:that.data.bankCardId
+
+                },
+
+                header:{
+
+                    'jx_sid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    wx.showToast({
+                        title: '删除成功',
+                        icon: 'success',
+                        duration: 2000
+                    });
+
+                    that.onLoad();
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+        }
+
+
+
+
+
+
     }
 
 
