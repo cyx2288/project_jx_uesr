@@ -1,0 +1,16 @@
+.add_card .weui-cells__title{
+
+    font-size: 14px;
+
+}
+
+.add_card .weui-cells__title{
+
+    font-size: 14px;
+
+}
+
+.add_card .page__bd_spacing{
+
+    margin-top: 20px;
+}

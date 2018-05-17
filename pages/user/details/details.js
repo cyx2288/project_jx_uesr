@@ -2,8 +2,6 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const getDate=require('../../../static/libs/script/date.js');
-
 const clearingUrl = '/user/account/clearing';//登录的url
 
 
@@ -63,7 +61,6 @@ Page({
                 console.log(res.data);
 
                 var _balanceList = res.data.data.list;
-
 
 
                 that.setData({

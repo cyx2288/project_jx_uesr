@@ -1,6 +1,4 @@
-/**
- * Created by ZHUANGYI on 2018/5/15.
- */
+
 var DateFr = {
 
     getDate: function (time, splitStr) {

@@ -1,10 +1,2 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
-}
+  "navigationBarTitleText": "设置支付验证"}

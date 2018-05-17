@@ -1,0 +1,37 @@
+<view class="card_middle">
+
+    <!--明细-->
+    <view class="weui-panel" wx:for="{{bankList}}">
+
+        <view class="weui-media-box weui-media-box_text">
+
+            <view class="icon_record">
+
+                <view class="jx_record">
+                    <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+                </view>
+
+                <view class="weui_middle">
+
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.bankName}}</view>
+                    <text class="details_date">{{item.bankNo}}</text>
+                </view>
+
+            </view>
+        </view>
+
+    </view>
+    <hr/>
+
+
+
+    <view class="page__bd page__bd_spacing">
+
+        <button class="weui-btn" type="primary" bindtap="addCardFn">添加银行卡</button>
+
+        <button class="weui-btn" type="primary">编辑</button>
+
+    </view>
+
+
+</view>
