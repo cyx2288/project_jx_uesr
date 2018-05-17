@@ -1,5 +1,7 @@
 
-<wxs module="dateFr" src="../../../static/libs/script/date.js"></wxs>
+<wxs module="dateFr" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+
+
 <!--工资-->
 
 <view class="wages_middle">
@@ -22,6 +24,7 @@
             </view>
 
             <text class="details_date">{{dateFr.getTime(item.clearingDate,':')}}</text>
+
 
         </view>
 

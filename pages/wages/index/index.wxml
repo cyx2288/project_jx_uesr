@@ -19,10 +19,6 @@
 </view>
 
 
-
-
-
-
     <!--下拉选择-->
     <view hidden="{{hasCompany}}" class="phone_one" bindtap="clickSalary">
         <view class="phone_personal"><span>{{firstOptions}}</span><image src="../../../static/icon/wages/go.png" class="personal_image {{selectArea ? 'rotateRight' :''}}"/></view>
@@ -31,6 +27,7 @@
 
     <view class="person_box">
         <view class="phone_select" hidden="{{selectSalary}}">
+            <view class="select_one" bindtap="mySelectAll">全部</view>
             <view wx:for='{{selectSalaryOptions}}' class="select_one" data-id="{{item.entId}}" data-salary="{{item.entName}}" bindtap="mySelect">{{item.entName}}</view>
         </view>
     </view>

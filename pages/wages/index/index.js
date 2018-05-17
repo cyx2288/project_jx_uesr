@@ -35,7 +35,7 @@ Page({
 
         selectSalaryOptions: [],//获取企业列表
 
-        isAllCom:true,//判断是不是全部企业
+        isAllCom: true,//判断是不是全部企业
 
         entId: '',//发薪企业id
 
@@ -47,13 +47,13 @@ Page({
 
         noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
-        userName:'',//姓名
+        userName: '',//姓名
 
-        idNumber:'',//身份证号码
+        idNumber: '',//身份证号码
 
-        dataText:true,//true为隐藏 false为显示
+        dataText: true,//true为隐藏 false为显示
 
-        hasCompany:false,
+        hasCompany: false,
 
 
     },
@@ -65,7 +65,7 @@ Page({
     onShow: function () {
 
         // 页面显示
-        console.log('返回更新数据');
+        //console.log('返回更新数据');
 
         var that = this;
 
@@ -161,6 +161,14 @@ Page({
                                 //调用暂不查看工资条
                                 noSeeSalary();
 
+                                wx.showToast({
+
+                                    title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
+                                    icon: 'none',
+
+                                })
+
+
                             }
                         }
                     });
@@ -195,7 +203,14 @@ Page({
                             else if (res.cancel) {
 
                                 //调用暂不加入企业
-                                noJoinSalary()
+                                noJoinSalary();
+
+                                wx.showToast({
+
+                                    title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
+                                    icon: 'none',
+
+                                })
 
 
                             }
@@ -209,10 +224,10 @@ Page({
                 else if (thisType == 0) {
 
                     //调用发薪企业
-                    //getSelectEnt();
+                    //that.getSelectEnt();
 
                     //调用工资条发放列表
-                    //salaryInfo();
+                    //that.salaryInfo();
 
                 }
 
@@ -507,15 +522,14 @@ Page({
 
                 //判断有没有列表数据
 
-                if(!_dataText){
+                if (!_dataText) {
 
-                  that.setData({
+                    that.setData({
 
-                      dataText:_dataText,
+                        dataText: _dataText,
 
 
-
-                  })
+                    })
 
 
                 }
@@ -524,9 +538,7 @@ Page({
 
                     that.setData({
 
-                        dataText:_dataText,
-
-
+                        dataText: _dataText,
 
 
                     })
@@ -552,7 +564,6 @@ Page({
                         });
 
 
-
                         //判空
                         if (fn) {
                             //数据加载之后使用的方法
@@ -560,13 +571,11 @@ Page({
                         }
 
 
-
                         that.setData({
 
                             wagesList: nowList,
 
                         });
-
 
 
                     }
@@ -587,10 +596,6 @@ Page({
 
 
                 }
-
-
-
-
 
 
             },
@@ -637,7 +642,6 @@ Page({
 
         that.setData({
 
-
             //选择的企业名称回显
             firstOptions: e.target.dataset.salary,
 
@@ -646,14 +650,14 @@ Page({
 
             selectSalary: true,
 
-            selectArea: false
+            selectArea: false,
 
         });
 
         //分页数据初始化
         that.setData({
 
-            isAllCom:false,//不是全部企业
+            isAllCom: false,//不是全部企业
 
             pageNum: 1,//初始值为2
 
@@ -673,6 +677,38 @@ Page({
 
     },
 
+    //点击选择全部
+    mySelectAll: function () {
+
+
+        var that = this;
+
+        that.setData({
+
+            firstOptions: '全部',
+
+            selectSalary: true,
+
+            selectArea: false,
+
+            isAllCom: true,//是全部企业
+
+            pageNum: 1,//初始值为2
+
+            hasMoreData: true,//是否可以加载更多
+
+            noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+            wagesList: [],//发薪企业列表
+
+        });
+
+
+        that.chooseEntId();
+
+
+
+    },
     //点击查看工资条跳转链接
     clickSeeList: function (e) {
 
@@ -718,11 +754,11 @@ Page({
 
             noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
-            isAllCom:true,//判断是不是全部企业
+            isAllCom: true,//判断是不是全部企业
 
-            userName:'',//姓名
+            userName: '',//姓名
 
-            idNumber:'',//身份证号码
+            idNumber: '',//身份证号码
 
 
         });
@@ -809,25 +845,22 @@ Page({
 
 
             //如果查看全部企业
-            if(that.data.isAllCom){
+            if (that.data.isAllCom) {
 
                 that.salaryInfo('', that.data.pageSize, that.data.pageNum, useFn);
 
             }
 
             //如果看单独企业
-            else{
+            else {
 
                 that.salaryInfo(that.data.entId, that.data.pageSize, that.data.pageNum, useFn);
 
             }
 
 
-
         }
     },
-
-    //
 
     onReady: function () {
         // 页面渲染完成

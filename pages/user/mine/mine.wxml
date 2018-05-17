@@ -66,7 +66,7 @@
     <hr/>
 
     <!--银行卡-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../card/card" class="mine_welfare">
 
         <text class="password_image">银行卡</text>
 
