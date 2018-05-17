@@ -23,63 +23,11 @@
                 <view class="weui_confirm">{{item.transAmt}}</view>
             </view>
 
-            <text class="details_date">{{dateFr.getTime(item.clearingDate,':')}}</text>
-
 
         </view>
 
     </view>
     <hr/>
 
-
-
-   <!-- <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                <view class="weui_confirm">+500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>
-
-    <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                <view class="weui_confirm">-500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>
-
-
-    <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
-                <view class="weui_confirm">+500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>-->
 
 </view>

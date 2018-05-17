@@ -1,9 +1,9 @@
-<!--工资-->
+<!--提现记录-->
 
 <view class="wages_middle">
 
     <!--明细-->
-    <view class="weui-panel">
+ <view class="weui-panel">
 
         <view class="weui-media-box weui-media-box_text">
 
@@ -42,6 +42,7 @@
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
                     <text class="details_date">2018-05-07  18:20:10</text>
+
                 </view>
 
 
@@ -183,3 +184,5 @@
     </view>
     <hr/>
 </view>
+
+

@@ -4,17 +4,18 @@
     display: flex;
     justify-content: space-between;
     vertical-align: middle;
-
 }
+
 .weui_confirm{
     color: #ababab
+
 }
+
 .orange{
     color: #E87B17;
 }
 
 .weui-panel{
-
     margin: 0;
 }
 

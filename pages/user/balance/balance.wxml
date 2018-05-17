@@ -3,14 +3,12 @@
 
 <view class="jx_asset">
 
-
     <text class="asset_money">工资余额（元）</text>
-
     <!--金额显示-->
     <text class="money_number">{{wages}}</text>
 
-
 </view>
+
 
 <!--我的账单-->
 <view class="account_information_mime">
@@ -19,13 +17,11 @@
 
     <text class="password_image">明细</text>
 
-    <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
 </navigator>
 
 </view>
-
-
 
 
 <!--button-->
