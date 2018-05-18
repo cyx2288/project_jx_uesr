@@ -12,8 +12,6 @@ Page({
         balanceList: [],//工资明细
 
 
-
-
     },
 
     onLoad: function () {

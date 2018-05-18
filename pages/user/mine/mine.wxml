@@ -40,7 +40,7 @@
 
 
     <!--我的账单-->
-    <navigator url="" class="mine_welfare">
+    <navigator url="../bill/bill" class="mine_welfare">
 
             <text class="password_image">我的账单</text>
 

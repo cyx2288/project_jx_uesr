@@ -7,7 +7,7 @@
                 <view class="weui-label">手机号</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入手机号" value="{{mobile}}" bindchange="telFn"/>
+                <input class="weui-input" placeholder="请输入手机号" value="{{mobile}}" bindinput="telFn"/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -15,7 +15,7 @@
                 <view class="weui-label">验证码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入验证码" value="{{checkCode}}" bindchange="codeFn"/>
+                <input class="weui-input" placeholder="请输入验证码" value="{{checkCode}}" bindinput="codeFn"/>
             </view>
             <view class="weui-cell__ft">
                 <view class="weui-vcode-btn" bindtap="registmsg">点击获取</view>
@@ -26,7 +26,7 @@
                 <view class="weui-label">密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" password="true" placeholder="请输入密码" value="{{password}}" bindchange="passwordFn"/>
+                <input class="weui-input" password="true" placeholder="请输入密码" value="{{password}}" bindinput="passwordFn"/>
             </view>
         </view>
     </view>

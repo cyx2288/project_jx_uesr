@@ -1,9 +1,11 @@
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+
 <!--我的账单-->
 
 <view class="wages_middle">
 
     <!--明细-->
-    <view class="weui-panel">
+    <navigator url="" class="weui-panel" wx:for="{{billList}}">
 
         <view class="weui-media-box weui-media-box_text">
 
@@ -16,20 +18,23 @@
                 <view class="weui_middle">
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                    <text class="details_date">2018-05-07  18:20:10</text>
+                    <text class="details_date">{{filter.formatTime(item.createTime,'-')}}</text>
                 </view>
             </view>
 
             <view class="weui_right">
                 <view class="weui_confirm">待支付</view>
-                <view class="weui_confirm">-55.00</view>
+<!--                <view class="weui_confirm">待支付</view>
+                <view class="weui_confirm">待支付</view>
+                <view class="weui_confirm">待支付</view>-->
+                <view class="weui_confirm">{{item.orderAmount}}</view>
             </view>
         </view>
 
-    </view>
+    </navigator>
     <hr/>
 
-    <view class="weui-panel">
+<!--    <view class="weui-panel">
         <view class="weui-media-box weui-media-box_text">
 
             <view class="icon_record">
@@ -181,5 +186,5 @@
 
         </view>
     </view>
-    <hr/>
+    <hr/>-->
 </view>

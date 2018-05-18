@@ -2,8 +2,9 @@
  * Created by ZHUANGYI on 2018/5/7.
  */
 
-
 const app = getApp();
+
+const md5 = require( '../../../static/libs/script/md5.js' );//md5加密
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
@@ -36,7 +37,7 @@ data:{
          * 入参：mobile，password
          **/
 
-        wx.request({//注册
+        wx.request({
 
              url:  url,
 
@@ -46,7 +47,9 @@ data:{
 
                  mobile:this.data.mobile,
 
-                password:this.data.password
+                 password:this.data.password,
+
+                 //password:md5.hexMD5(this.data.password),
 
              }),
 
@@ -60,9 +63,7 @@ data:{
 
                  var code = res.data.code;
 
-                 console.log(res.data)
-
-
+                 console.log(res.data);
 
                  if(code == '-1'){
 

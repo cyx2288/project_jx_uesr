@@ -253,7 +253,6 @@ Page({
                     if (res.confirm) {
 
 
-
                     }
 
                     else if (res.cancel) {
