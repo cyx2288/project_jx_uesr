@@ -1,0 +1,94 @@
+
+<!--帮助与客服-->
+
+<view class="help_service">
+
+    <view url="" class="weui-media-box weui-media-box_appmsg">
+
+        <view class="weui-media-box__hd ">
+            <image src="../../../static/icon/wages/jx_cash.png" class="jx_cash"/>
+            <text class="service_title">提现相关</text>
+        </view>
+
+        <view class="weui-help">
+            <navigator  url="../problem_details/problem_details" class="weui-media-box__title">提现到账时间？</navigator>
+              <hr/>
+            <navigator  url=""  class="weui-media-box__title">提现提交后，可以撤回吗？</navigator>
+              <hr/>
+            <navigator  url="" class="weui-media-box__title">提现失败如何处理？</navigator>
+              <hr/>
+            <navigator  url="" class="weui-media-box__title">提现限额？</navigator>
+        </view>
+
+    </view>
+
+     <hr/>
+
+    <view class="weui-media-box weui-media-box_appmsg">
+
+        <view class="weui-media-box__hd ">
+            <image src="../../../static/icon/wages/jx_payment.png" class="jx_cash"/>
+            <text class="service_title">支付相关</text>
+        </view>
+
+        <view class="weui-help">
+            <navigator  url=""  class="weui-media-box__title">如何设置支付密码？</navigator>
+
+            <hr/>
+            <navigator  url=""  class="weui-media-box__title">忘记修改支付密码怎么办？</navigator>
+            <hr/>
+            <navigator   url="" class="weui-media-box__title">如何关闭支付验证？</navigator>
+
+        </view>
+
+    </view>
+
+    <hr/>
+
+    <view class="weui-media-box weui-media-box_appmsg">
+
+        <view class="weui-media-box__hd ">
+            <image src="../../../static/icon/wages/jx_company.png" class="jx_cash"/>
+            <text class="service_title">加入企业</text>
+        </view>
+
+        <view class="weui-help">
+            <navigator  url=""  class="weui-media-box__title">如何同意企业邀请？</navigator>
+            <hr/>
+            <navigator  url=""  class="weui-media-box__title">不加入企业会有何影响？</navigator>
+            <hr/>
+            <navigator   url="" class="weui-media-box__title">加入企业时，身份验证通不过怎么办？</navigator>
+        </view>
+
+    </view>
+
+</view>
+
+
+<!--底部tab-->
+
+<view class="tab_bottom">
+
+    <view type="default" bindtap="openConfirm" class="online_service">
+
+        <image src="../../../static/icon/wages/jx_online.png" class="jx_cash"/>
+        <text class="service_title">在线客服</text>
+
+    </view>
+
+    <view class="online_service">
+
+        <image src="../../../static/icon/wages/jx_tel.png" class="jx_cash"/>
+        <text class="service_title">电话咨询</text>
+
+    </view>
+
+
+    <view class="online_service">
+
+        <image src="../../../static/icon/wages/jx_suggest.png" class="jx_cash"/>
+        <text class="service_title">反馈建议</text>
+
+    </view>
+
+</view>

@@ -2,3 +2,14 @@
 {
   "navigationBarTitleText": "支付验证设置"}
 
+{
+  "navigationBarTitleText": "设置支付验证",
+  "compilerOptions": {
+  "module": "commonjs",
+  "target": "es5",
+  "sourceMap": true
+},
+  "exclude": [
+    "node_modules"
+  ]
+}

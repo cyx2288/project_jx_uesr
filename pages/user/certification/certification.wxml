@@ -34,11 +34,11 @@
 <view class="no_invitation" wx:else>
 
     <view class="account_information_mime">
+
         <!--姓名-->
         <view  class="mine_welfare">
 
             <text class="password_image">姓名</text>
-
 
             <text wx:if="{{hasUserName}}" class="account_information_tel">{{userName}}</text>
 
@@ -50,25 +50,27 @@
 
         <hr/>
 
+
         <!--身份证号-->
         <view  class="mine_welfare">
 
             <text class="password_image">身份证号</text>
 
             <label>
-                <input style="text-align: right" class="account_information_tel" value="{{idNumber}}" pattern="[0-9]*" placeholder="请输入身份证号" bindinput="idFn" placeholder-style="color:#bbb" maxlength="18"/>
+
             </label>
 
         </view>
 
-    </view>
+       </view>
+
 
     <!--button-->
-    <view url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
 
         <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
 
-    </view>
+    </navigator>
 
 
 </view>
