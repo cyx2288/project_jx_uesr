@@ -9,6 +9,12 @@ page{
 
 }
 
+.no_invitation .account_information_tel{
+
+
+   text-align: right;
+}
+
 /*
 .mine_welfare{
     display: flex;

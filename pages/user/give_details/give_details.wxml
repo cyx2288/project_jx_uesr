@@ -45,13 +45,55 @@
      <view class="wages_middle">
 
          <!--明细-->
-         <view class="cash_step" wx:for="{{balanceList}}">
+         <view class="cash_step">
 
              <view class="weui-media-box weui-media-box_text">
 
                  <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">{{item.operation}}</view>
-                     <view class="weui_confirm">{{item.detail}}</view>
+                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
+                     <view class="weui_confirm">银行处理中</view>
+                 </view>
+
+             </view>
+
+         </view>
+
+         <!--明细-->
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
+                     <view class="weui_confirm">银行处理中</view>
+                 </view>
+
+             </view>
+
+         </view>
+
+         <!--明细-->
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
+                     <view class="weui_confirm">银行处理中</view>
+                 </view>
+
+             </view>
+
+         </view>
+
+         <!--明细-->
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
+                     <view class="weui_confirm">银行处理中</view>
                  </view>
 
              </view>
@@ -65,7 +107,7 @@
 
          <!--明细-->
 
-      <view class="cash_step" wx:for="{{balanceList1}}">
+      <view class="cash_step">
 
              <view class="weui-media-box weui-media-box_text">
 
@@ -77,98 +119,10 @@
              </view>
 
          </view>
-            <hr/>
+
       </view>
 
      <text class="payroll_prompt" >联系客服</text>
 
  </view>
 
-
- <!--去支付-->
-
- <!--
-  <view class="wages_middle">
-
-      <view class="jx_asset">
-
-          <text class="asset_money">提现金额（元）</text>
-
-          &lt;!&ndash;金额显示&ndash;&gt;
-          <text class="money_number">{{wages}}</text>
-
-
-      </view>
-
-
-      <view class="weui-panel">
-
-
-          <view class="step">
-              <view class="weui-loadmore">
-                  <view class="weui-loadmore__tips">1</view>
-              </view>
-              <text class="status">支付成功</text>
-          </view>
-
-
-          <view class="step">
-              <view class="weui-loadmore  choose">
-                  <view class="weui-loadmore__tips choose_text">2</view>
-              </view>
-              <text class="status">银行处理中</text>
-          </view>
-
-
-          <view class="step">
-              <view class="weui-loadmore choose">
-                  <view class="weui-loadmore__tips choose_text">3</view>
-              </view>
-              <text class="status">到账成功</text>
-          </view>
-
-      </view>
-
-
-      <view class="wages_middle">
-
-          &lt;!&ndash;明细&ndash;&gt;
-          <view class="cash_step" wx:for="{{balanceList}}">
-
-              <view class="weui-media-box weui-media-box_text">
-
-                  <view class="weui_title">
-                      <view class="weui-media-box__title weui-media-box__title_in-text">{{item.operation}}</view>//待支付
-                      <view class="weui_confirm">{{item.detail}}</view>
-                  </view>
-
-              </view>
-
-          </view>
-
-
-      </view>
-
-      <view class="wages_middle">
-
-          &lt;!&ndash;明细&ndash;&gt;
-
-          <view class="cash_step" wx:for="{{balanceList1}}">
-
-              <view class="weui-media-box weui-media-box_text">
-
-                  <view class="weui_title">
-                      <view class="weui-media-box__title weui-media-box__title_in-text">{{item.operation}}</view>
-                      <view class="weui_confirm">{{item.detail}}</view>
-                  </view>
-
-              </view>
-
-          </view>
-          <hr/>
-      </view>
-
-      <button class="weui-btn" type="primary" style="background-color: #E87B17;">去支付</button>
-      <text class="payroll_prompt" >联系客服</text>
-
-  </view>-->

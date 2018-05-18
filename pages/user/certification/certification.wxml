@@ -2,7 +2,7 @@
 
 <!--未认证-未收到企业邀请-->
 
-<view class="no_invitation" wx:if="{{code=='0000'}}">
+<view class="no_invitation" wx:if="{{isVerify=='1'}}">
 
 
     <view class="account_information_mime">
@@ -29,7 +29,6 @@
 
 </view>
 
-
 <!--未认证-未收到企业邀请-->
 
 <view class="no_invitation" wx:else>
@@ -44,7 +43,7 @@
             <text wx:if="{{hasUserName}}" class="account_information_tel">{{userName}}</text>
 
            <label wx:else>
-                <input class="account_information_tel" pattern="[0-9]*" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
+                <input class="account_information_tel" pattern="[0-9]*" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
             </label>
 
         </view>
@@ -58,7 +57,7 @@
             <text class="password_image">身份证号</text>
 
             <label>
-                <input style="text-align: right" class="account_information_tel" value="{{idNumber}}" pattern="[0-9]*" placeholder="请输入身份证号" placeholder-style="color:#bbb" maxlength="18" style="text-align: left"/>
+
             </label>
 
         </view>
@@ -69,7 +68,7 @@
     <!--button-->
     <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
 
-        <button class="weui-btn" type="primary">提交</button>
+        <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
 
     </navigator>
 
@@ -77,110 +76,5 @@
 </view>
 
 
-<!--已认证-未收到企业邀请-->
 
-<!--<view class="no_invitation">
-
-    <view class="account_information_mime">
-        &lt;!&ndash;姓名&ndash;&gt;
-        <view  class="mine_welfare">
-
-            <text class="password_image">姓名</text>
-
-            <text class="account_information_tel">橙子橙</text>
-
-        </view>
-
-        <hr/>
-        &lt;!&ndash;身份证号&ndash;&gt;
-        <view  class="mine_welfare">
-
-            <text class="password_image">身份证号</text>
-
-            <text class="account_information_tel">340223198712131529</text>
-
-        </view>
-    </view>
-
-
-</view>-->
-
-
-<!--认证中-->
-<!--<modal class="modal" hidden="{{modalFlag}}" no-cancel bindconfirm="modalOk" >
-    <view class="dew">
-        <view class="page">
-
-                <view class="weui-loadmore">
-                    <view class="weui-loading"></view>
-                    <view class="weui-loadmore__tips">认证中</view>
-                </view>
-
-            </view>
-
-
-        <view class="po_w">
-
-            <block wx:for="{{agentList}}" wx:for-item="a" wx:key="a.name">
-                <view class="ved">
-                    <view class="titd">{{a.name}}</view>
-                    <view class="addd">{{a.cityName}}{{a.districtName}}{{a.address}}</view>
-                </view>
-            </block>
-
-        </view>
-
-    </view>
-</modal>-->
-
-
-<!--提交成功-->
-
-<!--<modal class="modal" hidden="{{modalFlag}}" no-cancel bindconfirm="modalOk" >
-    <view class="dew">
-        <view class="page">
-
-                <view class="weui-loadmore">
-                    <view class="icon-box">
-                        <icon type="success" size="56"></icon>
-
-                    <view class="weui-loadmore__tips">提交成功</view>
-                    </view>
-                </view>
-
-            </view>
-
-        <view class="po_w">
-
-
-        </view>
-
-    </view>
-</modal>-->
-
-
-
-<!--提交失败-->
-
-<!--<modal class="modal" hidden="{{modalFlag}}" no-cancel bindconfirm="modalOk" >
-    <view class="dew">
-        <view class="page">
-
-                <view class="weui-loadmore">
-                    <view class="icon-box">
-                        <icon type="cancel" size="56"></icon>
-
-                    <view class="weui-loadmore__tips">认证失败，请重新认证</view>
-                    </view>
-                </view>
-
-            </view>
-
-        <view class="po_w">
-
-
-        </view>
-
-    </view>
-</modal>-->
 

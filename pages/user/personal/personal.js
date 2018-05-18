@@ -7,8 +7,6 @@ const userCenterUrl = '/user/center/usercenter';//用户中心的url
 const logOutUrl = '/user/set/logout';//退出登录url
 
 
-
-
 Page({
 
     data: {
@@ -16,14 +14,16 @@ Page({
 
         mobile:'',//电话号码
 
-        verify:'',//认证
+        isVerify:'',//是否认证
 
+        verifyValue:'',//认证文案
+
+        idNumber:''//身份证号码
 
 
     },
 
     onLoad: function () {
-
 
         var thisUserCenterUrl = app.globalData.URL + userCenterUrl;
 
@@ -33,6 +33,7 @@ Page({
         var jx_sid = wx.getStorageSync('jx_sid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
 
         /**
@@ -61,14 +62,20 @@ Page({
 
                 console.log(res.data);
 
+                wx.setStorageSync('idNumber',res.data.data.idNumber);
+
+                wx.setStorageSync('isVerify',res.data.data.isVerify);
+
                 that.setData({
 
-                    mobile:res.data.data[0],
+                    mobile:res.data.data.mobile,
 
-                    verify:res.data.data[1]
+                    isVerify:res.data.data.isVerify,
+
+                    idNumber:res.data.data.idNumber
+
 
                 });
-
 
 
             },

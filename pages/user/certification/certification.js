@@ -9,13 +9,12 @@ Page({
 
     data: {
 
-        code:'',//是否已认证
 
         userName:'',//姓名
 
         idNumber:'',//身份证
 
-        //hasUserName:true,//
+        isVerify:'',//是否认证
 
 
 
@@ -23,6 +22,54 @@ Page({
 
 
     onLoad:function () {
+
+        var that = this;
+
+        var thisUserName = wx.getStorageSync('userName');
+
+        var thisIdNumber = wx.getStorageSync('idNumber');
+
+        var  _isVerify= wx.getStorageSync('isVerify');
+
+        console.log('是否认证'+_isVerify)
+
+        that.setData({
+
+            isVerify:_isVerify
+
+        });
+
+
+        //如果登录页有返回名字
+        if(thisUserName){
+
+            that.setData({
+
+                userName:thisUserName
+
+            })
+
+        }
+
+        if(thisIdNumber){
+
+             that.setData({
+
+                 idNumber:thisIdNumber
+
+             })
+
+
+         }
+
+
+
+
+
+
+    },
+
+    submitVerifyFn:function () {
 
         var thisUserVerify = app.globalData.URL + userVerify;
 
@@ -37,9 +84,12 @@ Page({
 
         var thisIdNumber = wx.getStorageSync('idNumber');
 
-        console.log(thisIdNumber)
+        wx.showToast({
 
-        console.log(thisUserName)
+            title: '认证中',
+            icon: 'loading',
+
+        })
 
 
         /**
@@ -78,56 +128,42 @@ Page({
 
                 console.log(res.data);
 
-
-                //console.log(this.data.userName)
-
-                //console.log(this.data.idNumber)
-
                 var _code = res.data.code;
-
-
 
                 if(_code=='0000'){
 
 
-                    that.setData({
+                    setTimeout(function () {
 
-                        userName:thisUserName,
+                        wx.showToast({
 
-                        idNumber:thisIdNumber,
+                            title: '认证成功',
+                            icon: 'success',
 
-                        code:_code,
-                    })
+                        })
+
+                    },500)
+
+                    wx.redirectTo({
+
+                        url:'../personal/personal'
+                    });
+
+                    that.onLoad();
+
 
                 }
 
                 else {
 
+                    wx.showToast({
 
-                    //登录页有返回身份证号码 显示名称
-                    if(thisIdNumber){
-
-
-                        that.setData({
-
-                            userName:thisUserName,
-
-                            idNumber:thisIdNumber,
-
-
-                        })
+                        title: '认证失败',
+                        icon: 'fail',
 
 
 
-                    }
-
-                    else {
-
-
-                        console.log('没有身份证')
-                    }
-
-
+                    })
                 }
 
 
@@ -145,6 +181,30 @@ Page({
 
 
 
+    },
 
-    }
+    nameFn:function (e) {
+
+        var that = this;
+
+        that.setData({
+
+            userName: e.detail.value
+        });
+
+    },
+
+    idFn:function (e) {
+
+        var that = this;
+
+        that.setData({
+
+            idNumber: e.detail.value
+
+        });
+
+    },
+
+
 })
