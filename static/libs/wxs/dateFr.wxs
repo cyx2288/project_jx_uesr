@@ -1,29 +1,48 @@
+/**
+ * Created by ZHUANGYI on 2018/5/18.
+ */
+//数据转化
 
-var DateFr = {
+   var filter = {
 
-    getDate: function (time, splitStr) {
+    formatTime: function (time, splitStr) {
 
-        if (!time) return '';
+   if (!time) return '';
 
-        var date =getDate(time);
-        var M = date.getMonth() + 1;
-        var y = date.getFullYear();
-        var d = date.getDate();
+   var date =getDate(time);
+   var M = date.getMonth() + 1;
+   var y = date.getFullYear();
+   var d = date.getDate();
 
-        if (M < 10) M = "0" + M;
-        if (d < 10) d = "0" + d;
+   var h= date.getHours();
+   var m = date.getMinutes();
+   var s = date.getSeconds();
 
-        if (splitStr)
-            return y +splitStr + M +splitStr+d;
-        else
-            return {
-                y: y,
-                M: M,
-                d: d
-            };
-    }
-}
+   if (M < 10) M = "0" + M;
+   if (d < 10) d = "0" + d;
+   if (h < 10) h = "0" + h;
+   if (m < 10) m = "0" + m;
+   if (s < 10) s = "0" + s;
+
+
+   if (splitStr)
+     return y +splitStr + M +splitStr+ d +   + h +':'+ m+':'+s;
+   else
+     return {
+       y: y,
+       M: M,
+       d: d,
+       h:h,
+       m:m,
+       s:s,
+
+     };
+     }
+   }
+
+
+
 
 module.exports = {
-    getDate: DateFr.getDate
+    formatTime: filter.formatTime
 }
