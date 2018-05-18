@@ -26,7 +26,7 @@
 
 
    if (splitStr)
-     return y +splitStr + M +splitStr+ d +   + h +':'+ m+':'+s;
+     return y +splitStr + M +splitStr+ d + '    '+ h +':'+ m+':'+s;
    else
      return {
        y: y,
