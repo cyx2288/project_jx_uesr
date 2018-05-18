@@ -7,6 +7,7 @@ page{
     height:100%;
     width: 100%;
     font-size: 14px;
+    color: #4a4a4a;
 
 }
 
@@ -22,16 +23,12 @@ page{
 }
 .weui-media-box__hd{
     width: 25%;
-
 }
-
-
 
 .service_title{
 display: block;
     width: 100%;
 }
-
 
 .help_service{
     background-color: #fff;
@@ -49,10 +46,25 @@ display: block;
     line-height: 30px;
 }
 
-
 hr {
     display: block;
     transform: scaleY(0.4);
     width: 90%;
     border:.5px solid #dddddd;
+}
+
+/*底部tab*/
+
+.tab_bottom{
+    background-color: #fff;
+    position:absolute;
+    bottom:15px;
+    padding:10px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.service_title{
+    padding-left: 2px;
 }
