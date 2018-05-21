@@ -14,13 +14,13 @@
             </view>
         </view>
 
-</view>
+    </view>
 
     <view class="weui-cells__title">输入错误3次将被锁定，次日自动解锁</view>
 
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="identity">确定</button>
+        <button class="weui-btn" type="primary" bindtap="identity"  style="background: -webkit-linear-gradient(left bottom,#E87B17,#eb5e26); font-size: 14px;">确定</button>
 
     </view>
 

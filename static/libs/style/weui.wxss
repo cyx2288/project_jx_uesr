@@ -45,7 +45,7 @@ icon {
     padding-left: 15px;
     padding-right: 15px;
     color: #999;
-    font-size: 14px
+    font-size: 13px
 }
 
 .weui-cells_after-title {
@@ -176,8 +176,8 @@ icon {
 }
 
 .weui-cell_input {
-    padding-top: 0;
-    padding-bottom: 0
+    padding-top: 5px;
+    padding-bottom: 5px
 }
 
 .weui-label {
@@ -416,13 +416,13 @@ icon {
     padding: 0 .6em 0 .7em;
     border-left: 1px solid #e5e5e5;
     line-height: 2.58823529em;
-    font-size: 17px;
-    color: #3cc51f;
+    font-size: 14px;
+    color: #E87B17;
     white-space: nowrap
 }
 
 .weui-vcode-btn:active {
-    color: #52a341
+    color: #E87B17
 }
 
 .weui-cell_switch {
@@ -638,7 +638,7 @@ icon {
 }
 
 .weui-btn:first-child {
-    margin-top: 0
+    margin-top: 30px
 }
 
 .weui-btn-area {

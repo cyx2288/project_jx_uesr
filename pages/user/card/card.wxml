@@ -41,7 +41,7 @@
 
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="addCardFn">添加银行卡</button>
+        <button class="weui-btn" type="primary" bindtap="addCardFn" style="background: -webkit-linear-gradient(left bottom,#E87B17,#eb5e26); font-size: 14px;">添加银行卡</button>
 
     </view>
 
