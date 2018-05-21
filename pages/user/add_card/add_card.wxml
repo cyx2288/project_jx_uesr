@@ -7,7 +7,7 @@
 
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
-                    <view class="weui-cell__bd">*姓名</view>
+                    <view class="weui-cell__bd">* 姓名</view>
                     <view class="weui-cell__ft">{{userName}}</view>
                 </view>
             </view>
@@ -17,7 +17,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">*银行卡号</view>
+                    <view class="weui-label">* 银行卡号</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" placeholder="请输入卡号" value="{{bankNo}}" maxlength="18" bindinput="bankNoFn" bindblur="getBankNoFn"/>
@@ -27,7 +27,7 @@
 
             <view class="weui-cell weui-cell_select">
                 <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">*所属银行</view>
+                    <view class="weui-label">* 所属银行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
@@ -37,14 +37,9 @@
             </view>
         </view>
 
+
+
         <!-- 选择银行卡-->
-
-
-
-
-
-
-
 
     <view class="weui-cells__title">信息填写完整可加快到账速度</view>
 
@@ -80,7 +75,7 @@
 
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="addBankFn">确认添加</button>
+        <button class="weui-btn" type="primary" bindtap="addBankFn" style="background: -webkit-linear-gradient(left bottom,#E87B17,#eb5e26); font-size: 14px;">确认添加</button>
 
     </view>
 

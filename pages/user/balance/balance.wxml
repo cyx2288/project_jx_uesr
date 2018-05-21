@@ -26,6 +26,5 @@
 
 <!--button-->
 <navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button class="weui-btn" type="primary">提现</button>
-
+    <button class="weui-btn" type="primary" style="background: -webkit-linear-gradient(left bottom,#E87B17,#eb5e26); font-size: 14px;">提现</button>
 </navigator>
