@@ -49,7 +49,7 @@ Page({
 
                 password: md5.hexMD5(that.data.password),//md5加密
 
-                confirmPassword:that.data.confirmPassword
+                confirmPassword:md5.hexMD5(that.data.confirmPassword)
 
             }),
 
