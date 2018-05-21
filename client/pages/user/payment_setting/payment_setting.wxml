@@ -5,7 +5,10 @@
     <view class="weui-cell weui-cell_switch">
         <view class="weui-cell__bd">短信动态验证</view>
         <view class="weui-cell__ft">
-          <switch type="switch" checked="{{msgMode==1? 'checked':''}}" bindtap="changModelFn"/>
+
+            <switch type="switch" checked="{{msgMode}}"  bindchange="changMessageModelFn"/>
+
+
         </view>
     </view>
 </view>
@@ -17,7 +20,7 @@
         <view class="weui-cell__bd">支付密码验证</view>
         <view class="page__title">
 
-            <switch type="switch" checked="{{pwdMode==1? 'checked':''}}" bindtap="changModelFn"/>
+            <switch type="switch" checked="{{pwdMode}}" bindchange="changCodeModelFn"/>
 
         </view>
     </view>
