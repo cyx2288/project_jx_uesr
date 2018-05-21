@@ -40,6 +40,8 @@ Page({
         //获取余额
         var thisWages = wx.getStorageSync('wages');
 
+
+
         /**
          * 接口：用户中心
          * 请求方式：POST
@@ -74,6 +76,9 @@ Page({
                 that.setData({
                     wages:thisWages
                 })
+
+                wx.setStorageSync('mobile',res.data.data.mobile);
+
             },
 
             fail:function (res) {

@@ -16,14 +16,32 @@ Page({
 
         checkCode: '',//验证码
 
-        password: ''//密码
+        password: '',//密码
+
+        time: '获取验证码', //倒计时
+
+        currentTime:60,
+
+        locked:1,//0为锁住 1为解锁
 
     },
+
 
 
     registmsg: function () {
 
         var url = app.globalData.URL + registmsg;
+
+        var that = this;
+
+            that.getCode();
+
+            that.setData({
+
+                disabled:true
+
+            });
+
 
         /**
          * 接口：注册发送短信认证
@@ -55,6 +73,28 @@ Page({
                 //存储数据
                 wx.setStorageSync('jx_sid', jx_sid);
 
+                if(res.data.code=='0000'){
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+                        icon: 'none'
+
+                    });
+
+                }
+
+                else {
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+                        icon: 'none'
+
+                    });
+
+                }
+
 
             },
 
@@ -69,65 +109,117 @@ Page({
     },
 
     register: function () {
+        var that = this
 
         var url = app.globalData.URL + registerUrl;
 
         var jx_sid = wx.getStorageSync('jx_sid');
 
+        var a = /[@#\$%\^&\*]+/g;
+
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
+
         console.log(json2FormFn.json2Form({
 
-            mobile: this.data.mobile,
+            mobile: that.data.mobile,
 
-            password: md5.hexMD5(this.data.password),//md5加密
+            password: md5.hexMD5(that.data.password),//md5加密
 
-            code: this.data.checkCode
+            code: that.data.checkCode
 
         }));
 
-        /**
-         * 接口：注册
-         * 请求方式：POST
-         * 接口：/jx/action/register
-         * 入参：mobile，password，code
-         **/
 
-        wx.request({
 
-            url: url,
 
-            method: 'POST',
+            /**
+             * 接口：注册
+             * 请求方式：POST
+             * 接口：/jx/action/register
+             * 入参：mobile，password，code
+             **/
 
-            data: json2FormFn.json2Form({
+            wx.request({
 
-                mobile: this.data.mobile,
+                url: url,
 
-                password: md5.hexMD5(
-                    this.data.password
-                )
-                ,//md5加密
-                code: this.data.checkCode
-            }),
+                method: 'POST',
 
-            header: {
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+                data: json2FormFn.json2Form({
 
-                'jx_sid': jx_sid
+                    mobile: that.data.mobile,
 
-            },
+                    password: md5.hexMD5(
+                        that.data.password
+                    )
+                    ,//md5加密
+                    code: that.data.checkCode
+                }),
 
-            success: function (res) {
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                console.log(res.data)
+                    'jx_sid': jx_sid
 
-            },
+                },
 
-            fail: function (res) {
+                success: function (res) {
 
-                console.log(res)
+                    console.log(res.data)
 
-            }
+                    if(res.data.code=='-1'){
 
-        })
+                        //校验密码
+                        if(a.test(that.data.password)){
+
+                            wx.showToast({
+
+                                title: '密码包含非法字符',
+                                icon: 'none'
+
+                            });
+
+
+                        }
+
+                        else if(reg.test(that.data.password)){
+
+                            wx.showToast({
+
+                                title: '密码长度为6-20位',
+                                icon: 'none'
+
+                            });
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none'
+
+                            });
+
+                        }
+
+
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+
+
 
     },
 
@@ -162,6 +254,42 @@ Page({
 
         });
 
+    },
+
+    getCode:function () {
+
+        var that = this;
+
+        var currentTime = that.data.currentTime;
+
+        var interval = setInterval(function () {
+
+            currentTime--;
+
+            that.setData({
+
+                locked:0,
+
+                time: currentTime+'秒后重新获取'
+
+            });
+            if (currentTime <= 0) {
+
+                clearInterval(interval);
+
+                that.setData({
+
+                    locked:1,
+
+                    time: '重新发送',
+
+                    currentTime:60,
+
+                    disabled: false
+                })
+            }
+        }, 1000)
     }
+
 
 });

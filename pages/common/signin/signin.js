@@ -96,8 +96,6 @@ data:{
 
                      wx.setStorageSync('isVerify',res.data.data.isVerify);
 
-
-
                      console.log('用户姓名:'+ wx.getStorageSync('userName'));
 
                      console.log('用户身份证:'+ wx.getStorageSync('idNumber'));

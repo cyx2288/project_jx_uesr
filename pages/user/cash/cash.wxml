@@ -1,135 +1,108 @@
+<!--提现-->
+
+<view class="cash_card">
+
+    <!--银行卡-->
+    <view class="weui-panel">
 
 
-       <!--提现-->
+        <picker bindchange="bindPickerChange" value="" range="{{chooseBank}}" class="weui-media-box weui-media-box_text">
 
-       <view class="cash_card">
+            <view class="bank_list" data-id="{{bankCardId}}">
 
-                <!--银行卡-->
-                <view class="weui-panel">
+                <view class="weui_title">
 
+                    <view class="weui_left">
 
-                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="weui-media-box weui-media-box_text" >
+                        <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}（储蓄卡）</view>
 
-                        <view class="weui_title">
-
-                            <image src="../../../static/icon/wages/bank.jpg"  class="reset_go" />
-
-                            <view class="weui_left">
-                                <view class="weui-media-box__title weui-media-box__title_in-text">工商银行</view>
-                                <view class="title">储蓄卡</view>
-                            </view>
-
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-
-                        </view>
-
-                        <text class="details_date">6222 3001 3447 984</text>
-
-                    </picker>
-
-                    <hr/>
-
-                    <!--更多-->
-
-                    <view type="default" bindtap="open"  class="weui-cell weui-cell_access weui-cell_link">
-                        <view class="weui-cell__bd">更多</view>
-                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                     </view>
 
-              </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-                <!--输入金额-->
-                <view url="../payroll/payroll" class="weui-panel">
-
-                     <view class="weui-panel__bd">
-
-                         <view class="weui-media-box ">
-
-                            <view class="weui-media-box__desc">单笔￥100.00 - ￥5000.00（手续费0.1%）</view>
-
-                            <view class="weui-media-box__info">￥
-
-                                <label>
-                                    <input class="account_information_tel" type="idcard" pattern="[0-9]*" placeholder="请输入金额" placeholder-style="color:#bbb, font-size:14px " maxlength="18"  />
-                                </label>
-
-
-                              <!--点击全部提现显示-->
-                              <!--  <text class="cash_money">800.00</text>-->
-                                <icon class="icon_canel" type="cancel" size="16" color="#8a8a8a"></icon>
-                                </view>
-
-                                 <view class="weui_title">
-
-                                    <view class="weui-media-box__title weui-media-box__title_in-text">可提额度800.00元 </view>
-
-                                    <image src="../../../static/icon/wages/jx_ask.png"  class="ask" />
-
-                                 <!--问号弹出-->
-                                 <!--  <modal class="modal" hidden="{{modalFlag}}"  no-cancel bindconfirm="modalOk"   bindtap="onclick">
-                                     <view class="dew">
-                                         <view class="page">
-
-                                             <view class="weui-loadmore">
-                                                 <view class="icon-box">
-
-                                                     <view class="cash_text">提现限额说明</view>
-                                                     <view class="weui-loadmore__tips">单卡单笔50000.00元，当日100000.00元，当月300000.00元</view>
-                                                 </view>
-                                             </view>
-
-                                         </view>
-
-                                     </view>
-                                 </modal>-->
-
-                                 <view class="weui_confirm orange">全部提现</view>
-
-                             </view>
-
-                         </view>
-                     </view>
                 </view>
 
-                <!--button-->
-                <navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
-                    <button class="weui-btn" type="primary" style="background-color: #E87B17;">确认提现</button>
-                    <!--提示-->
-                    <text class="payroll_prompt " style="color: #E87B17; font-size:14px;" >联系客服</text>
-                </navigator>
+                <text class="details_date">{{bankNo}}</text>
+
+            </view>
+        </picker>
+
+        <hr/>
+
+        <!--更多-->
+
+        <navigator type="default" class="weui-cell weui-cell_access weui-cell_link" url="../add_card/add_card">
+            <view class="weui-cell__bd">添加新卡</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+
+    </view>
+
+    <!--输入金额-->
+    <view url="../payroll/payroll" class="weui-panel">
+
+        <view class="weui-panel__bd">
+
+            <view class="weui-media-box ">
+
+                <view class="weui-media-box__desc">单笔￥100.00 - ￥5000.00（手续费0.1%）</view>
+
+                <view class="weui-media-box__info">￥
+
+                    <view class="section__title" style="display: none">{{inputValue}}</view>
+
+                    <label>
+                        <input class="account_information_tel" bindinput="bindKeyInput" value="{{balance}}" type="digit" placeholder="请输入金额" placeholder-style="color:#bbb, font-size:14px"/>
+                    </label>
+
+                </view>
+
+                <view class="weui_title">
+
+                    <view class="weui-media-box__title weui-media-box__title_in-text">可提额度{{limit}}元</view>
+
+                    <image src="../../../static/icon/wages/jx_ask.png" class="ask" bindtap="hasTipsFn"/>
+
+                    <view bindtap="cashAllFn" class="weui_confirm orange">全部提现</view>
+
+                </view>
+
+            </view>
+        </view>
+    </view>
+
+    <!--button-->
+    <view class="page__bd page__bd_spacing">
+
+        <button class="weui-btn" type="primary" bindtap="cashFn" style="background-color: #E87B17;">确认提现</button>
+        <!--提示-->
+        <text class="payroll_prompt " style="color: #E87B17; font-size:14px;text-align: center" bindtap="moreFn">更多</text>
+
+    </view>
 
 
-                <!--温馨提示-->
-              <view class="weui-prompt weui-panel_access">
+    <!--温馨提示-->
+    <view class="weui-prompt weui-panel_access">
 
-                   <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box weui-media-box_text">
 
-                       <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
+            <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
 
-                          <view class="cash_prompt">
-                            <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                            <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行</view>
-                          </view>
+            <view class="cash_prompt">
+                <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行
+                </view>
+            </view>
 
-                          <view class="cash_prompt">
-                              <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                              <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
-                          </view>
+            <view class="cash_prompt">
+                <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
+            </view>
 
-                   </view>
+        </view>
 
-              </view>
-       </view>
+    </view>
 
 
-       <!--未实名认证提现-->
-    <!--   <view class="unauthorized">
-
-           <modal title="" concel-text="关闭" confirm-text="去认证" hidden="{{mHidden}}" bindconfirm="changeModel" bindcanel="modelcanel">
-
-                  当前账户尚未进行实名认证，完成认证后方可提现
-
-           </modal>
-
-       </view>-->
+</view>
 

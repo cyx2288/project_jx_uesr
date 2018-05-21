@@ -83,6 +83,6 @@ page {
      }
 
      .wages_middle{
-         margin: 0 auto;
+         margin: 5 auto;
          text-align: center;
      }

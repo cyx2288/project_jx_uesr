@@ -7,7 +7,7 @@
          <text class="asset_money">提现金额（元）</text>
 
          <!--金额显示-->
-         <text class="money_number">{{wages}}</text>
+         <text class="money_number">{{orderAmount}}</text>
 
 
      </view>
@@ -20,7 +20,9 @@
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">1</view>
              </view>
+             <text class="status">待支付</text>
              <text class="status">支付成功</text>
+             <text class="status">订单关闭</text>
          </view>
 
 
@@ -36,6 +38,7 @@
              <view class="weui-loadmore choose">
                  <view class="weui-loadmore__tips choose_text">3</view>
              </view>
+             <text class="status">已退款</text>
              <text class="status">到账成功</text>
          </view>
 
@@ -51,7 +54,11 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
-                     <view class="weui_confirm">银行处理中</view>
+                     <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
+                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">到账成功</view>
+                     <view wx:elif="{{orderState=='2'}}"class="weui_confirm">银行处理中</view>
+                     <view wx:elif="{{orderState=='3'}}" class="weui_confirm">到账成功</view>
+                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">交易关闭</view>
                  </view>
 
              </view>
@@ -64,8 +71,8 @@
              <view class="weui-media-box weui-media-box_text">
 
                  <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
-                     <view class="weui_confirm">银行处理中</view>
+                     <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
+                     <view class="weui_confirm">￥{{payAmount}}</view>
                  </view>
 
              </view>
@@ -78,8 +85,8 @@
              <view class="weui-media-box weui-media-box_text">
 
                  <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
-                     <view class="weui_confirm">银行处理中</view>
+                     <view class="weui-media-box__title weui-media-box__title_in-text">手续费</view>
+                     <view class="weui_confirm">￥{{rate}}</view>
                  </view>
 
              </view>
@@ -92,8 +99,8 @@
              <view class="weui-media-box weui-media-box_text">
 
                  <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
-                     <view class="weui_confirm">银行处理中</view>
+                     <view class="weui-media-box__title weui-media-box__title_in-text">支付金额</view>
+                     <view class="weui_confirm">￥{{rateAmount}}</view>
                  </view>
 
              </view>
@@ -104,16 +111,57 @@
      </view>
 
      <view class="wages_middle">
-
          <!--明细-->
 
-      <view class="cash_step">
+         <view class="cash_step">
 
              <view class="weui-media-box weui-media-box_text">
 
                  <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">{{item.operation}}</view>
-                     <view class="weui_confirm">{{item.detail}}</view>
+                     <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
+                     <view class="weui_confirm">{{}}</view>
+                 </view>
+
+             </view>
+
+         </view>
+         <!--明细-->
+
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">订单号</view>
+                     <view class="weui_confirm">{{orderId}}</view>
+                 </view>
+
+             </view>
+
+         </view>
+         <!--明细-->
+
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">银行</view>
+                     <view class="weui_confirm">{{bankName}}</view>
+                 </view>
+
+             </view>
+
+         </view>
+         <!--明细-->
+
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">卡号</view>
+                     <view class="weui_confirm">{{bankNo}}</view>
                  </view>
 
              </view>
@@ -122,7 +170,6 @@
 
       </view>
 
-     <text class="payroll_prompt" >联系客服</text>
 
  </view>
 

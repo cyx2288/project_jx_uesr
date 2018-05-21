@@ -1,5 +1,5 @@
 
-<wxs module="dateFr" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
 
 
 <!--工资-->
@@ -23,7 +23,7 @@
                 <view class="weui_confirm">{{item.transAmt}}</view>
             </view>
 
-            <text class="details_date">{{dateFr.getTime(item.clearingDate,':')}}</text>
+            <text class="details_date">{{filter.formatTime(item.clearingDate,'-')}}</text>
 
 
         </view>

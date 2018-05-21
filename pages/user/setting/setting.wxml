@@ -11,8 +11,9 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="../../common/code/code" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">设置支付密码</view>
+        <view class="weui-cell__bd">重置支付密码</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
