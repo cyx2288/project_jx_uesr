@@ -2,9 +2,9 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const cashUrl = '/user/withdraw/dowithdraw';
+const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
 
-const checkcashUrl = '/user/work/checkwithdraw';
+const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
 
 
 Page({
@@ -43,12 +43,13 @@ Page({
 
         rate: '',//费率
 
+        isSecurity:'',//是否开启
+
     },
 
     onLoad: function () {
 
         var that = this;
-
 
         var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
 
@@ -60,6 +61,25 @@ Page({
         var thisBankList = wx.getStorageSync('bankList');
 
         var _isVerify = wx.getStorageSync('isVerify');
+
+        var _isSecurity = wx.getStorageSync('isSecurity');
+
+
+        that.setData({
+
+            isSecurity:_isSecurity
+
+        });
+
+
+
+        //存储银行卡页面的数据
+        that.setData({
+
+            bankList: thisBankList,
+
+        });
+
 
         //没认证的去认证
         if (_isVerify == '0') {
@@ -91,15 +111,8 @@ Page({
 
         }
 
-        //存储银行卡页面的数据
-        that.setData({
-
-            bankList: thisBankList,
-
-        });
-
         //没银行卡的去添加银行卡
-        if (that.data.bankList.length == 0) {
+        else if (that.data.bankList.length == 0) {
 
 
             wx.showModal({
@@ -129,45 +142,6 @@ Page({
 
         }
 
-
-        //默认显示第一个银行卡
-        that.setData({
-
-            bankName: that.data.bankList[0].bankName,//银行名称
-
-            bankNo: that.data.bankList[0].bankNo,//银行卡号
-
-            bankCardId: that.data.bankList[0].bankCardId//银行卡id
-
-        });
-
-
-        //获取银行卡的
-        var pickChooseBank = [];
-
-        //循环银行卡、银行名称及银行id
-        for (var i = 0; i < thisBankList.length; i++) {
-
-            var pickBankName = thisBankList[i].bankName;
-
-            var pickBankNo = thisBankList[i].bankNo;
-
-            var pickBankId = thisBankList[i].bankCardId;
-
-            var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
-
-            //组成数组
-            pickChooseBank.push(_pickChooseBank);
-
-        }
-
-        console.log(pickChooseBank);
-
-        that.setData({
-
-            chooseBank: pickChooseBank
-
-        })
 
         /**
          * 接口：检测用户发起提现操作
@@ -228,7 +202,46 @@ Page({
 
             }
 
+        });
+
+
+        //默认显示第一个银行卡
+        that.setData({
+
+            bankName: that.data.bankList[0].bankName,//银行名称
+
+            bankNo: that.data.bankList[0].bankNo,//银行卡号
+
+            bankCardId: that.data.bankList[0].bankCardId//银行卡id
+
+        });
+
+        //获取银行卡的
+        var pickChooseBank = [];
+
+        //循环银行卡、银行名称及银行id
+        for (var i = 0; i < thisBankList.length; i++) {
+
+            var pickBankName = thisBankList[i].bankName;
+
+            var pickBankNo = thisBankList[i].bankNo;
+
+            var pickBankId = thisBankList[i].bankCardId;
+
+            var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
+
+            //组成数组
+            pickChooseBank.push(_pickChooseBank);
+
+        }
+
+        that.setData({
+
+            chooseBank: pickChooseBank
+
         })
+
+
 
     },
 
@@ -275,11 +288,20 @@ Page({
         var that = this;
 
         //缓存jx_sid&&Authorization数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log('金额：'+that.data.inputBalance)
+
+        //缓存余额和银行卡id
+        wx.setStorageSync('balance',that.data.balance);//余额
+
+        wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
+
+/*        console.log(wx.getStorageSync('balance'));
+
+        console.log(wx.getStorageSync('bankCardId'))*/
+
 
         if(!that.data.inputBalance){
 
@@ -296,14 +318,47 @@ Page({
             wx.showModal({
 
                 title: '确认付款',
-                content: '支付金额' + that.data.balance + ',提现金额￥100.00,手续费￥0.00',
+                content: '支付金额￥' + that.data.balance + ',提现金额￥100.00,手续费￥0.00',
                 confirmText: '确认付款',
 
                 success: function (res) {
 
                     if (res.confirm) {
 
-                        confirmation()
+                        if(that.data.isSecurity=='1'){
+
+                            console.log('开启短信验证');
+
+                            wx.navigateTo({
+
+                                url: '../sms_verification/sms_verification'
+                            })
+
+
+
+                        }
+
+                        else if(that.data.isSecurity=='2'){
+
+                            console.log('开启支付密码');
+
+                            wx.navigateTo({
+
+                                url: '../pws_verification/pws_verification'
+                            })
+
+
+                        }
+
+                        else if(that.data.isSecurity=='3'){
+
+                            console.log('啥都没开启');
+
+                            confirmation()
+
+                        }
+
+
 
                     }
 
@@ -317,12 +372,10 @@ Page({
 
         }
 
-
-
-
         function confirmation() {
+
             /**
-             * 接口：获取用户银行卡信息
+             * 接口：获取账户提现记录
              * 请求方式：GET
              * 接口：/user/withdraw/dowithdraw
              * 入参：bizId,bankCardId,balance,payPassword,code
@@ -343,19 +396,15 @@ Page({
 
                     balance: that.data.balance,//提取现金
 
-                    payPassword: that.data.payPassword,//支付密码
-
-                    code: that.data.code,//短信验证
-
-
                 },
                 header: {
 
-                    'jx_sid': jx_sid,
+                    'jxsid': jx_sid,
 
                     'Authorization': Authorization
 
                 },
+
 
                 success: function (res) {
 
@@ -363,26 +412,12 @@ Page({
 
                     if (res.data.code == '0000') {
 
+                        wx.navigateTo({
+
+                            url: '../pay_success/pay_success'
+                        })
 
                     }
-
-                    //如果
-
-                    else {
-
-                        if (!that.data.balance) {
-
-                            wx.showToast({
-
-                                title: '请输入金额',
-                                icon: 'none',
-
-                            })
-
-                        }
-
-                    }
-
 
                 },
 
@@ -394,6 +429,8 @@ Page({
                 }
 
             })
+
+
         }
 
 

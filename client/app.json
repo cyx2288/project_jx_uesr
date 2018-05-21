@@ -1,19 +1,33 @@
 {
   "pages":[
 
-    "pages/user/code/code",
+    "pages/user/cash/cash",
 
     "pages/common/signin/signin",
 
-    "pages/user/cash/cash",
 
 
+
+
+    "pages/user/sms_verification/sms_verification",
+
+    "pages/user/card/card",
+
+    "pages/user/mine/mine",
+
+    "pages/user/payment_setting_message/payment_setting_message",
+
+    "pages/user/payment_setting_code/payment_setting_code",
+    
+    "pages/user/code/code",
+
+    "pages/user/id_card/id_card",
 
     "pages/common/register/register",
 
 
 
-    "pages/user/mine/mine",
+
 
     "pages/user/payment_setting/payment_setting",
 
@@ -25,7 +39,7 @@
 
     "pages/user/bill/bill",
 
-    "pages/user/card/card",
+
 
 
 

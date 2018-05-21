@@ -76,7 +76,9 @@ Page({
         var that = this;
 
         //获取数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        console.log(jx_sid)
 
         var Authorization = wx.getStorageSync('Authorization');
 
@@ -116,7 +118,7 @@ Page({
 
                 'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                'jx_sid': jx_sid,
+                'jxsid': jx_sid,
 
                 'Authorization': Authorization
 
