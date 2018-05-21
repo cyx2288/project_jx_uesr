@@ -8,6 +8,11 @@
 
 }
 
+.locked{
+
+    pointer-events:none
+}
+
 
 .register_text_code{
 

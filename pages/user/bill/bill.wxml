@@ -5,9 +5,8 @@
 <view class="wages_middle">
 
     <!--明细-->
-    <navigator url="" class="weui-panel" wx:for="{{billList}}">
-
-        <view class="weui-media-box weui-media-box_text">
+    <view class="weui-panel" wx:for="{{billList}}" bindtap="clickBill" data-no="{{item.orderId}}">
+        <view class="weui-media-box weui-media-box_text"  >
 
             <view class="icon_record">
 
@@ -32,7 +31,7 @@
             </view>
         </view>
 
-    </navigator>
+    </view>
     <hr/>
 
 <!--    <view class="weui-panel">

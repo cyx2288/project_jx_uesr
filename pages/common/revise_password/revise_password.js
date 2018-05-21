@@ -4,63 +4,94 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const md5 = require( '../../../static/libs/script/md5.js' );//md5加密
 
-const registerUrl='/jx/action/register';//注册的url地址
+const changepwdUrl='/user/set/changepwd';//修改密码
 
-const registmsg='/jx/action/registmsg';//发送短信验证码
 
 Page({
 
     data:{
 
-        mobile:'',//手机号
+        oldPassword:'',//旧密码
 
-        checkCode:'',//验证码
+        password:'',//新密码
 
-        password:''//密码
+        confirmPassword:''//确认密码
 
     },
 
-    register:function () {
+    changePwd:function () {
 
-        var url=app.globalData.URL+registerUrl;
+        var that = this;
 
-        console.log(json2FormFn.json2Form({
-            mobile: this.data.mobile ,
-            password: md5.hexMD5(this.data.password),//md5加密
-            code:this.data.checkCode
-        }))
+        var thisChangepwdUrl=app.globalData.URL+changepwdUrl;
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jx_sid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
         /**
-         * 接口：注册
+         * 接口：修改密码
          * 请求方式：POST
-         * 接口：/jx/action/register
-         * 入参：mobile，password，code
+         * 接口：/user/set/changepwd
+         * 入参：oldPassword，password，confirmPassword
          **/
 
         wx.request({
 
-            url:  url,
+            url:  thisChangepwdUrl,
 
             method:'POST',
 
             data: json2FormFn.json2Form({
-                mobile: this.data.mobile ,
-                password: md5.hexMD5(
-                    this.data.password
-                )
-                ,//md5加密
-                code:this.data.checkCode
+
+                oldPassword: md5.hexMD5(that.data.oldPassword) ,
+
+                password: md5.hexMD5(that.data.password),//md5加密
+
+                confirmPassword:that.data.confirmPassword
+
             }),
 
             header: {
-                'content-type': 'application/x-www-form-urlencoded' // post请求
+
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jx_sid':jx_sid,
+
+                'Authorization':Authorization
+
             },
 
             success: function(res) {
+
                 console.log(res.data)
+
+                if(res.data.code=='-1'){
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                    });
+
+                }
+
+                else if(res.data.code=='0000'){
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'success',
+                    });
+
+                    wx.navigateTo({
+                        delta: 1
+                    })
+
+                }
             },
 
             fail:function (res) {
+
                 console.log(res)
             }
 
@@ -68,56 +99,12 @@ Page({
 
     },
 
-    /**
-     * 接口：
-     * 请求方式：
-     * 接口：GET
-     * 入参：
-     **/
 
-    registmsg:function () {
-
-        var url=app.globalData.URL+registmsg;
-
-        console.log(this.data)
-
-        wx.request({//注册
-
-            url:  url,
-
-            method:'GET',
-
-            data: {
-                mobile: this.data.mobile 
-            },
-
-            success: function(res) {
-                console.log(res.data)
-            },
-
-            fail:function (res) {
-                console.log(res)
-            }
-
-        })
-
-
-    },
-
-    telFn:function (e) {
+    oldPasswordFn:function (e) {
 
         var that = this;
         that.setData({
-            mobile: e.detail.value
-        });
-
-    },
-
-    codeFn:function (e) {
-
-        var that = this;
-        that.setData({
-            checkCode: e.detail.value
+            oldPassword: e.detail.value
         });
 
     },
@@ -131,12 +118,13 @@ Page({
 
     },
 
-    openToast: function () {
-        wx.showToast({
-            title: '修改成功',
-            icon: 'success',
-            duration: 3000
+    confirmPasswordFn:function (e) {
+
+        var that = this;
+        that.setData({
+            confirmPassword: e.detail.value
         });
+
     },
 
 });

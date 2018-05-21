@@ -57,8 +57,8 @@
                 <view class="weui-label">开户地区</view>
             </view>
             <view class="weui-cell__bd">
-                <picker placeholder="请选择开户所在地（选填）" bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                <picker mode="multiSelector" bindcolumnchange="bindRegionColumnChange" bindchange="bindRegionChange" value="[0,0]" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">{{city}}{{province}}</view>
                 </picker>
             </view>
         </view>
@@ -70,7 +70,7 @@
                     <view class="weui-label">开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入开户支行（选填）"/>
+                    <input class="weui-input" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
                 </view>
             </view>
         </view>

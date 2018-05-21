@@ -169,12 +169,11 @@ Page({
 
     data:{
 
-        bankList:[],
+        bankList:[],//银行卡列表
 
-        bankCardId:'',
+        bankCardId:'',//银行卡唯一id
 
-        bankNo:'',
-
+        bankNo:'',//银行卡号
 
 
     },
@@ -216,12 +215,15 @@ Page({
 
                     console.log(res.data);
 
+                    wx.setStorageSync('bankList',res.data.data);
 
                     that.setData({
 
                         bankList:res.data.data,
 
                     })
+
+                    console.log(that.data.bankList)
 
 
                 },
@@ -252,6 +254,11 @@ Page({
 
                     if (res.confirm) {
 
+                        wx.navigateTo({
+
+                            url: '../certification/certification'
+
+                        })
 
                     }
 
@@ -307,7 +314,7 @@ Page({
 
         var _thisBankNo = str.substr(str.length-4)
 
-        console.log(that.data.bankCardId)
+        //console.log(that.data.bankCardId)
 
 
        wx.showModal({

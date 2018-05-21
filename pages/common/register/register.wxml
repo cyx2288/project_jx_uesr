@@ -18,7 +18,7 @@
                 <input class="weui-input" placeholder="请输入验证码" value="{{checkCode}}" bindinput="codeFn"/>
             </view>
             <view class="weui-cell__ft">
-                <view class="weui-vcode-btn" bindtap="registmsg">点击获取</view>
+                <view disabled='{{disabled}}' class="weui-vcode-btn {{locked==1 ? '' :'locked'}}" bindtap="registmsg">{{time}}</view>
             </view>
         </view>
         <view class="weui-cell weui-cell_input">

@@ -14,6 +14,8 @@ Page({
 
         billList:[],
 
+        orderId:'',
+
     },
 
     onLoad:function () {
@@ -53,9 +55,13 @@ Page({
 
                 that.setData({
 
-                    billList:res.data.data.list
+                    billList:res.data.data.list,
+
+
 
                 })
+
+
 
             },
 
@@ -69,6 +75,29 @@ Page({
 
 
 
+
+
+
+    },
+
+    clickBill:function (e) {
+
+        var that = this;
+
+        that.setData({
+
+            orderId:e.currentTarget.dataset.no,
+        })
+
+        console.log(e.currentTarget)
+
+        wx.navigateTo({
+
+            url: '../give_details/give_details'
+
+        })
+
+        wx.setStorageSync('orderId',that.data.orderId)
 
 
 

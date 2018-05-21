@@ -1,42 +1,85 @@
 {
   "pages":[
 
-
-    "pages/user/personal/personal",
-
-    "pages/user/mine/mine",
-
-    "pages/user/balance/balance",
-
-    "pages/user/details/details",
-
-    "pages/wages/index/index",
+    "pages/common/revise_password/revise_password",
 
     "pages/common/signin/signin",
 
 
 
+    "pages/user/mine/mine",
+
+    "pages/user/bill/bill",
 
 
-    "pages/wages/payroll/payroll",
 
-    "pages/common/authentication/authentication",
+    "pages/user/give_details/give_details",
+
+
+
+
 
 
 
     "pages/common/register/register",
 
-    "pages/wages/empty/empty",
 
 
 
 
 
-    "pages/user/certification/certification",
+
+
+    "pages/user/card/card",
+
+
+
+
+
+
+
+    "pages/common/code/code",
+
+
+
+
+
+
+
+
+
+    "pages/user/reset_payment/reset_payment",
+
+    "pages/user/payment_setting/payment_setting",
+
+    "pages/user/setting/setting",
 
     "pages/user/cash/cash",
 
-    "pages/user/record/record",
+    "pages/user/add_card/add_card",
+
+    "pages/user/details/details",
+
+    "pages/user/balance/balance",
+
+    "pages/user/help_service/help_service",
+
+    "pages/user/personal/personal",
+
+    "pages/wages/index/index",
+
+    "pages/user/certification/certification",
+
+    "pages/user/company/company",
+
+    "pages/user/company_authentication/authentication",
+
+    "pages/common/authentication/authentication",
+
+    "pages/wages/payroll/payroll",
+
+    "pages/wages/empty/empty",
+
 
 
 
