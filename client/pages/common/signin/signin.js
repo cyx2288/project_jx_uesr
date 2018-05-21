@@ -83,7 +83,7 @@ data:{
 
                      var Authorization = res.data.token.access_token;//Authorization数据
 
-                     var jx_sid = res.header.jx_sid;//jx_sid数据
+                     var jx_sid = res.header.jxsid;//jx_sid数据
 
                      //存储数据
                      wx.setStorageSync('jxsid', jx_sid);

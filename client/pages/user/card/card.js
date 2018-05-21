@@ -215,6 +215,7 @@ Page({
 
                     console.log(res.data);
 
+                    //存储银行卡
                     wx.setStorageSync('bankList',res.data.data);
 
                     that.setData({

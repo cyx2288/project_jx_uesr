@@ -58,6 +58,10 @@
 
             <label>
 
+                <label>
+                    <input class="account_information_tel" pattern="[0-9]*" bindinput="idNumberFn" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
+                </label>
+
             </label>
 
         </view>

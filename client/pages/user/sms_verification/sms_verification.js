@@ -6,9 +6,9 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const  paymsgUrl = '/jx/action/paymsg';//1、设置支付密码 onload调用
+const withdrawmsgUrl = '/jx/action/withdrawmsg';//提现发送短信认证
 
-const checkpaypwdcodeUrl = '/user/set/checkpaypwdcode';//2、校验支付密码验证码
+const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
 
 
 
@@ -28,13 +28,11 @@ Page({
 
 
 
-
-
     },
     onLoad:function () {
 
 
-        var thisPaymsgUrl= app.globalData.URL+paymsgUrl;
+        var thisWithdrawmsgUrl= app.globalData.URL+withdrawmsgUrl;
 
         var that = this;
 
@@ -82,21 +80,21 @@ Page({
         }
 
         /**
-         * 接口：校验支付密码验证码
+         * 接口：提现发送短信认证
          * 请求方式：GET
-         * 接口：设置支付密码
-         * 入参：code
+         * 接口：/jx/action/withdrawmsg
+         * 入参：moblie
          * */
 
         wx.request({
 
-            url: thisPaymsgUrl,
+            url: thisWithdrawmsgUrl,
 
             method: 'GET',
 
             data:{
 
-                code:that.data.code,
+                mobile:that.data.mobile,
 
 
             },
@@ -121,8 +119,6 @@ Page({
                         icon: 'none',
 
                     })
-
-
 
 
                 }
@@ -160,45 +156,53 @@ Page({
 
     },
 
-    codeUrlFn:function () {
-
-        var thisCheckpaypwdcodeUrl= app.globalData.URL+checkpaypwdcodeUrl;
+    buttonCheck:function () {
 
         var that = this;
+
+        var thisCashUrl = app.globalData.URL + cashUrl;
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log('输入完成')
+        var _balance = wx.getStorageSync('balance');
+
+        var _bankCardId = wx.getStorageSync('bankCardId')
+
 
         /**
-         * 接口：校验支付密码验证码
-         * 请求方式：POST
-         * 接口：/user/set/checkpaypwdcode
-         * 入参：code
+         * 接口：获取账户提现记录
+         * 请求方式：GET
+         * 接口：/user/withdraw/dowithdraw
+         * 入参：bizId,bankCardId,balance,payPassword,code
          * */
 
         wx.request({
 
-            url: thisCheckpaypwdcodeUrl,
+            url: thisCashUrl,
 
-            method: 'POST',
+            method: 'GET',
 
-            data:json2FormFn.json2Form({
+            data: {
 
-                code:that.data.code
 
-            }),
+                bizId: that.data.bizId,//订单id
 
-            header:{
+                bankCardId: _bankCardId,//银行卡id
 
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+                balance: _balance,//提取现金
 
-                'jxsid':jx_sid,
+                code: that.data.code,//短信验证
 
-                'Authorization':Authorization
+
+            },
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
 
             },
 
@@ -206,28 +210,32 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='0000'){
+                if (res.data.code == '0000') {
 
                     wx.showToast({
+
                         title: res.data.msg,
+
                         icon: 'none',
 
                     })
 
-                    //存取tokenMsg
-                    wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
-
-                    //跳转身份认证
                     wx.navigateTo({
 
-                        url:'../id_card/id_card'
+                        url: '../pay_success/pay_success'
                     })
 
-
                 }
+
                 else {
 
+                    wx.showToast({
 
+                        title: res.data.msg,
+
+                        icon: 'none',
+
+                    })
                 }
 
             },
@@ -240,6 +248,9 @@ Page({
             }
 
         })
+
+
+
 
     },
     

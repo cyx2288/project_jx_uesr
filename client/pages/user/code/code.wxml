@@ -4,7 +4,7 @@
             <view class="weui-label">请输入验证码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入验证码" bindchange="codeFn" bindconfirm="codeUrlFn"/>
+            <input class="weui-input" type="number" placeholder="请输入验证码" value="{{code}}" bindchange="codeFn" bindconfirm="codeUrlFn"/>
         </view>
     </view>
 

@@ -94,7 +94,7 @@
 
             <view class="cash_prompt">
                 <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日100000.00元，当月300000.00元</view>
+                <view class="weui-media-box__desc">限额说明：单卡单笔5000.00元，当日{{dayMaxCount}}元，当月{{monthMaxAmount}}元</view>
             </view>
 
         </view>

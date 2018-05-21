@@ -41,6 +41,7 @@ Page({
         var thisWages = wx.getStorageSync('wages');
 
 
+
         /**
          * 接口：用户中心
          * 请求方式：POST
@@ -82,6 +83,10 @@ Page({
                 //获取是否设置密码
                 wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
 
+                //是否开启验证
+                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+
+                console.log(wx.getStorageSync('isSecurity'))
 
 
             },

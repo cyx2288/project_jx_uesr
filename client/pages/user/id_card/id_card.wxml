@@ -1,0 +1,37 @@
+<view class="no_invitation">
+
+
+    <view class="account_information_mime">
+        <!--姓名-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">姓名</text>
+
+            <text class="account_information_tel">{{userName}}</text>
+
+        </view>
+
+        <hr/>
+        <!--身份证号-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">身份证号</text>
+
+
+            <label>
+                <input class="account_information_tel" type="idcard" bindinput="idNumberFn" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
+            </label>
+
+        </view>
+
+    </view>
+
+
+    <!--button-->
+    <view url="" class="page__bd page__bd_spacing" style="margin-top: 25px">
+
+        <button class="weui-btn" type="primary" bindtap="checkIdNumberFn">确认</button>
+
+    </view>
+
+</view>
