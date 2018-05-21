@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1d4963c0-58b8-469b-9792-ef678d96ee69" name="默认的" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/badge/badge.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/badge/badge.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/gallery/gallery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/gallery/gallery.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/grid/grid.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/grid/grid.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/base64.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_footer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_footer_link.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_intro.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_feedback.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_form.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_nav.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_search.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_special.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_widget.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_z-index.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_tabbar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/pic_160.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/pic_article.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/vcode.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/input/input.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/input/input.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/list/list.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/list/list.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/panel/panel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/panel/panel.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/tabbar/tabbar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/tabbar/tabbar.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/uploader/uploader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/uploader/uploader.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.wxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_mine_grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_mine_orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_wages_grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_wages_orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/logo/jx_logo_orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/bank.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/go.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_ask.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_cash.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_company.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_online.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_payment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_record.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_suggest.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_tel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/reset_go.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/header.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/json2Form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/md5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/style/weui.wxss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/wxs/dateFr.wxs" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="project_jx_uesr" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.46095493">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="cash.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-9209">
+                  <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="code.wxml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="299">
+                  <caret line="12" column="77" lean-forward="true" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/app.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="230">
+                  <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="code.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="920">
+                  <caret line="206" column="47" lean-forward="true" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+                  <folding>
+                    <element signature="e#535#2352#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="506">
+                  <caret line="259" column="44" lean-forward="false" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="44" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>post</find>
+      <find>wx.ge</find>
+      <find>st</find>
+      <find>set</find>
+      <find>wages</find>
+      <find>get</find>
+      <find>entID</find>
+      <find>data</find>
+      <find>thisIdData</find>
+      <find>wagesList</find>
+      <find>this.setData</find>
+      <find>cont</find>
+      <find>co</find>
+      <find>this.set</find>
+      <find>isDateshow</find>
+      <find>isAllCom</find>
+      <find>salaryInfo</find>
+      <find>console</find>
+      <find>thisBankSort</find>
+      <find>e.detail.value</find>
+      <find>wx.s</find>
+      <find>sid</find>
+      <find>getCode</find>
+      <find>jx</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/static/libs/script/json2Form.js" />
+        <option value="$PROJECT_DIR$/static/libs/script/utils.js" />
+        <option value="$PROJECT_DIR$/pages/user/record/record.js" />
+        <option value="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.json" />
+        <option value="$PROJECT_DIR$/static/libs/wxs/dateFr.wxs" />
+        <option value="$PROJECT_DIR$/pages/user/add_card/add_card.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/details/details.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/cash/cash.wxss" />
+        <option value="$PROJECT_DIR$/pages/user/card/card.wxss" />
+        <option value="$PROJECT_DIR$/pages/common/code/code.json" />
+        <option value="$PROJECT_DIR$/static/libs/script/countDown.js" />
+        <option value="$PROJECT_DIR$/pages/common/code/code.wxml" />
+        <option value="$PROJECT_DIR$/pages/common/code/code.js" />
+        <option value="$PROJECT_DIR$/pages/common/register/register.wxml" />
+        <option value="$PROJECT_DIR$/pages/common/register/register.wxss" />
+        <option value="$PROJECT_DIR$/pages/user/details/details.json" />
+        <option value="$PROJECT_DIR$/pages/user/mine/mine.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/give_details/give_details.wxss" />
+        <option value="$PROJECT_DIR$/pages/user/bill/bill.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/give_details/give_details.wxml" />
+        <option value="$PROJECT_DIR$/pages/common/revise_password/revise_password.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/setting/setting.js" />
+        <option value="$PROJECT_DIR$/pages/user/setting/setting.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/code/code.wxml" />
+        <option value="$PROJECT_DIR$/pages/user/cash/cash.wxml" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/pages/user/code/code.js" />
+        <option value="$PROJECT_DIR$/pages/common/authentication/authentication.js" />
+        <option value="$PROJECT_DIR$/pages/common/input_password/input_password.js" />
+        <option value="$PROJECT_DIR$/pages/common/revise_login/revise_login.js" />
+        <option value="$PROJECT_DIR$/pages/common/revise_password/revise_password.js" />
+        <option value="$PROJECT_DIR$/pages/common/signin/signin.js" />
+        <option value="$PROJECT_DIR$/pages/user/add_card/add_card.js" />
+        <option value="$PROJECT_DIR$/pages/user/bill/bill.js" />
+        <option value="$PROJECT_DIR$/pages/user/card/card.js" />
+        <option value="$PROJECT_DIR$/pages/user/cash/cash.js" />
+        <option value="$PROJECT_DIR$/pages/user/company/company.js" />
+        <option value="$PROJECT_DIR$/pages/user/company_authentication/authentication.js" />
+        <option value="$PROJECT_DIR$/pages/user/details/details.js" />
+        <option value="$PROJECT_DIR$/pages/user/give_details/give_details.js" />
+        <option value="$PROJECT_DIR$/pages/user/mine/mine.js" />
+        <option value="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.js" />
+        <option value="$PROJECT_DIR$/pages/user/personal/personal.js" />
+        <option value="$PROJECT_DIR$/pages/wages/index/index.js" />
+        <option value="$PROJECT_DIR$/pages/wages/payroll/payroll.js" />
+        <option value="$PROJECT_DIR$/app.json" />
+        <option value="$PROJECT_DIR$/pages/common/register/register.js" />
+        <option value="$PROJECT_DIR$/project.config.json" />
+        <option value="$PROJECT_DIR$/client/app.json" />
+        <option value="$PROJECT_DIR$/client/pages/user/code/code.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/wamp/www/GitHub/project_jx_uesr/pages/common/register/register.wxml" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\add_card" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\company_authentication" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\static\icon\wages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\payment_setting" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\details" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d4963c0-58b8-469b-9792-ef678d96ee69" name="默认的" comment="" />
+      <created>1525661501054</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525661501054</updated>
+      <workItem from="1525661504086" duration="14166000" />
+      <workItem from="1525745218783" duration="14915000" />
+      <workItem from="1525830299686" duration="33214000" />
+      <workItem from="1525916710075" duration="35170000" />
+      <workItem from="1526003609604" duration="25181000" />
+      <workItem from="1526102462451" duration="141000" />
+      <workItem from="1526104365023" duration="21263000" />
+      <workItem from="1526187183587" duration="24964000" />
+      <workItem from="1526263839773" duration="29314000" />
+      <workItem from="1526349261876" duration="28521000" />
+      <workItem from="1526436451090" duration="29203000" />
+      <workItem from="1526527482734" duration="34348000" />
+      <workItem from="1526612593414" duration="11833000" />
+      <workItem from="1526633741724" duration="3187000" />
+      <workItem from="1526638729773" duration="10575000" />
+      <workItem from="1526713948556" duration="28015000" />
+      <workItem from="1526792757517" duration="18660000" />
+      <workItem from="1526826992527" duration="685000" />
+      <workItem from="1526827697619" duration="3865000" />
+      <workItem from="1526831582953" duration="8766000" />
+      <workItem from="1526869063210" duration="18840000" />
+      <workItem from="1526894117465" duration="4106000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="398932000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11702128" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16517857" sideWeight="0.5065574" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16517857" sideWeight="0.5065574" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="32" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pages/user/mine/mine.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/company/company.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/common/register/register.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/common/find_password/find_password.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/code/code.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/cash/cash.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/user/setting/setting.wxml" />
+    <entry file="file://$PROJECT_DIR$/pages/common/authentication/authentication.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/revise_password/revise_password.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/signin/signin.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/add_card/add_card.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/balance/balance.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/bill/bill.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/card/card.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/cash/cash.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/input_password/input_password.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/code/code.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/company/company.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/company_authentication/authentication.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/details/details.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/give_details/give_details.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/help_service/help_service.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/mine/mine.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/pay_success/pay_success.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/payment_setting/payment_setting.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/problem_details/problem_details.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/question/question.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/record/record.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/reset_payment/reset_payment.js" />
+    <entry file="file://$PROJECT_DIR$/pages/wages/index/index.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/find_password/find_password.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/revise_login/revise_login.js" />
+    <entry file="file://$PROJECT_DIR$/pages/wages/payroll/payroll.js" />
+    <entry file="file://$PROJECT_DIR$/pages/user/setting/setting.js" />
+    <entry file="file://$PROJECT_DIR$/pages/common/register/register.js" />
+    <entry file="file://$PROJECT_DIR$/app.json" />
+    <entry file="file://$PROJECT_DIR$/app.js" />
+    <entry file="file://$PROJECT_DIR$/.gitattributes" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.wxss" />
+    <entry file="file://$PROJECT_DIR$/pages/user/personal/personal.js" />
+    <entry file="file://$PROJECT_DIR$/client/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9209">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/reset_payment/reset_payment.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="12" column="77" lean-forward="true" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="259" column="44" lean-forward="false" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="206" column="47" lean-forward="true" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+          <folding>
+            <element signature="e#535#2352#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
