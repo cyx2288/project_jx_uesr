@@ -5,19 +5,20 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 const getDetailRecord ='/user/withdraw/getdetailrecord';//获取详情
 
 
+
 Page({
 
     data: {
 
-        bankName: '11',
-        bankNo: '6259000000000011111',
-        orderAmount: '100.00',
-        orderId: '300118051853218224659805',
-        orderState: '3',
-        payAmount: '100.00',
-        rate:'0',
-        rateAmount:'0.00',
-        type:'01'
+        bankName: '',
+        bankNo: '',
+        orderAmount: '',
+        orderId: '',
+        orderState: '',
+        payAmount: '',
+        rate:'',
+        rateAmount:'',
+        type:''
     },
 
 
@@ -65,6 +66,27 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                that.setData({
+
+                    bankName: res.data.data.bankName,
+
+                    bankNo: res.data.data.bankNo,
+
+                    orderAmount: res.data.data.orderAmount,
+
+                    orderState: res.data.data.orderState,
+
+                    orderId: res.data.data.orderId,
+
+                    payAmount: res.data.data.payAmount,
+
+                    rate:res.data.data.rate,
+
+                    rateAmount:res.data.data.rateAmount,
+
+
+                })
 
 
             },

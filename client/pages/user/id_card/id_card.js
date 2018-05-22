@@ -101,7 +101,7 @@ Page({
                     //跳转身份认证
                     wx.navigateTo({
 
-                        url:''
+                        url:'../'
                     })
 
 

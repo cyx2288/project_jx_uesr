@@ -58,6 +58,7 @@ Page({
 
             },
 
+
             success: function (res) {
 
                 console.log(res.data);
@@ -68,7 +69,7 @@ Page({
 
                 that.setData({
 
-                    mobile:res.data.data.mobile,
+                    mobile:res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
 
                     isVerify:res.data.data.isVerify,
 

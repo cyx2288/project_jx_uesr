@@ -11,6 +11,7 @@ Page({
 
     data: {
 
+
         bizId: '',//订单id
 
         bankCardId: '',//银行卡id
@@ -293,6 +294,12 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
+        //缓存账户余额
+        var _wages = wx.getStorageSync('wages');
+
+        console.log(_wages);
+
+
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
@@ -302,7 +309,7 @@ Page({
 
         console.log(wx.getStorageSync('bankCardId'))*/
 
-
+        //时候有值输入
         if(!that.data.inputBalance){
 
             wx.showToast({
@@ -310,6 +317,81 @@ Page({
                 icon: 'none',
                 duration: 1000
             })
+
+        }
+
+        //小于最小额度
+        else if(parseInt(that.data.inputBalance)<parseInt(that.data.amountMin)){
+
+            wx.showToast({
+                title: '单笔提现金额须大于'+that.data.amountMin+'元',
+                icon: 'none',
+                duration: 1000
+            })
+
+
+
+        }
+        //大于最大额度
+        else if(parseInt(that.data.inputBalance)>parseInt(that.data.amountMax)){
+
+            console.log(parseInt(that.data.inputBalance)+'>'+parseInt(that.data.amountMax));
+
+            wx.showToast({
+                title: '单笔提现金额须小于'+that.data.amountMax+'元',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxCount)){
+
+            wx.showToast({
+                title: '提现金额超出当日最大限额',
+                icon: 'none',
+                duration: 1000
+            })
+
+
+        }
+
+        else if(parseInt(that.data.inputBalance)>parseInt(that.data.monthMaxAmount)){
+
+            wx.showToast({
+                title: '提现金额超出当月最大限额',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if(parseInt(that.data.inputBalance)>parseInt(_wages)){
+
+            wx.showToast({
+                title: '账户余额不足',
+                icon: 'none',
+                duration: 1000
+            })
+        }
+
+        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+
+            wx.showToast({
+                title: '账户余额不足',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+
+                wx.showToast({
+                    title: '当月金额超限',
+                    icon: 'none',
+                    duration: 1000
+                })
 
         }
 
