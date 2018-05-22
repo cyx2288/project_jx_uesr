@@ -1,5 +1,9 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 
+    <view class="weui-media-box__hd ">
+        <image src="../../../static/icon/wages/jx_logo_orange.png" class="jx_cash"/>
+    </view>
+
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
@@ -19,7 +23,7 @@
                 <view class="weui-label">密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" password='true' value="{{password}}" bindinput="passwordFn" placeholder="请输入密码"/>
+                <input class="weui-input" password='true' value="{{password}}" bindinput="passwordFn" placeholder="请输入登录密码"/>
             </view>
         </view>
 
@@ -27,8 +31,16 @@
 
 
     <view class="page__bd page__bd_spacing">
-        <button class="weui-btn" type="primary" bindtap="signin">登录</button>
+        <button class="weui-btn" type="primary" bindtap="signin">登  录</button>
     </view>
 
+
+    <view class="weui-help">
+
+        <navigator  url="../forget_password/forget_password" class="weui-media-box__title">忘记密码？</navigator>
+
+        <navigator  url="../register/register"  class="weui-media-box__title">免费注册</navigator>
+
+    </view>
 
 </view>

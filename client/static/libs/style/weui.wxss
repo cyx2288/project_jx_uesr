@@ -25,18 +25,19 @@ icon {
     border-top: 1 rpx solid #d9d9d9
 }
 
-.weui-cells:after, .weui-cells:before {
+/*.weui-cells:after, .weui-cells:before {
     content: " ";
     position: absolute;
     left: 0;
     right: 0;
     height: 1px;
-    color: #d9d9d9
-}
+    color: #ddd;
+
+}*/
 
 .weui-cells:after {
     bottom: 0;
-    border-bottom: 1 rpx solid #d9d9d9;
+    border-bottom: 1rpx solid #d9d9d9;
 }
 
 .weui-cells__title {
@@ -45,7 +46,7 @@ icon {
     padding-left: 15px;
     padding-right: 15px;
     color: #999;
-    font-size: 14px
+    font-size: 13px
 }
 
 .weui-cells_after-title {
@@ -100,7 +101,8 @@ icon {
 .weui-cell__bd {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
-    flex: 1
+    flex: 1;
+    color: #4a4a4a;
 }
 
 .weui-cell__ft {
@@ -183,7 +185,9 @@ icon {
 .weui-label {
     width: 105px;
     word-wrap: break-word;
-    word-break: break-all
+    word-break: break-all;
+    color: #4a4a4a;
+
 }
 
 .weui-input {
@@ -416,8 +420,8 @@ icon {
     padding: 0 .6em 0 .7em;
     border-left: 1px solid #e5e5e5;
     line-height: 2.58823529em;
-    font-size: 17px;
-    color: #3cc51f;
+    font-size: 14px;
+    color: #E87B17;
     white-space: nowrap
 }
 
@@ -642,7 +646,7 @@ icon {
 }
 
 .weui-btn-area {
-    margin: 1.17647059em 15px .3em
+    margin: 30px 15px .3em
 }
 
 .weui-agree {

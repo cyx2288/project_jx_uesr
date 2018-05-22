@@ -70,7 +70,7 @@
 
 
     <!--button-->
-    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing">
 
         <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
 
