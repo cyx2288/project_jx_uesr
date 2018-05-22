@@ -15,9 +15,9 @@ Page({
 
     data: {
 
-        msgMode: true,
+        msgMode: false,
 
-        pwdMode: true,
+        pwdMode: false,
 
     },
 
@@ -361,24 +361,24 @@ Page({
 
                             msgMode: 0,
 
-                            pwdMode: 1,
+                            pwdMode: 1
 
                         }),
 
                         success: function (res) {
 
-                            console.log(res)
+                            console.log(res);
 
                             if (res.data.code == '0000') {
 
-                                console.log(res.data.msg)
+                                console.log(res.data.msg);
 
                                 /*提示信息*/
                                 wx.showToast({
                                     title: res.data.msg,
                                     icon: 'none',
                                     duration: 2000
-                                })
+                                });
 
                                 /*按钮变为正常*/
                                 that.setData({
@@ -406,7 +406,39 @@ Page({
                //
                      console.log('没设置过')
                //
-                     wx.redirectTo({url: '../code/code'})
+
+                    wx.showModal({
+
+                        title: '提示',
+
+                        content: '请先设置支付验证码',
+
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                console.log('用户点击确定')
+
+                                wx.redirectTo({url: '../code/code'})
+                                
+                            } else if (res.cancel) {
+
+                                console.log('用户点击取消');
+
+                                that.setData({
+
+                                    pwdMode: false
+
+                                });
+
+                            }
+
+                        }
+
+                    })
+
+
+
                //
                }
 
