@@ -1,7 +1,6 @@
 @import "../../wages/index/index.wxss";
 @import "../mine/mine.wxss";
 
-
 page {
     background-color: #ebebeb;
     width: 100%;
@@ -9,80 +8,121 @@ page {
     color: #4a4a4a;
 }
 
+.weui-panel {
 
-    .weui-panel{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    margin-bottom: 15px;
+}
 
-        display: flex;
-        justify-content: space-between;
-        padding: 25px;
-        margin-bottom: 15px;
-    }
+.weui-loadmore__tips {
+    text-align: center;
+    color: #fff;
+}
 
-     .weui-loadmore{
+.title {
+    width: 30%;
+}
 
-       background-color: #E87B17;
-       width: 22px;
-       height: 22px;
-       border-radius: 50%;
-       margin: 5px auto;
-         }
+.step {
 
-     .weui-loadmore__tips{
-          text-align: center;
-          color: #fff;
-     }
+    position: relative;
+}
 
-     .title{
-         width: 30%;
-     }
+.step > .weui-loadmore {
+    border: 1px solid #E87B17;
+    background-color: #E87B17;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin: 5px auto;
+}
 
-     .status{
-         font-size: 14px;
-     }
+.step > .status {
+    color: #E87B17;
+}
 
-     .choose{
+.step > .border {
+    position:absolute;
+    width:100px;
+    top:25%;
+    left:60%;
+    border-bottom:1px solid #E87B17;
 
-         border: 1px solid #E87B17;
-         background-color: #fff;
-         width: 22px;
-         height: 22px;
-         border-radius: 50%;
-         margin: 5px auto;
 
-     }
+}
 
-     .choose_text{
-         color: #E87B17;
-     }
+.step.selected ~ .step> .weui-loadmore {
 
-     .cash_step{
-         background-color: #fff;
-     }
+    border: 1px solid #ddd;
+    background-color: #ddd;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin: 5px auto;
 
-     .wages_middle{
-        margin-bottom: 15px;
-     }
-     .weui-media-box{
-         padding: 6px 15px 0 15px;
-     }
+}
 
-     .prompt{
-         color: #E87B17;
-         margin: 0 auto;
-         text-align: center;
-     }
+.step.selected ~ .step > .status {
+    font-size: 14px;
+    color: #ddd;
+}
 
-     .weui-confirm{
-         font-size:14px;
+.step.selected ~ .step > .border {
+    position: absolute;
+    width:100px;
+    top:25%;
+    left:60%;
+    border-bottom: 1px solid #ddd;
 
-     }
+}
 
-     .payroll_prompt{
-         color: #E87B17;
-         font-size:14px;
-     }
 
-     .wages_middle{
-         margin: 5 auto;
-         text-align: center;
-     }
+.cash_step {
+    background-color: #fff;
+}
+
+.wages_middle {
+    margin-bottom: 15px;
+}
+
+.weui-media-box {
+    padding: 6px 15px 0 15px;
+}
+
+.prompt {
+    color: #E87B17;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.weui-confirm {
+    font-size: 14px;
+
+}
+
+.payroll_prompt {
+    color: #E87B17;
+    font-size: 14px;
+}
+
+.wages_middle {
+    margin: 5px auto;
+    text-align: center;
+}
+
+.weui-btn-area.hide{
+
+    display: none;
+}
+
+.weui-btn-area.hide{
+
+    display: none;
+}
+.weui-btn-area.show_btn{
+
+    display: block;
+}

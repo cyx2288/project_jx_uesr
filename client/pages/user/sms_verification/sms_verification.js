@@ -8,7 +8,7 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const withdrawmsgUrl = '/jx/action/withdrawmsg';//提现发送短信认证
 
-const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
+const cashUrl = '/user/withdraw/dowithdraw';// 用户发起提现操作
 
 
 
@@ -47,7 +47,7 @@ Page({
 
         that.setData({
 
-            mobile:_mobile,
+            mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
 
         });
 
@@ -189,9 +189,6 @@ Page({
 
             data: {
 
-
-                bizId: that.data.bizId,//订单id
-
                 bankCardId: _bankCardId,//银行卡id
 
                 balance: _balance,//提取现金
@@ -212,6 +209,8 @@ Page({
 
                 console.log(res.data);
 
+                wx.setStorageSync('orderId',res.data.data);
+
                 if (res.data.code == '0000') {
 
                     wx.showToast({
@@ -222,7 +221,7 @@ Page({
 
                     })
 
-                    wx.navigateTo({
+                    wx.redirectTo({
 
                         url: '../pay_success/pay_success'
                     })
@@ -266,8 +265,6 @@ Page({
 
         })
 
-        console.log(that.data.code)
-        
     }
 
 

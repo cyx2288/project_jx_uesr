@@ -53,7 +53,9 @@ Page({
 
         dataText: true,//true为隐藏 false为显示
 
-        hasCompany: false,
+        hasCompany: false,//有没有企业
+
+        lookWages:true,//看不看余额
 
 
     },
@@ -862,14 +864,15 @@ Page({
         }
     },
 
-    onReady: function () {
-        // 页面渲染完成
+    //点击看不看金额
+    lookWagesFn: function () {
+
+        var that = this;
+
+        that.setData({
+            lookWages: !that.data.lookWages
+        })
+
     },
 
-    onHide: function () {
-        // 页面隐藏
-    },
-    onUnload: function () {
-        // 页面关闭
-    }
 });

@@ -24,7 +24,7 @@ Page({
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var thisWorkUnitUrl = app.globalData.URL + workUnitUrl;
 

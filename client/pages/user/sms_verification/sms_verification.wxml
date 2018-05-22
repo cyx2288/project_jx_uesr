@@ -4,7 +4,7 @@
             <view class="weui-label">短信验证码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入短信验证码" value="{{code}}" bindchange="codeFn" bindconfirm="codeUrlFn"/>
+            <input class="weui-input" type="number" placeholder="请输入短信验证码" maxlength="6" value="{{code}}" bindchange="codeFn"/>
         </view>
     </view>
 
@@ -13,5 +13,7 @@
 <view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可重新获取</view>
 
 <view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button type="primary"  disabled="{{disabled}}" bindtap="buttonCheck">确认</button>
+
+    <button type="primary"  bindtap="buttonCheck">确认</button>
+
 </view>

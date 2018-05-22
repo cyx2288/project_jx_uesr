@@ -1,19 +1,24 @@
 <!--工资-->
 
-<!--<veiw>必须加入企业才可查看工资条，可在“我的工作单位”中继续加入</veiw>-->
 
 <view class="jx_asset">
 
     <text class="asset_money">总资产（元）</text>
 
-    <!--金额显示-->
-    <text class="money_number">{{wages}}</text>
+    <view wx:if="{{lookWages}}">
 
-    <view class="see_number"><image src="../../../static/icon/wages/jx_open.png" class="jx_open"/></view>
+        <!--金额显示-->
+        <text class="money_number">{{wages}}</text>
 
+        <view class="see_number" bindtap="lookWagesFn"><image src="../../../static/icon/wages/jx_open.png" class="jx_open"/></view>
+    </view>
+
+    <view wx:else>
     <!--金额隐藏-->
-    <!--<text class="money_number">******</text>
-    <image src="../../../static/icon/wages/jx_close.png"  class="jx_open" />-->
+    <text class="money_number">******</text>
+        <view class="see_number" bindtap="lookWagesFn"><image src="../../../static/icon/wages/jx_close.png"  class="jx_open" /></view>
+
+    </view>
 
 
 </view>
