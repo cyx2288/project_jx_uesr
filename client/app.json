@@ -1,19 +1,72 @@
 {
   "pages":[
 
-    "pages/user/cash/cash",
+    "pages/wages/index/index",
+
+    "pages/user/bill/bill",
 
     "pages/common/signin/signin",
 
+    "pages/common/forget_password/forget_password",
+
+    "pages/user/mine/mine",
+
+    "pages/user/give_details/give_details",
+
+    "pages/user/pay_success/pay_success",
+
+    "pages/user/cash/cash",
+
+    "pages/common/revise_login/revise_login",
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "pages/user/modify_paycode/modify_code",
+
+
+
+
+
+
+
+    "pages/user/id_card/id_card",
+
+
+
+
+    "pages/user/set_payment_psw/set_payment_psw",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "pages/user/pws_verification/pws_verification",
 
 
     "pages/user/sms_verification/sms_verification",
 
     "pages/user/card/card",
-
-    "pages/user/mine/mine",
 
     "pages/user/payment_setting_message/payment_setting_message",
 
@@ -21,23 +74,13 @@
     
     "pages/user/code/code",
 
-    "pages/user/id_card/id_card",
-
     "pages/common/register/register",
-
-
-
-
 
     "pages/user/payment_setting/payment_setting",
 
     "pages/common/find_password/find_password",
 
     "pages/common/revise_password/revise_password",
-
-    "pages/user/give_details/give_details",
-
-    "pages/user/bill/bill",
 
 
 
@@ -57,7 +100,7 @@
 
     "pages/user/personal/personal",
 
-    "pages/wages/index/index",
+
 
     "pages/user/certification/certification",
 

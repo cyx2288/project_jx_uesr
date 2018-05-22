@@ -47,9 +47,7 @@ data:{
 
                  mobile:this.data.mobile,
 
-                 password:this.data.password,
-
-                 //password:md5.hexMD5(this.data.password),
+                 password:md5.hexMD5(this.data.password),
 
              }),
 
@@ -96,11 +94,12 @@ data:{
 
                      wx.setStorageSync('isVerify',res.data.data.isVerify);
 
-                     console.log('用户姓名:'+ wx.getStorageSync('userName'));
+                     console.log('用户姓名：'+ wx.getStorageSync('userName'));
 
-                     console.log('用户身份证:'+ wx.getStorageSync('idNumber'));
+                     console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
-                     console.log('是否已注册:'+ wx.getStorageSync('isVerify'));
+                     console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+
 
 
 

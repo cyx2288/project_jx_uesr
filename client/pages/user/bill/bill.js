@@ -16,6 +16,14 @@ Page({
 
         orderId:'',
 
+        pageNum: 1,//初始值为2
+
+        pageSize: 10,//一页的数量
+
+        hasMoreData: true,//是否可以加载更多
+
+        noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
     },
 
     onLoad:function () {

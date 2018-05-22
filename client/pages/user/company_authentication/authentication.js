@@ -103,7 +103,7 @@ Page({
 
                     //关闭当前页面
 
-                    wx.navigateBack({
+                    wx.reLaunch({
                         delta: 1
 
                     })

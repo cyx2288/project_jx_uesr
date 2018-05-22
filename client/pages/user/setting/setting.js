@@ -10,7 +10,7 @@ Page({
         
     },
     
-    onLoad:function () {
+    onShow:function () {
 
         var that = this;
 

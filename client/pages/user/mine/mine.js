@@ -67,9 +67,12 @@ Page({
 
                 console.log(res.data);
 
+                var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7)
+
                 //存储手机号码
                that.setData({
-                    mobile:res.data.data.mobile
+
+                    mobile:_mobile
                 });
 
                 //存储余额

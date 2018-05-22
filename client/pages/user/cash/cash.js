@@ -11,6 +11,7 @@ Page({
 
     data: {
 
+
         bizId: '',//订单id
 
         bankCardId: '',//银行卡id
@@ -43,7 +44,6 @@ Page({
 
         rate: '',//费率
 
-        isSecurity:'',//是否开启
 
     },
 
@@ -62,14 +62,7 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
-        var _isSecurity = wx.getStorageSync('isSecurity');
 
-
-        that.setData({
-
-            isSecurity:_isSecurity
-
-        });
 
 
 
@@ -293,16 +286,24 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
+        //缓存账户余额
+        var _wages = wx.getStorageSync('wages');
+
+        //console.log(_wages);
+
+
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
+        var _isSecurity = wx.getStorageSync('isSecurity');
+
 /*        console.log(wx.getStorageSync('balance'));
 
         console.log(wx.getStorageSync('bankCardId'))*/
 
-
+        //时候有值输入
         if(!that.data.inputBalance){
 
             wx.showToast({
@@ -310,6 +311,81 @@ Page({
                 icon: 'none',
                 duration: 1000
             })
+
+        }
+
+        //小于最小额度
+        else if(parseInt(that.data.inputBalance)<parseInt(that.data.amountMin)){
+
+            wx.showToast({
+                title: '单笔提现金额须大于'+that.data.amountMin+'元',
+                icon: 'none',
+                duration: 1000
+            })
+
+
+
+        }
+        //大于最大额度
+        else if(parseInt(that.data.inputBalance)>parseInt(that.data.amountMax)){
+
+            console.log(parseInt(that.data.inputBalance)+'>'+parseInt(that.data.amountMax));
+
+            wx.showToast({
+                title: '单笔提现金额须小于'+that.data.amountMax+'元',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxCount)){
+
+            wx.showToast({
+                title: '提现金额超出当日最大限额',
+                icon: 'none',
+                duration: 1000
+            })
+
+
+        }
+
+        else if(parseInt(that.data.inputBalance)>parseInt(that.data.monthMaxAmount)){
+
+            wx.showToast({
+                title: '提现金额超出当月最大限额',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if(parseInt(that.data.inputBalance)>parseInt(_wages)){
+
+            wx.showToast({
+                title: '账户余额不足',
+                icon: 'none',
+                duration: 1000
+            })
+        }
+
+        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+
+            wx.showToast({
+                title: '账户余额不足',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+
+                wx.showToast({
+                    title: '当月金额超限',
+                    icon: 'none',
+                    duration: 1000
+                })
 
         }
 
@@ -325,7 +401,7 @@ Page({
 
                     if (res.confirm) {
 
-                        if(that.data.isSecurity=='1'){
+                        if(_isSecurity=='1'){
 
                             console.log('开启短信验证');
 
@@ -338,7 +414,7 @@ Page({
 
                         }
 
-                        else if(that.data.isSecurity=='2'){
+                        else if(_isSecurity=='2'){
 
                             console.log('开启支付密码');
 
@@ -350,7 +426,7 @@ Page({
 
                         }
 
-                        else if(that.data.isSecurity=='3'){
+                        else if(_isSecurity=='3'){
 
                             console.log('啥都没开启');
 
@@ -412,11 +488,20 @@ Page({
 
                     if (res.data.code == '0000') {
 
-                        wx.navigateTo({
+                        redirectTo({
 
                             url: '../pay_success/pay_success'
                         })
 
+                    }
+
+                    else {
+
+
+                        wx.redirectTo({
+
+                            url: '../pay_fail/pay_fail'
+                        })
                     }
 
                 },

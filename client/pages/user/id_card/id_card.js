@@ -17,7 +17,6 @@ Page({
 
         idNumber:'',
 
-        tokenMsg:''
 
     },
 
@@ -88,6 +87,10 @@ Page({
 
                 console.log(res.data);
 
+                 wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
+
+                console.log('身份证：'+wx.getStorageSync('tokenMsg'))
+
                 if(res.data.code=='0000'){
 
                     wx.showToast({
@@ -101,7 +104,7 @@ Page({
                     //跳转身份认证
                     wx.navigateTo({
 
-                        url:''
+                        url:'../set_payment_psw/set_payment_psw'
                     })
 
 

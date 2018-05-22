@@ -4,9 +4,7 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const md5 = require('../../../static/libs/script/md5.js');//md5加密
 
-const registerUrl = '/jx/action/register';//注册的url地址
 
-const registmsg = '/jx/action/registmsg';//发送短信验证码
 
 Page({
 
@@ -17,6 +15,7 @@ Page({
         checkCode: '',//验证码
 
         password: '',//密码
+
 
         time: '获取验证码', //倒计时
 
@@ -30,7 +29,7 @@ Page({
 
     registmsg: function () {
 
-        var url = app.globalData.URL + registmsg;
+
 
         var that = this;
 
@@ -43,8 +42,7 @@ Page({
             });
 
         /**
-         * 接口：注册发送短信认证
-         * 请求方式：/jx/action/register
+
          * 接口：GET
          * 入参：mobile
          **/
@@ -66,7 +64,6 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.header.jxsid)
 
                 //存储数据
                 var jx_sid = res.header.jxsid;//jx_sid数据
@@ -113,25 +110,13 @@ Page({
 
         var that = this;
 
-        var url = app.globalData.URL + registerUrl;
+
 
         var jx_sid = wx.getStorageSync('jxsid');
 
         var a = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
-
-/*
-        console.log(json2FormFn.json2Form({
-
-            mobile: that.data.mobile,
-
-            password: md5.hexMD5(that.data.password),//md5加密
-
-            code: that.data.checkCode
-
-        }));
-*/
 
 
         //校验密码
@@ -178,6 +163,7 @@ Page({
 
                     password: md5.hexMD5(
                         that.data.password
+
                     )
                     ,//md5加密
                     code: that.data.checkCode
@@ -197,7 +183,6 @@ Page({
 
 
 
-
                     if(res.data.code=='-1'){
 
                             wx.showToast({
@@ -213,7 +198,7 @@ Page({
 
                         wx.showToast({
 
-                            title:'注册成功',
+
                             icon: 'success'
 
                         });
