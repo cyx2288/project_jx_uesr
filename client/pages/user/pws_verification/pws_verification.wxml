@@ -4,7 +4,7 @@
             <view class="weui-label">支付密码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入支付密码" value="{{payPassword}}" bindchange="payPasswordFn"/>
+            <input class="weui-input" type="number" password="true" placeholder="请输入支付密码" value="{{payPassword}}" bindinput="payPasswordFn"/>
         </view>
     </view>
 
@@ -13,5 +13,5 @@
 <navigator url="../code/code" class="weui-cells__title" style="text-align: right">忘记密码？</navigator>
 
 <view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button type="primary"  disabled="{{disabled}}" bindtap="clickCash">确认</button>
+    <button type="primary" bindtap="clickCash">确认</button>
 </view>

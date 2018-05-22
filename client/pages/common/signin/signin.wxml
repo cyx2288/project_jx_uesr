@@ -30,5 +30,10 @@
         <button class="weui-btn" type="primary" bindtap="signin">登录</button>
     </view>
 
+        <view class="weui-cell">
+            <navigator url="" class="weui-cell__bd">忘记密码？</navigator>
+            <navigator url="../register/register" class="weui-cell__ft">免费注册</navigator>
+        </view>
+
 
 </view>

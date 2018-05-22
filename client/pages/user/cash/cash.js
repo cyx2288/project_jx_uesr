@@ -44,7 +44,6 @@ Page({
 
         rate: '',//费率
 
-        isSecurity:'',//是否开启
 
     },
 
@@ -63,14 +62,7 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
-        var _isSecurity = wx.getStorageSync('isSecurity');
 
-
-        that.setData({
-
-            isSecurity:_isSecurity
-
-        });
 
 
 
@@ -297,13 +289,15 @@ Page({
         //缓存账户余额
         var _wages = wx.getStorageSync('wages');
 
-        console.log(_wages);
+        //console.log(_wages);
 
 
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
+
+        var _isSecurity = wx.getStorageSync('isSecurity');
 
 /*        console.log(wx.getStorageSync('balance'));
 
@@ -407,7 +401,7 @@ Page({
 
                     if (res.confirm) {
 
-                        if(that.data.isSecurity=='1'){
+                        if(_isSecurity=='1'){
 
                             console.log('开启短信验证');
 
@@ -420,7 +414,7 @@ Page({
 
                         }
 
-                        else if(that.data.isSecurity=='2'){
+                        else if(_isSecurity=='2'){
 
                             console.log('开启支付密码');
 
@@ -432,7 +426,7 @@ Page({
 
                         }
 
-                        else if(that.data.isSecurity=='3'){
+                        else if(_isSecurity=='3'){
 
                             console.log('啥都没开启');
 
@@ -494,11 +488,20 @@ Page({
 
                     if (res.data.code == '0000') {
 
-                        wx.navigateTo({
+                        redirectTo({
 
                             url: '../pay_success/pay_success'
                         })
 
+                    }
+
+                    else {
+
+
+                        wx.redirectTo({
+
+                            url: '../pay_fail/pay_fail'
+                        })
                     }
 
                 },

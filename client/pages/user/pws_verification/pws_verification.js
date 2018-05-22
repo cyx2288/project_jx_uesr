@@ -35,8 +35,6 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-
-
         var _balance = wx.getStorageSync('balance');
 
         var _bankCardId = wx.getStorageSync('bankCardId');
@@ -58,8 +56,6 @@ Page({
             data: {
 
 
-                bizId: that.data.bizId,//订单id
-
                 bankCardId: _bankCardId,//银行卡id
 
                 balance: _balance,//提取现金
@@ -80,6 +76,8 @@ Page({
 
                 console.log(res.data);
 
+                wx.setStorageSync('orderId',res.data.data);
+
                 if (res.data.code == '0000') {
 
                     wx.showToast({
@@ -90,7 +88,7 @@ Page({
 
                     })
 
-                    wx.navigateTo({
+                    wx.redirectTo({
 
                         url: '../pay_success/pay_success'
                     })
@@ -130,7 +128,7 @@ Page({
 
         that.setData({
 
-            payPassword:e.detail.payPassword,
+            payPassword:e.detail.value,
 
         })
 

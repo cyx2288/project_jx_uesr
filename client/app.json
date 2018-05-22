@@ -1,19 +1,59 @@
 {
   "pages":[
+
+    "pages/wages/index/index",
+
+    "pages/user/bill/bill",
+
+    "pages/common/signin/signin",
+
+    "pages/common/forget_password/forget_password",
+
+    "pages/user/mine/mine",
+
     "pages/user/give_details/give_details",
+
+    "pages/user/pay_success/pay_success",
+
+    "pages/user/cash/cash",
+
+    "pages/common/revise_login/revise_login",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "pages/user/modify_paycode/modify_code",
+
+
+
+
+
+
+
+    "pages/user/id_card/id_card",
+
+
 
 
     "pages/user/set_payment_psw/set_payment_psw",
 
-    "pages/user/id_card/id_card",
 
-    "pages/wages/index/index",
 
-    "pages/common/signin/signin",
 
-    "pages/user/cash/cash",
 
-    "pages/user/mine/mine",
+
+
 
 
 
@@ -44,7 +84,7 @@
 
 
 
-    "pages/user/bill/bill",
+
 
     "pages/user/reset_payment/reset_payment",
 
