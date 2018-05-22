@@ -7,7 +7,7 @@
 
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
-                    <view class="weui-cell__bd">*姓名</view>
+                    <view class="weui-cell__bd">* 姓名</view>
                     <view class="weui-cell__ft">{{userName}}</view>
                 </view>
             </view>
@@ -17,17 +17,17 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">*银行卡号</view>
+                    <view class="weui-label">* 银行卡号</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入卡号" value="{{bankNo}}" maxlength="18" bindinput="bankNoFn" bindblur="getBankNoFn"/>
+                    <input class="weui-input" placeholder="请输入银行卡号" value="{{bankNo}}" maxlength="18" bindinput="bankNoFn" bindblur="getBankNoFn"/>
                 </view>
             </view>
 
 
             <view class="weui-cell weui-cell_select">
                 <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">*所属银行</view>
+                    <view class="weui-label">* 所属银行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
@@ -83,7 +83,6 @@
         <button class="weui-btn" type="primary" bindtap="addBankFn">确认添加</button>
 
     </view>
-
 
 
 

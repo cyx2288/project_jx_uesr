@@ -16,7 +16,7 @@
 
 .register_text_code{
 
-    color: #0bb20c;
+    color: #E87B17;
 
 }
 
@@ -24,4 +24,13 @@
 
     opacity: .6;
 
+}
+
+.weui-btn{
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 14px;
+}
+
+.page__bd{
+    margin-top: 30px;
 }
