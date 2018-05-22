@@ -51,6 +51,8 @@ Page({
 
         });
 
+        console.log(_mobile)
+
         settime(that);
 
         function settime(that) {

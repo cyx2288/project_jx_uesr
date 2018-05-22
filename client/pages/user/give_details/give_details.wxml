@@ -1,3 +1,4 @@
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
  <!--提现详情-->
 
  <view class="wages_middle">
@@ -27,16 +28,16 @@
 
 
          <view class="step">
-             <view class="weui-loadmore">
+             <view class="weui-loadmore" >
                  <view class="weui-loadmore__tips">2</view>
              </view>
-             <text class="status">银行处理中</text>
+             <text  class="status">银行处理中</text>
          </view>
 
 
          <view class="step">
-             <view class="weui-loadmore choose">
-                 <view class="weui-loadmore__tips choose_text">3</view>
+             <view class="weui-loadmore">
+                 <view class="weui-loadmore__tips">3</view>
              </view>
              <text class="status">已退款</text>
              <text class="status">到账成功</text>
@@ -86,7 +87,7 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">手续费</view>
-                     <view class="weui_confirm">￥{{rate}}</view>
+                     <view class="weui_confirm">￥{{rateAmount}}</view>
                  </view>
 
              </view>
@@ -119,7 +120,7 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
-                     <view class="weui_confirm">{{}}</view>
+                     <view class="weui_confirm">{{filter.formatTime(createTime,'-')}}</view>
                  </view>
 
              </view>

@@ -2,248 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d4963c0-58b8-469b-9792-ef678d96ee69" name="默认的" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/actionsheet/actionsheet.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/article/article.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/badge/badge.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/badge/badge.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/button/button.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/dialog/dialog.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/flex/flex.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/footer/footer.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/gallery/gallery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/gallery/gallery.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/grid/grid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/grid/grid.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/icons/icons.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/base64.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_footer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_footer_link.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_intro.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_feedback.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_form.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_nav.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_special.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_widget.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_nav_z-index.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/icon_tabbar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/pic_160.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/pic_article.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/vcode.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/index.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/input/input.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/input/input.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/list/list.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/list/list.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/loadmore/loadmore.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_fail.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/msg/msg_success.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/navbar/navbar.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/panel/panel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/panel/panel.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/picker/picker.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/preview/preview.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/progress/progress.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/searchbar/searchbar.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/slider/slider.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/tabbar/tabbar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/tabbar/tabbar.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/toast/toast.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/uploader/uploader.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/uploader/uploader.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/authentication/authentication.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/find_password/find_password.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/input_password/input_password.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/register/register.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_login/revise_login.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/revise_password/revise_password.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/common/signin/signin.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/add_card/add_card.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/balance/balance.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/bill/bill.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/card/card.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/cash/cash.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/certification/certification.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/code/code.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company/company.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/company_authentication/authentication.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/details/details.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/give_details/give_details.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/help_service/help_service.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/mine/mine.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/pay_success/pay_success.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/personal/personal.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/problem_details/problem_details.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/question/question.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/record/record.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/user/setting/setting.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/empty/empty.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/index/index.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.wxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/wages/payroll/payroll.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_mine_grey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_mine_orange.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_wages_grey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/index_tab/jx_wages_orange.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/logo/jx_logo_orange.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/bank.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_ask.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_cash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_company.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_online.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_open.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_payment.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_record.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_suggest.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/jx_tel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/icon/wages/reset_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/header.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/json2Form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/script/md5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/style/weui.wxss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/libs/wxs/dateFr.wxs" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app.json" afterPath="$PROJECT_DIR$/client/app.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/signin/signin.js" afterPath="$PROJECT_DIR$/client/pages/common/signin/signin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/cash/cash.js" afterPath="$PROJECT_DIR$/client/pages/user/cash/cash.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/code/code.wxml" afterPath="$PROJECT_DIR$/client/pages/user/code/code.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/give_details/give_details.js" afterPath="$PROJECT_DIR$/client/pages/user/give_details/give_details.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml" afterPath="$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/id_card/id_card.js" afterPath="$PROJECT_DIR$/client/pages/user/id_card/id_card.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/id_card/id_card.wxml" afterPath="$PROJECT_DIR$/client/pages/user/id_card/id_card.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/mine/mine.js" afterPath="$PROJECT_DIR$/client/pages/user/mine/mine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/payment_setting/payment_setting.js" afterPath="$PROJECT_DIR$/client/pages/user/payment_setting/payment_setting.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.js" afterPath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.json" afterPath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.wxml" afterPath="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/personal/personal.js" afterPath="$PROJECT_DIR$/client/pages/user/personal/personal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js" afterPath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.json" afterPath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.wxml" afterPath="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.js" afterPath="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.wxml" afterPath="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js" afterPath="$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -260,25 +39,111 @@
     <favorites_list name="project_jx_uesr" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46095493">
+    <splitter split-orientation="horizontal" split-proportion="0.5273053">
       <split-first>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="cash.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-9209">
-                  <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+                <state relative-caret-position="651">
+                  <caret line="426" column="43" lean-forward="true" selection-start-line="426" selection-start-column="43" selection-end-line="426" selection-end-column="43" />
+                  <folding>
+                    <element signature="e#814#4469#0" expanded="false" />
+                    <element signature="e#1340#1389#0" expanded="false" />
+                    <element signature="e#1442#1981#0" expanded="false" />
+                    <element signature="e#2054#2581#0" expanded="false" />
+                    <element signature="e#2592#2712#0" expanded="false" />
+                    <element signature="e#3729#3924#0" expanded="false" />
+                    <element signature="e#4516#4889#0" expanded="false" />
+                    <element signature="e#4930#5047#0" expanded="false" />
+                    <element signature="e#10072#10440#0" expanded="false" />
+                    <element signature="e#10467#11060#0" expanded="false" />
+                    <element signature="e#11094#11247#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="find_password.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/find_password/find_password.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="874">
+                  <caret line="94" column="15" lean-forward="true" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="code.wxml" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.wxml">
+          <file leaf-file-name="find_password.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/find_password/find_password.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="299">
-                  <caret line="12" column="77" lean-forward="true" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="give_details.wxml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="966">
+                  <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="bill.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/bill/bill.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="460">
+                  <caret line="19" column="89" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="89" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pws_verification.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-101">
+                  <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#959#2097#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="give_details.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="437">
+                  <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="signin.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/signin/signin.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="83">
+                  <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sms_verification.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1127">
+                  <caret line="112" column="38" lean-forward="true" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#939#1317#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -286,34 +151,92 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="app.json" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/app.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                <state relative-caret-position="23">
+                  <caret line="2" column="43" lean-forward="false" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="code.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.js">
+          <file leaf-file-name="set_payment_psw.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="920">
-                  <caret line="206" column="47" lean-forward="true" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
-                  <folding>
-                    <element signature="e#535#2352#0" expanded="false" />
-                  </folding>
+                <state relative-caret-position="0">
+                  <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
+          <file leaf-file-name="payment_setting.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/payment_setting/payment_setting.wxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="506">
-                  <caret line="259" column="44" lean-forward="false" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="44" />
+                <state relative-caret-position="46">
+                  <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="input_password.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/input_password/input_password.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="modify_code.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/modify_paycode/modify_code.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="set_payment_psw.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="575">
+                  <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="input.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/example/input/input.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="184">
+                  <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="52" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="set_payment_psw.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="revise_password.wxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -336,8 +259,6 @@
       <find>post</find>
       <find>wx.ge</find>
       <find>st</find>
-      <find>set</find>
-      <find>wages</find>
       <find>get</find>
       <find>entID</find>
       <find>data</find>
@@ -357,6 +278,9 @@
       <find>sid</find>
       <find>getCode</find>
       <find>jx</find>
+      <find>console.log</find>
+      <find>wages</find>
+      <find>set</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -365,22 +289,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/libs/script/json2Form.js" />
-        <option value="$PROJECT_DIR$/static/libs/script/utils.js" />
-        <option value="$PROJECT_DIR$/pages/user/record/record.js" />
-        <option value="$PROJECT_DIR$/pages/user/payment_setting/payment_setting.json" />
-        <option value="$PROJECT_DIR$/static/libs/wxs/dateFr.wxs" />
-        <option value="$PROJECT_DIR$/pages/user/add_card/add_card.wxml" />
-        <option value="$PROJECT_DIR$/pages/user/details/details.wxml" />
-        <option value="$PROJECT_DIR$/pages/user/cash/cash.wxss" />
-        <option value="$PROJECT_DIR$/pages/user/card/card.wxss" />
-        <option value="$PROJECT_DIR$/pages/common/code/code.json" />
-        <option value="$PROJECT_DIR$/static/libs/script/countDown.js" />
-        <option value="$PROJECT_DIR$/pages/common/code/code.wxml" />
-        <option value="$PROJECT_DIR$/pages/common/code/code.js" />
-        <option value="$PROJECT_DIR$/pages/common/register/register.wxml" />
-        <option value="$PROJECT_DIR$/pages/common/register/register.wxss" />
-        <option value="$PROJECT_DIR$/pages/user/details/details.json" />
         <option value="$PROJECT_DIR$/pages/user/mine/mine.wxml" />
         <option value="$PROJECT_DIR$/pages/user/give_details/give_details.wxss" />
         <option value="$PROJECT_DIR$/pages/user/bill/bill.wxml" />
@@ -414,8 +322,24 @@
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/pages/common/register/register.js" />
         <option value="$PROJECT_DIR$/project.config.json" />
-        <option value="$PROJECT_DIR$/client/app.json" />
+        <option value="$PROJECT_DIR$/client/pages/user/cash/cash.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.json" />
+        <option value="$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/give_details/give_details.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/common/signin/signin.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/mine/mine.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/personal/personal.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/code/code.wxml" />
         <option value="$PROJECT_DIR$/client/pages/user/code/code.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/id_card/id_card.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/user/id_card/id_card.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.js" />
+        <option value="$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml" />
+        <option value="$PROJECT_DIR$/client/app.json" />
       </list>
     </option>
   </component>
@@ -424,6 +348,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/server/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -449,7 +376,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -581,10 +507,515 @@
               <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="setting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="set_payment_psw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reset_payment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pws_verification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="problem_details" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="payment_setting_code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modify_paycode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="id_card" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="give_details" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="revise_password" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="input_password" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="find_password" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="list" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -596,16 +1027,16 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/wamp/www/GitHub/project_jx_uesr/pages/common/register/register.wxml" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\payment_setting" />
+      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\details" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\add_card" />
       <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\company_authentication" />
       <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user" />
       <recent name="D:\wamp\www\GitHub\project_jx_uesr\static\icon\wages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user" />
-      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\payment_setting" />
-      <recent name="D:\wamp\www\GitHub\project_jx_uesr\pages\user\details" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -720,16 +1151,18 @@
       <workItem from="1526831582953" duration="8766000" />
       <workItem from="1526869063210" duration="18840000" />
       <workItem from="1526894117465" duration="4106000" />
+      <workItem from="1526956490781" duration="16392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398932000" />
+    <option name="totallyTimeSpent" value="415783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11702128" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119779356" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -784,32 +1217,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/user/mine/mine.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/company/company.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/reset_payment/reset_payment.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/common/register/register.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/common/find_password/find_password.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/code/code.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/cash/cash.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/payment_setting/payment_setting.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/user/setting/setting.wxml" />
-    <entry file="file://$PROJECT_DIR$/pages/common/authentication/authentication.js" />
-    <entry file="file://$PROJECT_DIR$/pages/common/revise_password/revise_password.js" />
-    <entry file="file://$PROJECT_DIR$/pages/common/signin/signin.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/add_card/add_card.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/balance/balance.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/bill/bill.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/card/card.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/cash/cash.js" />
-    <entry file="file://$PROJECT_DIR$/pages/common/input_password/input_password.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/code/code.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/company/company.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/company_authentication/authentication.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/details/details.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/give_details/give_details.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/help_service/help_service.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/mine/mine.js" />
-    <entry file="file://$PROJECT_DIR$/pages/user/pay_success/pay_success.js" />
     <entry file="file://$PROJECT_DIR$/pages/user/payment_setting/payment_setting.js" />
     <entry file="file://$PROJECT_DIR$/pages/user/problem_details/problem_details.js" />
     <entry file="file://$PROJECT_DIR$/pages/user/question/question.js" />
@@ -844,14 +1251,173 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9209">
-          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+        <state relative-caret-position="651">
+          <caret line="426" column="43" lean-forward="true" selection-start-line="426" selection-start-column="43" selection-end-line="426" selection-end-column="43" />
+          <folding>
+            <element signature="e#814#4469#0" expanded="false" />
+            <element signature="e#1340#1389#0" expanded="false" />
+            <element signature="e#1442#1981#0" expanded="false" />
+            <element signature="e#2054#2581#0" expanded="false" />
+            <element signature="e#2592#2712#0" expanded="false" />
+            <element signature="e#3729#3924#0" expanded="false" />
+            <element signature="e#4516#4889#0" expanded="false" />
+            <element signature="e#4930#5047#0" expanded="false" />
+            <element signature="e#10072#10440#0" expanded="false" />
+            <element signature="e#10467#11060#0" expanded="false" />
+            <element signature="e#11094#11247#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1127">
+          <caret line="112" column="38" lean-forward="true" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+          <folding>
+            <element signature="e#939#1317#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101">
+          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="e#959#2097#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/mine/mine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="47" column="37" lean-forward="true" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/personal/personal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/signin/signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="421" column="49" lean-forward="true" selection-start-line="421" selection-start-column="49" selection-end-line="421" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/find_password/find_password.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/bill/bill.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="19" column="89" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/mine/mine.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/id_card/id_card.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/modify_paycode/modify_code.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -864,37 +1430,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/id_card/id_card.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#navigator#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/input_password/input_password.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/reset_payment/reset_payment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/example/input/input.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/payment_setting/payment_setting.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/set_payment_psw/set_payment_psw.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/find_password/find_password.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="94" column="15" lean-forward="true" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/app.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="23">
+          <caret line="2" column="43" lean-forward="false" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.wxml">
+    <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="12" column="77" lean-forward="true" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+        <state relative-caret-position="966">
+          <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="259" column="44" lean-forward="false" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/user/code/code.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="206" column="47" lean-forward="true" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
-          <folding>
-            <element signature="e#535#2352#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

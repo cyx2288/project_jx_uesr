@@ -28,7 +28,7 @@
 
 
     <!--button-->
-    <view url="" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <view  class="page__bd page__bd_spacing" style="margin-top: 25px">
 
         <button class="weui-btn" type="primary" bindtap="checkIdNumberFn">确认</button>
 
