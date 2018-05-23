@@ -24,8 +24,6 @@ Page({
 
         rate: '',
 
-        createTime:'',
-
         rateAmount: '',
 
         type: ''
@@ -93,8 +91,6 @@ Page({
                     rate: res.data.data.rate,
 
                     rateAmount: res.data.data.rateAmount,
-
-                    createTime:res.data.data.createTime,
 
 
                 })

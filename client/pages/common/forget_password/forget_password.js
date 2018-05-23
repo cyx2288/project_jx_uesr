@@ -4,7 +4,7 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const md5 = require('../../../static/libs/script/md5.js');//md5加密
 
-const retrievalpwdUrl = '/jx/action/retrievalpwd';//忘记密码的url地址
+const retrievalpwdUrl = '/jx/action/retrievalpwd';//注册的url地址
 
 const forgetmsg = '/jx/action/forgetmsg';//发送短信验证码
 
@@ -29,12 +29,10 @@ Page({
     },
 
 
-   //发送验证码
+
     registmsg: function () {
 
-        var thisForgetmsgUrl = app.globalData.URL + forgetmsg;
-
-        var jx_sid = wx.getStorageSync('jxsid');
+        var url = app.globalData.URL + forgetmsg;
 
         var that = this;
 
@@ -56,26 +54,27 @@ Page({
 
         wx.request({//注册
 
-            url: thisForgetmsgUrl,
+            url: url,
 
             method: 'GET',
 
             data: {
 
-                mobile: that.data.mobile
-
-            },
-
-            header:{
-
-                'jxsid': jx_sid,
-
+                mobile: this.data.mobile
 
             },
 
             success: function (res) {
 
                 console.log(res.data);
+
+                //console.log(res.header.jxsid)
+
+                //存储数据
+                var jx_sid = res.header.jxsid;//jx_sid数据
+
+                //存储数据
+                wx.setStorageSync('jxsid', jx_sid);
 
                 if(res.data.code=='0000'){
 
@@ -112,9 +111,7 @@ Page({
 
     },
 
-    //确定
-
-    settingFn: function () {
+    register: function () {
 
         var that = this;
 
@@ -125,77 +122,6 @@ Page({
         var a = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
-
-        //密码判空
-        var _thisPassWord,_thisconfirmPassword;
-
-
-        if(that.data.mobile==''){
-
-            wx.showToast({
-
-                title: '请输入手机号',
-                icon: 'none'
-
-            });
-            return false;
-
-
-
-        }
-
-        else if (that.data.checkCode==''){
-
-            wx.showToast({
-
-                title: '请输入验证码',
-                icon: 'none'
-
-            });
-
-            return false;
-
-
-
-        }
-
-
-        else if(that.data.password==''){
-
-            console.log(1)
-            wx.showToast({
-
-                title: '请输入密码',
-                icon: 'none'
-
-            });
-
-            return false;
-
-        }
-
-        else if(that.data.confirmPassword==''){
-
-
-            wx.showToast({
-
-                title: '请再次输入密码',
-                icon: 'none'
-
-            });
-
-            return false;
-
-        }
-
-
-        else {
-
-            _thisPassWord = md5.hexMD5(this.data.password);
-
-            _thisconfirmPassword = md5.hexMD5(this.data.confirmPassword)
-
-        }
 
 
         //校验密码
@@ -208,7 +134,6 @@ Page({
 
             });
 
-            return false
 
         }
 
@@ -221,12 +146,10 @@ Page({
 
             });
 
-            return false
         }
 
 
-
-        /**
+            /**
              * 接口：注册
              * 请求方式：POST
              * 接口：/jx/action/register
@@ -243,14 +166,15 @@ Page({
 
                     mobile: that.data.mobile,
 
-                    password:_thisPassWord,
-
-                    confirmPassword: _thisconfirmPassword,
-
+                    password: md5.hexMD5(
+                        that.data.password
+                    ),
+                    confirmPassword:md5.hexMD5(
+                        that.data.confirmPassword
+                    )
+                    ,//md5加密
                     code: that.data.checkCode
                 }),
-
-
 
                 header: {
 
@@ -264,27 +188,8 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='0000'){
 
-                        wx.showToast({
-
-                            title:res.data.msg,
-                            icon: 'success'
-
-                        });
-
-                        wx.redirectTo({
-
-                            url: '../signin/signin'
-
-                        })
-
-
-
-                    }
-
-
-                    else if(res.data.code=='-1'){
+                    if(res.data.code=='-1'){
 
                             wx.showToast({
 
@@ -295,6 +200,21 @@ Page({
 
                     }
 
+                    else {
+
+                        wx.showToast({
+
+                            title:res.data.msg,
+                            icon: 'success'
+
+                        });
+
+                        wx.redirectTo({
+
+                            url:'../../wages/index/index'
+                        })
+
+                    }
 
 
                 },
@@ -342,8 +262,6 @@ Page({
             password: e.detail.value
 
         });
-
-
 
     },
     confirmPasswordFn: function (e) {

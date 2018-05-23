@@ -4,7 +4,7 @@
             <view class="weui-label">短信验证码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入短信验证码" maxlength="6" value="{{code}}" bindinput="codeFn"/>
+            <input class="weui-input" type="number" placeholder="请输入短信验证码" maxlength="6" value="{{code}}" bindchange="codeFn"/>
         </view>
     </view>
 

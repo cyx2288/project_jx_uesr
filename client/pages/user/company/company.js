@@ -20,9 +20,7 @@ Page({
 
         workUnitList: [],//应发明细
 
-        state:'',//加入企业状态
-
-        entId:'',
+        state:''//加入企业状态
 
     },
 
@@ -36,7 +34,6 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-
 
 
         /**
@@ -65,14 +62,11 @@ Page({
 
                 var thisState = res.data.data[0].state;
 
-
                 that.setData({
 
                     workUnitList: res.data.data,
 
-                    state:thisState,
-
-
+                    state:thisState
 
 
                 })
@@ -89,26 +83,6 @@ Page({
         })
 
     },
-
-    isJoinEntFn:function (e) {
-
-        var that = this;
-
-        //console.log(e.currentTarget.dataset.ent);
-
-        that.setData({
-
-            entId:e.currentTarget.dataset.ent
-
-        })
-
-
-        wx.setStorageSync('entId',that.data.entId);
-
-
-
-
-    }
 
 
 

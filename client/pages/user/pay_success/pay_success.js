@@ -10,13 +10,11 @@ Page({
 
         var _balance = wx.getStorageSync('balance');
 
-        var _rate = wx.getStorageSync('rate')
-
         var that = this;
 
         that.setData({
 
-            balance:parseInt(_balance)+parseInt(_rate)
+            balance:_balance
         })
 
 

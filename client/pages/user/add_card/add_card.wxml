@@ -20,7 +20,7 @@
                     <view class="weui-label">*银行卡号</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入卡号" type="number" value="{{bankNo}}" maxlength="19" bindinput="bankNoFn" bindblur="getBankNoFn"/>
+                    <input class="weui-input" placeholder="请输入卡号" value="{{bankNo}}" maxlength="18" bindinput="bankNoFn" bindblur="getBankNoFn"/>
                 </view>
             </view>
 
@@ -70,7 +70,7 @@
                     <view class="weui-label">开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
+                    <input class="weui-input" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
                 </view>
             </view>
         </view>

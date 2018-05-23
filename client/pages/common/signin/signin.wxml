@@ -6,7 +6,7 @@
                 <view class="weui-label">手机</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入您的手机号"/>
+                <input class="weui-input" value="{{mobile}}" bindinput="telFn" placeholder="请输入您的手机号"/>
             </view>
         </view>
 
@@ -31,7 +31,7 @@
     </view>
 
         <view class="weui-cell">
-            <navigator url="../forget_password/forget_password" class="weui-cell__bd">忘记密码？</navigator>
+            <navigator url="" class="weui-cell__bd">忘记密码？</navigator>
             <navigator url="../register/register" class="weui-cell__ft">免费注册</navigator>
         </view>
 

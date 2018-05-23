@@ -47,10 +47,6 @@ Page({
 
         var thisEntId = wx.getStorageSync('entId');
 
-        var thisType = wx.getStorageSync('thisType');
-
-        console.log(thisType)
-
 
         /**
          * 接口：身份验证
@@ -104,35 +100,12 @@ Page({
                 //验证成功后显示工资
                 else if (thisCode == '0000'){
 
-                    //跳转首页
+                    //关闭当前页面
+                    wx.redirectTo({
 
-                    if(thisType=='2'){
+                        url:'../../wages/payroll/payroll'
 
-                        console.log('跳转')
-
-                        wx.switchTab({
-
-                             url:'../../wages/index/index'
-                        })
-
-
-                    }
-
-                    //跳转工资明细
-
-                    else if(thisType=='1'){
-
-                        //关闭当前页面
-                        wx.redirectTo({
-
-                            url:'../../wages/payroll/payroll'
-
-                        });
-
-
-
-                    }
-
+                    });
 
                 }
 

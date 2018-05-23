@@ -224,7 +224,7 @@ Page({
 
                     })
 
-                    //console.log(that.data.bankList)
+                    console.log(that.data.bankList)
 
 
                 },

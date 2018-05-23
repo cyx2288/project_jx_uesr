@@ -5,59 +5,62 @@ var addBankList = {
 
     addBankArray: [
 
-        ['中国银行', '农业银行', '建设银行', '交通银行', '中国邮政储蓄银行', '广发银行', '浦发银行', '浙江泰隆商业银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州商业银行'],
+        ['中国银行', '农业银行','建设银行', '交通银行','中国邮政储蓄银行','广发银行','浦发银行','浙江泰隆商业银行','招商银行','民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行' , '杭州商业银行'],
 
         ['储蓄卡', '信用卡'],
 
     ],
 
 
+
 }
 const app = getApp();
 
-const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
+const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
 const addBankUrl = '/user/bank/addbankcardinfo';
 
 const getBankName = '/user/bank/getbankname';
 
-const getCity = '/user/bank/citys';
+const getCity ='/user/bank/citys';
 
 const getProvinces = '/user/bank/provinces';
 
 Page({
 
-    data: {
+    data:{
 
-        bankNo: '',//银行卡号
+        bankNo:'',//银行卡号
 
-        bankName: '请选择所属银行',//银行名称&所属银行
+        openBank:'',//开户行
 
-        bankBranch: '',//卡户支行
+        bankName:'请选择所属银行',//银行名称&所属银行
 
-        province: '',//开户省份
+        bankBranch:'',//卡户支行
 
-        city: '',//开户城市
+        province:'请选择开户所在地（选填）',//开户省份
 
-        userName: '',//用户姓名
+        city:'',//开户城市
 
-        thisBankSort: '',//卡类
+        userName:'',//用户姓名
 
-        provinceId: '',//省唯一id
+        thisBankSort:'',//卡类
 
-        cityArr: [],//城市数组
+        provinceId:'',//省唯一id
 
-        provinceArr: [],//区域数组
+        cityArr:[],//城市数组
 
-        countries: [[], []],//城市数组
+        provinceArr:[],//区域数组
 
-        cityData: [],//存储ajax后得到的数组
+        countries:[[],[]],//城市数组
 
-        provinceData: [],//存储ajax后得到的数组
+        cityData:[],//存储ajax后得到的数组
+
+        provinceData:[],//存储ajax后得到的数组
 
         multiArray: [
 
-            ['中国银行', '农业银行', '建设银行', '交通银行', '中国邮政储蓄银行', '广发银行', '浦发银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都银行', '徽商银行'],
+            ['中国银行', '农业银行','建设银行', '交通银行','中国邮政储蓄银行','广发银行','浦发银行','浙江泰隆商业银行'],
 
             ['储蓄卡', '信用卡']
 
@@ -66,7 +69,7 @@ Page({
 
     },
 
-    onLoad: function () {
+    onLoad:function () {
 
         var that = this;
 
@@ -75,9 +78,10 @@ Page({
         var _isVerify = wx.getStorageSync('isVerify');
 
 
+
         that.setData({
 
-            userName: _userName,
+            userName:_userName,
 
         });
 
@@ -92,7 +96,7 @@ Page({
     },
 
     //获取省
-    loadCity: function () {
+    loadCity:function () {
 
         var that = this;
 
@@ -115,11 +119,11 @@ Page({
 
             method: 'GET',
 
-            header: {
+            header:{
 
-                'jxsid': jx_sid,
+                'jxsid':jx_sid,
 
-                'Authorization': Authorization
+                'Authorization':Authorization
 
             },
 
@@ -131,15 +135,15 @@ Page({
 
                 that.setData({
 
-                    cityData: res.data.data,
+                    cityData:res.data.data,
 
                 });
 
-                var citylistArr = [];
+                var citylistArr=[];
 
                 //遍历数组 将城市名遍历出来组成新的数组
 
-                for (var i = 0; i < list.length; i++) {
+                for(var i=0;i<list.length;i++){
 
 
                     var cityList = res.data.data[i].addrName;
@@ -152,14 +156,14 @@ Page({
                 //储存城市
                 that.setData({
 
-                    cityArr: citylistArr
+                    cityArr:citylistArr
 
                 });
 
 
                 that.setData({
 
-                    countries: [
+                    countries:[
 
                         that.data.cityArr,
 
@@ -168,6 +172,8 @@ Page({
                     ]
 
                 })
+
+
 
 
             },
@@ -185,11 +191,11 @@ Page({
     },
 
     //获取市
-    loadProvince: function (thisProvinceId) {
+    loadProvince:function (thisProvinceId) {
 
         var that = this;
 
-        var thisGetCity = app.globalData.URL + getCity;
+        var thisGetCity = app.globalData.URL+getCity;
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jx_sid');
@@ -208,17 +214,17 @@ Page({
 
             method: 'GET',
 
-            data: {
+            data:{
 
-                provinceId: thisProvinceId//省市唯一地址
+                provinceId:thisProvinceId//省市唯一地址
 
             },
 
-            header: {
+            header:{
 
-                'jx_sid': jx_sid,
+                'jx_sid':jx_sid,
 
-                'Authorization': Authorization
+                'Authorization':Authorization
 
             },
 
@@ -228,9 +234,9 @@ Page({
 
                 var list = res.data.data;
 
-                var provincelistArr = [];
+                var provincelistArr=[];
 
-                for (var i = 0; i < list.length; i++) {
+                for(var i=0;i<list.length;i++){
 
                     var provinceList = res.data.data[i].addrName;
 
@@ -242,13 +248,13 @@ Page({
                 //储存省份
                 that.setData({
 
-                    provinceArr: provincelistArr
+                    provinceArr:provincelistArr
 
                 });
 
                 that.setData({
 
-                    countries: [
+                    countries:[
 
                         that.data.cityArr,
 
@@ -257,6 +263,7 @@ Page({
                     ]
 
                 });
+
 
 
             },
@@ -271,12 +278,13 @@ Page({
         })
 
 
+
     },
 
     //点击添加银行卡号
-    addBankFn: function () {
+    addBankFn:function () {
 
-        var thisAddBankUrl = app.globalData.URL + addBankUrl;
+        var thisAddBankUrl = app.globalData.URL+addBankUrl;
 
         var that = this;
 
@@ -286,7 +294,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var regNeg = /^([1-9]{1})(\d{15}|\d{19})$/;
+        var regNeg = /^([1-9]{1})(\d{15}|\d{18})$/;
 
 
         /**
@@ -296,36 +304,35 @@ Page({
          * 入参：bankNo，openBank，bankName，bankBranch，province，city
          * */
 
-
-
-
         wx.request({
 
             url: thisAddBankUrl,
 
             method: 'POST',
 
-            data: json2FormFn.json2Form({
+            data:json2FormFn.json2Form({
 
-                bankNo: that.data.bankNo,//银行卡号
+                bankNo:that.data.bankNo,//银行卡号
 
-                bankName: that.data.bankName,//银行名称&所属银行
+                openBank:that.data.openBank,//开户行
 
-             bankBranch: that.data.bankBranch,//卡户支行
+                bankName:that.data.bankName,//银行名称&所属银行
 
-                province: that.data.province,//开户省份
+                bankBranch:that.data.bankBranch,//卡户支行
 
-                city: that.data.city//开户城市
+                province:that.data.province,//开户省份
+
+                city:that.data.city//开户城市
 
             }),
 
-            header: {
+            header:{
 
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid': jx_sid,
+                'jxsid':jx_sid,
 
-                'Authorization': Authorization
+                'Authorization':Authorization
 
             },
 
@@ -333,9 +340,11 @@ Page({
 
                 console.log(res.data);
 
+                //console.log(that.data.bankNo)
+
                 //银行卡添加成功 toast提示成功
 
-                if (res.data.code == '0000') {
+                if(res.data.code=='0000'){
 
                     wx.showToast({
 
@@ -346,7 +355,7 @@ Page({
 
                     wx.redirectTo({
 
-                        url: '../card/card'
+                        url:'../card/card'
 
                     })
 
@@ -357,7 +366,7 @@ Page({
                 else {
 
                     //判断银行卡是否为空
-                    if (!that.data.bankNo) {
+                    if(!that.data.bankNo){
 
                         wx.showToast({
 
@@ -370,10 +379,10 @@ Page({
                     }
 
                     //如果有值的话 判断是否是数字、15位或者18位
-                    else if (that.data.bankNo) {
+                    else if(that.data.bankNo){
 
                         //判断卡号是否有误
-                        if (!regNeg.test(that.data.bankNo)) {
+                        if(!regNeg.test(that.data.bankNo)){
 
                             wx.showToast({
 
@@ -386,7 +395,7 @@ Page({
                         }
 
                         //判断是否写了所属银行
-                        else if (!that.data.bankName) {
+                        else if(!that.data.bankName){
 
                             wx.showToast({
 
@@ -397,6 +406,7 @@ Page({
                         }
 
                     }
+
 
 
                 }
@@ -416,7 +426,7 @@ Page({
 
 
     //监听银行卡号
-    bankNoFn: function (e) {
+    bankNoFn:function (e) {
 
         var that = this;
 
@@ -427,7 +437,7 @@ Page({
 
         that.setData({
 
-            bankNo: e.detail.value,
+            bankNo:e.detail.value,
 
         });
 
@@ -435,9 +445,9 @@ Page({
     },
 
     //判断卡号
-    getBankNoFn: function (e) {
+    getBankNoFn:function (e) {
 
-        var thisGetBankName = app.globalData.URL + getBankName;
+        var thisGetBankName = app.globalData.URL+getBankName;
 
         var that = this;
 
@@ -455,76 +465,82 @@ Page({
 
         wx.request({
 
-            url: thisGetBankName,
+         url: thisGetBankName,
 
-            method: 'POST',
+         method: 'POST',
 
-            data: {
+         data:{
 
-                bankNo: e.detail.value,
+         bankNo:e.detail.value,
 
-            },
+         },
 
-            header: {
+         header:{
 
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+         'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid': jx_sid,
+         'jxsid':jx_sid,
 
-                'Authorization': Authorization
+         'Authorization':Authorization
 
-            },
+         },
 
-            success: function (res) {
+         success: function (res) {
 
-                console.log(res.data);
+         console.log(res.data);
 
-                console.log(res.data.data.bankName)
+         console.log(res.data.data.bankName)
 
-                that.setData({
+             that.setData({
 
-                    bankName: res.data.data.bankName,
+                 bankName:res.data.data.bankName,
 
-                })
-
-
-            },
+             })
 
 
-            fail: function (res) {
-                console.log(res)
-            }
+         },
 
-        })
+
+         fail: function (res) {
+         console.log(res)
+         }
+
+         })
+
+
 
 
     },
 
     //通过卡号监听开户行
-    bindMultiPickerChange: function (e) {
+    bindMultiPickerChange: function(e) {
 
         var that = this;
 
         /*console.log(e.detail.value[0])
 
-         console.log(e.detail.value[1])
+        console.log(e.detail.value[1])
 
-         console.log(that.data.multiArray[0])
+        console.log(that.data.multiArray[0])
 
-         console.log(that.data.multiArray[1])
+        console.log(that.data.multiArray[1])
 
-         console.log(that.data.multiArray[0][e.detail.value[0]])
+        console.log(that.data.multiArray[0][e.detail.value[0]])
 
-         console.log(that.data.multiArray[1][e.detail.value[1]])*/
+        console.log(that.data.multiArray[1][e.detail.value[1]])*/
 
         that.setData({
 
-            bankName: that.data.multiArray[0][e.detail.value[0]],
+            bankName:that.data.multiArray[0][e.detail.value[0]],
 
-            thisBankSort: that.data.multiArray[1][e.detail.value[1]]
+            thisBankSort:that.data.multiArray[1][e.detail.value[1]]
 
 
         })
+
+
+
+
 
 
     },
@@ -535,7 +551,7 @@ Page({
 
     },
 
-    bindRegionColumnChange: function (e) {
+    bindRegionColumnChange:function (e) {
 
         var that = this;
 
@@ -543,7 +559,7 @@ Page({
 
         //判断是否选择的是第一列
 
-        if (e.detail.column == 0) {
+        if(e.detail.column==0){
 
             //获取选中的城市的uniqueId
 
@@ -552,6 +568,8 @@ Page({
             that.loadProvince(whichCityId)
 
         }
+
+
 
 
     },
@@ -563,33 +581,34 @@ Page({
 
         var that = this;
 
-        /*   console.log(e.detail.value[0]);
+   /*   console.log(e.detail.value[0]);
 
-         console.log(e.detail.value[1])
+        console.log(e.detail.value[1])
 
-         console.log(that.data.cityArr);
+        console.log(that.data.cityArr);
 
-         console.log(that.data.provinceArr)
+        console.log(that.data.provinceArr)
 
-         console.log(that.data.cityArr[e.detail.value[0]]);
+        console.log(that.data.cityArr[e.detail.value[0]]);
 
-         console.log(that.data.provinceArr[e.detail.value[1]])
-         */
+        console.log(that.data.provinceArr[e.detail.value[1]])
+        */
 
         that.setData({
 
-            city: that.data.cityArr[e.detail.value[0]] + ',',//开户城市
+            city:that.data.cityArr[e.detail.value[0]]+',',//开户城市
 
-            province: that.data.provinceArr[e.detail.value[1]],//开户省份
+            province:that.data.provinceArr[e.detail.value[1]],//开户省份
 
 
         })
 
 
+
     },
 
     //获取开户支行
-    getBankBranchFn: function (e) {
+    getBankBranchFn:function (e) {
 
         var that = this;
 
@@ -597,12 +616,14 @@ Page({
 
             openBank: e.detail.value,
 
-            bankBranch: e.detail.value,
+            bankBranch:e.detail.value,
 
 
         })
 
     }
+
+
 
 
 })
