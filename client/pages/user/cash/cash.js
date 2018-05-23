@@ -6,6 +6,8 @@ const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
 
 const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
 
+const getpaymode =  '/user/set/getpaymode';//查询支付验证方式
+
 
 Page({
 
@@ -38,7 +40,7 @@ Page({
 
         amountMin: '',//单笔最小限额
 
-        dayMaxCount: '',//日最大额度
+        dayMaxAmount: '',//日最大额度
 
         monthMaxAmount: '',//月最大额度
 
@@ -62,9 +64,7 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
-
-
-
+        //console.log(_isVerify)
 
         //存储银行卡页面的数据
         that.setData({
@@ -101,6 +101,7 @@ Page({
                 }
             });
 
+            return false
 
         }
 
@@ -127,11 +128,16 @@ Page({
 
                     else if (res.cancel) {
 
+                        wx.switchTab({
 
+                            url: '../../wages/index/index'
+
+                        })
                     }
                 }
             });
 
+            return false
 
         }
 
@@ -175,7 +181,7 @@ Page({
 
                     amountMin: res.data.data.amountMin,//单笔最小限额
 
-                    dayMaxCount: res.data.data.dayMaxCount,//日最大额度
+                    dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
 
                     monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
 
@@ -264,11 +270,29 @@ Page({
 
         var that = this;
 
-        that.setData({
+        if(!that.data.balance){
 
-            inputBalance: that.data.balance,
+            console.log('有值')
 
-        })
+            that.setData({
+
+                balance:that.data.canCashBalance
+            })
+
+        }
+        else {
+
+            console.log('无值')
+
+            that.setData({
+
+                inputBalance: that.data.balance,
+
+            })
+
+        }
+
+
 
 
     },
@@ -276,7 +300,61 @@ Page({
     //提现
     cashFn: function () {
 
+        var that = this;
+
         var thisCashUrl = app.globalData.URL + cashUrl;
+
+        var getpaymodeUrl = app.globalData.URL + getpaymode;
+
+
+        //获取银行卡页面的银行卡
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：查询支付验证方式
+         * 请求方式：POST
+         * 接口：/user/work/checkwithdraw
+         * 入参：null
+         * */
+
+        wx.request({
+
+            url: getpaymodeUrl,
+
+            method: 'POST',
+
+            header: {
+
+                'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                'jx_sid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        });
+
+
 
         var that = this;
 
@@ -294,6 +372,8 @@ Page({
 
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
+
+        wx.setStorageSync('rate',that.data.rate);//余额
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
@@ -339,7 +419,7 @@ Page({
 
         }
 
-        else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxCount)){
+        else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxAmount)){
 
             wx.showToast({
                 title: '提现金额超出当日最大限额',
@@ -369,7 +449,7 @@ Page({
             })
         }
 
-        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
 
             wx.showToast({
                 title: '账户余额不足',
@@ -379,7 +459,7 @@ Page({
 
         }
 
-        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxCount)==0){
+        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
 
                 wx.showToast({
                     title: '当月金额超限',
@@ -394,7 +474,7 @@ Page({
             wx.showModal({
 
                 title: '确认付款',
-                content: '支付金额￥' + that.data.balance + ',提现金额￥100.00,手续费￥0.00',
+                content: '支付金额￥' + (parseInt(that.data.balance)+ parseInt(that.data.balance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.balance+',手续费￥'+that.data.rate,
                 confirmText: '确认付款',
 
                 success: function (res) {
@@ -448,6 +528,8 @@ Page({
 
         }
 
+
+
         function confirmation() {
 
             /**
@@ -488,7 +570,13 @@ Page({
 
                     if (res.data.code == '0000') {
 
-                        redirectTo({
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1000
+                        })
+
+                        wx.redirectTo({
 
                             url: '../pay_success/pay_success'
                         })
@@ -497,11 +585,13 @@ Page({
 
                     else {
 
-
-                        wx.redirectTo({
-
-                            url: '../pay_fail/pay_fail'
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1000
                         })
+
+
                     }
 
                 },
@@ -525,7 +615,7 @@ Page({
 
         wx.showModal({
             title: '提示限额说明',
-            content: '单卡单笔50000.00,当日10000000.00,当月3000000.00元',
+            content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
             confirmText: '确认',
             showCancel: false,
             success: function (res) {

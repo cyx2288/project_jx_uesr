@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d4963c0-58b8-469b-9792-ef678d96ee69" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/find_password/find_password.wxml" afterPath="$PROJECT_DIR$/client/pages/common/find_password/find_password.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/find_password/find_password.wxss" afterPath="$PROJECT_DIR$/client/pages/common/find_password/find_password.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.js" afterPath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxml" afterPath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxss" afterPath="$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/input_password/input_password.wxml" afterPath="$PROJECT_DIR$/client/pages/common/input_password/input_password.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/input_password/input_password.wxss" afterPath="$PROJECT_DIR$/client/pages/common/input_password/input_password.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/register/register.wxml" afterPath="$PROJECT_DIR$/client/pages/common/register/register.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/register/register.wxss" afterPath="$PROJECT_DIR$/client/pages/common/register/register.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/revise_login/revise_login.wxml" afterPath="$PROJECT_DIR$/client/pages/common/revise_login/revise_login.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/revise_login/revise_login.wxss" afterPath="$PROJECT_DIR$/client/pages/common/revise_login/revise_login.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxml" afterPath="$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxss" afterPath="$PROJECT_DIR$/client/pages/common/revise_password/revise_password.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/signin/signin.wxml" afterPath="$PROJECT_DIR$/client/pages/common/signin/signin.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/common/signin/signin.wxss" afterPath="$PROJECT_DIR$/client/pages/common/signin/signin.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/add_card/add_card.wxml" afterPath="$PROJECT_DIR$/client/pages/user/add_card/add_card.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/add_card/add_card.wxss" afterPath="$PROJECT_DIR$/client/pages/user/add_card/add_card.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/balance/balance.wxml" afterPath="$PROJECT_DIR$/client/pages/user/balance/balance.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/balance/balance.wxss" afterPath="$PROJECT_DIR$/client/pages/user/balance/balance.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/card/card.wxml" afterPath="$PROJECT_DIR$/client/pages/user/card/card.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/card/card.wxss" afterPath="$PROJECT_DIR$/client/pages/user/card/card.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/cash/cash.wxml" afterPath="$PROJECT_DIR$/client/pages/user/cash/cash.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/cash/cash.wxss" afterPath="$PROJECT_DIR$/client/pages/user/cash/cash.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/certification/certification.wxml" afterPath="$PROJECT_DIR$/client/pages/user/certification/certification.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/certification/certification.wxss" afterPath="$PROJECT_DIR$/client/pages/user/certification/certification.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/company_authentication/authentication.wxml" afterPath="$PROJECT_DIR$/client/pages/user/company_authentication/authentication.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/company_authentication/authentication.wxss" afterPath="$PROJECT_DIR$/client/pages/user/company_authentication/authentication.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/give_details/give_details.wxss" afterPath="$PROJECT_DIR$/client/pages/user/give_details/give_details.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/mine/mine.wxss" afterPath="$PROJECT_DIR$/client/pages/user/mine/mine.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pages/user/modify_paycode/modify_code.wxss" afterPath="$PROJECT_DIR$/client/pages/user/modify_paycode/modify_code.wxss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app.json" afterPath="$PROJECT_DIR$/client/app.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,17 +23,12 @@
     <splitter split-orientation="horizontal" split-proportion="0.86466163">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="app.json" pinned="false" current-in-tab="true">
+          <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/app.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="115">
-                  <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-                  <folding>
-                    <marker date="1527074384305" expanded="true" signature="12:15" ph="[...]" />
-                    <marker date="1527074384305" expanded="true" signature="3064:3069" ph="{&quot;pagePath&quot;: &quot;pages/user/mine/mine&quot;...}" />
-                    <marker date="1527074384305" expanded="true" signature="3064:3075" ph="[...]" />
-                    <marker date="1527074384305" expanded="true" signature="3064:3079" ph="{&quot;color&quot;: &quot;##ababab&quot;...}" />
-                  </folding>
+                <state relative-caret-position="3772">
+                  <caret line="164" column="57" lean-forward="false" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -69,34 +36,11 @@
           <file leaf-file-name="give_details.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2139">
+                <state relative-caret-position="276">
                   <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
                   <folding>
-                    <marker date="1527074384335" expanded="true" signature="234:4267" ph="{...}" />
                     <marker date="1527074384335" expanded="true" signature="247:418" ph="{&quot;bankName&quot;: ''...}" />
                     <marker date="1527074384335" expanded="true" signature="1732:1753" ph="{&quot;bankName&quot;: res.data.data.bankName...}" />
-                    <marker date="1527074384335" expanded="true" signature="1732:1770" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="1732:1867" ph="{&quot;url&quot;: thisGetDetailRecord...}" />
-                    <marker date="1527074384335" expanded="true" signature="1732:1875" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="1901:4263" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="2219:3251" ph="{&quot;title&quot;: '确认付款'...}" />
-                    <marker date="1527074384335" expanded="true" signature="2433:3241" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="2469:3167" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="2512:2727" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="2601:2701" ph="{&quot;url&quot;: '../sms_verification/sms_verification'...}" />
-                    <marker date="1527074384335" expanded="true" signature="2774:2988" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="2863:2963" ph="{&quot;url&quot;: '../pws_verification/pws_verification'...}" />
-                    <marker date="1527074384335" expanded="true" signature="3035:3146" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="3206:3227" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="3289:4255" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="3296:3432" ph="/** 接口：获取账户提现记录 ...*/" />
-                    <marker date="1527074384335" expanded="true" signature="3449:4250" ph="{&quot;url&quot;: thisCashUrl...}" />
-                    <marker date="1527074384335" expanded="true" signature="3517:3679" ph="{&quot;bizId&quot;: that.data.orderId...}" />
-                    <marker date="1527074384335" expanded="true" signature="3697:3783" ph="{&quot;jxsid&quot;: jx_sid...}" />
-                    <marker date="1527074384335" expanded="true" signature="3899:4022" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="3932:4006" ph="{&quot;url&quot;: '../pay_success/pay_success'...}" />
-                    <marker date="1527074384335" expanded="true" signature="4041:4157" ph="{...}" />
-                    <marker date="1527074384335" expanded="true" signature="4074:4142" ph="{&quot;url&quot;: '../pay_fail/pay_fail'...}" />
                   </folding>
                 </state>
               </provider>
@@ -105,69 +49,10 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
+                <state relative-caret-position="1311">
                   <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
                   <folding>
                     <element signature="e#1280#1287#0" expanded="false" />
-                    <marker date="1527074384346" expanded="true" signature="456:15871" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="1269:8785" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="2175:2724" ph="{&quot;url&quot;: thisRemaidUrl...}" />
-                    <marker date="1527074384346" expanded="true" signature="2396:2724" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="8103:8218" ph="/** 接口：获取用户余额 ...*/" />
-                    <marker date="1527074384346" expanded="false" signature="8238:8776" ph="{&quot;url&quot;: thisBalanceUrl...}" />
-                    <marker date="1527074384346" expanded="true" signature="8323:8421" ph="{&quot;jxsid&quot;: jx_sid...}" />
-                    <marker date="1527074384346" expanded="true" signature="8460:8678" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="8592:8660" ph="{&quot;wages&quot;: res.data.data...}" />
-                    <marker date="1527074384346" expanded="true" signature="8715:8765" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="8889:11634" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="9199:9374" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="9227:9363" ph="{&quot;entId&quot;: thisSalaryEntId...}" />
-                    <marker date="1527074384346" expanded="true" signature="9389:9522" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="9417:9511" ph="{&quot;pageNum&quot;: thisPageNum...}" />
-                    <marker date="1527074384346" expanded="true" signature="9533:9666" ph="/** 接口：工资条发放列表 ...*/" />
-                    <marker date="1527074384346" expanded="true" signature="9686:11626" ph="{&quot;url&quot;: thisInfoUrl...}" />
-                    <marker date="1527074384346" expanded="true" signature="9799:9897" ph="{&quot;jxsid&quot;: jx_sid...}" />
-                    <marker date="1527074384346" expanded="true" signature="9936:11530" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="10229:10357" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="10265:10336" ph="{&quot;dataText&quot;: _dataText...}" />
-                    <marker date="1527074384346" expanded="true" signature="10380:11514" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="10416:10487" ph="{&quot;dataText&quot;: _dataText...}" />
-                    <marker date="1527074384346" expanded="true" signature="10524:11279" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="10873:10967" ph="{&quot;thisWagesListLength&quot;: wagesListLength...}" />
-                    <marker date="1527074384346" expanded="true" signature="11033:11136" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11176:11253" ph="{&quot;wagesList&quot;: nowList...}" />
-                    <marker date="1527074384346" expanded="true" signature="11306:11494" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11346:11468" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="11679:12041" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11776:11902" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11804:11891" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11908:12034" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="11936:12023" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="12082:12726" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="12133:12348" ph="{&quot;firstOptions&quot;: e.target.dataset.salary...}" />
-                    <marker date="1527074384346" expanded="true" signature="12391:12605" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="12617:12689" ph="//..." />
-                    <marker date="1527074384346" expanded="false" signature="12771:13173" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="12822:13132" ph="{&quot;firstOptions&quot;: '全部'...}" />
-                    <marker date="1527074384346" expanded="false" signature="13224:13397" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="13327:13387" ph="{&quot;url&quot;: '../../wages/payroll/payroll'...}" />
-                    <marker date="1527074384346" expanded="true" signature="13446:14188" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="13470:14120" ph="{&quot;firstOptions&quot;: '筛选'...}" />
-                    <marker date="1527074384346" expanded="false" signature="14235:14298" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="14341:15708" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="14435:15702" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="14463:14516" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="14583:15373" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="14781:14948" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="14817:14926" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="14971:15357" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15035:15115" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15189:15331" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15229:15305" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15436:15536" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15577:15690" ph="{...}" />
-                    <marker date="1527074384346" expanded="false" signature="15754:15867" ph="{...}" />
-                    <marker date="1527074384346" expanded="true" signature="15804:15859" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -176,41 +61,29 @@
           <file leaf-file-name="give_details.wxml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
+                <state relative-caret-position="759">
                   <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-                  <folding>
-                    <marker date="1527074384337" expanded="true" signature="3291:3330" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3291:3352" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3291:3370" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3291:3385" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3419:5027" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3473:3838" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3537:3820" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3581:3798" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3892:4230" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="3956:4212" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4000:4190" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4284:4622" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4348:4604" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4392:4582" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4676:5012" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4740:4994" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="4784:4972" ph="..." />
-                    <marker date="1527074384337" expanded="true" signature="5105:5192" ph="..." />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="sms_verification.wxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.wxml">
+          <file leaf-file-name="signin.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/pages/common/signin/signin.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="6" column="116" lean-forward="false" selection-start-line="6" selection-start-column="116" selection-end-line="6" selection-end-column="116" />
-                  <folding>
-                    <marker date="1527074384344" expanded="false" signature="526:542" ph="..." />
-                    <marker date="1527074384344" expanded="true" signature="543:615" ph="..." />
-                  </folding>
+                <state relative-caret-position="253">
+                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cash.js" pinned="false" current-in-tab="true">
+            <entry file="file://$USER_HOME$/Desktop/project_jx_uesr-5ebc754fba86208d2230648ceac0ff7d8775e12d/project_jx_uesr-5ebc754fba86208d2230648ceac0ff7d8775e12d/client/pages/user/cash/cash.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="23">
+                  <caret line="473" column="26" lean-forward="false" selection-start-line="473" selection-start-column="26" selection-end-line="473" selection-end-column="26" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -225,38 +98,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cash.wxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.wxml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="59" column="106" lean-forward="false" selection-start-line="59" selection-start-column="92" selection-end-line="59" selection-end-column="106" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="cash.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1318">
+                <state relative-caret-position="5520">
                   <caret line="240" column="8" lean-forward="false" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="8" />
                   <folding>
                     <marker date="1527074384325" expanded="true" signature="10235:10477" ph="{&quot;title&quot;: '提示限额说明'...}" />
-                    <marker date="1527074384325" expanded="false" signature="10235:10487" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10235:11297" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10337:10467" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10373:10394" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10433:10453" ph="{...}" />
-                    <marker date="1527074384325" expanded="false" signature="10514:11107" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10544:11099" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10622:11038" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10709:10834" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10746:10814" ph="{&quot;url&quot;: '../bill/bill'...}" />
-                    <marker date="1527074384325" expanded="true" signature="10882:11023" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="10919:11003" ph="{&quot;url&quot;: '../help_service/help_service'...}" />
-                    <marker date="1527074384325" expanded="true" signature="11073:11089" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="11141:11294" ph="{...}" />
-                    <marker date="1527074384325" expanded="true" signature="11191:11284" ph="{&quot;balance&quot;: e.detail.value...}" />
                   </folding>
                 </state>
               </provider>
@@ -265,15 +113,9 @@
           <file leaf-file-name="pws_verification.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
+                <state relative-caret-position="920">
                   <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-                  <folding>
-                    <marker date="1527074384342" expanded="true" signature="780:936" ph="/** 接口：获取账户提现记录 ...*/" />
-                    <marker date="1527074384342" expanded="true" signature="1239:1337" ph="{&quot;jxsid&quot;: jx_sid...}" />
-                    <marker date="1527074384342" expanded="true" signature="1707:1789" ph="{&quot;url&quot;: '../pay_success/pay_success'...}" />
-                    <marker date="1527074384342" expanded="true" signature="1832:1996" ph="{...}" />
-                    <marker date="1527074384342" expanded="true" signature="2154:2274" ph="{...}" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -295,7 +137,7 @@
           <file leaf-file-name="forget_password.wxml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5640">
+                <state relative-caret-position="851">
                   <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
                   <folding />
                 </state>
@@ -341,6 +183,8 @@
       <find>wages</find>
       <find>set</find>
       <find>jx</find>
+      <find>re</find>
+      <find>pars</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -397,9 +241,9 @@
         <option value="$PROJECT_DIR$/client/pages/wages/index/index.wxml" />
         <option value="$PROJECT_DIR$/client/pages/user/bill/bill.js" />
         <option value="$PROJECT_DIR$/client/pages/user/bill/bill.wxml" />
-        <option value="$PROJECT_DIR$/client/app.json" />
         <option value="$PROJECT_DIR$/client/pages/user/company_authentication/authentication.js" />
         <option value="$PROJECT_DIR$/client/pages/user/company/company.js" />
+        <option value="$PROJECT_DIR$/client/app.json" />
       </list>
     </option>
   </component>
@@ -413,10 +257,10 @@
     <handled-path value="$PROJECT_DIR$/server/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="450" />
-    <option name="y" value="229" />
-    <option name="width" value="1380" />
-    <option name="height" value="735" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="添加" />
@@ -693,6 +537,50 @@
               <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project_jx_uesr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -700,8 +588,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -841,44 +729,35 @@
       <workItem from="1526956490781" duration="16689000" />
       <workItem from="1526977360802" duration="6137000" />
       <workItem from="1526998597035" duration="13943000" />
+      <workItem from="1527075644598" duration="10000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436190000" />
+    <option name="totallyTimeSpent" value="437077000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="450" y="229" width="1380" height="735" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22652757" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20864068" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16517857" sideWeight="0.5065574" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20907739" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299532" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16517857" sideWeight="0.5065574" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -915,27 +794,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/pages/user/reset_payment/reset_payment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/example/input/input.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/user/payment_setting_code/payment_setting_code.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/mine/mine.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -947,10 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="116" lean-forward="false" selection-start-line="6" selection-start-column="116" selection-end-line="6" selection-end-column="116" />
-          <folding>
-            <marker date="1527074384344" expanded="false" signature="526:542" ph="..." />
-            <marker date="1527074384344" expanded="true" signature="543:615" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -979,13 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/common/signin/signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1656">
-          <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1043,23 +890,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="219" column="37" lean-forward="true" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
-          <folding>
-            <element signature="e#458#2384#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/pws_verification/pws_verification.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
+        <state relative-caret-position="920">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <marker date="1527074384342" expanded="true" signature="780:936" ph="/** 接口：获取账户提现记录 ...*/" />
-            <marker date="1527074384342" expanded="true" signature="1239:1337" ph="{&quot;jxsid&quot;: jx_sid...}" />
-            <marker date="1527074384342" expanded="true" signature="1707:1789" ph="{&quot;url&quot;: '../pay_success/pay_success'...}" />
-            <marker date="1527074384342" expanded="true" signature="1832:1996" ph="{...}" />
-            <marker date="1527074384342" expanded="true" signature="2154:2274" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,59 +924,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1318">
+        <state relative-caret-position="5520">
           <caret line="240" column="8" lean-forward="false" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="8" />
           <folding>
             <marker date="1527074384325" expanded="true" signature="10235:10477" ph="{&quot;title&quot;: '提示限额说明'...}" />
-            <marker date="1527074384325" expanded="false" signature="10235:10487" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10235:11297" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10337:10467" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10373:10394" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10433:10453" ph="{...}" />
-            <marker date="1527074384325" expanded="false" signature="10514:11107" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10544:11099" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10622:11038" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10709:10834" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10746:10814" ph="{&quot;url&quot;: '../bill/bill'...}" />
-            <marker date="1527074384325" expanded="true" signature="10882:11023" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="10919:11003" ph="{&quot;url&quot;: '../help_service/help_service'...}" />
-            <marker date="1527074384325" expanded="true" signature="11073:11089" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="11141:11294" ph="{...}" />
-            <marker date="1527074384325" expanded="true" signature="11191:11284" ph="{&quot;balance&quot;: e.detail.value...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2139">
+        <state relative-caret-position="276">
           <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding>
-            <marker date="1527074384335" expanded="true" signature="234:4267" ph="{...}" />
             <marker date="1527074384335" expanded="true" signature="247:418" ph="{&quot;bankName&quot;: ''...}" />
             <marker date="1527074384335" expanded="true" signature="1732:1753" ph="{&quot;bankName&quot;: res.data.data.bankName...}" />
-            <marker date="1527074384335" expanded="true" signature="1732:1770" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="1732:1867" ph="{&quot;url&quot;: thisGetDetailRecord...}" />
-            <marker date="1527074384335" expanded="true" signature="1732:1875" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="1901:4263" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="2219:3251" ph="{&quot;title&quot;: '确认付款'...}" />
-            <marker date="1527074384335" expanded="true" signature="2433:3241" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="2469:3167" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="2512:2727" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="2601:2701" ph="{&quot;url&quot;: '../sms_verification/sms_verification'...}" />
-            <marker date="1527074384335" expanded="true" signature="2774:2988" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="2863:2963" ph="{&quot;url&quot;: '../pws_verification/pws_verification'...}" />
-            <marker date="1527074384335" expanded="true" signature="3035:3146" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="3206:3227" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="3289:4255" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="3296:3432" ph="/** 接口：获取账户提现记录 ...*/" />
-            <marker date="1527074384335" expanded="true" signature="3449:4250" ph="{&quot;url&quot;: thisCashUrl...}" />
-            <marker date="1527074384335" expanded="true" signature="3517:3679" ph="{&quot;bizId&quot;: that.data.orderId...}" />
-            <marker date="1527074384335" expanded="true" signature="3697:3783" ph="{&quot;jxsid&quot;: jx_sid...}" />
-            <marker date="1527074384335" expanded="true" signature="3899:4022" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="3932:4006" ph="{&quot;url&quot;: '../pay_success/pay_success'...}" />
-            <marker date="1527074384335" expanded="true" signature="4041:4157" ph="{...}" />
-            <marker date="1527074384335" expanded="true" signature="4074:4142" ph="{&quot;url&quot;: '../pay_fail/pay_fail'...}" />
           </folding>
         </state>
       </provider>
@@ -1214,33 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-          <folding>
-            <marker date="1527074384337" expanded="true" signature="3291:3330" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3291:3352" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3291:3370" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3291:3385" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3419:5027" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3473:3838" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3537:3820" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3581:3798" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3892:4230" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="3956:4212" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4000:4190" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4284:4622" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4348:4604" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4392:4582" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4676:5012" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4740:4994" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="4784:4972" ph="..." />
-            <marker date="1527074384337" expanded="true" signature="5105:5192" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1283,14 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5640">
-          <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/bill/bill.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1302,82 +1066,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="79" selection-end-column="15" />
-          <folding>
-            <element signature="n#view#0;n#!!top" expanded="false" />
-            <element signature="n#view#1;n#!!top" expanded="false" />
-            <element signature="n#view#2;n#!!top" expanded="false" />
-            <element signature="n#block#0;n#view#0;n#view#4;n#!!top" expanded="false" />
-            <element signature="n#view#0;n#view#0;n#view#4;n#!!top" expanded="false" />
-            <element signature="n#view#1;n#view#0;n#view#4;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/wages/index/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="1311">
           <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
           <folding>
             <element signature="e#1280#1287#0" expanded="false" />
-            <marker date="1527074384346" expanded="true" signature="456:15871" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="1269:8785" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="2175:2724" ph="{&quot;url&quot;: thisRemaidUrl...}" />
-            <marker date="1527074384346" expanded="true" signature="2396:2724" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="8103:8218" ph="/** 接口：获取用户余额 ...*/" />
-            <marker date="1527074384346" expanded="false" signature="8238:8776" ph="{&quot;url&quot;: thisBalanceUrl...}" />
-            <marker date="1527074384346" expanded="true" signature="8323:8421" ph="{&quot;jxsid&quot;: jx_sid...}" />
-            <marker date="1527074384346" expanded="true" signature="8460:8678" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="8592:8660" ph="{&quot;wages&quot;: res.data.data...}" />
-            <marker date="1527074384346" expanded="true" signature="8715:8765" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="8889:11634" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="9199:9374" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="9227:9363" ph="{&quot;entId&quot;: thisSalaryEntId...}" />
-            <marker date="1527074384346" expanded="true" signature="9389:9522" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="9417:9511" ph="{&quot;pageNum&quot;: thisPageNum...}" />
-            <marker date="1527074384346" expanded="true" signature="9533:9666" ph="/** 接口：工资条发放列表 ...*/" />
-            <marker date="1527074384346" expanded="true" signature="9686:11626" ph="{&quot;url&quot;: thisInfoUrl...}" />
-            <marker date="1527074384346" expanded="true" signature="9799:9897" ph="{&quot;jxsid&quot;: jx_sid...}" />
-            <marker date="1527074384346" expanded="true" signature="9936:11530" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="10229:10357" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="10265:10336" ph="{&quot;dataText&quot;: _dataText...}" />
-            <marker date="1527074384346" expanded="true" signature="10380:11514" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="10416:10487" ph="{&quot;dataText&quot;: _dataText...}" />
-            <marker date="1527074384346" expanded="true" signature="10524:11279" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="10873:10967" ph="{&quot;thisWagesListLength&quot;: wagesListLength...}" />
-            <marker date="1527074384346" expanded="true" signature="11033:11136" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11176:11253" ph="{&quot;wagesList&quot;: nowList...}" />
-            <marker date="1527074384346" expanded="true" signature="11306:11494" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11346:11468" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="11679:12041" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11776:11902" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11804:11891" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11908:12034" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="11936:12023" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="12082:12726" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="12133:12348" ph="{&quot;firstOptions&quot;: e.target.dataset.salary...}" />
-            <marker date="1527074384346" expanded="true" signature="12391:12605" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="12617:12689" ph="//..." />
-            <marker date="1527074384346" expanded="false" signature="12771:13173" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="12822:13132" ph="{&quot;firstOptions&quot;: '全部'...}" />
-            <marker date="1527074384346" expanded="false" signature="13224:13397" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="13327:13387" ph="{&quot;url&quot;: '../../wages/payroll/payroll'...}" />
-            <marker date="1527074384346" expanded="true" signature="13446:14188" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="13470:14120" ph="{&quot;firstOptions&quot;: '筛选'...}" />
-            <marker date="1527074384346" expanded="false" signature="14235:14298" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="14341:15708" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="14435:15702" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="14463:14516" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="14583:15373" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="14781:14948" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="14817:14926" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="14971:15357" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15035:15115" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15189:15331" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15229:15305" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15436:15536" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15577:15690" ph="{...}" />
-            <marker date="1527074384346" expanded="false" signature="15754:15867" ph="{...}" />
-            <marker date="1527074384346" expanded="true" signature="15804:15859" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1386,9 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="n#view#0;n#view#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1396,19 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding>
-            <marker date="1527074384305" expanded="true" signature="12:15" ph="[...]" />
-            <marker date="1527074384305" expanded="true" signature="3064:3069" ph="{&quot;pagePath&quot;: &quot;pages/user/mine/mine&quot;...}" />
-            <marker date="1527074384305" expanded="true" signature="3064:3075" ph="[...]" />
-            <marker date="1527074384305" expanded="true" signature="3064:3079" ph="{&quot;color&quot;: &quot;##ababab&quot;...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1430,6 +1111,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3772">
+          <caret line="164" column="57" lean-forward="false" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/give_details/give_details.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/cash/cash.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="59" column="106" lean-forward="false" selection-start-line="59" selection-start-column="92" selection-end-line="59" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/signin/signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/project_jx_uesr-5ebc754fba86208d2230648ceac0ff7d8775e12d/project_jx_uesr-5ebc754fba86208d2230648ceac0ff7d8775e12d/client/pages/user/cash/cash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="473" column="26" lean-forward="false" selection-start-line="473" selection-start-column="26" selection-end-line="473" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/common/forget_password/forget_password.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
