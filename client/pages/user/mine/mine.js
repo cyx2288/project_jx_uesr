@@ -26,7 +26,7 @@ Page({
 
     onShow:function () {
 
-        console.log('刷新')
+        //console.log('刷新')
 
         var thisMineurl = app.globalData.URL+ mineUrl;
 
@@ -95,7 +95,7 @@ Page({
                 //是否开启验证
                 wx.setStorageSync('isVerify',res.data.data.isVerify);
 
-                console.log('认证'+wx.getStorageSync('isVerify'))
+                //console.log('认证'+wx.getStorageSync('isVerify'))
 
 
             },

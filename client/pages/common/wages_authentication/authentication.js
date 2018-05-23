@@ -6,7 +6,7 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const dentityUrl = '/salary/home/selectidnumber';//查看工资条身份验证
+const dentityUrl = '/salary/home/salaryselectidnumber';//查看工资条身份验证
 
 
 Page({
@@ -18,6 +18,9 @@ Page({
         entId:'',
 
         userName:'',
+
+        salaryDetailId:'',
+
 
 
 
@@ -49,6 +52,8 @@ Page({
 
         var thisType = wx.getStorageSync('thisType');
 
+        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
 
         /**
          * 接口：身份验证
@@ -68,6 +73,7 @@ Page({
 
                 entId:thisEntId,
 
+                salaryDetailId:thisSalaryDetailId,
 
 
             },
@@ -107,8 +113,6 @@ Page({
                     //跳转首页
 
                     if(thisType=='2'){
-
-                        console.log('跳转')
 
                         wx.switchTab({
 

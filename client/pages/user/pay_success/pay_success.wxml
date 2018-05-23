@@ -9,10 +9,10 @@
             <view class="weui-msg__title">支付成功</view>
             <view class="weui-msg__desc">￥{{balance}}</view>
         </view>
-        <view class="weui-msg__opr-area">
-            <navigator url="../give_details/give_details" class="weui-btn-area">
+        <view class="weui-msg__opr-area" bindtap="lookDetails">
+            <view class="weui-btn-area">
                 <button class="weui-btn" type="default">查看订单</button>
-            </navigator>
+            </view>
         </view>
 
     </view>

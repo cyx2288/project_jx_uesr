@@ -22,5 +22,18 @@ Page({
 
     },
 
+    lookDetails:function () {
+
+
+        wx.redirectTo({
+
+            url:'../give_details/give_details'
+
+        });
+
+    }
+
+
+
 
 });
