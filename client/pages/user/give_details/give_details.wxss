@@ -65,6 +65,10 @@ page {
 
 }
 
+.step.selected ~ .step > .status {
+    font-size: 14px;
+    color: #ddd;
+}
 
 .step.selected ~ .step > .border {
     position: absolute;

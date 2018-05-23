@@ -1,7 +1,6 @@
 @import "../mine/mine.wxss";
 @import "../details/details.wxss";
 @import "../certification/certification.wxss";
-@import "../../common/register/register.wxss";
 
 .details_date{
 

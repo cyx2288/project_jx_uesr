@@ -1,6 +1,3 @@
-@import "../../common/register/register.wxss";
-
-
 .add_card .weui-cells__title{
 
     font-size: 14px;
@@ -15,6 +12,5 @@
 
 .add_card .page__bd_spacing{
 
-    margin-top: 30px;
+    margin-top: 20px;
 }
-
