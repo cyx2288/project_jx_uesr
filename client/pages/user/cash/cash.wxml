@@ -72,9 +72,9 @@
     <!--button-->
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="cashFn">确认提现</button>
+        <button class="weui-btn" type="primary" bindtap="cashFn" style="background-color: #E87B17;">确认提现</button>
         <!--提示-->
-        <text class="payroll_prompt " style="color: #E87B17; font-size:14px;text-align: center" bindtap="moreFn">联系客服</text>
+        <text class="payroll_prompt " style="color: #E87B17; font-size:14px;text-align: center" bindtap="moreFn">更多</text>
 
     </view>
 

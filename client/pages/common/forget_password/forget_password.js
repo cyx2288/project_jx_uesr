@@ -4,7 +4,9 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const md5 = require('../../../static/libs/script/md5.js');//md5加密
 
+const retrievalpwdUrl = '/jx/action/retrievalpwd';//注册的url地址
 
+const forgetmsg = '/jx/action/forgetmsg';//发送短信验证码
 
 Page({
 
@@ -16,6 +18,7 @@ Page({
 
         password: '',//密码
 
+        confirmPassword:'',
 
         time: '获取验证码', //倒计时
 
@@ -29,7 +32,7 @@ Page({
 
     registmsg: function () {
 
-
+        var url = app.globalData.URL + forgetmsg;
 
         var that = this;
 
@@ -42,7 +45,8 @@ Page({
             });
 
         /**
-
+         * 接口：忘记密码发送短信认证
+         * 请求方式：/jx/action/forgetmsg
          * 接口：GET
          * 入参：mobile
          **/
@@ -64,6 +68,7 @@ Page({
 
                 console.log(res.data);
 
+                //console.log(res.header.jxsid)
 
                 //存储数据
                 var jx_sid = res.header.jxsid;//jx_sid数据
@@ -110,7 +115,7 @@ Page({
 
         var that = this;
 
-
+        var url = app.globalData.URL + retrievalpwdUrl;
 
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -163,7 +168,9 @@ Page({
 
                     password: md5.hexMD5(
                         that.data.password
-
+                    ),
+                    confirmPassword:md5.hexMD5(
+                        that.data.confirmPassword
                     )
                     ,//md5加密
                     code: that.data.checkCode
@@ -182,7 +189,6 @@ Page({
                     console.log(res.data);
 
 
-
                     if(res.data.code=='-1'){
 
                             wx.showToast({
@@ -198,7 +204,7 @@ Page({
 
                         wx.showToast({
 
-
+                            title:res.data.msg,
                             icon: 'success'
 
                         });
@@ -254,6 +260,17 @@ Page({
         that.setData({
 
             password: e.detail.value
+
+        });
+
+    },
+    confirmPasswordFn: function (e) {
+
+        var that = this;
+
+        that.setData({
+
+            confirmPassword: e.detail.value
 
         });
 
