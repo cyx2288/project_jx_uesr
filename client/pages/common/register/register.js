@@ -34,79 +34,94 @@ Page({
 
         var that = this;
 
-            that.getCode();
+        //如果手机号是正常的
+        if(that.data.mobile==''||that.data.mobile.length<11){
 
-            that.setData({
+            wx.showToast({
 
-                disabled:true
+                title: '请输入正确的手机号',
+                icon: 'none'
 
             });
 
-        /**
-         * 接口：注册发送短信认证
-         * 请求方式：/jx/action/register
-         * 接口：GET
-         * 入参：mobile
-         **/
+        }
+
+        else {
 
 
-        wx.request({//注册
+            /**
+             * 接口：注册发送短信认证
+             * 请求方式：/jx/action/register
+             * 接口：GET
+             * 入参：mobile
+             **/
+            wx.request({//注册
 
-            url: url,
+                url: url,
 
-            method: 'GET',
+                method: 'GET',
 
-            data: {
+                data: {
 
-                mobile: this.data.mobile
+                    mobile: this.data.mobile
 
-            },
+                },
 
-            success: function (res) {
+                success: function (res) {
 
-                console.log(res.data);
+                    console.log(res.data);
 
-                console.log(res.header.jxsid)
+                    //存储数据
+                    var jx_sid = res.header.jxsid;//jx_sid数据
 
-                //存储数据
-                var jx_sid = res.header.jxsid;//jx_sid数据
+                    //存储数据
+                    wx.setStorageSync('jxsid', jx_sid);
 
-                //存储数据
-                wx.setStorageSync('jxsid', jx_sid);
+                    if (res.data.code == '0000') {
 
-                if(res.data.code=='0000'){
+                        wx.showToast({
 
-                    wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none'
 
-                        title: res.data.msg,
-                        icon: 'none'
+                        });
 
-                    });
 
+                        //倒计时开始
+                        that.getCode();
+
+                        //锁定
+                        that.setData({
+
+                            disabled:true
+
+                        });
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none'
+
+                        });
+
+                    }
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
                 }
 
-                else {
+            })
 
-                    wx.showToast({
-
-                        title: res.data.msg,
-                        icon: 'none'
-
-                    });
-
-                }
-
-
-            },
-
-            fail: function (res) {
-
-                console.log(res)
-            }
-
-        })
-
-
+        }
     },
 
     register: function () {
@@ -119,7 +134,7 @@ Page({
 
         var a = /[@#\$%\^&\*]+/g;
 
-        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 
 /*
         console.log(json2FormFn.json2Form({
@@ -134,8 +149,33 @@ Page({
 */
 
 
+
+        //校验手机号
+        if(that.data.mobile==''||that.data.mobile.length<11){
+
+            wx.showToast({
+
+                title: '请输入正确的手机号',
+                icon: 'none'
+
+            });
+
+        }
+
+            //校验短信验证码
+        else if(that.data.checkCode==''||that.data.checkCode.length<6){
+
+            wx.showToast({
+
+                title: '请输入正确的短信验证码',
+                icon: 'none'
+
+            });
+
+        }
+
         //校验密码
-        if(a.test(that.data.password)){
+        else if(a.test(that.data.password)){
 
             wx.showToast({
 
@@ -147,7 +187,7 @@ Page({
 
         }
 
-        else if(reg.test(that.data.password)){
+        else if(that.data.password.length<6){
 
             wx.showToast({
 
@@ -158,6 +198,7 @@ Page({
 
         }
 
+        else{
 
             /**
              * 接口：注册
@@ -195,17 +236,14 @@ Page({
 
                     console.log(res.data);
 
-
-
-
                     if(res.data.code=='-1'){
 
-                            wx.showToast({
+                        wx.showToast({
 
-                                title: res.data.msg,
-                                icon: 'none'
+                            title: res.data.msg,
+                            icon: 'none'
 
-                            });
+                        });
 
                     }
 
@@ -218,9 +256,10 @@ Page({
 
                         });
 
+                        //注册成功跳转登录页
                         wx.redirectTo({
 
-                            url:'../../wages/index/index'
+                            url:'../signin/signin'
                         })
 
                     }
@@ -235,6 +274,13 @@ Page({
                 }
 
             })
+
+
+
+        }
+
+
+
 
     },
 

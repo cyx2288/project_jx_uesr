@@ -26,6 +26,8 @@ Page({
 
         code:'',//验证码
 
+        disabled:true//按钮的可点击
+
 
 
 
@@ -252,6 +254,18 @@ Page({
             code:e.detail.value,
 
         })
+
+
+        //六位时按钮亮起
+        if(e.detail.value.length==6){
+
+            that.setData({
+
+                disabled:false
+
+            })
+
+        }
 
         console.log(that.data.code)
         
