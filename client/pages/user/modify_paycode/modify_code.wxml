@@ -7,7 +7,7 @@
                 <view class="weui-label">原密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" type='password' placeholder="请输入原密码" value="{{oldPassword}}" bindchange="oldPasswordFn"/>
+                <input class="weui-input" type='number' password="true" placeholder="请输入原密码" value="{{oldPassword}}" bindinput="oldPasswordFn" maxlength="6"/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -15,7 +15,7 @@
                 <view class="weui-label">新密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" type='password' placeholder="6位加数字支付密码" value="{{password}}" bindchange="passwordFn"/>
+                <input class="weui-input" type='number' password="true" placeholder="6位数字支付密码" value="{{password}}" bindinput="passwordFn" maxlength="6"/>
             </view>
 
         </view>
@@ -24,7 +24,7 @@
                 <view class="weui-label">确认密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" type='password' password="true" placeholder="请再次输入密码" value="{{confirmPassword}}" bindchange="confirmPasswordFn"/>
+                <input class="weui-input" type='number' password="true" placeholder="请再次输入密码" value="{{confirmPassword}}" bindinput="confirmPasswordFn" maxlength="6"/>
             </view>
         </view>
     </view>

@@ -4,7 +4,7 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const md5 = require( '../../../static/libs/script/md5.js' );//md5加密
 
-const modifycode='/user/set/updatepaypwd';//注册的url地址
+const modifycode='/user/set/updatepaypwd';//更新支付验证码的接口
 
 
 
@@ -27,74 +27,111 @@ Page({
 
         var url=app.globalData.URL+modifycode;
 
-        console.log(json2FormFn.json2Form({
-            mobile: this.data.mobile ,
-            password: md5.hexMD5(this.data.password),//md5加密
-            code:this.data.checkCode
-        }))
-
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        var that=this;
 
-        wx.request({
 
-            url:  url,
+        //如果手机号是正常的
+        if(that.data.oldPassword==''||that.data.oldPassword.length<6){
 
-            method:'POST',
+            wx.showToast({
 
-            data: json2FormFn.json2Form({
-                oldPassword: md5.hexMD5(
-                    this.data.oldPassword
-                ),
-                password: md5.hexMD5(
-                    this.data.password
-                ),
+                title: '请输入6位验证码',
+                icon: 'none'
 
-                confirmPassword:md5.hexMD5(
-                    this.data.confirmPassword
-                )
-            }),
+            });
 
-            header: {
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+        }
 
-                'jxsid': jx_sid,
+        else if(that.data.password==''||that.data.password.length<6){
 
-                'Authorization': Authorization
-            },
+            wx.showToast({
 
-            success: function(res) {
-                console.log(res.data);
+                title: '请输入6位新验证码',
+                icon: 'none'
 
-                if(res.data.code=='-1'){
+            });
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                    });
+        }
 
-                }else if(res.data.code=='0000'){
+        else if(that.data.confirmPassword !=that.data.password){
 
-                    wx.showToast({
-                        title: '修改成功',
-                        icon: 'success',
-                    });
+            wx.showToast({
 
-                    wx.navigateTo({
+                title: '请两次输入相同的验证码',
+                icon: 'none'
 
-                        url:"pages/user/reset_payment/reset_payment"
-                    })
+            });
+
+        }
+
+        else{
+
+            //支付
+            wx.request({
+
+                url:  url,
+
+                method:'POST',
+
+                data: json2FormFn.json2Form({
+                    oldPassword: md5.hexMD5(
+                        this.data.oldPassword
+                    ),
+                    password: md5.hexMD5(
+                        this.data.password
+                    ),
+
+                    confirmPassword:md5.hexMD5(
+                        this.data.confirmPassword
+                    )
+                }),
+
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+                },
+
+                success: function(res) {
+                    console.log(res.data);
+
+                    if(res.data.code=='-1'){
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                        });
+
+                    }else if(res.data.code=='0000'){
+
+                        wx.showToast({
+                            title: '修改成功',
+                            icon: 'success',
+                        });
+
+                        wx.navigateTo({
+
+                            url:"pages/user/reset_payment/reset_payment"
+                        })
+                    }
+                },
+
+                fail:function (res) {
+                    console.log(res)
                 }
-            },
 
-            fail:function (res) {
-                console.log(res)
-            }
+            })
 
-        })
+
+        }
+
 
     },
 

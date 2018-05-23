@@ -4,7 +4,7 @@
             <view class="weui-label">请输入验证码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入验证码" value="{{code}}" bindchange="codeFn" maxlength="6"/>
+            <input class="weui-input" type="number" placeholder="请输入验证码" value="{{code}}" bindinput="codeFn" maxlength="6" focus="true"/>
         </view>
     </view>
 
@@ -14,9 +14,9 @@
 
 
 <!--button-->
-<view class="page__bd page__bd_spacing" style="margin-top: 25px" bindtap="codeUrlFn">
+<view class="page__bd page__bd_spacing" style="margin-top: 25px" >
 
-    <button class="weui-btn" type="primary">确认</button>
+    <button class="weui-btn" type="primary" bindtap="codeUrlFn" disabled="{{disabled}}">确认</button>
 
 </view>
 
