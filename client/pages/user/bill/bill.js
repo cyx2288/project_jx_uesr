@@ -20,13 +20,22 @@ Page({
 
         pageSize: 10,//一页的数量
 
-        hasMoreData: true,//是否可以加载更多
-
         noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
     },
 
+
+
     onLoad:function () {
+
+        var that=this;
+
+        that.loadList()
+
+
+    },
+
+    loadList:function () {
 
         var thisBillUrl = app.globalData.URL + billUrl;
 
@@ -37,54 +46,117 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：获取账户提现记录
-         * 请求方式：GET
-         * 接口：/user/withdraw/getsimplerecord
-         * 入参：null
-         **/
-        wx.request({
 
-            url: thisBillUrl,
+        if(that.data.noData) {//如果数据没有见底
 
-            method: 'GET',
+            /**
+             * 接口：获取账户提现记录
+             * 请求方式：GET
+             * 接口：/user/withdraw/getsimplerecord
+             * 入参：null
+             **/
+            wx.request({
 
-            header: {
+                url: thisBillUrl,
 
-                'jxsid': jx_sid,
+                method: 'GET',
 
-                'Authorization': Authorization
+                data: {
 
-            },
+                    pageNum: that.data.pageNum,
 
-            success: function (res) {
+                    pageSize: that.data.pageSize
 
-                console.log(res.data);
+                },
 
-                that.setData({
+                header: {
 
-                    billList:res.data.data.list,
+                    'jxsid': jx_sid,
 
+                    'Authorization': Authorization
 
+                },
 
-                })
+                success: function (res) {
 
+                    console.log(res.data);
 
+                    console.log(that.data.pageNum);
 
-            },
+                    var _billList = res.data.data.list;
 
-            fail: function (res) {
-
-                console.log(res)
-
-            }
-
-        })
+                    //如果没有数据
+                    if (!that.data.noData) {
 
 
+                    }
+
+                    else if (res.data.data.list.length == 0) {//这一组为空
+
+
+                        //增加数组内容
+                        that.setData({
+
+                            noData: false,
+
+                        })
+
+                    }
+
+
+                    else if (res.data.data.list.length < 10) {//这一组小于十个
+
+                        //增加数组内容
+                        that.setData({
+
+                            noData: false,
+
+                            billList: that.data.billList.concat(_billList),
+
+
+                        })
+
+                    }
+
+                    else {
+
+                        //console.log('增加成功')
+
+                        //增加数组内容
+                        that.setData({
+
+                            billList: that.data.billList.concat(_billList),
+
+                            pageNum: that.data.pageNum + 1//加一页
+
+                        })
+
+                    }
 
 
 
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+        }
+
+
+    },
+
+    onReachBottom: function () {
+
+        var that = this;
+
+        that.loadList()
+
+        //console.log('到底了')
 
     },
 
