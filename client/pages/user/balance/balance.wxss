@@ -1,6 +1,12 @@
 @import "../../wages/index/index.wxss";
 @import "../mine/mine.wxss";
+@import "../../common/register/register.wxss";
 
 .account_information_mime{
     margin: 0 auto;
+}
+
+.page__bd{
+
+    margin-top: 30px;
 }

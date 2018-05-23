@@ -1,5 +1,6 @@
-@import "../mine/mine.wxss";
 
+@import "../../common/register/register.wxss";
+@import "../../common/input_password/input_password.wxss";
 
 page{
 
@@ -9,34 +10,16 @@ page{
 
 }
 
-.no_invitation .account_information_tel{
-
-
-   text-align: right;
-}
-
-/*
-.mine_welfare{
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 15px;
-    margin: 10px auto;
-    background-color: white;
-    box-shadow: 0 2px 3px #E9E9E9;
-}
-*/
-
-.weui-loadmore__tips{
-    font-size: 16px;
-    padding-top: 12px;
-    color: #8a8a8a;
-}
 
 .account_information_tel{
     text-align: left;
     color: #8a8a8a;
-
-
-
 }
 
+
+.account_information_mime{
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 3px #E9E9E9;
+
+}

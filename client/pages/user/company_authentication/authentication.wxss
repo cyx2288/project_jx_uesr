@@ -1,0 +1,9 @@
+@import "../../common/register/register.wxss";
+
+
+.page__hd{
+
+    background-color: #FFF2E8;
+
+}
+
