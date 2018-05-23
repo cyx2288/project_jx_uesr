@@ -19,6 +19,7 @@
 
                 <view wx:elif="{{item.transType==4}}"class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
 
+                <view wx:else class="weui-media-box__title weui-media-box__title_in-text"></view>
 
                 <view class="weui_confirm">{{item.transAmt}}</view>
             </view>
@@ -82,4 +83,13 @@
     </view>
     <hr/>-->
 
+</view>
+
+<view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+</view>
+
+<view class="weui-loadmore" hidden="{{!noData}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
 </view>
