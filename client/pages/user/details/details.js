@@ -11,10 +11,23 @@ Page({
 
         balanceList: [],//工资明细
 
+        pageNum:1,//第几页
+
+        pageSize:10,//一页几个
+
+        noData:true//调整提示文案 true正在加载 false暂无数据
 
     },
 
     onLoad: function () {
+
+        var that=this;
+
+        that.loadList()
+
+    },
+
+    loadList:function () {
 
         var thisClearingurl = app.globalData.URL + clearingUrl;
 
@@ -28,61 +41,118 @@ Page({
         var thisUserClearId = wx.getStorageSync('userClearId');
 
 
-        /**
-         * 接口：
-         * 请求方式：GET
-         * 接口：/user/account/clearing
-         * 入参：userClearId
-         **/
-        wx.request({
+        if(that.data.noData) {//如果数据没有见底
 
-            url: thisClearingurl,
+            /**
+             * 接口：
+             * 请求方式：GET
+             * 接口：/user/account/clearing
+             * 入参：userClearId
+             **/
+            wx.request({
 
-            method: 'GET',
+                url: thisClearingurl,
 
-            data: {
+                method: 'GET',
 
-                userClearId: thisUserClearId
+                data: {
 
-            },
+                    userClearId: thisUserClearId,
 
-            header: {
+                    pageNum: that.data.pageNum,
 
-                'jxsid': jx_sid,
+                    pageSize: that.data.pageSize
 
-                'Authorization': Authorization
+                },
 
-            },
+                header: {
 
-            success: function (res) {
+                    'jxsid': jx_sid,
 
-                console.log(res.data);
+                    'Authorization': Authorization
 
-                var _balanceList = res.data.data.list;
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    var _balanceList = res.data.data.list;
+
+                    console.log(res.data.data.list.length)
+
+                    //如果没有数据
+                    if (!that.data.noData) {
 
 
-                that.setData({
+                    }
 
-                    balanceList:_balanceList
-
-                })
+                    else if (res.data.data.list.length == 0) {//这一组为空
 
 
+                        //增加数组内容
+                        that.setData({
+
+                            noData: false,
+
+                        })
+
+                    }
 
 
+                    else if (res.data.data.list.length < 10) {//这一组小于十个
+
+                        //增加数组内容
+                        that.setData({
+
+                            noData: false,
+
+                            balanceList: that.data.balanceList.concat(_balanceList),
 
 
-            },
+                        })
 
-            fail: function (res) {
+                    }
 
-                console.log(res)
+                    else {
 
-            }
+                        console.log('增加成功')
 
-        })
+                        //增加数组内容
+                        that.setData({
+
+                            balanceList: that.data.balanceList.concat(_balanceList),
+
+                            pageNum: that.data.pageNum + 1//加一页
+
+                        })
+
+                    }
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+        }
+
 
     },
 
+    onReachBottom: function () {
+
+        var that = this;
+
+        that.loadList()
+
+        console.log('到底了')
+
+    },
 
 });
