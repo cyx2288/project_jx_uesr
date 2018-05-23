@@ -168,11 +168,7 @@
       "text": "我的",
       "iconPath":"static/icon/index_tab/jx_mine_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_mine_orange.png"
-    },
-      {
-        "pagePath": "example/index",
-        "text": "demo"
-      }
+    }
     ]
   },
   "debug": true

@@ -83,8 +83,9 @@ Page({
                         icon: 'success',
                     });
 
-                    wx.navigateTo({
-                        delta: 1
+                    wx.redirectTo({
+
+                        url:'../../user/setting/setting'
                     })
 
                 }

@@ -40,6 +40,7 @@ Page({
         var _bankCardId = wx.getStorageSync('bankCardId');
 
 
+
         /**
          * 接口：获取账户提现记录
          * 请求方式：GET

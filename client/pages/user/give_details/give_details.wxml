@@ -39,7 +39,7 @@
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">3</view>
              </view>
-             <text wx:if="{{orderState=='4'}}" class="status">处理失败</text>
+             <text wx:if="{{orderState=='4'}}" class="status">已退款</text>
              <text wx:else class="status">到账成功</text>
          </view>
 
@@ -56,10 +56,10 @@
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
                      <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
-                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">支付成功</view>
-                     <view wx:elif="{{orderState=='2'}}"class="weui_confirm">银行处理中</view>
-                     <view wx:elif="{{orderState=='3'}}" class="weui_confirm">到账成功</view>
-                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">处理失败</view>
+                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">到账成功</view>
+                     <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
+                     <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
+                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
                  </view>
 
              </view>
@@ -73,7 +73,7 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
-                     <view class="weui_confirm">￥{{payAmount}}</view>
+                     <view class="weui_confirm">￥{{orderAmount}}</view>
                  </view>
 
              </view>
@@ -101,7 +101,7 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">支付金额</view>
-                     <view class="weui_confirm">￥{{orderAmount}}</view>
+                     <view class="weui_confirm">￥{{payAmount}}</view>
                  </view>
 
              </view>
