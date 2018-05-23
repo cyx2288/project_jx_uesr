@@ -66,10 +66,57 @@ Page({
     },
     onShow: function () {
 
+
+
+
         // 页面显示
         //console.log('返回更新数据');
 
         var that = this;
+
+
+        that.setData({
+
+
+            firstOptions: '筛选',//默认选项
+
+            selectSalary: true,//选择企业 true为隐藏 false为显示
+
+            selectArea: false,
+
+            wages: '暂无数据',//获取用户余额信息
+
+            salaryDetailId: '',//发薪企业明细id
+
+            wagesList: [],//发薪企业列表
+
+            thisWagesListLength: 0,//获取当前发薪企业列表的长度
+
+            selectSalaryOptions: [],//获取企业列表
+
+            isAllCom: true,//判断是不是全部企业
+
+            entId: '',//发薪企业id
+
+            pageNum: 1,//初始值为2
+
+            pageSize: 10,//一页的数量
+
+            hasMoreData: true,//是否可以加载更多
+
+            noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+            userName: '',//姓名
+
+            idNumber: '',//身份证号码
+
+            dataText: true,//true为隐藏 false为显示
+
+            hasCompany: false,//有没有企业
+
+            lookWages:true,//看不看余额
+
+        })
 
         //工资提醒
         var thisRemaidUrl = app.globalData.URL + remindUrl;
@@ -393,7 +440,6 @@ Page({
 
 
         }
-
 
         //分页
         that.chooseEntId();
@@ -740,7 +786,7 @@ Page({
 
             selectArea: false,
 
-            wages: '',//获取用户余额信息
+            wages: '暂无数据',//获取用户余额信息
 
             salaryDetailId: '',//发薪企业明细id
 
@@ -749,6 +795,8 @@ Page({
             thisWagesListLength: 0,//获取当前发薪企业列表的长度
 
             selectSalaryOptions: [],//获取企业列表
+
+            isAllCom: true,//判断是不是全部企业
 
             entId: '',//发薪企业id
 
@@ -760,11 +808,16 @@ Page({
 
             noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
-            isAllCom: true,//判断是不是全部企业
-
             userName: '',//姓名
 
             idNumber: '',//身份证号码
+
+            dataText: true,//true为隐藏 false为显示
+
+            hasCompany: false,//有没有企业
+
+            lookWages:true,//看不看余额
+
 
 
         });
@@ -788,8 +841,9 @@ Page({
     chooseEntId: function () {
 
         var that = this;
-
         //console.log('到底');
+
+        console.log('是否有更多数据'+that.data.hasMoreData)
 
         if (that.data.hasMoreData) {
 
@@ -848,7 +902,6 @@ Page({
 
 
             };
-
 
             //如果查看全部企业
             if (that.data.isAllCom) {

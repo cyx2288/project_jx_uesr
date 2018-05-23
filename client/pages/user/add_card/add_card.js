@@ -280,7 +280,6 @@ Page({
 
         var that = this;
 
-
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -296,72 +295,106 @@ Page({
          * 入参：bankNo，openBank，bankName，bankBranch，province，city
          * */
 
+        //判断银行卡是否为空
+        if (!that.data.bankNo||that.data.bankNo.length<15) {
+
+            wx.showToast({
+
+                title: '请填写正确的银行卡号',
+                icon: 'none',
+
+            })
 
 
+        }
+        //判断卡号是否有误
+        else if(regNeg.test(that.data.bankNo)){
 
-        wx.request({
+            wx.showToast({
 
-            url: thisAddBankUrl,
+                title: '请填写正确的银行卡号',
 
-            method: 'POST',
+                icon: 'none',
 
-            data: json2FormFn.json2Form({
+            })
 
-                bankNo: that.data.bankNo,//银行卡号
+        }
 
-                bankName: that.data.bankName,//银行名称&所属银行
+            //判断是否写了所属银行
+            else if (!that.data.bankName) {
 
-             bankBranch: that.data.bankBranch,//卡户支行
+                wx.showToast({
 
-                province: that.data.province,//开户省份
+                    title: '请选择所属银行',
+                    icon: 'none',
 
-                city: that.data.city//开户城市
-
-            }),
-
-            header: {
-
-                'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            success: function (res) {
-
-                console.log(res.data);
-
-                //银行卡添加成功 toast提示成功
-
-                if (res.data.code == '0000') {
-
-                    wx.showToast({
-
-                        title: res.data.msg,
-                        icon: 'none',
-
-                    })
-
-                    wx.redirectTo({
-
-                        url: '../card/card'
-
-                    })
+                })
+            }
 
 
-                }
+        else {
 
 
-                else {
+            wx.request({
 
-                    //判断银行卡是否为空
-                    if (!that.data.bankNo) {
+                url: thisAddBankUrl,
+
+                method: 'POST',
+
+                data: json2FormFn.json2Form({
+
+                    bankNo: that.data.bankNo,//银行卡号
+
+                    bankName: that.data.bankName,//银行名称&所属银行
+
+                    bankBranch: that.data.bankBranch,//卡户支行
+
+                    province: that.data.province,//开户省份
+
+                    city: that.data.city//开户城市
+
+                }),
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    //银行卡添加成功 toast提示成功
+
+                    if (res.data.code == '0000') {
 
                         wx.showToast({
 
-                            title: '请填写银行卡号',
+                            title: res.data.msg,
+                            icon: 'none',
+
+                        })
+
+                        wx.redirectTo({
+
+                            url: '../card/card'
+
+                        })
+
+
+                    }
+
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
                             icon: 'none',
 
                         })
@@ -369,47 +402,21 @@ Page({
 
                     }
 
-                    //如果有值的话 判断是否是数字、15位或者18位
-                    else if (that.data.bankNo) {
 
-                        //判断卡号是否有误
-                        if (!regNeg.test(that.data.bankNo)) {
-
-                            wx.showToast({
-
-                                title: '卡号填写错误',
-
-                                icon: 'none',
-
-                            })
-
-                        }
-
-                        //判断是否写了所属银行
-                        else if (!that.data.bankName) {
-
-                            wx.showToast({
-
-                                title: '请选择所属银行',
-                                icon: 'none',
-
-                            })
-                        }
-
-                    }
+                },
 
 
+                fail: function (res) {
+                    console.log(res)
                 }
 
+            })
 
-            },
+        }
 
 
-            fail: function (res) {
-                console.log(res)
-            }
 
-        })
+
 
 
     },

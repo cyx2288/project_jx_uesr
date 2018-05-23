@@ -6,7 +6,7 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const dentityUrl = '/salary/home/selectidnumber';
+const dentityUrl = '/salary/home/salaryselectidnumber';//查看工资条身份验证
 
 
 Page({
@@ -17,7 +17,11 @@ Page({
 
         entId:'',
 
-        userName:''
+        userName:'',
+
+        salaryDetailId:'',
+
+
 
 
     },
@@ -39,7 +43,6 @@ Page({
 
         var thisDentityUrl = app.globalData.URL+dentityUrl;
 
-
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -49,14 +52,12 @@ Page({
 
         var thisType = wx.getStorageSync('thisType');
 
-        console.log(thisType)
-
 
         /**
          * 接口：身份验证
          * 请求方式：GET
-         * 接口：/salary/home/selectidnumber
-         * 入参：idCard
+         * 接口：/salary/home/salaryselectidnumber
+         * 入参：idCard，entId，salaryDetailId
          * */
         wx.request({
 
@@ -69,6 +70,9 @@ Page({
                 idCard: this.data.idCard,
 
                 entId:thisEntId,
+
+                salaryDetailId:this.data.salaryDetailId
+
 
             },
 

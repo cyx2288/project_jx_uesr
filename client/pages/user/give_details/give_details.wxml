@@ -21,7 +21,7 @@
                  <view class="weui-loadmore__tips">1</view>
              </view>
              <text wx:if="{{orderState=='0'}}" class="status">待支付</text>
-             <text wx:else class="status">支付成功</text>
+             <text wx:else class="status">付款成功</text>
              <view class="border"></view>
          </view>
 
@@ -30,7 +30,7 @@
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">2</view>
              </view>
-             <text class="status">银行处理中</text>
+             <text class="status">处理中</text>
              <view class="border"></view>
          </view>
 
