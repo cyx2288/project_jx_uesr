@@ -3,9 +3,11 @@
 
     "pages/wages/index/index",
 
-    "pages/user/bill/bill",
-
     "pages/common/signin/signin",
+    
+    "pages/user/add_card/add_card",
+
+    "pages/user/bill/bill",
 
     "pages/common/forget_password/forget_password",
 
@@ -90,7 +92,7 @@
 
     "pages/user/setting/setting",
 
-    "pages/user/add_card/add_card",
+
 
     "pages/user/details/details",
 

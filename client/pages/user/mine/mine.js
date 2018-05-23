@@ -24,7 +24,9 @@ Page({
 
     },
 
-    onLoad:function () {
+    onShow:function () {
+
+        console.log('刷新')
 
         var thisMineurl = app.globalData.URL+ mineUrl;
 

@@ -270,29 +270,12 @@ Page({
 
         var that = this;
 
-        if(!that.data.balance){
-
-            console.log('有值')
 
             that.setData({
 
-                balance:that.data.canCashBalance
-            })
-
-        }
-        else {
-
-            console.log('无值')
-
-            that.setData({
-
-                inputBalance: that.data.balance,
+                inputBalance: that.data.canCashBalance,
 
             })
-
-        }
-
-
 
 
     },
