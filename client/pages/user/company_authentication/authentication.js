@@ -15,8 +15,6 @@ Page({
 
         idCard:'',
 
-        entId:'',
-
         userName:''
 
 
@@ -47,6 +45,8 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var thisEntId = wx.getStorageSync('entId');
+
+        console.log(thisEntId)
 
 
         /**
@@ -101,12 +101,16 @@ Page({
                 //验证成功后显示工资
                 else if (thisCode == '0000'){
 
+                    console.log('跳转')
+
                     //关闭当前页面
 
-                    wx.reLaunch({
-                        delta: 1
+                    wx.redirectTo({
+
+                        url:'../company/company'
 
                     })
+
                 }
 
 

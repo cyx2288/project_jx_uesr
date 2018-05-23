@@ -133,6 +133,9 @@ Page({
                 wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
 
 
+                //存储type
+                wx.setStorageSync('thisType', res.data.data[0].type);
+
                 //是否查看工资条
                 if (thisType == 1) {
 
@@ -397,6 +400,7 @@ Page({
 
         //发薪企业
         getSelectEnt();
+
 
 
         /**

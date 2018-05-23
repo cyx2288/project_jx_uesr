@@ -1,72 +1,46 @@
 {
   "pages":[
 
+
     "pages/wages/index/index",
 
-    "pages/user/bill/bill",
 
     "pages/common/signin/signin",
 
-    "pages/common/forget_password/forget_password",
+
+
+    
+
+    "pages/user/cash/cash",
+
+
+
+
+    "pages/user/add_card/add_card",
 
     "pages/user/mine/mine",
+
+    "pages/user/card/card",
+
+    "pages/common/forget_password/forget_password",
+
+    "pages/user/bill/bill",
 
     "pages/user/give_details/give_details",
 
     "pages/user/pay_success/pay_success",
 
-    "pages/user/cash/cash",
-
     "pages/common/revise_login/revise_login",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     "pages/user/modify_paycode/modify_code",
 
-
-
-
-
-
-
     "pages/user/id_card/id_card",
-
-
-
 
     "pages/user/set_payment_psw/set_payment_psw",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     "pages/user/pws_verification/pws_verification",
 
-
     "pages/user/sms_verification/sms_verification",
-
-    "pages/user/card/card",
 
     "pages/user/payment_setting_message/payment_setting_message",
 
@@ -82,15 +56,9 @@
 
     "pages/common/revise_password/revise_password",
 
-
-
-
-
     "pages/user/reset_payment/reset_payment",
 
     "pages/user/setting/setting",
-
-    "pages/user/add_card/add_card",
 
     "pages/user/details/details",
 
@@ -168,11 +136,7 @@
       "text": "我的",
       "iconPath":"static/icon/index_tab/jx_mine_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_mine_orange.png"
-    },
-      {
-        "pagePath": "example/index",
-        "text": "demo"
-      }
+    }
     ]
   },
   "debug": true

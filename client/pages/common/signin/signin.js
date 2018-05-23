@@ -30,6 +30,41 @@ data:{
 
       var url = app.globalData.URL+signUrl;
 
+      var _thisPassWord;
+
+      if(this.data.mobile==''){
+
+          wx.showToast({
+
+              title: '请输入手机号',
+              icon: 'none'
+
+          });
+
+          return false;
+      }
+
+
+      else if(this.data.password==''){
+
+          wx.showToast({
+
+              title: '请输入密码',
+              icon: 'none'
+
+          });
+
+          return false;
+
+       }
+
+      else {
+
+          _thisPassWord = md5.hexMD5(this.data.password)
+
+      }
+
+
         /**
          * 接口：登录
          * 请求方式：POST
@@ -47,7 +82,7 @@ data:{
 
                  mobile:this.data.mobile,
 
-                 password:md5.hexMD5(this.data.password),
+                 password:_thisPassWord,
 
              }),
 
@@ -100,9 +135,6 @@ data:{
 
                      console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
 
-
-
-
                      //console.log(header.header(Authorization,jx_sid));
 
                      wx.switchTab({
@@ -135,7 +167,9 @@ data:{
     passwordFn:function (e) {
 
         var that = this;
+        console.log(e.detail.value),
         that.setData({
+
             password: e.detail.value
         });
 

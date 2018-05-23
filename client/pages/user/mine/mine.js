@@ -89,7 +89,11 @@ Page({
                 //是否开启验证
                 wx.setStorageSync('isSecurity',res.data.data.isSecurity);
 
-                console.log(wx.getStorageSync('isSecurity'))
+
+                //是否开启验证
+                wx.setStorageSync('isVerify',res.data.data.isVerify);
+
+                console.log('认证'+wx.getStorageSync('isVerify'))
 
 
             },
