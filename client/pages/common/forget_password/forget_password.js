@@ -38,77 +38,98 @@ Page({
 
         var that = this;
 
-            that.getCode();
 
-            that.setData({
+        //如果手机号是正常的
+        if(that.data.mobile==''||that.data.mobile.length<11){
 
-                disabled:true
+            wx.showToast({
+
+                title: '请输入正确的手机号',
+                icon: 'none'
 
             });
 
-        /**
-         * 接口：忘记密码发送短信认证
-         * 请求方式：/jx/action/forgetmsg
-         * 接口：GET
-         * 入参：mobile
-         **/
+        }
 
 
-        wx.request({//注册
+        else {
 
-            url: thisForgetmsgUrl,
-
-            method: 'GET',
-
-            data: {
-
-                mobile: that.data.mobile
-
-            },
-
-            header:{
-
-                'jxsid': jx_sid,
+            /**
+             * 接口：忘记密码发送短信认证
+             * 请求方式：/jx/action/forgetmsg
+             * 接口：GET
+             * 入参：mobile
+             **/
 
 
-            },
+            wx.request({//注册
 
-            success: function (res) {
+                url: thisForgetmsgUrl,
 
-                console.log(res.data);
+                method: 'GET',
 
-                if(res.data.code=='0000'){
+                data: {
 
-                    wx.showToast({
+                    mobile: that.data.mobile
 
-                        title: res.data.msg,
-                        icon: 'none'
+                },
 
-                    });
+                header: {
 
+                    'jxsid': jx_sid,
+
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none'
+
+                        });
+
+                        //倒计时开始
+                        that.getCode();
+
+                        //锁定
+                        that.setData({
+
+                            disabled: true
+
+                        });
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none'
+
+                        });
+
+                    }
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
                 }
 
-                else {
-
-                    wx.showToast({
-
-                        title: res.data.msg,
-                        icon: 'none'
-
-                    });
-
-                }
+            })
 
 
-            },
-
-            fail: function (res) {
-
-                console.log(res)
-            }
-
-        })
-
+        }
 
     },
 
@@ -130,61 +151,63 @@ Page({
         var _thisPassWord,_thisconfirmPassword;
 
 
-        if(that.data.mobile==''){
+
+        //如果手机号是正常的
+        if(that.data.mobile==''||that.data.mobile.length<11){
 
             wx.showToast({
 
-                title: '请输入手机号',
+                title: '请输入正确的手机号',
                 icon: 'none'
 
             });
-            return false;
 
+        }
+
+        else if (that.data.checkCode==''||that.data.checkCode.length<6){
+
+            wx.showToast({
+
+                title: '请输入正确的验证码',
+                icon: 'none'
+
+            });
+
+        }
+
+        //校验密码
+        else if(a.test(that.data.password)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
 
 
         }
 
-        else if (that.data.checkCode==''){
+        else if(that.data.password.length<6){
 
             wx.showToast({
 
-                title: '请输入验证码',
+                title: '密码长度为6-20位',
                 icon: 'none'
 
             });
-
-            return false;
-
-
 
         }
 
-
-        else if(that.data.password==''){
-
-            console.log(1)
-            wx.showToast({
-
-                title: '请输入密码',
-                icon: 'none'
-
-            });
-
-            return false;
-
-        }
-
-        else if(that.data.confirmPassword==''){
+        else if(that.data.password!=that.data.confirmPassword){
 
 
             wx.showToast({
 
-                title: '请再次输入密码',
+                title: '请保证两次输入密码一致',
                 icon: 'none'
 
             });
-
-            return false;
 
         }
 
@@ -195,38 +218,9 @@ Page({
 
             _thisconfirmPassword = md5.hexMD5(this.data.confirmPassword)
 
-        }
 
 
-        //校验密码
-        if(a.test(that.data.password)){
-
-            wx.showToast({
-
-                title: '密码包含非法字符',
-                icon: 'none'
-
-            });
-
-            return false
-
-        }
-
-        else if(reg.test(that.data.password)){
-
-            wx.showToast({
-
-                title: '密码长度为6-20位',
-                icon: 'none'
-
-            });
-
-            return false
-        }
-
-
-
-        /**
+            /**
              * 接口：注册
              * 请求方式：POST
              * 接口：/jx/action/register
@@ -286,12 +280,12 @@ Page({
 
                     else if(res.data.code=='-1'){
 
-                            wx.showToast({
+                        wx.showToast({
 
-                                title: res.data.msg,
-                                icon: 'none'
+                            title: res.data.msg,
+                            icon: 'none'
 
-                            });
+                        });
 
                     }
 
@@ -306,6 +300,11 @@ Page({
                 }
 
             })
+
+
+        }
+
+
 
     },
 
