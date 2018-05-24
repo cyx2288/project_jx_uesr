@@ -1,0 +1,6 @@
+@import "../../common/register/register.wxss";
+@import "../../common/signin/signin.wxss";
+.weui-help{
+
+    color: #E87B17;
+}
