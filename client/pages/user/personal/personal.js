@@ -23,7 +23,7 @@ Page({
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var thisUserCenterUrl = app.globalData.URL + userCenterUrl;
 

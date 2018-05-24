@@ -174,14 +174,18 @@ Page({
                 console.log(res.data);
 
 
+
                 //存储entId
                 wx.setStorageSync('entId', res.data.data[0].entId);
 
+
                 //存储salaryId
-                //wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
+                wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
 
                 //存储type
                 wx.setStorageSync('thisType', res.data.data[0].type);
+
+
 
                 //是否查看工资条
                 if (thisType == 1) {
@@ -191,9 +195,7 @@ Page({
 
                     var thisSalaryMonth = res.data.data[0].salaryMonth;
 
-                    wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
-
-                    console.log('发薪企业id'+that.data.salaryDetailId);
+                    //console.log('发薪企业id'+that.data.salaryDetailId);
 
                     wx.showModal({
                         title: '提示',
@@ -250,7 +252,7 @@ Page({
 
                                 wx.navigateTo({
 
-                                    url: '../../common/authentication/authentication'
+                                    url: '../../common/wages_authentication/authentication'
 
                                 });
 

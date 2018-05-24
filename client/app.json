@@ -3,11 +3,13 @@
 
     "pages/wages/index/index",
 
+    "pages/user/bill/bill",
+
     "pages/common/signin/signin",
 
-    "pages/user/add_card/add_card",
+    "pages/common/wages_authentication/authentication",
 
-    "pages/user/bill/bill",
+    "pages/user/add_card/add_card",
 
     "pages/common/forget_password/forget_password",
 
@@ -21,50 +23,15 @@
 
     "pages/common/revise_login/revise_login",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     "pages/user/modify_paycode/modify_code",
-
-
-
-
-
-
 
     "pages/user/id_card/id_card",
 
-
-
-
     "pages/user/set_payment_psw/set_payment_psw",
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     "pages/user/pws_verification/pws_verification",
 
+    "pages/user/locked/locked",
 
     "pages/user/sms_verification/sms_verification",
 

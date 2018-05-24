@@ -178,7 +178,7 @@ Page({
 
     },
 
-    onLoad:function () {
+    onShow:function () {
 
         var thisBankUrl = app.globalData.URL+bankUrl;
 

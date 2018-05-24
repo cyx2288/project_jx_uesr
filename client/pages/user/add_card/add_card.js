@@ -285,7 +285,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var regNeg = /^([1-9]{1})(\d{15}|\d{19})$/;
+        var regNeg = /^([1-9]{1})(\d{15,19})$/;
 
 
         /**
@@ -308,7 +308,7 @@ Page({
 
         }
         //判断卡号是否有误
-        else if(regNeg.test(that.data.bankNo)){
+        else if(!regNeg.test(that.data.bankNo)){
 
             wx.showToast({
 
@@ -380,7 +380,7 @@ Page({
 
                         })
 
-                        wx.redirectTo({
+                        wx.navigateBack({
 
                             url: '../card/card'
 

@@ -31,41 +31,44 @@ Page({
 
         var  _isVerify= wx.getStorageSync('isVerify');
 
-        console.log('是否认证'+_isVerify)
+        console.log('是否认证'+_isVerify);
+
+        console.log('名字'+thisUserName)
 
         that.setData({
 
-            isVerify:_isVerify
+            isVerify:_isVerify,
+
+            userName:thisUserName,
+
+            idNumber:thisIdNumber
+
+
 
         });
 
 
         //如果登录页有返回名字
-        if(thisUserName){
-
-            that.setData({
-
-                userName:thisUserName
-
-            })
-
-        }
-
-        if(thisIdNumber){
-
-             that.setData({
-
-                 idNumber:thisIdNumber
-
-             })
-
-
-         }
-
-
-
-
-
+        // if(thisUserName){
+        //
+        //     that.setData({
+        //
+        //         userName:thisUserName
+        //
+        //     })
+        //
+        // }
+        //
+        // if(thisIdNumber){
+        //
+        //      that.setData({
+        //
+        //
+        //
+        //      })
+        //
+        //
+        //  }
 
     },
 

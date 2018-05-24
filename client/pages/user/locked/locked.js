@@ -6,7 +6,7 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const dentityUrl = '/salary/home/selectidnumber';//查看工资条身份验证
+const dentityUrl = '/salary/home/selectidnumber';
 
 
 Page({
@@ -15,11 +15,7 @@ Page({
 
         idCard:'',
 
-        entId:'',
-
-        userName:'',
-
-
+        userName:''
 
 
     },
@@ -28,16 +24,11 @@ Page({
 
         var thisUserName = wx.getStorageSync('userName');
 
-        var thisEntId = wx.getStorageSync('entId');
-
-
         //console.log('姓名'+userName)
 
         this.setData({
 
             userName:thisUserName,
-
-            entId:thisEntId,
 
 
         })
@@ -45,22 +36,24 @@ Page({
     },
     identity:function () {
 
-        var that = this;
-
         var thisDentityUrl = app.globalData.URL+dentityUrl;
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisType = wx.getStorageSync('thisType');
+        var thisEntId = wx.getStorageSync('entId');
+
+        console.log(thisEntId)
+
 
         /**
          * 接口：身份验证
          * 请求方式：GET
-         * 接口：/salary/home/salaryselectidnumber
-         * 入参：idCard，entId，salaryDetailId
+         * 接口：/salary/home/selectidnumber
+         * 入参：idCard
          * */
         wx.request({
 
@@ -70,10 +63,9 @@ Page({
 
             data: {
 
-                idCard: that.data.idCard,
+                idCard: this.data.idCard,
 
-                entId:that.data.entId,
-
+                entId:thisEntId,
 
             },
 
@@ -109,35 +101,15 @@ Page({
                 //验证成功后显示工资
                 else if (thisCode == '0000'){
 
-                    //跳转首页
+                    console.log('跳转')
 
-                    if(thisType=='2'){
+                    //关闭当前页面
 
-                        console.log('跳转')
+                    wx.redirectTo({
 
-                        wx.switchTab({
+                        url:'../company/company'
 
-                             url:'../../wages/index/index'
-                        })
-
-
-                    }
-
-                    //跳转工资明细
-
-                    else if(thisType=='1'){
-
-                        //关闭当前页面
-                        wx.redirectTo({
-
-                            url:'../../wages/payroll/payroll'
-
-                        });
-
-
-
-                    }
-
+                    })
 
                 }
 

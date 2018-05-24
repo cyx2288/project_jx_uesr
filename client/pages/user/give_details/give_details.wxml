@@ -16,17 +16,18 @@
      <view class="weui-panel">
 
 
-         <view class="step {{orderState=='0'||orderState=='1'? 'selected':''}}">
+         <view class="step {{orderState=='0'||orderState=='2'||orderState=='5'? 'selected':''}}">
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">1</view>
              </view>
              <text wx:if="{{orderState=='0'}}" class="status">待支付</text>
+             <text wx:elif="{{orderState=='5'}}" class="status">订单关闭</text>
              <text wx:else class="status">付款成功</text>
              <view class="border"></view>
          </view>
 
 
-         <view class="step {{orderState=='2'? 'selected':''}}">
+         <view class="step {{orderState=='3'? 'selected':''}}">
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">2</view>
              </view>
@@ -35,7 +36,7 @@
          </view>
 
 
-         <view class="step {{orderState=='4'||orderState=='3'? 'selected':''}}">
+         <view class="step {{orderState=='4'||orderState=='1'? 'selected':''}}">
              <view class="weui-loadmore">
                  <view class="weui-loadmore__tips">3</view>
              </view>
@@ -60,7 +61,9 @@
                      <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
                      <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
                      <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
-                 </view>
+                     <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
+
+             </view>
 
              </view>
 

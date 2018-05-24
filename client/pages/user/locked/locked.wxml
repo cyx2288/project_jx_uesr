@@ -1,0 +1,30 @@
+
+    <!--身份验证锁定3次-->
+
+    <view class="page">
+        <view class="weui-msg">
+            <view class="weui-msg__icon-area">
+                <icon type="warn" size="84"></icon>
+            </view>
+            <view class="weui-msg__text-area">
+                <view class="weui-msg__title">您已连续输错3次，请第二天再试或联系HR进行处理</view>
+
+            </view>
+
+
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary">确定</button>
+            </view>
+
+            <view class="weui-help">
+
+                <navigator  url="../help_service/help_service" class="weui-media-box__title">查看帮助</navigator>
+
+                <navigator  url=""  class="weui-media-box__title">联系客服</navigator>
+
+            </view>
+
+        </view>
+    </view>
+
+
