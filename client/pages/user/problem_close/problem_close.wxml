@@ -1,0 +1,23 @@
+<!--问题详情-->
+
+
+<!--如何关闭支付验证？-->
+<view class="help_service">
+
+
+    <!--问题-->
+    <view class="weui-panel">
+        <text class="ask">如何关闭支付验证？</text>
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+        <text class="question">关闭支付验证可能会产生资金安全隐患，请谨慎操作，对此产生的资金安全问题由您本人承担</text>
+    </view>
+
+    <view class="weui-panel">
+        <text class="question">若您需要关闭支付验证，可通过【我的】—【设置】—【支付验证】，关闭支付验证，关闭时需验证手机或原支付密码，验证后即可关闭</text>
+    </view>
+
+
+</view>

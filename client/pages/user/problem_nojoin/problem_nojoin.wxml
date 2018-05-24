@@ -1,0 +1,21 @@
+
+<view class="help_service">
+
+
+    <!--问题-->
+    <view class="weui-panel">
+        <text class="ask">不加入企业会有何影响</text>
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+        <text class="question">若您在收到查看工资条邀请时，未选择查看并验证身份，即为未加入企业状态，此时不可查看和接收该企业发送的工资和工资条</text>
+    </view>
+
+    <view class="weui-panel">
+        <text class="question">首次接收该企业工资和工资条时，必须通过身份验证，才可查看</text>
+    </view>
+
+
+
+</view>

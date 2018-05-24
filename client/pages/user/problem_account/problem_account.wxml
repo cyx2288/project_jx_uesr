@@ -1,0 +1,18 @@
+<!--问题详情-->
+
+
+<!--提现到账时间？-->
+<view class="help_service">
+
+    <!--问题-->
+    <view class="weui-panel">
+        <text class="ask">提现到账时间？</text>
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+        <text class="question">提现申请提交成功后，工作日(9:00-17:30)一般2小时内到账，具体以银行为准</text>
+    </view>
+
+</view>
+

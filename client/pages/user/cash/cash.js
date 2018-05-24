@@ -462,7 +462,7 @@ Page({
             wx.showModal({
 
                 title: '确认付款',
-                content: '支付金额￥' + (parseInt(that.data.inputBalance)+ parseInt(that.data.inputBalance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.inputBalance+',手续费￥'+that.data.rate,
+                content: '支付金额￥' + (parseInt(that.data.inputBalance)+ parseInt(that.data.inputBalance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.inputBalance+',手续费￥'+parseInt(that.data.inputBalance * (that.data.rate / 100 )),
                 confirmText: '确认付款',
 
                 success: function (res) {

@@ -265,7 +265,10 @@ Page({
 
                     else if (res.cancel) {
 
+                        wx.switchTab({
 
+                            url:'../../wages/index/index'
+                        })
 
                     }
                 }
@@ -328,6 +331,10 @@ Page({
                 if (res.confirm) {
 
                     delCard()
+
+                    that.onShow();
+
+
 
                 }
 

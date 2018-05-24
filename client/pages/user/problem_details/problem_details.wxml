@@ -1,48 +1,27 @@
-<!--问题详情-->
-
-
-<!--提现到账时间？-->
-<!--<view class="help_service">
-
-    &lt;!&ndash;问题&ndash;&gt;
-<navigator url="" class="weui-panel">
-    <text class="question">提现到账时间？</text>
-</navigator>
-<hr/>
-
-<navigator url="" class="weui-panel">
-    <text class="question">提现申请提交成功后，工作日(9:00-17:30)一般2小时内到账，具体以银行为准</text>
-</navigator>
-
-</view>-->
-
-
-
 <!--忘记修改支付密码怎么办？-->
 <view class="help_service">
 
 
     <!--问题-->
-    <navigator url="" class="weui-panel">
+    <view class="weui-panel">
         <text class="ask">忘记修改支付密码怎么办？</text>
-    </navigator>
+    </view>
     <hr/>
 
-    <navigator url="" class="weui-panel">
+    <view  class="weui-panel">
         <text class="question">如您想修改或找回支付密码，请您这样操作：</text>
-    </navigator>
+    </view>
 
-    <navigator url="" class="weui-panel">
+    <view url="" class="weui-panel">
         <text class="question">手机登录嘉薪账户，进入【我的】—【设置】—【重置支付密码】 </text>
-    </navigator>
+    </view>
 
-    <navigator url="" class="weui-panel">
+    <view url="" class="weui-panel">
         <text class="question">若您想修改支付密码，可通过【修改支付密码】，输入原密码并设置新密码即可修改您的支付密码</text>
-    </navigator>
+    </view>
 
-    <navigator url="" class="weui-panel">
+    <view class="weui-panel">
         <text class="question">若您忘记支付密码，可通过【忘记支付密码】，验证手机号和身份证后，设置新密码即可修改您的支付密码</text>
-    </navigator>
-
+    </view>
 
 </view>

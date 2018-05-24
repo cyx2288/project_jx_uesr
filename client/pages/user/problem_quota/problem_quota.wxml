@@ -1,0 +1,18 @@
+<!--问题详情-->
+
+
+<!--提现限额？-->
+<view class="help_service">
+
+    <!--问题-->
+    <view class="weui-panel">
+        <text class="ask">提现限额？</text>
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+        <text class="question">单笔50000.00元，当日100000.00元，当月300000.00元，若同一身份证绑定多个账户，则账户间共享提现额度</text>
+    </view>
+
+</view>
+

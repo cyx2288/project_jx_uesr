@@ -1,11 +1,40 @@
 {
   "pages":[
 
+    "pages/common/signin/signin",
+
     "pages/wages/index/index",
 
-    "pages/user/bill/bill",
+    "pages/common/register/register",
 
-    "pages/common/signin/signin",
+
+
+
+
+    "pages/common/user_agreement/user_agreement",
+
+    "pages/user/problem_nojoin/problem_nojoin",
+
+    "pages/user/problem_details/problem_details",
+
+    "pages/user/problem_verification/problem_verification",
+
+    "pages/user/problem_company/problem_company",
+
+    "pages/user/problem_account/problem_account",
+
+    "pages/user/problem_recall/problem_recall",
+
+    "pages/user/problem_fail/problem_fail",
+
+    "pages/user/problem_quota/problem_quota",
+
+    "pages/user/problem_setting/problem_setting",
+
+    "pages/user/problem_close/problem_close",
+
+
+    "pages/user/bill/bill",
 
     "pages/common/wages_authentication/authentication",
 
@@ -43,7 +72,7 @@
     
     "pages/user/code/code",
 
-    "pages/common/register/register",
+
 
     "pages/user/payment_setting/payment_setting",
 

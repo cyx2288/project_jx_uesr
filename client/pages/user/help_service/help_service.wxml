@@ -11,13 +11,13 @@
         </view>
 
         <view class="weui-help">
-            <navigator  url="../problem_details/problem_details" class="weui-media-box__title">提现到账时间？</navigator>
+            <navigator  url="../problem_account/problem_account" class="weui-media-box__title">提现到账时间？</navigator>
               <hr/>
-            <navigator  url=""  class="weui-media-box__title">提现提交后，可以撤回吗？</navigator>
+            <navigator  url="../problem_recall/problem_recall"  class="weui-media-box__title">提现提交后，可以撤回吗？</navigator>
               <hr/>
-            <navigator  url="" class="weui-media-box__title">提现失败如何处理？</navigator>
+            <navigator  url="../problem_fail/problem_fail" class="weui-media-box__title">提现失败如何处理？</navigator>
               <hr/>
-            <navigator  url="" class="weui-media-box__title">提现限额？</navigator>
+            <navigator  url="../problem_quota/problem_quota" class="weui-media-box__title">提现限额？</navigator>
         </view>
 
     </view>
@@ -32,12 +32,12 @@
         </view>
 
         <view class="weui-help">
-            <navigator  url=""  class="weui-media-box__title">如何设置支付密码？</navigator>
+            <navigator  url="../problem_setting/problem_setting"  class="weui-media-box__title">如何设置支付密码？</navigator>
 
             <hr/>
-            <navigator  url=""  class="weui-media-box__title">忘记修改支付密码怎么办？</navigator>
+            <navigator  url="../problem_details/problem_details"  class="weui-media-box__title">忘记修改支付密码怎么办？</navigator>
             <hr/>
-            <navigator   url="" class="weui-media-box__title">如何关闭支付验证？</navigator>
+            <navigator   url="../problem_close/problem_close" class="weui-media-box__title">如何关闭支付验证？</navigator>
 
         </view>
 
@@ -53,11 +53,11 @@
         </view>
 
         <view class="weui-help">
-            <navigator  url=""  class="weui-media-box__title">如何同意企业邀请？</navigator>
+            <navigator  url="../problem_company/problem_company"  class="weui-media-box__title">如何同意企业邀请？</navigator>
             <hr/>
-            <navigator  url=""  class="weui-media-box__title">不加入企业会有何影响？</navigator>
+            <navigator  url="../problem_nojoin/problem_nojoin"  class="weui-media-box__title">不加入企业会有何影响？</navigator>
             <hr/>
-            <navigator   url="" class="weui-media-box__title">加入企业时，身份验证通不过怎么办？</navigator>
+            <navigator  url="../problem_verification/problem_verification" class="weui-media-box__title">加入企业时，身份验证通不过怎么办？</navigator>
         </view>
 
     </view>
@@ -69,14 +69,14 @@
 
 <view class="tab_bottom">
 
-    <view type="default" bindtap="openConfirm" class="online_service">
+<!--    <view type="default" bindtap="openConfirm" class="online_service">
 
         <image src="../../../static/icon/wages/jx_online.png" class="jx_cash"/>
         <text class="service_title">在线客服</text>
 
-    </view>
+    </view>-->
 
-    <view class="online_service">
+    <view class="online_service" bindtap="openConfirm">
 
         <image src="../../../static/icon/wages/jx_tel.png" class="jx_cash"/>
         <text class="service_title">电话咨询</text>
@@ -84,11 +84,11 @@
     </view>
 
 
-    <view class="online_service">
+<!--    <view class="online_service">
 
         <image src="../../../static/icon/wages/jx_suggest.png" class="jx_cash"/>
         <text class="service_title">反馈建议</text>
 
-    </view>
+    </view>-->
 
 </view>

@@ -12,15 +12,14 @@
             </view>
 
 
-            <view class="weui-btn-area">
+            <navigator class="weui-btn-area" url="../company/company">
                 <button class="weui-btn" type="primary">确定</button>
-            </view>
+            </navigator>
 
-            <view class="weui-help">
+            <view class="weui-help" style="text-align: center">
 
                 <navigator  url="../help_service/help_service" class="weui-media-box__title">查看帮助</navigator>
 
-                <navigator  url=""  class="weui-media-box__title">联系客服</navigator>
 
             </view>
 
