@@ -22,7 +22,8 @@
                     </view>
 
                     <view class="weui-media-box__info">
-                      <view class="weui-media-box__info__meta">邀请时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+                      <view wx:if="{{item.state==1}}" class="weui-media-box__info__meta">加入时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+                        <view wx:else class="weui-media-box__info__meta">邀请时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
                     </view>
 
                 </view>

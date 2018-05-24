@@ -1,0 +1,25 @@
+
+<view class="help_service">
+
+
+    <!--问题-->
+    <navigator url="" class="weui-panel">
+        <text class="ask">加入企业时，身份验证不通过怎么办</text>
+    </navigator>
+    <hr/>
+
+    <view  class="weui-panel">
+        <text class="question">若您在加入企业时，身份验证不通过，请您联系给您发薪的企业HR确定以下问题：</text>
+    </view>
+
+    <view class="weui-panel">
+        <text class="question">1、HR发放工资时，您的姓名是否填写正确，若填写错误，可通过HR修改您的姓名后，重新验证</text>
+    </view>
+
+    <view class="weui-panel">
+        <text class="question">您也可以通过【我的】—【我的工作单位】，查看待加入企业，验证身份证号后六位即可加入该企业；</text>
+    </view>
+
+
+
+</view>

@@ -1,0 +1,18 @@
+<!--问题详情-->
+
+
+<!--提现失败，如何处理？-->
+<view class="help_service">
+
+    <!--问题-->
+    <view  class="weui-panel">
+        <text class="ask">提现失败，如何处理？</text>
+    </view>
+    <hr/>
+
+    <view class="weui-panel">
+        <text class="question">若提现失败，平台会为您退款，1-5个工作日内，相关金额将原路退回至您的支付账户，正常退款时间内，建议咨询相关银行</text>
+    </view>
+
+</view>
+

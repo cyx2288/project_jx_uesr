@@ -38,7 +38,7 @@
 
 
     <view class="register_text">
-        <text>点击注册，即表示您同意</text><text class="register_text_code">《用户注册协议》</text>
+        <text>点击注册，即表示您同意</text><navigator url="../user_agreement/user_agreement" class="register_text_code">《用户注册协议》</navigator>
 
     </view>
 

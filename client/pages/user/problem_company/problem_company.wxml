@@ -1,0 +1,25 @@
+
+<view class="help_service">
+
+
+    <!--问题-->
+    <navigator url="" class="weui-panel">
+        <text class="ask">如何同意企业邀请</text>
+    </navigator>
+    <hr/>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">当企业首次发放工资或工资条时，会邀请您加入企业，您验证加入后才可查看该企业发放的工资和工资条，同一企业只需加入一次</text>
+    </navigator>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">若您收到企业邀请查看工资条的申请，可点击【查看】，验证身份证号后六位即可加入该企业；</text>
+    </navigator>
+
+    <navigator url="" class="weui-panel">
+        <text class="question">您也可以通过【我的】—【我的工作单位】，查看待加入企业，验证身份证号后六位即可加入该企业；</text>
+    </navigator>
+
+
+
+</view>

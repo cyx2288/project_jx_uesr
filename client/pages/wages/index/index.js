@@ -141,7 +141,7 @@ Page({
         var thisEntId = wx.getStorageSync('entId');
 
         //获取发薪企业id
-        //var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
 
 
 
@@ -173,8 +173,6 @@ Page({
 
                 console.log(res.data);
 
-
-
                 //存储entId
                 wx.setStorageSync('entId', res.data.data[0].entId);
 
@@ -184,6 +182,8 @@ Page({
 
                 //存储type
                 wx.setStorageSync('thisType', res.data.data[0].type);
+
+                //console.log('发薪'+wx.getStorageSync('salaryDetailId'))
 
 
 
@@ -195,7 +195,7 @@ Page({
 
                     var thisSalaryMonth = res.data.data[0].salaryMonth;
 
-                    //console.log('发薪企业id'+that.data.salaryDetailId);
+                    /*console.log('发薪企业id'+that.data.salaryDetailId);*/
 
                     wx.showModal({
                         title: '提示',
@@ -252,7 +252,7 @@ Page({
 
                                 wx.navigateTo({
 
-                                    url: '../../common/wages_authentication/authentication'
+                                    url: '../../common/authentication/authentication'
 
                                 });
 
