@@ -19,7 +19,7 @@ Page({
 
         userName:'',
 
-        salaryDetailId:'',
+        salaryDetailId:''
 
 
 
@@ -30,16 +30,33 @@ Page({
 
         var thisUserName = wx.getStorageSync('userName');
 
+        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
+        var thisEntId = wx.getStorageSync('entId');
+
         //console.log('姓名'+userName)
 
         this.setData({
 
             userName:thisUserName,
 
+            salaryDetailId:thisSalaryDetailId,
+
+            entId:thisEntId,
+
+
         })
+/*
+        console.log(this.data.salaryDetailId);
+
+        console.log(this.data.entId);
+
+        console.log(this.data.userName);*/
 
     },
     identity:function () {
+
+        var that = this;
 
         var thisDentityUrl = app.globalData.URL+dentityUrl;
 
@@ -48,11 +65,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisEntId = wx.getStorageSync('entId');
-
         var thisType = wx.getStorageSync('thisType');
-
-        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
 
 
         /**
@@ -69,12 +82,11 @@ Page({
 
             data: {
 
-                idCard: this.data.idCard,
+                idCard: that.data.idCard,
 
-                entId:thisEntId,
+                entId:that.data.entId,
 
-                salaryDetailId:thisSalaryDetailId,
-
+                salaryDetailId:that.data.salaryDetailId,
 
             },
 
@@ -93,6 +105,7 @@ Page({
                 console.log(res.data);
 
                 //console.log(res.data.data[0].entId)
+
 
 
                 //判断验证码

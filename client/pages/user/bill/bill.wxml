@@ -23,10 +23,11 @@
 
             <view class="weui_right">
                 <view wx:if="{{item.orderState=='0'}}" class="weui_confirm">待支付</view>
-                <view wx:elif="{{item.orderState=='1'}}" class="weui_confirm">支付成功</view>
-                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm">银行处理中</view>
-                <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm">到账成功</view>
-                <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm">处理失败</view>
+                <view wx:elif="{{item.orderState=='1'}}" class="weui_confirm">到账成功</view>
+                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm">付款成功</view>
+                <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm">处理中</view>
+                <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm">已退款</view>
+                <view wx:elif="{{item.orderState=='5'}}" class="weui_confirm">订单关闭</view>
                 <view class="weui_confirm">￥{{item.orderAmount}}</view>
             </view>
         </view>

@@ -43,7 +43,7 @@
             <text wx:if="{{hasUserName}}" class="account_information_tel">{{userName}}</text>
 
            <label wx:else>
-                <input class="account_information_tel" pattern="[0-9]*" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
+                <input class="account_information_tel" type="text" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"  />
             </label>
 
         </view>
@@ -59,7 +59,7 @@
             <label>
 
                 <label>
-                    <input class="account_information_tel" pattern="[0-9]*" bindinput="idNumberFn" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
+                    <input class="account_information_tel" type="idcard" bindinput="idNumberFn" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
                 </label>
 
             </label>

@@ -101,7 +101,7 @@ Page({
                 }
             });
 
-            return false
+
 
         }
 
@@ -137,108 +137,113 @@ Page({
                 }
             });
 
-            return false
+
 
         }
 
-
-        /**
-         * 接口：检测用户发起提现操作
-         * 请求方式：GET
-         * 接口：/user/work/checkwithdraw
-         * 入参：null
-         * */
-
-        wx.request({
-
-            url: thisCheckcashUrl,
-
-            method: 'GET',
-
-            data: {
-
-                code: that.data.code,
+        else {
 
 
-            },
-            header: {
+            /**
+             * 接口：检测用户发起提现操作
+             * 请求方式：GET
+             * 接口：/user/work/checkwithdraw
+             * 入参：null
+             * */
 
-                'jx_sid': jx_sid,
+            wx.request({
 
-                'Authorization': Authorization
+                url: thisCheckcashUrl,
 
-            },
+                method: 'GET',
 
-            success: function (res) {
+                data: {
 
-                console.log(res.data);
-
-                that.setData({
-
-                    balance: res.data.data.balance,//提取现金
-
-                    amountMax: res.data.data.amountMax,//单笔最大限额
-
-                    amountMin: res.data.data.amountMin,//单笔最小限额
-
-                    dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
-
-                    monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
-
-                    rate: res.data.data.rate,//费率
-
-                    canCashBalance:res.data.data.balance,
-
-                })
+                    code: that.data.code,
 
 
-            },
+                },
+                header: {
+
+                    'jx_sid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    that.setData({
+
+                        balance: res.data.data.balance,//提取现金
+
+                        amountMax: res.data.data.amountMax,//单笔最大限额
+
+                        amountMin: res.data.data.amountMin,//单笔最小限额
+
+                        dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                        monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                        rate: res.data.data.rate,//费率
+
+                        canCashBalance:res.data.data.balance,
+
+                    })
 
 
-            fail: function (res) {
+                },
 
-                console.log(res)
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            });
+
+
+            //默认显示第一个银行卡
+            that.setData({
+
+                bankName: that.data.bankList[0].bankName,//银行名称
+
+                bankNo: that.data.bankList[0].bankNo,//银行卡号
+
+                bankCardId: that.data.bankList[0].bankCardId//银行卡id
+
+            });
+
+            //获取银行卡的
+            var pickChooseBank = [];
+
+            //循环银行卡、银行名称及银行id
+            for (var i = 0; i < thisBankList.length; i++) {
+
+                var pickBankName = thisBankList[i].bankName;
+
+                var pickBankNo = thisBankList[i].bankNo;
+
+                var pickBankId = thisBankList[i].bankCardId;
+
+                var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
+
+                //组成数组
+                pickChooseBank.push(_pickChooseBank);
 
             }
 
-        });
+            that.setData({
 
+                chooseBank: pickChooseBank
 
-        //默认显示第一个银行卡
-        that.setData({
-
-            bankName: that.data.bankList[0].bankName,//银行名称
-
-            bankNo: that.data.bankList[0].bankNo,//银行卡号
-
-            bankCardId: that.data.bankList[0].bankCardId//银行卡id
-
-        });
-
-        //获取银行卡的
-        var pickChooseBank = [];
-
-        //循环银行卡、银行名称及银行id
-        for (var i = 0; i < thisBankList.length; i++) {
-
-            var pickBankName = thisBankList[i].bankName;
-
-            var pickBankNo = thisBankList[i].bankNo;
-
-            var pickBankId = thisBankList[i].bankCardId;
-
-            var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
-
-            //组成数组
-            pickChooseBank.push(_pickChooseBank);
-
+            })
         }
 
-        that.setData({
 
-            chooseBank: pickChooseBank
-
-        })
 
 
 
@@ -457,7 +462,7 @@ Page({
             wx.showModal({
 
                 title: '确认付款',
-                content: '支付金额￥' + (parseInt(that.data.balance)+ parseInt(that.data.balance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.balance+',手续费￥'+that.data.rate,
+                content: '支付金额￥' + (parseInt(that.data.inputBalance)+ parseInt(that.data.inputBalance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.inputBalance+',手续费￥'+that.data.rate,
                 confirmText: '确认付款',
 
                 success: function (res) {
