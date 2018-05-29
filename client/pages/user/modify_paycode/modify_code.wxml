@@ -30,9 +30,9 @@
     </view>
 
 
-    <navigator class="weui-btn-area">
+    <view class="weui-btn-area">
         <button class="weui-btn" type="primary" bindtap="modifyCode">确认</button>
-    </navigator>
+    </view>
 
 
 

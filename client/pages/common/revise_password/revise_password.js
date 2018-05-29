@@ -30,73 +30,171 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：修改密码
-         * 请求方式：POST
-         * 接口：/user/set/changepwd
-         * 入参：oldPassword，password，confirmPassword
-         **/
+        var a = /[@#\$%\^&\*]+/g;
 
-        wx.request({
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 
-            url:  thisChangepwdUrl,
 
-            method:'POST',
+        //校验原密码
 
-            data: json2FormFn.json2Form({
+        if(that.data.oldPassword==''){
 
-                oldPassword: md5.hexMD5(that.data.oldPassword) ,
+            wx.showToast({
 
-                password: md5.hexMD5(that.data.password),//md5加密
+                title: '请输入原密码',
+                icon: 'none'
 
-                confirmPassword:md5.hexMD5(that.data.confirmPassword)
+            });
 
-            }),
+        }
 
-            header: {
+        else if(that.data.password==''||that.data.password.length<6){
 
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+            wx.showToast({
 
-                'jxsid':jx_sid,
+                title: '请输入正确的新密码',
+                icon: 'none'
 
-                'Authorization':Authorization
+            });
 
-            },
 
-            success: function(res) {
+        }
 
-                console.log(res.data)
+        else if(that.data.confirmPassword==''||that.data.confirmPassword.length<6){
 
-                if(res.data.code=='-1'){
+            wx.showToast({
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                    });
+                title: '请再次输入正确的密码',
+                icon: 'none'
 
+            });
+
+        }
+
+        else if(a.test(that.data.password)||a.test(that.data.confirmPassword)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(that.data.password.length<6||that.data.confirmPassword.length<6){
+
+            wx.showToast({
+
+                title: '密码长度为6-20位',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(!reg.test(that.data.password)){
+
+            wx.showToast({
+
+                title: '密码需包含数字和字母',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(that.data.password!=that.data.confirmPassword){
+            wx.showToast({
+
+                title: '两次密码输入不一致',
+                icon: 'none'
+
+            });
+
+        }
+
+
+
+        else {
+
+
+
+            /**
+             * 接口：修改密码
+             * 请求方式：POST
+             * 接口：/user/set/changepwd
+             * 入参：oldPassword，password，confirmPassword
+             **/
+
+            wx.request({
+
+                url:  thisChangepwdUrl,
+
+                method:'POST',
+
+                data: json2FormFn.json2Form({
+
+                    oldPassword: md5.hexMD5(that.data.oldPassword) ,
+
+                    password: md5.hexMD5(that.data.password),//md5加密
+
+                    confirmPassword:md5.hexMD5(that.data.confirmPassword)
+
+                }),
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function(res) {
+
+                    console.log(res.data)
+
+                    if(res.data.code=='-1'){
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                        });
+
+                    }
+
+                    else if(res.data.code=='0000'){
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'success',
+                        });
+
+                        wx.navigateBack({
+                            delta: 1
+                        })
+
+                      /*  wx.redirectTo({
+
+                            url:'../../user/setting/setting'
+                        })*/
+
+                    }
+                },
+
+                fail:function (res) {
+
+                    console.log(res)
                 }
 
-                else if(res.data.code=='0000'){
+            })
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'success',
-                    });
+        }
 
-                    wx.redirectTo({
 
-                        url:'../../user/setting/setting'
-                    })
-
-                }
-            },
-
-            fail:function (res) {
-
-                console.log(res)
-            }
-
-        })
 
     },
 

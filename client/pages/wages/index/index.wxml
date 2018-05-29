@@ -1,14 +1,14 @@
 <!--工资-->
 
 
-<view class="jx_asset">
+<view class="jx_asset" >
 
-    <text class="asset_money">总资产（元）</text>
+    <navigator url="../../user/balance/balance" class="asset_money">总资产（元）</navigator>
 
     <view wx:if="{{lookWages}}">
 
         <!--金额显示-->
-        <text class="money_number">{{wages}}</text>
+        <navigator url="../../user/balance/balance" class="money_number">{{wages}}</navigator>
 
         <view class="see_number" bindtap="lookWagesFn"><image src="../../../static/icon/wages/jx_open.png" class="jx_open"/></view>
     </view>

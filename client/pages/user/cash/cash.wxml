@@ -50,7 +50,7 @@
                 <view class="weui-media-box__info">￥
 
                     <label>
-                        <input class="account_information_tel" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder="请输入金额" placeholder-style="color:#bbb, font-size:14px"/>
+                        <input class="account_information_tel" disabled="{{enter}}" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder="请输入金额"  placeholder-style="color:#bbb, font-size:14px"/>
                     </label>
 
                 </view>
@@ -94,7 +94,8 @@
 
             <view class="cash_prompt">
                 <icon type="circle" size="16" style="margin-right: 5px;"></icon>
-                <view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
+                <view class="weui-media-box__desc">限额说明：单卡单笔50000.00元，当日100000.00元，当月100000.00元</view>
+                <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 
         </view>

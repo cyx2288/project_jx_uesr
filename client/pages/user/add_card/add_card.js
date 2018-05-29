@@ -285,7 +285,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var regNeg = /^([1-9]{1})(\d{14,18})$/;
+        var regNeg =/^([1-9]\d{14,18})$/ ;
+
+
 
 
         /**
@@ -296,7 +298,8 @@ Page({
          * */
 
         //判断银行卡是否为空
-        if (!that.data.bankNo||that.data.bankNo.length<15) {
+        if (!that.data.bankNo||that.data.bankNo.length<14) {
+
 
             wx.showToast({
 
@@ -309,6 +312,8 @@ Page({
         }
         //判断卡号是否有误
         else if(!regNeg.test(that.data.bankNo)){
+
+            console.log('正则')
 
             wx.showToast({
 
@@ -330,6 +335,20 @@ Page({
 
                 })
             }
+
+        //判断是否写了开户地区
+
+            else if(!that.data.city&&!that.data.province){
+
+            wx.showToast({
+
+                title: '请选择开户地区',
+                icon: 'none',
+
+            })
+
+
+        }
 
 
         else {

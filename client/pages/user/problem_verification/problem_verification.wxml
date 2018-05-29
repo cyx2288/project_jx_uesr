@@ -17,7 +17,7 @@
     </view>
 
     <view class="weui-panel">
-        <text class="question">您也可以通过【我的】—【我的工作单位】，查看待加入企业，验证身份证号后六位即可加入该企业；</text>
+        <text class="question">2、HR发放工资时，您的身份证号是否填写正确，若填写错误，您可通过实名认证，修改错误的身份证号，修改并认证成功后，即可使用新的身份信息重新验证</text>
     </view>
 
 

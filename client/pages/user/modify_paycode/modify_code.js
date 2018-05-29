@@ -32,6 +32,12 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //连续
+        var reg='1234567890_0987654321';
+
+        //重负
+        var regText = /^(?!\d*?(\d)\d*?\1)\d{6}$/;
+
         var that=this;
 
 
@@ -58,6 +64,32 @@ Page({
 
         }
 
+        //连续
+        else if(reg.indexOf(that.data.password)>=0){
+
+
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
+        //重复
+        else if(!regText.test(that.data.password)){
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
         else if(that.data.confirmPassword !=that.data.password){
 
             wx.showToast({
@@ -68,6 +100,7 @@ Page({
             });
 
         }
+
 
         else{
 
@@ -118,7 +151,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url:"pages/user/reset_payment/reset_payment"
+                            url:"../reset_payment/reset_payment"
                         })
                     }
                 },

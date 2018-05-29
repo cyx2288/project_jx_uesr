@@ -26,15 +26,13 @@ Page({
 
         code:'',//验证码
 
-        disabled:true//按钮的可点击
+        disabled:true,//按钮的可点击
 
-
-
+        locked:1//0为锁住 1为解锁
 
 
     },
     onLoad:function () {
-
 
         var thisPaymsgUrl= app.globalData.URL+paymsgUrl;
 
@@ -51,7 +49,9 @@ Page({
 
         that.setData({
 
-            mobile:_mobile,
+            mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
+
+            locked:0,
 
         });
 
@@ -61,6 +61,11 @@ Page({
 
             if (countdown < 0) {
 
+                that.setData({
+
+                    locked:1,
+                })
+
                 countdown = 60;
 
                 return;
@@ -68,6 +73,8 @@ Page({
             } else {
 
                 that.setData({
+
+                    locked:0,
 
                     last_time:countdown
 
@@ -269,7 +276,52 @@ Page({
 
         console.log(that.data.code)
         
+    },
+
+    hasCodeFn:function () {
+
+        var that = this;
+
+        var countdown = 60;
+
+        settime(that);
+
+        function settime(that) {
+
+            if (countdown < 0) {
+
+                that.setData({
+
+                    locked:1,
+
+                });
+
+                countdown = 60;
+
+                return;
+
+            } else {
+
+                that.setData({
+
+                    last_time:countdown,
+
+                    locked:0,
+
+                });
+                countdown--;
+            }
+            setTimeout(function () {
+                    settime(that)
+                }
+                , 1000)
+
+
+        }
+
     }
+
+
 
 
 

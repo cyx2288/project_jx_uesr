@@ -77,7 +77,10 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('orderId',res.data.data);
+                wx.setStorageSync('cashOrderId',res.data.data);
+
+                console.log(wx.getStorageSync('cashOrderId'));
+
 
                 if (res.data.code == '0000') {
 

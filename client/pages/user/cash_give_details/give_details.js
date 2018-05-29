@@ -43,7 +43,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var _orderId = wx.getStorageSync('orderId');
+        var _orderId = wx.getStorageSync('cashOrderId');
 
         console.log('提现订单'+_orderId)
 

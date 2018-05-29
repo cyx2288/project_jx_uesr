@@ -6,7 +6,7 @@ Page({
 
     },
 
-    onLoad:function () {
+    onShow:function () {
 
         //获取余额
         var thisWages = wx.getStorageSync('wages');

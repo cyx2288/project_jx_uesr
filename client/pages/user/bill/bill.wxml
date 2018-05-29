@@ -6,7 +6,7 @@
 
     <!--明细-->
     <view class="weui-panel" wx:for="{{billList}}" bindtap="clickBill" data-no="{{item.orderId}}">
-        <view class="weui-media-box weui-media-box_text"  >
+        <view class="weui-media-box weui-media-box_text box"  >
 
             <view class="icon_record">
 
@@ -28,6 +28,7 @@
                 <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm">处理中</view>
                 <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm">已退款</view>
                 <view wx:elif="{{item.orderState=='5'}}" class="weui_confirm">订单关闭</view>
+                <view wx:elif="{{item.orderState=='7'}}" class="weui_confirm">退款中</view>
                 <view class="weui_confirm">￥{{item.orderAmount}}</view>
             </view>
         </view>

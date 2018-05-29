@@ -87,7 +87,7 @@ Page({
 
                     }
 
-                    else if (res.data.data.list.length == 0) {//这一组为空
+                    else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
 
 
                         //增加数组内容
