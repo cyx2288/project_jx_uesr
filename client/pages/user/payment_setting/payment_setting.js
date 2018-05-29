@@ -279,12 +279,18 @@ Page({
 
                         wx.setStorageSync('jxPayMode', '3');//免密
 
-                        if(!_isPayPwd){
+                        //if(!_isPayPwd){
 
                             wx.redirectTo({url: '../payment_setting_code/payment_setting_code'})
 
-                        }
+                        //}
 
+              /*          that.setData({
+
+                            pwdMode: false
+
+                        });
+*/
 
 
 
@@ -292,9 +298,11 @@ Page({
 
                         console.log('用户点击取消');
 
+
+
                         that.setData({
 
-                            pwdMode: true
+                            pwdMode: that.data.pwdMode
 
                         });
 
