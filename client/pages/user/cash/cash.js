@@ -46,6 +46,9 @@ Page({
 
         rate: '',//费率
 
+        enter:false,//输入框默认可以输入
+
+
 
     },
 
@@ -96,7 +99,11 @@ Page({
 
                     else if (res.cancel) {
 
+                        wx.switchTab({
 
+                            url: '../../wages/index/index'
+
+                        })
                     }
                 }
             });
@@ -365,6 +372,8 @@ Page({
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
+        var reg = /^\d+\.?(\d{1,2})?$/
+
         var _isSecurity = wx.getStorageSync('isSecurity');
 
 /*        console.log(wx.getStorageSync('balance'));
@@ -379,6 +388,20 @@ Page({
                 icon: 'none',
                 duration: 1000
             })
+
+        }
+
+        //默认输入小数点后两位
+        if(!reg.test(that.data.inputBalance)){
+
+
+            wx.showToast({
+                title: '输入金额限小数点后两位',
+                icon: 'none',
+                duration: 1000
+            })
+
+
 
         }
 
@@ -459,10 +482,51 @@ Page({
 
         else {
 
+            var inputValue = that.data.inputBalance
+
+
+            function returnFloat(value){
+
+                var value=Math.round(parseFloat(value)*100)/100;
+
+                var xsd=value.toString().split(".");
+
+                if(xsd.length==1){
+
+                    value=value.toString()+".00";
+
+                    return value;
+                }
+                if(xsd.length>1){
+
+                    if(xsd[1].length<2){
+
+                        value=value.toString()+"0";
+                    }
+                    return value;
+                }
+            }
+
+
+            //console.log('支付金额'+returnFloat(inputValue));
+
+            //console.log('费率'+returnFloat(parseInt(that.data.inputBalance * (that.data.rate / 100 ))));
+
+            var a = returnFloat(inputValue)
+
+            var b = returnFloat(parseInt(that.data.inputBalance * (that.data.rate / 100 )));
+
+            var money = returnFloat(parseFloat(a)+parseFloat(b))
+
+            //缓存支付金额
+            wx.setStorageSync('money',money);
+
+            console.log(returnFloat(parseFloat(a)+parseFloat(b)))
+
             wx.showModal({
 
                 title: '确认付款',
-                content: '支付金额￥' + (parseInt(that.data.inputBalance)+ parseInt(that.data.inputBalance * (that.data.rate / 100 )))+ ',提现金额￥'+that.data.inputBalance+',手续费￥'+parseInt(that.data.inputBalance * (that.data.rate / 100 )),
+                content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
                 confirmText: '确认付款',
 
                 success: function (res) {
@@ -602,8 +666,9 @@ Page({
     hasTipsFn: function () {
 
         wx.showModal({
-            title: '提示限额说明',
-            content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
+            title: '提现限额说明',
+            content: '单卡单笔50000.00元，当日100000.00元，当月100000.00元',
+            /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,
             success: function (res) {
@@ -660,6 +725,9 @@ Page({
 
         var that = this;
 
+
+
+
         that.setData({
 
             balance: e.detail.value,
@@ -670,6 +738,8 @@ Page({
         });
 
 
-    }
+
+
+    },
 
 });

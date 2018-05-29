@@ -5,11 +5,30 @@
 
     "pages/wages/index/index",
 
+
+
+
+
+
+
+    "pages/user/mine/mine",
+
+    "pages/user/details/details",
+
+    "pages/user/cash/cash",
+
+    "pages/user/bill/bill",
+
+    "pages/user/set_payment_psw/set_payment_psw",
+
+    "pages/common/revise_password/revise_password",
+
+    "pages/user/cash_give_details/give_details",
+
+
+    "pages/user/add_card/add_card",
+
     "pages/common/register/register",
-
-
-
-
 
     "pages/common/user_agreement/user_agreement",
 
@@ -34,21 +53,20 @@
     "pages/user/problem_close/problem_close",
 
 
-    "pages/user/bill/bill",
 
     "pages/common/wages_authentication/authentication",
 
-    "pages/user/add_card/add_card",
+
 
     "pages/common/forget_password/forget_password",
 
-    "pages/user/mine/mine",
+
 
     "pages/user/give_details/give_details",
 
     "pages/user/pay_success/pay_success",
 
-    "pages/user/cash/cash",
+
 
     "pages/common/revise_login/revise_login",
 
@@ -56,7 +74,7 @@
 
     "pages/user/id_card/id_card",
 
-    "pages/user/set_payment_psw/set_payment_psw",
+
 
     "pages/user/pws_verification/pws_verification",
 
@@ -72,15 +90,9 @@
     
     "pages/user/code/code",
 
-
-
     "pages/user/payment_setting/payment_setting",
 
     "pages/common/find_password/find_password",
-
-    "pages/common/revise_password/revise_password",
-
-
 
 
 
@@ -90,15 +102,11 @@
 
 
 
-    "pages/user/details/details",
-
     "pages/user/balance/balance",
 
     "pages/user/help_service/help_service",
 
     "pages/user/personal/personal",
-
-
 
     "pages/user/certification/certification",
 

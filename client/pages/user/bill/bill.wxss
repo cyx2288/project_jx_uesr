@@ -4,3 +4,6 @@
     float: right;
     display: flex;
 }
+.box{
+    padding: 10px 15px;
+}

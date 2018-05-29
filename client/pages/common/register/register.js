@@ -198,6 +198,17 @@ Page({
 
         }
 
+        else if(!reg.test(that.data.password)){
+
+            wx.showToast({
+
+                title: '密码需包含数字和字母',
+                icon: 'none'
+
+            });
+
+        }
+
         else{
 
             /**

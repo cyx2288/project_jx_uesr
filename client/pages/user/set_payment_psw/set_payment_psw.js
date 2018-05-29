@@ -33,85 +33,136 @@ Page({
 
         var _tokenMsg = wx.getStorageSync('tokenMsg');
 
-        console.log(that.data.payPassword)
+        var a = /[@#\$%\^&\*]+/g;
+
+        console.log(that.data.payPassword);
+
+        if(that.data.password==''||that.data.password.length<6){
+
+            wx.showToast({
+
+                title: '请输入正确的6位支付密码',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(that.data.confirmPassword==''||that.data.confirmPassword.length<6){
+
+            wx.showToast({
+
+                title: '请输入正确的6位支付密码',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(a.test(that.data.password)||a.test(that.data.confirmPassword)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if(that.data.password!=that.data.confirmPassword){
+            wx.showToast({
+
+                title: '两次密码输入不一致',
+                icon: 'none'
+
+            });
+
+        }
+
+        else {
+
+            /**
+             * 接口：设置支付密码
+             * 请求方式：POST
+             * 接口：/user/set/setpaypwd
+             * 入参：payPassword，confirmPassword，tokenMsg
+             * */
+
+            wx.request({
+
+                url: thisSetpaypwdUrl,
+
+                method: 'POST',
+
+                data:json2FormFn.json2Form({
+
+                    password: md5.hexMD5(that.data.password),
+
+                    confirmPassword:md5.hexMD5(that.data.confirmPassword),
+
+                    tokenMsg:_tokenMsg,
 
 
-        /**
-         * 接口：设置支付密码
-         * 请求方式：POST
-         * 接口：/user/set/setpaypwd
-         * 入参：payPassword，confirmPassword，tokenMsg
-         * */
+                }),
+                header: {
 
-        wx.request({
+                    'content-type':'application/x-www-form-urlencoded', // post请求
 
-            url: thisSetpaypwdUrl,
+                    'jxsid': jx_sid,
 
-            method: 'POST',
+                    'Authorization': Authorization
 
-            data:json2FormFn.json2Form({
+                },
 
-                password: md5.hexMD5(that.data.password),
+                success: function (res) {
 
-                confirmPassword:md5.hexMD5(that.data.confirmPassword),
+                    console.log(res.data);
 
-                tokenMsg:_tokenMsg,
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                        wx.redirectTo({
+
+                            url: '../setting/setting'
+                        })
 
 
-            }),
-            header: {
+                    }
 
-                'content-type':'application/x-www-form-urlencoded', // post请求
+                    else {
 
-                'jxsid': jx_sid,
+                        wx.showToast({
 
-                'Authorization': Authorization
+                            title: res.data.msg,
 
-            },
+                            icon: 'none',
 
-            success: function (res) {
+                        })
+                    }
 
-                console.log(res.data);
+                },
 
-                if (res.data.code == '0000') {
 
-                    wx.showToast({
+                fail: function (res) {
 
-                        title: res.data.msg,
-
-                        icon: 'none',
-
-                    })
-
-                    wx.redirectTo({
-
-                        url: '../setting/setting'
-                    })
-
+                    console.log(res)
 
                 }
 
-                else {
+            })
 
-                    wx.showToast({
-
-                        title: res.data.msg,
-
-                        icon: 'none',
-
-                    })
-                }
-
-            },
+        }
 
 
-            fail: function (res) {
 
-                console.log(res)
-
-            }
-
-        })
 
 
     },

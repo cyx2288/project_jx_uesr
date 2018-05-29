@@ -18,18 +18,18 @@ Page({
 
         password: '',//密码
 
-        confirmPassword:'',
+        confirmPassword: '',
 
         time: '获取验证码', //倒计时
 
-        currentTime:60,
+        currentTime: 60,
 
-        locked:1//0为锁住 1为解锁
+        locked: 1//0为锁住 1为解锁
 
     },
 
 
-   //发送验证码
+    //发送验证码
     registmsg: function () {
 
         var thisForgetmsgUrl = app.globalData.URL + forgetmsg;
@@ -38,9 +38,13 @@ Page({
 
         var that = this;
 
+        var empty = /[@#\$%\^&\*]+/g;
+
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+
 
         //如果手机号是正常的
-        if(that.data.mobile==''||that.data.mobile.length<11){
+        if (that.data.mobile == '' || that.data.mobile.length < 11) {
 
             wx.showToast({
 
@@ -148,12 +152,11 @@ Page({
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
 
         //密码判空
-        var _thisPassWord,_thisconfirmPassword;
-
+        var _thisPassWord, _thisconfirmPassword;
 
 
         //如果手机号是正常的
-        if(that.data.mobile==''||that.data.mobile.length<11){
+        if (that.data.mobile == '' || that.data.mobile.length < 11) {
 
             wx.showToast({
 
@@ -164,7 +167,7 @@ Page({
 
         }
 
-        else if (that.data.checkCode==''||that.data.checkCode.length<6){
+        else if (that.data.checkCode == '' || that.data.checkCode.length < 6) {
 
             wx.showToast({
 
@@ -176,7 +179,7 @@ Page({
         }
 
         //校验密码
-        else if(a.test(that.data.password)){
+        else if (a.test(that.data.password)) {
 
             wx.showToast({
 
@@ -188,7 +191,7 @@ Page({
 
         }
 
-        else if(that.data.password.length<6){
+        else if (that.data.password.length < 6) {
 
             wx.showToast({
 
@@ -198,8 +201,18 @@ Page({
             });
 
         }
+        else if(!reg.test(that.data.password)){
 
-        else if(that.data.password!=that.data.confirmPassword){
+            wx.showToast({
+
+                title: '密码需包含数字和字母',
+                icon: 'none'
+
+            });
+
+        }
+
+        else if (that.data.password != that.data.confirmPassword) {
 
 
             wx.showToast({
@@ -213,10 +226,6 @@ Page({
 
 
         else {
-
-            _thisPassWord = md5.hexMD5(this.data.password);
-
-            _thisconfirmPassword = md5.hexMD5(this.data.confirmPassword)
 
 
 
@@ -237,13 +246,12 @@ Page({
 
                     mobile: that.data.mobile,
 
-                    password:_thisPassWord,
+                    password:md5.hexMD5(this.data.password),
 
-                    confirmPassword: _thisconfirmPassword,
+                    confirmPassword: md5.hexMD5(this.data.confirmPassword),
 
                     code: that.data.checkCode
                 }),
-
 
 
                 header: {
@@ -258,11 +266,11 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='0000'){
+                    if (res.data.code == '0000') {
 
                         wx.showToast({
 
-                            title:res.data.msg,
+                            title: res.data.msg,
                             icon: 'success'
 
                         });
@@ -274,11 +282,10 @@ Page({
                         })
 
 
-
                     }
 
 
-                    else if(res.data.code=='-1'){
+                    else if (res.data.code == '-1') {
 
                         wx.showToast({
 
@@ -288,7 +295,6 @@ Page({
                         });
 
                     }
-
 
 
                 },
@@ -303,7 +309,6 @@ Page({
 
 
         }
-
 
 
     },
@@ -343,8 +348,8 @@ Page({
         });
 
 
-
     },
+
     confirmPasswordFn: function (e) {
 
         var that = this;
@@ -357,7 +362,7 @@ Page({
 
     },
 
-    getCode:function () {
+    getCode: function () {
 
         var that = this;
 
@@ -369,9 +374,9 @@ Page({
 
             that.setData({
 
-                locked:0,
+                locked: 0,
 
-                time: currentTime+'秒'
+                time: currentTime + '秒'
 
             });
             if (currentTime <= 0) {
@@ -380,11 +385,11 @@ Page({
 
                 that.setData({
 
-                    locked:1,
+                    locked: 1,
 
                     time: '重新发送',
 
-                    currentTime:60,
+                    currentTime: 60,
 
                     disabled: false
                 })

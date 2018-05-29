@@ -12,7 +12,7 @@
             </view>
 
 
-            <navigator class="weui-btn-area" url="../company/company">
+            <navigator class="weui-btn-area" open-type="navigateBack" delta="1">
                 <button class="weui-btn" type="primary">确定</button>
             </navigator>
 

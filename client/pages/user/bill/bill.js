@@ -81,7 +81,7 @@ Page({
 
                     console.log(res.data);
 
-                    console.log(that.data.pageNum);
+                    //console.log(that.data.pageNum);
 
                     var _billList = res.data.data.list;
 
@@ -91,7 +91,8 @@ Page({
 
                     }
 
-                    else if (res.data.data.list.length == 0) {//这一组为空
+                    else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
+
 
 
                         //增加数组内容
@@ -169,7 +170,11 @@ Page({
             orderId:e.currentTarget.dataset.no,
         })
 
-        console.log(e.currentTarget)
+        console.log(e.currentTarget.dataset.no)
+
+        wx.setStorageSync('orderId',that.data.orderId)
+
+        //console.log(wx.getStorageSync('orderId'))
 
         wx.navigateTo({
 
@@ -177,7 +182,7 @@ Page({
 
         })
 
-        wx.setStorageSync('orderId',that.data.orderId)
+
 
 
 

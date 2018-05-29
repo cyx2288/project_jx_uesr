@@ -18,7 +18,9 @@ Page({
 
         thisPayMsg:'',//短息验证码
 
-        disabled:true//按钮的状态
+        disabled:true,//按钮的状态
+
+        locked:1//0为锁住 1为解锁
         
     },
     onLoad:function () {
@@ -33,7 +35,12 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log(payMode)
+        //console.log(payMode)
+
+        that.setData({
+
+            locked:0,
+        })
 
         /**
          * 接口：短信验证码
@@ -88,6 +95,11 @@ Page({
 
                 if (countdown < 0) {
 
+                    that.setData({
+
+                        locked:1,
+                    })
+
                     countdown = 60;
 
                     return;
@@ -95,6 +107,8 @@ Page({
                 } else {
 
                     that.setData({
+
+                        locked:0,
 
                         last_time:countdown
 
@@ -212,7 +226,17 @@ Page({
 
                 }
 
-                console.log(res)
+                else {
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 2000,
+
+                    })
+
+                }
+
 
 
 
@@ -224,6 +248,49 @@ Page({
             }
 
         })
+
+    },
+
+    hasCodeFn:function () {
+
+        var that = this;
+
+        var countdown = 6;
+
+        settime(that);
+
+        function settime(that) {
+
+            if (countdown < 0) {
+
+                that.setData({
+
+                    locked:1,
+
+                });
+
+                countdown = 6;
+
+                return;
+
+            } else {
+
+                that.setData({
+
+                    last_time:countdown,
+
+                    locked:0,
+
+                });
+                countdown--;
+            }
+            setTimeout(function () {
+                    settime(that)
+                }
+                , 1000)
+
+
+        }
 
     }
 

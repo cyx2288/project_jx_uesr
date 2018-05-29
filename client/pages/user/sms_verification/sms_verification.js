@@ -49,9 +49,11 @@ Page({
 
             mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
 
+            locked:0,
+
         });
 
-        console.log(_mobile)
+        //console.log(_mobile)
 
         settime(that);
 
@@ -59,13 +61,23 @@ Page({
 
             if (countdown < 0) {
 
+                that.setData({
+
+                    locked:1,
+                })
+
+
                 countdown = 60;
 
                 return;
 
             } else {
 
+
+
                 that.setData({
+
+                    locked:0,
 
                     last_time:countdown
 
@@ -173,6 +185,8 @@ Page({
 
         var _bankCardId = wx.getStorageSync('bankCardId')
 
+        //console.log(that.data.code)
+
 
         /**
          * 接口：获取账户提现记录
@@ -264,6 +278,49 @@ Page({
             code:e.detail.value,
 
         })
+
+    },
+
+    hasCodeFn:function () {
+
+        var that = this;
+
+        var countdown = 60;
+
+        settime(that);
+
+        function settime(that) {
+
+            if (countdown < 0) {
+
+                that.setData({
+
+                    locked:1,
+
+                });
+
+                countdown = 60;
+
+                return;
+
+            } else {
+
+                that.setData({
+
+                    last_time:countdown,
+
+                    locked:0,
+
+                });
+                countdown--;
+            }
+            setTimeout(function () {
+                    settime(that)
+                }
+                , 1000)
+
+
+        }
 
     }
 

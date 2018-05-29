@@ -32,9 +32,12 @@ data:{
 
         var that=this;
 
-      var _thisPassWord;
+        var empty = /[@#\$%\^&\*]+/g;
 
-      if(that.data.mobile==''||that.data.mobile.length<11){
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+
+
+        if(that.data.mobile==''||that.data.mobile.length<11){
 
           wx.showToast({
 
@@ -44,6 +47,17 @@ data:{
           });
 
       }
+
+        else if(empty.test(that.data.password)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
+
+        }
 
 
       else if(that.data.password==''||that.data.password.length<6){
@@ -58,9 +72,18 @@ data:{
 
        }
 
-      else {
+      else if(!reg.test(that.data.password)){
 
-          _thisPassWord = md5.hexMD5(that.data.password)
+            wx.showToast({
+
+                title: '密码需包含数字和字母',
+                icon: 'none'
+
+            });
+
+        }
+
+      else {
 
 
           /**
@@ -80,7 +103,7 @@ data:{
 
                   mobile:that.data.mobile,
 
-                  password:_thisPassWord,
+                  password:md5.hexMD5(that.data.password),
 
               }),
 

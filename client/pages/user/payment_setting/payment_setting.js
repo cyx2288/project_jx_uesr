@@ -257,6 +257,10 @@ Page({
 
         var that = this;
 
+        var _isPayPwd = wx.getStorageSync('isPayPwd')
+
+        console.log(_isPayPwd)
+
         console.log(that.data.pwdMode);//现在的支付提示状态
 
         if (that.data.pwdMode) {//现在的状态是不是打开
@@ -275,7 +279,13 @@ Page({
 
                         wx.setStorageSync('jxPayMode', '3');//免密
 
-                        wx.redirectTo({url: '../payment_setting_code/payment_setting_code'})
+                        if(!_isPayPwd){
+
+                            wx.redirectTo({url: '../payment_setting_code/payment_setting_code'})
+
+                        }
+
+
 
 
                     } else if (res.cancel) {

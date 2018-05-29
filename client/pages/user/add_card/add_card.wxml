@@ -54,7 +54,7 @@
         <!-- 选择银行卡-->
         <view class="weui-cell weui-cell_select">
             <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                <view class="weui-label">开户地区</view>
+                <view class="weui-label">*开户地区</view>
             </view>
             <view class="weui-cell__bd">
                 <picker mode="multiSelector" bindcolumnchange="bindRegionColumnChange" bindchange="bindRegionChange" value="[0,0]" range="{{countries}}">

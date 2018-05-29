@@ -1,3 +1,4 @@
+<!-- 忘记支付密码跳转验证码-->
 <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
@@ -10,7 +11,7 @@
 
 </view>
 
-<view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可重新获取</view>
+<view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可<span class="{{locked==1 ? '' :'locked'}}" bindtap="hasCodeFn">重新获取</span></view>
 
 
 <!--button-->

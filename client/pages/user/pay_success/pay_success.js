@@ -8,15 +8,13 @@ Page({
     },
     onLoad:function () {
 
-        var _balance = wx.getStorageSync('balance');
-
-        var _rate = wx.getStorageSync('rate')
+        var _money = wx.getStorageSync('money')
 
         var that = this;
 
         that.setData({
 
-            balance:parseInt(_balance)+parseInt(_rate)
+            balance:_money
         })
 
 
@@ -27,7 +25,7 @@ Page({
 
         wx.redirectTo({
 
-            url:'../give_details/give_details'
+            url:'../cash_give_details/give_details'
 
         });
 
