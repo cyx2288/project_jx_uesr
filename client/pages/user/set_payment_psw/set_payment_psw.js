@@ -33,7 +33,15 @@ Page({
 
         var _tokenMsg = wx.getStorageSync('tokenMsg');
 
+
+        //连续
+        var reg='1234567890_0987654321';
+
+
         var a = /[@#\$%\^&\*]+/g;
+
+        //重负
+        var regText = /^(?!\d*?(\d)\d*?\1)\d{6}$/;
 
         console.log(that.data.payPassword);
 
@@ -70,10 +78,40 @@ Page({
 
         }
 
+        //连续
+        else if(reg.indexOf(that.data.password)>=0){
+
+            console.log(1)
+
+
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
+        //重复
+        else if(!regText.test(that.data.password)){
+
+            console.log(2)
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
         else if(that.data.password!=that.data.confirmPassword){
             wx.showToast({
 
-                title: '两次密码输入不一致',
+                title: '请两次输入相同的验证码',
                 icon: 'none'
 
             });

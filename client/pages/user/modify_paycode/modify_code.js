@@ -38,6 +38,8 @@ Page({
         //重负
         var regText = /^(?!\d*?(\d)\d*?\1)\d{6}$/;
 
+        var a = /[@#\$%\^&\*]+/g;
+
         var that=this;
 
 
@@ -64,10 +66,19 @@ Page({
 
         }
 
+        else if(a.test(that.data.password)||a.test(that.data.confirmPassword)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
+
+        }
+
         //连续
         else if(reg.indexOf(that.data.password)>=0){
-
-
 
             wx.showToast({
 
