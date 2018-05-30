@@ -112,7 +112,7 @@ Page({
 
             hasCompany: false,//有没有企业
 
-            lookWages:true,//看不看余额
+            //lookWages:true,//看不看余额
 
         })
 
@@ -824,7 +824,7 @@ Page({
 
             hasCompany: false,//有没有企业
 
-            lookWages:true,//看不看余额
+            //lookWages:true,//看不看余额
 
 
 
@@ -935,6 +935,7 @@ Page({
         var that = this;
 
         that.setData({
+
             lookWages: !that.data.lookWages
         })
 

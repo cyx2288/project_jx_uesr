@@ -386,7 +386,7 @@ Page({
                         icon: 'success',
                     });
 
-                    that.onLoad();
+                    that.onShow();
 
 
                 },

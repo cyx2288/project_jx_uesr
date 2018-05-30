@@ -79,7 +79,7 @@ Page({
 
                     var _balanceList = res.data.data.list;
 
-                    console.log(res.data.data.list.length)
+                    console.log(res.data.data.list)
 
                     //如果没有数据
                     if (!that.data.noData) {
@@ -88,7 +88,6 @@ Page({
                     }
 
                     else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
-
 
                         //增加数组内容
                         that.setData({

@@ -46,13 +46,12 @@ Page({
 
         rate: '',//费率
 
-        enter:false,//输入框默认可以输入
 
 
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var that = this;
 
@@ -72,6 +71,38 @@ Page({
         //存储银行卡页面的数据
         that.setData({
 
+            bizId: '',//订单id
+
+            bankCardId: '',//银行卡id
+
+            balance: '',//提取现金
+
+            inputBalance:'',//输入框里value的值
+
+            canCashBalance:'',//可以提现的金额
+
+            payPassword: '',//支付密码
+
+            code: '',//短信验证
+
+            //bankList: [],//银行卡列表数组
+
+            bankName: '',//银行名称
+
+            bankNo: '',//银行卡号
+
+            chooseBank: [],//picker中银行卡的数组
+
+            amountMax: '',//单笔最大限额
+
+            amountMin: '',//单笔最小限额
+
+            dayMaxAmount: '',//日最大额度
+
+            monthMaxAmount: '',//月最大额度
+
+            rate: '',//费率
+
             bankList: thisBankList,
 
         });
@@ -88,6 +119,8 @@ Page({
                 success: function (res) {
 
                     if (res.confirm) {
+
+
 
                         wx.navigateTo({
 
