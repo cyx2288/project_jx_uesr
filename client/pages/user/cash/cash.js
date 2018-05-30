@@ -46,6 +46,8 @@ Page({
 
         rate: '',//费率
 
+        userBankCardDTOList:[],
+
 
 
 
@@ -62,51 +64,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisBankList = wx.getStorageSync('bankList');
-
         var _isVerify = wx.getStorageSync('isVerify');
 
         //console.log(_isVerify)
-
-        //存储银行卡页面的数据
-        that.setData({
-
-            bizId: '',//订单id
-
-            bankCardId: '',//银行卡id
-
-            balance: '',//提取现金
-
-            inputBalance:'',//输入框里value的值
-
-            canCashBalance:'',//可以提现的金额
-
-            payPassword: '',//支付密码
-
-            code: '',//短信验证
-
-            //bankList: [],//银行卡列表数组
-
-            bankName: '',//银行名称
-
-            bankNo: '',//银行卡号
-
-            chooseBank: [],//picker中银行卡的数组
-
-            amountMax: '',//单笔最大限额
-
-            amountMin: '',//单笔最小限额
-
-            dayMaxAmount: '',//日最大额度
-
-            monthMaxAmount: '',//月最大额度
-
-            rate: '',//费率
-
-            bankList: thisBankList,
-
-        });
-
 
         //没认证的去认证
         if (_isVerify == '0') {
@@ -125,42 +85,6 @@ Page({
                         wx.navigateTo({
 
                             url: '../certification/certification'
-
-                        })
-
-                    }
-
-                    else if (res.cancel) {
-
-                        wx.switchTab({
-
-                            url: '../../wages/index/index'
-
-                        })
-                    }
-                }
-            });
-
-
-
-        }
-
-        //没银行卡的去添加银行卡
-        else if (that.data.bankList.length == 0) {
-
-
-            wx.showModal({
-                title: '提示',
-                content: ' 您还没有可用于提现的银行卡，请先添加一张储蓄卡',
-                cancelText: '取消',
-                confirmText: '去添加',
-                success: function (res) {
-
-                    if (res.confirm) {
-
-                        wx.navigateTo({
-
-                            url: '../add_card/add_card'
 
                         })
 
@@ -215,24 +139,104 @@ Page({
 
                     console.log(res.data);
 
-                    that.setData({
+                    //console.log(that.data.userBankCardDTOList);
 
-                        balance: res.data.data.balance,//提取现金
 
-                        amountMax: res.data.data.amountMax,//单笔最大限额
+                    if(res.data.code=='-1'){
 
-                        amountMin: res.data.data.amountMin,//单笔最小限额
 
-                        dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+                        wx.showModal({
+                            title: '提示',
+                            content: res.data.msg,
+                            cancelText: '取消',
+                            confirmText: '去添加',
+                            success: function (res) {
 
-                        monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+                                if (res.confirm) {
 
-                        rate: res.data.data.rate,//费率
+                                    wx.navigateTo({
 
-                        canCashBalance:res.data.data.balance,
+                                        url: '../add_card/add_card'
 
-                    })
+                                    })
 
+                                }
+
+                                else if (res.cancel) {
+
+                                    wx.switchTab({
+
+                                        url: '../../wages/index/index'
+
+                                    })
+                                }
+                            }
+                        });
+                    }
+
+                    else {
+
+                        var thisBankList = that.data.userBankCardDTOList;
+
+                        that.setData({
+
+                            balance: res.data.data.balance,//提取现金
+
+                            amountMax: res.data.data.amountMax,//单笔最大限额
+
+                            amountMin: res.data.data.amountMin,//单笔最小限额
+
+                            dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                            monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                            rate: res.data.data.rate,//费率
+
+                            canCashBalance:res.data.data.balance,
+
+                            userBankCardDTOList:res.data.data.userBankCardDTOList,
+
+                        })
+
+
+                        //默认显示第一个银行卡
+                        that.setData({
+
+                            bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
+
+                            bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
+
+                            bankCardId: that.data.userBankCardDTOList[0].bankCardId//银行卡id
+
+                        });
+
+
+                        //获取银行卡的
+                        var pickChooseBank = [];
+
+                        //循环银行卡、银行名称及银行id
+                        for (var i = 0; i < thisBankList.length; i++) {
+
+                            var pickBankName = thisBankList[i].bankName;
+
+                            var pickBankNo = thisBankList[i].bankNo;
+
+                            var pickBankId = thisBankList[i].bankCardId;
+
+                            var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
+
+                            //组成数组
+                            pickChooseBank.push(_pickChooseBank);
+
+                        }
+
+                        that.setData({
+
+                            userBankCardDTOList: pickChooseBank
+
+                        })
+
+                    }
 
                 },
 
@@ -245,7 +249,7 @@ Page({
 
             });
 
-
+/*
             //默认显示第一个银行卡
             that.setData({
 
@@ -281,6 +285,9 @@ Page({
                 chooseBank: pickChooseBank
 
             })
+            */
+
+
         }
 
 

@@ -55,7 +55,7 @@ Page({
 
         hasCompany: false,//有没有企业
 
-        lookWages:true,//看不看余额
+        lookWages: true,//看不看余额
 
 
     },
@@ -145,7 +145,9 @@ Page({
         var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
 
 
-
+        wx.showLoading({
+            title: '加载中',
+        })
 
 
         /**
@@ -198,39 +200,56 @@ Page({
 
                     /*console.log('发薪企业id'+that.data.salaryDetailId);*/
 
-                    wx.showModal({
-                        title: '提示',
-                        content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
-                        cancelText: '暂不查看',
-                        confirmText: '查看',
-                        success: function (res) {
 
-                            if (res.confirm) {
+                    setTimeout(function () {
 
-                                wx.navigateTo({
 
-                                    url: '../../common/wages_authentication/authentication'
+                        setTimeout(function () {
 
-                                });
+                            wx.hideLoading()
 
+                        },500);
+
+
+                        wx.showModal({
+                            title: '提示',
+                            content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
+                            cancelText: '暂不查看',
+                            confirmText: '查看',
+                            success: function (res) {
+
+                                if (res.confirm) {
+
+                                    wx.navigateTo({
+
+                                        url: '../../common/wages_authentication/authentication'
+
+                                    });
+
+                                }
+
+                                else if (res.cancel) {
+
+
+                                    //调用暂不查看工资条
+                                    noSeeSalary();
+
+                                    wx.showToast({
+
+                                        title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位”中继续加入',
+                                        icon: 'none',
+
+                                    })
+
+
+                                }
                             }
+                        });
 
-                            else if (res.cancel) {
-
-                                //调用暂不查看工资条
-                                noSeeSalary();
-
-                                wx.showToast({
-
-                                    title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
-                                    icon: 'none',
-
-                                })
+                    },1000)
 
 
-                            }
-                        }
-                    });
+
 
 
                 }
@@ -240,6 +259,15 @@ Page({
 
 
                     var thisEnName = res.data.data[0].entName;
+
+                    setTimeout(function () {
+
+
+                        setTimeout(function () {
+
+                            wx.hideLoading()
+
+                        },500);
 
 
                     wx.showModal({
@@ -277,10 +305,20 @@ Page({
                     });
 
 
+                    },1000)
+
+
                 }
 
                 //未收到任何邀请
                 else if (thisType == 0) {
+
+                    setTimeout(function () {
+
+                        wx.hideLoading()
+
+                    },500);
+
 
                     //调用发薪企业
                     //that.getSelectEnt();
@@ -455,7 +493,6 @@ Page({
         getSelectEnt();
 
 
-
         /**
          * 接口：获取用户余额
          * 请求方式：GET
@@ -512,7 +549,7 @@ Page({
         var thisInfoUrl = app.globalData.URL + infoUrl;
 
         //获取用户数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
@@ -766,7 +803,6 @@ Page({
         that.chooseEntId();
 
 
-
     },
 
     //点击查看工资条跳转链接
@@ -825,7 +861,6 @@ Page({
             hasCompany: false,//有没有企业
 
             //lookWages:true,//看不看余额
-
 
 
         });
