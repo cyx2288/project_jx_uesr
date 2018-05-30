@@ -319,7 +319,7 @@ Page({
             if (that.data.msgMode) {//如果另一个状态是打开的，不允许打开两个验证
 
                 wx.showToast({
-                    title: '请先关闭支付密码验证',
+                    title: '请先关闭短信动态验证',
                     icon: 'none',
                     duration: 2000
                 })

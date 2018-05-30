@@ -21,7 +21,7 @@ Page({
     },
 
 
-    onLoad:function () {
+    onShow:function () {
 
         var that = this;
 
@@ -35,6 +35,8 @@ Page({
 
         console.log('名字'+thisUserName)
 
+        console.log('身份证'+thisIdNumber)
+
         that.setData({
 
             isVerify:_isVerify,
@@ -47,28 +49,6 @@ Page({
 
         });
 
-
-        //如果登录页有返回名字
-        // if(thisUserName){
-        //
-        //     that.setData({
-        //
-        //         userName:thisUserName
-        //
-        //     })
-        //
-        // }
-        //
-        // if(thisIdNumber){
-        //
-        //      that.setData({
-        //
-        //
-        //
-        //      })
-        //
-        //
-        //  }
 
     },
 
@@ -164,7 +144,7 @@ Page({
                     wx.showToast({
 
                         title: '认证失败',
-                        icon: 'fail',
+                        icon: 'none',
 
 
 

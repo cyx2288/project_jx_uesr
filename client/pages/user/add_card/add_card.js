@@ -66,7 +66,7 @@ Page({
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var that = this;
 
@@ -313,8 +313,6 @@ Page({
         //判断卡号是否有误
         else if(!regNeg.test(that.data.bankNo)){
 
-            console.log('正则')
-
             wx.showToast({
 
                 title: '请填写正确的银行卡号',
@@ -399,11 +397,30 @@ Page({
 
                         })
 
-                        wx.navigateBack({
-
-                            url: '../card/card'
-
+                        wx.showLoading({
+                            title: '加载中',
                         })
+
+
+                        setTimeout(function(){
+
+                            wx.hideLoading()
+
+                        },2000)
+
+
+                        setTimeout(function(){
+
+
+                            wx.navigateBack({
+
+                                delta: 1
+
+                            })
+
+                        },2000)
+
+
 
 
                     }
