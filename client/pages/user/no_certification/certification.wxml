@@ -1,0 +1,54 @@
+
+<!--未认证-未收到企业邀请-->
+
+<view class="no_invitation">
+
+    <view class="account_information_mime">
+
+        <!--姓名-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">姓名</text>
+
+            <text  hidden="{{!hasUserName}}"class="account_information_tel">{{userName}}</text>
+
+           <label hidden="{{hasUserName}}">
+                <input class="account_information_tel" type="text" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"/>
+            </label>
+
+        </view>
+
+        <hr/>
+
+
+        <!--身份证号-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">身份证号</text>
+
+            <label>
+
+                <label>
+                    <input class="account_information_tel" type="idcard" bindinput="idFn" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
+                </label>
+
+            </label>
+
+        </view>
+
+       </view>
+
+
+    <!--button-->
+    <view class="page__bd page__bd_spacing" style="margin-top: 25px">
+
+        <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
+
+    </view>
+
+
+</view>
+
+
+
+

@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const repeat=require('../../../static/libs/script/account_exception.js')
+
 const salaryUrl = '/salary/home/getselectent';//发薪企业
 
 const balanceUrl = '/user/account/getbalance';//获取用户余额
@@ -13,6 +15,8 @@ const infoUrl = '/salary/home/salaryinfo';//工资条发放列表
 const noSeeUrl = '/salary/home/updateselectsalary';//暂不查看工资单
 
 const noJoinUrl = '/salary/home/updatejoinentstatus';//暂不加入企业
+
+const companyUrl = '/salary/home/selectlockstatus';//锁定状态查询
 
 
 Page({
@@ -56,6 +60,8 @@ Page({
         hasCompany: false,//有没有企业
 
         lookWages: true,//看不看余额
+
+        type:'',//是否锁定
 
 
     },
@@ -112,6 +118,8 @@ Page({
 
             hasCompany: false,//有没有企业
 
+            type:'',//是否锁定
+
             //lookWages:true,//看不看余额
 
         })
@@ -130,6 +138,9 @@ Page({
 
         //发薪企业
         var thisSalaryUrl = app.globalData.URL + salaryUrl;
+
+        //时候锁定状态
+        var thisUrl = app.globalData.URL + companyUrl;
 
 
         //获取用户数据
@@ -172,9 +183,18 @@ Page({
 
             success: function (res) {
 
-                var thisType = res.data.data[0].type;
 
                 console.log(res.data);
+
+                console.log(res.data.code);
+
+                //code3003返回方法
+                repeat.repeat(res.data.code,res.data.msg);
+
+
+                var thisType = res.data.data[0].type;
+
+
 
                 //存储entId
                 wx.setStorageSync('entId', res.data.data[0].entId);
@@ -187,6 +207,8 @@ Page({
                 wx.setStorageSync('thisType', res.data.data[0].type);
 
                 //console.log('发薪'+wx.getStorageSync('salaryDetailId'))
+
+
 
 
 
@@ -220,11 +242,69 @@ Page({
 
                                 if (res.confirm) {
 
-                                    wx.navigateTo({
 
-                                        url: '../../common/wages_authentication/authentication'
+                                    /**
+                                     * 接口：锁定状态查询
+                                     * 请求方式：POST
+                                     * 接口：/salary/home/selectlockstatus
+                                     * 入参：null
+                                     **/
+                                    wx.request({
 
-                                    });
+                                        url: thisUrl,
+
+                                        method: 'GET',
+
+                                        header: {
+
+                                            'jxsid': jx_sid,
+
+                                            'Authorization': Authorization
+
+                                        },
+
+                                        success: function (res) {
+
+                                            console.log(res.data);
+
+                                            that.setData({
+
+                                                type:res.data.data.type
+
+                                            })
+
+
+                                            if(that.data.type=='1'){
+
+                                                wx.navigateTo({
+
+                                                    url: '../../common/wages_authentication/authentication'
+
+                                                })
+
+                                            }
+
+                                            else if(res.data.data.type=='0'){
+
+                                                wx.navigateTo({
+
+                                                    url:'../../user/locked/locked'
+                                                })
+
+                                            }
+
+
+                                        },
+
+                                        fail: function (res) {
+
+                                            console.log(res)
+
+                                        }
+
+                                    })
+
+
 
                                 }
 
@@ -279,11 +359,70 @@ Page({
 
                             if (res.confirm) {
 
-                                wx.navigateTo({
 
-                                    url: '../../common/authentication/authentication'
 
-                                });
+                                /**
+                                 * 接口：锁定状态查询
+                                 * 请求方式：POST
+                                 * 接口：/salary/home/selectlockstatus
+                                 * 入参：null
+                                 **/
+                                wx.request({
+
+                                    url: thisUrl,
+
+                                    method: 'GET',
+
+                                    header: {
+
+                                        'jxsid': jx_sid,
+
+                                        'Authorization': Authorization
+
+                                    },
+
+                                    success: function (res) {
+
+                                        console.log(res.data);
+
+                                        that.setData({
+
+                                            type:res.data.data.type
+
+                                        })
+
+
+                                        if(that.data.type=='1'){
+
+                                            wx.navigateTo({
+
+                                                url: '../../common/authentication/authentication'
+
+                                            })
+
+                                        }
+
+                                        else if(res.data.data.type=='0'){
+
+                                            wx.navigateTo({
+
+                                                url:'../../user/locked/locked'
+                                            })
+
+                                        }
+
+
+                                    },
+
+                                    fail: function (res) {
+
+                                        console.log(res)
+
+                                    }
+
+                                })
+
+
 
                             }
 
@@ -333,7 +472,9 @@ Page({
 
 
             fail: function (res) {
+
                 console.log(res)
+
             }
 
         });
@@ -515,7 +656,7 @@ Page({
 
             success: function (res) {
 
-                wx.setStorageSync('wages', res.data.data);
+                //wx.setStorageSync('wages', res.data.data);
 
                 console.log(res.data);
 
@@ -859,6 +1000,8 @@ Page({
             dataText: true,//true为隐藏 false为显示
 
             hasCompany: false,//有没有企业
+
+            type:'',//是否锁定
 
             //lookWages:true,//看不看余额
 

@@ -7,12 +7,7 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const workUnitUrl = '/user/workunit/selectworkunit';//查看工作单位
 
-
-
-
-
-
-
+const companyUrl = '/salary/home/selectlockstatus';//锁定状态查询
 
 Page({
 
@@ -23,6 +18,11 @@ Page({
         state:'',//加入企业状态
 
         entId:'',
+
+        type:'',//是否锁定
+
+        noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
 
     },
 
@@ -36,6 +36,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
 
 
@@ -63,19 +64,29 @@ Page({
 
                 console.log(res.data);
 
-                var thisState = res.data.data[0].state;
-
+                //var thisState = res.data.data[0].state;
 
                 that.setData({
 
                     workUnitList: res.data.data,
 
-                    state:thisState,
-
-
-
+                    /*state:thisState,*/
 
                 })
+
+                //没有企业的话显示暂无数据
+
+                if(!that.data.workUnitList||that.data.workUnitList.length<0){
+
+                    that.setData({
+
+                        noData: false
+
+                    })
+
+
+                }
+
 
 
 
@@ -94,11 +105,25 @@ Page({
 
         var that = this;
 
+        var thisUrl = app.globalData.URL + companyUrl;
+
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
         //console.log(e.currentTarget.dataset.ent);
 
         that.setData({
 
-            entId:e.currentTarget.dataset.ent
+            entId:e.currentTarget.dataset.ent,
+
+            state:e.currentTarget.dataset.state,
+
+
+
 
         })
 
@@ -108,13 +133,70 @@ Page({
 
 
 
+        /**
+         * 接口：锁定状态查询
+         * 请求方式：POST
+         * 接口：/salary/home/selectlockstatus
+         * 入参：null
+         **/
+        wx.request({
+
+            url: thisUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                that.setData({
+
+                   type:res.data.data.type
+
+                })
+
+                console.log('锁住'+that.data.type);
+
+                console.log('带加入'+that.data.state);
+
+                if(that.data.state=='0'&&that.data.type=='1'){
+
+                    wx.navigateTo({
+
+                        url:'../company_authentication/authentication'
+
+                    })
+
+                }
+
+                else if(res.data.data.type=='0'){
+
+                    wx.navigateTo({
+
+                        url:'../locked/locked'
+                    })
+
+                }
+
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
     }
-
-
-
-
-
-
-
 
 })

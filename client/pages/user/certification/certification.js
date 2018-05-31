@@ -45,9 +45,10 @@ Page({
 
             idNumber:thisIdNumber
 
-
-
         });
+
+
+
 
 
     },
@@ -60,8 +61,6 @@ Page({
 
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
-
-        console.log(jx_sid)
 
         var Authorization = wx.getStorageSync('Authorization');
 
@@ -165,29 +164,6 @@ Page({
         })
 
 
-
-    },
-
-    nameFn:function (e) {
-
-        var that = this;
-
-        that.setData({
-
-            userName: e.detail.value
-        });
-
-    },
-
-    idFn:function (e) {
-
-        var that = this;
-
-        that.setData({
-
-            idNumber: e.detail.value
-
-        });
 
     },
 

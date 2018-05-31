@@ -185,6 +185,58 @@ Page({
     },
 
 
+    onclickCertificationFn:function () {
+
+
+        var that = this;
+
+        var _isVerify = that.data.isVerify
+
+        console.log(_isVerify)
+
+        //如果为1跳转的页面名字和身份证不能修改
+
+        if(_isVerify=='1'){
+
+            wx.navigateTo({
+
+
+                url:"../certification/certification"
+            })
+
+        }
+
+        //如果为0跳转的页面名字和身份证可修改
+
+        else if(_isVerify=='0'){
+
+
+            //存指定的页面
+            wx.setStorageSync('hrefId','1');
+
+            wx.navigateTo({
+
+
+                url:"../no_certification/certification"
+            })
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 
 
 

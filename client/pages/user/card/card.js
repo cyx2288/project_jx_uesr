@@ -265,10 +265,6 @@ Page({
 
                     else if (res.cancel) {
 
-                        wx.switchTab({
-
-                            url:'../../wages/index/index'
-                        })
 
                     }
                 }

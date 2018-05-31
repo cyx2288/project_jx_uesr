@@ -6,7 +6,7 @@
     <view class="weui-panel">
 
 
-        <picker bindchange="bindPickerChange" value="" range="{{userBankCardDTOList}}" class="weui-media-box weui-media-box_text">
+        <picker bindchange="bindPickerChange" value="" range="{{bankList}}" class="weui-media-box weui-media-box_text">
 
             <view class="bank_list" data-id="{{bankCardId}}">
 

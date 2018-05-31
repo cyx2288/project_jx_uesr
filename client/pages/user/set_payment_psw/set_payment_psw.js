@@ -41,7 +41,7 @@ Page({
         var a = /[@#\$%\^&\*]+/g;
 
         //重负
-        var regText = /^(?!\d*?(\d)\d*?\1)\d{6}$/;
+        var regText = /^(?=.*\d+)(?!.*?([\d])\1{5})[\d]{6}$/;
 
         console.log(that.data.payPassword);
 
@@ -81,10 +81,6 @@ Page({
         //连续
         else if(reg.indexOf(that.data.password)>=0){
 
-            console.log(1)
-
-
-
             wx.showToast({
 
                 title: '请输入非连续、重复的6位密码',
@@ -96,8 +92,6 @@ Page({
 
         //重复
         else if(!regText.test(that.data.password)){
-
-            console.log(2)
 
             wx.showToast({
 

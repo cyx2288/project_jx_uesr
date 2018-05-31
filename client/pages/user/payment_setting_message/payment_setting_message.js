@@ -45,7 +45,7 @@ Page({
         /**
          * 接口：短信验证码
          * 请求方式：GET
-         * 接口：/jx/action/paymsg
+         * 接口：/jx/action/closepaymsg
          **/
 
         wx.request({
@@ -255,7 +255,12 @@ Page({
 
         var that = this;
 
-        var countdown = 6;
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        var countdown = 60;
 
         settime(that);
 
@@ -269,7 +274,7 @@ Page({
 
                 });
 
-                countdown = 6;
+                countdown = 60;
 
                 return;
 
@@ -291,6 +296,46 @@ Page({
 
 
         }
+
+
+        /**
+         * 接口：短信验证码
+         * 请求方式：GET
+         * 接口：/jx/action/closepaymsg
+         **/
+
+        wx.request({
+
+            url: app.globalData.URL+paymsg,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data.msg);
+
+                wx.showToast({
+                    title: res.data.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+
+            },
+
+
+            fail: function (res) {
+                console.log(res)
+            }
+
+        });
 
     }
 

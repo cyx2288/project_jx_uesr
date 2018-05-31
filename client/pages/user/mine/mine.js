@@ -7,6 +7,8 @@ const mineUrl ='/user/center/usercenter';//用户中心
 
 const joinEntURL = '/user/workunit/selectisjoinent'//有带加入企业
 
+const balanceUrl = '/user/account/getbalance';//获取用户余额
+
 
 
 
@@ -22,6 +24,8 @@ Page({
         hasJoinEnt:true,//默认不显示有新的邀请 true为不显示 false为显示
 
 
+
+
     },
 
     onShow:function () {
@@ -32,6 +36,9 @@ Page({
 
         var thisJoinEntURL = app.globalData.URL + joinEntURL;
 
+        //获取用户余额
+        var thisBalanceUrl = app.globalData.URL + balanceUrl;
+
         var that = this;
 
         //获取数据
@@ -39,8 +46,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        //获取余额
-        var thisWages = wx.getStorageSync('wages');
+        /*//获取余额
+        var thisWages = wx.getStorageSync('wages');*/
+
 
 
 
@@ -77,10 +85,6 @@ Page({
                     mobile:_mobile
                 });
 
-                //存储余额
-                that.setData({
-                    wages:thisWages
-                })
 
                 //获取手机号
                 wx.setStorageSync('mobile',res.data.data.mobile);
@@ -92,10 +96,17 @@ Page({
                 wx.setStorageSync('isSecurity',res.data.data.isSecurity);
 
 
-                //是否开启验证
+                //存姓名和身份证
+                wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                wx.setStorageSync('userName', res.data.data.userName);
+
+
+                //是否实名认证
                 wx.setStorageSync('isVerify',res.data.data.isVerify);
 
                 //console.log('认证'+wx.getStorageSync('isVerify'))
+
 
 
             },
@@ -171,8 +182,50 @@ Page({
 
         })
 
-    },
+        /**
+         * 接口：获取用户余额
+         * 请求方式：GET
+         * 接口：/user/account/getbalance
+         * 入参：null
+         **/
+        wx.request({
 
+            url: thisBalanceUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+
+                console.log(res.data);
+
+                that.setData({
+
+                    wages: res.data.data//用户余额
+
+                });
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
+    },
 
 
 
