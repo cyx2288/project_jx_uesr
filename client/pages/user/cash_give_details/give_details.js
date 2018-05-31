@@ -252,7 +252,18 @@ Page({
 }
 
 
+    },
+
+    onUnload:function () {
+
+        wx.switchTab({
+
+
+            url:'../../user/mine/mine'
+        })
+
     }
+
 
 
 });

@@ -185,7 +185,19 @@ Page({
 
         var _bankCardId = wx.getStorageSync('bankCardId')
 
+
         //console.log(that.data.code)
+
+        console.log({
+
+            bankCardId: _bankCardId,//银行卡id
+
+            balance: _balance,//提取现金
+
+            code: that.data.code,//短信验证
+
+
+        })
 
 
         /**
@@ -223,7 +235,9 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('orderId',res.data.data);
+
+                //缓存点单号
+                wx.setStorageSync('cashOrderId',res.data.data);
 
                 if (res.data.code == '0000') {
 

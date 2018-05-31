@@ -120,6 +120,20 @@ Page({
 
                 }
 
+                else if(thisCode == '-2'){
+
+
+                    wx.redirectTo({
+
+                        url:'../../user/locked/locked'
+
+                    })
+
+
+
+                }
+
+
                 //验证成功后显示工资
                 else if (thisCode == '0000'){
 

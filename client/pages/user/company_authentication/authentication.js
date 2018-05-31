@@ -100,11 +100,9 @@ Page({
 
                 else if(thisCode == '-2'){
 
-
-
                     wx.redirectTo({
 
-                        url:'../locked/locked'
+                        url:'../../user/locked/locked'
 
                     })
 
@@ -115,7 +113,7 @@ Page({
                 //验证成功后显示工资
                 else if (thisCode == '0000'){
 
-                    console.log('跳转')
+                    //console.log('跳转')
 
                     //关闭当前页面
 

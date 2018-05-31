@@ -121,7 +121,11 @@ Page({
 
                 console.log(res.data);
 
+                console.log(res.data.code=='-1')
+
                 if(res.data.code=='0000'){
+
+
 
                     wx.showToast({
 
@@ -131,11 +135,8 @@ Page({
 
                     })
 
-
-
-
                 }
-                else {
+                else if(res.data.code=='-1') {
 
                     wx.showToast({
 
@@ -160,7 +161,7 @@ Page({
             }
 
         })
-        
+
 
 
 
@@ -180,7 +181,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log('输入完成')
+        //console.log('输入完成')
 
         /**
          * 接口：校验支付密码验证码
@@ -236,6 +237,11 @@ Page({
                 }
                 else {
 
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+
+                    })
 
                 }
 
@@ -274,13 +280,20 @@ Page({
 
         }
 
-        console.log(that.data.code)
+        //console.log(that.data.code)
         
     },
 
     hasCodeFn:function () {
 
         var that = this;
+
+        var thisPaymsgUrl= app.globalData.URL+paymsgUrl;
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
         var countdown = 60;
 
@@ -318,6 +331,78 @@ Page({
 
 
         }
+
+        /**
+         * 接口：校验支付密码验证码
+         * 请求方式：GET
+         * 接口：设置支付密码
+         * 入参：code
+         * */
+
+        wx.request({
+
+            url: thisPaymsgUrl,
+
+            method: 'GET',
+
+            data:{
+
+                code:that.data.code,
+
+
+            },
+            header:{
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                console.log(res.data.code=='-1')
+
+                if(res.data.code=='0000'){
+
+
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+
+                    })
+
+                }
+                else if(res.data.code=='-1') {
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+                    })
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
 
     }
 

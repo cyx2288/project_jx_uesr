@@ -15,7 +15,7 @@
     <hr/>
 
     <!--实名认证-->
-    <navigator class="mine_welfare" url="../certification/certification">
+    <view class="mine_welfare" bindtap="onclickCertificationFn">
 
         <text class="password_image">实名认证</text>
 
@@ -29,7 +29,7 @@
 
         </view>
 
-    </navigator>
+    </view>
 
 </view>
 

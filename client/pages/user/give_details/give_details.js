@@ -4,6 +4,8 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const getDetailRecord = '/user/withdraw/getdetailrecord';//获取详情
 
+const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
+
 const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
 
 Page({
@@ -120,6 +122,8 @@ Page({
 
         var thisCashUrl = app.globalData.URL + cashUrl;
 
+        var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
+
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -127,59 +131,116 @@ Page({
 
         var _isSecurity = wx.getStorageSync('isSecurity');
 
-         wx.showModal({
 
-            title: '确认付款',
-            content: '支付金额￥' + that.data.payAmount + ',提现金额￥'+that.data.orderAmount+',手续费￥'+that.data.rateAmount,
-            confirmText: '确认付款',
+
+        /**
+         * 接口：检测用户发起提现操作
+         * 请求方式：GET
+         * 接口：/user/work/checkwithdraw
+         * 入参：null
+         * */
+
+        wx.request({
+
+            url: thisCheckcashUrl,
+
+            method: 'GET',
+
+
+            header: {
+
+                'jx_sid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
 
             success: function (res) {
 
-                if (res.confirm) {
+                console.log(res.data);
 
-                    if(_isSecurity=='1'){
+                if(res.data.code=='0000'){
 
-                        console.log('开启短信验证');
+                    wx.showModal({
 
-                        wx.navigateTo({
+                        title: '确认付款',
+                        content: '支付金额￥' + that.data.payAmount + ',提现金额￥'+that.data.orderAmount+',手续费￥'+that.data.rateAmount,
+                        confirmText: '确认付款',
 
-                            url: '../sms_verification/sms_verification'
-                        })
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                if(_isSecurity=='1'){
+
+                                    console.log('开启短信验证');
+
+                                    wx.navigateTo({
+
+                                        url: '../sms_verification/sms_verification'
+                                    })
 
 
 
-                    }
+                                }
 
-                    else if(_isSecurity=='2'){
+                                else if(_isSecurity=='2'){
 
-                        console.log('开启支付密码');
+                                    console.log('开启支付密码');
 
-                        wx.navigateTo({
+                                    wx.navigateTo({
 
-                            url: '../pws_verification/pws_verification'
-                        })
+                                        url: '../pws_verification/pws_verification'
+                                    })
 
 
-                    }
+                                }
 
-                    else if(_isSecurity=='3'){
+                                else if(_isSecurity=='3'){
 
-                        console.log('啥都没开启');
+                                    console.log('啥都没开启');
 
-                        confirmation()
+                                    confirmation()
 
-                    }
+                                }
 
+
+
+                            }
+
+                            else if (res.cancel) {
+
+
+                            }
+                        }
+                    });
 
 
                 }
+                else {
 
-                else if (res.cancel) {
 
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1000
+                    })
 
                 }
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
             }
+
         });
+
+
+
+
 
 
 
@@ -231,9 +292,10 @@ Page({
 
             else {
 
-                wx.redirectTo({
-
-                    url: '../pay_fail/pay_fail'
+                wx.showToast({
+                    title: res.data.msg,
+                    icon: 'none',
+                    duration: 1000
                 })
             }
 

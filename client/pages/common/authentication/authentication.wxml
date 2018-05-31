@@ -10,7 +10,7 @@
         <view class="weui-cell weui-cell_input">
 
             <view class="weui-cell__bd">
-                <input class="weui-input" value="{{idCard}}" placeholder="请输入身份证后六位" bindinput="idCardFn"/>
+                <input class="weui-input" value="{{idCard}}" maxlength="6" type="idcard" placeholder="请输入身份证后六位" bindinput="idCardFn"/>
             </view>
         </view>
 
