@@ -1,5 +1,7 @@
 const app = getApp();
 
+const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish')//ajax请求
+
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 
@@ -13,6 +15,8 @@ Page({
 
     onShow:function () {
 
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         //获取用户余额
         var thisBalanceUrl = app.globalData.URL + balanceUrl;
@@ -23,6 +27,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
         /**
          * 接口：获取用户余额
@@ -54,6 +59,22 @@ Page({
                     wages: res.data.data//用户余额
 
                 });
+
+/*
+                    (function countDownAjax() {
+
+                        ajaxCount --;
+
+                        ajaxFinishFn.ajaxFinish();
+
+                    })();
+*/
+
+
+
+
+
+
 
 
             },

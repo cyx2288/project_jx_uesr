@@ -2,7 +2,9 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const repeat=require('../../../static/libs/script/account_exception.js')
+const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish');//ajax请求
+
+const repeat=require('../../../static/libs/script/accountException.js');//3003
 
 const salaryUrl = '/salary/home/getselectent';//发薪企业
 
@@ -30,6 +32,8 @@ Page({
         selectArea: false,
 
         wages: '暂无数据',//获取用户余额信息
+
+        moreText:'暂无数据',//加载更多数据
 
         salaryDetailId: '',//发薪企业明细id
 
@@ -64,6 +68,8 @@ Page({
         type:'',//是否锁定
 
 
+
+
     },
 
     onLoad: function (options) {
@@ -90,6 +96,8 @@ Page({
 
             wages: '暂无数据',//获取用户余额信息
 
+            moreText:'暂无数据',//加载更多数据
+
             salaryDetailId: '',//发薪企业明细id
 
             wagesList: [],//发薪企业列表
@@ -102,7 +110,7 @@ Page({
 
             entId: '',//发薪企业id
 
-            pageNum: 1,//初始值为2
+            pageNum: 1,//初始值为1
 
             pageSize: 10,//一页的数量
 
@@ -120,7 +128,6 @@ Page({
 
             type:'',//是否锁定
 
-            //lookWages:true,//看不看余额
 
         })
 
@@ -186,14 +193,11 @@ Page({
 
                 console.log(res.data);
 
-                //console.log(res.data.code);
-
                 //code3003返回方法
                 repeat.repeat(res.data.code,res.data.msg);
 
 
                 var thisType = res.data.data[0].type;
-
 
 
                 //存储entId
@@ -759,36 +763,18 @@ Page({
 
                 //判断有没有列表数据
 
-                if (!_dataText) {
-
-                    that.setData({
-
-                        dataText: _dataText,
-
-
-                    })
-
-
-                }
-
-                else {
-
-                    that.setData({
-
-                        dataText: _dataText,
-
-
-                    })
-
                     if (thislist) {
 
 
                         //获取现在list的长度
                         wagesListLength = thislist.length;
 
+
+
                         //上一次获取到的list
 
                         var lastList = that.data.wagesList;
+
 
                         //把获取到的list合并成一个数组
                         var nowList = lastList.concat(thislist);
@@ -799,7 +785,6 @@ Page({
                             thisWagesListLength: wagesListLength
 
                         });
-
 
                         //判空
                         if (fn) {
@@ -819,6 +804,19 @@ Page({
 
                     else {
 
+
+                        if(that.data.pageNum=='1'){
+
+
+                            that.setData({
+
+                                moreText:'还未收到工资哦~',//加载更多数据
+
+                            })
+
+
+                        }
+
                         that.setData({
 
                             hasMoreData: false,
@@ -832,7 +830,6 @@ Page({
                     }
 
 
-                }
 
 
             },
@@ -973,6 +970,8 @@ Page({
 
             wages: '暂无数据',//获取用户余额信息
 
+            moreText:'暂无数据',//加载更多数据
+
             salaryDetailId: '',//发薪企业明细id
 
             wagesList: [],//发薪企业列表
@@ -1027,9 +1026,11 @@ Page({
     chooseEntId: function () {
 
         var that = this;
+
         //console.log('到底');
 
-        //console.log('是否有更多数据'+that.data.hasMoreData)
+        //console.log('是否有更多数据'+that.data.hasMoreData);
+
 
         if (that.data.hasMoreData) {
 
@@ -1043,7 +1044,6 @@ Page({
             //判断后面是否要加载分页
             var useFn = function () {
 
-                //console.log(that.data.thisWagesListLength +'<'+ that.data.pageSize);
 
                 //如果现在列表页的长度小于一页数量
                 if (that.data.thisWagesListLength < that.data.pageSize) {
@@ -1053,7 +1053,6 @@ Page({
                         hasMoreData: false,
 
                         noData: false
-
 
                     });
 

@@ -49,7 +49,7 @@
 
                 <view class="weui-media-box__info">￥
 
-                    <label>
+                    <label class="cash_input">
                         <input class="account_information_tel" disabled="{{enter}}" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder="请输入金额"  placeholder-style="color:#bbb, font-size:14px"/>
                     </label>
 

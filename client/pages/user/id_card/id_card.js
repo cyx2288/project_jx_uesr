@@ -48,90 +48,124 @@ Page({
 
         var _tokenMsg = wx.getStorageSync('tokenMsg');
 
+        var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+
         console.log(_tokenMsg);
 
-        /**
-         * 接口：校验身份证号
-         * 请求方式：POST
-         * 接口：/user/set/checkidnumber
-         * 入参：idNumber,tokenMsg
-         * */
-
-        wx.request({
-
-            url: thisCheckidnumberUrl,
-
-            method: 'POST',
-
-            data:json2FormFn.json2Form({
-
-                idNumber: that.data.idNumber,
-
-                tokenMsg:_tokenMsg
 
 
-            }),
+        if(!that.data.userName||!that.data.idNumber){
 
-            header: {
+            wx.showToast({
 
-                'content-type':'application/x-www-form-urlencoded', // post请求
+                title: '请输入姓名和身份证号',
+                icon: 'none',
 
-                'jxsid':jx_sid,
-
-                'Authorization':Authorization
-
-            },
-
-            success: function (res) {
-
-                console.log(res.data);
-
-                //console.log('身份证：'+wx.getStorageSync('tokenMsg'))
-
-                if(res.data.code=='0000'){
-
-                    wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
-
-                    wx.showToast({
-
-                        title: res.data.msg,
-
-                        icon: 'none',
-
-                    })
-
-                    //跳转身份认证
-                    wx.navigateTo({
-
-                        url:'../set_payment_psw/set_payment_psw'
-                    })
+            })
 
 
+
+        }
+
+        else if(!check.test(that.data.idNumber)){
+
+            wx.showToast({
+
+                title: '身份证号格式错误',
+                icon: 'none',
+
+            })
+
+
+
+        }
+
+        else {
+
+            /**
+             * 接口：校验身份证号
+             * 请求方式：POST
+             * 接口：/user/set/checkidnumber
+             * 入参：idNumber,tokenMsg
+             * */
+
+            wx.request({
+
+                url: thisCheckidnumberUrl,
+
+                method: 'POST',
+
+                data:json2FormFn.json2Form({
+
+                    idNumber: that.data.idNumber,
+
+                    tokenMsg:_tokenMsg
+
+
+                }),
+
+                header: {
+
+                    'content-type':'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    if(res.data.code=='0000'){
+
+                        wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                        //跳转身份认证
+                        wx.navigateTo({
+
+                            url:'../set_payment_psw/set_payment_psw'
+                        })
+
+
+
+                    }
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                    }
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
 
                 }
-                else {
 
-                    wx.showToast({
+            })
 
-                        title: res.data.msg,
-
-                        icon: 'none',
-
-                    })
-
-                }
+        }
 
 
-            },
-
-
-            fail: function (res) {
-
-                console.log(res)
-
-            }
-
-        })
 
 
     },

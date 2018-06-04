@@ -171,7 +171,7 @@ Page({
 
                 if(that.data.state=='0'&&that.data.type=='1'){
 
-                    wx.navigateTo({
+                    wx.redirectTo({
 
                         url:'../company_authentication/authentication'
 
