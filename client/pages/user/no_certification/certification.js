@@ -111,7 +111,7 @@ Page({
 
             wx.showToast({
 
-                title: '请输入姓名或者卡号',
+                title: '请输入姓名和身份证号',
                 icon: 'none',
 
             })

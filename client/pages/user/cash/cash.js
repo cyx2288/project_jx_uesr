@@ -400,13 +400,10 @@ Page({
         });
 
 
-
-        var that = this;
-
         //缓存jx_sid&&Authorization数据
-        var jx_sid = wx.getStorageSync('jxsid');
+/*        var jx_sid = wx.getStorageSync('jxsid');
 
-        var Authorization = wx.getStorageSync('Authorization');
+        var Authorization = wx.getStorageSync('Authorization');*/
 
 
         //缓存账户余额
@@ -445,7 +442,7 @@ Page({
 
 
          //小于最小额度
-         else if(parseInt(that.data.inputBalance)<parseInt(that.data.amountMin)){
+         else if(parseFloat(that.data.inputBalance)<parseFloat(that.data.amountMin)){
 
              wx.showToast({
                  title: '单笔提现金额须大于'+that.data.amountMin+'元',
@@ -457,9 +454,8 @@ Page({
 
          }
          //大于最大额度
-         else if(parseInt(that.data.inputBalance)>parseInt(that.data.amountMax)){
+         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.amountMax)){
 
-             console.log(parseInt(that.data.inputBalance)+'>'+parseInt(that.data.amountMax));
 
              wx.showToast({
                  title: '单笔提现金额须小于'+that.data.amountMax+'元',
@@ -469,7 +465,9 @@ Page({
 
          }
 
-         else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxAmount)){
+         else if (parseFloat(that.data.inputBalance)>parseFloat(that.data.dayMaxAmount)){
+
+
 
              wx.showToast({
                  title: '提现金额超出当日最大限额',
@@ -480,7 +478,9 @@ Page({
 
          }
 
-         else if(parseInt(that.data.inputBalance)>parseInt(that.data.monthMaxAmount)){
+         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.monthMaxAmount)){
+
+
 
              wx.showToast({
                  title: '提现金额超出当月最大限额',
@@ -490,14 +490,27 @@ Page({
 
          }
 
-         else if(parseInt(that.data.inputBalance)>parseInt(_wages)){
+
+         else if(parseFloat(that.data.inputBalance)>parseFloat(_wages)){
 
              wx.showToast({
-                 title: '金额不合法',
+                 title: '输入金额有误',
                  icon: 'none',
                  duration: 1000
              })
          }
+
+
+
+        else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.canCashBalance)){
+
+            wx.showToast({
+                title: '输入金额有误',
+                icon: 'none',
+                duration: 1000
+            })
+        }
+
 
         //默认输入小数点后两位
 
@@ -512,7 +525,7 @@ Page({
 
         }
 
-        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
+        else if(parseFloat(_wages)==0&&parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 
             wx.showToast({
                 title: '账户余额不足',
@@ -522,7 +535,7 @@ Page({
 
         }
 
-        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
+        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 
                 wx.showToast({
                     title: '当月金额超限',

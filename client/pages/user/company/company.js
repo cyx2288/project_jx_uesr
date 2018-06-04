@@ -38,8 +38,6 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
-
-
         /**
          * 接口：查看工作单位
          * 请求方式：GET
@@ -64,6 +62,8 @@ Page({
 
                 console.log(res.data);
 
+                //console.log(res.data.data)
+
                 //var thisState = res.data.data[0].state;
 
                 that.setData({
@@ -76,7 +76,7 @@ Page({
 
                 //没有企业的话显示暂无数据
 
-                if(!that.data.workUnitList||that.data.workUnitList.length<0){
+                if(that.data.workUnitList.length==0){
 
                     that.setData({
 
@@ -86,6 +86,8 @@ Page({
 
 
                 }
+
+
 
 
 
@@ -163,9 +165,9 @@ Page({
 
                 })
 
-                console.log('锁住'+that.data.type);
+                //console.log('锁住'+that.data.type);
 
-                console.log('带加入'+that.data.state);
+               //console.log('带加入'+that.data.state);
 
                 if(that.data.state=='0'&&that.data.type=='1'){
 

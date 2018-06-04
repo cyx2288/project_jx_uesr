@@ -6,6 +6,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const mineUrl ='/user/center/usercenter';//用户中心
+
 const getpaymodeUrl = '/user/set/getpaymode';//查询支付方式
 
 const updatepaymode = '/user/set/updatepaymode';//设置支付方式
@@ -21,16 +23,57 @@ Page({
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var that = this;
 
         var thisgetpaymodeUrl = app.globalData.URL + getpaymodeUrl;
 
+        var thisMineurl = app.globalData.URL+ mineUrl;
+
          //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url:  thisMineurl,
+
+            method:'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function(res) {
+
+                console.log(res.data);
+
+                //获取是否设置密码
+                wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
+
+
+            },
+
+            fail:function (res) {
+
+                console.log(res)
+            }
+
+        })
+
 
 
         /**

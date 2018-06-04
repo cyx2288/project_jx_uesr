@@ -144,6 +144,8 @@ Page({
                 },
 
                 success: function(res) {
+
+
                     console.log(res.data);
 
                     if(res.data.code=='-1'){
@@ -156,13 +158,12 @@ Page({
                     }else if(res.data.code=='0000'){
 
                         wx.showToast({
-                            title: '修改成功',
-                            icon: 'success',
+                            title: res.data.msg,
+                            icon: 'none',
                         });
 
-                        wx.navigateTo({
-
-                            url:"../reset_payment/reset_payment"
+                        wx.navigateBack({
+                            delta: 2
                         })
                     }
                 },
@@ -242,11 +243,11 @@ Page({
 
     },
 
-    openToast: function () {
+/*    openToast: function () {
         wx.showToast({
             title: '修改成功',
             icon: 'success',
         });
-    },
+    },*/
 
 });

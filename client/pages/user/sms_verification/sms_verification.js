@@ -241,6 +241,7 @@ Page({
 
                 if (res.data.code == '0000') {
 
+
                     wx.showToast({
 
                         title: res.data.msg,
@@ -299,6 +300,13 @@ Page({
 
         var that = this;
 
+        var thisWithdrawmsgUrl= app.globalData.URL+withdrawmsgUrl;
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
         var countdown = 60;
 
         settime(that);
@@ -335,6 +343,76 @@ Page({
 
 
         }
+        /**
+         * 接口：提现发送短信认证
+         * 请求方式：GET
+         * 接口：/jx/action/withdrawmsg
+         * 入参：moblie
+         * */
+
+        wx.request({
+
+            url: thisWithdrawmsgUrl,
+
+            method: 'GET',
+
+            data:{
+
+                mobile:that.data.mobile,
+
+
+            },
+            header:{
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                if(res.data.code=='0000'){
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+
+                    })
+
+
+                }
+                else {
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+                    })
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
+
 
     }
 

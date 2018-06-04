@@ -121,11 +121,9 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.data.code=='-1')
+                //console.log(res.data.code=='-1')
 
                 if(res.data.code=='0000'){
-
-
 
                     wx.showToast({
 
@@ -148,9 +146,6 @@ Page({
 
                 }
 
-
-
-
             },
 
 
@@ -161,11 +156,6 @@ Page({
             }
 
         })
-
-
-
-
-
 
 
     },

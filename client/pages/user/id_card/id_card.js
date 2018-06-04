@@ -44,7 +44,6 @@ Page({
 
         var jx_sid = wx.getStorageSync('jxsid');
 
-
         var Authorization = wx.getStorageSync('Authorization');
 
         var _tokenMsg = wx.getStorageSync('tokenMsg');
@@ -87,11 +86,11 @@ Page({
 
                 console.log(res.data);
 
-                 wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
-
-                console.log('身份证：'+wx.getStorageSync('tokenMsg'))
+                //console.log('身份证：'+wx.getStorageSync('tokenMsg'))
 
                 if(res.data.code=='0000'){
+
+                    wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
 
                     wx.showToast({
 
