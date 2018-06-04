@@ -28,7 +28,7 @@ Page({
 
             var Authorization = wx.getStorageSync('Authorization');
 
-             var _isVerify = wx.getStorageSync('isVerify');
+             /*var _isVerify = wx.getStorageSync('isVerify');*/
 
              var thisUserName = wx.getStorageSync('userName');
 
@@ -69,43 +69,6 @@ Page({
 
 
         }
-
-             //判断是否认证
-             if(_isVerify=='0'){
-
-
-                 //存指定的页面
-                 wx.setStorageSync('hrefId','1');
-
-                 wx.showModal({
-                title: '提示',
-                content: '当前账户尚未进行实名认证，完成实名认证后即可设计支付密码',
-                cancelText: '取消',
-                confirmText: '去认证',
-                success: function (res) {
-
-                    if (res.confirm) {
-
-
-                        wx.navigateTo({
-
-                            url: '../no_certification/certification'
-
-                        })
-
-
-                    }
-
-                    else if (res.cancel) {
-
-
-                    }
-                }
-            });
-
-
-         }
-
 
 
                  /**
@@ -151,18 +114,61 @@ Page({
 
                  })
 
-
-
-
-
-
-
-
-
-
-
-
     },
+
+    onClickFn:function () {
+
+        var _isVerify = wx.getStorageSync('isVerify');
+
+        //判断是否认证
+        if(_isVerify=='0'){
+
+
+            //存指定的页面
+            wx.setStorageSync('hrefId','1');
+
+            wx.showModal({
+                title: '提示',
+                content: '当前账户尚未进行实名认证，完成实名认证后即可设置计支付密码',
+                cancelText: '取消',
+                confirmText: '去认证',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+
+                        wx.navigateTo({
+
+                            url: '../no_certification/certification'
+
+                        })
+
+
+                    }
+
+                    else if (res.cancel) {
+
+
+                    }
+                }
+            });
+
+
+        }
+
+        else {
+
+            wx.navigateTo({
+
+                url: '../code/code'
+
+            })
+
+
+        }
+
+
+    }
 
 
 

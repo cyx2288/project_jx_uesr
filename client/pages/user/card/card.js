@@ -161,6 +161,8 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
+const mineUrl ='/user/center/usercenter';//用户中心
+
 const bankUrl = '/user/bank/getbankcardinfo';
 
 const detBankUrl = '/user/bank/deletebankcardinfo';
@@ -241,6 +243,8 @@ Page({
 
     addCardFn:function () {
 
+        var thisMineurl = app.globalData.URL+ mineUrl;
+
         var _isVerify = wx.getStorageSync('isVerify');
 
         //判断是否认证
@@ -257,7 +261,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../certification/certification'
+                            url: '../no_certification/certification'
 
                         })
 
@@ -283,6 +287,49 @@ Page({
 
 
         }
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url:  thisMineurl,
+
+            method:'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function(res) {
+
+                console.log(res.data);
+
+                wx.setStorageSync('userName', res.data.data.userName);
+
+                console.log('姓名'+wx.getStorageSync('userName'))
+
+
+            },
+
+            fail:function (res) {
+
+                console.log(res)
+            }
+
+        })
 
 
     },

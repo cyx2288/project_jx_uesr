@@ -192,7 +192,7 @@ Page({
 
         var _isVerify = that.data.isVerify
 
-        console.log(_isVerify)
+        //console.log(_isVerify)
 
         //如果为1跳转的页面名字和身份证不能修改
 

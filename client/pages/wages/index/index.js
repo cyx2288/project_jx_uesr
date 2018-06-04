@@ -186,7 +186,7 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.data.code);
+                //console.log(res.data.code);
 
                 //code3003返回方法
                 repeat.repeat(res.data.code,res.data.msg);

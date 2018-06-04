@@ -17,6 +17,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+
+
 const addBankUrl = '/user/bank/addbankcardinfo';
 
 const getBankName = '/user/bank/getbankname';
@@ -70,9 +72,9 @@ Page({
 
         var that = this;
 
-        var _userName = wx.getStorageSync('userName');
-
         var _isVerify = wx.getStorageSync('isVerify');
+
+        var _userName = wx.getStorageSync('userName');
 
 
         that.setData({

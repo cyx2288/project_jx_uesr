@@ -43,7 +43,6 @@ Page({
         //重负
         var regText = /^(?=.*\d+)(?!.*?([\d])\1{5})[\d]{6}$/;
 
-        console.log(that.data.payPassword);
 
         if(that.data.password==''||that.data.password.length<6){
 
@@ -92,6 +91,10 @@ Page({
 
         //重复
         else if(!regText.test(that.data.password)){
+
+      /*      console.log(that.data.password)
+
+            console.log(!regText.test(that.data.password))*/
 
             wx.showToast({
 
