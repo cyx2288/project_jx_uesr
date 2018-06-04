@@ -129,13 +129,12 @@ Page({
 
             wx.showModal({
                 title: '提示',
-                content: '当前账户尚未进行实名认证，完成实名认证后即可设置计支付密码',
+                content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
                 cancelText: '取消',
                 confirmText: '去认证',
                 success: function (res) {
 
                     if (res.confirm) {
-
 
                         wx.navigateTo({
 

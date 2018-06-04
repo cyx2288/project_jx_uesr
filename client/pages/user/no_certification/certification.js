@@ -4,6 +4,8 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const userVerify ='/user/center/userverify';//实名认证
 
+const mineUrl ='/user/center/usercenter';//用户中心
+
 Page({
 
 
@@ -92,6 +94,8 @@ Page({
 
         var thisUserVerify = app.globalData.URL + userVerify;
 
+        var thisMineurl = app.globalData.URL+ mineUrl;
+
         var that = this;
 
         //获取数据
@@ -99,6 +103,8 @@ Page({
 
 
         var Authorization = wx.getStorageSync('Authorization');
+
+        var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
  /*
         var thisUserName = wx.getStorageSync('userName');
 
@@ -112,6 +118,19 @@ Page({
             wx.showToast({
 
                 title: '请输入姓名和身份证号',
+                icon: 'none',
+
+            })
+
+
+
+        }
+
+        else if(!check.test(that.data.idNumber)){
+
+            wx.showToast({
+
+                title: '身份证号格式错误',
                 icon: 'none',
 
             })
@@ -172,6 +191,45 @@ Page({
                     if(_code=='0000'){
 
                         wx.setStorageSync('isVerify','1');
+
+                        //认证成功后调用个人中心接口
+                        /**
+                         * 接口：用户中心
+                         * 请求方式：POST
+                         * 接口：/user/center/usercenter
+                         * 入参：mobile
+                         **/
+                        wx.request({
+
+                            url:  thisMineurl,
+
+                            method:'POST',
+
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                'jxsid':jx_sid,
+
+                                'Authorization':Authorization
+
+                            },
+
+                            success: function(res) {
+
+                                console.log(res.data);
+
+                                wx.setStorageSync('userName', res.data.data.userName);
+
+
+                            },
+
+                            fail:function (res) {
+
+                                console.log(res)
+                            }
+
+                        })
+
 
                         setTimeout(function () {
 

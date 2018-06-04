@@ -464,39 +464,91 @@ Page({
                 }
                //
                else {//没有设置过
-               //
-                     console.log('没设置过')
-               //
 
-                    wx.showModal({
+                     console.log('没设置过');
 
-                        title: '提示',
+                    var _isVerify = wx.getStorageSync('isVerify');
 
-                        content: '请先设置支付验证码',
 
-                        success: function (res) {
 
-                            if (res.confirm) {
+                    //没有认证的先去认证 再设置支付密码
+                    if(_isVerify=='0'){
 
-                                console.log('用户点击确定')
 
-                                wx.redirectTo({url: '../code/code'})
-                                
-                            } else if (res.cancel) {
+                        wx.showModal({
+                            title: '提示',
+                            content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
+                            cancelText: '取消',
+                            confirmText: '去认证',
+                            success: function (res) {
 
-                                console.log('用户点击取消');
+                                if (res.confirm) {
 
-                                that.setData({
+                                    wx.navigateTo({
 
-                                    pwdMode: false
+                                        url: '../no_certification/certification'
 
-                                });
+                                    })
+
+
+                                }
+
+                                else if (res.cancel) {
+
+                                    that.setData({
+
+                                        pwdMode: false
+
+                                    });
+
+
+                                }
+                            }
+                        });
+
+
+
+
+                    }
+
+                    else {
+
+                        wx.showModal({
+
+                            title: '提示',
+
+                            content: '请先设置支付验证码',
+
+                            success: function (res) {
+
+                                if (res.confirm) {
+
+                                    console.log('用户点击确定')
+
+                                    wx.redirectTo({url: '../code/code'})
+
+                                } else if (res.cancel) {
+
+                                    console.log('用户点击取消');
+
+                                    that.setData({
+
+                                        pwdMode: false
+
+                                    });
+
+                                }
 
                             }
 
-                        }
+                        })
 
-                    })
+
+                    }
+
+
+
+
 
 
 

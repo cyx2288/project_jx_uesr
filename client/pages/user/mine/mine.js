@@ -1,38 +1,34 @@
-
 const app = getApp();
 
-const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
+const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish');//ajax请求
 
-const mineUrl ='/user/center/usercenter';//用户中心
+const mineUrl = '/user/center/usercenter';//用户中心
 
-const joinEntURL = '/user/workunit/selectisjoinent'//有带加入企业
+const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 
-
-
 Page({
 
-    data:{
+    data: {
 
 
-        mobile:'',//个人中心手机号
+        mobile: '',//个人中心手机号
 
-        wages:'',//工资余额
+        wages: '',//工资余额
 
-        hasJoinEnt:true,//默认不显示有新的邀请 true为不显示 false为显示
-
-
+        hasJoinEnt: true//默认不显示有新的邀请 true为不显示 false为显示
 
 
     },
 
-    onShow:function () {
+    onShow: function () {
 
-        //console.log('刷新')
+        //有几个ajax请求
+        var ajaxCount = 3;
 
-        var thisMineurl = app.globalData.URL+ mineUrl;
+        var thisMineurl = app.globalData.URL + mineUrl;
 
         var thisJoinEntURL = app.globalData.URL + joinEntURL;
 
@@ -46,11 +42,6 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /*//获取余额
-        var thisWages = wx.getStorageSync('wages');*/
-
-
-
 
         /**
          * 接口：用户中心
@@ -60,58 +51,62 @@ Page({
          **/
         wx.request({
 
-            url:  thisMineurl,
+            url: thisMineurl,
 
-            method:'POST',
+            method: 'POST',
 
             header: {
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
                 var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7)
 
                 //存储手机号码
-               that.setData({
+                that.setData({
 
-                    mobile:_mobile
+                    mobile: _mobile
                 });
 
 
                 //获取手机号
-                wx.setStorageSync('mobile',res.data.data.mobile);
+                wx.setStorageSync('mobile', res.data.data.mobile);
 
                 //获取是否设置密码
-                wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
+                wx.setStorageSync('isPayPwd', res.data.data.isPayPwd);
 
                 //是否开启验证
-                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
-
+                wx.setStorageSync('isSecurity', res.data.data.isSecurity);
 
                 //存姓名和身份证
                 wx.setStorageSync('idNumber', res.data.data.idNumber);
 
                 wx.setStorageSync('userName', res.data.data.userName);
 
-
                 //是否实名认证
-                wx.setStorageSync('isVerify',res.data.data.isVerify);
+                wx.setStorageSync('isVerify', res.data.data.isVerify);
 
-                //console.log('认证'+wx.getStorageSync('isVerify'))
 
+/*                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    ajaxFinishFn.ajaxFinish(ajaxCount)
+
+                })();*/
 
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
             }
@@ -127,19 +122,19 @@ Page({
          **/
         wx.request({
 
-            url:  thisJoinEntURL,
+            url: thisJoinEntURL,
 
-            method:'GET',
+            method: 'GET',
 
             header: {
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
@@ -148,11 +143,11 @@ Page({
 
                 var hasEntType = res.data.data.type;
 
-                if(hasEntType=='1'){
+                if (hasEntType == '1') {
 
                     that.setData({
 
-                        hasJoinEnt:false,
+                        hasJoinEnt: false,
 
                     })
 
@@ -162,20 +157,24 @@ Page({
 
                     that.setData({
 
-                        hasJoinEnt:true
+                        hasJoinEnt: true
 
                     })
 
                 }
 
+/*                (function countDownAjax() {
 
+                    ajaxCount--;
 
+                    ajaxFinishFn.ajaxFinish(ajaxCount)
 
+                })();*/
 
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
             }
@@ -213,6 +212,19 @@ Page({
 
                 });
 
+                //获取余额
+                wx.setStorageSync('wages', res.data.data);
+
+/*
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    ajaxFinishFn.ajaxFinish(ajaxCount)
+
+                })();
+*/
+
 
             },
 
@@ -226,8 +238,6 @@ Page({
         })
 
     },
-
-
 
 
 });

@@ -415,7 +415,7 @@ Page({
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
-        wx.setStorageSync('rate',that.data.rate);//余额
+        wx.setStorageSync('rate',that.data.rate);//汇率
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
@@ -423,9 +423,6 @@ Page({
 
         var _isSecurity = wx.getStorageSync('isSecurity');
 
-/*        console.log(wx.getStorageSync('balance'));
-
-        console.log(wx.getStorageSync('bankCardId'))*/
 
         //时候没有值输入
         if(!that.data.inputBalance){
@@ -491,21 +488,12 @@ Page({
          }
 
 
-         else if(parseFloat(that.data.inputBalance)>parseFloat(_wages)){
-
-             wx.showToast({
-                 title: '输入金额有误',
-                 icon: 'none',
-                 duration: 1000
-             })
-         }
-
-
-
         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.canCashBalance)){
 
+
+
             wx.showToast({
-                title: '输入金额有误',
+                title: '金额已超过可提余额',
                 icon: 'none',
                 duration: 1000
             })
@@ -525,7 +513,7 @@ Page({
 
         }
 
-        else if(parseFloat(_wages)==0&&parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
+        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 
             wx.showToast({
                 title: '账户余额不足',
@@ -547,8 +535,7 @@ Page({
 
         else {
 
-            var inputValue = that.data.inputBalance
-
+            var inputValue = that.data.inputBalance;
 
             function returnFloat(value){
 
@@ -586,7 +573,7 @@ Page({
             //缓存支付金额
             wx.setStorageSync('money',money);
 
-            console.log(returnFloat(parseFloat(a)+parseFloat(b)))
+            //console.log(returnFloat(parseFloat(a)+parseFloat(b)))
 
             wx.showModal({
 
@@ -600,7 +587,7 @@ Page({
 
                         if(_isSecurity=='1'){
 
-                            console.log('开启短信验证');
+                            //console.log('开启短信验证');
 
                             wx.navigateTo({
 
@@ -613,7 +600,7 @@ Page({
 
                         else if(_isSecurity=='2'){
 
-                            console.log('开启支付密码');
+                            //console.log('开启支付密码');
 
                             wx.navigateTo({
 
@@ -625,7 +612,7 @@ Page({
 
                         else if(_isSecurity=='3'){
 
-                            console.log('啥都没开启');
+                            //console.log('啥都没开启');
 
                             confirmation()
 

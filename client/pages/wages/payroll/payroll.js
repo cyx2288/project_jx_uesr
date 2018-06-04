@@ -233,19 +233,23 @@ Page({
 
                 var thisCode = res.data.code;
 
-
                 if(thisCode =='0000'){
-
 
                     that.setData({
 
                         comfrimBtn:2
                     })
 
+                    setTimeout(function () {
+
+                        wx.navigateBack({
+                            delta: 1
+                        })
+
+                    },500)
+
+
                 }
-
-
-
 
 
             },
