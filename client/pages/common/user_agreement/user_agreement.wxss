@@ -1,18 +1,37 @@
 @import "../../user/give_details/give_details.wxss";
 
+page{
+    background: #fff;
+    width: 100%;
+}
+
+
 
 .weui-panel{
 
     margin-bottom: 0;
     padding: 10px;
-    font-size: 14px;
-
+    font-size: 16px;
+    letter-spacing: .5px
 }
 
 .ask{
     color: #4a4a4a;
+
 }
 
 .question{
     color: #8a8a8a;
+
 }
+
+
+.title{
+
+    color: #4a4a4a;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+
+}
+

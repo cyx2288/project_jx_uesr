@@ -1,3 +1,9 @@
+page{
+    background: #fff;
+    width: 100%;
+}
+
+
 .register_text{
 
     margin-top: 10px;
@@ -13,16 +19,16 @@
     pointer-events:none
 }
 
-
 .register_text_code{
 
-    color: #E87B17;
+    color: #fe9728;
+    display: inline;
 
 }
 
 .weui-btn{
     background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .register_text_code:active{
@@ -31,4 +37,25 @@
 
 .page__bd{
     margin-top: 30px;
+}
+
+.weui-cell_input{
+    width: 84%;
+    background-color: #f8f8f9;
+    border-radius: 5px;
+    height: 40px;
+    text-align: center;
+    margin: 20px auto;
+    margin-bottom: 0;
+}
+
+.weui-cells{
+    padding: 10px 0;
+}
+
+.reset_go{
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+
 }

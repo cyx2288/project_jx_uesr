@@ -7,12 +7,15 @@
 
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-                <view class="weui-label">手机</view>
+
+            <view class="jx_record">
+                <image src="../../../static/icon/wages/jx_phone.png"  class="reset_go" />
             </view>
+
             <view class="weui-cell__bd">
                 <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入您的手机号" maxlength="11"/>
             </view>
+
         </view>
 
     </view>
@@ -20,9 +23,12 @@
 
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-                <view class="weui-label">密码</view>
+
+            <view class="jx_record">
+                <image src="../../../static/icon/wages/jx_password.png"  class="reset_go" />
             </view>
+
+
             <view class="weui-cell__bd">
                 <input class="weui-input" password='true' value="{{password}}" bindinput="passwordFn" placeholder="请输入密码"  maxlength="20"/>
             </view>
