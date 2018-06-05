@@ -21,16 +21,28 @@ data:{
 
     mobile:'',
 
-    password:''
+    password:'',
+
 
 
 },
+
+    //转发
+    onShareAppMessage: function (res) {
+        return {
+            title: '嘉薪平台',
+            path: '/pages/common/signin/signin'
+        }
+    },
 
     signin:function () {
 
       var url = app.globalData.URL+signUrl;
 
         var that=this;
+
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         var empty = /[@#\$%\^&\*]+/g;
 
@@ -124,7 +136,9 @@ data:{
                       wx.showToast({
 
                           title: res.data.msg,
-                          icon: 'none'
+                          icon: 'none',
+                          duration:2000
+
 
                       });
 
@@ -138,6 +152,15 @@ data:{
                       var Authorization = res.data.token.access_token;//Authorization数据
 
                       var jx_sid = res.header.jxsid;//jx_sid数据
+
+                      //登录成功后调用
+                      (function countDownAjax() {
+
+                          ajaxCount--;
+
+                          app.globalData.ajaxFinish(ajaxCount)
+
+                      })();
 
                       //存储数据
                       wx.setStorageSync('jxsid', jx_sid);
@@ -187,6 +210,8 @@ data:{
             mobile: e.detail.value
         });
 
+
+
     },
 
     passwordFn:function (e) {
@@ -197,6 +222,7 @@ data:{
 
             password: e.detail.value
         });
+
 
     },
 

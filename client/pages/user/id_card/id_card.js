@@ -20,12 +20,29 @@ Page({
 
     },
 
-    onLoad:function () {
+    onShow:function () {
 
         var that = this;
 
-        var _userName = wx.getStorageSync('userName')
+        var _userName = wx.getStorageSync('userName');
 
+        var _forgetTab = wx.getStorageSync('isPayPwd');
+
+        if(_forgetTab=='0'){
+
+            wx.setNavigationBarTitle({
+
+                title:'设置支付密码'
+            })
+        }
+
+        else {
+            wx.setNavigationBarTitle({
+
+                title:'忘记支付密码'
+            })
+
+        }
         that.setData({
 
             userName:_userName,
@@ -130,11 +147,17 @@ Page({
 
                         })
 
-                        //跳转身份认证
-                        wx.navigateTo({
+                        setTimeout(function () {
 
-                            url:'../set_payment_psw/set_payment_psw'
-                        })
+                            //跳转身份认证
+                            wx.navigateTo({
+
+                                url:'../set_payment_psw/set_payment_psw'
+                            })
+
+
+                        },500)
+
 
 
 
@@ -180,7 +203,22 @@ Page({
 
         })
 
+    },
+
+    onUnload:function () {
+
+        console.log('触发')
+
+        wx.switchTab({
+
+            url:'../../user/mine/mine'
+        })
+
+
     }
+
+
+
 
 
 })

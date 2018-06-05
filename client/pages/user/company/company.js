@@ -37,6 +37,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
 
         /**
          * 接口：查看工作单位
@@ -61,6 +64,17 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
+
+
 
                 //console.log(res.data.data)
 

@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
+
 const clearingUrl = '/user/account/clearing';//登录的url
 
 
@@ -111,6 +113,17 @@ Page({
 
                         })
 
+
+                        for(var j=0;j<that.data.balanceList.length;j++){
+
+                            that.data.balanceList[j].transAmt=radixPointFn.splitK(that.data.balanceList[j].transAmt)
+
+
+                        }
+
+
+
+
                     }
 
                     else {
@@ -125,6 +138,16 @@ Page({
                             pageNum: that.data.pageNum + 1//加一页
 
                         })
+
+                        for(var j=0;j<that.data.balanceList.length;j++){
+
+                            that.data.balanceList[j].transAmt=radixPointFn.splitK(that.data.balanceList[j].transAmt)
+
+
+
+
+                        }
+
 
                     }
 

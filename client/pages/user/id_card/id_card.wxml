@@ -26,12 +26,13 @@
 
     </view>
 
-
     <!--button-->
     <view  class="page__bd page__bd_spacing" style="margin-top: 25px">
 
         <button class="weui-btn" type="primary" bindtap="checkIdNumberFn">确认</button>
 
     </view>
+
+    <navigator style='text-align: center' url="../help_service/help_service" class="weui-cells__title">查看帮助</navigator>
 
 </view>

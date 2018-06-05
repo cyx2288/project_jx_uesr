@@ -27,6 +27,9 @@ Page({
 
         var that=this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //缓存修改方式
         var payMode = wx.getStorageSync('jxPayMode');
 
@@ -66,10 +69,19 @@ Page({
 
                 console.log(res.data.msg);
 
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
+
                 wx.showToast({
                     title: res.data.msg,
                     icon: 'none',
-                    duration: 2000
+
                 })
 
             },

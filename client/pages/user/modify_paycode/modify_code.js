@@ -162,9 +162,15 @@ Page({
                             icon: 'none',
                         });
 
-                        wx.navigateBack({
-                            delta: 2
-                        })
+                        setTimeout(function () {
+
+                            wx.navigateBack({
+                                delta: 2
+                            })
+
+                        },500)
+
+
                     }
                 },
 

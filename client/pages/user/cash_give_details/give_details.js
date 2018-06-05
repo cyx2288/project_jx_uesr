@@ -36,6 +36,10 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
+
         var thisGetDetailRecord = app.globalData.URL + getDetailRecord;
 
         //获取数据
@@ -45,7 +49,7 @@ Page({
 
         var _orderId = wx.getStorageSync('cashOrderId');
 
-        console.log('提现订单'+_orderId)
+        //console.log('提现订单'+_orderId)
 
         /**
          * 接口：
@@ -77,6 +81,14 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
                 that.setData({
 

@@ -34,7 +34,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         /**
          * 接口：
@@ -62,6 +63,14 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
                 wx.setStorageSync('idNumber',res.data.data.idNumber);
 

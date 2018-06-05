@@ -47,6 +47,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         var thisDentityUrl = app.globalData.URL+dentityUrl;
 
         //缓存jx_sid&&Authorization数据
@@ -92,6 +95,14 @@ Page({
                 console.log(res.data);
 
                 //console.log(res.data.data[0].entId)
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
 
                 //判断验证码

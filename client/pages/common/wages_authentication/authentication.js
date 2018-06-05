@@ -34,7 +34,7 @@ Page({
 
         var thisEntId = wx.getStorageSync('entId');
 
-        console.log('企业'+thisEntId)
+        //console.log('企业'+thisEntId)
 
         //console.log('姓名'+userName)
 

@@ -40,6 +40,9 @@ Page({
 
         var thisGetDetailRecord = app.globalData.URL + getDetailRecord;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -79,6 +82,14 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
                 that.setData({
 

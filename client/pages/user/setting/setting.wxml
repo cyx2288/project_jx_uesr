@@ -13,7 +13,7 @@
 
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view wx:if="{{isPayPwd==0}}" class="weui-cell__bd" bindtap="onClickFn">设置支付密码</view>
-        <navigator  wx:else url="../reset_payment/reset_payment" class="weui-cell__bd">重置支付密码</navigator>
+        <view  wx:else bindtap="onclickPws" class="weui-cell__bd">重置支付密码</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
 
