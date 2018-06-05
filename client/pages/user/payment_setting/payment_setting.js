@@ -27,6 +27,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 2;
+
         var thisgetpaymodeUrl = app.globalData.URL + getpaymodeUrl;
 
         var thisMineurl = app.globalData.URL+ mineUrl;
@@ -63,6 +66,14 @@ Page({
 
                 //获取是否设置密码
                 wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
 
             },
@@ -101,6 +112,14 @@ Page({
             success: function (res) {
 
                 console.log(res)
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
                 if (res.data.data.isSecurity == 1) {//短信验证
 

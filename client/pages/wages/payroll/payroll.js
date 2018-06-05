@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const radixPointFn = require('../../../static/libs/script/radixPoint');//转换千位逗号
+
 const listUrl = '/salary/home/salarydetail';//工资发放明细
 
 const confirmUrl = '/salary/home/confirmsalary';//确认工资条
@@ -97,7 +99,7 @@ Page({
 
                         name:x,
 
-                        record:_addAmount[x]
+                        record:radixPointFn.splitK(_addAmount[x])
 
                     })
 
@@ -116,12 +118,16 @@ Page({
 
                         name:y,
 
-                        record:_subtractAmount[y]
+                        record:radixPointFn.splitK(_subtractAmount[y])
 
                     })
 
 
                 }
+
+
+
+
 
 
                 //获取entName数据
@@ -133,11 +139,11 @@ Page({
 
                     salaryMonth: res.data.data[0].salaryMonth,//发薪企业年月
 
-                    payableAmount: res.data.data[0].payableAmount,//实发金额
+                    payableAmount: radixPointFn.splitK(res.data.data[0].payableAmount),//实发金额
 
                     subtractAmount: _subtractAmountArray,//代扣明细
 
-                    realAmount:res.data.data[0].realAmount//实发金额
+                    realAmount:radixPointFn.splitK(res.data.data[0].realAmount)//实发金额
 
                 });
 

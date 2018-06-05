@@ -3,6 +3,8 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
+
 const billUrl ='/user/withdraw/getsimplerecord';//我的账单的url
 
 
@@ -107,6 +109,8 @@ Page({
 
                     else if (res.data.data.list.length < 10) {//这一组小于十个
 
+
+
                         //增加数组内容
                         that.setData({
 
@@ -116,6 +120,7 @@ Page({
 
 
                         })
+
 
                     }
 
@@ -132,8 +137,8 @@ Page({
 
                         })
 
-                    }
 
+                    }
 
 
                 },

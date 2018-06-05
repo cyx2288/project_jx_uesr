@@ -36,6 +36,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -123,6 +126,15 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
 
                 if(res.data.code=='0000'){
 

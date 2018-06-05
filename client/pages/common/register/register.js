@@ -132,6 +132,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         var url = app.globalData.URL + registerUrl;
 
         var jx_sid = wx.getStorageSync('jxsid');
@@ -139,19 +142,6 @@ Page({
         var a = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
-
-/*
-        console.log(json2FormFn.json2Form({
-
-            mobile: that.data.mobile,
-
-            password: md5.hexMD5(that.data.password),//md5加密
-
-            code: that.data.checkCode
-
-        }));
-*/
-
 
 
         //校验手机号
@@ -251,6 +241,14 @@ Page({
 
                     console.log(res.data);
 
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
                     if(res.data.code=='-1'){
 
                         wx.showToast({
@@ -312,6 +310,10 @@ Page({
         var url = app.globalData.URL+signUrl;
 
         var that=this;
+
+
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         var empty = /[@#\$%\^&\*]+/g;
 
@@ -400,6 +402,14 @@ Page({
 
                     console.log(res.data);
 
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
                     if(code == '-1'){
 
                         wx.showToast({
@@ -431,11 +441,11 @@ Page({
 
                         wx.setStorageSync('isVerify',res.data.data.isVerify);
 
-                        console.log('用户姓名：'+ wx.getStorageSync('userName'));
+                        //console.log('用户姓名：'+ wx.getStorageSync('userName'));
 
-                        console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
+                        //console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
-                        console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+                        //console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
 
                         //console.log(header.header(Authorization,jx_sid));
 
