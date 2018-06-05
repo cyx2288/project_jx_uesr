@@ -1,32 +1,42 @@
 @import "../register/register.wxss";
+
 page{
     background: #fff;
     width: 100%;
-
 }
+
+
 .page__bd{
-    margin-top: 35px;
+
     padding-bottom: 10px;
 
-
 }
+
 
 .jx_cash{
     width: 80px;
     height: 80px;
-    margin: 25px auto;
+    margin: 60px auto;
     text-align: center;
 }
 
 
 .weui-media-box__hd{
     text-align: center;
+    margin-top: 10px;
 }
 
 .weui-help{
+
     display: flex;
     justify-content: space-between;
     padding-right: 15px;
     padding-left: 15px;
     color:#8a8a8a;
+
 }
+
+.weui-cell_input{
+    margin: 0 auto;
+}
+

@@ -57,9 +57,8 @@ padding: 15px 0;
 
 .mine_welfare{
     display: flex;
+    padding: 15px 15px;
     justify-content: space-between;
-    padding: 8px 15px;
-
 }
 
 .join_tip{
@@ -70,11 +69,11 @@ padding: 15px 0;
 
 .password_image{
 
-    font-size: 14px;
+    font-size: 16px;
     color: #4a4a4a;
     vertical-align: middle;
     display: inline-flex;
-    width: 50%;
+    width: 100px;
     justify-content: space-between;
 }
 view.password_image{
@@ -96,15 +95,15 @@ view.password_image{
 .reset_money{
     color: #ff4646;
     font-size: 14px;
-
 }
-hr {
-    display: block;
-    transform: scaleY(0.6);
-    width: 92%;
-    height: 1px;
-    border: none;
-    z-index: 100;
-    margin-left: 15px;
 
+hr {
+
+    display: block;
+    background-color: #f3f3f3;
+    transform: scaleY(0.7);
+    height: .5px;
+    width: 92%;
+    text-align: center;
+    margin: 0 auto;
 }
