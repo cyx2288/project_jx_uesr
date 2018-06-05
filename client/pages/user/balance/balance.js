@@ -1,6 +1,6 @@
 const app = getApp();
 
-const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish')//ajax请求
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
@@ -56,24 +56,19 @@ Page({
 
                 that.setData({
 
-                    wages: res.data.data//用户余额
+                    wages: radixPointFn.splitK(res.data.data)//用户余额
 
                 });
 
-/*
-                    (function countDownAjax() {
-
-                        ajaxCount --;
-
-                        ajaxFinishFn.ajaxFinish();
-
-                    })();
-*/
 
 
+                (function countDownAjax() {
 
+                    ajaxCount--;
 
+                    app.globalData.ajaxFinish(ajaxCount)
 
+                })();
 
 
 
