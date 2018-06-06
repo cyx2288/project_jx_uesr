@@ -1,15 +1,9 @@
-page{
-
-    background-color: #ebebeb;
-    height:100%;
-    width: 100%;
-
-}
-
+@import "../setting/setting.wxss";
 
 .wechat_mine_personal{
 
     padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 
 }
@@ -21,21 +15,21 @@ page{
     border-radius: 50%;
     background-color: white;
     box-shadow: 0 2px 3px #E9E9E9;
-
+    overflow: hidden;
 
 }
 
 .register_logo{
 
-    width: 50%;
-    height: 50%;
-    margin-top: 25px;
+    width: 92%;
+    height: 92%;
+    margin: 8px auto;
 
 
 }
 
 .account_message{
-padding: 15px 0;
+  padding: 15px 0;
 }
 
 
@@ -48,13 +42,6 @@ padding: 15px 0;
 
 /*工资余额*/
 
-.account_information_mime{
-    margin: 10px auto;
-    background-color: white;
-    box-shadow: 0 2px 3px #E9E9E9;
-
-}
-
 .mine_welfare{
     display: flex;
     padding: 15px 15px;
@@ -65,6 +52,8 @@ padding: 15px 0;
 
     font-size: 16px;
     color: #fe9728;
+    white-space: nowrap;
+    padding-right: 5px;
 }
 
 .password_image{
@@ -75,6 +64,7 @@ padding: 15px 0;
     display: inline-flex;
     width: 100px;
     justify-content: space-between;
+
 }
 view.password_image{
     justify-content: flex-end;
@@ -106,4 +96,8 @@ hr {
     width: 92%;
     text-align: center;
     margin: 0 auto;
+}
+
+.weui-cells{
+    padding: 0;
 }
