@@ -12,7 +12,7 @@ page{
     margin-bottom: 0;
     padding: 10px;
     font-size: 16px;
-    letter-spacing: .5px
+    /*letter-spacing: .5px*/
 }
 
 .ask{

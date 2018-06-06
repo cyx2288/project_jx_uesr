@@ -16,7 +16,7 @@ page{
 .jx_cash{
     width: 80px;
     height: 80px;
-    margin: 60px auto;
+    margin: 45px auto;
     text-align: center;
 }
 
@@ -38,5 +38,6 @@ page{
 
 .weui-cell_input{
     margin: 0 auto;
+    vertical-align: center;
 }
 
