@@ -3,26 +3,36 @@
 <view class="cash_card">
 
     <!--银行卡-->
-    <view class="weui-panel">
+    <view class="weui-cells">
+
+
+
 
 
         <picker bindchange="bindPickerChange" value="" range="{{bankList}}" class="weui-media-box weui-media-box_text">
 
+
             <view class="bank_list" data-id="{{bankCardId}}">
+
 
                 <view class="weui_title">
 
-                    <view class="weui_left">
+                       <view class="jx_record">
 
-                        <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}（储蓄卡）</view>
+                          <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
+                       </view>
 
-                    </view>
+                      <view class="weui_left">
+                          <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}（储蓄卡）</view>
+                      </view>
 
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
                 </view>
 
-                <text class="details_date">{{bankNo}}</text>
+
+                    <text class="details_date">{{bankNo}}</text>
+
 
             </view>
         </picker>
@@ -35,11 +45,10 @@
             <view class="weui-cell__bd">添加新卡</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </navigator>
-
     </view>
 
     <!--输入金额-->
-    <view url="../payroll/payroll" class="weui-panel">
+    <view url="../payroll/payroll" class="weui-cells">
 
         <view class="weui-panel__bd">
 
@@ -54,6 +63,7 @@
                     </label>
 
                 </view>
+
 
                 <view class="weui_title">
 
@@ -72,9 +82,20 @@
     <!--button-->
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="cashFn" style="background-color: #E87B17;">确认提现</button>
-        <!--提示-->
-        <text class="payroll_prompt " style="color: #E87B17; font-size:14px;text-align: center" bindtap="moreFn">更多</text>
+        <button class="weui-btn" type="primary" bindtap="cashFn">确认提现</button>
+
+
+    </view>
+
+    <!--提示-->
+    <view class="weui-help">
+
+        <navigator  url=""  class="jx_left">联系客服</navigator>
+
+        <span>|</span>
+
+        <text class="jx_right"   bindtap="moreFn">更多</text>
+
 
     </view>
 
@@ -87,13 +108,19 @@
             <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
 
             <view class="cash_prompt">
-                <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                <view class="jx_record">
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
                 <view class="weui-media-box__desc">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行
                 </view>
             </view>
 
             <view class="cash_prompt">
-                <icon type="circle" size="16" style="margin-right: 5px;"></icon>
+                <view class="jx_record">
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
                 <view class="weui-media-box__desc">限额说明：单卡单笔50,000.00元，当日100,000.00元，当月100,000.00元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
