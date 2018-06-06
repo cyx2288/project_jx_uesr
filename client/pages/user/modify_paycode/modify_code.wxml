@@ -1,6 +1,15 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 
-    <view class="weui-cells__title">支付密码不能是连续、重复的数字</view>
+    <view class="weui_top">
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        </view>
+
+        <view class="weui-cells__title">支付密码不是能是连续、重复的数字</view>
+    </view>
+
+
+
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
