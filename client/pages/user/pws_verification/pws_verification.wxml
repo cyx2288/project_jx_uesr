@@ -10,7 +10,7 @@
 
 </view>
 
-<navigator url="../code/code" class="weui-cells__title" style="text-align: right">忘记密码？</navigator>
+<navigator url="../code/code" class="weui-cells__title" style="text-align: right">忘记支付密码？</navigator>
 
 <view class="page__bd page__bd_spacing">
     <button class="weui-btn" type="primary" bindtap="clickCash">确认</button>

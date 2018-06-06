@@ -146,6 +146,7 @@ Page({
                 content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
                 cancelText: '取消',
                 confirmText: '去认证',
+                confirmColor:'#fe9728',
                 success: function (res) {
 
                     if (res.confirm) {

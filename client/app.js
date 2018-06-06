@@ -1,6 +1,7 @@
 //app.js
 App({
-  globalData: {
+
+    globalData: {
 
     userInfo: null,
 
@@ -12,7 +13,7 @@ App({
 
       /*URL:'http://172.18.1.62:8091/jx-user'*/
 
-    ajaxFinish:function (ajaxCount) {
+     ajaxFinish:function (ajaxCount) {
 
         wx.showLoading({
 
@@ -42,8 +43,6 @@ App({
         wx.showToast({
             title: msg,
             icon: 'none',
-            duration: 4000,
-
             success:function () {
 
                 setTimeout(function () {
@@ -53,7 +52,7 @@ App({
                         url:'../../common/signin/signin'
                     })
 
-                },4000)
+                },1500)
 
             }
 
@@ -64,8 +63,47 @@ App({
     }
 
 
-}
+},
+
+      signinCode:function(code,msg) {
+
+    if(code=='3001') {
+
+        //console.log('登录');
+
+        wx.showToast({
+            title: msg,
+            icon: 'none',
+
+            success:function () {
+
+                setTimeout(function () {
+
+                    wx.reLaunch({
+
+                        url:'../../common/signin/signin'
+                    })
+
+                },1500)
+
+            }
+
+        })
+
+        return false
 
 
-}
+    }
+
+
+},
+
+
+
+
+
+},
+
+
+
 })

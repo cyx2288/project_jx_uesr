@@ -177,6 +177,7 @@ Page({
                         title: '确认付款',
                         content: '支付金额￥' + that.data.payAmount + ',提现金额￥'+that.data.orderAmount+',手续费￥'+that.data.rateAmount,
                         confirmText: '确认付款',
+                        confirmColor:'#fe9728',
 
                         success: function (res) {
 

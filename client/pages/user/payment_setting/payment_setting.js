@@ -165,6 +165,8 @@ Page({
 
                 content: '是不是需要关闭短信动态验证',
 
+                confirmColor:'#fe9728',
+
                 success: function (res) {
 
                     if (res.confirm) {
@@ -313,6 +315,8 @@ Page({
                 title: '提示',
 
                 content: '是不是需要关闭支付密码验证',
+
+                confirmColor:'#fe9728',
 
                 success: function (res) {
 
@@ -480,6 +484,7 @@ Page({
                             content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
                             cancelText: '取消',
                             confirmText: '去认证',
+                            confirmColor:'#fe9728',
                             success: function (res) {
 
                                 if (res.confirm) {
@@ -518,6 +523,8 @@ Page({
                             title: '提示',
 
                             content: '请先设置支付验证码',
+
+                            confirmColor:'#fe9728',
 
                             success: function (res) {
 

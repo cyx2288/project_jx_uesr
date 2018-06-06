@@ -162,440 +162,41 @@ Page({
         console.log(wx.getStorageSync('Authorization'))
 
 
-        //获取entId
-        var thisEntId = wx.getStorageSync('entId');
 
-        //获取发薪企业id
-        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+     if(!jx_sid||!Authorization){
 
 
-        wx.showLoading({
-            title: '加载中',
-        })
 
+            setTimeout(function () {
 
-        /**
-         * 接口：工资提醒
-         * 请求方式：GET
-         * 接口：/salary/home/selecttiptype
-         * 入参：null
-         **/
-        wx.request({
+                wx.reLaunch({
 
-            url: thisRemaidUrl,
+                    url:'../../common/signin/signin'
+                })
 
-            method: 'GET',
-
-            header: {
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            success: function (res) {
-
-
-                console.log(res.data);
-
-                //code3003返回方法
-                app.globalData.repeat(res.data.code,res.data.msg);
-
-
-                var thisType = res.data.data[0].type;
-
-
-                //存储entId
-                wx.setStorageSync('entId', res.data.data[0].entId);
-
-
-                //存储salaryId
-                wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
-
-                //存储type
-                wx.setStorageSync('thisType', res.data.data[0].type);
-
-                //console.log('发薪'+wx.getStorageSync('salaryDetailId'))
-
-
-
-
-
-                //是否查看工资条
-                if (thisType == 1) {
-
-
-                    var thisEnName = res.data.data[0].entName;
-
-                    var thisSalaryMonth = res.data.data[0].salaryMonth;
-
-                    /*console.log('发薪企业id'+that.data.salaryDetailId);*/
-
-
-                    setTimeout(function () {
-
-
-                        setTimeout(function () {
-
-                            wx.hideLoading()
-
-                        },500);
-
-
-                        wx.showModal({
-                            title: '提示',
-                            content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
-                            cancelText: '暂不查看',
-                            confirmText: '查看',
-                            success: function (res) {
-
-                                if (res.confirm) {
-
-
-                                    /**
-                                     * 接口：锁定状态查询
-                                     * 请求方式：POST
-                                     * 接口：/salary/home/selectlockstatus
-                                     * 入参：null
-                                     **/
-                                    wx.request({
-
-                                        url: thisUrl,
-
-                                        method: 'GET',
-
-                                        header: {
-
-                                            'jxsid': jx_sid,
-
-                                            'Authorization': Authorization
-
-                                        },
-
-                                        success: function (res) {
-
-                                            console.log(res.data);
-
-                                            that.setData({
-
-                                                type:res.data.data.type
-
-                                            })
-
-
-                                            if(that.data.type=='1'){
-
-                                                wx.navigateTo({
-
-                                                    url: '../../common/wages_authentication/authentication'
-
-                                                })
-
-                                            }
-
-                                            else if(res.data.data.type=='0'){
-
-                                                wx.navigateTo({
-
-                                                    url:'../../user/locked/locked'
-                                                })
-
-                                            }
-
-
-                                        },
-
-                                        fail: function (res) {
-
-                                            console.log(res)
-
-                                        }
-
-                                    })
-
-
-
-                                }
-
-                                else if (res.cancel) {
-
-
-                                    //调用暂不查看工资条
-                                    noSeeSalary();
-
-                                    wx.showToast({
-
-                                        title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位”中继续加入',
-                                        icon: 'none',
-
-                                    })
-
-
-                                }
-                            }
-                        });
-
-                    },1000)
-
-
-
-
-
-                }
-
-                //是否加入企业
-                else if (thisType == 2) {
-
-
-                    var thisEnName = res.data.data[0].entName;
-
-                    setTimeout(function () {
-
-
-                        setTimeout(function () {
-
-                            wx.hideLoading()
-
-                        },500);
-
-
-                    wx.showModal({
-                        title: '提示',
-                        content: thisEnName + '邀请您加入企业，便捷查看工资和工资条',
-                        cancelText: '暂不加入',
-                        confirmText: '加入',
-                        success: function (res) {
-
-                            if (res.confirm) {
-
-
-
-                                /**
-                                 * 接口：锁定状态查询
-                                 * 请求方式：POST
-                                 * 接口：/salary/home/selectlockstatus
-                                 * 入参：null
-                                 **/
-                                wx.request({
-
-                                    url: thisUrl,
-
-                                    method: 'GET',
-
-                                    header: {
-
-                                        'jxsid': jx_sid,
-
-                                        'Authorization': Authorization
-
-                                    },
-
-                                    success: function (res) {
-
-                                        console.log(res.data);
-
-                                        that.setData({
-
-                                            type:res.data.data.type
-
-                                        })
-
-
-                                        if(that.data.type=='1'){
-
-                                            wx.navigateTo({
-
-                                                url: '../../common/authentication/authentication'
-
-                                            })
-
-                                        }
-
-                                        else if(res.data.data.type=='0'){
-
-                                            wx.navigateTo({
-
-                                                url:'../../user/locked/locked'
-                                            })
-
-                                        }
-
-
-                                    },
-
-                                    fail: function (res) {
-
-                                        console.log(res)
-
-                                    }
-
-                                })
-
-
-
-                            }
-
-                            else if (res.cancel) {
-
-                                //调用暂不加入企业
-                                noJoinSalary();
-
-                                wx.showToast({
-
-                                    title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
-                                    icon: 'none',
-
-                                })
-
-
-                            }
-                        }
-                    });
-
-
-                    },1000)
-
-
-                }
-
-                //未收到任何邀请
-                else if (thisType == 0) {
-
-                    setTimeout(function () {
-
-                        wx.hideLoading()
-
-                    },500);
-
-
-                    //调用发薪企业
-                    //that.getSelectEnt();
-
-                    //调用工资条发放列表
-                    //that.salaryInfo();
-
-                }
-
-
-            },
-
-
-            fail: function (res) {
-
-                console.log(res)
-
-            }
-
-        });
-
-
-        //暂不加入企业
-        function noJoinSalary() {
-
-            /**
-             * 接口：暂不加入企业
-             * 请求方式：POST
-             * 接口：/salary/home/updatejoinentstatus
-             * 入参：entId
-             **/
-            wx.request({
-
-                url: thisNoJoinUrl,
-
-                method: 'POST',
-
-                data: json2FormFn.json2Form({
-
-                    entId: thisEntId
-
-                }),
-
-                header: {
-
-                    'content-type': 'application/x-www-form-urlencoded',// post请求
-
-                    'jxsid': jx_sid,
-
-                    'Authorization': Authorization
-
-                },
-
-                success: function (res) {
-
-                    console.log(res.data);
-
-                },
-
-
-                fail: function (res) {
-                    console.log(res)
-                }
-
-            });
+            },2000)
 
         }
 
-        //暂不看工资单
-        function noSeeSalary() {
-
-            /**
-             * 接口：暂不查看工资条
-             * 请求方式：POST
-             * 接口：salary/home/updateselectsalary
-             * 入参：salaryDetailId
-             **/
-            wx.request({
-
-                url: thisNoSeeUrl,
-
-                method: 'POST',
-
-                data: json2FormFn.json2Form({
-
-                    salaryDetailId: thisSalaryDetailId
-
-                }),
-
-                header: {
-
-                    'content-type': 'application/x-www-form-urlencoded',// post请求
-
-                    'jxsid': jx_sid,
-
-                    'Authorization': Authorization
-
-                },
-
-                success: function (res) {
-
-                    console.log(res.data);
+      else {
 
 
-                },
-
-
-                fail: function (res) {
-                    console.log(res)
-                }
+            wx.showLoading({
+                title: '加载中',
 
             })
 
 
-        }
-
-        //发薪企业
-        function getSelectEnt() {
-
+         console.log('揍你')
             /**
-             * 接口：发薪企业
+             * 接口：工资提醒
              * 请求方式：GET
-             * 接口：/user/account/getbalance
+             * 接口：/salary/home/selecttiptype
              * 入参：null
              **/
             wx.request({
 
-                url: thisSalaryUrl,
+                url: thisRemaidUrl,
 
                 method: 'GET',
 
@@ -609,18 +210,529 @@ Page({
 
                 success: function (res) {
 
+
                     console.log(res.data);
 
-                    var thisEntName = res.data.data;
 
-                    //console.log(res.data.data)
 
-                    that.setData({
+                    /* //code3001返回方法
+                     app.globalData.signinCode(res.data.code,res.data.msg)*/;
 
-                        selectSalaryOptions: thisEntName,
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    });
+                    if(res.data.code=='3001') {
 
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        var thisType = res.data.data[0].type;
+
+
+                        //存储entId
+                        wx.setStorageSync('entId', res.data.data[0].entId);
+
+
+                        //存储salaryId
+                        wx.setStorageSync('salaryDetailId', res.data.data[0].salaryDetailId);
+
+                        //存储type
+                        wx.setStorageSync('thisType', res.data.data[0].type);
+
+                        //console.log('发薪'+wx.getStorageSync('salaryDetailId'))
+
+
+
+
+
+                        //是否查看工资条
+                        if (thisType == 1) {
+
+
+                            var thisEnName = res.data.data[0].entName;
+
+                            var thisSalaryMonth = res.data.data[0].salaryMonth;
+
+                            /*console.log('发薪企业id'+that.data.salaryDetailId);*/
+
+
+                            setTimeout(function () {
+
+
+                                setTimeout(function () {
+
+                                    wx.hideLoading()
+
+                                },500);
+
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
+                                    cancelText: '暂不查看',
+                                    confirmText: '查看',
+                                    confirmColor:'#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+
+                                            /**
+                                             * 接口：锁定状态查询
+                                             * 请求方式：POST
+                                             * 接口：/salary/home/selectlockstatus
+                                             * 入参：null
+                                             **/
+                                            wx.request({
+
+                                                url: thisUrl,
+
+                                                method: 'GET',
+
+                                                header: {
+
+                                                    'jxsid': jx_sid,
+
+                                                    'Authorization': Authorization
+
+                                                },
+
+                                                success: function (res) {
+
+                                                    console.log(res.data);
+
+                                                    that.setData({
+
+                                                        type:res.data.data.type
+
+                                                    })
+
+
+                                                    if(that.data.type=='1'){
+
+                                                        wx.navigateTo({
+
+                                                            url: '../../common/wages_authentication/authentication'
+
+                                                        })
+
+                                                    }
+
+                                                    else if(res.data.data.type=='0'){
+
+                                                        wx.navigateTo({
+
+                                                            url:'../../user/locked/locked'
+                                                        })
+
+                                                    }
+
+
+                                                },
+
+                                                fail: function (res) {
+
+                                                    console.log(res)
+
+                                                }
+
+                                            })
+
+
+
+                                        }
+
+                                        else if (res.cancel) {
+
+
+                                            //调用暂不查看工资条
+                                            noSeeSalary();
+
+                                            wx.showToast({
+
+                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位”中继续加入',
+                                                icon: 'none',
+
+                                            })
+
+
+                                        }
+                                    }
+                                });
+
+                            },1000)
+
+
+
+
+
+                        }
+
+                        //是否加入企业
+                        else if (thisType == 2) {
+
+
+                            var thisEnName = res.data.data[0].entName;
+
+                            setTimeout(function () {
+
+
+                                setTimeout(function () {
+
+                                    wx.hideLoading()
+
+                                },500);
+
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: thisEnName + '邀请您加入企业，便捷查看工资和工资条',
+                                    cancelText: '暂不加入',
+                                    confirmText: '加入',
+                                    confirmColor:'#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+
+
+                                            /**
+                                             * 接口：锁定状态查询
+                                             * 请求方式：POST
+                                             * 接口：/salary/home/selectlockstatus
+                                             * 入参：null
+                                             **/
+                                            wx.request({
+
+                                                url: thisUrl,
+
+                                                method: 'GET',
+
+                                                header: {
+
+                                                    'jxsid': jx_sid,
+
+                                                    'Authorization': Authorization
+
+                                                },
+
+                                                success: function (res) {
+
+                                                    console.log(res.data);
+
+                                                    that.setData({
+
+                                                        type:res.data.data.type
+
+                                                    })
+
+
+                                                    if(that.data.type=='1'){
+
+                                                        wx.navigateTo({
+
+                                                            url: '../../common/authentication/authentication'
+
+                                                        })
+
+                                                    }
+
+                                                    else if(res.data.data.type=='0'){
+
+                                                        wx.navigateTo({
+
+                                                            url:'../../user/locked/locked'
+                                                        })
+
+                                                    }
+
+
+                                                },
+
+                                                fail: function (res) {
+
+                                                    console.log(res)
+
+                                                }
+
+                                            })
+
+
+
+                                        }
+
+                                        else if (res.cancel) {
+
+                                            //调用暂不加入企业
+                                            noJoinSalary();
+
+                                            wx.showToast({
+
+                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
+                                                icon: 'none',
+
+                                            })
+
+
+                                        }
+                                    }
+                                });
+
+
+                            },1000)
+
+
+                        }
+
+                        //未收到任何邀请
+                        else if (thisType == 0) {
+
+                            setTimeout(function () {
+
+                                wx.hideLoading()
+
+                            },500);
+
+
+                            //调用发薪企业
+                            //that.getSelectEnt();
+
+                            //调用工资条发放列表
+                            //that.salaryInfo();
+
+                        }
+
+                        //获取entId
+                        var thisEntId = wx.getStorageSync('entId');
+
+                        //获取发薪企业id
+                        var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
+
+
+                        //暂不加入企业
+                        function noJoinSalary() {
+
+                            /**
+                             * 接口：暂不加入企业
+                             * 请求方式：POST
+                             * 接口：/salary/home/updatejoinentstatus
+                             * 入参：entId
+                             **/
+                            wx.request({
+
+                                url: thisNoJoinUrl,
+
+                                method: 'POST',
+
+                                data: json2FormFn.json2Form({
+
+                                    entId: thisEntId
+
+                                }),
+
+                                header: {
+
+                                    'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                                    'jxsid': jx_sid,
+
+                                    'Authorization': Authorization
+
+                                },
+
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+                                },
+
+
+                                fail: function (res) {
+                                    console.log(res)
+                                }
+
+                            });
+
+                        }
+
+                        //暂不看工资单
+                        function noSeeSalary() {
+
+                            /**
+                             * 接口：暂不查看工资条
+                             * 请求方式：POST
+                             * 接口：salary/home/updateselectsalary
+                             * 入参：salaryDetailId
+                             **/
+                            wx.request({
+
+                                url: thisNoSeeUrl,
+
+                                method: 'POST',
+
+                                data: json2FormFn.json2Form({
+
+                                    salaryDetailId: thisSalaryDetailId
+
+                                }),
+
+                                header: {
+
+                                    'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                                    'jxsid': jx_sid,
+
+                                    'Authorization': Authorization
+
+                                },
+
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+
+                                },
+
+
+                                fail: function (res) {
+                                    console.log(res)
+                                }
+
+                            })
+
+
+                        }
+
+                        //发薪企业
+                        function getSelectEnt() {
+
+                            /**
+                             * 接口：发薪企业
+                             * 请求方式：GET
+                             * 接口：/user/account/getbalance
+                             * 入参：null
+                             **/
+                            wx.request({
+
+                                url: thisSalaryUrl,
+
+                                method: 'GET',
+
+                                header: {
+
+                                    'jxsid': jx_sid,
+
+                                    'Authorization': Authorization
+
+                                },
+
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+                                    var thisEntName = res.data.data;
+
+                                    //console.log(res.data.data)
+
+                                    that.setData({
+
+                                        selectSalaryOptions: thisEntName,
+
+                                    });
+
+
+
+                                },
+
+
+                                fail: function (res) {
+
+                                    console.log(res)
+
+                                }
+
+                            })
+
+
+                        }
+
+                        //分页
+                        that.chooseEntId();
+
+                        //发薪企业
+                        getSelectEnt();
+
+
+                        /**
+                         * 接口：获取用户余额
+                         * 请求方式：GET
+                         * 接口：/user/account/getbalance
+                         * 入参：null
+                         **/
+                        wx.request({
+
+                            url: thisBalanceUrl,
+
+                            method: 'GET',
+
+                            header: {
+
+                                'jxsid': jx_sid,
+
+                                'Authorization': Authorization
+
+                            },
+
+                            success: function (res) {
+
+                                //wx.setStorageSync('wages', res.data.data);
+
+                                that.setData({
+
+                                    wages: radixPointFn.splitK(res.data.data)//用户余额
+
+                                });
+
+
+                            },
+
+
+                            fail: function (res) {
+
+                                console.log(res)
+
+                            }
+
+                        })
+
+                    }
 
 
                 },
@@ -632,59 +744,15 @@ Page({
 
                 }
 
-            })
+            });
+
 
 
         }
 
-        //分页
-        that.chooseEntId();
-
-        //发薪企业
-        getSelectEnt();
 
 
-        /**
-         * 接口：获取用户余额
-         * 请求方式：GET
-         * 接口：/user/account/getbalance
-         * 入参：null
-         **/
-        wx.request({
 
-            url: thisBalanceUrl,
-
-            method: 'GET',
-
-            header: {
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            success: function (res) {
-
-                //wx.setStorageSync('wages', res.data.data);
-
-                that.setData({
-
-                    wages: radixPointFn.splitK(res.data.data)//用户余额
-
-                });
-
-
-            },
-
-
-            fail: function (res) {
-
-                console.log(res)
-
-            }
-
-        })
 
 
     },
@@ -1141,7 +1209,9 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '嘉薪平台',
-            path: '/pages/wages/index/index'
+            path: '/pages/common/signin/signin',
+            imageUrl:'/static/icon/logo/share.jpg'
+
         }
     },
 

@@ -115,14 +115,22 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
+
+
         wx.showModal({
             title: '提示',
             content: '确定要退出登录？',
             cancelText: '取消',
             confirmText: '确定',
+            confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {
+
+                    wx.removeStorageSync('jxsid');
+
+                    wx.removeStorageSync('Authorization');
+
 
                     logOut();
 

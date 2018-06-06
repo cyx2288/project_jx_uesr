@@ -78,6 +78,7 @@ Page({
                 content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
                 cancelText: '取消',
                 confirmText: '去认证',
+                confirmColor:'#fe9728',
                 success: function (res) {
 
                     if (res.confirm) {
@@ -155,6 +156,7 @@ Page({
                             content: res.data.msg,
                             cancelText: '取消',
                             confirmText: '去添加',
+                            confirmColor:'#fe9728',
                             success: function (res) {
 
                                 if (res.confirm) {
@@ -580,6 +582,7 @@ Page({
                 title: '确认付款',
                 content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
                 confirmText: '确认付款',
+                confirmColor:'#fe9728',
 
                 success: function (res) {
 
@@ -738,6 +741,7 @@ Page({
             /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,
+            confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {
