@@ -12,6 +12,6 @@
 
 <navigator url="../code/code" class="weui-cells__title" style="text-align: right">忘记密码？</navigator>
 
-<view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button type="primary" bindtap="clickCash">确认</button>
+<view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary" bindtap="clickCash">确认</button>
 </view>

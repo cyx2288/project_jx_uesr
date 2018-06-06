@@ -12,8 +12,8 @@
 
 <view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可<span class="{{locked==1 ? '' :'locked'}}" bindtap="hasCodeFn">重新获取</span></view>
 
-<view class="page__bd page__bd_spacing" style="margin-top: 25px">
+<view class="page__bd page__bd_spacing">
 
-    <button type="primary"  bindtap="buttonCheck">确认</button>
+    <button class="weui-btn" type="primary"  bindtap="buttonCheck">确认</button>
 
 </view>

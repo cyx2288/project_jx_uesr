@@ -1,29 +1,33 @@
 
 <!--设置支付验证-->
 
+
+
 <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_switch">
+
         <view class="weui-cell__bd">短信动态验证</view>
+
         <view class="weui-cell__ft">
-
-            <switch type="switch" checked="{{msgMode}}"  bindchange="changMessageModelFn"/>
-
-
+            <switch type="switch"  checked="{{msgMode}}"  bindchange="changMessageModelFn" color="#fe9728" />
         </view>
+
     </view>
-</view>
 
-<hr/>
+    <hr/>
 
-<view class="weui-cells weui-cells_after-title">
+
     <view class="weui-cell weui-cell_switch">
+
         <view class="weui-cell__bd">支付密码验证</view>
+
         <view class="page__title">
-
-            <switch type="switch" checked="{{pwdMode}}" bindchange="changCodeModelFn"/>
-
+            <switch type="switch" checked="{{pwdMode}}" bindchange="changCodeModelFn" color="#fe9728" />
         </view>
+
     </view>
+
 </view>
+
 
 
