@@ -1,4 +1,4 @@
-.locked{
 
-    pointer-events: none;
-}
+
+@import "../code/code.wxss";
+
