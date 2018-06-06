@@ -1,9 +1,11 @@
 {
   "pages":[
 
+    "pages/wages/index/index",
+
     "pages/common/signin/signin",
 
-    "pages/wages/index/index",
+
 
     "pages/user/mine/mine",
 

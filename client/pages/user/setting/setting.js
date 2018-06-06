@@ -132,6 +132,8 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
+        console.log('点击')
+
         //判断是否认证
         if(_isVerify=='0'){
 

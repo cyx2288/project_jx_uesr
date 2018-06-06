@@ -87,6 +87,22 @@ Page({
 
                     var _billList = res.data.data.list;
 
+                    console.log(_billList)
+
+                    for(var j=0;j<_billList.length;j++){
+
+                        _billList[j].orderAmount=radixPointFn.splitK(_billList[j].orderAmount)
+
+                        console.log(_billList[j].orderAmount)
+
+                    }
+
+
+
+
+
+
+
                     //如果没有数据
                     if (!that.data.noData) {
 
@@ -110,14 +126,12 @@ Page({
                     else if (res.data.data.list.length < 10) {//这一组小于十个
 
 
-
                         //增加数组内容
                         that.setData({
 
                             noData: false,
 
                             billList: that.data.billList.concat(_billList),
-
 
                         })
 
