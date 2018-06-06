@@ -8,7 +8,7 @@
             </view>
 
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入手机号" value="{{mobile}}" bindinput="telFn" maxlength="11"/>
+                <input class="weui-input" type="number" placeholder="请输入手机号" value="{{mobile}}" bindinput="telFn" maxlength="11"/>
             </view>
         </view>
 
@@ -18,7 +18,7 @@
             </view>
 
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入验证码" value="{{checkCode}}" bindinput="codeFn"  maxlength="6"/>
+                <input class="weui-input" type="number" placeholder="请输入验证码" value="{{checkCode}}" bindinput="codeFn"  maxlength="6"/>
             </view>
 
             <view class="weui-cell__ft">

@@ -2,7 +2,7 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish');//ajax请求
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
 const repeat=require('../../../static/libs/script/accountException.js');//3003
 
@@ -66,6 +66,10 @@ Page({
         lookWages: true,//看不看余额
 
         type:'',//是否锁定
+
+        pickList:[],
+
+
 
 
 
@@ -155,6 +159,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        console.log(wx.getStorageSync('Authorization'))
+
 
         //获取entId
         var thisEntId = wx.getStorageSync('entId');
@@ -194,7 +200,7 @@ Page({
                 console.log(res.data);
 
                 //code3003返回方法
-                repeat.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
 
                 var thisType = res.data.data[0].type;
@@ -613,8 +619,8 @@ Page({
 
                         selectSalaryOptions: thisEntName,
 
+                    });
 
-                    })
 
 
                 },
@@ -662,11 +668,9 @@ Page({
 
                 //wx.setStorageSync('wages', res.data.data);
 
-                console.log(res.data);
-
                 that.setData({
 
-                    wages: res.data.data//用户余额
+                    wages: radixPointFn.splitK(res.data.data)//用户余额
 
                 });
 
@@ -758,12 +762,18 @@ Page({
 
                 var wagesListLength;
 
-                var _dataText = res.data.data.hasOwnProperty('list')
+                //var _dataText = res.data.data.hasOwnProperty('list')
 
+
+
+
+
+                var pickThisList = [];
 
                 //判断有没有列表数据
 
                     if (thislist) {
+
 
 
                         //获取现在list的长度
@@ -790,6 +800,15 @@ Page({
                         if (fn) {
                             //数据加载之后使用的方法
                             fn();
+                        }
+
+
+                        for(var j=0;j<nowList.length;j++){
+
+                            nowList[j].realAmount=radixPointFn.splitK(nowList[j].realAmount)
+
+                            //console.log(nowList[j].realAmount)
+
                         }
 
 
@@ -1116,6 +1135,14 @@ Page({
             lookWages: !that.data.lookWages
         })
 
+    },
+
+    //转发
+    onShareAppMessage: function () {
+        return {
+            title: '嘉薪平台',
+            path: '/pages/wages/index/index'
+        }
     },
 
 });

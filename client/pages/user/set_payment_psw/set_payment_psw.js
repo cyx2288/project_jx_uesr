@@ -20,6 +20,29 @@ Page({
         
 
     },
+
+    onShow:function () {
+
+        var _forgetTab =  wx.getStorageSync('isPayPwd');
+
+
+        if(_forgetTab=='0'){
+
+            wx.setNavigationBarTitle({
+
+                title:'设置支付密码'
+            })
+        }
+
+        else {
+            wx.setNavigationBarTitle({
+
+                title:'忘记支付密码'
+            })
+
+        }
+
+    },
     changePwdFn:function () {
 
         var that = this;
@@ -156,18 +179,33 @@ Page({
 
                     if (res.data.code == '0000') {
 
+
                         wx.showToast({
 
                             title: res.data.msg,
 
                             icon: 'none',
 
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.switchTab({
+
+                                        url:'../../user/mine/mine'
+                                    })
+
+                                },2000)
+
+
+
+
+
+
+                            }
+
                         })
 
-                        wx.redirectTo({
-
-                            url: '../setting/setting'
-                        })
 
 
                     }
@@ -226,8 +264,16 @@ Page({
 
         })
 
-    }
-    
+    },
+  onUnload:function () {
+
+      wx.switchTab({
+
+          url:'../../user/mine/mine'
+      })
+
+
+  }
     
     
     

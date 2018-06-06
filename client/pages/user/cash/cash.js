@@ -734,7 +734,7 @@ Page({
 
         wx.showModal({
             title: '提现限额说明',
-            content: '单卡单笔50000.00元，当日100000.00元，当月100000.00元',
+            content: '单卡单笔50,000.00元，当日100,000.00元，当月100,000.00元',
             /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,

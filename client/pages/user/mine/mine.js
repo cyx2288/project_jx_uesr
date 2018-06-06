@@ -1,8 +1,8 @@
 const app = getApp();
 
-const ajaxFinishFn = require('../../../static/libs/script/ajaxFinish');//ajax请求
-
 const mineUrl = '/user/center/usercenter';//用户中心
+
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
 const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
@@ -68,7 +68,7 @@ Page({
 
                 console.log(res.data);
 
-                var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7)
+                var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7);
 
                 //存储手机号码
                 that.setData({
@@ -95,13 +95,13 @@ Page({
                 wx.setStorageSync('isVerify', res.data.data.isVerify);
 
 
-/*                (function countDownAjax() {
+                (function countDownAjax() {
 
                     ajaxCount--;
 
-                    ajaxFinishFn.ajaxFinish(ajaxCount)
+                    app.globalData.ajaxFinish(ajaxCount)
 
-                })();*/
+                })();
 
 
             },
@@ -163,13 +163,13 @@ Page({
 
                 }
 
-/*                (function countDownAjax() {
+                (function countDownAjax() {
 
                     ajaxCount--;
 
-                    ajaxFinishFn.ajaxFinish(ajaxCount)
+                    app.globalData.ajaxFinish(ajaxCount)
 
-                })();*/
+                })();
 
 
             },
@@ -208,22 +208,20 @@ Page({
 
                 that.setData({
 
-                    wages: res.data.data//用户余额
+                    wages: radixPointFn.splitK(res.data.data)//用户余额
 
                 });
 
                 //获取余额
                 wx.setStorageSync('wages', res.data.data);
 
-/*
                 (function countDownAjax() {
 
                     ajaxCount--;
 
-                    ajaxFinishFn.ajaxFinish(ajaxCount)
+                    app.globalData.ajaxFinish(ajaxCount)
 
                 })();
-*/
 
 
             },
@@ -237,6 +235,14 @@ Page({
 
         })
 
+    },
+
+    //转发
+    onShareAppMessage: function () {
+        return {
+            title: '嘉薪平台',
+            path: '/pages/user/mine/mine'
+        }
     },
 
 

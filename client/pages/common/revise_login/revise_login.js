@@ -24,11 +24,8 @@ Page({
 
         var url=app.globalData.URL+registerUrl;
 
-        console.log(json2FormFn.json2Form({
-            mobile: this.data.mobile ,
-            password: md5.hexMD5(this.data.password),//md5加密
-            code:this.data.checkCode
-        }))
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         /**
          * 接口：注册

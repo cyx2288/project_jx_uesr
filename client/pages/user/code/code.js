@@ -38,6 +38,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -46,6 +49,26 @@ Page({
         var _mobile = wx.getStorageSync('mobile');
 
         var countdown = 60;
+
+        var _forgetTab = wx.getStorageSync('isPayPwd')
+
+        console.log(_forgetTab)
+
+        if(_forgetTab=='0'){
+
+            wx.setNavigationBarTitle({
+
+                title:'设置支付密码'
+            })
+        }
+
+        else {
+            wx.setNavigationBarTitle({
+
+                title:'忘记支付密码'
+            })
+
+        }
 
         that.setData({
 
@@ -120,6 +143,14 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
 
                 //console.log(res.data.code=='-1')
 
@@ -211,17 +242,32 @@ Page({
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                //跳转身份认证
+                                wx.navigateTo({
+
+                                    url:'../id_card/id_card'
+                                })
+
+                            },1500)
+
+
+                        }
+
+
+
 
                     })
 
                     //存取tokenMsg
                     wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
 
-                    //跳转身份认证
-                    wx.navigateTo({
 
-                        url:'../id_card/id_card'
-                    })
+
+
 
 
                 }

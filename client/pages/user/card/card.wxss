@@ -9,6 +9,11 @@
 
 }
 
+.card_middle .card_style{
+
+    margin-left: 30px;
+}
+
 .card_middle .weui_middle{
 
     width: 100%;

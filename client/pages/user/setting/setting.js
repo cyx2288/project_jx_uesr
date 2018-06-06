@@ -23,6 +23,9 @@ Page({
 
             var thisUrl=app.globalData.URL+getPayPwdURL;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
             //缓存jx_sid&&Authorization数据
             var jx_sid = wx.getStorageSync('jxsid');
 
@@ -96,13 +99,22 @@ Page({
 
                          console.log(res.data);
 
+                         (function countDownAjax() {
+
+                             ajaxCount--;
+
+                             app.globalData.ajaxFinish(ajaxCount)
+
+                         })();
+
+
                          that.setData({
 
                              isPayPwd:res.data.data.isPayPwd
 
                          })
 
-                         //console.log(that.data.isPayPwd)
+                         console.log(that.data.isPayPwd)
 
 
                      },
@@ -119,6 +131,8 @@ Page({
     onClickFn:function () {
 
         var _isVerify = wx.getStorageSync('isVerify');
+
+        console.log('点击')
 
         //判断是否认证
         if(_isVerify=='0'){
@@ -165,6 +179,18 @@ Page({
 
 
         }
+
+
+    },
+
+    onclickPws:function () {
+
+        wx.navigateTo({
+
+            url: '../reset_payment/reset_payment'
+
+        })
+
 
 
     }

@@ -1,9 +1,11 @@
 {
   "pages":[
 
+    "pages/wages/index/index",
+
     "pages/common/signin/signin",
 
-    "pages/wages/index/index",
+
 
     "pages/user/mine/mine",
 
@@ -79,7 +81,6 @@
 
     "pages/user/payment_setting/payment_setting",
 
-    "pages/common/find_password/find_password",
 
 
 
@@ -105,7 +106,6 @@
 
     "pages/wages/payroll/payroll",
 
-    "pages/wages/empty/empty",
 
 
 
@@ -144,16 +144,16 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ea5e26",
     "navigationBarTitleText": "嘉薪",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "color":"#ababab",
     "selectedColor":"#eb5e26",
     "list": [{
       "pagePath": "pages/wages/index/index",
-      "text": "工资",
+      "text": "工资条",
       "iconPath":"static/icon/index_tab/jx_wages_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_wages_orange.png"
     }, {
