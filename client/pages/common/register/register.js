@@ -265,7 +265,7 @@ Page({
                         wx.showToast({
 
                             title:'注册成功',
-                            icon: 'success'
+                            icon: 'none'
 
                         });
 
@@ -527,7 +527,7 @@ Page({
 
                 locked:0,
 
-                time: currentTime+'秒'
+                time: currentTime+'s后重新发送'
 
             });
             if (currentTime <= 0) {

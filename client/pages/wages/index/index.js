@@ -159,6 +159,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        console.log(wx.getStorageSync('Authorization'))
+
 
         //获取entId
         var thisEntId = wx.getStorageSync('entId');

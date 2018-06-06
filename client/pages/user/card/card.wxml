@@ -15,7 +15,7 @@
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">
                         <view class="weui_title">
-                            <view class="weui-media-box__title weui-media-box__title_in-text">{{item.bankName}}</view>
+                            <view class="weui-media-box__title weui-media-box__title_in-text">{{item.bankName}}<span class="card_style">储蓄卡</span></view>
                             <view class="weui_confirm orange" data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" bindtap="detCardFn">删除</view>
 
                         </view>

@@ -35,6 +35,12 @@ data:{
         }
     },
 
+    onShow:function () {
+
+        //console.log(wx.getStorageSync('Authorization'));
+
+    },
+
     signin:function () {
 
       var url = app.globalData.URL+signUrl;
@@ -178,6 +184,9 @@ data:{
                       console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
                       console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+
+
+
 
                       //console.log(header.header(Authorization,jx_sid));
 

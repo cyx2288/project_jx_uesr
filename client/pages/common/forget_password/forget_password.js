@@ -254,7 +254,6 @@ Page({
                 },
 
                 success: function (res) {
-
                     console.log(res.data);
 
                     if (res.data.code == '0000') {
@@ -262,15 +261,13 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'success',
+                            icon: 'none',
                             success:function () {
 
                                 setTimeout(function () {
 
-                                    wx.redirectTo({
-
-                                        url: '../signin/signin'
-
+                                    wx.navigateBack({
+                                        delta: 1
                                     })
 
 
@@ -377,7 +374,7 @@ Page({
 
                 locked: 0,
 
-                time: currentTime + '秒'
+                time: currentTime + 's后重新发送'
 
             });
             if (currentTime <= 0) {

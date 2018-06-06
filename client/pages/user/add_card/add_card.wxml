@@ -58,7 +58,7 @@
             </view>
             <view class="weui-cell__bd">
                 <picker mode="multiSelector" bindcolumnchange="bindRegionColumnChange" bindchange="bindRegionChange" value="[0,0]" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">{{city}}{{province}}</view>
+                    <view class="weui-select weui-select_in-select-after">{{city}}<span style="margin-right: 10px"></span>{{province}}</view>
                 </picker>
             </view>
         </view>

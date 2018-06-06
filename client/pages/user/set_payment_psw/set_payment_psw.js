@@ -188,10 +188,18 @@ Page({
 
                             success:function () {
 
+                                setTimeout(function () {
+
                                     wx.switchTab({
 
                                         url:'../../user/mine/mine'
                                     })
+
+                                },2000)
+
+
+
+
 
 
                             }
