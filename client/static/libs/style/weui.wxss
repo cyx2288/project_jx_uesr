@@ -954,7 +954,7 @@ icon {
 
 .weui-media-box__title {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     width: auto;
     overflow: hidden;
     text-overflow: ellipsis;
