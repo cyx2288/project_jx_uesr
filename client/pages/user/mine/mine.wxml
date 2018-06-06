@@ -1,41 +1,45 @@
 
+
+<view class="weui-cells">
+
   <navigator url="../personal/personal" class="wechat_mine_personal">
 
-    <view class="register_circle">
+       <view class="register_circle">
 
-        <image class="register_logo" src=""/>
+           <image class="register_logo" src="../../../static/icon/wages/jx_mine_image2.png"/>
 
-    </view>
+       </view>
 
-    <view class="account_message">
+       <view class="account_message">
 
-        <view class="account_information_tel">{{mobile}}</view>
+          <view class="account_information_tel">{{mobile}}</view>
 
-    </view>
+        </view>
 
    </navigator>
 
 
+</view>
 
 
 
-
-     <view class="account_information_mime">
+     <view class="weui-cells">
 
      <!--工资余额-->
-     <navigator url="../balance/balance" class="mine_welfare">
+        <navigator url="../balance/balance" class="mine_welfare">
 
-        <text class="password_image">工资余额</text>
+             <text class="password_image">工资余额</text>
 
-        <view class="password_image">
+             <view class="password_image">
 
-            <text class="reset_money">{{wages}}</text>
+                   <text class="reset_money">{{wages}}</text>
 
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-        </view>
+              </view>
 
-    </navigator>
+        </navigator>
+
      <hr/>
 
 
@@ -73,8 +77,11 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
     </navigator>
-    <hr/>
 
+     </view>
+
+
+         <view class="weui-cells">
     <!--设置-->
     <navigator url="../setting/setting" class="mine_welfare">
 
