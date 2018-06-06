@@ -5,5 +5,5 @@
     display: flex;
 }
 .box{
-    padding: 10px 15px;
+    padding: 15px;
 }

@@ -241,7 +241,9 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '嘉薪平台',
-            path: '/pages/user/mine/mine'
+            path: '/pages/common/signin/signin',
+            imageUrl:'/static/icon/logo/share.jpg'
+
         }
     },
 

@@ -87,22 +87,26 @@ Page({
 
                     var _billList = res.data.data.list;
 
+
+                    //console.log(_billList.length)
+
                     console.log(_billList)
 
-                    for(var j=0;j<_billList.length;j++){
 
-                        _billList[j].orderAmount=radixPointFn.splitK(_billList[j].orderAmount)
 
-                        console.log(_billList[j].orderAmount)
+                    //转换数据
+                    function addDList() {
+
+
+                        for(var j=0;j<_billList.length;j++){
+
+                            _billList[j].orderAmount=radixPointFn.splitK(_billList[j].orderAmount)
+
+                        }
 
                     }
 
-
-
-
-
-
-
+                    //console.log(res.data.data.list)
                     //如果没有数据
                     if (!that.data.noData) {
 
@@ -111,9 +115,6 @@ Page({
 
                     else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
 
-
-
-                        //增加数组内容
                         that.setData({
 
                             noData: false,
@@ -125,6 +126,7 @@ Page({
 
                     else if (res.data.data.list.length < 10) {//这一组小于十个
 
+                        addDList()
 
                         //增加数组内容
                         that.setData({
@@ -140,8 +142,7 @@ Page({
 
                     else {
 
-                        //console.log('增加成功')
-
+                        addDList()
                         //增加数组内容
                         that.setData({
 

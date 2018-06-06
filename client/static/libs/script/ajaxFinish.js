@@ -16,7 +16,7 @@ function ajaxFinish(ajaxCount) {
 
             wx.hideLoading();
 
-        },1000);
+        },1500);
 
 
     }

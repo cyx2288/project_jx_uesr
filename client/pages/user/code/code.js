@@ -52,7 +52,6 @@ Page({
 
         var _forgetTab = wx.getStorageSync('isPayPwd')
 
-        console.log(_forgetTab)
 
         if(_forgetTab=='0'){
 

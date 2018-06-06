@@ -207,8 +207,6 @@ Page({
 
     onUnload:function () {
 
-        console.log('触发')
-
         wx.switchTab({
 
             url:'../../user/mine/mine'

@@ -10,7 +10,6 @@ function repeat(code,msg) {
             wx.showToast({
                 title: msg,
                 icon: 'none',
-                duration: 4000,
 
                 success:function () {
 
@@ -21,7 +20,7 @@ function repeat(code,msg) {
                             url:'../../common/signin/signin'
                         })
 
-                    },4000)
+                    },1500)
 
                 }
 

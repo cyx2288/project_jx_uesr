@@ -255,6 +255,7 @@ Page({
                 content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
                 cancelText: '取消',
                 confirmText: '去认证',
+                confirmColor:'#fe9728',
                 success: function (res) {
 
                     if (res.confirm) {
@@ -369,6 +370,7 @@ Page({
             content: '确认删除尾号是'+ _thisBankNo +'的银行卡',
             cancelText: '取消',
             confirmText: '确定',
+           confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {

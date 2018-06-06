@@ -1,7 +1,14 @@
 @import "../../common/register/register.wxss";
 
-.locked{
+.weui_code >span{
 
+    color:#fe9728 ;
+
+}
+
+.weui_code >span.locked{
+
+    color: #ababab;
     pointer-events: none
 
 }
