@@ -142,6 +142,12 @@ page{
     width: 20px;
     margin-right: 5px;
 }
+.weui_title{
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .wages_title{
     position: relative;
     display: flex;
