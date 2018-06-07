@@ -15,15 +15,22 @@
 
                         <view class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}</view>
 
-                        <view wx:if="{{item.state==1}}"class="weui_confirm">已加入</view>
+                        <view wx:if="{{item.state==1}}"class="weui_confirm grey" style="background-image: url(/static/icon/wages/jx_join.png);">
+                            <span>已加入</span>
+                        </view>
 
-                        <view wx:else class="weui_confirm orange">待同意</view>
+
+                        <view wx:else class="weui_confirm orange">
+                            <span>待同意</span>
+                        </view>
 
                     </view>
 
                     <view class="weui-media-box__info">
-                      <view wx:if="{{item.state==1}}" class="weui-media-box__info__meta">加入时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+
+                        <view wx:if="{{item.state==1}}" class="weui-media-box__info__meta">加入时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
                         <view wx:else class="weui-media-box__info__meta">邀请时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+
                     </view>
 
                 </view>
