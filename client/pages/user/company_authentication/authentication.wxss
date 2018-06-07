@@ -1,0 +1,35 @@
+@import "../mine/mine.wxss";
+@import "../add_card/add_card.wxss";
+@import "../id_card/id_card.wxss";
+
+
+page{
+    background-color: #f7f7f7;
+
+}
+
+.jx_cash{
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.weui-media-box__hd{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page__hd {
+    padding: 10px;
+    color: #8a8a8a;
+}
+
+.weui-cell__ft{
+    padding: 8px 0;
+}
+
+
+.close{
+    margin-top: 0;
+}
