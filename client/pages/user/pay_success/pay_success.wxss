@@ -25,8 +25,9 @@ page{
 .weui-circle{
     margin: 0 auto;
     position: absolute;
-    top: 30px;
-    left: 25px;
+    top: 15%;
+    left: 0;
+    right: 0;
     z-index: -50;
 }
 
@@ -34,9 +35,12 @@ page{
     background-color:#fff;
     width: 126px;
     height: 126px;
-    margin: 5px 0 0 120px;
+    left: 50%;
+    position: absolute;
     border-radius: 50%;
     opacity: .1;
+    transform: translateX(-50%);
+    top:0;
 }
 
 .circle_mid {
@@ -44,16 +48,22 @@ page{
     opacity: .6;
     width: 100px;
     height: 100px;
-    margin: -112px 0 0 133px;
+    left: 50%;
     border-radius: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 13px;
 }
 
 .circle_top{
     background-color:#fff;
     width: 80px;
     height: 80px;
-    margin: -90px 0 0 142px;
+    left: 50%;
     border-radius: 50%;
+    transform: translateX(-50%);
+    top: 23px;
+    position: absolute;
 }
 
 .jx_cash{
@@ -61,6 +71,7 @@ page{
     height: 70px;
     z-index: 500;
     margin: 65px auto;
+
 
 }
 
