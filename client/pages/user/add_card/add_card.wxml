@@ -1,28 +1,32 @@
 
 <view class="add_card">
 
-    <view class="weui-cells__title">请绑定持卡人本人的银行卡</view>
+
+    <view class="weui_top">
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        </view>
+
+        <view class="weui-cells__title">请绑定持卡人本人的银行卡</view>
+    </view>
 
 
 
-
-
-            <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cells">
 
                 <!-- 输入姓名-->
 
-                <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell height_line">
 
-                    <view class="weui-cell">
-                        <view class="weui-cell__bd">* 姓名</view>
+                        <view class="weui-label">* 姓名</view>
                         <view class="weui-cell__ft">{{userName}}</view>
-                    </view>
 
-                </view>.
+                </view>
 
+                <hr/>
                 <!-- 输入卡号-->
 
-                <view class="weui-cell weui-cell_input">
+                <view class="weui-cell">
 
                    <view class="weui-cell__hd">
                        <view class="weui-label">* 银行卡号</view>
@@ -34,16 +38,16 @@
 
             </view>
 
-
+                <hr/>
                <!-- 选择银行卡-->
 
-                <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-cell">
+                <view class="weui-cell__hd">
                     <view class="weui-label">* 所属银行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
-                        <view class="weui-select weui-select_in-select-after">{{bankName}}{{thisBankSort}}</view>
+                        <view class="weui-select">{{bankName}}{{thisBankSort}}</view>
                     </picker>
                 </view>
             </view>
@@ -51,6 +55,7 @@
              </view>
 
 
+<hr/>
 
 
 
@@ -58,37 +63,39 @@
 
 
 
+           <view class="prompt">信息填写完整可加快到账速度</view>
 
-           <view class="weui-cells__title">信息填写完整可加快到账速度</view>
 
-
-    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells bottom_button">
 
         <!-- 选择银行卡-->
-        <view class="weui-cell weui-cell_select">
-            <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                <view class="weui-label">*开户地区</view>
+        <view class="weui-cell">
+            <view class="weui-cell__hd">
+                <view class="weui-label">* 开户地区</view>
             </view>
             <view class="weui-cell__bd">
                 <picker mode="multiSelector" bindcolumnchange="bindRegionColumnChange" bindchange="bindRegionChange" value="[0,0]" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">{{city}}<span style="margin-right: 10px"></span>{{province}}</view>
+                    <view class="weui-select">{{city}}<span style="margin-right: 10px"></span>{{province}}</view>
                 </picker>
             </view>
         </view>
 
+        <hr/>
         <!-- 选择银行卡-->
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">开户支行</view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">* 开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" type="text" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
                 </view>
             </view>
-        </view>
+
 
     </view>
+
+
 
 
     <view class="page__bd page__bd_spacing">

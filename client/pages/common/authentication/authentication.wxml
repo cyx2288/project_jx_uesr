@@ -1,22 +1,32 @@
 <view class="page">
+
+    <view class="weui-media-box__hd ">
+        <image src="../../../static/icon/wages/jx_id.png" class="jx_cash"/>
+    </view>
+
+
     <view class="page__hd">
         <view class="page__title">首次查看需要进行身份验证，验证通过后即可接收该企业发放的工资和工资条</view>
     </view>
+    <view class="weui-cells__title">输入错误3次将被锁定，次日自动解锁</view>
 
-    <view class="weui-cells__title">{{userName}}</view>
 
-    <view class="weui-cells weui-cells_after-title">
 
-        <view class="weui-cell weui-cell_input">
 
-            <view class="weui-cell__bd">
+
+    <view class="weui-cells">
+
+        <view class="weui-cell">
+              <view class="weui-cell__ft">{{userName}}</view>
+        </view>
+
+        <view class="weui-cell">
                 <input class="weui-input" value="{{idCard}}" maxlength="6" type="idcard" placeholder="请输入身份证后六位" bindinput="idCardFn"/>
-            </view>
         </view>
 
 </view>
 
-    <view class="weui-cells__title">输入错误3次将被锁定，次日自动解锁</view>
+
 
 
     <view class="page__bd page__bd_spacing">

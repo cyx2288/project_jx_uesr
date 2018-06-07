@@ -1,5 +1,12 @@
 @import "../mine/mine.wxss";
+@import "../../common/register/register.wxss";
 
+
+
+page{
+    background-color: #f7f7f7;
+
+}
 .account_information_tel{
 
     font-size: 14px;

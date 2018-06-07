@@ -2,7 +2,7 @@
 
 <!--已认证-->
 <view class="personal_authenticated">
-<view class="account_information_mime">
+<view class="weui-cells">
 
     <!--账号-->
     <view class="mine_welfare">
@@ -36,7 +36,7 @@
 
 
 <!--button-->
-<view class="page__bd page__bd_spacing" style="margin-top: 25px">
+<view class="page__bd page__bd_spacing">
 
     <button class="weui-btn" type="primary" bindtap="logOutFn">退出登录</button>
 
@@ -50,7 +50,7 @@
 <!--
 <view class="personal_unauthorized">
 
-    <view class="account_information_mime">
+    <view class="weui-cells">
 
         &lt;!&ndash;账号&ndash;&gt;
         <view  class="mine_welfare">
@@ -82,7 +82,7 @@
 
 
     &lt;!&ndash;button&ndash;&gt;
-    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing" style="margin-top: 25px">
+    <navigator url="../hkb_wechat_bill/wechat_bill_check" class="page__bd page__bd_spacing">
         <button class="weui-btn" type="primary">退出登录</button>
 
     </navigator>
