@@ -1,5 +1,10 @@
 @import "../index/index.wxss";
+@import "../../common/register/register.wxss";
 
+
+page{
+    background-color: #f7f7f7;
+}
 .company{
     padding: 5px 15px 10px 15px;
 }
@@ -9,14 +14,10 @@
     opacity: .6;
 }
 
+.weui_confirm{
+    color:#ababab;
+}
 
-/*button*/
-
-/*
-.page__bd .page__bd_spacing .weui-bth{
-    margin-top: 20px;
-    background-color: linear-gradient(#f2835c, #f8ab60);
-}*/
 
 .page__bd{
     text-align: center;
@@ -28,10 +29,46 @@ text.payroll_prompt{
     color: #bbb;
 }
 
-.weui-btn.confrim{
 
-    background: #ddd;
-    color: #ababab;
-    pointer-events: none;
+.weui_title{
+    padding: 6px 0;
+    margin-bottom: 0;
 
+}
+.weui-panel{
+    width: 92%;
+    border-radius:5px;
+
+}
+
+.weui-panel:first-child{
+ margin-top: 15px;
+
+}
+
+.weui-panel{
+
+    border-left: none;
+    box-shadow: 2px 2px 2px #f4f4f4;
+}
+
+hr {
+
+    display: block;
+    background-color: #f3f3f3;
+    transform: scaleY(0.5);
+    height: .5px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.weui-media-box {
+    padding: 0 15px;
+    position: relative
+}
+
+.orange{
+    color:#fe9728 ;
 }

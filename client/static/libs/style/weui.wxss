@@ -14,7 +14,6 @@ icon {
 
 .weui-cells {
     position: relative;
-    margin-top: 1.17647059em;
     background-color: #fff;
     line-height: 1.41176471;
     font-size: 16px;
@@ -978,7 +977,7 @@ icon {
 .weui-media-box__info {
     margin-top: 15px;
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 14px;
     color: #cecece;
     line-height: 1em;
     list-style: none;

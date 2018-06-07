@@ -12,6 +12,7 @@
 
     <text class="asset_money company">{{entName}}</text>
 
+    <image class="jx_wave"  mode="widthFix" src="../../../static/icon/wages/jx_wave.png" />
 
 </view>
 
@@ -34,12 +35,13 @@
 
             </view>
 
+
             <!-- 应发发金额 -->
 
             <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">应发金额</view>
 
-                <view class="weui_confirm">{{payableAmount}}</view>
+                <view class="weui_confirm orange">{{payableAmount}}</view>
 
             </view>
 
@@ -53,68 +55,81 @@
 
             </view>
 
+            <hr/>
             <!-- 实发金额 -->
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
+                <view class="weui_title">
 
-                <view class="weui_confirm">{{realAmount}}</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
+
+                <view class="weui_confirm orange">{{realAmount}}</view>
 
             </view>
 
-<!--                <view class="weui_title">
+            <hr/>
+                <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">岗位工资</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">其他加款</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">请假扣款</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">其他扣款</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">失业保险</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                 <view class="weui-media-box__title weui-media-box__title_in-text">医疗保险</view>
                 <view class="weui_confirm">500.00</view>
             </view>
 
+            <hr/>
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">公积金</view>
                     <view class="weui_confirm">500.00</view>
              </view>
 
+            <hr/>
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">个税</view>
                     <view class="weui_confirm">500.00</view>
                 </view>
 
+            <hr/>
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">实发金额</view>
                     <view class="weui_confirm">500.00</view>
-                </view>-->
+                </view>
 
 
 
@@ -127,7 +142,8 @@
 
 <!--button-->
 
-<view class="page__bd page__bd_spacing" hidden="{{isHiddenBtn}}" style="margin-top: 25px">
+
+<view class="page__bd page__bd_spacing" hidden="{{isHiddenBtn}}">
 
 
     <viwe wx:if="{{comfrimBtn==0}}">
@@ -137,17 +153,14 @@
         <button class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
 
         <!--提示-->
-        <text class="payroll_prompt" >7天后将自动确认以上信息</text>
+        <text class="payroll_prompt " >7天后将自动确认以上信息</text>
 
     </viwe>
 
 
     <!--确认中-->
 
-    <button wx:elif="{{comfrimBtn==1}}" class="weui-btn" type="primary">确认中</button>
-
-
-
+    <button wx:elif="{{comfrimBtn==1}}" class="weui-btn button" type="primary">确认中</button>
 
 
     <!--已确认-->

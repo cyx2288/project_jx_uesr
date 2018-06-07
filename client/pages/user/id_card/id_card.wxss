@@ -14,17 +14,6 @@ page{
     text-align: right;
 }
 
-/*
-.mine_welfare{
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 15px;
-    margin: 10px auto;
-    background-color: white;
-    box-shadow: 0 2px 3px #E9E9E9;
-}
-*/
-
 .weui-loadmore__tips{
     font-size: 16px;
     padding-top: 12px;
