@@ -13,15 +13,18 @@
     opacity: .2;
     width: 100px;
     height: 100px;
-    margin: -112px 0 0 133px;
+    left: 50%;
     border-radius: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 13px;
 }
 
 .jx_cash{
     width: 76px;
     height: 76px;
     z-index: 500;
-    margin: 62px auto;
+    margin: 58px auto;
     padding-left: 2px;
 }
 

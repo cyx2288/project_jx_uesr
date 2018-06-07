@@ -8,10 +8,11 @@
         <view class="weui-media-box__hd">
 
 
-
             <image src="../../../static/icon/wages/jx_success.png" class="jx_cash"/>
 
+
             <view class="weui-circle">
+
 
                 <view class="circle_bot"> </view>
                 <view class="circle_mid"> </view>
