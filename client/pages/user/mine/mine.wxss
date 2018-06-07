@@ -18,7 +18,6 @@
     overflow: hidden;
 
 }
-
 .register_logo{
 
     width: 92%;
@@ -27,12 +26,9 @@
 
 
 }
-
 .account_message{
   padding: 15px 0;
 }
-
-
 .account_information_tel{
 
     font-size: 16px;
