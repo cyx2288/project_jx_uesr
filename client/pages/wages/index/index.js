@@ -30,9 +30,9 @@ Page({
 
         selectArea: false,
 
-        wages: '暂无数据',//获取用户余额信息
+        wages: '--.--',//获取用户余额信息
 
-        moreText:'暂无数据',//加载更多数据
+        moreText:'没有更多数据啦~',//加载更多数据
 
         salaryDetailId: '',//发薪企业明细id
 
@@ -103,9 +103,9 @@ Page({
 
             selectArea: false,
 
-            wages: '暂无数据',//获取用户余额信息
+            wages: '--.--',//获取用户余额信息
 
-            moreText:'暂无数据',//加载更多数据
+            moreText:'没有更多数据啦~',//加载更多数据
 
             salaryDetailId: '',//发薪企业明细id
 
@@ -1066,9 +1066,9 @@ Page({
 
             selectArea: false,
 
-            wages: '暂无数据',//获取用户余额信息
+            wages: '--.--',//获取用户余额信息
 
-            moreText:'暂无数据',//加载更多数据
+            moreText:'没有更多数据啦~',//加载更多数据
 
             salaryDetailId: '',//发薪企业明细id
 

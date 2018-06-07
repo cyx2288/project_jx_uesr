@@ -100,7 +100,11 @@ Page({
 
         var that = this;
 
+
+
         var thatGetProvince = app.globalData.URL + getProvinces;
+
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
@@ -193,7 +197,9 @@ Page({
 
         var that = this;
 
+
         var thisGetCity = app.globalData.URL + getCity;
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jx_sid');
@@ -370,9 +376,9 @@ Page({
 
                     bankBranch: that.data.bankBranch,//卡户支行
 
-                    province: that.data.province,//开户省份
+                    province: that.data.city,//开户省份
 
-                    city: that.data.city//开户城市
+                    city: that.data.province//开户城市
 
                 }),
 

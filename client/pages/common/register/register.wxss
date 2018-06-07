@@ -30,7 +30,11 @@ page{
     background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
     font-size: 16px;
 }
-
+.button_disabled{
+    opacity: .6;
+    font-size: 16px;
+    pointer-events: none
+}
 .register_text_code:active{
     opacity: .6;
 }
@@ -50,7 +54,7 @@ page{
 }
 
 .weui-cells{
-    padding: 10px 0;
+    padding: 0;
 }
 
 .reset_go{

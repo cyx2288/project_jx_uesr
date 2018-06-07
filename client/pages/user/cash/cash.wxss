@@ -47,7 +47,6 @@ hr{
 .weui_title{
     font-size: 16px;
     vertical-align: middle;
-    margin-bottom: 5px;
 
 }
 
@@ -103,11 +102,11 @@ label.cash_input{
 label.cash_input>.account_information_tel{
 
     width: 100%;
-    font-size: 24px;
+    font-size: 30px;
     color: #fe9728;
     overflow: auto;
-    line-height: 24px;
-    height: 1.8rem;
+    line-height: 30px;
+    height: 2rem;
 
 }
 
@@ -130,16 +129,20 @@ span.money_style{
 
 .weui-help{
     width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 14px;
+    padding-top: 10px;
 }
 .jx_left{
     color: #fe9728;
-    width: 50%;
     text-align: right;
+    padding: 0;
 }
 
 .jx_right{
     color: #fe9728;
-    width: 50%;
    text-align: left;
 }
 .orange{
@@ -152,19 +155,14 @@ span.money_style{
     height: 16px;
 }
 
-.weui-help{
-text-align: center;
-
-}
-
 span.line{
-    padding-left: 20px;
-    padding-right: 20px;
-    ccolor: #fe9728;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fe9728;
 }
 
 .font_small{
 
-    color: #fe9728;
+    color: #ababab;
     font-size: 14px;
 }

@@ -15,13 +15,13 @@
 
                         <view class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}</view>
 
-                        <view wx:if="{{item.state==1}}"class="weui_confirm grey" style="background-image: url(/static/icon/wages/jx_join.png);">
-                            <span>已加入</span>
+                        <view wx:if="{{item.state==1}}"class="weui_confirm grey">
+                            <span class="join_text">已加入</span>
                         </view>
 
 
                         <view wx:else class="weui_confirm orange">
-                            <span>待同意</span>
+                            <span class="join_text">待同意</span>
                         </view>
 
                     </view>

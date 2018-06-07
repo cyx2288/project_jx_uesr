@@ -18,7 +18,7 @@
 <!--button-->
 <view class="page__bd page__bd_spacing">
 
-    <button class="weui-btn" type="primary" bindtap="codeUrlFn" disabled="{{disabled}}">确认</button>
+    <button class="weui-btn" type="primary" bindtap="codeUrlFn">确认</button>
 
 </view>
 
