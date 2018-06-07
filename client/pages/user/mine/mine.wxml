@@ -6,7 +6,7 @@
 
        <view class="register_circle">
 
-           <image class="register_logo" src="../../../static/icon/wages/jx_mine_image2.png"/>
+           <image class="register_logo" src="../../../static/icon/wages/jx_mine_image.png"/>
 
        </view>
 

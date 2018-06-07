@@ -12,13 +12,18 @@ page {
 
     display: flex;
     justify-content: space-between;
-    padding: 25px;
-    margin-bottom: 15px;
+    width: 100%;
+    padding: 30px 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-left:none;
+    border-radius: 0;
+    background:linear-gradient(to bottom, #ea5e26 , #fdae3b);
 }
 
 .weui-loadmore__tips {
     text-align: center;
-    color: #fff;
+    color: #E87B17;
 }
 
 .title {
@@ -31,43 +36,51 @@ page {
 }
 
 .step > .weui-loadmore {
-    border: 1px solid #E87B17;
-    background-color: #E87B17;
-    color: #fff;
+
+    background-color: #fff;
+    color: #E87B17;
     width: 22px;
     height: 22px;
     border-radius: 50%;
     margin: 5px auto;
+    opacity: 1;
 }
 
 .step > .status {
-    color: #E87B17;
+    color: #fff;
 }
 
 .step > .border {
     position:absolute;
     width:100px;
-    top:25%;
-    left:60%;
-    border-bottom:1px solid #E87B17;
+    top:30%;
+    left:80%;
+    border-bottom:1px solid #fff;
 
 
 }
 
+.orange_btn{
+
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 16px;
+}
+
 .step.selected ~ .step> .weui-loadmore {
 
-    border: 1px solid #ddd;
-    background-color: #ddd;
     width: 22px;
     height: 22px;
     border-radius: 50%;
     margin: 5px auto;
+    color: #fff;
+    opacity: .6;
 
 }
 
 .step.selected ~ .step > .status {
     font-size: 14px;
-    color: #ddd;
+    color: #fff;
+    opacity: .6;
 }
 
 .step.selected ~ .step > .border {
@@ -80,16 +93,33 @@ page {
 }
 
 
-.cash_step {
+.cash_step >.weui_title{
     background-color: #fff;
+    display:flex;
+    padding:15px 15px;
+    justify-content:space-between;
+    align-content: center;
+
+
+
 }
+
+.wages_box{
+
+    background-color:#fff;
+    border-radius:5px;
+    width:94%;
+    margin:30px auto;
+    overflow: hidden;
+}
+
 
 .wages_middle {
     margin-bottom: 15px;
 }
 
 .weui-media-box {
-    padding: 6px 15px 0 15px;
+    padding: 10px 15px;
 }
 
 .prompt {
@@ -109,10 +139,13 @@ page {
 }
 
 .wages_middle {
-    margin: 5px auto;
+    margin: 15px auto;
     text-align: center;
 }
+.wages_middle:first-of-type {
+    margin-top: 0;
 
+}
 .weui-btn-area.hide{
 
     display: none;
@@ -125,4 +158,44 @@ page {
 .weui-btn-area.show_btn{
 
     display: block;
+}
+
+.wages_middle .jx_asset{
+
+    background-color: #fff;
+    padding: 0;
+    width: 100%;
+}
+
+.wages_middle .asset_money{
+
+    color: #4a4a4a;
+    font-size: 14px;
+    justify-content:center;
+
+}
+
+.wages_middle .asset_money >image{
+
+
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+}
+
+.wages_middle .money_number{
+
+    color: #E87B17;
+    justify-content:center;
+}
+
+.wages_middle .weui_confirm{
+
+    color: #4a4a4a;
+}
+
+.wages_middle .weui-media-box__title{
+
+    color: #ababab;
 }
