@@ -59,7 +59,7 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" disabled="{{enter}}" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder="请输入金额"  placeholder-style="color:#bbb"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder="请输入金额"  placeholder-style="color:#bbb"/>
                     </label>
 
                 </lable>
@@ -96,11 +96,11 @@
     <!--提示-->
     <view class="weui-help">
 
-        <navigator  url=""  class="jx_left">联系客服</navigator>
+        <view class="help_box"><!--<text class="jx_left">联系客服</text><span class="line">|</span>--><text class="jx_right" bindtap="moreFn">更多</text></view>
 
-        <span class="line">|</span>
 
-        <text class="jx_right"   bindtap="moreFn">更多</text>
+
+
 
 
     </view>

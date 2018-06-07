@@ -5,30 +5,37 @@
 page{
     background-color: #f7f7f7;
 }
-.company{
-    padding: 5px 15px 10px 15px;
+.asset_money{
+    padding: 0;
 }
-
 .weui_title:active:hover{
-
     opacity: .6;
 }
 
 .weui_confirm{
     color:#ababab;
 }
+.red_text{
+    color: #ff4646;
+}
 
+.wages_list{
+
+
+}
 
 .page__bd{
     text-align: center;
 }
 text.payroll_prompt{
-
     display: block;
     padding-top: 10px;
     color: #bbb;
 }
 
+.help_box{
+    width: 100%;
+}
 
 .weui_title{
     padding: 6px 0;

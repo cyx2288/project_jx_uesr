@@ -229,7 +229,7 @@ Page({
 
                             var pickBankId = thisBankList[i].bankCardId;
 
-                            var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
+                            var _pickChooseBank = pickBankName + '储蓄卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
 
                             //组成数组
                             pickChooseBank.push(_pickChooseBank);

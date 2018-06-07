@@ -97,10 +97,10 @@
             <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{moreText}}</view>
         </view>
 
-        <!--<view class="weui-loadmore" hidden="{{!noData}}">-->
-        <!--<view class="weui-loading"></view>-->
-        <!--<view class="weui-loadmore__tips">正在加载</view>-->
-        <!--</view>-->
+        <view class="weui-loadmore" hidden="{{!noData}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+        </view>
 
 
         <!--    <navigator url="../payroll/payroll" class="weui-panel">

@@ -18,7 +18,7 @@
 
                 <view class="weui-cell height_line">
 
-                        <view class="weui-label">* 姓名</view>
+                    <view class="weui-label"><span class="red_text">*</span>姓名</view>
                         <view class="weui-cell__ft">{{userName}}</view>
 
                 </view>
@@ -29,7 +29,7 @@
                 <view class="weui-cell">
 
                    <view class="weui-cell__hd">
-                       <view class="weui-label">* 银行卡号</view>
+                       <view class="weui-label"><span class="red_text">*</span>银行卡号</view>
                    </view>
 
                    <view class="weui-cell__bd">
@@ -43,7 +43,7 @@
 
                 <view class="weui-cell">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">* 所属银行</view>
+                    <view class="weui-label"><span class="red_text">*</span>所属银行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
@@ -71,7 +71,7 @@
         <!-- 选择银行卡-->
         <view class="weui-cell">
             <view class="weui-cell__hd">
-                <view class="weui-label">* 开户地区</view>
+                <view class="weui-label"><span class="red_text">*</span>开户地区</view>
             </view>
             <view class="weui-cell__bd">
                 <picker mode="multiSelector" bindcolumnchange="bindRegionColumnChange" bindchange="bindRegionChange" value="[0,0]" range="{{countries}}">
@@ -85,7 +85,7 @@
 
             <view class="weui-cell">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">* 开户支行</view>
+                    <view class="weui-label">开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" type="text" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
