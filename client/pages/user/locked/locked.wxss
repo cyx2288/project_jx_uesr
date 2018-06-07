@@ -1,6 +1,9 @@
 @import "../../common/register/register.wxss";
 @import "../../common/signin/signin.wxss";
-.weui-help{
 
-    color: #E87B17;
+.weui-help{
+    display: flex;
+    justify-content: center;
+    color: #fe9728;
+    text-align: center;
 }

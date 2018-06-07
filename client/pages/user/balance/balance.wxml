@@ -7,11 +7,12 @@
     <!--金额显示-->
     <text class="money_number">{{wages}}</text>
 
+    <image class="jx_wave"  mode="widthFix" src="../../../static/icon/wages/jx_wave.png" />
 </view>
 
 
 <!--我的账单-->
-<view class="account_information_mime">
+<view class="weui-cells">
 
 <navigator url="../details/details" class="mine_welfare">
 
@@ -25,7 +26,6 @@
 
 
 <!--button-->
-<navigator url="../cash/cash" class="page__bd page__bd_spacing" style="margin-top: 25px">
+<navigator url="../cash/cash" class="page__bd page__bd_spacing">
     <button class="weui-btn" type="primary">提现</button>
-
 </navigator>

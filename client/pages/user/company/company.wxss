@@ -7,15 +7,43 @@
 }
 
 .weui_confirm{
-    color: #ababab
-
+    color: #ababab;
+    display: flex;
 }
 
 .orange{
-    color: #E87B17;
+
+    color:#fe9728 ;
+    background-image: image("../../../static/icon/wages/jx_agreement.png");
 }
+
+.grey{
+     background-width: 100%;
+     background-image: image("../../../static/icon/wages/jx_join.png");
+}
+
 
 .weui-panel{
     margin: 0;
+}
+
+.jx_cash{
+    width: 60px;
+    height: 60px;
+}
+
+.weui-media-box__info {
+    margin-top: 0;
+    padding-bottom: 0;
+
+}
+.weui-media-box__title{
+    padding-top: 15px;
+}
+
+
+span{
+
+
 }
 

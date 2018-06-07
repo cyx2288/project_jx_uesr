@@ -16,9 +16,9 @@
                 <button class="weui-btn" type="primary">确定</button>
             </navigator>
 
-            <view class="weui-help" style="text-align: center">
+            <view class="weui-help">
 
-                <navigator  url="../help_service/help_service" class="weui-media-box__title">查看帮助</navigator>
+                <navigator  url="../help_service/help_service" class="weui-media-box__title" style="text-align: center">查看帮助</navigator>
 
 
             </view>
