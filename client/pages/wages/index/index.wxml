@@ -1,16 +1,16 @@
 <!--工资-->
 
 
-<view class="jx_asset">
+<navigator class="jx_asset" url="../../user/balance/balance">
 
-    <navigator url="../../user/balance/balance" class="asset_money">总资产（元）</navigator>
+    <view class="asset_money">总资产（元）</view>
 
     <view wx:if="{{lookWages}}" class="money_icon">
 
         <!--金额显示-->
-        <navigator url="../../user/balance/balance" class="money_number">{{wages}}</navigator>
+        <view class="money_number">{{wages}}</view>
 
-        <view class="see_number" bindtap="lookWagesFn">
+        <view class="see_number" catchtap="lookWagesFn">
             <image src="../../../static/icon/wages/jx_open_bright.png" class="jx_open"/>
         </view>
     </view>
@@ -18,7 +18,7 @@
     <view wx:else class="money_icon">
         <!--金额隐藏-->
         <text class="money_number">******</text>
-        <view class="see_number" bindtap="lookWagesFn">
+        <view class="see_number" catchtap="lookWagesFn">
             <image src="../../../static/icon/wages/jx_close_bright.png" class="jx_open"/>
         </view>
 
@@ -26,7 +26,7 @@
 
     <image class="jx_wave" mode="widthFix" src="../../../static/icon/wages/jx_wave.png"/>
 
-</view>
+</navigator>
 
 
 <!--下拉选择-->

@@ -18,6 +18,8 @@ page{
 
 .ask{
     color: #4a4a4a;
+    width:100%;
+
 
 }
 

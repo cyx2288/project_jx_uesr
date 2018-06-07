@@ -59,7 +59,7 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" value="{{inputBalance}}" type="digit" placeholder=""  placeholder-style="color:#bbb"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder=""  placeholder-style="color:#bbb"/>
                     </label>
 
                 </lable>

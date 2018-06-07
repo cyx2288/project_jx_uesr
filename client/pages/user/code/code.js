@@ -48,6 +48,8 @@ Page({
 
         var _mobile = wx.getStorageSync('mobile');
 
+
+
         var countdown = 60;
 
         var _forgetTab = wx.getStorageSync('isPayPwd')

@@ -6,6 +6,7 @@ function ajaxFinish(ajaxCount) {
 
     wx.showLoading({
 
+        mask:true,
         title: '加载中',
 
     });

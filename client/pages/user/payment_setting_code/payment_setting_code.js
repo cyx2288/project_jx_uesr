@@ -72,12 +72,6 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var a = /[@#\$%\^&\*]+/g;
-
-        //重负
-        var regText = /^(?=.*\d+)(?!.*?([\d])\1{5})[\d]{6}$/;
-
-        console.log(that.data.thisPayMsg)
 
 
         if(!that.data.thisPayMsg){
@@ -89,47 +83,6 @@ Page({
 
             })
 
-
-        }
-
-        else if(that.data.thisPayMsg.length<6){
-
-
-            wx.showToast({
-
-                title: '输入的密码有误',
-                icon: 'none',
-
-            })
-
-
-        }
-
-        else if(a.test(that.data.thisPayMsg)||a.test(that.data.thisPayMsg)){
-
-            wx.showToast({
-
-                title: '密码包含非法字符',
-                icon: 'none'
-
-            });
-
-
-        }
-
-        //重复
-        else if(!regText.test(that.data.thisPayMsg)){
-
-            /*      console.log(that.data.password)
-
-             console.log(!regText.test(that.data.password))*/
-
-            wx.showToast({
-
-                title: '请输入非连续、重复的6位密码',
-                icon: 'none'
-
-            });
 
         }
 
