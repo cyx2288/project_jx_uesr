@@ -30,8 +30,8 @@ hr{
 .weui-media-box__info {
     display: flex;
     color: #fe9728;
-    font-size: 40px;
-    padding: 15px 0;
+    font-size: 24px;
+    padding: 20rpx 0 10rpx;
     vertical-align: middle;
 }
 
@@ -48,7 +48,6 @@ hr{
     font-size: 16px;
     vertical-align: middle;
     margin-bottom: 5px;
-    padding-top: 10px;
 
 }
 
@@ -60,13 +59,12 @@ hr{
 
 
 }
-
 image.ask{
     width: 18px;
     height: 18px;
     margin-left: 30rpx;
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .weui-prompt{
@@ -92,13 +90,34 @@ image.ask{
 label.cash_input{
 
     width: 100%;
-   padding: 8px;
+   padding: 8px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
 
+}
+.amount_box{
+    padding-left: 0;
 }
 
 label.cash_input>.account_information_tel{
 
     width: 100%;
+    font-size: 24px;
+    color: #fe9728;
+    overflow: auto;
+    line-height: 24px;
+    height: 1.8rem;
+
+}
+
+
+
+span.money_style{
+
+    vertical-align: middle;
+    color: #fe9728;
+    display: inline-block;
 
 }
 
@@ -138,8 +157,14 @@ text-align: center;
 
 }
 
-span{
+span.line{
     padding-left: 20px;
     padding-right: 20px;
-    color: #ddd;
+    ccolor: #fe9728;
+}
+
+.font_small{
+
+    color: #fe9728;
+    font-size: 14px;
 }

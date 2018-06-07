@@ -50,7 +50,6 @@ Page({
 
         var _orderId = wx.getStorageSync('orderId');
 
-        console.log('提现订单'+_orderId)
 
         /**
          * 接口：

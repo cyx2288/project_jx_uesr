@@ -20,7 +20,6 @@ const noJoinUrl = '/salary/home/updatejoinentstatus';//暂不加入企业
 
 const companyUrl = '/salary/home/selectlockstatus';//锁定状态查询
 
-
 Page({
 
     data: {
@@ -68,6 +67,12 @@ Page({
         type:'',//是否锁定
 
         pickList:[],
+
+        num:'',
+
+
+
+
 
 
 
@@ -159,11 +164,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log(wx.getStorageSync('Authorization'))
 
-
-
-     if(!jx_sid||!Authorization){
+        if(!jx_sid||!Authorization){
 
 
 
@@ -956,6 +958,9 @@ Page({
 
         var that = this;
 
+
+
+
         that.setData({
 
             //选择的企业名称回显
@@ -967,6 +972,9 @@ Page({
             selectSalary: true,
 
             selectArea: false,
+
+            num:2,
+
 
         });
 
@@ -982,6 +990,10 @@ Page({
             noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
             wagesList: [],//发薪企业列表
+
+
+
+
 
         });
 
@@ -1016,6 +1028,10 @@ Page({
             noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
             wagesList: [],//发薪企业列表
+
+            num:1,
+
+
 
         });
 
