@@ -37,6 +37,6 @@
 
     </view>
 
-    <navigator style='text-align: center' url="../help_service/help_service" class="weui-cells__title">查看帮助</navigator>
+    <navigator style='text-align: center' url="../../user/help_service/help_service" class="weui-cells__title">查看帮助</navigator>
 
 </view>

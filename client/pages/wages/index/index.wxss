@@ -60,7 +60,7 @@ page{
 .selected_box{
 
     border: 1px solid #fe9728;
-    border-radius: 10rpx;
+    border-radius: 5px;
     padding: 10rpx 20rpx;
 }
 
@@ -93,7 +93,7 @@ page{
     box-shadow:2px 2px 2px #ddd;
     top:-10rpx;
     left:30rpx;
-    border-radius:10rpx;
+    border-radius:5px;
     overflow:hidden;
 
 
@@ -224,7 +224,7 @@ text.weui-media-box__info__meta{
 .weui-panel{
     margin:30rpx auto;
     width:90%;
-    border-radius: 10rpx;
+    border-radius: 5px;
     border-left: 5px #fe9728 solid;
     box-shadow: 2px 2px 2px #f4f4f4;
 }
