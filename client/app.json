@@ -3,27 +3,41 @@
 
     "pages/wages/index/index",
 
-    "pages/common/signin/signin",
+    "pages/user/company_authentication/authentication",
 
-    "pages/user/mine/mine",
+    "pages/user/code/code",
 
-    "pages/user/details/details",
+    "pages/user/payment_setting_code/payment_setting_code",
+
+    "pages/user/payment_setting_message/payment_setting_message",
+
+    "pages/common/wages_authentication/authentication",
 
     "pages/user/cash/cash",
 
+    "pages/common/signin/signin",
+
+    "pages/user/company/company",
+
+    "pages/common/user_agreement/user_agreement",
+
+    "pages/user/details/details",
+
     "pages/user/bill/bill",
+
+    "pages/user/mine/mine",
+
+    "pages/user/cash_give_details/give_details",
+
+    "pages/user/no_certification/certification",
 
     "pages/user/set_payment_psw/set_payment_psw",
 
     "pages/common/revise_password/revise_password",
 
-    "pages/user/cash_give_details/give_details",
-
     "pages/user/add_card/add_card",
 
     "pages/common/register/register",
-
-    "pages/common/user_agreement/user_agreement",
 
     "pages/user/problem_nojoin/problem_nojoin",
 
@@ -45,11 +59,11 @@
 
     "pages/user/problem_close/problem_close",
 
-    "pages/common/wages_authentication/authentication",
+
 
     "pages/common/forget_password/forget_password",
 
-    "pages/user/no_certification/certification",
+
 
     "pages/user/give_details/give_details",
 
@@ -71,11 +85,11 @@
 
     "pages/user/card/card",
 
-    "pages/user/payment_setting_message/payment_setting_message",
 
-    "pages/user/payment_setting_code/payment_setting_code",
+
+
     
-    "pages/user/code/code",
+
 
     "pages/user/payment_setting/payment_setting",
 
@@ -96,9 +110,6 @@
 
     "pages/user/certification/certification",
 
-    "pages/user/company/company",
-
-    "pages/user/company_authentication/authentication",
 
     "pages/common/authentication/authentication",
 

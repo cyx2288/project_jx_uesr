@@ -33,7 +33,7 @@
                    </view>
 
                    <view class="weui-cell__bd">
-                       <input class="weui-input" placeholder="请输入卡号" type="number" value="{{bankNo}}" maxlength="19" bindinput="bankNoFn" bindblur="getBankNoFn"/>
+                       <input class="weui-input" auto-focus="true" placeholder="请输入卡号" type="number" value="{{bankNo}}" maxlength="19" bindinput="bankNoFn" bindblur="getBankNoFn"/>
                    </view>
 
             </view>

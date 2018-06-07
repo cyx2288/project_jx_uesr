@@ -14,6 +14,8 @@ Page({
 
     data:{
 
+        mobile:'',
+
         last_time:'',//倒计时
 
         thisPayMsg:'',//短息验证码
@@ -30,6 +32,8 @@ Page({
         //有几个ajax请求
         var ajaxCount = 1;
 
+        var _mobile = wx.getStorageSync('mobile');
+
         //缓存修改方式
         var payMode = wx.getStorageSync('jxPayMode');
 
@@ -43,6 +47,10 @@ Page({
         that.setData({
 
             locked:0,
+
+            mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
+            
+            
         })
 
 

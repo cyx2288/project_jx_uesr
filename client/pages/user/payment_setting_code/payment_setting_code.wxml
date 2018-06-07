@@ -4,13 +4,13 @@
             <view class="weui-label">支付密码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" value="{{thisPayMsg}}" password="true" type="number" placeholder="请输入支付密码" bindinput="messageFn" maxlength="6"/>
+            <input class="weui-input" value="{{thisPayMsg}}" password="true" type="number" placeholder="请输入支付密码以验证身份" bindinput="messageFn" maxlength="6"/>
         </view>
     </view>
 
 </view>
 
 <view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button class="weui-btn" type="primary" bindtap="buttonCheck">确认</button>
+    <button class="weui-btn" type="primary" bindtap="buttonCheck">立即验证</button>
 </view>
 

@@ -10,7 +10,7 @@
 
 </view>
 
-<view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可<span class="{{locked==1 ? '' :'locked'}}" bindtap="hasCodeFn">重新获取</span></view>
+<view class="weui-cells__title weui_code">验证码已发送至{{mobile}},{{last_time}}s后可<span class="{{locked==1 ? '' :'locked'}}" bindtap="hasCodeFn">重新获取</span></view>
 
 <view class="page__bd page__bd_spacing">
 
