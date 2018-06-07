@@ -13,3 +13,8 @@ page{
     text-align: right;
 
 }
+
+.password_image{
+
+    color: #8a8a8a;
+}

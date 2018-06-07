@@ -4,10 +4,15 @@
 
 
 .weui-label {
-    color: #4a4a4a;
+    color: #ababab;
     width: 100px;
 }
+.weui-label >.red_text{
 
+    color: #ff4646;
+    display: inline-block;
+    margin-right: 5px;
+}
 
 .weui-cell{
     padding:5px 15px;
@@ -25,6 +30,7 @@
 
 .weui-cell__ft{
 
+    color: #4a4a4a;
     text-align: left;
 
 }

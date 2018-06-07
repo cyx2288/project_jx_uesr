@@ -38,7 +38,7 @@ text.payroll_prompt{
 }
 
 .weui_title{
-    padding: 6px 0;
+    padding: 10px 0;
     margin-bottom: 0;
 
 }
@@ -78,4 +78,24 @@ hr {
 
 .orange{
     color:#fe9728 ;
+}
+
+.add_line{
+
+    position: relative;
+
+}
+
+.add_line:after{
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #ddd;
+    transform: scaleY(.6);
+
+
 }

@@ -1,4 +1,12 @@
 @import "../id_card/id_card.wxss";
 
 
+.password_image{
 
+    color: #8a8a8a;
+}
+
+.account_information_tel{
+
+    color: #4a4a4a;
+}

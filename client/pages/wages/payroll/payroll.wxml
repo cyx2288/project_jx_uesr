@@ -28,13 +28,15 @@
 
                 <!-- 基本信息 -->
 
-                <view class="weui_title" wx:for="{{addAmount}}">
+                <view class="weui_title add_line" wx:for="{{addAmount}}">
 
-                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ">{{item.name}}</view>
 
                     <view class="weui_confirm">{{item.record}}</view>
 
                 </view>
+
+
 
                 <!-- 应发发金额 -->
 
@@ -44,6 +46,7 @@
                     <view class="weui_confirm orange">{{payableAmount}}</view>
 
                 </view>
+
 
         </view>
 
@@ -56,13 +59,15 @@
 
                 <!-- 扣除信息 -->
 
-                <view class="weui_title" wx:for="{{subtractAmount}}">
+                <view class="weui_title add_line" wx:for="{{subtractAmount}}">
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
 
                     <view class="weui_confirm">{{item.record}}</view>
 
                 </view>
+
+
 
                 <!-- 实发金额 -->
                 <view class="weui_title" style="font-weight: bold">

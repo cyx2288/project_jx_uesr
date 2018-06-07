@@ -85,7 +85,7 @@
 
             <view class="weui-cell">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">开户支行</view>
+                    <view class="weui-label"><span class="red_text"> </span>开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" type="text" placeholder="请输入开户支行（选填）" bindinput="getBankBranchFn"/>
