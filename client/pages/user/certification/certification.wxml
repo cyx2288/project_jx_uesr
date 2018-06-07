@@ -4,7 +4,7 @@
 
 <view class="no_invitation">
 
-    <view class="account_information_mime">
+    <view class="weui-cells">
         <!--姓名-->
         <view  class="mine_welfare">
 

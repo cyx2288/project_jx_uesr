@@ -1,10 +1,9 @@
 @import "../mine/mine.wxss";
-
+@import "../../common/register/register.wxss";
 
 page{
 
-    background-color: #ebebeb;
-    height:100%;
+    background-color: #f7f7f7;
     width: 100%;
 
 }
@@ -35,7 +34,13 @@ page{
 .account_information_tel{
     text-align: left;
     color: #8a8a8a;
+}
 
+.page__bd{
+    padding-bottom: 0;
 
+}
 
+.weui-cells__title{
+    color: #fe9728;
 }
