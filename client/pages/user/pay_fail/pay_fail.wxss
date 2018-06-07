@@ -1,1 +1,17 @@
 @import "../../common/register/register.wxss";
+@import "../pay_success/pay_success.wxss";
+
+.jx_cash{
+    width: 60px;
+    height: 60px;
+    z-index: 500;
+    margin: 68px auto;
+    padding-left: 2px;
+}
+
+
+.weui-btn-area{
+
+    padding-top: 30px;
+
+}

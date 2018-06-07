@@ -1,9 +1,35 @@
 @import "../../common/register/register.wxss";
-@import "../../common/signin/signin.wxss";
+@import "../pay_success/pay_success.wxss";
 
 .weui-help{
     display: flex;
     justify-content: center;
     color: #fe9728;
     text-align: center;
+}
+
+.circle_mid {
+    background-color:#fff;
+    opacity: .2;
+    width: 100px;
+    height: 100px;
+    margin: -112px 0 0 133px;
+    border-radius: 50%;
+}
+
+.jx_cash{
+    width: 76px;
+    height: 76px;
+    z-index: 500;
+    margin: 62px auto;
+    padding-left: 2px;
+}
+
+
+.weui-msg__title {
+
+    font-size: 16px;
+    color: #8a8a8a;
+    padding-top: 25px;
+
 }
