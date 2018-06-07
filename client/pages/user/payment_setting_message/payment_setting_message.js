@@ -45,6 +45,8 @@ Page({
             locked:0,
         })
 
+
+
         /**
          * 接口：短信验证码
          * 请求方式：GET
@@ -159,7 +161,7 @@ Page({
 
         });
 
-        if(e.detail.value.length==6){
+/*        if(e.detail.value.length==6){
 
 
             that.setData({
@@ -170,7 +172,7 @@ Page({
 
 
 
-        }
+        }*/
 
     },
 
@@ -183,83 +185,114 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：设置支付方式
-         * 请求方式：POST
-         * 接口：/user/set/getpaymode
-         **/
 
-        wx.request({
+        if(!that.data.thisPayMsg){
 
-            url: app.globalData.URL+updatepaymode,
+            wx.showToast({
 
-            method: 'POST',
+                title: '请输入验证码',
+                icon: 'none',
 
-            header: {
-
-                'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            data:json2FormFn.json2Form({
-
-                msgMode:0,
-
-                pwdMode:0,
-
-                code:that.data.thisPayMsg
-
-            }),
-
-            success: function (res) {
-
-                if(res.data.code=='0000'){
-
-                    console.log(res.data.msg)
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
-
-                        success:function () {
-
-                            setTimeout(function () {
-                                wx.redirectTo({url:'../payment_setting/payment_setting'})
-                            },2000)
-
-                        }
-                    })
+            })
 
 
+
+        }
+
+        else if(that.data.thisPayMsg.length<6){
+
+            wx.showToast({
+
+                title: '输入的验证码有误',
+                icon: 'none',
+
+            })
+
+        }
+
+        else {
+
+
+            /**
+             * 接口：设置支付方式
+             * 请求方式：POST
+             * 接口：/user/set/getpaymode
+             **/
+
+            wx.request({
+
+                url: app.globalData.URL+updatepaymode,
+
+                method: 'POST',
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                data:json2FormFn.json2Form({
+
+                    msgMode:0,
+
+                    pwdMode:0,
+
+                    code:that.data.thisPayMsg
+
+                }),
+
+                success: function (res) {
+
+                    if(res.data.code=='0000'){
+
+                        console.log(res.data.msg)
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 2000,
+
+                            success:function () {
+
+                                setTimeout(function () {
+                                    wx.redirectTo({url:'../payment_setting/payment_setting'})
+                                },2000)
+
+                            }
+                        })
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 2000,
+
+                        })
+
+                    }
+
+
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
                 }
 
-                else {
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
-
-                    })
-
-                }
+            })
 
 
-
-
-            },
-
-            fail: function (res) {
-
-                console.log(res)
-            }
-
-        })
+        }
 
     },
 
