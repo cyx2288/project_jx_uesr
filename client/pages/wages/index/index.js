@@ -187,7 +187,7 @@ Page({
             })
 
 
-         console.log('揍你')
+
             /**
              * 接口：工资提醒
              * 请求方式：GET
@@ -212,11 +212,6 @@ Page({
 
 
                     console.log(res.data);
-
-
-
-                    /* //code3001返回方法
-                     app.globalData.signinCode(res.data.code,res.data.msg)*/;
 
                     //code3003返回方法
                     app.globalData.repeat(res.data.code,res.data.msg);

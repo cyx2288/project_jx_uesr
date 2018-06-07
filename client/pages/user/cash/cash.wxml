@@ -67,9 +67,15 @@
 
                 <view class="weui_title">
 
-                    <view class="weui-media-box__title weui-media-box__title_in-text">可提额度{{canCashBalance}}元</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text">
 
-                    <image src="../../../static/icon/wages/jx_ask.png" class="ask" bindtap="hasTipsFn"/>
+                        <view class="weui-media-box__title weui-media-box__title_in-text">可提额度{{canCashBalance}}元</view>
+
+                        <image src="../../../static/icon/wages/jx_ask.png" class="ask" bindtap="hasTipsFn"/>
+
+
+                    </view>
+
 
                     <view bindtap="cashAllFn" class="weui_confirm orange">全部提现</view>
 

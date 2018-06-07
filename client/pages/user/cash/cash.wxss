@@ -53,7 +53,7 @@ hr{
 }
 
 .weui-media-box__title {
-    color: #8a8a8a;
+    color: #4a4a4a;
     font-size: 16px;
     display: flex;
     justify-content: flex-start;
@@ -61,12 +61,12 @@ hr{
 
 }
 
-.ask{
+image.ask{
     width: 18px;
     height: 18px;
-    display: inline-block;
-    margin-right: 20%;
-    vertical-align: middle;
+    margin-left: 30rpx;
+    vertical-align: top;
+    margin-top: 5px;
 }
 
 .weui-prompt{
