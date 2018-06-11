@@ -14,7 +14,7 @@
 
             <view class="weui_title">
 
-                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}工资发放</view>
+                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">工资发放</view>
 
                 <view wx:elif="{{item.transType==8}}"class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
 

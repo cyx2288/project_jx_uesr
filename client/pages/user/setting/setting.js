@@ -23,8 +23,8 @@ Page({
 
             var thisUrl=app.globalData.URL+getPayPwdURL;
 
-        //有几个ajax请求
-        var ajaxCount = 1;
+            //有几个ajax请求
+             var ajaxCount = 1;
 
             //缓存jx_sid&&Authorization数据
             var jx_sid = wx.getStorageSync('jxsid');
@@ -36,6 +36,8 @@ Page({
              var thisUserName = wx.getStorageSync('userName');
 
              var thisIdNumber = wx.getStorageSync('idNumber');
+
+
 
 
 
@@ -114,8 +116,9 @@ Page({
 
                          })
 
-                         console.log(that.data.isPayPwd)
+                         //console.log(that.data.isPayPwd)
 
+                         wx.setStorageSync('isPayPwd',res.data.data.isPayPwd)
 
                      },
 
@@ -132,14 +135,13 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
-        console.log('点击')
-
         //判断是否认证
         if(_isVerify=='0'){
 
-
             //存指定的页面
-            wx.setStorageSync('hrefId','1');
+            wx.setStorageSync('hrefId','8');
+
+            console.log(wx.getStorageSync('hrefId'));
 
             wx.showModal({
                 title: '提示',

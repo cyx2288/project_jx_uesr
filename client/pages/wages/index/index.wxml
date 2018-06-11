@@ -1,4 +1,4 @@
-<!--工资-->
+ <!--工资-->
 
 
 <navigator class="jx_asset" url="../../user/balance/balance">
@@ -83,9 +83,14 @@
 
                         <view class="weui-media-box__desc">发薪企业：{{item.entName}}</view>
 
-                        <view class="weui-media-box__info">
+                        <view wx:if="{{lookWages}}" class="weui-media-box__info">
                             <view class="weui-media-box__info__meta">实发工资：<span
                                     class="orange">{{item.realAmount}}元</span></view>
+                        </view>
+
+                        <view wx:else class="weui-media-box__info">
+                            <view class="weui-media-box__info__meta">实发工资：<span
+                                    class="orange">******</span></view>
                         </view>
 
                     </view>

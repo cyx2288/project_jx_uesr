@@ -26,7 +26,7 @@
         <image src="../../../static/icon/wages/jx_background.png" class="jx_background"/>
 
         <view class="weui-msg__text-area">
-            <view class="weui-msg__title">支付成功</view>
+            <view class="weui-msg__title">提现申请已提交</view>
             <view class="weui-msg__desc">￥{{balance}}</view>
         </view>
 

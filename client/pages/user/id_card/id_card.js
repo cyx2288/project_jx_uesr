@@ -71,11 +71,24 @@ Page({
 
 
 
-        if(!that.data.userName||!that.data.idNumber){
+        if(!that.data.userName){
 
             wx.showToast({
 
-                title: '请输入姓名和身份证号',
+                title: '请输入姓名',
+                icon: 'none',
+
+            })
+
+
+
+        }
+
+        else if(!that.data.idNumber){
+
+            wx.showToast({
+
+                title: '请输入身份证号',
                 icon: 'none',
 
             })

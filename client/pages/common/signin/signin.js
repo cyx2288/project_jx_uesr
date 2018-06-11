@@ -56,18 +56,29 @@ data:{
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 
 
-        if(that.data.mobile==''||that.data.mobile.length<11){
+        if(that.data.mobile==''){
 
           wx.showToast({
 
-              title: '请输入正确手机号',
+              title: '请输入手机号',
               icon: 'none'
 
           });
 
       }
 
-        else if(empty.test(that.data.password)){
+      else if(that.data.password ==''){
+
+            wx.showToast({
+
+                title: '请输入密码',
+                icon: 'none'
+
+            });
+
+        }
+
+/*        else if(empty.test(that.data.password)){
 
             wx.showToast({
 
@@ -100,7 +111,7 @@ data:{
 
             });
 
-        }
+        }*/
 
       else {
 

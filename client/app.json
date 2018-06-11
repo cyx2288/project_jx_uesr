@@ -1,11 +1,18 @@
 {
   "pages":[
 
+
+    "pages/common/loading/loading",
+
     "pages/wages/index/index",
+
+    "pages/user/give_details/give_details",
 
     "pages/user/company_authentication/authentication",
 
     "pages/user/code/code",
+
+    "pages/user/id_card/id_card",
 
     "pages/user/payment_setting_code/payment_setting_code",
 
@@ -65,7 +72,7 @@
 
 
 
-    "pages/user/give_details/give_details",
+
 
     "pages/user/pay_success/pay_success",
 
@@ -73,7 +80,7 @@
 
     "pages/user/modify_paycode/modify_code",
 
-    "pages/user/id_card/id_card",
+
 
 
 

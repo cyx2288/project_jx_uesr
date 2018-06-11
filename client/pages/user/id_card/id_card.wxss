@@ -33,3 +33,14 @@ page{
 .weui-cells__title{
     color: #fe9728;
 }
+
+.password_image {
+
+    color:#8a8a8a;
+
+}
+.account_information_tel {
+
+    color:#4a4a4a;
+
+}
