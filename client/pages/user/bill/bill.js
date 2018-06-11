@@ -85,73 +85,107 @@ Page({
 
                     //console.log(that.data.pageNum);
 
-                    var _billList = res.data.data.list;
 
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    //console.log(_billList.length)
+                    if(res.data.code=='3001') {
 
-                    console.log(_billList)
+                        //console.log('登录');
 
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
+                                setTimeout(function () {
 
-                    //转换数据
-                    function addDList() {
+                                    wx.reLaunch({
 
+                                        url:'../../common/signin/signin'
+                                    })
 
-                        for(var j=0;j<_billList.length;j++){
+                                },1500)
 
-                            _billList[j].orderAmount=radixPointFn.splitK(_billList[j].orderAmount)
-
-                        }
-
-                    }
-
-                    //console.log(res.data.data.list)
-                    //如果没有数据
-                    if (!that.data.noData) {
-
-
-                    }
-
-                    else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
-
-                        that.setData({
-
-                            noData: false,
+                            }
 
                         })
 
-                    }
-
-
-                    else if (res.data.data.list.length < 10) {//这一组小于十个
-
-                        addDList()
-
-                        //增加数组内容
-                        that.setData({
-
-                            noData: false,
-
-                            billList: that.data.billList.concat(_billList),
-
-                        })
+                        return false
 
 
                     }
 
                     else {
 
-                        addDList()
-                        //增加数组内容
-                        that.setData({
 
-                            billList: that.data.billList.concat(_billList),
+                        var _billList = res.data.data.list;
 
-                            pageNum: that.data.pageNum + 1//加一页
+                        //console.log(_billList.length)
 
-                        })
+                        //onsole.log(_billList)
 
+
+                        //转换数据
+                        function addDList() {
+
+
+                            for (var j = 0; j < _billList.length; j++) {
+
+                                _billList[j].orderAmount = radixPointFn.splitK(_billList[j].orderAmount)
+
+                            }
+
+                        }
+
+                        //console.log(res.data.data.list)
+                        //如果没有数据
+                        if (!that.data.noData) {
+
+
+                        }
+
+                        else if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
+
+                            that.setData({
+
+                                noData: false,
+
+                            })
+
+                        }
+
+
+                        else if (res.data.data.list.length < 10) {//这一组小于十个
+
+                            addDList()
+
+                            //增加数组内容
+                            that.setData({
+
+                                noData: false,
+
+                                billList: that.data.billList.concat(_billList),
+
+                            })
+
+
+                        }
+
+                        else {
+
+                            addDList()
+                            //增加数组内容
+                            that.setData({
+
+                                billList: that.data.billList.concat(_billList),
+
+                                pageNum: that.data.pageNum + 1//加一页
+
+                            })
+
+
+                        }
 
                     }
 

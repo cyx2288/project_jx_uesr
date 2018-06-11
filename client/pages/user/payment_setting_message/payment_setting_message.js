@@ -79,20 +79,54 @@ Page({
 
                 console.log(res.data.msg);
 
-                (function countDownAjax() {
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    ajaxCount--;
+                if(res.data.code=='3001') {
 
-                    app.globalData.ajaxFinish(ajaxCount)
+                    //console.log('登录');
 
-                })();
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
 
 
-                wx.showToast({
-                    title: res.data.msg,
-                    icon: 'none',
+                }
 
-                })
+                else {
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+
+                    })
+
+                }
 
             },
 

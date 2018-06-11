@@ -127,36 +127,70 @@ Page({
 
                 console.log(res.data);
 
-                (function countDownAjax() {
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    ajaxCount--;
+                if(res.data.code=='3001') {
 
-                    app.globalData.ajaxFinish(ajaxCount)
-
-                })();
-
-
-                if(res.data.code=='0000'){
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-
                         icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
 
                     })
+
+                    return false
 
 
                 }
+
                 else {
 
-                    wx.showToast({
+                    (function countDownAjax() {
 
-                        title: res.data.msg,
+                        ajaxCount--;
 
-                        icon: 'none',
-                    })
+                        app.globalData.ajaxFinish(ajaxCount)
 
+                    })();
+
+
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+
+                    }
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+                        })
+
+
+                    }
 
                 }
 

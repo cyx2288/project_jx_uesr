@@ -65,39 +65,72 @@ Page({
 
                 console.log(res.data);
 
-                (function countDownAjax() {
 
-                    ajaxCount--;
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    app.globalData.ajaxFinish(ajaxCount)
+                if(res.data.code=='3001') {
 
-                })();
+                    //console.log('登录');
 
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
+                            setTimeout(function () {
 
+                                wx.reLaunch({
 
-                //console.log(res.data.data)
+                                    url:'../../common/signin/signin'
+                                })
 
-                //var thisState = res.data.data[0].state;
+                            },1500)
 
-                that.setData({
-
-                    workUnitList: res.data.data,
-
-                    /*state:thisState,*/
-
-                })
-
-                //没有企业的话显示暂无数据
-
-                if(that.data.workUnitList.length==0){
-
-                    that.setData({
-
-                        noData: false
+                        }
 
                     })
 
+                    return false
+
+
+                }
+
+                else {
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+
+                    //console.log(res.data.data)
+
+                    //var thisState = res.data.data[0].state;
+
+                    that.setData({
+
+                        workUnitList: res.data.data,
+
+                        /*state:thisState,*/
+
+                    })
+
+                    //没有企业的话显示暂无数据
+
+                    if (that.data.workUnitList.length == 0) {
+
+                        that.setData({
+
+                            noData: false
+
+                        })
+
+
+                    }
 
                 }
 

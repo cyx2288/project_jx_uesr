@@ -61,8 +61,42 @@ Page({
 
                 console.log(res.data);
 
-                //获取是否设置密码
-                wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+                else {
+
+                    //获取是否设置密码
+                    wx.setStorageSync('isPayPwd', res.data.data.isPayPwd);
+
+                }
 
 
             },
@@ -102,39 +136,73 @@ Page({
 
                 console.log(res)
 
-                if (res.data.data.isSecurity == 1) {//短信验证
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    that.setData({
+                if(res.data.code=='3001') {
 
-                        msgMode: true,
+                    //console.log('登录');
 
-                        pwdMode: false
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    });
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
 
                 }
 
-                else if (res.data.data.isSecurity == 2) {//支付验证
+                else {
 
-                    that.setData({
+                    if (res.data.data.isSecurity == 1) {//短信验证
 
-                        msgMode: false,
+                        that.setData({
 
-                        pwdMode: true
+                            msgMode: true,
 
-                    });
+                            pwdMode: false
 
-                }
+                        });
 
-                else if (res.data.data.isSecurity == 3) {//免密
+                    }
 
-                    that.setData({
+                    else if (res.data.data.isSecurity == 2) {//支付验证
 
-                        msgMode: false,
+                        that.setData({
 
-                        pwdMode: false
+                            msgMode: false,
 
-                    });
+                            pwdMode: true
+
+                        });
+
+                    }
+
+                    else if (res.data.data.isSecurity == 3) {//免密
+
+                        that.setData({
+
+                            msgMode: false,
+
+                            pwdMode: false
+
+                        });
+
+                    }
 
                 }
 

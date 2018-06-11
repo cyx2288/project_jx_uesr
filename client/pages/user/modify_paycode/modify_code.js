@@ -148,28 +148,62 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='-1'){
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
-                        });
+                            duration: 1500,
+                            success:function () {
 
-                    }else if(res.data.code=='0000'){
+                                setTimeout(function () {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                        });
+                                    wx.reLaunch({
 
-                        setTimeout(function () {
+                                        url:'../../common/signin/signin'
+                                    })
 
-                            wx.navigateBack({
-                                delta: 2
-                            })
+                                },1500)
 
-                        },500)
+                            }
 
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        if (res.data.code == '-1') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                            });
+
+                        } else if (res.data.code == '0000') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                            });
+
+                            setTimeout(function () {
+
+                                wx.navigateBack({
+                                    delta: 2
+                                })
+
+                            }, 500)
+
+
+                        }
 
                     }
                 },

@@ -157,6 +157,9 @@ Page({
 
                     console.log(res.data)
 
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
                     if(res.data.code=='0000'){
 
                         wx.showToast({

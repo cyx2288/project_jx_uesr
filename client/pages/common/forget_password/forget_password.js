@@ -84,6 +84,38 @@ Page({
 
                     console.log(res.data);
 
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
 
                     if (res.data.code == '0000') {
 
@@ -117,7 +149,7 @@ Page({
                         });
 
                     }
-
+                }
 
                 },
 

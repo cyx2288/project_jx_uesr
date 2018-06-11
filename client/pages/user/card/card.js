@@ -217,16 +217,50 @@ Page({
 
                     console.log(res.data);
 
-                    //存储银行卡
-                    wx.setStorageSync('bankList',res.data.data);
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    that.setData({
+                    if(res.data.code=='3001') {
 
-                        bankList:res.data.data,
+                        //console.log('登录');
 
-                    })
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                    //console.log(that.data.bankList)
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        //存储银行卡
+                        wx.setStorageSync('bankList', res.data.data);
+
+                        that.setData({
+
+                            bankList: res.data.data,
+
+                        })
+
+                        //console.log(that.data.bankList)
+
+                    }
 
 
                 },

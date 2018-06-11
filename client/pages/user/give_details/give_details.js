@@ -82,36 +82,71 @@ Page({
 
                 console.log(res.data);
 
-                (function countDownAjax() {
 
-                    ajaxCount--;
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    app.globalData.ajaxFinish(ajaxCount)
+                if(res.data.code=='3001') {
 
-                })();
+                    //console.log('登录');
 
-                that.setData({
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    bankName: res.data.data.bankName,
+                            setTimeout(function () {
 
-                    bankNo: res.data.data.bankNo,
+                                wx.reLaunch({
 
-                    orderAmount: res.data.data.orderAmount,
+                                    url:'../../common/signin/signin'
+                                })
 
-                    orderState: res.data.data.orderState,
+                            },1500)
 
-                    orderId: res.data.data.orderId,
+                        }
 
-                    payAmount: res.data.data.payAmount,
+                    })
 
-                    rate: res.data.data.rate,
-
-                    rateAmount: res.data.data.rateAmount,
-
-                    createTime:res.data.data.createTime,
+                    return false
 
 
-                })
+                }
+
+                else {
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+                    that.setData({
+
+                        bankName: res.data.data.bankName,
+
+                        bankNo: res.data.data.bankNo,
+
+                        orderAmount: res.data.data.orderAmount,
+
+                        orderState: res.data.data.orderState,
+
+                        orderId: res.data.data.orderId,
+
+                        payAmount: res.data.data.payAmount,
+
+                        rate: res.data.data.rate,
+
+                        rateAmount: res.data.data.rateAmount,
+
+                        createTime: res.data.data.createTime,
+
+
+                    })
+
+                }
 
 
             },

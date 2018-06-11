@@ -141,47 +141,83 @@ Page({
 
                 console.log(res.data);
 
-                var list = res.data.data;
+                //code3003返回方法
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                that.setData({
+                if(res.data.code=='3001') {
 
-                    cityData: res.data.data,
+                    //console.log('登录');
 
-                });
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                var citylistArr = [];
+                            setTimeout(function () {
 
-                //遍历数组 将城市名遍历出来组成新的数组
+                                wx.reLaunch({
 
-                for (var i = 0; i < list.length; i++) {
+                                    url:'../../common/signin/signin'
+                                })
 
+                            },1500)
 
-                    var cityList = res.data.data[i].addrName;
+                        }
 
-                    //组成数组
-                    citylistArr.push(cityList)
+                    })
+
+                    return false
+
 
                 }
 
-                //储存城市
-                that.setData({
-
-                    cityArr: citylistArr
-
-                });
+                else {
 
 
-                that.setData({
+                    var list = res.data.data;
 
-                    countries: [
+                    that.setData({
 
-                        that.data.cityArr,
+                        cityData: res.data.data,
 
-                        that.data.provinceArr
+                    });
 
-                    ]
+                    var citylistArr = [];
 
-                })
+                    //遍历数组 将城市名遍历出来组成新的数组
+
+                    for (var i = 0; i < list.length; i++) {
+
+
+                        var cityList = res.data.data[i].addrName;
+
+                        //组成数组
+                        citylistArr.push(cityList)
+
+                    }
+
+                    //储存城市
+                    that.setData({
+
+                        cityArr: citylistArr
+
+                    });
+
+
+                    that.setData({
+
+                        countries: [
+
+                            that.data.cityArr,
+
+                            that.data.provinceArr
+
+                        ]
+
+                    })
+
+                }
 
 
             },

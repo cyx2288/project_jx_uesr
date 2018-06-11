@@ -402,8 +402,42 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+
+                else {
+
+                    wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+
+                }
 
 
             },
@@ -709,32 +743,66 @@ Page({
 
                     console.log(res.data);
 
-                    //缓存点单号
-                    wx.setStorageSync('cashOrderId',res.data.data);
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    if (res.data.code == '0000') {
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
-                            duration: 1000
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
                         })
 
-                        wx.redirectTo({
+                        return false
 
-                            url: '../pay_success/pay_success'
-                        })
 
                     }
 
                     else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1000
-                        })
+                        //缓存点单号
+                        wx.setStorageSync('cashOrderId', res.data.data);
 
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1000
+                            })
+
+                            wx.redirectTo({
+
+                                url: '../pay_success/pay_success'
+                            })
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1000
+                            })
+
+
+                        }
 
                     }
 
@@ -818,6 +886,41 @@ Page({
 
         var that = this;
 
+        var reg = /^\d+\.?(\d{1,2})?$/;
+
+        /*var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;*/
+
+
+        //上一次的金额
+        var lastInputBalace = that.data.inputBalance
+
+        //这一次的金额
+        var thisInputBalance = e.detail.value;
+
+        //console.log('这一次的金额'+thisInputBalance)
+
+        //console.log('上一次的金额'+lastInputBalace)
+
+
+        if(thisInputBalance){
+
+            //默认输入小数点后两位
+            if(!reg.test(thisInputBalance)) {
+
+
+                wx.showToast({
+                    title: '输入金额有误',
+                    icon: 'none',
+                    duration: 1000
+
+                });
+
+                e.detail.value = lastInputBalace
+
+
+            }
+
+        }
 
 
 
@@ -829,6 +932,7 @@ Page({
 
 
         });
+
 
 
 

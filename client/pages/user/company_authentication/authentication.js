@@ -85,46 +85,78 @@ Page({
 
                 //console.log(res.data.data[0].entId)
 
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                //判断验证码
-                if(thisCode == '-1'){
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-                        icon: 'none'
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    });
+                            setTimeout(function () {
 
-                }
+                                wx.reLaunch({
 
-                else if(thisCode == '-2'){
+                                    url:'../../common/signin/signin'
+                                })
 
-                    wx.redirectTo({
+                            },1500)
 
-                        url:'../../user/locked/locked'
-
-                    })
-
-
-
-                }
-
-                //验证成功后显示工资
-                else if (thisCode == '0000'){
-
-                    //console.log('跳转')
-
-                    //关闭当前页面
-
-                    wx.redirectTo({
-
-                        url:'../company/company'
+                        }
 
                     })
 
+                    return false
+
+
                 }
 
+                else {
+
+
+                    //判断验证码
+                    if (thisCode == '-1') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none'
+
+                        });
+
+                    }
+
+                    else if (thisCode == '-2') {
+
+                        wx.redirectTo({
+
+                            url: '../../user/locked/locked'
+
+                        })
+
+
+                    }
+
+                    //验证成功后显示工资
+                    else if (thisCode == '0000') {
+
+                        //console.log('跳转')
+
+                        //关闭当前页面
+
+                        wx.redirectTo({
+
+                            url: '../company/company'
+
+                        })
+
+                    }
+
+                }
 
             },
 

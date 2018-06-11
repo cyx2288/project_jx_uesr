@@ -186,77 +186,124 @@ Page({
 
                     console.log(res.data);
 
-                    var _code = res.data.code;
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    if(_code=='0000'){
+                    if(res.data.code=='3001') {
 
-                        wx.setStorageSync('isVerify','1');
+                        //console.log('登录');
 
-                        //认证成功后调用个人中心接口
-                        /**
-                         * 接口：用户中心
-                         * 请求方式：POST
-                         * 接口：/user/center/usercenter
-                         * 入参：mobile
-                         **/
-                        wx.request({
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                            url:  thisMineurl,
+                                setTimeout(function () {
 
-                            method:'POST',
+                                    wx.reLaunch({
 
-                            header: {
-                                'content-type': 'application/x-www-form-urlencoded', // post请求
+                                        url:'../../common/signin/signin'
+                                    })
 
-                                'jxsid':jx_sid,
+                                },1500)
 
-                                'Authorization':Authorization
-
-                            },
-
-                            success: function(res) {
-
-                                console.log(res.data);
-
-                                wx.setStorageSync('userName', res.data.data.userName);
-
-
-                            },
-
-                            fail:function (res) {
-
-                                console.log(res)
                             }
 
                         })
 
+                        return false
 
-                        setTimeout(function () {
 
-                            wx.showToast({
+                    }
 
-                                title: '认证成功',
-                                icon: 'success',
+                    else {
+
+                        var _code = res.data.code;
+
+                        if (_code == '0000') {
+
+                            wx.setStorageSync('isVerify', '1');
+
+                            //认证成功后调用个人中心接口
+                            /**
+                             * 接口：用户中心
+                             * 请求方式：POST
+                             * 接口：/user/center/usercenter
+                             * 入参：mobile
+                             **/
+                            wx.request({
+
+                                url: thisMineurl,
+
+                                method: 'POST',
+
+                                header: {
+                                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                    'jxsid': jx_sid,
+
+                                    'Authorization': Authorization
+
+                                },
+
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+                                    wx.setStorageSync('userName', res.data.data.userName);
+
+
+                                },
+
+                                fail: function (res) {
+
+                                    console.log(res)
+                                }
 
                             })
 
-                        },500)
+
+                            setTimeout(function () {
+
+                                wx.showToast({
+
+                                    title: '认证成功',
+                                    icon: 'success',
+
+                                })
+
+                            }, 500)
 
 
+                            console.log('未设置支付密码' + thisPayPwd);
 
-                        console.log('未设置支付密码'+thisPayPwd);
-
-                        console.log('从未设置跳转'+_hrefId);
-
-
-                      if(thisPayPwd=='0'&&_hrefId=='8'){
+                            console.log('从未设置跳转' + _hrefId);
 
 
-                            wx.redirectTo({
+                            if (thisPayPwd == '0' && _hrefId == '8') {
 
-                                url: '../code/code'
 
-                            })
+                                wx.redirectTo({
+
+                                    url: '../code/code'
+
+                                })
+
+
+                            }
+
+                            else {
+
+
+                                wx.navigateBack({
+
+                                    delta: 1,
+
+                                })
+
+                                that.onLoad();
+
+                            }
 
 
                         }
@@ -264,41 +311,16 @@ Page({
                         else {
 
 
-                            wx.navigateBack({
+                            wx.showToast({
 
-                                delta: 1,
+                                title: res.data.msg,
+                                icon: 'none',
+
 
                             })
 
-                            that.onLoad();
 
                         }
-
-
-
-
-
-
-
-
-
-
-                    }
-
-                    else {
-
-
-                        wx.showToast({
-
-                            title: res.data.msg,
-                            icon: 'none',
-
-
-
-                        })
-
-
-
 
                     }
 

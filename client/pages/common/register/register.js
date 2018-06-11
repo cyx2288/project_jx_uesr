@@ -241,47 +241,82 @@ Page({
 
                     console.log(res.data);
 
-                    (function countDownAjax() {
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        ajaxCount--;
+                    if(res.data.code=='3001') {
 
-                        app.globalData.ajaxFinish(ajaxCount)
-
-                    })();
-
-                    if(res.data.code=='-1'){
+                        //console.log('登录');
 
                         wx.showToast({
-
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                        });
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
 
                     }
 
-                    else {
+                    else{
 
-                        wx.showToast({
+                        (function countDownAjax() {
 
-                            title:'注册成功',
-                            icon: 'none'
+                            ajaxCount--;
 
-                        });
+                            app.globalData.ajaxFinish(ajaxCount)
 
-                        setTimeout(function () {
+                        })();
 
-                            that.signin();//自动登录
+                        if(res.data.code=='-1'){
 
-                        },500)
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none'
+
+                            });
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title:'注册成功',
+                                icon: 'none'
+
+                            });
+
+                            setTimeout(function () {
+
+                                that.signin();//自动登录
+
+                            },500)
 
 
 
-                        //注册成功跳转登录页
-                        /*wx.redirectTo({
+                            //注册成功跳转登录页
+                            /*wx.redirectTo({
 
-                            url:'../signin/signin'
-                        })*/
+                             url:'../signin/signin'
+                             })*/
+
+                        }
 
                     }
 
