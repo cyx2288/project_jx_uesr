@@ -123,39 +123,73 @@ Page({
 
                 success: function (res) {
 
-                    if(res.data.code=='0000'){
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        console.log(res.data.msg)
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
-                            duration: 2000,
-
+                            duration: 1500,
                             success:function () {
 
                                 setTimeout(function () {
-                                    wx.redirectTo({url:'../payment_setting/payment_setting'})
-                                },2000)
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
 
                             }
+
                         })
+
+                        return false
 
 
                     }
 
                     else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 2000,
+                        if (res.data.code == '0000') {
 
-                        })
+                            console.log(res.data.msg)
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                                success: function () {
+
+                                    setTimeout(function () {
+                                        wx.redirectTo({url: '../payment_setting/payment_setting'})
+                                    }, 2000)
+
+                                }
+                            })
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                            })
+
+                        }
+
+                        console.log(res)
 
                     }
-
-                    console.log(res)
 
 
 

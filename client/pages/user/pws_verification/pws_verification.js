@@ -77,37 +77,71 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('cashOrderId',res.data.data);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                console.log(wx.getStorageSync('cashOrderId'));
+                if(res.data.code=='3001') {
 
-
-                if (res.data.code == '0000') {
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-
                         icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
 
                     })
 
-                    wx.redirectTo({
+                    return false
 
-                        url: '../pay_success/pay_success'
-                    })
 
                 }
 
                 else {
 
-                    wx.showToast({
+                    wx.setStorageSync('cashOrderId', res.data.data);
 
-                        title: res.data.msg,
+                    console.log(wx.getStorageSync('cashOrderId'));
 
-                        icon: 'none',
 
-                    })
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                        wx.redirectTo({
+
+                            url: '../pay_success/pay_success'
+                        })
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+                    }
+
                 }
 
             },

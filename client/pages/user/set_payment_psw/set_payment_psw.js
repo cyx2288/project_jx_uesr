@@ -176,48 +176,77 @@ Page({
 
                     console.log(res.data);
 
-                    if (res.data.code == '0000') {
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
-
                             title: res.data.msg,
-
                             icon: 'none',
-
+                            duration: 1500,
                             success:function () {
 
                                 setTimeout(function () {
 
-                                    wx.switchTab({
+                                    wx.reLaunch({
 
-                                        url:'../../user/mine/mine'
+                                        url:'../../common/signin/signin'
                                     })
 
-                                },2000)
-
-
-
-
-
+                                },1500)
 
                             }
 
                         })
 
+                        return false
 
 
                     }
 
                     else {
 
-                        wx.showToast({
+                        if (res.data.code == '0000') {
 
-                            title: res.data.msg,
 
-                            icon: 'none',
+                            wx.showToast({
 
-                        })
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                                success: function () {
+
+                                    setTimeout(function () {
+
+                                        wx.switchTab({
+
+                                            url: '../../user/mine/mine'
+                                        })
+
+                                    }, 2000)
+
+
+                                }
+
+                            })
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+                        }
+
                     }
 
                 },

@@ -84,104 +84,133 @@ Page({
 
                 console.log(res.data);
 
-                (function countDownAjax() {
+                if(res.data.code=='3001') {
 
-                    ajaxCount--;
+                    //console.log('登录');
 
-                    app.globalData.ajaxFinish(ajaxCount)
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                })();
+                            setTimeout(function () {
 
+                                wx.reLaunch({
 
+                                    url:'../../common/signin/signin'
+                                })
 
-                var _state = res.data.data[0].state;
+                            },1500)
 
-                //将给的数据转成字符串
-                var _addAmount=JSON.parse(res.data.data[0].addAmount);
-
-                var _addAmountArray=[],x;
-
-                /*遍历json，产生可以渲染的data*/
-
-                for(x in _addAmount){
-
-                    /*添加数组*/
-                    _addAmountArray.push({
-
-                        name:x,
-
-                        record:radixPointFn.splitK(_addAmount[x])
+                        }
 
                     })
 
-                }
-
-               //将给的数据转成字符串
-                var _subtractAmount=JSON.parse(res.data.data[0].subtractAmount);
-
-                var _subtractAmountArray=[],y;
-
-
-                for(y in _subtractAmount){
-
-                    /*添加数组*/
-                    _subtractAmountArray.push({
-
-                        name:y,
-
-                        record:radixPointFn.splitK(_subtractAmount[y])
-
-                    })
+                    return false
 
 
                 }
 
+                else {
 
 
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
 
 
+                    var _state = res.data.data[0].state;
 
-                //获取entName数据
-                that.setData({
+                    //将给的数据转成字符串
+                    var _addAmount = JSON.parse(res.data.data[0].addAmount);
 
-                    entName: res.data.data[0].entName,//企业名称
+                    var _addAmountArray = [], x;
 
-                    addAmount:_addAmountArray,//基本工资
+                    /*遍历json，产生可以渲染的data*/
 
-                    salaryMonth: res.data.data[0].salaryMonth,//发薪企业年月
+                    for (x in _addAmount) {
 
-                    payableAmount: radixPointFn.splitK(res.data.data[0].payableAmount),//实发金额
+                        /*添加数组*/
+                        _addAmountArray.push({
 
-                    subtractAmount: _subtractAmountArray,//代扣明细
+                            name: x,
 
-                    realAmount:radixPointFn.splitK(res.data.data[0].realAmount)//实发金额
-
-                });
-
-
-                    if(_state=='1'){
-
-                        that.setData({
-
-                            comfrimBtn:2,
-
-                            isHiddenBtn:false
+                            record: radixPointFn.splitK(_addAmount[x])
 
                         })
 
                     }
 
-                    else if(_state=='0'){
+                    //将给的数据转成字符串
+                    var _subtractAmount = JSON.parse(res.data.data[0].subtractAmount);
+
+                    var _subtractAmountArray = [], y;
+
+
+                    for (y in _subtractAmount) {
+
+                        /*添加数组*/
+                        _subtractAmountArray.push({
+
+                            name: y,
+
+                            record: radixPointFn.splitK(_subtractAmount[y])
+
+                        })
+
+
+                    }
+
+
+                    //获取entName数据
+                    that.setData({
+
+                        entName: res.data.data[0].entName,//企业名称
+
+                        addAmount: _addAmountArray,//基本工资
+
+                        salaryMonth: res.data.data[0].salaryMonth,//发薪企业年月
+
+                        payableAmount: radixPointFn.splitK(res.data.data[0].payableAmount),//实发金额
+
+                        subtractAmount: _subtractAmountArray,//代扣明细
+
+                        realAmount: radixPointFn.splitK(res.data.data[0].realAmount)//实发金额
+
+                    });
+
+
+                    if (_state == '1') {
 
                         that.setData({
 
-                            comfrimBtn:0,
+                            comfrimBtn: 2,
 
-                            isHiddenBtn:false
+                            isHiddenBtn: false
 
                         })
 
                     }
+
+                    else if (_state == '0') {
+
+                        that.setData({
+
+                            comfrimBtn: 0,
+
+                            isHiddenBtn: false
+
+                        })
+
+                    }
+
+
+                }
 
 
 

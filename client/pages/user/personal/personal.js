@@ -64,29 +64,63 @@ Page({
 
                 console.log(res.data);
 
-                (function countDownAjax() {
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    ajaxCount--;
+                if(res.data.code=='3001') {
 
-                    app.globalData.ajaxFinish(ajaxCount)
+                    //console.log('登录');
 
-                })();
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                wx.setStorageSync('idNumber',res.data.data.idNumber);
+                            setTimeout(function () {
 
-                wx.setStorageSync('isVerify',res.data.data.isVerify);
+                                wx.reLaunch({
 
-                that.setData({
+                                    url:'../../common/signin/signin'
+                                })
 
-                    mobile:res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
+                            },1500)
 
-                    isVerify:res.data.data.isVerify,
+                        }
 
-                    idNumber:res.data.data.idNumber
+                    })
+
+                    return false
 
 
-                });
+                }
 
+                else {
+
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+                    wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                    wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                    that.setData({
+
+                        mobile: res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
+
+                        isVerify: res.data.data.isVerify,
+
+                        idNumber: res.data.data.idNumber
+
+
+                    });
+
+                }
 
             },
 
@@ -174,14 +208,48 @@ Page({
 
                     var thisCode = res.data.code;
 
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    if(thisCode =='0000'){
+                    if(res.data.code=='3001') {
 
-                        //跳回登录页
-                        wx.reLaunch({
+                        //console.log('登录');
 
-                            url:'../../common/signin/signin'
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
                         })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if (thisCode == '0000') {
+
+                            //跳回登录页
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }
 
                     }
 

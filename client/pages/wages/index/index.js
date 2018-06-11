@@ -165,32 +165,31 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
-        if(!jx_sid||!Authorization){
+/*            if(!jx_sid||!Authorization){
 
 
 
-            setTimeout(function () {
+                setTimeout(function () {
 
-                wx.reLaunch({
+                    wx.reLaunch({
 
-                    url:'../../common/signin/signin'
-                })
+                        url:'../../common/signin/signin'
+                    })
 
-            },2000)
+                },2000)
 
-        }
+            }
 
-      else {
+            else {
 
+ */
 
-            wx.showLoading({
+        wx.showLoading({
 
-                mask:true,
-                title: '加载中',
+            mask:true,
+            title: '加载中',
 
-            })
-
-
+        });
 
             /**
              * 接口：工资提醒
@@ -213,7 +212,6 @@ Page({
                 },
 
                 success: function (res) {
-
 
                     console.log(res.data);
 
@@ -744,7 +742,7 @@ Page({
 
 
 
-        }
+        /*}*/
 
 
 
@@ -821,29 +819,52 @@ Page({
 
                 console.log(res.data);
 
-                //获取现在的list
-                var thislist = res.data.data.list;
+                if(res.data.code=='3001') {
 
-                var wagesListLength;
+                    //console.log('登录');
 
-                //var _dataText = res.data.data.hasOwnProperty('list')
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
 
 
+                }
 
+                else {
 
+                    //获取现在的list
+                    var thislist = res.data.data.list;
 
-                var pickThisList = [];
+                    var wagesListLength;
 
-                //判断有没有列表数据
+                    //var _dataText = res.data.data.hasOwnProperty('list')
+
+                    var pickThisList = [];
+
+                    //判断有没有列表数据
 
                     if (thislist) {
 
 
-
                         //获取现在list的长度
                         wagesListLength = thislist.length;
-
-
 
                         //上一次获取到的list
 
@@ -867,9 +888,9 @@ Page({
                         }
 
 
-                        for(var j=0;j<nowList.length;j++){
+                        for (var j = 0; j < nowList.length; j++) {
 
-                            nowList[j].realAmount=radixPointFn.splitK(nowList[j].realAmount)
+                            nowList[j].realAmount = radixPointFn.splitK(nowList[j].realAmount)
 
                             //console.log(nowList[j].realAmount)
 
@@ -888,15 +909,25 @@ Page({
                     else {
 
 
-                        if(that.data.pageNum=='1'){
+                        if (that.data.pageNum == '1') {
 
 
                             that.setData({
 
-                                moreText:'还未收到工资哦~',//加载更多数据
+                                moreText: '还未收到工资哦~',//加载更多数据
 
                             })
 
+
+                        }
+
+                        else {
+
+                            that.setData({
+
+                                moreText: '没有更多数据啦~',//加载更多数据
+
+                            })
 
                         }
 
@@ -912,6 +943,7 @@ Page({
 
                     }
 
+                }
 
 
 

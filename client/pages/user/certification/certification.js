@@ -114,40 +114,72 @@ Page({
 
                 var _code = res.data.code;
 
-                if(_code=='0000'){
+                app.globalData.repeat(res.data.code,res.data.msg);
 
+                if(res.data.code=='3001') {
 
-                    setTimeout(function () {
+                    //console.log('登录');
 
-                        wx.showToast({
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                            title: '认证成功',
-                            icon: 'success',
+                            setTimeout(function () {
 
-                        })
+                                wx.reLaunch({
 
-                    },500)
+                                    url:'../../common/signin/signin'
+                                })
 
-                    wx.redirectTo({
+                            },1500)
 
-                        url:'../personal/personal'
-                    });
+                        }
 
-                    that.onLoad();
+                    })
+
+                    return false
 
 
                 }
 
                 else {
 
-                    wx.showToast({
-
-                        title: '认证失败',
-                        icon: 'none',
+                    if (_code == '0000') {
 
 
+                        setTimeout(function () {
 
-                    })
+                            wx.showToast({
+
+                                title: '认证成功',
+                                icon: 'success',
+
+                            })
+
+                        }, 500)
+
+                        wx.redirectTo({
+
+                            url: '../personal/personal'
+                        });
+
+                        that.onLoad();
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: '认证失败',
+                            icon: 'none',
+
+
+                        })
+                    }
                 }
 
 

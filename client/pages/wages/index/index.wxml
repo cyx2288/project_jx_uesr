@@ -90,7 +90,7 @@
 
                         <view wx:else class="weui-media-box__info">
                             <view class="weui-media-box__info__meta">实发工资：<span
-                                    class="orange">******</span></view>
+                                    class="orange">******元</span></view>
                         </view>
 
                     </view>

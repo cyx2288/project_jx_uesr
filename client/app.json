@@ -1,10 +1,18 @@
 {
   "pages":[
 
-
     "pages/common/loading/loading",
 
     "pages/wages/index/index",
+
+    "pages/user/cash/cash",
+
+
+    "pages/user/help_service/help_service",
+
+    "pages/jd/jdshop/jdshop",
+
+    "pages/jd/index/index",
 
     "pages/user/give_details/give_details",
 
@@ -20,7 +28,7 @@
 
     "pages/common/wages_authentication/authentication",
 
-    "pages/user/cash/cash",
+
 
     "pages/common/signin/signin",
 
@@ -111,7 +119,7 @@
 
     "pages/user/balance/balance",
 
-    "pages/user/help_service/help_service",
+
 
     "pages/user/personal/personal",
 
@@ -172,11 +180,25 @@
       "text": "工资条",
       "iconPath":"static/icon/index_tab/jx_wages_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_wages_orange.png"
-    }, {
+
+
+    },
+
+      {
+        "pagePath": "pages/jd/index/index",
+        "text": "京东商城",
+        "iconPath":"static/icon/index_tab/jx_jd_grey.png",
+        "selectedIconPath":"static/icon/index_tab/jx_jd_orange.png"
+
+      },
+
+
+      {
       "pagePath": "pages/user/mine/mine",
       "text": "我的",
       "iconPath":"static/icon/index_tab/jx_mine_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_mine_orange.png"
+
     }
     ]
   },
