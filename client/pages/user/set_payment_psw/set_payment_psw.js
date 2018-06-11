@@ -25,7 +25,6 @@ Page({
 
         var _forgetTab =  wx.getStorageSync('isPayPwd');
 
-
         if(_forgetTab=='0'){
 
             wx.setNavigationBarTitle({

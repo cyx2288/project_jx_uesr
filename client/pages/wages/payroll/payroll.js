@@ -48,6 +48,8 @@ Page({
 
         var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
 
+        //有几个ajax请求
+        var ajaxCount = 1;
 
 
         /**
@@ -81,6 +83,15 @@ Page({
 
 
                 console.log(res.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
 
 
                 var _state = res.data.data[0].state;

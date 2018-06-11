@@ -267,9 +267,6 @@ Page({
                         //console.log('发薪'+wx.getStorageSync('salaryDetailId'))
 
 
-
-
-
                         //是否查看工资条
                         if (thisType == 1) {
 

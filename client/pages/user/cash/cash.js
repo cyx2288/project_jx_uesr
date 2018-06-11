@@ -68,10 +68,26 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
+        wx.showLoading({
+
+            title: '加载中',
+            mask:true,
+
+        })
+
+        setTimeout(function(){
+
+            wx.hideLoading()
+
+        },1000)
+
         //console.log(_isVerify)
 
         //没认证的去认证
         if (_isVerify == '0') {
+
+            //存指定的页面
+            wx.setStorageSync('hrefId','4');
 
             wx.showModal({
                 title: '提示',
@@ -412,8 +428,6 @@ Page({
         var _wages = wx.getStorageSync('wages');
 
         //console.log(_wages);
-
-
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
@@ -422,6 +436,8 @@ Page({
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
         var reg = /^\d+\.?(\d{1,2})?$/
+
+        var dot = /([1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?)/
 
         var _isSecurity = wx.getStorageSync('isSecurity');
 
@@ -437,8 +453,6 @@ Page({
 
 
         }
-
-
 
          //小于最小额度
          else if(parseFloat(that.data.inputBalance)<parseFloat(that.data.amountMin)){
@@ -489,7 +503,6 @@ Page({
 
          }
 
-
         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.canCashBalance)){
 
 
@@ -501,9 +514,17 @@ Page({
             })
         }
 
+        //判断有几个小数点
+        else if(!dot.test(that.data.inputBalance)){
+            wx.showToast({
+                title: '输入金额格式有误',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
 
         //默认输入小数点后两位
-
         else if(!reg.test(that.data.inputBalance)) {
 
             wx.showToast({
@@ -514,6 +535,7 @@ Page({
 
 
         }
+
 
         else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 

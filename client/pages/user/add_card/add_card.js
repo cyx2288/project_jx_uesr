@@ -37,9 +37,9 @@ Page({
 
         bankBranch: '',//卡户支行
 
-        province: '',//开户省份
+        province: '请选择开户地区',//开户省份
 
-        city: '请选择开户地区',//开户城市
+        city: '',//开户城市
 
         userName: '',//用户姓名
 
@@ -79,6 +79,8 @@ Page({
         var _userName = wx.getStorageSync('userName');
 
 
+
+
         that.setData({
 
             userName: _userName,
@@ -91,6 +93,10 @@ Page({
 
         //获取市的方法
         that.loadProvince(1);
+
+
+
+
 
 
     },
@@ -299,6 +305,8 @@ Page({
 
 
 
+        console.log(that.data.province)
+
 
         /**
          * 接口：添加用户银行卡信息
@@ -346,7 +354,8 @@ Page({
 
         //判断是否写了开户地区
 
-            else if(!that.data.city&&!that.data.province){
+            else if(!that.data.city||!that.data.province){
+
 
             wx.showToast({
 

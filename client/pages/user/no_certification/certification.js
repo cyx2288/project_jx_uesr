@@ -104,14 +104,14 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //存指定的页面
+
+        var _hrefId = wx.getStorageSync('hrefId');
+
+        var thisPayPwd =  wx.getStorageSync('isPayPwd');
+
+
         var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
- /*
-        var thisUserName = wx.getStorageSync('userName');
-
-        var thisIdNumber = wx.getStorageSync('idNumber');
-
-
-*/
 
         if(!that.data.userName||!that.data.idNumber){
 
@@ -242,16 +242,45 @@ Page({
 
                         },500)
 
-                        //存指定的页面
-                        var _hrefId = wx.getStorageSync('hrefId');
 
-                        wx.navigateBack({
 
-                            delta: parseInt(_hrefId)
+                        console.log('未设置支付密码'+thisPayPwd);
 
-                        })
+                        console.log('从未设置跳转'+_hrefId);
 
-                        that.onLoad();
+
+                      if(thisPayPwd=='0'&&_hrefId=='8'){
+
+
+                            wx.redirectTo({
+
+                                url: '../code/code'
+
+                            })
+
+
+                        }
+
+                        else {
+
+
+                            wx.navigateBack({
+
+                                delta: 1,
+
+                            })
+
+                            that.onLoad();
+
+                        }
+
+
+
+
+
+
+
+
 
 
                     }
@@ -288,6 +317,10 @@ Page({
 
 
         }
+
+
+
+
 
 
 

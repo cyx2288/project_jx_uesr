@@ -229,7 +229,7 @@ Page({
 
 
             //存指定的页面
-            wx.setStorageSync('hrefId','1');
+            /*wx.setStorageSync('hrefId','1');*/
 
             wx.navigateTo({
 
