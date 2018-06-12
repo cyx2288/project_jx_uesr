@@ -207,3 +207,27 @@ page {
     color: #fe9728;
     text-align: center;
 }
+button.kf_button {
+
+    position:relative;
+    display:block;
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+    padding:15px 0;
+    box-sizing:border-box;
+    font-size:14px;
+    text-align:center;
+    text-decoration:none;
+    line-height:normal;
+    border-radius:0;
+    -webkit-tap-highlight-color:transparent;
+    overflow:hidden;
+    color:#eb5e26;
+    background-color:transparent;
+
+}
+.kf_button::after{
+    border: 0px;
+}

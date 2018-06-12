@@ -93,6 +93,9 @@ Page({
 
         var that = this;
 
+        //存储从哪儿过来
+        wx.setStorageSync('goHtml','4');
+
 
         that.setData({
 

@@ -4,7 +4,6 @@
 <view class="wages_middle">
 
 
-
     <view class="weui-panel">
 
 
@@ -23,7 +22,7 @@
             <view class="weui-loadmore">
                 <view class="weui-loadmore__tips">2</view>
             </view>
-            <text wx:if="{{orderState=='7'||orderState=='4'}}"  class="status">退款中</text>
+            <text wx:if="{{orderState=='7'||orderState=='4'}}" class="status">退款中</text>
             <text wx:else class="status">处理中</text>
 
             <view class="border"></view>
@@ -43,7 +42,10 @@
 
     <view class="jx_asset">
 
-        <view class="asset_money"><image src="../../../static/icon/wages/jx_money.png"></image>提现金额（元）</view>
+        <view class="asset_money">
+            <image src="../../../static/icon/wages/jx_money.png"></image>
+            提现金额（元）
+        </view>
 
         <!--金额显示-->
         <text class="money_number">{{orderAmount}}</text>
@@ -62,7 +64,7 @@
                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
                     <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">完成</view>
-                    <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
+                    <view wx:elif="{{orderState=='2'}}" class="weui_confirm">付款成功</view>
                     <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
                     <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
@@ -201,7 +203,11 @@
 <!--提示-->
 <view class="weui-help">
 
-    <navigator class="jx_right">联系客服</navigator>
+    <button class="kf_button" open-type="contact">
+
+        <view class="jx_right">联系客服</view>
+
+    </button>
 
 </view>
 
