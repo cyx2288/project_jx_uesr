@@ -1,6 +1,6 @@
 Page({
 
-    onShow:function () {
+   /* onShow:function () {
 
 
         //获取用户数据
@@ -41,7 +41,7 @@ Page({
 
 
         }
-    }
+    }*/
 
 
 })
