@@ -42,6 +42,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //存储从哪儿过来
+        wx.setStorageSync('goHtml','3');
+
 
         /**
          * 接口：用户中心

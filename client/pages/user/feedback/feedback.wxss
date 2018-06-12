@@ -1,0 +1,50 @@
+@import "../../wages/payroll/payroll.wxss";
+@import "../mine/mine.wxss";
+.details_list{
+    margin: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+.details_list .weui-panel{
+    position: relative;
+    margin:0 auto;
+    width:100%;
+    border-radius:0;
+    border-left:none;
+
+}
+.details_list .weui-panel:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    width: 92%;
+    border-bottom: 1px solid #ddd;
+    transform: scaleY(.6);
+}
+
+.details_list .weui-panel:last-of-type:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    border-bottom: none;
+
+}
+
+.weui-media-box__title_in-text{
+    margin-bottom: 0;
+}
+
+
+.details_date{
+    color: #bbb;
+    font-size: 12px;
+
+}
+
+.weui-media-box{
+    padding: 10px 15px;
+}
