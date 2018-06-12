@@ -42,6 +42,7 @@
     display: flex;
     padding: 15px 15px;
     justify-content: space-between;
+    vertical-align: middle;
 }
 
 .join_tip{
@@ -51,19 +52,34 @@
     white-space: nowrap;
     padding-right: 5px;
 }
+.jx_mine_left{
+    display: flex;
+    justify-content: space-between;
+}
 
-.password_image{
+.password_balance{
 
     font-size: 16px;
     color: #4a4a4a;
     vertical-align: middle;
     display: inline-flex;
-    width: 100px;
+    width: 150px;
+    justify-content: space-between;
+    padding-top: 3px;
+
+}
+
+.password_image{
+
+    vertical-align: middle;
+    display: inline-flex;
     justify-content: space-between;
 
 }
+
 view.password_image{
     justify-content: flex-end;
+
 }
 
 .reset_icon{
@@ -73,14 +89,20 @@ view.password_image{
 
 }
 
+.jx_record{
+    padding-right: 15px;
+}
 .reset_go{
     width: 26px;
     height: 26px;
+
 }
 
 .reset_money{
     color: #ff4646;
     font-size: 16px;
+    padding-right: 15px;
+    margin-top: 3px;
 }
 
 hr {

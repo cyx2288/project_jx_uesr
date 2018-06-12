@@ -3,12 +3,14 @@
 
 <view class="help_service">
 
-    <view url="" class="weui-media-box weui-media-box_appmsg">
+    <view url="" class="weui-cells">
 
-        <view class="weui-media-box__hd ">
-            <image src="../../../static/icon/wages/jx_cash.png" class="jx_cash"/>
+         <view class="weui-media-box__hd ">
+            <view class="cash_circle"><image src="../../../static/icon/wages/jx_cash.png" class="jx_cash"/></view>
             <text class="service_title">提现相关</text>
-        </view>
+         </view>
+
+        <hr/>
 
         <view class="weui-help">
             <navigator  url="../problem_account/problem_account" class="weui-media-box__title">提现到账时间？</navigator>
@@ -22,14 +24,15 @@
 
     </view>
 
-     <hr/>
 
-    <view class="weui-media-box weui-media-box_appmsg">
+    <view class="weui-cells">
 
         <view class="weui-media-box__hd ">
-            <image src="../../../static/icon/wages/jx_payment.png" class="jx_cash"/>
+            <view class="cash_circle"> <image src="../../../static/icon/wages/jx_payment.png" class="jx_cash"/></view>
             <text class="service_title">支付相关</text>
         </view>
+
+        <hr/>
 
         <view class="weui-help">
             <navigator  url="../problem_setting/problem_setting"  class="weui-media-box__title">如何设置支付密码？</navigator>
@@ -43,15 +46,16 @@
 
     </view>
 
-    <hr/>
 
-    <view class="weui-media-box weui-media-box_appmsg">
 
-        <view class="weui-media-box__hd ">
-            <image src="../../../static/icon/wages/jx_company.png" class="jx_cash"/>
+    <view class="weui-cells">
+
+        <view class="weui-media-box__hd">
+            <view class="cash_circle"> <image src="../../../static/icon/wages/jx_company.png" class="jx_cash"/></view>
             <text class="service_title">加入企业</text>
         </view>
 
+        <hr/>
         <view class="weui-help">
             <navigator  url="../problem_company/problem_company"  class="weui-media-box__title">如何同意企业邀请？</navigator>
             <hr/>
@@ -72,14 +76,14 @@
 
         <image class="kf_image" src="../../../static/icon/wages/j_service_orange.png"/>
 
-        <text class="service_title">在线客服</text>
+        <text class="help_title">在线客服</text>
 
     </button>
 
     <view class="online_service" bindtap="openConfirm">
 
-        <image src="../../../static/icon/wages/jx_tel_orange.png" class="jx_cash"/>
-        <text class="service_title">电话咨询</text>
+        <image src="../../../static/icon/wages/jx_tel_orange.png" class="kf_image"/>
+        <text class="help_title">电话咨询</text>
 
     </view>
 
