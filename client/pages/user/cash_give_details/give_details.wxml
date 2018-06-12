@@ -197,4 +197,9 @@
 
 </view>
 
+<!--提示-->
+<view class="weui-help">
 
+    <navigator class="jx_right">联系客服</navigator>
+
+</view>
