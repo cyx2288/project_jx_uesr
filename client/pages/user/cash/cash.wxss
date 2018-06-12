@@ -89,7 +89,7 @@ image.ask{
 label.cash_input{
 
     width: 100%;
-   padding: 8px 0;
+    padding: 8px 0;
     display: flex;
     justify-content: flex-start;
     align-content: center;
@@ -123,7 +123,6 @@ span.money_style{
 .details_date{
     color: #bbb;
     font-size: 18px;
-    letter-spacing: 1px;
 
 }
 

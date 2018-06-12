@@ -65,6 +65,23 @@ App({
 
         },
 
+        isIpx:function () {
+
+            wx.getSystemInfo({
+
+                success: function (res) {
+
+                    console.log(res.model);
+
+                    if (res.model=="iPhone X") {
+
+                        this.globalData.isIPX = 1;
+
+                    }
+                }
+            })
+        }
+
     },
 
 

@@ -1,96 +1,15 @@
+<view>
 
-<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
-
-
-<!--工资-->
-<view class="details_list">
-
-<view class="wages_middle">
-
-    <!--明细-->
-    <view class="weui-panel" wx:for="{{balanceList}}">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-
-                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">工资发放</view>
-
-                <view wx:elif="{{item.transType==8}}"class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-
-                <view wx:elif="{{item.transType==6}}"class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
-
-                <!--<view wx:else class="weui-media-box__title weui-media-box__title_in-text"></view>-->
-
-                <view class="weui_confirm">{{item.transAmt}}</view>
-            </view>
-
-            <text class="details_date">{{filter.formatTime(item.clearingDate,'-')}}</text>
+    <view></view>
 
 
-        </view>
-
-    </view>
-
-
-
-
-   <!-- <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                <view class="weui_confirm">+500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>
-
-    <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                <view class="weui_confirm">-500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>
-
-
-    <view class="weui-panel">
-
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="weui_title">
-                <view class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
-                <view class="weui_confirm">+500.00</view>
-            </view>
-
-            <text class="details_date">2018-05-07  18:20:10</text>
-
-        </view>
-
-    </view>
-    <hr/>-->
 
 </view>
-</view>
-<view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
-    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
-</view>
 
-<view class="weui-loadmore" hidden="{{!noData}}">
-    <view class="weui-loading"></view>
-    <view class="weui-loadmore__tips">正在加载</view>
+<view class="weui-cells weui-cells_after-title feedback-box {{isIpx?'fix-iphonex-button':''}}" >
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd feedback_input">
+            <input class="weui-input" placeholder-class="phcolor" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+        </view>
+    </view>
 </view>
