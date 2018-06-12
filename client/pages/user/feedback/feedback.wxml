@@ -1,8 +1,54 @@
-<view>
+<view class="feedback-list">
 
-    <view></view>
+    <view class="people_list">
+
+        <view class="feedback-time">20:00</view>
+
+        <view class="tips_box">
+
+            <view><span class="tips">实发金额不对</span></view>
+
+            <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
+
+        </view>
 
 
+
+    </view>
+
+    <view class="people_list">
+
+        <view class="feedback-time">20:00</view>
+
+        <view class="tips_box">
+
+            <view><span class="tips">实发金额不对</span></view>
+
+            <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
+
+        </view>
+
+
+
+    </view>
+
+    <view class="people_list sevice_left">
+
+        <view class="feedback-time">20:00</view>
+
+        <view class="tips_box">
+
+
+
+            <view class="people_img"><image src="../../../static/icon/wages/feedback_staff.png"/></view>
+
+            <view><span class="tips">本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加</span></view>
+
+        </view>
+
+
+
+    </view>
 
 </view>
 
