@@ -22,7 +22,7 @@ Page({
                     url:'../../common/signin/signin'
                 })
 
-            },2000)
+            },1500)
 
 
         }
@@ -36,7 +36,7 @@ Page({
                     url:'../../wages/index/index'
                 })
 
-            },2000)
+            },1500)
 
 
 

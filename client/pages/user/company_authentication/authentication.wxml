@@ -38,7 +38,7 @@
 
             <navigator url="../help_service/help_service" class="jx_left">查看帮助</navigator>
             <span class="line">|</span>
-            <navigator class="jx_right">联系客服</navigator>
+            <button class="kf_button jx_right" open-type="contact">联系客服</button>
 
     </view>
 
