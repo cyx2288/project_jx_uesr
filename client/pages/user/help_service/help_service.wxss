@@ -1,56 +1,69 @@
 @import "../../wages/index/index.wxss";
-
+@import "../setting/setting.wxss";
 
 page{
 
-    background-color: #ebebeb;
-    height:100%;
+    background-color: #f7f7f7;
     width: 100%;
     font-size: 14px;
     color: #4a4a4a;
 
 }
 
-
-
-.weui-media-box__hd_in-appmsg {
-
-    display: inline-flex;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 10px;
-}
 .weui-media-box__hd{
-    width: 25%;
+
+     display: flex;
+     padding: 15px;
+
+
 }
 
 .service_title{
-display: block;
+    display: block;
     width: 100%;
+    color: #fe7944;
+    padding-top: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+
 }
 
-.help_service{
-    background-color: #fff;
+.weui-media-box__title {
+
+    padding: 5px 0;
 }
+
 
 .jx_cash{
-    width: 60rpx;
-    height: 60rpx;
- padding-left: 15px;
+    width: 26px;
+    height: 26px;
+    padding-top: 3px;
+
+}
+
+.cash_circle{
+    width: 40px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px solid #fff3ee;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
 
 }
 
 .weui-help{
-    width: 75%;
+    width: 92%;
     line-height: 30px;
+    margin: 0 auto;
 }
 
 hr {
     display: block;
-    transform: scaleY(0.4);
-    width: 90%;
-    border:.5px solid #dddddd;
+    transform: scaleY(0.1);
+    width: 100%;
+    border:.1px solid #dddddd;
 }
 
 /*底部tab*/
@@ -66,10 +79,16 @@ hr {
     justify-content: space-around;
     width: 100%;
     color: #eb5e26;
+
+
 }
 
-.service_title{
-    padding-left: 2px;
+.help_title{
+
+    vertical-align: middle;
+    padding-top: 10px;
+    display: block;
+    width: 100%;
 }
 
 /*客服按钮*/
@@ -111,4 +130,6 @@ button.kf_button {
 
 .online_service{
     line-height: normal;
+    text-align: center;
+
 }
