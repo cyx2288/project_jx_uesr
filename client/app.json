@@ -2,7 +2,9 @@
   "pages": [
 
     "pages/user/feedback/feedback",
+
     "pages/common/loading/loading",
+
     "pages/user/company_authentication/authentication",
     "pages/user/give_details/give_details",
     "pages/common/wages_authentication/authentication",

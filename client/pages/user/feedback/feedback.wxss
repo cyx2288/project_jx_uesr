@@ -22,4 +22,72 @@
     font-size: 14px;
     color: #ddd;
 }
+.feedback-list{
+    padding: 15px 0;
+}
 
+.feedback-list .people_list{
+
+    text-align: right;
+    padding: 0 15px;
+}
+.people_list .feedback-time{
+    margin-right:120rpx;
+    font-size: 14px;
+    color: #ababab;
+    margin-bottom: 5px;
+
+}
+.feedback-list .people_img {
+    display: inline-block;
+}
+.feedback-list .people_img image{
+
+    width: 100rpx;
+    height: 100rpx;
+    margin-left: 10px;
+}
+.tips_box{
+
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+.tips{
+    background: #fff;
+    border-radius: 40rpx;
+    padding: 10px;
+    border-bottom-right-radius:1px;
+    max-width: 210px;
+    display: inline-block;
+    min-height: 10px;
+    box-shadow: 1px 2px 10px #ddd;
+
+}
+.sevice_left{
+    text-align: left;
+}
+.sevice_left .feedback-time{
+    text-align: left;
+}
+.sevice_left .feedback-time{
+    margin-left:120rpx;
+}
+.sevice_left .tips_box{
+
+    justify-content: flex-start;
+}
+
+.sevice_left .people_img image{
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.sevice_left .tips{
+
+    border-bottom-right-radius:40rpx;
+    border-bottom-left-radius:1px;
+    background: #ff9165;
+    color: #fff;
+    text-align: left;
+}
