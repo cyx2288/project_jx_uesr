@@ -1,36 +1,58 @@
 {
   "pages":[
 
-    "pages/common/signin/signin",
+    "pages/common/loading/loading",
 
     "pages/wages/index/index",
 
+    "pages/user/cash/cash",
+
+
+    "pages/user/help_service/help_service",
+
+    "pages/jd/jdshop/jdshop",
+
+    "pages/jd/index/index",
+
+    "pages/user/give_details/give_details",
+
+    "pages/user/company_authentication/authentication",
+
+    "pages/user/code/code",
+
+    "pages/user/id_card/id_card",
+
+    "pages/user/payment_setting_code/payment_setting_code",
+
+    "pages/user/payment_setting_message/payment_setting_message",
+
+    "pages/common/wages_authentication/authentication",
 
 
 
+    "pages/common/signin/signin",
 
+    "pages/user/company/company",
 
-
-    "pages/user/mine/mine",
+    "pages/common/user_agreement/user_agreement",
 
     "pages/user/details/details",
 
-    "pages/user/cash/cash",
-
     "pages/user/bill/bill",
+
+    "pages/user/mine/mine",
+
+    "pages/user/cash_give_details/give_details",
+
+    "pages/user/no_certification/certification",
 
     "pages/user/set_payment_psw/set_payment_psw",
 
     "pages/common/revise_password/revise_password",
 
-    "pages/user/cash_give_details/give_details",
-
-
     "pages/user/add_card/add_card",
 
     "pages/common/register/register",
-
-    "pages/common/user_agreement/user_agreement",
 
     "pages/user/problem_nojoin/problem_nojoin",
 
@@ -54,25 +76,19 @@
 
 
 
-    "pages/common/wages_authentication/authentication",
-
-
-
     "pages/common/forget_password/forget_password",
 
 
 
-    "pages/user/give_details/give_details",
+
 
     "pages/user/pay_success/pay_success",
-
-
 
     "pages/common/revise_login/revise_login",
 
     "pages/user/modify_paycode/modify_code",
 
-    "pages/user/id_card/id_card",
+
 
 
 
@@ -84,15 +100,14 @@
 
     "pages/user/card/card",
 
-    "pages/user/payment_setting_message/payment_setting_message",
 
-    "pages/user/payment_setting_code/payment_setting_code",
+
+
     
-    "pages/user/code/code",
+
 
     "pages/user/payment_setting/payment_setting",
 
-    "pages/common/find_password/find_password",
 
 
 
@@ -104,21 +119,17 @@
 
     "pages/user/balance/balance",
 
-    "pages/user/help_service/help_service",
+
 
     "pages/user/personal/personal",
 
     "pages/user/certification/certification",
 
-    "pages/user/company/company",
-
-    "pages/user/company_authentication/authentication",
 
     "pages/common/authentication/authentication",
 
     "pages/wages/payroll/payroll",
 
-    "pages/wages/empty/empty",
 
 
 
@@ -157,23 +168,37 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ea5e26",
     "navigationBarTitleText": "嘉薪",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "color":"#ababab",
     "selectedColor":"#eb5e26",
     "list": [{
       "pagePath": "pages/wages/index/index",
-      "text": "工资",
+      "text": "工资条",
       "iconPath":"static/icon/index_tab/jx_wages_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_wages_orange.png"
-    }, {
+
+
+    },
+
+      {
+        "pagePath": "pages/jd/index/index",
+        "text": "京东商城",
+        "iconPath":"static/icon/index_tab/jx_jd_grey.png",
+        "selectedIconPath":"static/icon/index_tab/jx_jd_orange.png"
+
+      },
+
+
+      {
       "pagePath": "pages/user/mine/mine",
       "text": "我的",
       "iconPath":"static/icon/index_tab/jx_mine_grey.png",
       "selectedIconPath":"static/icon/index_tab/jx_mine_orange.png"
+
     }
     ]
   },

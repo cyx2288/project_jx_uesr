@@ -38,6 +38,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -45,7 +48,28 @@ Page({
 
         var _mobile = wx.getStorageSync('mobile');
 
+
+
         var countdown = 60;
+
+        var _forgetTab = wx.getStorageSync('isPayPwd')
+
+
+        if(_forgetTab=='0'){
+
+            wx.setNavigationBarTitle({
+
+                title:'设置支付密码'
+            })
+        }
+
+        else {
+            wx.setNavigationBarTitle({
+
+                title:'忘记支付密码'
+            })
+
+        }
 
         that.setData({
 
@@ -121,34 +145,73 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='0000'){
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-
                         icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
 
                     })
 
-
+                    return false
 
 
                 }
+
                 else {
 
-                    wx.showToast({
+                    (function countDownAjax() {
 
-                        title: res.data.msg,
+                        ajaxCount--;
 
-                        icon: 'none',
-                    })
+                        app.globalData.ajaxFinish(ajaxCount)
 
+                    })();
+
+                    //console.log(res.data.code=='-1')
+
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                    }
+
+                    else if (res.data.code == '-1') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+                        })
+
+
+                    }
 
                 }
-
-
-
 
             },
 
@@ -160,11 +223,6 @@ Page({
             }
 
         })
-        
-
-
-
-
 
 
     },
@@ -180,75 +238,127 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log('输入完成')
+        console.log(that.data.code)
 
-        /**
-         * 接口：校验支付密码验证码
-         * 请求方式：POST
-         * 接口：/user/set/checkpaypwdcode
-         * 入参：code
-         * */
+        if(!that.data.code){
 
-        wx.request({
+            wx.showToast({
 
-            url: thisCheckpaypwdcodeUrl,
+                title: '请输入验证码',
+                icon: 'none',
 
-            method: 'POST',
+            })
 
-            data:json2FormFn.json2Form({
 
-                code:that.data.code
 
-            }),
+        }
 
-            header:{
+        else if(that.data.code.length<6){
 
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+            wx.showToast({
 
-                'jxsid':jx_sid,
+                title: '输入的验证码有误',
+                icon: 'none',
 
-                'Authorization':Authorization
+            })
 
-            },
+        }
 
-            success: function (res) {
+        else {
 
-                console.log(res.data);
+            /**
+             * 接口：校验支付密码验证码
+             * 请求方式：POST
+             * 接口：/user/set/checkpaypwdcode
+             * 入参：code
+             * */
 
-                if(res.data.code=='0000'){
+            wx.request({
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
+                url: thisCheckpaypwdcodeUrl,
 
-                    })
+                method: 'POST',
 
-                    //存取tokenMsg
-                    wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
+                data:json2FormFn.json2Form({
 
-                    //跳转身份认证
-                    wx.navigateTo({
+                    code:that.data.code
 
-                        url:'../id_card/id_card'
-                    })
+                }),
 
+                header:{
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    if(res.data.code=='0000'){
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    //跳转身份认证
+                                    wx.navigateTo({
+
+                                        url:'../id_card/id_card'
+                                    })
+
+                                },1500)
+
+
+                            }
+
+
+
+
+                        })
+
+                        //存取tokenMsg
+                        wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
+
+
+
+
+
+
+                    }
+                    else {
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+
+                        })
+
+                    }
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
 
                 }
-                else {
+
+            })
 
 
-                }
-
-            },
+        }
 
 
-            fail: function (res) {
 
-                console.log(res)
-
-            }
-
-        })
 
     },
     
@@ -264,6 +374,7 @@ Page({
 
 
         //六位时按钮亮起
+/*
         if(e.detail.value.length==6){
 
             that.setData({
@@ -273,14 +384,22 @@ Page({
             })
 
         }
+*/
 
-        console.log(that.data.code)
+        //console.log(that.data.code)
         
     },
 
     hasCodeFn:function () {
 
         var that = this;
+
+        var thisPaymsgUrl= app.globalData.URL+paymsgUrl;
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
         var countdown = 60;
 
@@ -318,6 +437,78 @@ Page({
 
 
         }
+
+        /**
+         * 接口：校验支付密码验证码
+         * 请求方式：GET
+         * 接口：设置支付密码
+         * 入参：code
+         * */
+
+        wx.request({
+
+            url: thisPaymsgUrl,
+
+            method: 'GET',
+
+            data:{
+
+                code:that.data.code,
+
+
+            },
+            header:{
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                console.log(res.data.code=='-1')
+
+                if(res.data.code=='0000'){
+
+
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+
+                    })
+
+                }
+                else if(res.data.code=='-1') {
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+                    })
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
 
     }
 

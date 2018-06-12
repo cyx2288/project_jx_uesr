@@ -36,7 +36,9 @@ Page({
         var reg='1234567890_0987654321';
 
         //重负
-        var regText = /^(?!\d*?(\d)\d*?\1)\d{6}$/;
+        var regText = /^(?=.*\d+)(?!.*?([\d])\1{5})[\d]{6}$/;
+
+        var a = /[@#\$%\^&\*]+/g;
 
         var that=this;
 
@@ -64,10 +66,19 @@ Page({
 
         }
 
+        else if(a.test(that.data.password)||a.test(that.data.confirmPassword)){
+
+            wx.showToast({
+
+                title: '密码包含非法字符',
+                icon: 'none'
+
+            });
+
+        }
+
         //连续
         else if(reg.indexOf(that.data.password)>=0){
-
-
 
             wx.showToast({
 
@@ -133,26 +144,67 @@ Page({
                 },
 
                 success: function(res) {
+
+
                     console.log(res.data);
 
-                    if(res.data.code=='-1'){
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
-                        });
+                            duration: 1500,
+                            success:function () {
 
-                    }else if(res.data.code=='0000'){
+                                setTimeout(function () {
 
-                        wx.showToast({
-                            title: '修改成功',
-                            icon: 'success',
-                        });
+                                    wx.reLaunch({
 
-                        wx.navigateTo({
+                                        url:'../../common/signin/signin'
+                                    })
 
-                            url:"../reset_payment/reset_payment"
+                                },1500)
+
+                            }
+
                         })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        if (res.data.code == '-1') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                            });
+
+                        } else if (res.data.code == '0000') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                            });
+
+                            setTimeout(function () {
+
+                                wx.navigateBack({
+                                    delta: 2
+                                })
+
+                            }, 500)
+
+
+                        }
+
                     }
                 },
 
@@ -231,11 +283,11 @@ Page({
 
     },
 
-    openToast: function () {
+/*    openToast: function () {
         wx.showToast({
             title: '修改成功',
             icon: 'success',
         });
-    },
+    },*/
 
 });

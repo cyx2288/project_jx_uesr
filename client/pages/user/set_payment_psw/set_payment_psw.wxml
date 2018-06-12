@@ -1,13 +1,21 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 
-    <view class="weui-cells__title">支付密码不是能是连续、重复的数字</view>
+    <view class="weui_top">
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        </view>
+
+        <view class="weui-cells__title">支付密码不能是连续、重复的数字</view>
+    </view>
+
+
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label">设置密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input"password="true" maxlength="6" placeholder="请输入设置密码" value="{{password}}" bindinput="payPassWordFn"/>
+                <input class="weui-input"password="true" type="number" maxlength="6" placeholder="请输入6位数字支付密码" value="{{password}}" bindinput="payPassWordFn"/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -15,7 +23,7 @@
                 <view class="weui-label">确认密码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" password="true" maxlength="6" placeholder="请再次输入密码" value="{{confirmPassword}}" bindinput="confirmPasswordFn"/>
+                <input class="weui-input" password="true" type="number" maxlength="6" placeholder="请再次输入6位数字支付密码" value="{{confirmPassword}}" bindinput="confirmPasswordFn"/>
             </view>
 
         </view>

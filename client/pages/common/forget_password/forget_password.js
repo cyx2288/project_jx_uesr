@@ -38,11 +38,6 @@ Page({
 
         var that = this;
 
-        var empty = /[@#\$%\^&\*]+/g;
-
-        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
-
-
         //如果手机号是正常的
         if (that.data.mobile == '' || that.data.mobile.length < 11) {
 
@@ -89,6 +84,39 @@ Page({
 
                     console.log(res.data);
 
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
                     if (res.data.code == '0000') {
 
                         wx.showToast({
@@ -121,7 +149,7 @@ Page({
                         });
 
                     }
-
+                }
 
                 },
 
@@ -137,7 +165,6 @@ Page({
 
     },
 
-    //确定
 
     settingFn: function () {
 
@@ -150,10 +177,6 @@ Page({
         var a = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
-
-        //密码判空
-        var _thisPassWord, _thisconfirmPassword;
-
 
         //如果手机号是正常的
         if (that.data.mobile == '' || that.data.mobile.length < 11) {
@@ -263,7 +286,6 @@ Page({
                 },
 
                 success: function (res) {
-
                     console.log(res.data);
 
                     if (res.data.code == '0000') {
@@ -271,15 +293,23 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'success'
+                            icon: 'none',
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.navigateBack({
+                                        delta: 1
+                                    })
+
+
+                                },1500)
+
+                            }
+
 
                         });
 
-                        wx.redirectTo({
-
-                            url: '../signin/signin'
-
-                        })
 
 
                     }
@@ -376,7 +406,7 @@ Page({
 
                 locked: 0,
 
-                time: currentTime + '秒'
+                time: currentTime + 's后重新发送'
 
             });
             if (currentTime <= 0) {

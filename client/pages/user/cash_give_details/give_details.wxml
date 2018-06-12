@@ -3,15 +3,7 @@
 
  <view class="wages_middle">
 
-     <view class="jx_asset">
 
-         <text class="asset_money">提现金额（元）</text>
-
-         <!--金额显示-->
-         <text class="money_number">{{orderAmount}}</text>
-
-
-     </view>
 
      <view class="weui-panel">
 
@@ -43,13 +35,23 @@
                  <view class="weui-loadmore__tips">3</view>
              </view>
              <text wx:if="{{orderState=='4'}}" class="status">已退款</text>
-             <text wx:else class="status">到账成功</text>
+             <text wx:else class="status">完成</text>
          </view>
 
 
      </view>
 
-     <view class="wages_middle">
+     <view class="jx_asset">
+
+         <view class="asset_money"><image src="../../../static/icon/wages/jx_money.png"></image>提现金额（元）</view>
+
+         <!--金额显示-->
+         <text class="money_number">{{orderAmount}}</text>
+
+
+     </view>
+
+     <view class="wages_middle wages_box">
 
          <!--明细-->
          <view class="cash_step">
@@ -59,7 +61,7 @@
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
                      <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
-                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">到账成功</view>
+                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">完成</view>
                      <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
                      <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
                      <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
@@ -71,6 +73,8 @@
              </view>
 
          </view>
+
+         <hr/>
 
          <!--明细-->
          <view class="cash_step">
@@ -86,6 +90,8 @@
 
          </view>
 
+         <hr/>
+
          <!--明细-->
          <view class="cash_step">
 
@@ -99,6 +105,8 @@
              </view>
 
          </view>
+
+         <hr/>
 
          <!--明细-->
          <view class="cash_step">
@@ -117,7 +125,7 @@
 
      </view>
 
-     <view class="wages_middle">
+     <view class="wages_middle wages_box">
          <!--明细-->
 
          <view class="cash_step">
@@ -134,6 +142,8 @@
          </view>
          <!--明细-->
 
+         <hr/>
+
          <view class="cash_step">
 
              <view class="weui-media-box weui-media-box_text">
@@ -147,6 +157,7 @@
 
          </view>
          <!--明细-->
+         <hr/>
 
          <view class="cash_step">
 
@@ -161,6 +172,7 @@
 
          </view>
          <!--明细-->
+         <hr/>
 
          <view class="cash_step">
 
@@ -181,7 +193,7 @@
 
 <view class="weui-btn-area {{orderState=='0'?'show_btn':'hide'}}">
 
-        <button class="weui-btn" type="primary" bindtap="payFn">去支付</button>
+        <button class="weui-btn orange_btn" type="primary" bindtap="payFn">去支付</button>
 
 </view>
 

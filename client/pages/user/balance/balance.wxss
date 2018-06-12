@@ -1,6 +1,12 @@
 @import "../../wages/index/index.wxss";
 @import "../mine/mine.wxss";
 
+
 .account_information_mime{
     margin: 0 auto;
+}
+
+.weui-btn{
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 16px;
 }

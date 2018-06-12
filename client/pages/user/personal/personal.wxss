@@ -1,8 +1,20 @@
 @import "../mine/mine.wxss";
+@import "../../common/register/register.wxss";
 
+
+
+page{
+    background-color: #f7f7f7;
+
+}
 .account_information_tel{
 
-    font-size: 14px;
+    font-size: 16px;
     text-align: right;
 
+}
+
+.password_image{
+
+    color: #8a8a8a;
 }

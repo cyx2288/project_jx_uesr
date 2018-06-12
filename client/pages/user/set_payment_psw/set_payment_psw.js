@@ -20,6 +20,28 @@ Page({
         
 
     },
+
+    onShow:function () {
+
+        var _forgetTab =  wx.getStorageSync('isPayPwd');
+
+        if(_forgetTab=='0'){
+
+            wx.setNavigationBarTitle({
+
+                title:'设置支付密码'
+            })
+        }
+
+        else {
+            wx.setNavigationBarTitle({
+
+                title:'忘记支付密码'
+            })
+
+        }
+
+    },
     changePwdFn:function () {
 
         var that = this;
@@ -33,9 +55,16 @@ Page({
 
         var _tokenMsg = wx.getStorageSync('tokenMsg');
 
+
+        //连续
+        var reg='1234567890_0987654321';
+
+
         var a = /[@#\$%\^&\*]+/g;
 
-        console.log(that.data.payPassword);
+        //重负
+        var regText = /^(?=.*\d+)(?!.*?([\d])\1{5})[\d]{6}$/;
+
 
         if(that.data.password==''||that.data.password.length<6){
 
@@ -70,10 +99,38 @@ Page({
 
         }
 
+        //连续
+        else if(reg.indexOf(that.data.password)>=0){
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
+        //重复
+        else if(!regText.test(that.data.password)){
+
+      /*      console.log(that.data.password)
+
+            console.log(!regText.test(that.data.password))*/
+
+            wx.showToast({
+
+                title: '请输入非连续、重复的6位密码',
+                icon: 'none'
+
+            });
+
+        }
+
         else if(that.data.password!=that.data.confirmPassword){
             wx.showToast({
 
-                title: '两次密码输入不一致',
+                title: '请两次输入相同的验证码',
                 icon: 'none'
 
             });
@@ -119,33 +176,77 @@ Page({
 
                     console.log(res.data);
 
-                    if (res.data.code == '0000') {
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
-
                             title: res.data.msg,
-
                             icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
 
                         })
 
-                        wx.redirectTo({
-
-                            url: '../setting/setting'
-                        })
+                        return false
 
 
                     }
 
                     else {
 
-                        wx.showToast({
+                        if (res.data.code == '0000') {
 
-                            title: res.data.msg,
 
-                            icon: 'none',
+                            wx.showToast({
 
-                        })
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                                success: function () {
+
+                                    setTimeout(function () {
+
+                                        wx.switchTab({
+
+                                            url: '../../user/mine/mine'
+                                        })
+
+                                    }, 2000)
+
+
+                                }
+
+                            })
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+                        }
+
                     }
 
                 },
@@ -191,8 +292,16 @@ Page({
 
         })
 
-    }
-    
+    },
+  onUnload:function () {
+
+      wx.switchTab({
+
+          url:'../../user/mine/mine'
+      })
+
+
+  }
     
     
     

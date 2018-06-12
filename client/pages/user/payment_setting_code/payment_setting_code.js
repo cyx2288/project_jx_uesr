@@ -48,7 +48,7 @@ Page({
 
         });
 
-        if(e.detail.value.length==6){
+ /*       if(e.detail.value.length==6){
 
 
             that.setData({
@@ -59,7 +59,7 @@ Page({
 
 
 
-        }
+        }*/
 
     },
 
@@ -72,84 +72,140 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：设置支付方式
-         * 请求方式：POST
-         * 接口：/user/set/getpaymode
-         **/
 
-        wx.request({
 
-            url: app.globalData.URL+updatepaymode,
+        if(!that.data.thisPayMsg){
 
-            method: 'POST',
+            wx.showToast({
 
-            header: {
+                title: '请输入密码',
+                icon: 'none',
 
-                'content-type': 'application/x-www-form-urlencoded', // post请求
+            })
 
-                'jxsid': jx_sid,
 
-                'Authorization': Authorization
+        }
 
-            },
 
-            data:json2FormFn.json2Form({
+        else {
 
-                msgMode:0,
+            /**
+             * 接口：设置支付方式
+             * 请求方式：POST
+             * 接口：/user/set/getpaymode
+             **/
 
-                pwdMode:0,
+            wx.request({
 
-                payPwd:md5.hexMD5(that.data.thisPayMsg)
+                url: app.globalData.URL+updatepaymode,
 
-            }),
+                method: 'POST',
 
-            success: function (res) {
+                header: {
 
-                if(res.data.code=='0000'){
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                    console.log(res.data.msg)
+                    'jxsid': jx_sid,
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
+                    'Authorization': Authorization
 
-                        success:function () {
+                },
 
-                            setTimeout(function () {
-                                wx.redirectTo({url:'../payment_setting/payment_setting'})
-                            },2000)
+                data:json2FormFn.json2Form({
+
+                    msgMode:0,
+
+                    pwdMode:0,
+
+                    payPwd:md5.hexMD5(that.data.thisPayMsg)
+
+                }),
+
+                success: function (res) {
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        if (res.data.code == '0000') {
+
+                            console.log(res.data.msg)
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                                success: function () {
+
+                                    setTimeout(function () {
+                                        wx.redirectTo({url: '../payment_setting/payment_setting'})
+                                    }, 2000)
+
+                                }
+                            })
+
 
                         }
-                    })
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                            })
+
+                        }
+
+                        console.log(res)
+
+                    }
 
 
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
                 }
 
-                else {
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
-
-                    })
-
-                }
-
-                console.log(res)
+            })
 
 
 
-            },
+        }
 
-            fail: function (res) {
-
-                console.log(res)
-            }
-
-        })
 
     }
 

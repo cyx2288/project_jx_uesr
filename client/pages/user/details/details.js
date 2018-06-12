@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
+
 const clearingUrl = '/user/account/clearing';//登录的url
 
 
@@ -77,54 +79,105 @@ Page({
 
                     console.log(res.data);
 
-                    var _balanceList = res.data.data.list;
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    console.log(res.data.data.list)
+                    if(res.data.code=='3001') {
 
-                    //如果没有数据
-                    if (!that.data.noData) {
+                        //console.log('登录');
 
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                    }
+                                setTimeout(function () {
 
-                    else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
+                                    wx.reLaunch({
 
-                        //增加数组内容
-                        that.setData({
+                                        url:'../../common/signin/signin'
+                                    })
 
-                            noData: false,
+                                },1500)
 
-                        })
-
-                    }
-
-
-                    else if (res.data.data.list.length < 10) {//这一组小于十个
-
-                        //增加数组内容
-                        that.setData({
-
-                            noData: false,
-
-                            balanceList: that.data.balanceList.concat(_balanceList),
-
+                            }
 
                         })
+
+                        return false
+
 
                     }
 
                     else {
 
-                        console.log('增加成功')
+                        var _balanceList = res.data.data.list;
 
-                        //增加数组内容
-                        that.setData({
+                        console.log(res.data.data.list)
 
-                            balanceList: that.data.balanceList.concat(_balanceList),
+                        //如果没有数据
+                        if (!that.data.noData) {
 
-                            pageNum: that.data.pageNum + 1//加一页
 
-                        })
+                        }
+
+                        else if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
+
+                            //增加数组内容
+                            that.setData({
+
+                                noData: false,
+
+                            })
+
+                        }
+
+
+                        else if (res.data.data.list.length < 10) {//这一组小于十个
+
+                            //增加数组内容
+                            that.setData({
+
+                                noData: false,
+
+                                balanceList: that.data.balanceList.concat(_balanceList),
+
+
+                            })
+
+
+                            for (var j = 0; j < that.data.balanceList.length; j++) {
+
+                                that.data.balanceList[j].transAmt = radixPointFn.splitK(that.data.balanceList[j].transAmt)
+
+
+                            }
+
+
+                        }
+
+                        else {
+
+                            console.log('增加成功')
+
+                            //增加数组内容
+                            that.setData({
+
+                                balanceList: that.data.balanceList.concat(_balanceList),
+
+                                pageNum: that.data.pageNum + 1//加一页
+
+                            })
+
+                            for (var j = 0; j < that.data.balanceList.length; j++) {
+
+                                that.data.balanceList[j].transAmt = radixPointFn.splitK(that.data.balanceList[j].transAmt)
+
+
+                            }
+
+
+                        }
 
                     }
 

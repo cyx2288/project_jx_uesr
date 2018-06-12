@@ -1,7 +1,9 @@
+
+
 <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-            <view class="weui-label">请输入验证码</view>
+            <view class="weui-label">验证码</view>
         </view>
         <view class="weui-cell__bd">
             <input class="weui-input" value="{{thisPayMsg}}" type="number" placeholder="请输入验证码" bindinput="messageFn" maxlength="6"/>
@@ -10,8 +12,8 @@
 
 </view>
 
-<view class="weui-cells__title">验证码已发送至{{mobile}},{{last_time}}s后可<span bindtap="hasCodeFn" class="{{locked==1 ? '' :'locked'}}">重新获取</span></view>
+<view class="weui-cells__title weui_code">验证码已发送至{{mobile}},{{last_time}}s后可<span bindtap="hasCodeFn" class="{{locked==1 ? '' :'locked'}}">重新获取</span></view>
 
-<view class="page__bd page__bd_spacing" style="margin-top: 25px">
-    <button type="primary"  disabled="{{disabled}}" bindtap="buttonCheck">确认</button>
+<view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary" bindtap="buttonCheck">确认</button>
 </view>

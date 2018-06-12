@@ -1,23 +1,24 @@
 @import "../mine/mine.wxss";
+@import "../../common/signin/signin.wxss";
+@import "../setting/setting.wxss";
 @import "../details/details.wxss";
 @import "../certification/certification.wxss";
 
-.details_date{
 
-color: #4a4a4a;
-
+hr{
+    width: 92%;
 }
-
 .weui_left{
     display: flex;
     justify-content: space-between;
-     width: 45%;
-     margin-right: 30%;
+     width: 48%;
+     margin-right: 36%;
+    padding-top: 2px;
 }
 
 .title{
     color: #ababab;
-    font-size: 14px;
+    font-size: 16px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -28,36 +29,41 @@ color: #4a4a4a;
 
 .weui-media-box__info {
     display: flex;
-    color: #E87B17;
-    font-size: 28px;
-    padding: 15px 0;
+    color: #fe9728;
+    font-size: 24px;
+    padding: 20rpx 0 10rpx;
+    vertical-align: middle;
 }
 
 .weui-media-box__desc{
     color: #8a8a8a;
     overflow:auto;
     -webkit-line-clamp:10;
-
+    padding-top: 7px;
+    padding-left: 10px;
 
 
 }
 .weui_title{
-    font-size: 14px;
+    font-size: 16px;
+    vertical-align: middle;
+
 }
 
 .weui-media-box__title {
-    color: #8a8a8a;
-    font-size: 14px;
+    color: #4a4a4a;
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-start;
+
 
 }
-
-.ask{
+image.ask{
     width: 18px;
     height: 18px;
-    display: inline-block;
-    margin-right: 30%;
-    padding-top: 2px;
-    vertical-align: middle;
+    margin-left: 30rpx;
+    vertical-align: top;
+    margin-top: 2px;
 }
 
 .weui-prompt{
@@ -70,17 +76,93 @@ color: #4a4a4a;
 }
 
 .cash_prompt{
+
     display: flex;
     vertical-align: middle;
-    padding-top: 10px;
-
 }
 
 .cash_text{
     color: #4a4a4a;
-    font-size: 16px;
+
+}
+
+label.cash_input{
+
+    width: 100%;
+   padding: 8px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+
+}
+.amount_box{
+    padding-left: 0;
+}
+
+label.cash_input>.account_information_tel{
+
+    width: 100%;
+    font-size: 30px;
+    color: #fe9728;
+    overflow: auto;
+    line-height: 30px;
+    height: 2rem;
+
 }
 
 
 
+span.money_style{
 
+    vertical-align: middle;
+    color: #fe9728;
+    display: inline-block;
+
+}
+
+.details_date{
+    color: #bbb;
+    font-size: 18px;
+    letter-spacing: 1px;
+
+}
+
+.weui-help{
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 14px;
+    padding-top: 10px;
+}
+.jx_left{
+    color: #fe9728;
+    text-align: right;
+    padding: 0;
+}
+
+.jx_right{
+    color: #fe9728;
+   text-align: left;
+}
+.orange{
+   color:  #fe9728;
+}
+
+
+.reset_icon{
+    width: 16px;
+    height: 16px;
+}
+
+span.line{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fe9728;
+}
+
+.font_small{
+
+    color: #ababab;
+    font-size: 14px;
+}

@@ -5,7 +5,7 @@
 
     <!--<view class="asset_money">还未收到工资哦~</view>-->
 
-        <navigator class="weui-panel" wx:for="{{workUnitList}}" data-ent="{{item.entId}}" bindtap="isJoinEntFn" url="{{item.state==1 ? '' :'../company_authentication/authentication'}}">
+        <view class="weui-panel" wx:for="{{workUnitList}}" data-ent="{{item.entId}}" data-state="{{item.state}}" bindtap="isJoinEntFn" >
 
             <view class="weui-panel__bd">
 
@@ -15,20 +15,31 @@
 
                         <view class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}</view>
 
-                        <view wx:if="{{item.state==1}}"class="weui_confirm">已加入</view>
+                        <view wx:if="{{item.state==1}}"class="weui_confirm grey">
+                            <span class="join_text">已加入</span>
+                        </view>
 
-                        <view wx:else class="weui_confirm orange">待同意</view>
+
+                        <view wx:else class="weui_confirm orange">
+                            <span class="join_text">待同意</span>
+                        </view>
 
                     </view>
 
                     <view class="weui-media-box__info">
-                      <view wx:if="{{item.state==1}}" class="weui-media-box__info__meta">加入时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+
+                        <view wx:if="{{item.state==1}}" class="weui-media-box__info__meta">加入时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
                         <view wx:else class="weui-media-box__info__meta">邀请时间：{{filter.formatTime(item.jionEntDate,'-')}}</view>
+
                     </view>
 
                 </view>
             </view>
-        </navigator>
+        </view>
 
 
+</view>
+
+<view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
 </view>

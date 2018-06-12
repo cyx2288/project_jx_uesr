@@ -6,7 +6,7 @@
 
     <!--问题-->
     <view class="weui-panel">
-        <text class="ask">用户注册协议</text>
+        <text class="title">用户注册协议</text>
     </view>
     <hr/>
 

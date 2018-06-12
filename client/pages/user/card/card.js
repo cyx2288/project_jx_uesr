@@ -161,6 +161,8 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
+const mineUrl ='/user/center/usercenter';//用户中心
+
 const bankUrl = '/user/bank/getbankcardinfo';
 
 const detBankUrl = '/user/bank/deletebankcardinfo';
@@ -215,16 +217,50 @@ Page({
 
                     console.log(res.data);
 
-                    //存储银行卡
-                    wx.setStorageSync('bankList',res.data.data);
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    that.setData({
+                    if(res.data.code=='3001') {
 
-                        bankList:res.data.data,
+                        //console.log('登录');
 
-                    })
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                    //console.log(that.data.bankList)
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        //存储银行卡
+                        wx.setStorageSync('bankList', res.data.data);
+
+                        that.setData({
+
+                            bankList: res.data.data,
+
+                        })
+
+                        //console.log(that.data.bankList)
+
+                    }
 
 
                 },
@@ -241,6 +277,8 @@ Page({
 
     addCardFn:function () {
 
+        var thisMineurl = app.globalData.URL+ mineUrl;
+
         var _isVerify = wx.getStorageSync('isVerify');
 
         //判断是否认证
@@ -251,13 +289,14 @@ Page({
                 content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
                 cancelText: '取消',
                 confirmText: '去认证',
+                confirmColor:'#fe9728',
                 success: function (res) {
 
                     if (res.confirm) {
 
                         wx.navigateTo({
 
-                            url: '../certification/certification'
+                            url: '../no_certification/certification'
 
                         })
 
@@ -265,10 +304,6 @@ Page({
 
                     else if (res.cancel) {
 
-                        wx.switchTab({
-
-                            url:'../../wages/index/index'
-                        })
 
                     }
                 }
@@ -287,6 +322,49 @@ Page({
 
 
         }
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url:  thisMineurl,
+
+            method:'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function(res) {
+
+                console.log(res.data);
+
+                wx.setStorageSync('userName', res.data.data.userName);
+
+                console.log('姓名'+wx.getStorageSync('userName'))
+
+
+            },
+
+            fail:function (res) {
+
+                console.log(res)
+            }
+
+        })
 
 
     },
@@ -326,6 +404,7 @@ Page({
             content: '确认删除尾号是'+ _thisBankNo +'的银行卡',
             cancelText: '取消',
             confirmText: '确定',
+           confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {

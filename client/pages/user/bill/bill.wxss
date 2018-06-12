@@ -1,9 +1,92 @@
-@import "../../user/record/record.wxss";
+.bill_list{
+    margin: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+.bill_box .weui-panel{
+
+    position: relative;
+    margin-top:0px;
+}
+.bill_box .weui-panel:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    width: 92%;
+    border-bottom: 1px solid #ddd;
+    transform: scaleY(.6);
+
+}
+
+.bill_box .weui-panel:last-of-type:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    border-bottom: none;
+
+}
+.bill_box .weui_right{
+
+    text-align: right;
+}
+.bill_box .weui_confirm.orange{
+
+    color: #E87B17;
+
+}
+.bill_box .weui_confirm.gary{
+
+    color: #ababab;
+}
+.bill_box .icon_record {
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.weui-media-box__title_in-text{
+    margin-bottom: 0;
+}
+
+.details_date{
+    color: #bbb;
+    font-size: 12px;
+}
+
+.weui-media-box{
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon_record {
+    display: flex;
+}
+
+.reset_go{
+    vertical-align: middle;
+    padding-top: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.weui_right{
+    font-size: 14px;
+}
+
+.weui_middle{
+    padding-left: 10px;
+}
 
 .money{
     float: right;
     display: flex;
 }
 .box{
-    padding: 10px 15px;
+    padding: 15px;
 }
+

@@ -1,47 +1,60 @@
 <view class="card_middle">
 
-    <!--明细-->
-    <view class="weui-panel brankl_ist" wx:for="{{bankList}}">
+    <!--银行卡-->
+    <view class="weui-cells brankl_ist" wx:for="{{bankList}}">
 
         <view class="weui-media-box weui-media-box_text">
 
             <view class="icon_record">
 
-                <view class="jx_record">
-                    <image src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
-                </view>
 
-                <view class="weui_middle">
+
+
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">
+
+
                         <view class="weui_title">
-                            <view class="weui-media-box__title weui-media-box__title_in-text">{{item.bankName}}</view>
-                            <view class="weui_confirm orange" data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" bindtap="detCardFn">删除</view>
+
+                            <view class="jx_record">
+
+                                <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
+                            </view>
+
+                            <view class="weui-media-box__title weui-media-box__title_in-text bank">{{item.bankName}}<span class="card_style">储蓄卡</span></view>
+
+
+
 
                         </view>
 
 
                     </view>
+                    <view class="weui_title bank_id">
 
 
+                        <text class="details_date">{{item.bankNo}}</text>
 
-                    <text class="details_date">{{item.bankNo}}</text>
+                        <view class="weui-cell__ft">
 
+                            <view class="weui_confirm orange" data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" bindtap="detCardFn">删除</view>
+
+
+                        </view>
+                    </view>
                 </view>
 
 
-
-            </view>
         </view>
 
     </view>
-    <hr/>
+
 
 
 
     <view class="page__bd page__bd_spacing">
 
-        <button class="weui-btn" type="primary" bindtap="addCardFn">添加银行卡</button>
+        <button class="weui-btn" type="primary" bindtap="addCardFn">+ 添加银行卡</button>
 
     </view>
 

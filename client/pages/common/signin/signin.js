@@ -21,10 +21,26 @@ data:{
 
     mobile:'',
 
-    password:''
+    password:'',
+
 
 
 },
+
+    //转发
+    onShareAppMessage: function () {
+        return {
+            title: '嘉薪平台',
+            path: '/pages/common/signin/signin',
+            imageUrl:'/static/icon/logo/share.jpg'
+        }
+    },
+
+    onShow:function () {
+
+        //console.log(wx.getStorageSync('Authorization'));
+
+    },
 
     signin:function () {
 
@@ -32,23 +48,37 @@ data:{
 
         var that=this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         var empty = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 
 
-        if(that.data.mobile==''||that.data.mobile.length<11){
+        if(that.data.mobile==''){
 
           wx.showToast({
 
-              title: '请输入正确手机号',
+              title: '请输入手机号',
               icon: 'none'
 
           });
 
       }
 
-        else if(empty.test(that.data.password)){
+      else if(that.data.password ==''){
+
+            wx.showToast({
+
+                title: '请输入密码',
+                icon: 'none'
+
+            });
+
+        }
+
+/*        else if(empty.test(that.data.password)){
 
             wx.showToast({
 
@@ -81,7 +111,7 @@ data:{
 
             });
 
-        }
+        }*/
 
       else {
 
@@ -124,7 +154,9 @@ data:{
                       wx.showToast({
 
                           title: res.data.msg,
-                          icon: 'none'
+                          icon: 'none',
+                          duration:2000
+
 
                       });
 
@@ -138,6 +170,15 @@ data:{
                       var Authorization = res.data.token.access_token;//Authorization数据
 
                       var jx_sid = res.header.jxsid;//jx_sid数据
+
+                      //登录成功后调用
+                      (function countDownAjax() {
+
+                          ajaxCount--;
+
+                          app.globalData.ajaxFinish(ajaxCount)
+
+                      })();
 
                       //存储数据
                       wx.setStorageSync('jxsid', jx_sid);
@@ -155,6 +196,9 @@ data:{
                       console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
                       console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+
+
+
 
                       //console.log(header.header(Authorization,jx_sid));
 
@@ -187,6 +231,8 @@ data:{
             mobile: e.detail.value
         });
 
+
+
     },
 
     passwordFn:function (e) {
@@ -197,6 +243,7 @@ data:{
 
             password: e.detail.value
         });
+
 
     },
 

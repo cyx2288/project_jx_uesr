@@ -3,6 +3,7 @@
 
 
 <!--工资-->
+<view class="details_list">
 
 <view class="wages_middle">
 
@@ -13,13 +14,13 @@
 
             <view class="weui_title">
 
-                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.entName}}工资发放</view>
+                <view wx:if="{{item.transType==1}}" class="weui-media-box__title weui-media-box__title_in-text">工资发放</view>
 
                 <view wx:elif="{{item.transType==8}}"class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
 
-                <view wx:elif="{{item.transType==4}}"class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
+                <view wx:elif="{{item.transType==6}}"class="weui-media-box__title weui-media-box__title_in-text">提现退款</view>
 
-                <view wx:else class="weui-media-box__title weui-media-box__title_in-text"></view>
+                <!--<view wx:else class="weui-media-box__title weui-media-box__title_in-text"></view>-->
 
                 <view class="weui_confirm">{{item.transAmt}}</view>
             </view>
@@ -30,7 +31,7 @@
         </view>
 
     </view>
-    <hr/>
+
 
 
 
@@ -84,7 +85,7 @@
     <hr/>-->
 
 </view>
-
+</view>
 <view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
 </view>

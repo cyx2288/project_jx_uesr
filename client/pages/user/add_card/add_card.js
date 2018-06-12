@@ -5,7 +5,7 @@ var addBankList = {
 
     addBankArray: [
 
-        ['中国银行', '农业银行', '建设银行', '交通银行', '中国邮政储蓄银行', '广发银行', '浦发银行', '浙江泰隆商业银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州商业银行'],
+        ['中国银行', '农业银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州商业银行'],
 
         ['储蓄卡', '信用卡'],
 
@@ -16,6 +16,8 @@ var addBankList = {
 const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
+
+
 
 const addBankUrl = '/user/bank/addbankcardinfo';
 
@@ -35,7 +37,7 @@ Page({
 
         bankBranch: '',//卡户支行
 
-        province: '',//开户省份
+        province: '请选择开户地区',//开户省份
 
         city: '',//开户城市
 
@@ -57,9 +59,11 @@ Page({
 
         multiArray: [
 
-            ['中国银行', '农业银行','工商银行', '建设银行', '交通银行', '中国邮政储蓄银行', '广发银行', '浦发银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都银行', '徽商银行'],
+            ['中国银行', '农业银行','工商银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都商业银行', '徽商银行'],
 
-            ['储蓄卡', '信用卡']
+            ['储蓄卡']
+
+            /*['储蓄卡', '信用卡']*/
 
         ]//银行卡
 
@@ -70,9 +74,11 @@ Page({
 
         var that = this;
 
+        var _isVerify = wx.getStorageSync('isVerify');
+
         var _userName = wx.getStorageSync('userName');
 
-        var _isVerify = wx.getStorageSync('isVerify');
+
 
 
         that.setData({
@@ -89,6 +95,10 @@ Page({
         that.loadProvince(1);
 
 
+
+
+
+
     },
 
     //获取省
@@ -96,7 +106,11 @@ Page({
 
         var that = this;
 
+
+
         var thatGetProvince = app.globalData.URL + getProvinces;
+
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
@@ -127,47 +141,83 @@ Page({
 
                 console.log(res.data);
 
-                var list = res.data.data;
+                //code3003返回方法
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                that.setData({
+                if(res.data.code=='3001') {
 
-                    cityData: res.data.data,
+                    //console.log('登录');
 
-                });
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                var citylistArr = [];
+                            setTimeout(function () {
 
-                //遍历数组 将城市名遍历出来组成新的数组
+                                wx.reLaunch({
 
-                for (var i = 0; i < list.length; i++) {
+                                    url:'../../common/signin/signin'
+                                })
 
+                            },1500)
 
-                    var cityList = res.data.data[i].addrName;
+                        }
 
-                    //组成数组
-                    citylistArr.push(cityList)
+                    })
+
+                    return false
+
 
                 }
 
-                //储存城市
-                that.setData({
-
-                    cityArr: citylistArr
-
-                });
+                else {
 
 
-                that.setData({
+                    var list = res.data.data;
 
-                    countries: [
+                    that.setData({
 
-                        that.data.cityArr,
+                        cityData: res.data.data,
 
-                        that.data.provinceArr
+                    });
 
-                    ]
+                    var citylistArr = [];
 
-                })
+                    //遍历数组 将城市名遍历出来组成新的数组
+
+                    for (var i = 0; i < list.length; i++) {
+
+
+                        var cityList = res.data.data[i].addrName;
+
+                        //组成数组
+                        citylistArr.push(cityList)
+
+                    }
+
+                    //储存城市
+                    that.setData({
+
+                        cityArr: citylistArr
+
+                    });
+
+
+                    that.setData({
+
+                        countries: [
+
+                            that.data.cityArr,
+
+                            that.data.provinceArr
+
+                        ]
+
+                    })
+
+                }
 
 
             },
@@ -189,7 +239,9 @@ Page({
 
         var that = this;
 
+
         var thisGetCity = app.globalData.URL + getCity;
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jx_sid');
@@ -289,6 +341,8 @@ Page({
 
 
 
+        console.log(that.data.province)
+
 
         /**
          * 接口：添加用户银行卡信息
@@ -336,7 +390,8 @@ Page({
 
         //判断是否写了开户地区
 
-            else if(!that.data.city&&!that.data.province){
+            else if(!that.data.city||!that.data.province){
+
 
             wx.showToast({
 
@@ -366,9 +421,9 @@ Page({
 
                     bankBranch: that.data.bankBranch,//卡户支行
 
-                    province: that.data.province,//开户省份
+                    province: that.data.city,//开户省份
 
-                    city: that.data.city//开户城市
+                    city: that.data.province//开户城市
 
                 }),
 
@@ -396,18 +451,6 @@ Page({
                             icon: 'none',
 
                         })
-
-                        wx.showLoading({
-                            title: '加载中',
-                        })
-
-
-                        setTimeout(function(){
-
-                            wx.hideLoading()
-
-                        },2000)
-
 
                         setTimeout(function(){
 
@@ -621,7 +664,7 @@ Page({
 
         that.setData({
 
-            city: that.data.cityArr[e.detail.value[0]] + ',',//开户城市
+            city: that.data.cityArr[e.detail.value[0]],//开户城市
 
             province: that.data.provinceArr[e.detail.value[1]],//开户省份
 

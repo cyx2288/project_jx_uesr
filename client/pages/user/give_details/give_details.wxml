@@ -1,188 +1,201 @@
 <wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
- <!--提现详情-->
+<!--提现详情-->
 
- <view class="wages_middle">
-
-     <view class="jx_asset">
-
-         <text class="asset_money">提现金额（元）</text>
-
-         <!--金额显示-->
-         <text class="money_number">{{orderAmount}}</text>
+<view class="wages_middle">
 
 
-     </view>
 
-     <view class="weui-panel">
-
-
-         <view class="step {{orderState=='0'||orderState=='2'||orderState=='5'? 'selected':''}}">
-             <view class="weui-loadmore">
-                 <view class="weui-loadmore__tips">1</view>
-             </view>
-             <text wx:if="{{orderState=='0'}}" class="status">待支付</text>
-             <text wx:elif="{{orderState=='5'}}" class="status">订单关闭</text>
-             <text wx:else class="status">付款成功</text>
-             <view class="border"></view>
-         </view>
+    <view class="weui-panel">
 
 
-         <view class="step {{orderState=='3'||orderState=='7'? 'selected':''}}">
-             <view class="weui-loadmore">
-                 <view class="weui-loadmore__tips">2</view>
-             </view>
-             <text wx:if="{{orderState=='7'||orderState=='4'}}"  class="status">退款中</text>
-             <text wx:else class="status">处理中</text>
-
-             <view class="border"></view>
-         </view>
-
-
-         <view class="step {{orderState=='4'||orderState=='1'? 'selected':''}}">
-             <view class="weui-loadmore">
-                 <view class="weui-loadmore__tips">3</view>
-             </view>
-             <text wx:if="{{orderState=='4'}}" class="status">已退款</text>
-             <text wx:else class="status">到账成功</text>
-         </view>
+        <view class="step {{orderState=='0'||orderState=='2'||orderState=='5'? 'selected':''}}">
+            <view class="weui-loadmore">
+                <view class="weui-loadmore__tips">1</view>
+            </view>
+            <text wx:if="{{orderState=='0'}}" class="status">待支付</text>
+            <text wx:elif="{{orderState=='5'}}" class="status">订单关闭</text>
+            <text wx:else class="status">付款成功</text>
+            <view class="border"></view>
+        </view>
 
 
-     </view>
+        <view class="step {{orderState=='3'||orderState=='7'? 'selected':''}}">
+            <view class="weui-loadmore">
+                <view class="weui-loadmore__tips">2</view>
+            </view>
+            <text wx:if="{{orderState=='7'||orderState=='4'}}"  class="status">退款中</text>
+            <text wx:else class="status">处理中</text>
 
-     <view class="wages_middle">
-
-         <!--明细-->
-         <view class="cash_step">
-
-             <view class="weui-media-box weui-media-box_text">
-
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
-                     <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
-                     <view wx:elif="{{orderState=='1'}}" class="weui_confirm">到账成功</view>
-                     <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
-                     <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
-                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
-                     <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
-                     <view wx:elif="{{orderState=='7'}}" class="weui_confirm">退款中</view>
-
-             </view>
-
-             </view>
-
-         </view>
-
-         <!--明细-->
-         <view class="cash_step">
-
-             <view class="weui-media-box weui-media-box_text">
-
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
-                     <view class="weui_confirm">￥{{orderAmount}}</view>
-                 </view>
-
-             </view>
-
-         </view>
-
-         <!--明细-->
-         <view class="cash_step">
-
-             <view class="weui-media-box weui-media-box_text">
-
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">手续费</view>
-                     <view class="weui_confirm">￥{{rateAmount}}</view>
-                 </view>
-
-             </view>
-
-         </view>
-
-         <!--明细-->
-         <view class="cash_step">
-
-             <view class="weui-media-box weui-media-box_text">
-
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">支付金额</view>
-                     <view class="weui_confirm">￥{{payAmount}}</view>
-                 </view>
-
-             </view>
-
-         </view>
+            <view class="border"></view>
+        </view>
 
 
-     </view>
+        <view class="step {{orderState=='4'||orderState=='1'? 'selected':''}}">
+            <view class="weui-loadmore">
+                <view class="weui-loadmore__tips">3</view>
+            </view>
+            <text wx:if="{{orderState=='4'}}" class="status">已退款</text>
+            <text wx:else class="status">完成</text>
+        </view>
 
-     <view class="wages_middle">
-         <!--明细-->
 
-         <view class="cash_step">
+    </view>
 
-             <view class="weui-media-box weui-media-box_text">
+    <view class="jx_asset">
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
-                     <view class="weui_confirm">{{filter.formatTime(createTime,'-')}}</view>
-                 </view>
+        <view class="asset_money"><image src="../../../static/icon/wages/jx_money.png"></image>提现金额（元）</view>
 
-             </view>
+        <!--金额显示-->
+        <text class="money_number">{{orderAmount}}</text>
 
-         </view>
-         <!--明细-->
 
-         <view class="cash_step">
+    </view>
 
-             <view class="weui-media-box weui-media-box_text">
+    <view class="wages_middle wages_box">
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">订单号</view>
-                     <view class="weui_confirm">{{orderId}}</view>
-                 </view>
+        <!--明细-->
+        <view class="cash_step">
 
-             </view>
+            <view class="weui-media-box weui-media-box_text">
 
-         </view>
-         <!--明细-->
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">提现状态</view>
+                    <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
+                    <view wx:elif="{{orderState=='1'}}" class="weui_confirm">完成</view>
+                    <view wx:elif="{{orderState=='2'}}"class="weui_confirm">付款成功</view>
+                    <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
+                    <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
+                    <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
+                    <view wx:elif="{{orderState=='7'}}" class="weui_confirm">退款中</view>
 
-         <view class="cash_step">
+                </view>
 
-             <view class="weui-media-box weui-media-box_text">
+            </view>
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">银行</view>
-                     <view class="weui_confirm">{{bankName}}</view>
-                 </view>
+        </view>
 
-             </view>
+        <hr/>
 
-         </view>
-         <!--明细-->
+        <!--明细-->
+        <view class="cash_step">
 
-         <view class="cash_step">
+            <view class="weui-media-box weui-media-box_text">
 
-             <view class="weui-media-box weui-media-box_text">
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
+                    <view class="weui_confirm">￥{{orderAmount}}</view>
+                </view>
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">卡号</view>
-                     <view class="weui_confirm">{{bankNo}}</view>
-                 </view>
+            </view>
 
-             </view>
+        </view>
 
-         </view>
+        <hr/>
 
-      </view>
+        <!--明细-->
+        <view class="cash_step">
 
- </view>
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">手续费</view>
+                    <view class="weui_confirm">￥{{rateAmount}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <hr/>
+
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">支付金额</view>
+                    <view class="weui_confirm">￥{{payAmount}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+    </view>
+
+    <view class="wages_middle wages_box">
+        <!--明细-->
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
+                    <view class="weui_confirm">{{filter.formatTime(createTime,'-')}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <!--明细-->
+
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单号</view>
+                    <view class="weui_confirm">{{orderId}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <!--明细-->
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">银行</view>
+                    <view class="weui_confirm">{{bankName}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <!--明细-->
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">卡号</view>
+                    <view class="weui_confirm">{{bankNo}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+    </view>
+
+</view>
 
 <view class="weui-btn-area {{orderState=='0'?'show_btn':'hide'}}">
 
-        <button class="weui-btn" type="primary" bindtap="payFn">去支付</button>
+    <button class="weui-btn orange_btn" type="primary" bindtap="payFn">去支付</button>
 
 </view>
+
 
 

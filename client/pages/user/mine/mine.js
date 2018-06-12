@@ -1,36 +1,39 @@
-
 const app = getApp();
 
-const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
+const mineUrl = '/user/center/usercenter';//用户中心
 
-const mineUrl ='/user/center/usercenter';//用户中心
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
-const joinEntURL = '/user/workunit/selectisjoinent'//有带加入企业
+const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
-
+const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 
 Page({
 
-    data:{
+    data: {
 
 
-        mobile:'',//个人中心手机号
+        mobile: '',//个人中心手机号
 
-        wages:'',//工资余额
+        wages: '',//工资余额
 
-        hasJoinEnt:true,//默认不显示有新的邀请 true为不显示 false为显示
+        hasJoinEnt: true//默认不显示有新的邀请 true为不显示 false为显示
 
 
     },
 
-    onShow:function () {
+    onShow: function () {
 
-        //console.log('刷新')
+        //有几个ajax请求
+        var ajaxCount = 3;
 
-        var thisMineurl = app.globalData.URL+ mineUrl;
+        var thisMineurl = app.globalData.URL + mineUrl;
 
         var thisJoinEntURL = app.globalData.URL + joinEntURL;
+
+        //获取用户余额
+        var thisBalanceUrl = app.globalData.URL + balanceUrl;
 
         var that = this;
 
@@ -38,10 +41,6 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-
-        //获取余额
-        var thisWages = wx.getStorageSync('wages');
-
 
 
         /**
@@ -52,55 +51,97 @@ Page({
          **/
         wx.request({
 
-            url:  thisMineurl,
+            url: thisMineurl,
 
-            method:'POST',
+            method: 'POST',
 
             header: {
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
-                var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7)
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+                else {
+
+
+                var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7);
 
                 //存储手机号码
-               that.setData({
+                that.setData({
 
-                    mobile:_mobile
+                    mobile: _mobile
                 });
 
-                //存储余额
-                that.setData({
-                    wages:thisWages
-                })
 
                 //获取手机号
-                wx.setStorageSync('mobile',res.data.data.mobile);
+                wx.setStorageSync('mobile', res.data.data.mobile);
 
                 //获取是否设置密码
-                wx.setStorageSync('isPayPwd',res.data.data.isPayPwd);
+                wx.setStorageSync('isPayPwd', res.data.data.isPayPwd);
 
                 //是否开启验证
-                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+                wx.setStorageSync('isSecurity', res.data.data.isSecurity);
+
+                //存姓名和身份证
+                wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                wx.setStorageSync('userName', res.data.data.userName);
+
+                //是否实名认证
+                wx.setStorageSync('isVerify', res.data.data.isVerify);
 
 
-                //是否开启验证
-                wx.setStorageSync('isVerify',res.data.data.isVerify);
+                (function countDownAjax() {
 
-                //console.log('认证'+wx.getStorageSync('isVerify'))
+                    ajaxCount--;
 
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
+
+                }
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
             }
@@ -116,19 +157,19 @@ Page({
          **/
         wx.request({
 
-            url:  thisJoinEntURL,
+            url: thisJoinEntURL,
 
-            method:'GET',
+            method: 'GET',
 
             header: {
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
@@ -137,11 +178,11 @@ Page({
 
                 var hasEntType = res.data.data.type;
 
-                if(hasEntType=='1'){
+                if (hasEntType == '1') {
 
                     that.setData({
 
-                        hasJoinEnt:false,
+                        hasJoinEnt: false,
 
                     })
 
@@ -151,30 +192,95 @@ Page({
 
                     that.setData({
 
-                        hasJoinEnt:true
+                        hasJoinEnt: true
 
                     })
 
                 }
 
+                (function countDownAjax() {
 
+                    ajaxCount--;
 
+                    app.globalData.ajaxFinish(ajaxCount)
 
+                })();
 
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
             }
 
         })
 
+        /**
+         * 接口：获取用户余额
+         * 请求方式：GET
+         * 接口：/user/account/getbalance
+         * 入参：null
+         **/
+        wx.request({
+
+            url: thisBalanceUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+
+                console.log(res.data);
+
+                that.setData({
+
+                    wages: radixPointFn.splitK(res.data.data)//用户余额
+
+                });
+
+                //获取余额
+                wx.setStorageSync('wages', res.data.data);
+
+                (function countDownAjax() {
+
+                    ajaxCount--;
+
+                    app.globalData.ajaxFinish(ajaxCount)
+
+                })();
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
     },
 
+    //转发
+    onShareAppMessage: function () {
+        return {
+            title: '嘉薪平台',
+            path: '/pages/common/signin/signin',
+            imageUrl:'/static/icon/logo/share.jpg'
 
-
+        }
+    },
 
 
 });

@@ -14,6 +14,8 @@ Page({
 
     data:{
 
+        mobile:'',
+
         last_time:'',//倒计时
 
         thisPayMsg:'',//短息验证码
@@ -26,6 +28,11 @@ Page({
     onLoad:function () {
 
         var that=this;
+
+        //有几个ajax请求
+        var ajaxCount = 1;
+
+        var _mobile = wx.getStorageSync('mobile');
 
         //缓存修改方式
         var payMode = wx.getStorageSync('jxPayMode');
@@ -40,12 +47,18 @@ Page({
         that.setData({
 
             locked:0,
+
+            mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
+            
+            
         })
+
+
 
         /**
          * 接口：短信验证码
          * 请求方式：GET
-         * 接口：/jx/action/paymsg
+         * 接口：/jx/action/closepaymsg
          **/
 
         wx.request({
@@ -66,11 +79,54 @@ Page({
 
                 console.log(res.data.msg);
 
-                wx.showToast({
-                    title: res.data.msg,
-                    icon: 'none',
-                    duration: 2000
-                })
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+                else {
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+
+                    })
+
+                }
 
             },
 
@@ -147,7 +203,7 @@ Page({
 
         });
 
-        if(e.detail.value.length==6){
+/*        if(e.detail.value.length==6){
 
 
             that.setData({
@@ -158,7 +214,7 @@ Page({
 
 
 
-        }
+        }*/
 
     },
 
@@ -171,83 +227,114 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：设置支付方式
-         * 请求方式：POST
-         * 接口：/user/set/getpaymode
-         **/
 
-        wx.request({
+        if(!that.data.thisPayMsg){
 
-            url: app.globalData.URL+updatepaymode,
+            wx.showToast({
 
-            method: 'POST',
+                title: '请输入验证码',
+                icon: 'none',
 
-            header: {
-
-                'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            data:json2FormFn.json2Form({
-
-                msgMode:0,
-
-                pwdMode:0,
-
-                code:that.data.thisPayMsg
-
-            }),
-
-            success: function (res) {
-
-                if(res.data.code=='0000'){
-
-                    console.log(res.data.msg)
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
-
-                        success:function () {
-
-                            setTimeout(function () {
-                                wx.redirectTo({url:'../payment_setting/payment_setting'})
-                            },2000)
-
-                        }
-                    })
+            })
 
 
+
+        }
+
+        else if(that.data.thisPayMsg.length<6){
+
+            wx.showToast({
+
+                title: '输入的验证码有误',
+                icon: 'none',
+
+            })
+
+        }
+
+        else {
+
+
+            /**
+             * 接口：设置支付方式
+             * 请求方式：POST
+             * 接口：/user/set/getpaymode
+             **/
+
+            wx.request({
+
+                url: app.globalData.URL+updatepaymode,
+
+                method: 'POST',
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                data:json2FormFn.json2Form({
+
+                    msgMode:0,
+
+                    pwdMode:0,
+
+                    code:that.data.thisPayMsg
+
+                }),
+
+                success: function (res) {
+
+                    if(res.data.code=='0000'){
+
+                        console.log(res.data.msg)
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 2000,
+
+                            success:function () {
+
+                                setTimeout(function () {
+                                    wx.redirectTo({url:'../payment_setting/payment_setting'})
+                                },2000)
+
+                            }
+                        })
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 2000,
+
+                        })
+
+                    }
+
+
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
                 }
 
-                else {
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000,
-
-                    })
-
-                }
+            })
 
 
-
-
-            },
-
-            fail: function (res) {
-
-                console.log(res)
-            }
-
-        })
+        }
 
     },
 
@@ -255,7 +342,12 @@ Page({
 
         var that = this;
 
-        var countdown = 6;
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        var countdown = 60;
 
         settime(that);
 
@@ -269,7 +361,7 @@ Page({
 
                 });
 
-                countdown = 6;
+                countdown = 60;
 
                 return;
 
@@ -291,6 +383,46 @@ Page({
 
 
         }
+
+
+        /**
+         * 接口：短信验证码
+         * 请求方式：GET
+         * 接口：/jx/action/closepaymsg
+         **/
+
+        wx.request({
+
+            url: app.globalData.URL+paymsg,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data.msg);
+
+                wx.showToast({
+                    title: res.data.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+
+            },
+
+
+            fail: function (res) {
+                console.log(res)
+            }
+
+        });
 
     }
 

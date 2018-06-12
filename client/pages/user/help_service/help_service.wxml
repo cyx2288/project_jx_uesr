@@ -64,21 +64,21 @@
 
 </view>
 
-
 <!--底部tab-->
 
 <view class="tab_bottom">
 
-<!--    <view type="default" bindtap="openConfirm" class="online_service">
+    <button class="kf_button" open-type="contact">
 
-        <image src="../../../static/icon/wages/jx_online.png" class="jx_cash"/>
+        <image class="kf_image" src="../../../static/icon/wages/j_service_orange.png"/>
+
         <text class="service_title">在线客服</text>
 
-    </view>-->
+    </button>
 
     <view class="online_service" bindtap="openConfirm">
 
-        <image src="../../../static/icon/wages/jx_tel.png" class="jx_cash"/>
+        <image src="../../../static/icon/wages/jx_tel_orange.png" class="jx_cash"/>
         <text class="service_title">电话咨询</text>
 
     </view>

@@ -6,6 +6,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const mineUrl ='/user/center/usercenter';//用户中心
+
 const getpaymodeUrl = '/user/set/getpaymode';//查询支付方式
 
 const updatepaymode = '/user/set/updatepaymode';//设置支付方式
@@ -21,16 +23,91 @@ Page({
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var that = this;
 
         var thisgetpaymodeUrl = app.globalData.URL + getpaymodeUrl;
 
+        var thisMineurl = app.globalData.URL+ mineUrl;
+
          //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url:  thisMineurl,
+
+            method:'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function(res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+                else {
+
+                    //获取是否设置密码
+                    wx.setStorageSync('isPayPwd', res.data.data.isPayPwd);
+
+                }
+
+
+            },
+
+            fail:function (res) {
+
+                console.log(res)
+            }
+
+        })
+
 
 
         /**
@@ -59,39 +136,73 @@ Page({
 
                 console.log(res)
 
-                if (res.data.data.isSecurity == 1) {//短信验证
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    that.setData({
+                if(res.data.code=='3001') {
 
-                        msgMode: true,
+                    //console.log('登录');
 
-                        pwdMode: false
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    });
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
 
                 }
 
-                else if (res.data.data.isSecurity == 2) {//支付验证
+                else {
 
-                    that.setData({
+                    if (res.data.data.isSecurity == 1) {//短信验证
 
-                        msgMode: false,
+                        that.setData({
 
-                        pwdMode: true
+                            msgMode: true,
 
-                    });
+                            pwdMode: false
 
-                }
+                        });
 
-                else if (res.data.data.isSecurity == 3) {//免密
+                    }
 
-                    that.setData({
+                    else if (res.data.data.isSecurity == 2) {//支付验证
 
-                        msgMode: false,
+                        that.setData({
 
-                        pwdMode: false
+                            msgMode: false,
 
-                    });
+                            pwdMode: true
+
+                        });
+
+                    }
+
+                    else if (res.data.data.isSecurity == 3) {//免密
+
+                        that.setData({
+
+                            msgMode: false,
+
+                            pwdMode: false
+
+                        });
+
+                    }
 
                 }
 
@@ -121,6 +232,8 @@ Page({
                 title: '提示',
 
                 content: '是不是需要关闭短信动态验证',
+
+                confirmColor:'#fe9728',
 
                 success: function (res) {
 
@@ -270,6 +383,8 @@ Page({
                 title: '提示',
 
                 content: '是不是需要关闭支付密码验证',
+
+                confirmColor:'#fe9728',
 
                 success: function (res) {
 
@@ -421,39 +536,94 @@ Page({
                 }
                //
                else {//没有设置过
-               //
-                     console.log('没设置过')
-               //
 
-                    wx.showModal({
+                     console.log('没设置过');
 
-                        title: '提示',
+                    var _isVerify = wx.getStorageSync('isVerify');
 
-                        content: '请先设置支付验证码',
 
-                        success: function (res) {
 
-                            if (res.confirm) {
+                    //没有认证的先去认证 再设置支付密码
+                    if(_isVerify=='0'){
 
-                                console.log('用户点击确定')
 
-                                wx.redirectTo({url: '../code/code'})
-                                
-                            } else if (res.cancel) {
+                        wx.showModal({
+                            title: '提示',
+                            content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
+                            cancelText: '取消',
+                            confirmText: '去认证',
+                            confirmColor:'#fe9728',
+                            success: function (res) {
 
-                                console.log('用户点击取消');
+                                if (res.confirm) {
 
-                                that.setData({
+                                    wx.navigateTo({
 
-                                    pwdMode: false
+                                        url: '../no_certification/certification'
 
-                                });
+                                    })
+
+
+                                }
+
+                                else if (res.cancel) {
+
+                                    that.setData({
+
+                                        pwdMode: false
+
+                                    });
+
+
+                                }
+                            }
+                        });
+
+
+
+
+                    }
+
+                    else {
+
+                        wx.showModal({
+
+                            title: '提示',
+
+                            content: '请先设置支付验证码',
+
+                            confirmColor:'#fe9728',
+
+                            success: function (res) {
+
+                                if (res.confirm) {
+
+                                    console.log('用户点击确定')
+
+                                    wx.redirectTo({url: '../code/code'})
+
+                                } else if (res.cancel) {
+
+                                    console.log('用户点击取消');
+
+                                    that.setData({
+
+                                        pwdMode: false
+
+                                    });
+
+                                }
 
                             }
 
-                        }
+                        })
 
-                    })
+
+                    }
+
+
+
+
 
 
 

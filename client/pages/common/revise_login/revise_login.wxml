@@ -6,10 +6,12 @@
             <view class="weui-cell__hd">
                 <view class="weui-label">原密码</view>
             </view>
+
             <view class="weui-cell__bd">
                 <input class="weui-input" placeholder="请输入原密码" value="{{mobile}}" bindchange="telFn"/>
             </view>
         </view>
+
         <view class="weui-cell weui-cell_input weui-cell_vcode">
             <view class="weui-cell__hd">
                 <view class="weui-label">新密码</view>
@@ -19,6 +21,7 @@
             </view>
 
         </view>
+
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label">确认密码</view>

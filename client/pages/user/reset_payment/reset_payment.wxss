@@ -1,4 +1,1 @@
-.setting_list{
-
-    font-size: 14px;
-}
+@import "../setting/setting.wxss";

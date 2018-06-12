@@ -3,6 +3,8 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
+
 const billUrl ='/user/withdraw/getsimplerecord';//我的账单的url
 
 
@@ -83,57 +85,109 @@ Page({
 
                     //console.log(that.data.pageNum);
 
-                    var _billList = res.data.data.list;
 
-                    //如果没有数据
-                    if (!that.data.noData) {
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
+                    if(res.data.code=='3001') {
 
-                    }
+                        //console.log('登录');
 
-                    else if (!res.data.data.list||res.data.data.list.length == 0) {//这一组为空
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
+                                setTimeout(function () {
 
+                                    wx.reLaunch({
 
-                        //增加数组内容
-                        that.setData({
+                                        url:'../../common/signin/signin'
+                                    })
 
-                            noData: false,
+                                },1500)
 
-                        })
-
-                    }
-
-
-                    else if (res.data.data.list.length < 10) {//这一组小于十个
-
-                        //增加数组内容
-                        that.setData({
-
-                            noData: false,
-
-                            billList: that.data.billList.concat(_billList),
-
+                            }
 
                         })
+
+                        return false
+
 
                     }
 
                     else {
 
-                        //console.log('增加成功')
 
-                        //增加数组内容
-                        that.setData({
+                        var _billList = res.data.data.list;
 
-                            billList: that.data.billList.concat(_billList),
+                        //console.log(_billList.length)
 
-                            pageNum: that.data.pageNum + 1//加一页
+                        //onsole.log(_billList)
 
-                        })
+
+                        //转换数据
+                        function addDList() {
+
+
+                            for (var j = 0; j < _billList.length; j++) {
+
+                                _billList[j].orderAmount = radixPointFn.splitK(_billList[j].orderAmount)
+
+                            }
+
+                        }
+
+                        //console.log(res.data.data.list)
+                        //如果没有数据
+                        if (!that.data.noData) {
+
+
+                        }
+
+                        else if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
+
+                            that.setData({
+
+                                noData: false,
+
+                            })
+
+                        }
+
+
+                        else if (res.data.data.list.length < 10) {//这一组小于十个
+
+                            addDList()
+
+                            //增加数组内容
+                            that.setData({
+
+                                noData: false,
+
+                                billList: that.data.billList.concat(_billList),
+
+                            })
+
+
+                        }
+
+                        else {
+
+                            addDList()
+                            //增加数组内容
+                            that.setData({
+
+                                billList: that.data.billList.concat(_billList),
+
+                                pageNum: that.data.pageNum + 1//加一页
+
+                            })
+
+
+                        }
 
                     }
-
 
 
                 },

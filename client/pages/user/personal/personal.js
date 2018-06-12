@@ -34,7 +34,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         /**
          * 接口：
@@ -63,21 +64,63 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('idNumber',res.data.data.idNumber);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                wx.setStorageSync('isVerify',res.data.data.isVerify);
+                if(res.data.code=='3001') {
 
-                that.setData({
+                    //console.log('登录');
 
-                    mobile:res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    isVerify:res.data.data.isVerify,
+                            setTimeout(function () {
 
-                    idNumber:res.data.data.idNumber
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
 
 
-                });
+                }
 
+                else {
+
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+                    wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                    wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                    that.setData({
+
+                        mobile: res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
+
+                        isVerify: res.data.data.isVerify,
+
+                        idNumber: res.data.data.idNumber
+
+
+                    });
+
+                }
 
             },
 
@@ -106,14 +149,22 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
+
+
         wx.showModal({
             title: '提示',
             content: '确定要退出登录？',
             cancelText: '取消',
             confirmText: '确定',
+            confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {
+
+                    wx.removeStorageSync('jxsid');
+
+                    wx.removeStorageSync('Authorization');
+
 
                     logOut();
 
@@ -157,14 +208,48 @@ Page({
 
                     var thisCode = res.data.code;
 
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    if(thisCode =='0000'){
+                    if(res.data.code=='3001') {
 
-                        //跳回登录页
-                        wx.reLaunch({
+                        //console.log('登录');
 
-                            url:'../../common/signin/signin'
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
                         })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if (thisCode == '0000') {
+
+                            //跳回登录页
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }
 
                     }
 
@@ -183,6 +268,58 @@ Page({
 
 
     },
+
+
+    onclickCertificationFn:function () {
+
+
+        var that = this;
+
+        var _isVerify = that.data.isVerify
+
+        //console.log(_isVerify)
+
+        //如果为1跳转的页面名字和身份证不能修改
+
+        if(_isVerify=='1'){
+
+            wx.navigateTo({
+
+
+                url:"../certification/certification"
+            })
+
+        }
+
+        //如果为0跳转的页面名字和身份证可修改
+
+        else if(_isVerify=='0'){
+
+
+            //存指定的页面
+            /*wx.setStorageSync('hrefId','1');*/
+
+            wx.navigateTo({
+
+
+                url:"../no_certification/certification"
+            })
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
 
 

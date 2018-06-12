@@ -1,50 +1,68 @@
 
 
 page{
-    background-color: #ebebeb;
+
     width: 100%;
     height: 100%;
 }
 
 .jx_asset{
-
-    padding: 20rpx 0;
-    background-color: #FFF2E8;
-    width: 100%;
+    position: relative;
+    padding: 60rpx 6%;
+    background-color: #ea5e26;
+    width: 88%;
+    height: 200rpx;
     text-align: center;
 
 }
 
 .asset_money {
+
     padding: 20rpx 0;
-    color: #8a8a8a;
+    color: #ffc7b0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 
 }
 
 
 .money_number{
 
-    color: #ff4646;
-    font-size: 26px;
+    color: #fff;
+    font-size: 32px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 
 }
 .see_number{
 
-    width: 100%;
+    /* width: 100%;*/
     height: 50rpx;
 }
 .payment_seller{
     width: 100%;
     height: 100%;
 }
+.jx_wave{
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
-
+.money_icon{
+    display: flex;
+    justify-content: space-between;
+}
 
 /*下拉选择*/
+
+.selected_box{
+
+    border: 1px solid #fe9728;
+    border-radius: 5px;
+    padding: 10rpx 20rpx;
+}
 
 .phone_personal{
     width: 100%;
@@ -52,13 +70,17 @@ page{
     line-height:100rpx;
     padding: 0 20px;
 }
+.phone_personal >span{
+
+    color: #fe9728;
+
+}
 .phone_one{
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color:#fff;
     width:100%;
-    border-bottom:1rpx solid #ebebeb;
+
 
 }
 .person_box{
@@ -66,29 +88,56 @@ page{
 }
 .phone_select{
     margin-top:0;
-    z-index: 100;
-    position: absolute;
-    box-shadow: 2px 2px 2px #ddd;
+    z-index:100;
+    position:absolute;
+    box-shadow:2px 2px 2px #ddd;
+    top:-10rpx;
+    left:30rpx;
+    border-radius:5px;
+    overflow:hidden;
+
+
 }
 
-.select_one:hover{
+
+.select_one:active{
     color: #E87B17;
 }
-
+.select_one image{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
 
 .select_one{
-    text-align: center;
+    text-align: left;
     background-color: #fff;
-    width:420rpx;
-    height:80rpx;
+    max-width:500rpx;
+    padding: 10rpx 20rpx;
     line-height:80rpx;
     color: #4a4a4a;
-    border-bottom:1rpx solid #ddd;
+    border-bottom:1rpx solid #f5f5f5;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
 }
+.select_one.is_checked{
+
+    background-color: rgb(254,246,243);
+    color: #E87B17;
+    border-left: 4px solid #E87B17;
+
+
+}
+
 
 .select_one:last-child{
     border-bottom: none;
 }
+
+
 
 .personal_image,.jx_open{
     z-index: 100;
@@ -97,13 +146,13 @@ page{
     vertical-align: middle;
     transition: All 0.4s ease;
     -webkit-transition: All 0.4s ease;
-
 }
-.jx_open{
-     margin:20rpx auto;
-     text-align: center;
-     display: block;
 
+
+.jx_open{
+    margin:20rpx auto;
+    text-align: center;
+    display: block;
 }
 
 .rotateRight{
@@ -111,28 +160,87 @@ page{
 }
 
 /*工资列表*/
+.jx_money{
+    width:20px;
+    margin-right:5px;
+    vertical-align:top;
+    margin-top:2px;
 
+}
 .weui_title{
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wages_title{
+    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     vertical-align: middle;
-
+    margin-bottom: 30rpx;
 }
+
+.wages_title:after{
+
+    content: '';
+    position: absolute;
+    bottom:-8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #ddd;
+    transform: scaleY(.6);
+}
+
+view.weui-media-box__title{
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
 .weui_confirm{
-
-    color: #ababab
-
+    color:#fe9728 ;
+}
+.already_confirm .weui_confirm{
+    color: #ababab;
 }
 .orange{
-    color: #E87B17;
+    color: #fe9728;
 }
 
+.weui-media-box__info{
+    color: #999;
+    font-size: 16px;
+}
+.weui-media-box__info__meta{
+    padding: 0;
+}
+text.weui-media-box__info__meta{
+    color:#fe9728 ;
+}
+.navigator-hover{
+    opacity: 1;
+}
 .weui-panel{
-   /* margin: 10px auto;
-    width: 96%;
-    border-radius: 10px;*/
-margin: 0;
+    margin:30rpx auto;
+    width:90%;
+    border-radius: 5px;
+    border-left: 5px #fe9728 solid;
+    box-shadow: 2px 2px 2px #f4f4f4;
 }
 
+.already_confirm{
+    border-left: 5px #ababab solid;
+}
+
+
+.weui-media-box__desc {
+    font-size: 16px;
+    color:#999;
+    overflow: auto;
+
+}
 
 

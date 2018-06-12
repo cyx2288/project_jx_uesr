@@ -1,12 +1,12 @@
 <wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
 
 <!--我的账单-->
-
-<view class="wages_middle">
+<view class="bill_list">
+<view class="wages_middle bill_box">
 
     <!--明细-->
     <view class="weui-panel" wx:for="{{billList}}" bindtap="clickBill" data-no="{{item.orderId}}">
-        <view class="weui-media-box weui-media-box_text box"  >
+        <view class="weui-media-box weui-media-box_text box">
 
             <view class="icon_record">
 
@@ -22,21 +22,23 @@
             </view>
 
             <view class="weui_right">
-                <view wx:if="{{item.orderState=='0'}}" class="weui_confirm">待支付</view>
-                <view wx:elif="{{item.orderState=='1'}}" class="weui_confirm">到账成功</view>
-                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm">付款成功</view>
-                <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm">处理中</view>
-                <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm">已退款</view>
-                <view wx:elif="{{item.orderState=='5'}}" class="weui_confirm">订单关闭</view>
-                <view wx:elif="{{item.orderState=='7'}}" class="weui_confirm">退款中</view>
                 <view class="weui_confirm">￥{{item.orderAmount}}</view>
+                <view wx:if="{{item.orderState=='0'}}" class="weui_confirm orange">待支付</view>
+                <view wx:elif="{{item.orderState=='1'}}" class="weui_confirm orange">完成</view>
+                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm orange">付款成功</view>
+                <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm orange">处理中</view>
+                <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm gary">已退款</view>
+                <view wx:elif="{{item.orderState=='5'}}" class="weui_confirm gary">订单关闭</view>
+                <view wx:elif="{{item.orderState=='7'}}" class="weui_confirm gary">退款中</view>
+
             </view>
         </view>
 
     </view>
 
-</view>
 
+</view>
+</view>
 <view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
 </view>

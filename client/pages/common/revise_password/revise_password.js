@@ -157,7 +157,29 @@ Page({
 
                     console.log(res.data)
 
-                    if(res.data.code=='-1'){
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='0000'){
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'success',
+                        });
+
+                        setTimeout(function () {
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+                        },1000)
+
+
+                    }
+
+                    else{
 
                         wx.showToast({
                             title: res.data.msg,
@@ -166,23 +188,7 @@ Page({
 
                     }
 
-                    else if(res.data.code=='0000'){
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'success',
-                        });
-
-                        wx.navigateBack({
-                            delta: 1
-                        })
-
-                      /*  wx.redirectTo({
-
-                            url:'../../user/setting/setting'
-                        })*/
-
-                    }
                 },
 
                 fail:function (res) {

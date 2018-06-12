@@ -47,6 +47,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         var thisDentityUrl = app.globalData.URL+dentityUrl;
 
         //缓存jx_sid&&Authorization数据
@@ -87,57 +90,113 @@ Page({
 
             success: function (res) {
 
-                var thisCode = res.data.code;
-
                 console.log(res.data);
 
-                //console.log(res.data.data[0].entId)
+                //code3003返回方法
+                app.globalData.repeat(res.data.code,res.data.msg);
 
+                if(res.data.code=='3001') {
 
-                //判断验证码
-                if(thisCode == '-1'){
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-                        icon: 'none'
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    });
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
 
                 }
 
-                //验证成功后显示工资
-                else if (thisCode == '0000'){
+                else {
 
-                    //跳转首页
+                    var thisCode = res.data.code;
 
-                    if(thisType=='2'){
 
-                        console.log('跳转')
 
-                        wx.switchTab({
+                    //console.log(res.data.data[0].entId)
 
-                             url:'../../wages/index/index'
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+
+                    //判断验证码
+                    if (thisCode == '-1') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none'
+
+                        });
+
+                    }
+
+                    else if (thisCode == '-2') {
+
+
+                        wx.redirectTo({
+
+                            url: '../../user/locked/locked'
+
                         })
 
 
                     }
 
-                    //跳转工资明细
+                    //验证成功后显示工资
+                    else if (thisCode == '0000') {
 
-                    else if(thisType=='1'){
+                        //跳转首页
 
-                        //关闭当前页面
-                        wx.redirectTo({
+                        if (thisType == '2') {
 
-                            url:'../../wages/payroll/payroll'
+                            console.log('跳转')
 
-                        });
+                            wx.switchTab({
 
+                                url: '../../wages/index/index'
+                            })
+
+
+                        }
+
+                        //跳转工资明细
+
+                        else if (thisType == '1') {
+
+                            //关闭当前页面
+                            wx.redirectTo({
+
+                                url: '../../wages/payroll/payroll'
+
+                            });
+
+
+                        }
 
 
                     }
-
 
                 }
 

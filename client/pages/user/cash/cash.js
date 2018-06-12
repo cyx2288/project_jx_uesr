@@ -28,7 +28,7 @@ Page({
 
         code: '',//短信验证
 
-        bankList: [],//银行卡列表数组
+        /*bankList: [],//银行卡列表数组*/
 
         bankName: '',//银行名称
 
@@ -46,6 +46,10 @@ Page({
 
         rate: '',//费率
 
+        userBankCardDTOList:[],//显示用的字符串
+
+        bankList: [],//传给后台的数组
+
 
 
 
@@ -62,69 +66,42 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisBankList = wx.getStorageSync('bankList');
-
         var _isVerify = wx.getStorageSync('isVerify');
+
+        wx.showLoading({
+
+            title: '加载中',
+            mask:true,
+
+        })
+
+        setTimeout(function(){
+
+            wx.hideLoading()
+
+        },1000)
 
         //console.log(_isVerify)
 
-        //存储银行卡页面的数据
-        that.setData({
-
-            bizId: '',//订单id
-
-            bankCardId: '',//银行卡id
-
-            balance: '',//提取现金
-
-            inputBalance:'',//输入框里value的值
-
-            canCashBalance:'',//可以提现的金额
-
-            payPassword: '',//支付密码
-
-            code: '',//短信验证
-
-            //bankList: [],//银行卡列表数组
-
-            bankName: '',//银行名称
-
-            bankNo: '',//银行卡号
-
-            chooseBank: [],//picker中银行卡的数组
-
-            amountMax: '',//单笔最大限额
-
-            amountMin: '',//单笔最小限额
-
-            dayMaxAmount: '',//日最大额度
-
-            monthMaxAmount: '',//月最大额度
-
-            rate: '',//费率
-
-            bankList: thisBankList,
-
-        });
-
-
         //没认证的去认证
         if (_isVerify == '0') {
+
+            //存指定的页面
+            wx.setStorageSync('hrefId','4');
 
             wx.showModal({
                 title: '提示',
                 content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
                 cancelText: '取消',
                 confirmText: '去认证',
+                confirmColor:'#fe9728',
                 success: function (res) {
 
                     if (res.confirm) {
 
-
-
                         wx.navigateTo({
 
-                            url: '../certification/certification'
+                            url: '../no_certification/certification'
 
                         })
 
@@ -132,46 +109,8 @@ Page({
 
                     else if (res.cancel) {
 
-                        wx.switchTab({
-
-                            url: '../../wages/index/index'
-
-                        })
-                    }
-                }
-            });
-
-
-
-        }
-
-        //没银行卡的去添加银行卡
-        else if (that.data.bankList.length == 0) {
-
-
-            wx.showModal({
-                title: '提示',
-                content: ' 您还没有可用于提现的银行卡，请先添加一张储蓄卡',
-                cancelText: '取消',
-                confirmText: '去添加',
-                success: function (res) {
-
-                    if (res.confirm) {
-
-                        wx.navigateTo({
-
-                            url: '../add_card/add_card'
-
-                        })
-
-                    }
-
-                    else if (res.cancel) {
-
-                        wx.switchTab({
-
-                            url: '../../wages/index/index'
-
+                        wx.navigateBack({
+                            delta: 1
                         })
                     }
                 }
@@ -215,24 +154,114 @@ Page({
 
                     console.log(res.data);
 
+                    //console.log(that.data.userBankCardDTOList);
                     that.setData({
 
-                        balance: res.data.data.balance,//提取现金
-
-                        amountMax: res.data.data.amountMax,//单笔最大限额
-
-                        amountMin: res.data.data.amountMin,//单笔最小限额
-
-                        dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
-
-                        monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
-
-                        rate: res.data.data.rate,//费率
-
-                        canCashBalance:res.data.data.balance,
+                        userBankCardDTOList:res.data.data.userBankCardDTOList
 
                     })
 
+                    //console.log(that.data.userBankCardDTOList)
+
+
+                    if(res.data.code=='-7'){
+
+
+                        wx.showModal({
+                            title: '提示',
+                            content: res.data.msg,
+                            cancelText: '取消',
+                            confirmText: '去添加',
+                            confirmColor:'#fe9728',
+                            success: function (res) {
+
+                                if (res.confirm) {
+
+                                    wx.navigateTo({
+
+                                        url: '../add_card/add_card'
+
+                                    })
+
+                                }
+
+                                else if (res.cancel) {
+
+                                    wx.navigateBack({
+                                        delta: 1
+                                    })
+                                }
+                            }
+                        });
+                    }
+
+                    else {
+
+                        var thisBankList = that.data.userBankCardDTOList;
+
+
+                        that.setData({
+
+                            balance: res.data.data.balance,//提取现金
+
+                            amountMax: res.data.data.amountMax,//单笔最大限额
+
+                            amountMin: res.data.data.amountMin,//单笔最小限额
+
+                            dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                            monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                            rate: res.data.data.rate,//费率
+
+                            canCashBalance:res.data.data.balance,
+
+                            userBankCardDTOList:res.data.data.userBankCardDTOList,
+
+                        })
+
+
+                        //默认显示第一个银行卡
+                        that.setData({
+
+                            bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
+
+                            bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
+
+                            bankCardId: that.data.userBankCardDTOList[0].bankCardId//银行卡id
+
+                        });
+
+
+                        //获取银行卡的
+                        var pickChooseBank = [];
+
+                        //循环银行卡、银行名称及银行id
+                        for (var i = 0; i < thisBankList.length; i++) {
+
+                            var pickBankName = thisBankList[i].bankName;
+
+                            var pickBankNo = thisBankList[i].bankNo;
+
+                            var pickBankId = thisBankList[i].bankCardId;
+
+                            var _pickChooseBank = pickBankName + '储蓄卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
+
+                            //组成数组
+                            pickChooseBank.push(_pickChooseBank);
+
+                        }
+
+
+                        that.setData({
+
+                            bankList: pickChooseBank
+
+                        })
+
+
+
+                    }
 
                 },
 
@@ -245,7 +274,7 @@ Page({
 
             });
 
-
+/*
             //默认显示第一个银行卡
             that.setData({
 
@@ -281,6 +310,9 @@ Page({
                 chooseBank: pickChooseBank
 
             })
+            */
+
+
         }
 
 
@@ -294,16 +326,20 @@ Page({
 
         var that = this;
 
+        //console.log('picker发送选择改变，携带值为', e.detail.value)
+
+        //console.log(that.data.userBankCardDTOList)
+
         //选择银行卡的
-        //console.log(that.data.chooseBank[e.detail.value]);
+        //console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
 
         that.setData({
 
-            bankName: that.data.bankList[e.detail.value].bankName,//银行名称
+            bankName: that.data.userBankCardDTOList[e.detail.value].bankName,//银行名称
 
-            bankNo: that.data.bankList[e.detail.value].bankNo,//银行卡号
+            bankNo: that.data.userBankCardDTOList[e.detail.value].bankNo,//银行卡号
 
-            bankCardId: that.data.bankList[e.detail.value].bankCardId//银行卡id
+            bankCardId: that.data.userBankCardDTOList[e.detail.value].bankCardId//银行卡id
 
         });
 
@@ -314,7 +350,6 @@ Page({
     cashAllFn: function () {
 
         var that = this;
-
 
             that.setData({
 
@@ -367,8 +402,42 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+
+                else {
+
+                    wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+
+                }
 
 
             },
@@ -383,37 +452,31 @@ Page({
         });
 
 
-
-        var that = this;
-
         //缓存jx_sid&&Authorization数据
-        var jx_sid = wx.getStorageSync('jxsid');
+/*        var jx_sid = wx.getStorageSync('jxsid');
 
-        var Authorization = wx.getStorageSync('Authorization');
+        var Authorization = wx.getStorageSync('Authorization');*/
 
 
         //缓存账户余额
         var _wages = wx.getStorageSync('wages');
 
         //console.log(_wages);
-
-
         //缓存余额和银行卡id
         wx.setStorageSync('balance',that.data.balance);//余额
 
-        wx.setStorageSync('rate',that.data.rate);//余额
+        wx.setStorageSync('rate',that.data.rate);//汇率
 
         wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
 
         var reg = /^\d+\.?(\d{1,2})?$/
 
+        var dot = /([1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?)/
+
         var _isSecurity = wx.getStorageSync('isSecurity');
 
-/*        console.log(wx.getStorageSync('balance'));
 
-        console.log(wx.getStorageSync('bankCardId'))*/
-
-        //时候有值输入
+        //时候没有值输入
         if(!that.data.inputBalance){
 
             wx.showToast({
@@ -422,11 +485,81 @@ Page({
                 duration: 1000
             })
 
+
+        }
+
+         //小于最小额度
+         else if(parseFloat(that.data.inputBalance)<parseFloat(that.data.amountMin)){
+
+             wx.showToast({
+                 title: '单笔提现金额须大于'+that.data.amountMin+'元',
+                 icon: 'none',
+                 duration: 1000
+             })
+
+
+
+         }
+         //大于最大额度
+         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.amountMax)){
+
+
+             wx.showToast({
+                 title: '单笔提现金额须小于'+that.data.amountMax+'元',
+                 icon: 'none',
+                 duration: 1000
+             })
+
+         }
+
+         else if (parseFloat(that.data.inputBalance)>parseFloat(that.data.dayMaxAmount)){
+
+
+
+             wx.showToast({
+                 title: '提现金额超出当日最大限额',
+                 icon: 'none',
+                 duration: 1000
+             })
+
+
+         }
+
+         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.monthMaxAmount)){
+
+
+
+             wx.showToast({
+                 title: '提现金额超出当月最大限额',
+                 icon: 'none',
+                 duration: 1000
+             })
+
+         }
+
+        else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.canCashBalance)){
+
+
+
+            wx.showToast({
+                title: '金额已超过可提余额',
+                icon: 'none',
+                duration: 1000
+            })
+        }
+
+        //判断有几个小数点
+        else if(!dot.test(that.data.inputBalance)){
+            wx.showToast({
+                title: '输入金额格式有误',
+                icon: 'none',
+                duration: 1000
+            })
+
         }
 
         //默认输入小数点后两位
-        if(!reg.test(that.data.inputBalance)){
-
+        else if(!reg.test(that.data.inputBalance)) {
 
             wx.showToast({
                 title: '输入金额限小数点后两位',
@@ -435,65 +568,10 @@ Page({
             })
 
 
-
         }
 
-        //小于最小额度
-        else if(parseInt(that.data.inputBalance)<parseInt(that.data.amountMin)){
 
-            wx.showToast({
-                title: '单笔提现金额须大于'+that.data.amountMin+'元',
-                icon: 'none',
-                duration: 1000
-            })
-
-
-
-        }
-        //大于最大额度
-        else if(parseInt(that.data.inputBalance)>parseInt(that.data.amountMax)){
-
-            console.log(parseInt(that.data.inputBalance)+'>'+parseInt(that.data.amountMax));
-
-            wx.showToast({
-                title: '单笔提现金额须小于'+that.data.amountMax+'元',
-                icon: 'none',
-                duration: 1000
-            })
-
-        }
-
-        else if (parseInt(that.data.inputBalance)>parseInt(that.data.dayMaxAmount)){
-
-            wx.showToast({
-                title: '提现金额超出当日最大限额',
-                icon: 'none',
-                duration: 1000
-            })
-
-
-        }
-
-        else if(parseInt(that.data.inputBalance)>parseInt(that.data.monthMaxAmount)){
-
-            wx.showToast({
-                title: '提现金额超出当月最大限额',
-                icon: 'none',
-                duration: 1000
-            })
-
-        }
-
-        else if(parseInt(that.data.inputBalance)>parseInt(_wages)){
-
-            wx.showToast({
-                title: '账户余额不足',
-                icon: 'none',
-                duration: 1000
-            })
-        }
-
-        else if(parseInt(_wages)==0&&parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
+        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 
             wx.showToast({
                 title: '账户余额不足',
@@ -503,7 +581,7 @@ Page({
 
         }
 
-        else if(parseInt(that.data.monthMaxAmount)==0&&parseInt(that.data.dayMaxAmount)==0){
+        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
 
                 wx.showToast({
                     title: '当月金额超限',
@@ -515,8 +593,7 @@ Page({
 
         else {
 
-            var inputValue = that.data.inputBalance
-
+            var inputValue = that.data.inputBalance;
 
             function returnFloat(value){
 
@@ -554,13 +631,14 @@ Page({
             //缓存支付金额
             wx.setStorageSync('money',money);
 
-            console.log(returnFloat(parseFloat(a)+parseFloat(b)))
+            //console.log(returnFloat(parseFloat(a)+parseFloat(b)))
 
             wx.showModal({
 
                 title: '确认付款',
                 content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
                 confirmText: '确认付款',
+                confirmColor:'#fe9728',
 
                 success: function (res) {
 
@@ -568,7 +646,7 @@ Page({
 
                         if(_isSecurity=='1'){
 
-                            console.log('开启短信验证');
+                            //console.log('开启短信验证');
 
                             wx.navigateTo({
 
@@ -581,7 +659,7 @@ Page({
 
                         else if(_isSecurity=='2'){
 
-                            console.log('开启支付密码');
+                            //console.log('开启支付密码');
 
                             wx.navigateTo({
 
@@ -593,7 +671,7 @@ Page({
 
                         else if(_isSecurity=='3'){
 
-                            console.log('啥都没开启');
+                            //console.log('啥都没开启');
 
                             confirmation()
 
@@ -624,6 +702,18 @@ Page({
              * 入参：bizId,bankCardId,balance,payPassword,code
              * */
 
+            console.log({
+
+                bizId: that.data.bizId,//订单id
+
+                bankCardId: that.data.bankCardId,//银行卡id
+
+                balance: that.data.balance,//提取现金
+
+
+            } )
+
+
             wx.request({
 
                 url: thisCashUrl,
@@ -653,29 +743,66 @@ Page({
 
                     console.log(res.data);
 
-                    if (res.data.code == '0000') {
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
-                            duration: 1000
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
                         })
 
-                        wx.redirectTo({
+                        return false
 
-                            url: '../pay_success/pay_success'
-                        })
 
                     }
 
                     else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1000
-                        })
+                        //缓存点单号
+                        wx.setStorageSync('cashOrderId', res.data.data);
 
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1000
+                            })
+
+                            wx.redirectTo({
+
+                                url: '../pay_success/pay_success'
+                            })
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1000
+                            })
+
+
+                        }
 
                     }
 
@@ -700,10 +827,11 @@ Page({
 
         wx.showModal({
             title: '提现限额说明',
-            content: '单卡单笔50000.00元，当日100000.00元，当月100000.00元',
+            content: '单卡单笔50,000.00元，当日100,000.00元，当月100,000.00元',
             /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,
+            confirmColor:'#fe9728',
             success: function (res) {
 
                 if (res.confirm) {
@@ -758,6 +886,41 @@ Page({
 
         var that = this;
 
+        var reg = /^\d+\.?(\d{1,2})?$/;
+
+        /*var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;*/
+
+
+        //上一次的金额
+        var lastInputBalace = that.data.inputBalance
+
+        //这一次的金额
+        var thisInputBalance = e.detail.value;
+
+        //console.log('这一次的金额'+thisInputBalance)
+
+        //console.log('上一次的金额'+lastInputBalace)
+
+
+        if(thisInputBalance){
+
+            //默认输入小数点后两位
+            if(!reg.test(thisInputBalance)) {
+
+
+                wx.showToast({
+                    title: '输入金额有误',
+                    icon: 'none',
+                    duration: 1000
+
+                });
+
+                e.detail.value = lastInputBalace
+
+
+            }
+
+        }
 
 
 
@@ -769,6 +932,7 @@ Page({
 
 
         });
+
 
 
 

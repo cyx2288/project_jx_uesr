@@ -36,6 +36,10 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
+
         var thisGetDetailRecord = app.globalData.URL + getDetailRecord;
 
         //获取数据
@@ -45,7 +49,7 @@ Page({
 
         var _orderId = wx.getStorageSync('cashOrderId');
 
-        console.log('提现订单'+_orderId)
+        //console.log('提现订单'+_orderId)
 
         /**
          * 接口：
@@ -78,28 +82,71 @@ Page({
 
                 console.log(res.data);
 
-                that.setData({
 
-                    bankName: res.data.data.bankName,
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    bankNo: res.data.data.bankNo,
+                if(res.data.code=='3001') {
 
-                    orderAmount: res.data.data.orderAmount,
+                    //console.log('登录');
 
-                    orderState: res.data.data.orderState,
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
 
-                    orderId: res.data.data.orderId,
+                            setTimeout(function () {
 
-                    payAmount: res.data.data.payAmount,
+                                wx.reLaunch({
 
-                    rate: res.data.data.rate,
+                                    url:'../../common/signin/signin'
+                                })
 
-                    rateAmount: res.data.data.rateAmount,
+                            },1500)
 
-                    createTime:res.data.data.createTime,
+                        }
+
+                    })
+
+                    return false
 
 
-                })
+                }
+
+                else {
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+                    that.setData({
+
+                        bankName: res.data.data.bankName,
+
+                        bankNo: res.data.data.bankNo,
+
+                        orderAmount: res.data.data.orderAmount,
+
+                        orderState: res.data.data.orderState,
+
+                        orderId: res.data.data.orderId,
+
+                        payAmount: res.data.data.payAmount,
+
+                        rate: res.data.data.rate,
+
+                        rateAmount: res.data.data.rateAmount,
+
+                        createTime: res.data.data.createTime,
+
+
+                    })
+
+                }
 
 
             },
@@ -132,6 +179,7 @@ Page({
             title: '确认付款',
             content: '支付金额￥' + that.data.payAmount + ',提现金额￥'+that.data.orderAmount+',手续费￥'+that.data.rateAmount,
             confirmText: '确认付款',
+             confirmColor:'#fe9728',
 
             success: function (res) {
 
@@ -252,7 +300,18 @@ Page({
 }
 
 
+    },
+
+    onUnload:function () {
+
+        wx.switchTab({
+
+
+            url:'../../user/mine/mine'
+        })
+
     }
+
 
 
 });

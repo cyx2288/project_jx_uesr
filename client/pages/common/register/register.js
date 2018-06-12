@@ -132,6 +132,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         var url = app.globalData.URL + registerUrl;
 
         var jx_sid = wx.getStorageSync('jxsid');
@@ -139,19 +142,6 @@ Page({
         var a = /[@#\$%\^&\*]+/g;
 
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
-
-/*
-        console.log(json2FormFn.json2Form({
-
-            mobile: that.data.mobile,
-
-            password: md5.hexMD5(that.data.password),//md5加密
-
-            code: that.data.checkCode
-
-        }));
-*/
-
 
 
         //校验手机号
@@ -251,39 +241,82 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='-1'){
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
 
                         wx.showToast({
-
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
 
-                        });
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
 
                     }
 
-                    else {
+                    else{
 
-                        wx.showToast({
+                        (function countDownAjax() {
 
-                            title:'注册成功',
-                            icon: 'success'
+                            ajaxCount--;
 
-                        });
+                            app.globalData.ajaxFinish(ajaxCount)
 
-                        setTimeout(function () {
+                        })();
 
-                            that.signin();//自动登录
+                        if(res.data.code=='-1'){
 
-                        },500)
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none'
+
+                            });
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title:'注册成功',
+                                icon: 'none'
+
+                            });
+
+                            setTimeout(function () {
+
+                                that.signin();//自动登录
+
+                            },500)
 
 
 
-                        //注册成功跳转登录页
-                        /*wx.redirectTo({
+                            //注册成功跳转登录页
+                            /*wx.redirectTo({
 
-                            url:'../signin/signin'
-                        })*/
+                             url:'../signin/signin'
+                             })*/
+
+                        }
 
                     }
 
@@ -312,6 +345,10 @@ Page({
         var url = app.globalData.URL+signUrl;
 
         var that=this;
+
+
+        //有几个ajax请求
+        var ajaxCount = 1;
 
         var empty = /[@#\$%\^&\*]+/g;
 
@@ -400,6 +437,14 @@ Page({
 
                     console.log(res.data);
 
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
                     if(code == '-1'){
 
                         wx.showToast({
@@ -431,11 +476,11 @@ Page({
 
                         wx.setStorageSync('isVerify',res.data.data.isVerify);
 
-                        console.log('用户姓名：'+ wx.getStorageSync('userName'));
+                        //console.log('用户姓名：'+ wx.getStorageSync('userName'));
 
-                        console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
+                        //console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
-                        console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+                        //console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
 
                         //console.log(header.header(Authorization,jx_sid));
 
@@ -517,7 +562,7 @@ Page({
 
                 locked:0,
 
-                time: currentTime+'秒'
+                time: currentTime+'s后重新发送'
 
             });
             if (currentTime <= 0) {

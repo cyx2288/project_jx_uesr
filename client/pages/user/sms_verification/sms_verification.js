@@ -36,6 +36,9 @@ Page({
 
         var that = this;
 
+        //有几个ajax请求
+        var ajaxCount = 1;
+
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -124,27 +127,70 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='0000'){
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
 
                     wx.showToast({
-
                         title: res.data.msg,
-
                         icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
 
                     })
+
+                    return false
 
 
                 }
+
                 else {
 
-                    wx.showToast({
+                    (function countDownAjax() {
 
-                        title: res.data.msg,
+                        ajaxCount--;
 
-                        icon: 'none',
-                    })
+                        app.globalData.ajaxFinish(ajaxCount)
 
+                    })();
+
+
+                    if (res.data.code == '0000') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+
+                    }
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+                        })
+
+
+                    }
 
                 }
 
@@ -185,7 +231,19 @@ Page({
 
         var _bankCardId = wx.getStorageSync('bankCardId')
 
+
         //console.log(that.data.code)
+
+        console.log({
+
+            bankCardId: _bankCardId,//银行卡id
+
+            balance: _balance,//提取现金
+
+            code: that.data.code,//短信验证
+
+
+        })
 
 
         /**
@@ -223,9 +281,12 @@ Page({
 
                 console.log(res.data);
 
-                wx.setStorageSync('orderId',res.data.data);
+
+                //缓存点单号
+                wx.setStorageSync('cashOrderId',res.data.data);
 
                 if (res.data.code == '0000') {
+
 
                     wx.showToast({
 
@@ -285,6 +346,13 @@ Page({
 
         var that = this;
 
+        var thisWithdrawmsgUrl= app.globalData.URL+withdrawmsgUrl;
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
         var countdown = 60;
 
         settime(that);
@@ -321,6 +389,76 @@ Page({
 
 
         }
+        /**
+         * 接口：提现发送短信认证
+         * 请求方式：GET
+         * 接口：/jx/action/withdrawmsg
+         * 入参：moblie
+         * */
+
+        wx.request({
+
+            url: thisWithdrawmsgUrl,
+
+            method: 'GET',
+
+            data:{
+
+                mobile:that.data.mobile,
+
+
+            },
+            header:{
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                if(res.data.code=='0000'){
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+
+                    })
+
+
+                }
+                else {
+
+                    wx.showToast({
+
+                        title: res.data.msg,
+
+                        icon: 'none',
+                    })
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
+
 
     }
 
