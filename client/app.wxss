@@ -35,3 +35,15 @@ page{
     text-align: left;
     font-size: 14px;
 }
+
+.fix-iphonex-button {
+    bottom:68rpx!important;
+}
+.fix-iphonex-button::after {
+    content: ' ';
+    position: fixed;
+    bottom: 0!important;
+    height: 68rpx!important;
+    width: 100%;
+    background: #fff;
+}

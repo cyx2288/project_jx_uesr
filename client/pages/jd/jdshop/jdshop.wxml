@@ -1,1 +1,1 @@
-<web-view src="{{jdUrl}}"></web-view>
+<web-view class="{{isIpx?'fix-iphonex-button':''}}" src="{{jdUrl}}"></web-view>

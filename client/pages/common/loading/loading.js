@@ -9,7 +9,10 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         wx.showLoading({
-            title: '加载中',
+
+            mask:true,
+            title: '跳转中',
+
         })
 
 
@@ -22,7 +25,7 @@ Page({
                     url:'../../common/signin/signin'
                 })
 
-            },1500)
+            },2000)
 
 
         }
@@ -36,7 +39,7 @@ Page({
                     url:'../../wages/index/index'
                 })
 
-            },1500)
+            },2000)
 
 
 

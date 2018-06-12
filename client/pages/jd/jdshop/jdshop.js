@@ -8,6 +8,8 @@ Page({
     data:{
 
 
+        isIpx: app.globalData.isIpx?true:false,
+
         jdUrl:'',
 
     },
