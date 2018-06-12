@@ -96,12 +96,9 @@
     <!--提示-->
     <view class="weui-help">
 
-        <view class="help_box"><!--<text class="jx_left">联系客服</text><span class="line">|</span>--><text class="jx_right" bindtap="moreFn">更多</text></view>
-
-
-
-
-
+        <navigator url="../help_service/help_service" class="jx_left">联系客服</navigator>
+            <span class="line">|</span>
+            <text class="jx_right" bindtap="moreFn">更多</text>
 
     </view>
 

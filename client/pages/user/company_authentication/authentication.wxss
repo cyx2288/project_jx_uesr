@@ -33,3 +33,30 @@ page{
 .close{
     margin-top: 0;
 }
+
+.weui-help{
+    line-height: 30px;
+    font-size:14px;
+    padding-top:10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.jx_left{
+    color: #fe9728;
+    text-align: right;
+    padding: 0;
+}
+
+.jx_right{
+    color: #fe9728;
+    text-align: left;
+}
+
+span.line{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #bbb;
+}

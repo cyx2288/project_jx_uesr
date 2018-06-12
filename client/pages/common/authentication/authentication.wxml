@@ -35,6 +35,13 @@
 
     </view>
 
-    <navigator style='text-align: center' url="../../user/help_service/help_service" class="weui-cells__title">查看帮助</navigator>
+    <!--提示-->
+    <view class="weui-help">
+
+        <navigator url="../help_service/help_service" class="jx_left">查看帮助</navigator>
+        <span class="line">|</span>
+        <navigator class="jx_right">联系客服</navigator>
+
+    </view>
 
 </view>
