@@ -1,7 +1,8 @@
 {
 
+  "backgroundTextStyle":"light",
+  "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "嘉薪",
-
-  "navigationBarBackgroundColor": "#000000"
+  "navigationBarTextStyle":"black"
 
 }

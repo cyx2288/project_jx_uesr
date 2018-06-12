@@ -1,0 +1,196 @@
+
+
+
+page{
+    background-color: #fff;
+}
+.weui-msg{
+    padding-top: 0;
+
+}
+
+.weui-media-box__hd{
+    margin: 0 auto;
+    position: relative;
+    z-index: 50;
+    width: 100%;
+}
+
+.jx_background{
+    width: 76px;
+    height: 76px;
+
+
+}
+
+.weui_loading_logo{
+
+    z-index: 500;
+    right: 56%;
+    top: 42%;
+    position: absolute;
+
+}
+.weui_loading_man{
+    z-index: 1000;
+    margin: 0 auto;
+    padding-left: 100px;
+
+}
+.jx_cash{
+    width: 200px;
+    height: 200px;
+    padding-top: 50%;
+
+}
+
+.weui-circle{
+    margin: 0 auto;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: -50;
+}
+
+.circle_bot{
+
+    background-color: #fce7df;
+    width: 162px;
+    height: 162px;
+    left: 15%;
+    position: absolute;
+    border-radius: 50%;
+    opacity: .2;
+    transform: translateX(-50%);
+    z-index: 200;
+    animation: botMove 1.5s infinite;
+}
+@keyframes botMove {
+
+    0% {
+        transform: scale(0);
+        opacity: 0.0;
+    }
+
+    50% {
+        transform: scale(0.1);
+        opacity: 0.3;
+    }
+    75% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+
+.circle_mid {
+    background-color: #fce7df;
+    opacity: .2;
+    width: 100px;
+    height: 100px;
+    left: 34%;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 30px;
+    z-index: 200;
+}
+
+.jx_loading_title
+{
+    width: 80%;
+    height: 40px;
+    z-index: 1000;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20% 40px;
+}
+
+.jx_loading_coin{
+    margin: 0 auto;
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+
+}
+.jx_loading_right{
+    width: 24px;
+    height: 24px;
+    z-index: 1000;
+    margin: 0 auto;
+    position: absolute;
+    padding-left: 35%;
+
+
+}
+
+.jx_light{
+    width: 20px;
+    height: 20px;
+    z-index: 1000;
+    margin: -40px auto;
+    position: absolute;
+    padding-left: 40%;
+
+}
+
+
+
+.jx_loading_left{
+    width: 24px;
+    height: 24px;
+    z-index: 1000;
+    padding-top: 18%;
+    padding-right: 30%;
+    position: absolute;
+    right: 73%;
+    transform: scale(-1,1);
+
+}
+
+.jx_coin{
+
+    position: absolute;
+    top: 34%;
+    left: 0;
+    right: 0;
+}
+
+
+.jx_light_left{
+    width: 20px;
+    height: 20px;
+    z-index: 1000;
+    padding-right: 52%;
+    position: absolute;
+    right: 40%;
+
+
+}
+
+
+.jx_jia{
+
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 12%;
+    left: 60%;
+    animation: jiaMove .5s infinite alternate;
+
+}
+
+@keyframes jiaMove {
+    0% {
+        transform: scale3d(.4, .4, .6)
+    }
+    100% {
+        transform: scale3d(.7, .7, .6);
+    }
+}
