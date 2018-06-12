@@ -199,3 +199,8 @@ page {
 
     color: #ababab;
 }
+
+.jx_right{
+    color: #fe9728;
+    text-align: center;
+}
