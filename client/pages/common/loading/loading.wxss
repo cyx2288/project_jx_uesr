@@ -58,33 +58,13 @@ page{
     background-color: #fce7df;
     width: 162px;
     height: 162px;
-    left: 15%;
+    left: 34%;
     position: absolute;
     border-radius: 50%;
     opacity: .2;
     transform: translateX(-50%);
     z-index: 200;
-    animation: botMove 1.5s infinite;
-}
-@keyframes botMove {
 
-    0% {
-        transform: scale(0);
-        opacity: 0.0;
-    }
-
-    50% {
-        transform: scale(0.1);
-        opacity: 0.3;
-    }
-    75% {
-        transform: scale(0.5);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.0;
-    }
 }
 
 
@@ -108,7 +88,7 @@ page{
     z-index: 1000;
     margin: 0 auto;
     text-align: center;
-    padding: 20% 40px;
+    padding: 25% 40px;
 }
 
 .jx_loading_coin{
@@ -125,9 +105,18 @@ page{
     z-index: 1000;
     margin: 0 auto;
     position: absolute;
-    padding-left: 35%;
+    left: 82%;
+    animation: coinMove 1.5s infinite alternate;
+}
+@keyframes coinMove {
+    0% {
+        transform: scale(1,.8);
+    }
 
+    100% {
+        transform: scale(-1,1);
 
+    }
 }
 
 .jx_light{
@@ -136,23 +125,45 @@ page{
     z-index: 1000;
     margin: -40px auto;
     position: absolute;
-    padding-left: 40%;
+    left: 90%;
+    animation: rightMove 1s infinite alternate;
 
 }
+@keyframes rightMove {
+    0% {
+        transform: scale3d(.4, .4, .6)
+    }
 
+    100% {
+        transform: scale3d(.7, .7, .6);
+
+    }
+}
 
 
 .jx_loading_left{
     width: 24px;
     height: 24px;
     z-index: 1000;
-    padding-top: 18%;
-    padding-right: 30%;
+    padding-top: 20%;
+    right: 70%;
     position: absolute;
-    right: 73%;
-    transform: scale(-1,1);
 
+    transform: scale(-1,.8);
+    animation: loadingMove 1.5s infinite alternate;
 }
+@keyframes loadingMove {
+    0% {
+        transform: scale(-1,1);
+    }
+
+    100% {
+        transform: scale(1,1);
+
+    }
+}
+
+
 
 .jx_coin{
 
@@ -167,13 +178,21 @@ page{
     width: 20px;
     height: 20px;
     z-index: 1000;
-    padding-right: 52%;
     position: absolute;
-    right: 40%;
-
+    right: 90%;
+    animation: leftMove .5s infinite alternate;
 
 }
+@keyframes leftMove {
+    0% {
+        transform: scale3d(.4, .4, .6)
+    }
 
+    100% {
+        transform: scale3d(.7, .7, .6);
+
+    }
+}
 
 .jx_jia{
 
