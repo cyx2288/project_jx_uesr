@@ -40,7 +40,7 @@
 
         <navigator url="../help_service/help_service" class="jx_left">查看帮助</navigator>
         <span class="line">|</span>
-        <button class="kf_button jx_right" open-type="contact">联系客服</button>
+        <button class="kf_button jx_right" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">联系客服</button>
 
     </view>
 

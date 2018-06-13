@@ -28,7 +28,11 @@ Page({
 
         rateAmount: '',
 
-        type: ''
+        type: '',
+
+        userName:'',
+
+        mobile:'',
     },
 
 
@@ -50,6 +54,17 @@ Page({
         var _orderId = wx.getStorageSync('cashOrderId');
 
         //console.log('提现订单'+_orderId)
+
+        that.setData({
+
+
+            userName:wx.getStorageSync('userName'),
+
+            mobile:wx.getStorageSync('mobile'),
+
+
+        })
+
 
         /**
          * 接口：

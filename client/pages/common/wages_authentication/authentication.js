@@ -19,7 +19,9 @@ Page({
 
         userName:'',
 
-        salaryDetailId:''
+        salaryDetailId:'',
+
+        mobile:''
 
 
 
@@ -45,6 +47,8 @@ Page({
             salaryDetailId:thisSalaryDetailId,
 
             entId:thisEntId,
+
+            mobile:wx.getStorageSync('mobile')
 
 
         })

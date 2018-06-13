@@ -52,10 +52,11 @@
 
 </view>
 
-<view class="weui-cells weui-cells_after-title feedback-box {{isIpx?'fix-iphonex-button':''}}" >
+<view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx?'fix-iphonex-button':''}}" >
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd feedback_input">
-            <input class="weui-input" placeholder-class="phcolor" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+            <input class="weui-input " bindfocus="changeInput" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+            <!--<button class="send" catchtap="add">发送</button>-->
         </view>
     </view>
 </view>

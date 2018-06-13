@@ -203,7 +203,7 @@
 <!--提示-->
 <view class="weui-help">
 
-    <button class="kf_button" open-type="contact">
+    <button class="kf_button" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">
 
         <view class="jx_right">联系客服</view>
 

@@ -9,7 +9,11 @@ Page({
 
     data: {
 
-            isIpx: app.globalData.isIpx?true:false
+             isIpx: '',
+
+             contentTitle:'',
+
+             fixedInput: false,
 
 
     },
@@ -25,6 +29,19 @@ Page({
 
         var that = this;
 
+        var ipX = app.globalData.isIpx;
+
+
+        that.setData({
+
+
+            isIpx: ipX ,
+
+
+        })
+
+        console.log(that.data.isIpx)
+
         /**
          * 接口：用户中心
          * 请求方式：POST
@@ -32,7 +49,7 @@ Page({
          * 入参：feedbackDTO,pageNum,pageSize
          **/
 
-        wx.request({
+        /*wx.request({
 
             url: thisfeedbackUrl,
 
@@ -67,11 +84,37 @@ Page({
                 console.log(res)
             }
 
-        })
+        })*/
 
 
 
     },
+
+    changeInput:function () {
+
+
+        var that = this;
+
+        that.setData({
+
+            fixedInput: true,
+
+        })
+
+
+    },
+
+    inputChange:function () {
+
+        var that = this;
+
+        that.setData({
+
+            contentTitle: e.detail.value,
+
+        })
+
+    }
 
 
 });

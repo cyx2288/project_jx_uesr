@@ -19,6 +19,8 @@ Page({
 
         userName:'',
 
+        mobile:'',
+
 
 
 
@@ -38,6 +40,8 @@ Page({
             userName:thisUserName,
 
             entId:thisEntId,
+
+            mobile:wx.getStorageSync('mobile')
 
 
         })
