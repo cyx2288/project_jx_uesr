@@ -1,18 +1,1 @@
-@import "../give_details/give_details.wxss";
-
-
-.weui-panel{
-
-    margin-bottom: 0;
-    padding: 10px;
-    font-size: 14px;
-    background: #fff;
-}
-
-.ask{
-    color: #4a4a4a;
-}
-
-.question{
-    color: #8a8a8a;
-}
+@import "../problem_account/problem_account.wxss";

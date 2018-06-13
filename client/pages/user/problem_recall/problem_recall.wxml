@@ -2,7 +2,7 @@
 
 
 <!--提现申请提交后，可以撤回吗？-->
-<view class="help_service">
+<view class="weui-cells">
 
     <!--问题-->
     <view class="weui-panel">
