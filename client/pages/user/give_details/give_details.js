@@ -30,7 +30,12 @@ Page({
 
         rateAmount: '',
 
-        type: ''
+        type: '',
+
+        userName:'',
+
+        mobile:'',
+
     },
 
 
@@ -49,6 +54,18 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var _orderId = wx.getStorageSync('orderId');
+
+
+        that.setData({
+
+
+            userName:wx.getStorageSync('userName'),
+
+            mobile:wx.getStorageSync('mobile'),
+
+
+        })
+
 
 
         /**

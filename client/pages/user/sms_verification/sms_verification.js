@@ -18,6 +18,8 @@ Page({
 
         mobile:'',//手机号
 
+        newMobile:'',
+
         last_time:'',//倒计时
 
         idNumber:'',//份证号
@@ -50,7 +52,9 @@ Page({
 
         that.setData({
 
-            mobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
+            mobile:_mobile,
+
+            newMobile:_mobile.substr(0, 3) + '****' + _mobile.substr(7),
 
             locked:0,
 
@@ -95,6 +99,8 @@ Page({
 
 
         }
+
+        console.log(that.data.mobile)
 
         /**
          * 接口：提现发送短信认证

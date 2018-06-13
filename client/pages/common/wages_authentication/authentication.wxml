@@ -40,7 +40,7 @@
     <!--提示-->
     <view class="weui-help">
 
-        <navigator url="../help_service/help_service" class="jx_left">查看帮助</navigator>
+        <navigator url="../help_service/help_service" class="jx_left" session-from="姓名:{{userName}},电话:{{mobile}}">查看帮助</navigator>
         <span class="line">|</span>
         <navigator class="jx_right">联系客服</navigator>
 

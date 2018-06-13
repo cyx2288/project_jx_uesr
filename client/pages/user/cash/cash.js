@@ -2,7 +2,7 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const cashUrl = '/user/withdraw/dowithdraw';// 获取账户提现记录
+const cashUrl = '/user/withdraw/dowithdraw';// 用户发起提现操作
 
 const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
 
@@ -18,7 +18,7 @@ Page({
 
         bankCardId: '',//银行卡id
 
-        balance: '',//提取现金
+        //balance: '',//提取现金
 
         inputBalance:'',//输入框里value的值
 
@@ -50,10 +50,13 @@ Page({
 
         bankList: [],//传给后台的数组
 
+        userName:'',
 
+        mobile:'',
 
 
     },
+
 
     onShow: function () {
 
@@ -67,6 +70,19 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var _isVerify = wx.getStorageSync('isVerify');
+
+
+        that.setData({
+
+
+            userName:wx.getStorageSync('userName'),
+
+            mobile:wx.getStorageSync('mobile'),
+
+
+        })
+
+
 
         wx.showLoading({
 
@@ -358,6 +374,9 @@ Page({
             })
 
 
+        console.log(that.data.inputBalance)
+
+
     },
 
     //提现
@@ -463,7 +482,7 @@ Page({
 
         //console.log(_wages);
         //缓存余额和银行卡id
-        wx.setStorageSync('balance',that.data.balance);//余额
+        //wx.setStorageSync('balance',that.data.balance);//余额
 
         wx.setStorageSync('rate',that.data.rate);//汇率
 
@@ -702,17 +721,8 @@ Page({
              * 入参：bizId,bankCardId,balance,payPassword,code
              * */
 
-            console.log({
 
-                bizId: that.data.bizId,//订单id
-
-                bankCardId: that.data.bankCardId,//银行卡id
-
-                balance: that.data.balance,//提取现金
-
-
-            } )
-
+            console.log('提现金额'+that.data.inputBalance)
 
             wx.request({
 
@@ -727,7 +737,7 @@ Page({
 
                     bankCardId: that.data.bankCardId,//银行卡id
 
-                    balance: that.data.balance,//提取现金
+                    balance: that.data.inputBalance,//提取现金
 
                 },
                 header: {
@@ -888,18 +898,13 @@ Page({
 
         var reg = /^\d+\.?(\d{1,2})?$/;
 
-        /*var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;*/
-
 
         //上一次的金额
-        var lastInputBalace = that.data.inputBalance
+        var lastInputBalace = that.data.inputBalance;
 
         //这一次的金额
         var thisInputBalance = e.detail.value;
 
-        //console.log('这一次的金额'+thisInputBalance)
-
-        //console.log('上一次的金额'+lastInputBalace)
 
 
         if(thisInputBalance){
@@ -926,9 +931,11 @@ Page({
 
         that.setData({
 
-            balance: e.detail.value,
+            //balance: e.detail.value,
 
             inputBalance:e.detail.value,
+
+
 
 
         });

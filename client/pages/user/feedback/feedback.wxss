@@ -2,19 +2,52 @@
     position: fixed;
     bottom:0;
     left: 0;
-    padding: 10px 0;
+    padding: 10px 0 30px;
+}
+.feedback-box.moveInput{
+
+    bottom:88rpx;
+
 }
 .feedback-box .feedback_input{
-    border: 1rpx solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+
+}
+button.send{
+
+    position:relative;
+    display:block;
+    margin-left:20rpx;
+    margin-right:20rpx;
+    padding-left:25rpx;
+    padding-right:25rpx;
+    box-sizing:border-box;
+    font-size:14px;
+    text-align:center;
+    text-decoration:none;
+    line-height:2.55555556;
+    border-radius:5px;
+    -webkit-tap-highlight-color:transparent;
+    overflow:hidden;
+    color:#000000;
+    background-color:#F8F8F8;
+
 }
 .feedback-box .weui-input{
 
+    border: 1px solid #ddd;
     height: 2em;
     min-height: 2em;
     line-height: 2em;
     background-color: #f7f7f7;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+   /* width: calc(100vw - 120px);*/
 
 }
 .feedback-box .phcolor{

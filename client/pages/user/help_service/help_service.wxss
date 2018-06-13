@@ -86,7 +86,6 @@ hr {
 .help_title{
 
     vertical-align: middle;
-    padding-top: 10px;
     display: block;
     width: 100%;
 }
@@ -135,5 +134,5 @@ button.kf_button {
 }
 
 .help_service{
- margin-bottom: 105px;
+
 }

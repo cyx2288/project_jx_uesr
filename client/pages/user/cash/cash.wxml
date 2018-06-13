@@ -96,7 +96,7 @@
     <!--提示-->
     <view class="weui-help">
 
-            <button class="kf_button jx_right" open-type="contact">联系客服</button>
+            <button  class="kf_button jx_right" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">联系客服</button>
             <span class="line">|</span>
             <text class="jx_right" bindtap="moreFn">更多</text>
 
