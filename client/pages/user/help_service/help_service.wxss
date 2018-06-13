@@ -133,3 +133,7 @@ button.kf_button {
     text-align: center;
 
 }
+
+.help_service{
+ margin-bottom: 105px;
+}

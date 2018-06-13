@@ -1,5 +1,5 @@
 
-<view class="help_service">
+<view class="weui-cells">
 
 
     <!--问题-->
@@ -9,7 +9,7 @@
     <hr/>
 
     <view class="weui-panel">
-        <text class="question">若您在收到查看工资条邀请时，未选择查看并验证身份，即为未加入企业状态，此时不可查看和接收该企业发送的工资和工资条</text>
+        <text class="question">若您在收到查看工资条邀请时，未选择查看并验证身份，即为未加入企业状态，此时不可查看和接收该企业发送的工资和工资条。</text>
     </view>
 
     <view class="weui-panel">
