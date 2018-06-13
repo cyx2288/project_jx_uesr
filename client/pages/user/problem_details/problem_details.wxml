@@ -1,5 +1,5 @@
 <!--忘记修改支付密码怎么办？-->
-<view class="help_service">
+<view class="weui-cells">
 
 
     <!--问题-->

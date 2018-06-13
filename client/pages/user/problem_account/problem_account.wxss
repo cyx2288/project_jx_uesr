@@ -1,13 +1,13 @@
-@import "../give_details/give_details.wxss";
-
+@import "../setting/setting.wxss";
 
 .weui-panel{
 
+    margin-top: 0;
     margin-bottom: 0;
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
     background: #fff;
-
+    border-radius: 5px;
 }
 
 .ask{
@@ -16,4 +16,8 @@
 
 .question{
     color: #8a8a8a;
+}
+
+hr{
+    width: 94%;
 }
