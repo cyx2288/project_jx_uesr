@@ -2,9 +2,8 @@
 
 .wechat_mine_personal{
 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
+ padding: 0 20px;
+
 
 }
 .register_circle{
@@ -16,24 +15,65 @@
     background-color: white;
     box-shadow: 0 2px 3px #E9E9E9;
     overflow: hidden;
+    z-index: 2000;
+    margin-top: 15px;
+    position: relative;
 
 }
 .register_logo{
 
-    width: 92%;
-    height: 92%;
-    margin: 8px auto;
-
-
+    width: 100%;
+    height: 100%;
+    margin: 4px auto;
+    z-index: 2000;
 }
 .account_message{
-  padding: 15px 0;
+     padding: 15px 0 25px 0;
+     display: flex;
+
 }
 .account_information_tel{
 
-    font-size: 16px;
+    font-size: 18px;
+    color: #fff;
+    z-index: 800;
+    padding-top: 3px;
+    padding-bottom: 6px;
 
 }
+
+/*认证&电话*/
+
+.authentication_state{
+
+    z-index: 800;
+    align-items: center;
+    padding: 30px;
+
+}
+
+.authentication{
+    color: #fff;
+    border: 1px solid #f7f7f7;
+    border-radius: 50px;
+    width: 75px;
+    height: 23px;
+    display: flex;
+
+}
+
+.icon_unauthorized{
+    width: 22px;
+    height: 22px;
+    padding-left: 3px;
+
+}
+
+.unauthorized{
+font-size: 14px;
+}
+
+
 
 
 /*工资余额*/
@@ -51,6 +91,7 @@
     color: #fe9728;
     white-space: nowrap;
     padding-right: 5px;
+    padding-top: 5px;
 }
 .jx_mine_left{
     display: flex;
@@ -63,7 +104,6 @@
     color: #4a4a4a;
     vertical-align: middle;
     display: inline-flex;
-    width: 150px;
     justify-content: space-between;
     padding-top: 3px;
 
@@ -88,7 +128,41 @@ view.password_image{
     vertical-align: middle;
 
 }
+.jx_background{
+    width:100%;
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index: 100;
+}
 
+.mine_background{
+    width: 72%;
+    height: 100px;
+    z-index: 50;
+    bottom: 0;
+    position: absolute;
+}
+
+.background_right{
+    width:100%;
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index: 100;
+    justify-content: left;
+    right: 0;
+    text-align: right;
+    top: 30px;
+}
+
+.mine_right{
+    width: 14%;
+    height: 120px;
+    z-index: 50;
+    opacity: .8;
+
+}
 .jx_record{
     padding-right: 15px;
 }
@@ -116,6 +190,11 @@ hr {
     margin: 0 auto;
 }
 
-.weui-cells{
-    padding: 0;
+.weui-mine {
+    position: relative;
+    padding: 60 rpx 6%;
+    background: -webkit-linear-gradient(-90deg,#fc9a4d,#f98253);
+    width: 100%;
+    overflow: hidden;
+    z-index: 10;
 }

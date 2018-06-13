@@ -1,21 +1,53 @@
 
 
-<view class="weui-cells">
+<view class="weui-mine">
 
   <navigator url="../personal/personal" class="wechat_mine_personal">
 
-       <view class="register_circle">
+      <view class="jx_background">
+          <image src="../../../static/icon/wages/jx_square.png"  class="mine_background" />
+      </view>
 
-           <image class="register_logo" src="../../../static/icon/wages/jx_mine_image.png"/>
 
-       </view>
 
        <view class="account_message">
 
-          <view class="account_information_tel">{{mobile}}</view>
+           <view class="register_circle">
+
+               <image class="register_logo" src="../../../static/icon/wages/jx_mine_image.png"/>
+
+           </view>
+
+           <view class="authentication_state">
+
+               <view class="account_information_tel">{{mobile}}</view>
+
+
+       <!--认证状态-->
+          <!--     <view class="authentication">
+
+                  &lt;!&ndash;未认证&ndash;&gt;
+               &lt;!&ndash;    <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
+                   <text class="unauthorized" >未认证</text>
+&ndash;&gt;
+
+                   &lt;!&ndash;已认证&ndash;&gt;
+                  &lt;!&ndash; <image src="../../../static/icon/wages/jx_authentication.png"  class="icon_unauthorized" />
+                   <text class="unauthorized" >已认证</text>
+&ndash;&gt;
+               </view>
+-->
+
+           </view>
+
+
 
         </view>
 
+
+      <view class="background_right">
+          <image src="../../../static/icon/wages/jx_background_right.png"  class="mine_right"/>
+      </view>
    </navigator>
 
 
