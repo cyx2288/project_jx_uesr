@@ -2,7 +2,7 @@
 
 
 <!--提现到账时间？-->
-<view class="help_service">
+<view class="weui-cells">
 
     <!--问题-->
     <view class="weui-panel">

@@ -2,7 +2,7 @@
 
 
 <!--提现失败，如何处理？-->
-<view class="help_service">
+<view class="weui-cells">
 
     <!--问题-->
     <view  class="weui-panel">

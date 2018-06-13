@@ -2,7 +2,7 @@
 
 
 <!--如何关闭支付验证？-->
-<view class="help_service">
+<view class="weui-cells">
 
 
     <!--问题-->
