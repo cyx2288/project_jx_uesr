@@ -93,7 +93,7 @@ font-size: 14px;
     color: #fe9728;
     white-space: nowrap;
     padding-right: 5px;
-    line-height:64rpx;
+    line-height: 66rpx;
 }
 .jx_mine_left{
     display: flex;
