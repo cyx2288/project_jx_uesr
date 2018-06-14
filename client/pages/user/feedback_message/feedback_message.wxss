@@ -1,0 +1,41 @@
+@import "../help_service/help_service.wxss";
+
+.weui-cells{
+    font-size: 16px;
+}
+
+.weui-media-box__hd{
+
+    display: flex;
+    padding: 15px;
+    color: #4a4a4a;
+}
+
+.service_title{
+    padding: 0;
+}
+
+.feedback_text{
+    padding: 0 10px 15px 15px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
+
+}
+
+.weui-help{
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+
+    padding: 5px 0;
+}
+
+.wages_month{
+    color: #8a8a8a;
+}
+
+.wages_time{
+    color: #ababab;
+}

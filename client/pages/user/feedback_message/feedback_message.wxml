@@ -1,0 +1,51 @@
+<view class="help_service">
+
+    <navigator url="../feedback/feedback" class="weui-cells">
+
+        <view class="weui-media-box__hd ">
+            <text class="service_title">【反馈处理结果】</text>
+
+        </view>
+
+
+         <view class="feedback_text">本月社保基数增加本月社保基数增加本月社保基数增加</view>
+
+        <hr/>
+
+        <view class="weui-help">
+
+            <text class="wages_month">2018年4月工资</text>
+            <text class="wages_time">2018-05-15   10:38:08</text>
+
+        </view>
+
+    </navigator>
+
+</view>
+
+
+
+<view class="help_service">
+
+    <navigator url="../feedback/feedback" class="weui-cells">
+
+        <view class="weui-media-box__hd ">
+            <text class="service_title">【反馈处理结果】</text>
+
+        </view>
+
+
+        <view class="feedback_text">本月社保基数增加本月社保基数增加本月社保基数增加</view>
+
+        <hr/>
+
+        <view class="weui-help">
+
+            <text class="wages_month">2018年4月工资</text>
+            <text class="wages_time">2018-05-15   10:38:08</text>
+
+        </view>
+
+    </navigator>
+
+</view>
