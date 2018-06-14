@@ -120,6 +120,8 @@ Page({
 
                     });
 
+                    console.log(that.data.mobile)
+
                 }
 
             },

@@ -13,7 +13,7 @@
             <text  hidden="{{!hasUserName}}"class="account_information_tel">{{userName}}</text>
 
            <label hidden="{{hasUserName}}">
-                <input class="account_information_tel" type="text" bindinput="nameFn" auto-focus="true" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"/>
+                <input class="account_information_tel" type="text" auto-focus="{{hasUserName==true? '' : 'true'}}" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"/>
             </label>
 
         </view>

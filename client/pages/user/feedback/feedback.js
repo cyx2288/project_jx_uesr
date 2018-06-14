@@ -15,6 +15,8 @@ Page({
 
              fixedInput: false,
 
+             feedBackList:[],//反馈消息列表
+
 
     },
 
@@ -40,7 +42,6 @@ Page({
 
         })
 
-        console.log(that.data.isIpx)
 
         /**
          * 接口：用户中心
@@ -49,7 +50,7 @@ Page({
          * 入参：feedbackDTO,pageNum,pageSize
          **/
 
-        /*wx.request({
+        wx.request({
 
             url: thisfeedbackUrl,
 
@@ -76,6 +77,53 @@ Page({
 
                 console.log(res.data);
 
+                console.log(res.data.data.list[0].details)
+
+                that.setData({
+
+                    feedBackList:res.data.data.list[0].details,
+
+                })
+
+       /*         app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500,
+                        success:function () {
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                        }
+
+                    })
+
+                    return false
+
+
+                }
+
+                else {
+
+
+
+
+
+
+
+                }*/
 
             },
 
@@ -84,7 +132,7 @@ Page({
                 console.log(res)
             }
 
-        })*/
+        })
 
 
 
@@ -101,6 +149,18 @@ Page({
 
         })
 
+
+    },
+
+    inputBlur:function () {
+
+        var that = this;
+
+        that.setData({
+
+            fixedInput: false,
+
+        })
 
     },
 

@@ -218,7 +218,7 @@ Page({
 
                         that.setData({
 
-                            balance: res.data.data.balance,//提取现金
+                           //balance: res.data.data.balance,//提取现金
 
                             amountMax: res.data.data.amountMax,//单笔最大限额
 
@@ -482,7 +482,7 @@ Page({
 
         //console.log(_wages);
         //缓存余额和银行卡id
-        //wx.setStorageSync('balance',that.data.balance);//余额
+        wx.setStorageSync('balance',that.data.inputBalance);//提现金额
 
         wx.setStorageSync('rate',that.data.rate);//汇率
 
@@ -722,7 +722,7 @@ Page({
              * */
 
 
-            console.log('提现金额'+that.data.inputBalance)
+            console.log('提现金额'+that.data.inputBalance);
 
             wx.request({
 
@@ -939,6 +939,8 @@ Page({
 
 
         });
+
+
 
 
 

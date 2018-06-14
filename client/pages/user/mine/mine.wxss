@@ -35,11 +35,13 @@
 .account_information_tel{
 
     font-size: 18px;
-    color: #fff;
     z-index: 800;
     padding-top: 3px;
     padding-bottom: 6px;
 
+}
+.color_white{
+    color: #fff;
 }
 
 /*认证&电话*/
@@ -87,11 +89,11 @@ font-size: 14px;
 
 .join_tip{
 
-    font-size: 16px;
+    font-size: 14px;
     color: #fe9728;
     white-space: nowrap;
     padding-right: 5px;
-    padding-top: 5px;
+    line-height:64rpx;
 }
 .jx_mine_left{
     display: flex;
@@ -175,8 +177,9 @@ view.password_image{
 .reset_money{
     color: #ff4646;
     font-size: 16px;
-    padding-right: 15px;
     margin-top: 3px;
+    padding-right: 5px;
+    line-height: 64rpx;
 }
 
 hr {

@@ -6,7 +6,7 @@
 }
 .feedback-box.moveInput{
 
-    bottom:88rpx;
+    bottom:20rpx;
 
 }
 .feedback-box .feedback_input{
@@ -39,7 +39,7 @@ button.send{
 }
 .feedback-box .weui-input{
 
-    border: 1px solid #ddd;
+    border: 1rpx solid #ddd;
     height: 2em;
     min-height: 2em;
     line-height: 2em;
