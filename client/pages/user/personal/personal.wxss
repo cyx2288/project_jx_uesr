@@ -18,3 +18,11 @@ page{
 
     color: #8a8a8a;
 }
+
+.reset_money {
+    font-size:14px;
+    margin-top:3px;
+    padding-right:5px;
+    line-height: normal;
+
+}

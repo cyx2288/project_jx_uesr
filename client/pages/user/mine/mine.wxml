@@ -20,23 +20,26 @@
 
            <view class="authentication_state">
 
-               <view class="account_information_tel">{{mobile}}</view>
+               <view class="account_information_tel color_white">{{mobile}}</view>
 
 
-       <!--认证状态-->
-          <!--     <view class="authentication">
+               <!--认证状态-->
+               <view wx:if="{{isVerify=='0'}}" class="authentication">
 
-                  &lt;!&ndash;未认证&ndash;&gt;
-               &lt;!&ndash;    <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
-                   <text class="unauthorized" >未认证</text>
-&ndash;&gt;
+                  <!--未认证-->
+                   <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
 
-                   &lt;!&ndash;已认证&ndash;&gt;
-                  &lt;!&ndash; <image src="../../../static/icon/wages/jx_authentication.png"  class="icon_unauthorized" />
-                   <text class="unauthorized" >已认证</text>
-&ndash;&gt;
+                   <text class="unauthorized">未认证</text>
+
                </view>
--->
+
+               <view wx:elif="{{isVerify=='1'}}" class="authentication">
+
+                   <!--已认证-->
+                  <image src="../../../static/icon/wages/jx_authentication.png"  class="icon_unauthorized" />
+                   <text class="unauthorized" >已认证</text>
+
+               </view>
 
            </view>
 

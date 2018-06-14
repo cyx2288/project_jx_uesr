@@ -1,10 +1,13 @@
-<view class="feedback-list">
+<view class="feedback-list" wx:for="{{feedBackList}}">
 
-    <view class="people_list">
+    <!-- 用户发起的列表-->
+    <view class="people_list {{item.type=='1'? 'sevice_left':''}}">
 
         <view class="feedback-time">20:00</view>
 
-        <view class="tips_box">
+
+
+        <view wx:if="{{item.type=='1'}}" class="tips_box">
 
             <view><span class="tips">实发金额不对</span></view>
 
@@ -12,33 +15,7 @@
 
         </view>
 
-
-
-    </view>
-
-    <view class="people_list">
-
-        <view class="feedback-time">20:00</view>
-
-        <view class="tips_box">
-
-            <view><span class="tips">实发金额不对</span></view>
-
-            <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
-
-        </view>
-
-
-
-    </view>
-
-    <view class="people_list sevice_left">
-
-        <view class="feedback-time">20:00</view>
-
-        <view class="tips_box">
-
-
+        <view wx:elif="{{item.type=='2'}}" class="tips_box">
 
             <view class="people_img"><image src="../../../static/icon/wages/feedback_staff.png"/></view>
 
@@ -50,12 +27,23 @@
 
     </view>
 
+    <!-- 客服反馈列表-->
+    <!--<view class="people_list sevice_left">
+
+        <view class="feedback-time">20:00</view>
+
+
+
+
+
+    </view>-->
+
 </view>
 
 <view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx?'fix-iphonex-button':''}}" >
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd feedback_input">
-            <input class="weui-input " bindfocus="changeInput" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+            <input class="weui-input " bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
             <!--<button class="send" catchtap="add">发送</button>-->
         </view>
     </view>
