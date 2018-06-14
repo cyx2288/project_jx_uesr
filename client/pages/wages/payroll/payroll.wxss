@@ -107,11 +107,24 @@ hr {
 
 }
 
+
 .button_left{
-    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    background:#fff;
     font-size: 16px;
     width: 35%;
+    color:#fe9728 ;
+    border:1px solid #fe9728;
+    outline:none;
+
 }
+.button_left:active{
+    opacity: .6;
+}
+button[class="button_left"]::after {
+    border: 0;
+}
+
+
 .weui-btn {
     margin-top: 0;
     width: 55%;

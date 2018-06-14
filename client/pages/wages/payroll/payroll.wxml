@@ -95,33 +95,65 @@
 
 
 
-    <viwe wx:if="{{comfrimBtn==0}}">
 
+    <view wx:if="{{comfrimBtn==0}}">
+
+
+        <view class="button_all">
         <!--需要确认-->
-     <view class="button_all">
+
+            <button class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
+
+            <button class="button_left" hover-class="none" bindtap="feedbackFn">反馈</button>
 
 
-        <button class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
-        <button class="button_left" type="primary" bindtap="feedback">反馈</button>
+        </view>
 
-     </view>
         <!--提示-->
         <text class="payroll_prompt ">7天后将自动确认以上信息</text>
-    </viwe>
-
-
-    <!--确认中-->
-
-    <button wx:elif="{{comfrimBtn==1}}" class="weui-btn button" type="primary">确认中</button>
 
 
 
+
+
+    </view>
+
+
+
+    <view wx:elif="{{comfrimBtn==1}}" >
+
+
+        <view class="button_all">
+        <!--确认中-->
+
+            <button class="weui-btn button" type="primary">确认中</button>
+
+            <button class=" button_left" hover-class="none" bindtap="feedbackFn">反馈</button>
+
+        </view>
+
+
+    </view>
+
+
+
+    <view wx:else>
+
+
+        <view class="button_all">
     <!--已确认-->
 
-    <button class="weui-btn button_disabled" wx:else type="primary">已确认</button>
+    <button class="weui-btn button_disabled"  type="primary">已确认</button>
+
+        <button class="button_left"  hover-class="none" bindtap="feedbackFn">反馈</button>
+
+        </view>
+
+    </view>
 
 
 </view>
+
 
 
 

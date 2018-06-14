@@ -73,12 +73,6 @@ Page({
 
 
 
-
-
-
-
-
-
     },
 
     onLoad: function (options) {

@@ -3,14 +3,12 @@ const app = getApp();
 
 const mineUrl = '/user/center/usercenter';//用户中心
 
-const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
 Page({
 
     onShow:function () {
 
         var thisMineurl = app.globalData.URL + mineUrl;
-
 
         //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
@@ -56,7 +54,7 @@ Page({
 
                     if(res.data.code=='3001') {
 
-                        //console.log('登录');
+                        //console.log('登录过期');
 
                         wx.showToast({
                             title: res.data.msg,

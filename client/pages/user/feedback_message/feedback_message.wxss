@@ -39,3 +39,7 @@
 .wages_time{
     color: #ababab;
 }
+
+.help_service{
+    padding-bottom: 0;
+}
