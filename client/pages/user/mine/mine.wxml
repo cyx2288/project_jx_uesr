@@ -8,8 +8,6 @@
           <image src="../../../static/icon/wages/jx_square.png"  class="mine_background" />
       </view>
 
-
-
        <view class="account_message">
 
            <view class="register_circle">
@@ -104,28 +102,8 @@
     </navigator>
     <hr/>
 
-    <!--我的工作单位-->
-    <navigator url="../company/company" class="mine_welfare">
-
-        <view class="jx_mine_left">
-             <view class="jx_record">
-                 <image src="../../../static/icon/wages/jx_unit.png"  class="reset_go" />
-             </view>
-
-            <text class="password_balance">我的工作单位</text>
-        </view>
 
 
-        <view class="password_image">
-
-        <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>
-
-        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-
-        </view>
-
-    </navigator>
-    <hr/>
 
     <!--银行卡-->
     <navigator url="../card/card" class="mine_welfare">
@@ -143,6 +121,64 @@
     </navigator>
 
      </view>
+
+
+
+      <view class="weui-cells">
+
+
+
+
+       <!--我的工作单位-->
+       <navigator url="../company/company" class="mine_welfare">
+
+        <view class="jx_mine_left">
+            <view class="jx_record">
+                <image src="../../../static/icon/wages/jx_unit.png"  class="reset_go" />
+            </view>
+
+            <text class="password_balance">我的工作单位</text>
+        </view>
+
+
+        <view class="password_image">
+
+        <!--    <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>-->
+
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+        </view>
+
+    </navigator>
+         <hr/>
+
+      <!--消息-->
+       <navigator url="../feedback_message/feedback_message" class="mine_welfare">
+
+              <view class="jx_mine_left">
+                  <view class="jx_record">
+                      <image src="../../../static/icon/wages/jx_message.png"  class="reset_go" />
+                  </view>
+
+                  <text class="password_balance">消息</text>
+              </view>
+
+
+              <view class="password_image">
+
+                  <text hidden="{{hasJoinEnt}}" class="join_tip">您有新消息</text>
+
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+              </view>
+
+          </navigator>
+
+
+
+</view>
+
+
 
 
          <view class="weui-cells">
