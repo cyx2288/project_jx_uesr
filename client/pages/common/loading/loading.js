@@ -1,6 +1,15 @@
+
+const app = getApp();
+
+const mineUrl = '/user/center/usercenter';//用户中心
+
+const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
+
 Page({
 
     onShow:function () {
+
+        var thisMineurl = app.globalData.URL + mineUrl;
 
 
         //获取用户数据
@@ -16,16 +25,87 @@ Page({
         })
 
 
-        if(!jx_sid||!Authorization){
+        if(!jx_sid && !Authorization){
 
-            setTimeout(function () {
+            /**
+             * 接口：用户中心
+             * 请求方式：POST
+             * 接口：/user/center/usercenter
+             * 入参：mobile
+             **/
+            wx.request({
 
-                wx.reLaunch({
+                url: thisMineurl,
 
-                    url:'../../common/signin/signin'
-                })
+                method: 'POST',
 
-            },2000)
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        setTimeout(function () {
+
+                            wx.switchTab({
+
+                                url:'../../wages/index/index'
+                            })
+
+                        },1500)
+
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })
+
+
 
 
         }
@@ -39,7 +119,7 @@ Page({
                     url:'../../wages/index/index'
                 })
 
-            },2000)
+            },1500)
 
 
 

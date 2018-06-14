@@ -45,7 +45,6 @@ span.join_text{
 .weui-panel{
     margin: 0;
 }
-
 .jx_cash{
     width: 60px;
     height: 60px;

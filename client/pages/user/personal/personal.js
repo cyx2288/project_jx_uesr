@@ -151,8 +151,6 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
-
-
         wx.showModal({
             title: '提示',
             content: '确定要退出登录？',
@@ -163,12 +161,11 @@ Page({
 
                 if (res.confirm) {
 
-                    wx.removeStorageSync('jxsid');
+                wx.removeStorageSync('jxsid');
 
-                    wx.removeStorageSync('Authorization');
+                wx.removeStorageSync('Authorization');
 
-
-                    logOut();
+                logOut();
 
 
                 }
@@ -187,7 +184,7 @@ Page({
             /**
              * 接口：
              * 请求方式：POST
-             * 接口：/user/center/usercenter
+             * 接口：/user/set/logout
              * 入参：null
              **/
             wx.request({
