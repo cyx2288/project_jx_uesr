@@ -654,9 +654,9 @@ Page({
 
             wx.showModal({
 
-                title: '确认付款',
+                title: '确认提现',
                 content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
-                confirmText: '确认付款',
+                confirmText: '确认',
                 confirmColor:'#fe9728',
 
                 success: function (res) {

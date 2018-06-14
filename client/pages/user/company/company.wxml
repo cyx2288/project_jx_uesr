@@ -5,7 +5,7 @@
 
     <!--<view class="asset_money">还未收到工资哦~</view>-->
 
-        <view class="weui-panel" wx:for="{{workUnitList}}" data-ent="{{item.entId}}" data-state="{{item.state}}" bindtap="isJoinEntFn" >
+        <view class="weui-panel weui_line" wx:for="{{workUnitList}}" data-ent="{{item.entId}}" data-state="{{item.state}}" bindtap="isJoinEntFn" >
 
             <view class="weui-panel__bd">
 

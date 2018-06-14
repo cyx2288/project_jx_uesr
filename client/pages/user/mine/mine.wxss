@@ -13,11 +13,12 @@
     height: 60px;
     border-radius: 50%;
     background-color: white;
-    box-shadow: 0 2px 3px #E9E9E9;
     overflow: hidden;
     z-index: 2000;
-    margin-top: 15px;
     position: relative;
+    margin-right: 60rpx;
+
+    margin-left: 30rpx;
 
 }
 .register_logo{
@@ -30,6 +31,8 @@
 .account_message{
      padding: 15px 0 25px 0;
      display: flex;
+    justify-content: flex-start;
+    align-content: center;
 
 }
 .account_information_tel{
@@ -50,7 +53,6 @@
 
     z-index: 800;
     align-items: center;
-    padding: 30px;
 
 }
 
@@ -177,7 +179,6 @@ view.password_image{
 .reset_money{
     color: #ff4646;
     font-size: 16px;
-    margin-top: 3px;
     padding-right: 5px;
     line-height: 64rpx;
 }
@@ -195,7 +196,8 @@ hr {
 
 .weui-mine {
     position: relative;
-    padding: 60 rpx 6%;
+    padding: 40rpx 0;
+    box-sizing: border-box;
     background: -webkit-linear-gradient(-90deg,#fc9a4d,#f98253);
     width: 100%;
     overflow: hidden;

@@ -88,10 +88,10 @@ page {
 
 .step.selected ~ .step > .border {
     position: absolute;
-    width:100px;
-    top:25%;
-    left:60%;
-    border-bottom: 1px solid #ddd;
+    width:100%;
+    top:30%;
+    left:100%;
+    border-bottom:1px solid #fff;
 
 }
 
