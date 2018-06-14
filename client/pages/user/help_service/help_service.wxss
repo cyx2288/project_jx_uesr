@@ -79,6 +79,7 @@ hr {
     justify-content: space-around;
     width: 100%;
     color: #eb5e26;
+    border-top: 1rpx solid #ddd;
 
 
 }
