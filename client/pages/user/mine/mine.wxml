@@ -8,8 +8,6 @@
           <image src="../../../static/icon/wages/jx_square.png"  class="mine_background" />
       </view>
 
-
-
        <view class="account_message">
 
            <view class="register_circle">
@@ -150,7 +148,7 @@
     <navigator url="../setting/setting" class="mine_welfare">
         <view class="jx_mine_left">
             <view class="jx_record">
-                <image src="../../../static/icon/wages/jx_bank.png"  class="reset_go" />
+                <image src="../../../static/icon/wages/jx_set.png"  class="reset_go" />
             </view>
 
             <text class="password_balance">设置</text>
