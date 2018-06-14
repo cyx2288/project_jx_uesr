@@ -84,6 +84,8 @@ Page({
 
                 console.log(res.data);
 
+                console.log(res.data.data[0].salaryId)
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -123,6 +125,8 @@ Page({
 
                     })();
 
+                    //缓存salaryId - 反馈页面
+                    wx.setStorageSync('salaryId',res.data.data[0].salaryId);
 
                     var _state = res.data.data[0].state;
 
@@ -306,6 +310,14 @@ Page({
 
         })
 
+
+    },
+
+    feedbackFn:function () {
+
+        wx.navigateTo({
+            url: '../../user/feedback/feedback'
+        })
 
     }
 

@@ -1,15 +1,14 @@
 <view class="feedback-list" wx:for="{{feedBackList}}">
 
-    <!-- 用户发起的列表-->
+
     <view class="people_list {{item.type=='1'? 'sevice_left':''}}">
 
         <view class="feedback-time">20:00</view>
 
-
-
+        <!-- 用户发起的列表-->
         <view wx:if="{{item.type=='1'}}" class="tips_box">
 
-            <view><span class="tips">实发金额不对</span></view>
+            <view><span class="tips">{{item.contentTitle}}</span></view>
 
             <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
 
@@ -19,7 +18,7 @@
 
             <view class="people_img"><image src="../../../static/icon/wages/feedback_staff.png"/></view>
 
-            <view><span class="tips">本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加本月社保基数增加</span></view>
+            <view><span class="tips">{{item.contentTitle}}</span></view>
 
         </view>
 
@@ -27,24 +26,14 @@
 
     </view>
 
-    <!-- 客服反馈列表-->
-    <!--<view class="people_list sevice_left">
-
-        <view class="feedback-time">20:00</view>
-
-
-
-
-
-    </view>-->
 
 </view>
 
 <view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx?'fix-iphonex-button':''}}" >
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd feedback_input">
-            <input class="weui-input " bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="send" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
-            <!--<button class="send" catchtap="add">发送</button>-->
+            <input class="weui-input" value="{{contentTitle}}" bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="done" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+            <button class="send" catchtap="sendMsgFn">发送</button>
         </view>
     </view>
 </view>

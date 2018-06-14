@@ -21,8 +21,8 @@ button.send{
 
     position:relative;
     display:block;
-    margin-left:20rpx;
-    margin-right:20rpx;
+    margin-left:10rpx;
+    margin-right:10rpx;
     padding-left:25rpx;
     padding-right:25rpx;
     box-sizing:border-box;
@@ -35,6 +35,7 @@ button.send{
     overflow:hidden;
     color:#000000;
     background-color:#F8F8F8;
+    overflow: hidden;
 
 }
 .feedback-box .weui-input{
@@ -46,8 +47,8 @@ button.send{
     background-color: #f7f7f7;
     border-radius: 10px;
     overflow: hidden;
-    width: 100%;
-   /* width: calc(100vw - 120px);*/
+   /* width: 100%;*/
+   width: calc(100vw - 120px);
 
 }
 .feedback-box .phcolor{

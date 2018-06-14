@@ -2,20 +2,25 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const feedbackUrl ='/salary/home/getfeedback';//登录的url
+const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的url
 
+const sendFeedbackUrl ='/salary/home/feedback';//工资条反馈的url
+
+const feedbackDetailUrl ='/salary/home/feedback';//工资条反馈的url
 
 Page({
 
     data: {
 
-             isIpx: '',
+              isIpx: '',//是不是ipx
 
-             contentTitle:'',
+              fixedInput: false,//输入框input时候获得焦点
 
-             fixedInput: false,
+              feedBackList:[],//反馈消息列表
 
-             feedBackList:[],//反馈消息列表
+              contentTitle:'',//反馈内容
+
+              feedBackId:'',//反馈消息Id
 
 
     },
@@ -27,37 +32,35 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisfeedbackUrl = app.globalData.URL + feedbackUrl;
-
         var that = this;
 
         var ipX = app.globalData.isIpx;
 
-
         that.setData({
 
-
             isIpx: ipX ,
-
 
         })
 
 
         /**
-         * 接口：用户中心
+         * 接口：获取工资条反馈
          * 请求方式：POST
-         * 接口：/salary/home/getfeedback
-         * 入参：feedbackDTO,pageNum,pageSize
+         * 接口：/salary/home/feedbacklist
+         * 入参：pageNum,pageSize
          **/
 
         wx.request({
 
-            url: thisfeedbackUrl,
+            url: app.globalData.URL + feedbackUrl,
 
             method: 'POST',
 
             data: json2FormFn.json2Form({
+                
+                pageNum:1,
 
+                pageSize:10,
 
 
             }),
@@ -77,15 +80,19 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.data.data.list[0].details)
+                console.log(res.data.data.list[0])
+
+                console.log(res.data.data.list[0].feedBackId)
 
                 that.setData({
 
-                    feedBackList:res.data.data.list[0].details,
+                    feedBackList:res.data.data.list[0],
+
+                    feedBackId:res.data.data.list[0].feedBackId
 
                 })
 
-       /*         app.globalData.repeat(res.data.code,res.data.msg);
+              app.globalData.repeat(res.data.code,res.data.msg);
 
                 if(res.data.code=='3001') {
 
@@ -119,11 +126,7 @@ Page({
 
 
 
-
-
-
-
-                }*/
+                }
 
             },
 
@@ -133,6 +136,238 @@ Page({
             }
 
         })
+
+        /**
+         * 接口：获取工资条反馈详情
+         * 请求方式：POST
+         * 接口：/salary/home/feedbackdetail
+         * 入参：pageNum,pageSize
+         **/
+
+        wx.request({
+
+            url: app.globalData.URL +  feedbackDetailUrl,
+
+            method: 'POST',
+
+            data: json2FormFn.json2Form({
+
+                feedBackId:that.data.feedBackId,
+
+            }),
+
+            header: {
+
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid':jx_sid,
+
+                'Authorization':Authorization
+
+            },
+
+
+            success: function (res) {
+
+                console.log(res.data);
+
+
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        })
+
+    },
+    //工资条反馈
+    sendMsgFn:function () {
+
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        var that = this;
+
+
+        //判断输入内容
+        if(!that.data.contentTitle){
+
+            wx.showToast({
+
+                title: '请输入反馈内容',
+                icon: 'none',
+
+            })
+
+
+        }
+
+        else {
+
+
+            /**
+             * 接口：工资条反馈
+             * 请求方式：POST
+             * 接口：/salary/home/getfeedback
+             * 入参：salaryDetailId，salaryId，contentTitle
+             *
+             **/
+
+            wx.request({
+
+                url: app.globalData.URL + sendFeedbackUrl,
+
+                method: 'POST',
+
+                data: json2FormFn.json2Form({
+
+                    salaryDetailId:wx.getStorageSync('salaryDetailId'),//工资详情Id
+
+                    salaryId:wx.getStorageSync('salaryId'),//工资发放批次Id
+
+                    contentTitle:that.data.contentTitle,//反馈内容
+
+
+                }),
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    if(res.data.code=='0000'){
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration:2000
+
+                        });
+
+                        //消息清空
+                        that.setData({
+
+                            contentTitle:''
+
+                        })
+
+                        /**
+                         * 接口：获取工资条反馈详情
+                         * 请求方式：POST
+                         * 接口：/salary/home/feedbacklist
+                         * 入参：pageNum，pageSize
+                         *
+                         **/
+
+                        wx.request({
+
+                            url: app.globalData.URL + feedbackUrl,
+
+                            method: 'POST',
+
+                            data: json2FormFn.json2Form({
+
+
+
+                            }),
+
+                            header: {
+
+                                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                'jxsid':jx_sid,
+
+                                'Authorization':Authorization
+
+                            },
+
+
+                            success: function (res) {
+
+                                console.log(res.data);
+
+                                console.log(res.data.data.list[0].details)
+
+                                if(res.data.code=='0000'){
+
+
+                                    that.setData({
+
+                                        feedBackList:res.data.data.list[0].details,
+
+                                    })
+
+
+
+                                }
+
+                                else {
+
+
+
+                                }
+
+
+                            },
+
+                            fail: function (res) {
+
+                                console.log(res)
+                            }
+
+                        })
+
+
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration:2000
+
+
+                        });
+
+                    }
+
+
+
+
+
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })
+
+
+
+        }
 
 
 
@@ -164,7 +399,7 @@ Page({
 
     },
 
-    inputChange:function () {
+    inputChange:function (e) {
 
         var that = this;
 
@@ -173,6 +408,8 @@ Page({
             contentTitle: e.detail.value,
 
         })
+
+
 
     }
 

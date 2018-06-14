@@ -9,6 +9,11 @@ page{
 
 }
 
+.weui-cell {
+    padding:10px 10px;
+}
+
+
 .weui-media-box__hd{
     margin: 0 auto;
     position: relative;

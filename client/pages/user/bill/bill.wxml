@@ -25,7 +25,7 @@
                 <view class="weui_confirm">￥{{item.orderAmount}}</view>
                 <view wx:if="{{item.orderState=='0'}}" class="weui_confirm orange">待支付</view>
                 <view wx:elif="{{item.orderState=='1'}}" class="weui_confirm orange">完成</view>
-                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm orange">付款成功</view>
+                <view wx:elif="{{item.orderState=='2'}}"class="weui_confirm orange">提交成功</view>
                 <view wx:elif="{{item.orderState=='3'}}" class="weui_confirm orange">处理中</view>
                 <view wx:elif="{{item.orderState=='4'}}" class="weui_confirm gary">已退款</view>
                 <view wx:elif="{{item.orderState=='5'}}" class="weui_confirm gary">订单关闭</view>
