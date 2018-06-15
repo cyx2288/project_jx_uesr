@@ -72,7 +72,7 @@
 
 <view class="tab_bottom">
 
-    <button class="kf_button" open-type="contact">
+    <button class="kf_button" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">
 
         <image class="kf_image" src="../../../static/icon/wages/j_service_orange.png"/>
 

@@ -15,7 +15,9 @@ Page({
 
         idCard:'',
 
-        userName:''
+        userName:'',
+
+        mobile:'',
 
 
     },
@@ -24,11 +26,15 @@ Page({
 
         var thisUserName = wx.getStorageSync('userName');
 
+        var thisMobile = wx.getStorageSync('mobile');
+
         //console.log('姓名'+userName)
 
         this.setData({
 
             userName:thisUserName,
+
+            mobile:thisMobile
 
 
         })

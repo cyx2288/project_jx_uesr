@@ -1,4 +1,32 @@
 Page({
+
+    data:{
+
+        userName:'',
+
+        mobile:'',
+
+
+    },
+
+    onShow:function () {
+
+
+        var thisUserName = wx.getStorageSync('userName');
+
+        var thisMobile = wx.getStorageSync('mobile');
+
+
+        this.setData({
+
+            userName:thisUserName,
+
+            mobile:thisMobile
+
+
+        })
+
+    },
     openConfirm: function () {
 
         wx.makePhoneCall({
