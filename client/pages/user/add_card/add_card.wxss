@@ -96,3 +96,7 @@
 .bottom_button{
     margin-bottom: 25px;
 }
+.card_type{
+
+    margin-right: 10px;
+}

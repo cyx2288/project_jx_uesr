@@ -47,7 +47,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
-                        <view class="weui-select">{{bankName}}{{thisBankSort}}</view>
+                        <view class="weui-select">{{bankName}}<span class="card_type" wx:if="{{cardType=='1'}}">储蓄卡</span><span class="card_type" wx:if="{{cardType=='2'}}">信用卡</span></view>
                     </picker>
                 </view>
             </view>

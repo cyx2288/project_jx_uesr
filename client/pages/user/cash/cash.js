@@ -50,9 +50,13 @@ Page({
 
         bankList: [],//传给后台的数组
 
-        userName:'',
+        userName:'',//客服-用户姓名
 
-        mobile:'',
+        mobile:'',//客服-用户电话
+
+        cardTypeText:'',//银行卡类型名称
+
+        cardType:'',//银行卡类型
 
 
     },
@@ -244,9 +248,15 @@ Page({
 
                             bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
 
-                            bankCardId: that.data.userBankCardDTOList[0].bankCardId//银行卡id
+                            bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
+
+                            cardType:that.data.userBankCardDTOList[0].cardType//银行卡类型
+
+
 
                         });
+
+
 
 
                         //获取银行卡的
@@ -261,7 +271,28 @@ Page({
 
                             var pickBankId = thisBankList[i].bankCardId;
 
-                            var _pickChooseBank = pickBankName + '储蓄卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
+                            var pickBankType = thisBankList[i].cardType;
+
+                            if(pickBankType=='1'){
+
+                                that.setData({
+
+                                    cardTypeText:'储蓄卡'
+
+                                })
+
+                            }
+
+                            else {
+
+                                that.setData({
+
+                                    cardTypeText:'储蓄卡'
+
+                                })
+                            }
+
+                            var _pickChooseBank = pickBankName + that.data.cardTypeText + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
 
                             //组成数组
                             pickChooseBank.push(_pickChooseBank);

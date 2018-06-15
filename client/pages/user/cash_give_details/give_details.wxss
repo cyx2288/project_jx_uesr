@@ -33,6 +33,8 @@ page {
 .step {
 
     position: relative;
+
+    width: 70px;
 }
 
 .step > .weui-loadmore {
@@ -52,10 +54,11 @@ page {
 
 .step > .border {
     position:absolute;
-    width:100px;
+    width:100%;
     top:30%;
-    left:80%;
+    left:100%;
     border-bottom:1px solid #fff;
+
 
 
 }
@@ -85,10 +88,10 @@ page {
 
 .step.selected ~ .step > .border {
     position: absolute;
-    width:100px;
-    top:25%;
-    left:60%;
-    border-bottom: 1px solid #ddd;
+    width:100%;
+    top:30%;
+    left:100%;
+    border-bottom:1px solid #fff;
 
 }
 
@@ -169,8 +172,8 @@ page {
 
 .wages_middle .asset_money{
 
-     color: #4a4a4a;
-     font-size: 14px;
+    color: #4a4a4a;
+    font-size: 14px;
     justify-content:center;
 
 }
@@ -204,7 +207,6 @@ page {
     color: #fe9728;
     text-align: center;
 }
-
 button.kf_button {
 
     position:relative;

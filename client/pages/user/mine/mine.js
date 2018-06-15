@@ -20,7 +20,9 @@ Page({
 
         hasJoinEnt: true,//默认不显示有新的邀请 true为不显示 false为显示
 
-        isVerify:''//是否认证
+        isVerify:'',//是否认证
+
+        hasNewMsg:true//默认不显示有新消息 true为不显示 false为显示
 
 
     },
@@ -221,6 +223,8 @@ Page({
 
                     var hasEntType = res.data.data.type;
 
+                    var hasNewMsg = res.data.data.isHaveNewMsg;
+
                     if (hasEntType == '1') {
 
                         that.setData({
@@ -236,6 +240,26 @@ Page({
                         that.setData({
 
                             hasJoinEnt: true
+
+                        })
+
+                    }
+
+                    if (hasNewMsg == '1') {
+
+                        that.setData({
+
+                            hasNewMsg: false,
+
+                        })
+
+                    }
+
+                    else {
+
+                        that.setData({
+
+                            hasNewMsg: true
 
                         })
 

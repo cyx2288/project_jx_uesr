@@ -43,3 +43,14 @@
 .help_service{
     padding-bottom: 0;
 }
+.flex_box{
+    width: auto;
+}
+.new_title{
+    background: #ff4646;
+    color: #fff;
+    font-size: 14px;
+    padding:0 8rpx;
+    border-radius: 10px;
+
+}

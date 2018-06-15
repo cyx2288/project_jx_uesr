@@ -165,6 +165,10 @@ Page({
 
                 wx.removeStorageSync('Authorization');
 
+                    console.log(wx.getStorageSync('jxsid'))
+
+                    console.log(wx.getStorageSync('Authorization'))
+
                 logOut();
 
 

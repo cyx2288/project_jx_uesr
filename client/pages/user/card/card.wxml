@@ -21,7 +21,7 @@
                                 <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
                             </view>
 
-                            <view class="weui-media-box__title weui-media-box__title_in-text bank">{{item.bankName}}<span class="card_style">储蓄卡</span></view>
+                            <view class="weui-media-box__title weui-media-box__title_in-text bank">{{item.bankName}}<span wx:if="{{item.cardType=='1'}}" class="card_style">储蓄卡</span><span wx:if="{{item.cardType=='2'}}" class="card_style">信用卡</span></view>
 
 
 

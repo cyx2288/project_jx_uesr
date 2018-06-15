@@ -1,35 +1,42 @@
-<view class="feedback-list" wx:for="{{feedBackList}}">
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+
+<scroll-view scroll-y="true" enable-back-to-top="true" class="feedback_content">
+
+    <view class="feedback-list" wx:for="{{feedBackList}}">
 
 
-    <view class="people_list {{item.type=='1'? 'sevice_left':''}}">
+        <view class="people_list {{item.type=='1'? '':'sevice_left'}}">
 
-        <view class="feedback-time">20:00</view>
+            <view class="feedback-time">{{filter.formatTime(item.sendDate,'-')}}</view>
 
-        <!-- 用户发起的列表-->
-        <view wx:if="{{item.type=='1'}}" class="tips_box">
+            <!-- 用户发起的列表-->
+            <view wx:if="{{item.type=='1'}}" class="tips_box">
 
-            <view><span class="tips">{{item.contentTitle}}</span></view>
+                <view><span class="tips">{{item.content}}</span></view>
 
-            <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
+                <view class="people_img"><image src="../../../static/icon/wages/feedback_mine.png"/></view>
+
+            </view>
+
+            <view wx:elif="{{item.type=='2'}}" class="tips_box">
+
+                <view class="people_img"><image src="../../../static/icon/wages/feedback_staff.png"/></view>
+
+                <view><span class="tips">{{item.content}}</span></view>
+
+            </view>
+
+
 
         </view>
-
-        <view wx:elif="{{item.type=='2'}}" class="tips_box">
-
-            <view class="people_img"><image src="../../../static/icon/wages/feedback_staff.png"/></view>
-
-            <view><span class="tips">{{item.contentTitle}}</span></view>
-
-        </view>
-
 
 
     </view>
 
+</scroll-view>
 
-</view>
 
-<view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx?'fix-iphonex-button':''}}" >
+<view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx ? 'fix-iphonex-button':''}}" >
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd feedback_input">
             <input class="weui-input" value="{{contentTitle}}" bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="done" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>

@@ -6,13 +6,13 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
 const sendFeedbackUrl ='/salary/home/feedback';//工资条反馈的url
 
-const feedbackDetailUrl ='/salary/home/feedback';//工资条反馈的url
+const feedbackDetailUrl ='/salary/home/feedbackdetail';//工资条反馈的url
 
 Page({
 
     data: {
 
-              isIpx: '',//是不是ipx
+              isIpx: false,//是不是ipx
 
               fixedInput: false,//输入框input时候获得焦点
 
@@ -22,11 +22,11 @@ Page({
 
               feedBackId:'',//反馈消息Id
 
+              userFeedBackList:'',
 
     },
 
     onShow: function () {
-
 
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -34,108 +34,24 @@ Page({
 
         var that = this;
 
-        var ipX = app.globalData.isIpx;
+        wx.getSystemInfo({
 
-        that.setData({
+            success: function success(res) {
 
-            isIpx: ipX ,
-
-        })
+                if (res.model == "iPhone X") {
 
 
-        /**
-         * 接口：获取工资条反馈
-         * 请求方式：POST
-         * 接口：/salary/home/feedbacklist
-         * 入参：pageNum,pageSize
-         **/
+                    that.setData({
 
-        wx.request({
-
-            url: app.globalData.URL + feedbackUrl,
-
-            method: 'POST',
-
-            data: json2FormFn.json2Form({
-                
-                pageNum:1,
-
-                pageSize:10,
-
-
-            }),
-
-            header: {
-
-                'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                'jxsid':jx_sid,
-
-                'Authorization':Authorization
-
-            },
-
-
-            success: function (res) {
-
-                console.log(res.data);
-
-                console.log(res.data.data.list[0])
-
-                console.log(res.data.data.list[0].feedBackId)
-
-                that.setData({
-
-                    feedBackList:res.data.data.list[0],
-
-                    feedBackId:res.data.data.list[0].feedBackId
-
-                })
-
-              app.globalData.repeat(res.data.code,res.data.msg);
-
-                if(res.data.code=='3001') {
-
-                    //console.log('登录');
-
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-                            setTimeout(function () {
-
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
-
-                        }
-
+                        isIpx:true
                     })
 
-                    return false
-
-
                 }
 
-                else {
-
-
-
-                }
-
-            },
-
-            fail: function (res) {
-
-                console.log(res)
             }
-
         })
+
+
 
         /**
          * 接口：获取工资条反馈详情
@@ -152,7 +68,7 @@ Page({
 
             data: json2FormFn.json2Form({
 
-                feedBackId:that.data.feedBackId,
+                salaryDetailId:wx.getStorageSync('salaryDetailId'),
 
             }),
 
@@ -171,7 +87,22 @@ Page({
 
                 console.log(res.data);
 
+                var list = res.data.data;
 
+                that.setData({
+
+                    feedBackList: list,//反馈消息列表
+
+                });
+
+/*           setTimeout(function () {
+
+                    wx.pageScrollTo({
+
+                        scrollTop: 999999
+                    })
+
+            },500)*/
 
             },
 
@@ -249,6 +180,8 @@ Page({
 
                     console.log(res.data);
 
+                    /*console.log(res.data.data)*/
+
                     if(res.data.code=='0000'){
 
                         wx.showToast({
@@ -259,81 +192,39 @@ Page({
 
                         });
 
+
+                        var userImf={
+                            feedBackDetailId: "1",
+                            feedBackId: "123",
+                            content: that.data.contentTitle,
+                            type: "1",
+                            sendDate: Date.parse(new Date())
+                        }
+
+                        var _list = that.data.feedBackList
+
+                        _list.push(userImf)
+
+
                         //消息清空
                         that.setData({
 
-                            contentTitle:''
+                            contentTitle:'',
+
+                            feedBackList:_list,//反馈消息列表
 
                         })
 
-                        /**
-                         * 接口：获取工资条反馈详情
-                         * 请求方式：POST
-                         * 接口：/salary/home/feedbacklist
-                         * 入参：pageNum，pageSize
-                         *
-                         **/
+                        //平滑到底部
 
-                        wx.request({
+                        setTimeout(function () {
 
-                            url: app.globalData.URL + feedbackUrl,
+                            wx.pageScrollTo({
 
-                            method: 'POST',
+                                scrollTop: 999999
+                            })
 
-                            data: json2FormFn.json2Form({
-
-
-
-                            }),
-
-                            header: {
-
-                                'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                                'jxsid':jx_sid,
-
-                                'Authorization':Authorization
-
-                            },
-
-
-                            success: function (res) {
-
-                                console.log(res.data);
-
-                                console.log(res.data.data.list[0].details)
-
-                                if(res.data.code=='0000'){
-
-
-                                    that.setData({
-
-                                        feedBackList:res.data.data.list[0].details,
-
-                                    })
-
-
-
-                                }
-
-                                else {
-
-
-
-                                }
-
-
-                            },
-
-                            fail: function (res) {
-
-                                console.log(res)
-                            }
-
-                        })
-
-
-
+                        },200)
 
                     }
 
@@ -383,6 +274,8 @@ Page({
             fixedInput: true,
 
         })
+
+
 
 
     },
