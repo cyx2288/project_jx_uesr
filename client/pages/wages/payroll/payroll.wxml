@@ -143,7 +143,7 @@
         <view class="button_all">
     <!--已确认-->
 
-    <button class="weui-btn button_disabled"  type="primary">已确认</button>
+    <button class="weui-btn button_disabled confirm_btn"  type="primary">已确认</button>
 
         <button class="button_left"  hover-class="none" bindtap="feedbackFn">反馈</button>
 

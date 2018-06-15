@@ -1,16 +1,22 @@
 {
   "pages": [
 
-    "pages/user/feedback/feedback",
-
     "pages/common/loading/loading",
 
-    "pages/user/company_authentication/authentication",
+    "pages/user/feedback_message/feedback_message",
+
+
+    "pages/user/feedback/feedback",
     "pages/user/give_details/give_details",
-    "pages/common/wages_authentication/authentication",
-    "pages/wages/index/index",
+    "pages/user/mine/mine",
     "pages/user/cash/cash",
     "pages/user/help_service/help_service",
+    "pages/user/company_authentication/authentication",
+    "pages/common/wages_authentication/authentication",
+    "pages/wages/index/index",
+
+    "pages/wages/payroll/payroll",
+
     "pages/jd/jdshop/jdshop",
     "pages/jd/index/index",
     "pages/user/code/code",
@@ -22,7 +28,7 @@
     "pages/common/user_agreement/user_agreement",
     "pages/user/details/details",
     "pages/user/bill/bill",
-    "pages/user/mine/mine",
+
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",
     "pages/user/set_payment_psw/set_payment_psw",
@@ -54,7 +60,7 @@
     "pages/user/personal/personal",
     "pages/user/certification/certification",
     "pages/common/authentication/authentication",
-    "pages/wages/payroll/payroll",
+
     "example/index",
     "example/button/button",
     "example/list/list",
@@ -99,12 +105,7 @@
         "iconPath": "static/icon/index_tab/jx_wages_grey.png",
         "selectedIconPath": "static/icon/index_tab/jx_wages_orange.png"
       },
-      {
-        "pagePath": "pages/jd/index/index",
-        "text": "京东商城",
-        "iconPath": "static/icon/index_tab/jx_jd_grey.png",
-        "selectedIconPath": "static/icon/index_tab/jx_jd_orange.png"
-      },
+
       {
         "pagePath": "pages/user/mine/mine",
         "text": "我的",

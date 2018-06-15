@@ -1,4 +1,3 @@
-
 const app = getApp();
 
 const mineUrl = '/user/center/usercenter';//用户中心
@@ -6,7 +5,7 @@ const mineUrl = '/user/center/usercenter';//用户中心
 
 Page({
 
-    onShow:function () {
+    onShow: function () {
 
         var thisMineurl = app.globalData.URL + mineUrl;
 
@@ -17,13 +16,12 @@ Page({
 
         wx.showLoading({
 
-            mask:true,
+            mask: true,
             title: '跳转中',
 
         })
 
-
-        if(!jx_sid && !Authorization){
+        if (jx_sid && Authorization) {
 
             /**
              * 接口：用户中心
@@ -50,9 +48,9 @@ Page({
 
                     console.log(res.data);
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                    if(res.data.code=='3001') {
+                    if (res.data.code == '3001') {
 
                         //console.log('登录过期');
 
@@ -60,16 +58,16 @@ Page({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
-                            success:function () {
+                            success: function () {
 
                                 setTimeout(function () {
 
                                     wx.reLaunch({
 
-                                        url:'../../common/signin/signin'
+                                        url: '../../common/signin/signin'
                                     })
 
-                                },1500)
+                                }, 1500)
 
                             }
 
@@ -86,10 +84,10 @@ Page({
 
                             wx.switchTab({
 
-                                url:'../../wages/index/index'
+                                url: '../../wages/index/index'
                             })
 
-                        },1500)
+                        }, 1500)
 
 
                     }
@@ -104,21 +102,21 @@ Page({
             })
 
 
-
-
         }
 
         else {
 
+
+
             setTimeout(function () {
 
-                wx.switchTab({
+                wx.reLaunch({
 
-                    url:'../../wages/index/index'
+                    url: '../../common/signin/signin'
                 })
 
-            },1500)
 
+            },1500)
 
 
         }

@@ -1,51 +1,38 @@
-<view class="help_service">
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
 
-    <navigator url="../feedback/feedback" class="weui-cells">
+<view  class="help_service">
+
+    <view wx:for="{{feedBackList}}" data-detail="{{item.salaryDetailId}}"  data-id="{{item.salaryId}}"bindtap="feedBackUrlFn" class="weui-cells">
 
         <view class="weui-media-box__hd ">
-            <text class="service_title">【反馈处理结果】</text>
+
+            <text class="service_title flex_box">【反馈处理结果】</text>
+            <span class="new_title" wx:if="{{item.isUserHaveNew=='1'}}">New</span>
 
         </view>
 
 
-         <view class="feedback_text">本月社保基数增加本月社保基数增加本月社保基数增加</view>
+         <view class="feedback_text">{{item.contentTitle}}</view>
 
         <hr/>
 
         <view class="weui-help">
 
-            <text class="wages_month">2018年4月工资</text>
-            <text class="wages_time">2018-05-15   10:38:08</text>
+            <text class="wages_month">{{item.salaryMonth}}工资</text>
+            <text class="wages_time">{{filter.formatTime(item.salaryDate,'-')}}</text>
 
         </view>
 
-    </navigator>
+    </view>
 
 </view>
 
 
+<view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{moreText}}</view>
+</view>
 
-<view class="help_service">
-
-    <navigator url="../feedback/feedback" class="weui-cells">
-
-        <view class="weui-media-box__hd ">
-            <text class="service_title">【反馈处理结果】</text>
-
-        </view>
-
-
-        <view class="feedback_text">本月社保基数增加本月社保基数增加本月社保基数增加</view>
-
-        <hr/>
-
-        <view class="weui-help">
-
-            <text class="wages_month">2018年4月工资</text>
-            <text class="wages_time">2018-05-15   10:38:08</text>
-
-        </view>
-
-    </navigator>
-
+<view class="weui-loadmore" hidden="{{!noData}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
 </view>

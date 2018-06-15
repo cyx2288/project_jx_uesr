@@ -1,9 +1,19 @@
+.feedback_content{
+    padding-bottom: 180rpx;
+}
 .feedback-box{
     position: fixed;
     bottom:0;
     left: 0;
     padding: 10px 0 30px;
 }
+
+.fix-iphonex-button {
+
+    bottom:68rpx!important;
+
+}
+
 .feedback-box.moveInput{
 
     bottom:20rpx;
@@ -40,7 +50,7 @@ button.send{
 }
 .feedback-box .weui-input{
 
-    border: 1rpx solid #ddd;
+    border: 1px solid #ddd;
     height: 2em;
     min-height: 2em;
     line-height: 2em;
@@ -124,4 +134,9 @@ button.send{
     background: #ff9165;
     color: #fff;
     text-align: left;
+}
+.weui-input{
+    padding-left:16rpx;
+    overflow: hidden;
+
 }

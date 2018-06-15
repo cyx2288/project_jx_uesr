@@ -133,6 +133,8 @@ Page({
                     //将给的数据转成字符串
                     var _addAmount = JSON.parse(res.data.data[0].addAmount);
 
+                    console.log(_addAmount)
+
                     var _addAmountArray = [], x;
 
                     /*遍历json，产生可以渲染的data*/
