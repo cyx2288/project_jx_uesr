@@ -1,0 +1,360 @@
+
+<!--帮助与客服-->
+
+<view class="help_service">
+
+    <view class="bank_classify">常用</view>
+
+    <view url="" class="weui-cells">
+
+         <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_01.png" class="jx_cash"/>
+            <text class="service_title">中国银行</text>
+         </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_02.png" class="jx_cash"/>
+            <text class="service_title">农业银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_03.png" class="jx_cash"/>
+            <text class="service_title">工商银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_04.png" class="jx_cash"/>
+            <text class="service_title">建设银行</text>
+        </view>
+        <hr/>
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_05.png" class="jx_cash"/>
+            <text class="service_title">交通银行</text>
+        </view>
+        <hr/>
+
+
+    <view class="weui-help">
+        <image src="../../../static/icon/bank/bank_10.png" class="jx_cash"/>
+        <text class="service_title">招商银行</text>
+    </view>
+    <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_11.png" class="jx_cash"/>
+            <text class="service_title">民生银行</text>
+        </view>
+        <hr/>
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_15.png" class="jx_cash"/>
+            <text class="service_title">光大银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_08.png" class="jx_cash"/>
+            <text class="service_title">浦发银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_13.png" class="jx_cash"/>
+            <text class="service_title">中信银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_06.png" class="jx_cash"/>
+            <text class="service_title">中国邮政储蓄银行</text>
+        </view>
+        <hr/>
+    </view>
+
+    <!--按字母分类-->
+
+    <view class="bank_classify">B</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_29.png" class="jx_cash"/>
+            <text class="service_title">北京农村商业银行</text>
+        </view>
+        <hr/>
+
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_16.png" class="jx_cash"/>
+            <text class="service_title">北京银行</text>
+        </view>
+
+
+    </view>
+
+    <view class="bank_classify">C</view>
+    <view url="" class="weui-cells">
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_33.png" class="jx_cash"/>
+            <text class="service_title">成都商业银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_27.png" class="jx_cash"/>
+            <text class="service_title">重庆银行</text>
+        </view>
+
+    </view>
+
+
+    <view class="bank_classify">D</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_19.png" class="jx_cash"/>
+            <text class="service_title">大连银行</text>
+        </view>
+
+
+    </view>
+
+
+    <view class="bank_classify">G</view>
+    <view url="" class="weui-cells">
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_03.png" class="jx_cash"/>
+            <text class="service_title">工商银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_15.png" class="jx_cash"/>
+            <text class="service_title">光大银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_07.png" class="jx_cash"/>
+            <text class="service_title">广发银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_23.png" class="jx_cash"/>
+            <text class="service_title">广州银行</text>
+        </view>
+
+    </view>
+
+
+
+    <view class="bank_classify">H</view>
+    <view url="" class="weui-cells">
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_20.png" class="jx_cash"/>
+            <text class="service_title">杭州商业银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_24.png" class="jx_cash"/>
+            <text class="service_title">华夏银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_34.png" class="jx_cash"/>
+            <text class="service_title">徽商银行</text>
+        </view>
+
+
+    </view>
+
+
+    <view class="bank_classify">J</view>
+    <view url="" class="weui-cells">
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_30.png" class="jx_cash"/>
+            <text class="service_title">济宁银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_04.png" class="jx_cash"/>
+            <text class="service_title">建设银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_28.png" class="jx_cash"/>
+            <text class="service_title">江苏银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_05.png" class="jx_cash"/>
+            <text class="service_title">交通银行</text>
+        </view>
+
+    </view>
+
+
+    <view class="bank_classify">M</view>
+    <view url="" class="weui-cells">
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_11.png" class="jx_cash"/>
+            <text class="service_title">民生银行</text>
+        </view>
+
+
+    </view>
+
+
+    <view class="bank_classify">N</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_21.png" class="jx_cash"/>
+            <text class="service_title">宁波银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_02.png" class="jx_cash"/>
+            <text class="service_title">农业银行</text>
+        </view>
+
+    </view>
+
+    <view class="bank_classify">P</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_24.png" class="jx_cash"/>
+            <text class="service_title">平安银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_08.png" class="jx_cash"/>
+            <text class="service_title">浦东发展银行</text>
+        </view>
+
+    </view>
+
+
+
+    <view class="bank_classify">S</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_26.png" class="jx_cash"/>
+            <text class="service_title">上海农商银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_17.png" class="jx_cash"/>
+            <text class="service_title">上海银行</text>
+        </view>
+
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_32.png" class="jx_cash"/>
+            <text class="service_title">深圳发展银行</text>
+        </view>
+    </view>
+
+
+    <view class="bank_classify">T</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_31.png" class="jx_cash"/>
+            <text class="service_title">台州银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_18.png" class="jx_cash"/>
+            <text class="service_title">天津银行</text>
+        </view>
+
+
+    </view>
+
+
+    <view class="bank_classify">X</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_12.png" class="jx_cash"/>
+            <text class="service_title">兴业银行</text>
+        </view>
+
+        <hr/>
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_22.png" class="jx_cash"/>
+            <text class="service_title">厦门银行</text>
+        </view>
+
+
+    </view>
+
+
+
+    <view class="bank_classify">Z</view>
+    <view url="" class="weui-cells">
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_10.png" class="jx_cash"/>
+            <text class="service_title">招商银行</text>
+        </view>
+        <hr/>
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_09.png" class="jx_cash"/>
+            <text class="service_title">浙江泰隆商业银行</text>
+        </view>
+        <hr/>
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_25.png" class="jx_cash"/>
+            <text class="service_title">浙商银行</text>
+        </view>
+        <hr/>
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_01.png" class="jx_cash"/>
+            <text class="service_title">中国银行</text>
+        </view>
+
+        <hr/>
+
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_13.png" class="jx_cash"/>
+            <text class="service_title">中信银行</text>
+        </view>
+        <hr/>
+
+        <view class="weui-help">
+            <image src="../../../static/icon/bank/bank_06.png" class="jx_cash"/>
+            <text class="service_title">中国邮政储蓄银行</text>
+        </view>
+    </view>
+
+
+
+</view>
