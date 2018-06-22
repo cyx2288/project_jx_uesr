@@ -218,7 +218,12 @@ Page({
 
                 if(that.data.state=='0'&&that.data.type=='1'){
 
-                    wx.redirectTo({
+                    //
+                    // wx.navigateBack({
+                    //     delta: 2
+                    // })
+
+                   wx.navigateTo({
 
                         url:'../company_authentication/authentication'
 

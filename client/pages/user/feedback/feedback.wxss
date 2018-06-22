@@ -43,9 +43,14 @@ button.send{
     border-radius:5px;
     -webkit-tap-highlight-color:transparent;
     overflow:hidden;
-    color:#000000;
-    background-color:#F8F8F8;
+    color:#fff;
+    background:-webkit-linear-gradient(65deg,#ea5e26,#fe9728);
     overflow: hidden;
+
+}
+
+button.send::after{
+    border: none;
 
 }
 .feedback-box .weui-input{

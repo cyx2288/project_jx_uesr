@@ -102,9 +102,11 @@
         <view class="button_all">
         <!--需要确认-->
 
-            <button class="weui-btn" type="primary" bindtap="confirmFn">确认工资条</button>
+            <button class="weui-btn confirm_btn" type="primary" bindtap="confirmFn">确认工资条</button>
 
             <button class="button_left" hover-class="none" bindtap="feedbackFn">反馈</button>
+
+            <view hidden="{{hiddenDot}}" class="dot"></view>
 
 
         </view>
@@ -126,9 +128,11 @@
         <view class="button_all">
         <!--确认中-->
 
-            <button class="weui-btn button" type="primary">确认中</button>
+            <button class="weui-btn button confirm_btn" type="primary">确认中</button>
 
             <button class=" button_left" hover-class="none" bindtap="feedbackFn">反馈</button>
+
+            <view hidden="{{hiddenDot}}" class="dot"></view>
 
         </view>
 
@@ -146,6 +150,8 @@
     <button class="weui-btn button_disabled confirm_btn"  type="primary">已确认</button>
 
         <button class="button_left"  hover-class="none" bindtap="feedbackFn">反馈</button>
+
+            <view hidden="{{hiddenDot}}" class="dot"></view>
 
         </view>
 

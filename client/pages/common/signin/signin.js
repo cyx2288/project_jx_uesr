@@ -78,40 +78,6 @@ data:{
 
         }
 
-/*        else if(empty.test(that.data.password)){
-
-            wx.showToast({
-
-                title: '密码包含非法字符',
-                icon: 'none'
-
-            });
-
-        }
-
-
-      else if(that.data.password==''||that.data.password.length<6){
-
-          wx.showToast({
-
-              title: '请输入6位到20位密码',
-              icon: 'none'
-
-          });
-
-
-       }
-
-      else if(!reg.test(that.data.password)){
-
-            wx.showToast({
-
-                title: '密码需包含数字和字母',
-                icon: 'none'
-
-            });
-
-        }*/
 
       else {
 
@@ -191,11 +157,13 @@ data:{
 
                       wx.setStorageSync('isVerify',res.data.data.isVerify);
 
+/*
                       console.log('用户姓名：'+ wx.getStorageSync('userName'));
 
                       console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
 
                       console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+*/
 
 
 

@@ -19,7 +19,7 @@
         <view class="weui-help">
 
             <text class="wages_month">{{item.salaryMonth}}工资</text>
-            <text class="wages_time">{{filter.formatTime(item.salaryDate,'-')}}</text>
+            <text class="wages_time">{{filter.formatTime(item.sendDate,'-')}}</text>
 
         </view>
 
