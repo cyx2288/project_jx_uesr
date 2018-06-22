@@ -52,7 +52,7 @@ Page({
 
         var thisEntId = wx.getStorageSync('entId');
 
-        console.log(thisEntId)
+        //console.log(thisEntId)
 
 
         /**
@@ -154,11 +154,16 @@ Page({
 
                         //关闭当前页面
 
-                        wx.redirectTo({
+
+                         wx.navigateBack({
+                             delta: 1
+                         })
+
+                    /*    wx.redirectTo({
 
                             url: '../company/company'
 
-                        })
+                        })*/
 
                     }
 

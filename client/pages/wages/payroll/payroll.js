@@ -31,11 +31,13 @@ Page({
 
         isHiddenBtn:true,//是否显示确认按钮
 
-        state:''//工资确认状态 1是已确认 0是未确认
+        state:'',//工资确认状态 1是已确认 0是未确认
+
+        hiddenDot:true//默认不显示有新消息 true为不显示 false为显示
 
     },
 
-    onLoad: function () {
+    onShow: function () {
 
         var thisListurl = app.globalData.URL + listUrl;
 
@@ -84,7 +86,7 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.data.data[0].salaryId)
+
 
                 if(res.data.code=='3001') {
 
@@ -129,6 +131,13 @@ Page({
                     wx.setStorageSync('salaryId',res.data.data[0].salaryId);
 
                     var _state = res.data.data[0].state;
+
+
+                    var ishasNewMsg = res.data.data[0].isHaveNewMsg;
+
+                    console.log(ishasNewMsg)
+
+
 
                     //将给的数据转成字符串
                     var _addAmount = JSON.parse(res.data.data[0].addAmount);
@@ -190,6 +199,30 @@ Page({
 
                     });
 
+                    //判断是否有新消息
+
+                 if (ishasNewMsg == '1') {
+
+                        that.setData({
+
+                            hiddenDot: false,
+
+                        })
+
+                    }
+
+                    else {
+
+
+
+                        that.setData({
+
+                            hiddenDot: true
+
+                        })
+
+                    }
+
 
                     if (_state == '1') {
 
@@ -236,6 +269,8 @@ Page({
         var thisConfirmUrl = app.globalData.URL + confirmUrl;
 
         var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
+        console.log(thisSalaryDetailId)
 
         var that = this;
 

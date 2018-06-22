@@ -61,13 +61,15 @@ Page({
 
             ['中国银行', '农业银行','工商银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都商业银行', '徽商银行'],
 
-            // ['储蓄卡']
+             ['储蓄卡']
 
-            ['储蓄卡', '信用卡']
+            //['储蓄卡', '信用卡']
 
         ],//银行卡
 
         cardType:'',//卡类型
+
+        cardTypeNum:'',
 
 
     },
@@ -79,8 +81,6 @@ Page({
         var _isVerify = wx.getStorageSync('isVerify');
 
         var _userName = wx.getStorageSync('userName');
-
-
 
 
         that.setData({
@@ -95,10 +95,6 @@ Page({
 
         //获取市的方法
         that.loadProvince(1);
-
-
-
-
 
 
     },
@@ -424,9 +420,7 @@ Page({
 
                     city: that.data.province,//开户城市
 
-                    cardType:that.data.cardType,//卡类型
-
-
+                    cardType:that.data.cardTypeNum,//卡类型
 
                 }),
 
@@ -534,6 +528,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+        
 
         /**
          * 接口：卡号识别所属银行
@@ -568,18 +563,35 @@ Page({
 
                 console.log(res.data);
 
-                console.log(res.data.data.bankName)
-
-                console.log(res.data.data.type)
-
                 that.setData({
 
                     bankName: res.data.data.bankName,
 
-                    cardType:res.data.data.type,
+                    cardTypeNum:res.data.data.type,
 
 
                 })
+
+                if(res.data.data.type=='1'){
+
+                    that.setData({
+
+                        cardType:'储蓄卡'
+
+                    })
+
+
+                }
+
+                else if(res.data.data.type=='2'){
+
+                    that.setData({
+
+                        cardType:'信用卡'
+
+                    })
+                }
+
 
 
             },
@@ -599,15 +611,17 @@ Page({
 
         var that = this;
 
-        /*console.log(e.detail.value[0])
-
-         console.log(e.detail.value[1])
-
-         console.log(that.data.multiArray[0])
-
-         console.log(that.data.multiArray[1])
-
+        // console.log(e.detail.value[0])
+        //
+        //  console.log(e.detail.value[1])
+        //
+        //  console.log(that.data.multiArray[0])
+        //
+        //  console.log(that.data.multiArray[1])
+/*
          console.log(that.data.multiArray[0][e.detail.value[0]])*/
+
+        console.log(that.data.multiArray[1][e.detail.value[1]])
 
         that.setData({
 
@@ -665,8 +679,8 @@ Page({
 
          console.log(that.data.cityArr[e.detail.value[0]]);
 
-         console.log(that.data.provinceArr[e.detail.value[1]])
-         */
+         console.log(that.data.provinceArr[e.detail.value[1]])*/
+
 
         that.setData({
 

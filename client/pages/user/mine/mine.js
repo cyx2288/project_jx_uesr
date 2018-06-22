@@ -110,6 +110,8 @@ Page({
 
                 var _mobile = res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7);
 
+                    var ishasNewMsg = res.data.data.isHaveNewMsg;
+
 
                 //获取手机号
                 wx.setStorageSync('mobile', res.data.data.mobile);
@@ -139,6 +141,29 @@ Page({
 
 
                     });
+
+
+                    //判断是否有新消息
+
+                    if (ishasNewMsg == '1') {
+
+                        that.setData({
+
+                            hasNewMsg: false,
+
+                        })
+
+                    }
+
+                    else {
+
+                        that.setData({
+
+                            hasNewMsg: true
+
+                        })
+
+                    }
 
 
                 (function countDownAjax() {
@@ -223,7 +248,14 @@ Page({
 
                     var hasEntType = res.data.data.type;
 
-                    var hasNewMsg = res.data.data.isHaveNewMsg;
+
+
+
+
+                    console.log(res.data.data)
+
+
+                    //判断是否有加入企业
 
                     if (hasEntType == '1') {
 
@@ -245,25 +277,7 @@ Page({
 
                     }
 
-                    if (hasNewMsg == '1') {
 
-                        that.setData({
-
-                            hasNewMsg: false,
-
-                        })
-
-                    }
-
-                    else {
-
-                        that.setData({
-
-                            hasNewMsg: true
-
-                        })
-
-                    }
 
                     (function countDownAjax() {
 

@@ -47,7 +47,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
-                        <view class="weui-select">{{bankName}}<span class="card_type" wx:if="{{cardType=='1'}}">储蓄卡</span><span class="card_type" wx:if="{{cardType=='2'}}">信用卡</span></view>
+                        <view class="weui-select">{{bankName}}{{cardType}}</view>
                     </picker>
                 </view>
             </view>
@@ -88,7 +88,7 @@
                     <view class="weui-label"><span class="red_text"> </span>开户支行</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入开户支行（选填）" maxlength="50" bindinput="getBankBranchFn"/>
+                    <input class="weui-input" type="text" placeholder="请输入开户支行（选填）"maxlength="50" bindinput="getBankBranchFn"/>
                 </view>
             </view>
 

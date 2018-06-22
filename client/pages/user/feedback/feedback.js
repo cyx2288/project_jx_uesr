@@ -2,27 +2,29 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的url
+const feedbackUrl = '/salary/home/feedbacklist';//获取工资条反馈详情的url
 
-const sendFeedbackUrl ='/salary/home/feedback';//工资条反馈的url
+const sendFeedbackUrl = '/salary/home/feedback';//工资条反馈的url
 
-const feedbackDetailUrl ='/salary/home/feedbackdetail';//工资条反馈的url
+const feedbackDetailUrl = '/salary/home/feedbackdetail';//工资条反馈的url
 
 Page({
 
     data: {
 
-              isIpx: false,//是不是ipx
+        isIpx: false,//是不是ipx
 
-              fixedInput: false,//输入框input时候获得焦点
+        fixedInput: false,//输入框input时候获得焦点
 
-              feedBackList:[],//反馈消息列表
+        feedBackList: [],//反馈消息列表
 
-              contentTitle:'',//反馈内容
+        contentTitle: '',//反馈内容
 
-              feedBackId:'',//反馈消息Id
+        feedBackId: '',//反馈消息Id
 
-              userFeedBackList:'',
+        userFeedBackList: '',
+
+        scrollHeight: '',//scroll-view的高度
 
     },
 
@@ -34,19 +36,43 @@ Page({
 
         var that = this;
 
+        setTimeout(function () {
+
+            wx.pageScrollTo({
+
+                scrollTop: 9999
+            })
+
+        }, 500)
+
         wx.getSystemInfo({
 
             success: function success(res) {
+
+                var viewHigt = res.windowHeight;
 
                 if (res.model == "iPhone X") {
 
 
                     that.setData({
 
-                        isIpx:true
+                        isIpx: true
                     })
 
                 }
+
+/*                wx.createSelectorQuery().selectAll('.feedback_content').boundingClientRect(function (rects) {
+
+                    rects.forEach(function (rect) {
+
+                        that.setData({
+
+                            scrollHeight: viewHigt - rect.bottom
+
+                        });
+                    })
+                }).exec();*/
+
 
             }
         })
@@ -62,13 +88,13 @@ Page({
 
         wx.request({
 
-            url: app.globalData.URL +  feedbackDetailUrl,
+            url: app.globalData.URL + feedbackDetailUrl,
 
             method: 'POST',
 
             data: json2FormFn.json2Form({
 
-                salaryDetailId:wx.getStorageSync('salaryDetailId'),
+                salaryDetailId: wx.getStorageSync('salaryDetailId'),
 
             }),
 
@@ -76,9 +102,9 @@ Page({
 
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
@@ -89,20 +115,40 @@ Page({
 
                 var list = res.data.data;
 
-                that.setData({
+                if(!list){
 
-                    feedBackList: list,//反馈消息列表
 
-                });
+                    that.setData({
 
-/*           setTimeout(function () {
+                        feedBackList: [],//反馈消息列表
+
+                    });
+
+
+                }
+
+                else {
+
+                    that.setData({
+
+                        feedBackList: list,//反馈消息列表
+
+                    });
+
+
+                }
+
+
+
+
+/*                setTimeout(function () {
 
                     wx.pageScrollTo({
 
-                        scrollTop: 999999
+                        scrollTop: 9999
                     })
 
-            },500)*/
+                }, 500)*/
 
             },
 
@@ -115,7 +161,7 @@ Page({
 
     },
     //工资条反馈
-    sendMsgFn:function () {
+    sendMsgFn: function () {
 
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -125,7 +171,7 @@ Page({
 
 
         //判断输入内容
-        if(!that.data.contentTitle){
+        if (!that.data.contentTitle) {
 
             wx.showToast({
 
@@ -133,7 +179,6 @@ Page({
                 icon: 'none',
 
             })
-
 
         }
 
@@ -156,11 +201,11 @@ Page({
 
                 data: json2FormFn.json2Form({
 
-                    salaryDetailId:wx.getStorageSync('salaryDetailId'),//工资详情Id
+                    salaryDetailId: wx.getStorageSync('salaryDetailId'),//工资详情Id
 
-                    salaryId:wx.getStorageSync('salaryId'),//工资发放批次Id
+                    salaryId: wx.getStorageSync('salaryId'),//工资发放批次Id
 
-                    contentTitle:that.data.contentTitle,//反馈内容
+                    contentTitle: that.data.contentTitle,//反馈内容
 
 
                 }),
@@ -169,9 +214,9 @@ Page({
 
                     'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                    'jxsid':jx_sid,
+                    'jxsid': jx_sid,
 
-                    'Authorization':Authorization
+                    'Authorization': Authorization
 
                 },
 
@@ -180,40 +225,54 @@ Page({
 
                     console.log(res.data);
 
-                    /*console.log(res.data.data)*/
+                    console.log('列表'+res.data.data)
 
-                    if(res.data.code=='0000'){
+                    if(!res.data.data){
+
+                        console.log('为空')
+                    }
+
+
+                    if (res.data.code == '0000') {
+
+
+
 
                         wx.showToast({
 
                             title: res.data.msg,
                             icon: 'none',
-                            duration:2000
+                            duration: 2000
 
                         });
 
 
-                        var userImf={
+                        var userImf = {
                             feedBackDetailId: "1",
                             feedBackId: "123",
                             content: that.data.contentTitle,
                             type: "1",
                             sendDate: Date.parse(new Date())
+
                         }
 
-                        var _list = that.data.feedBackList
+                        var _list = that.data.feedBackList;
 
-                        _list.push(userImf)
 
+
+                            _list.push(userImf)
 
                         //消息清空
                         that.setData({
 
-                            contentTitle:'',
+                            contentTitle: '',
 
-                            feedBackList:_list,//反馈消息列表
+                            feedBackList: _list,//反馈消息列表
 
                         })
+
+
+
 
                         //平滑到底部
 
@@ -224,7 +283,7 @@ Page({
                                 scrollTop: 999999
                             })
 
-                        },200)
+                        }, 200)
 
                     }
 
@@ -234,17 +293,12 @@ Page({
 
                             title: res.data.msg,
                             icon: 'none',
-                            duration:2000
+                            duration: 2000
 
 
                         });
 
                     }
-
-
-
-
-
 
 
                 },
@@ -257,14 +311,12 @@ Page({
             })
 
 
-
         }
-
 
 
     },
 
-    changeInput:function () {
+    changeInput: function () {
 
 
         var that = this;
@@ -276,11 +328,9 @@ Page({
         })
 
 
-
-
     },
 
-    inputBlur:function () {
+    inputBlur: function () {
 
         var that = this;
 
@@ -292,7 +342,7 @@ Page({
 
     },
 
-    inputChange:function (e) {
+    inputChange: function (e) {
 
         var that = this;
 
@@ -301,7 +351,6 @@ Page({
             contentTitle: e.detail.value,
 
         })
-
 
 
     }

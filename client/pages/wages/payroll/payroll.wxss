@@ -102,6 +102,7 @@ hr {
 
 .button_all{
     display: flex;
+    position: relative;
      width: 100%;
     justify-content: space-between;
 
@@ -109,6 +110,7 @@ hr {
 
 
 .button_left{
+
     background:#fff;
     font-size: 16px;
     width: 35%;
@@ -132,4 +134,15 @@ button[class="button_left"]::after {
 .confirm_btn{
 
     width: 55%;
+}
+.dot{
+
+    position: absolute;
+    right:5px;
+    top:-5px;
+    width: 15px;
+    height: 15px;
+    background: #ff4646;
+    border-radius: 50%;
+
 }
