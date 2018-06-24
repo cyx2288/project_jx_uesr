@@ -121,6 +121,15 @@
 
     width: 30px;
     height: 30px;
-    border:1px solid #ddd;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.phcolor{
 
+    color: #ababab;
+}
+.look_more{
+
+    color: #E87B17;
+    line-height: 80rpx;
 }

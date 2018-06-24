@@ -57,8 +57,9 @@
                     <view class="weui-label"><span class="red_text">*</span>所属银行</view>
                 </view>-->
                 <view class="weui-cell__bd">
-                    <view class="weui-label bank_label"><image src="{{bankIcon}}"/><view class="weui-input choose_bank">{{bankName}}<span>{{cardType}}</span></view></view>
+                    <view class="weui-label bank_label"><image src="{{bankIcon}}"/><input class="weui-input choose_bank" placeholder="自动识别所属银行" placeholder-class="phcolor" readonly value="{{bankName}}{{cardType}}"/></view>
                 </view>
+                             <navigator class="look_more" url="../support_added_bank/support_bank">查看支持银行</navigator>
             </view>
 
              </view>

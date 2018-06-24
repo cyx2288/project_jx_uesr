@@ -245,7 +245,7 @@ Page({
 
         cardTypeNum: '',
 
-        bankIcon:'../../../static/icon/bank/bank_33.png'
+        bankIcon:'../../../static/icon/wages/bank_orc.png'
 
 
     },
@@ -546,11 +546,11 @@ Page({
         }
 
         //判断是否写了所属银行
-        else if (!that.data.bankName) {
+        else if (!that.data.bankName||that.data.bankName=='不支持该银行') {
 
             wx.showToast({
 
-                title: '请选择所属银行',
+                title: '请填写正确的所属银行',
                 icon: 'none',
 
             })
@@ -681,9 +681,26 @@ Page({
 
         });
 
-        if (that.data.bankNo.length == '10') {
+        //银行卡输入十位后执行方法
+
+        if (that.data.bankNo.length == 10) {
 
             that.getBankNoFn(e)
+
+        }
+
+        //不满足10位的话数据初始化
+
+       else if(that.data.bankNo.length < 10){
+
+            that.setData({
+
+                bankName: '',
+
+                cardType: '',
+
+                bankIcon:'../../../static/icon/wages/bank_orc.png'
+            })
 
         }
 
@@ -736,47 +753,88 @@ Page({
 
                 console.log(res.data);
 
-                that.setData({
-
-                    bankName: res.data.data.bankName,
-
-                    cardTypeNum: res.data.data.type,
-
-
-                })
-
-                if (res.data.data.type == '1') {
-
                     that.setData({
 
-                        cardType: '储蓄卡'
+                        bankName: res.data.data.bankName,
+
+                        cardTypeNum: res.data.data.type,
+
 
                     })
 
 
-                }
+                   if(JSON.stringify(res.data.data) == '{}'){
 
-                else if (res.data.data.type == '2') {
+                       that.setData({
 
-                    that.setData({
+                           bankName: '不支持该银行',
 
-                        cardType: '信用卡'
+                           cardTypeNum: '',
 
-                    })
-                }
-
-                var bankImgList = that.data.addBankArray;
-
-                var _bankList=[],x;
-
-                for ( x in bankImgList){
-
-                    console.log(x)
-
-                    console.log(_bankList[x])
+                           bankIcon:'../../../static/icon/wages/bank_no.png'
 
 
-                }
+                       })
+
+
+                   }
+
+                   else {
+
+                       if (res.data.data.type == '1') {
+
+                           that.setData({
+
+                               cardType: '储蓄卡'
+
+                           })
+
+
+                       }
+
+                       else if (res.data.data.type == '2') {
+
+                           that.setData({
+
+                               cardType: '信用卡'
+
+                           })
+                       }
+
+
+                       var bankImgList = that.data.addBankArray;
+
+                       //遍历json中的银行卡名称找到对应的银行卡图标
+
+                       for ( var x in bankImgList){
+
+                           if(bankImgList[x].name==that.data.bankName){
+
+
+                               that.setData({
+
+                                   bankIcon:bankImgList[x].img
+
+                               })
+
+                           }
+
+
+
+
+                       }
+
+
+
+                   }
+
+
+
+
+
+
+
+
 
 
 
