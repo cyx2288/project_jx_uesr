@@ -292,6 +292,8 @@ Page({
                 confirmColor:'#fe9728',
                 success: function (res) {
 
+
+
                     if (res.confirm) {
 
                         wx.navigateTo({
@@ -303,6 +305,8 @@ Page({
                     }
 
                     else if (res.cancel) {
+
+
 
 
                     }
@@ -420,6 +424,12 @@ Page({
                 else if (res.cancel) {
 
 
+                }
+
+                else {
+
+
+                    console.log('蒙版')
 
                 }
             }

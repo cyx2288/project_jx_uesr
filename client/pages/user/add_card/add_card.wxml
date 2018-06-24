@@ -33,7 +33,7 @@
                    </view>
 
                    <view class="weui-cell__bd">
-                       <input class="weui-input" auto-focus="true" placeholder="请输入卡号" type="number" value="{{bankNo}}" maxlength="19" bindinput="bankNoFn" bindblur="getBankNoFn"/>
+                       <input class="weui-input" auto-focus="true" placeholder="请输入卡号" type="number" value="{{bankNo}}" maxlength="19" bindinput="bankNoFn"/>
                    </view>
 
             </view>
@@ -41,7 +41,7 @@
                 <hr/>
                <!-- 选择银行卡-->
 
-                <view class="weui-cell">
+<!--                <view class="weui-cell">
                 <view class="weui-cell__hd">
                     <view class="weui-label"><span class="red_text">*</span>所属银行</view>
                 </view>
@@ -49,6 +49,15 @@
                     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{bankName}}" range="{{multiArray}}">
                         <view class="weui-select">{{bankName}}{{cardType}}</view>
                     </picker>
+                </view>
+            </view>-->
+
+                         <view class="weui-cell">
+           <!--     <view class="weui-cell__hd">
+                    <view class="weui-label"><span class="red_text">*</span>所属银行</view>
+                </view>-->
+                <view class="weui-cell__bd">
+                    <view class="weui-label bank_label"><image src="{{bankIcon}}"/><view class="weui-input choose_bank">{{bankName}}<span>{{cardType}}</span></view></view>
                 </view>
             </view>
 
