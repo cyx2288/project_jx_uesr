@@ -100,3 +100,27 @@
 
     margin-right: 10px;
 }
+.choose_bank{
+
+    color: #4a4a4a;
+
+}
+.choose_bank>span{
+
+    margin-left: 10px;
+
+}
+
+.bank_label{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    width: auto;
+}
+.bank_label>image{
+
+    width: 30px;
+    height: 30px;
+    border:1px solid #ddd;
+
+}

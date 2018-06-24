@@ -3,20 +3,15 @@
  */
 var addBankList = {
 
-    addBankArray: [
 
-        ['中国银行', '农业银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州商业银行'],
 
-        ['储蓄卡', '信用卡'],
 
-    ],
 
 
 }
 const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
-
 
 
 const addBankUrl = '/user/bank/addbankcardinfo';
@@ -33,7 +28,7 @@ Page({
 
         bankNo: '',//银行卡号
 
-        bankName: '请选择所属银行',//银行名称&所属银行
+        bankName: '',//银行名称&所属银行
 
         bankBranch: '',//卡户支行
 
@@ -57,19 +52,200 @@ Page({
 
         provinceData: [],//存储ajax后得到的数组
 
+        addBankArray: [
+
+            {
+                "img": "../../../static/icon/bank/bank_01.png",
+                "name": "中国银行"
+
+            }, {
+                "img": "../../../static/icon/bank/bank_02.png",
+                "name": "农业银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_03.png",
+                "name": "工商银行"
+
+            },
+
+            {
+                "img": "../../../static/icon/bank/bank_04.png",
+                "name": "建设银行"
+
+            },
+
+            {
+                "img": "../../../static/icon/bank/bank_05.png",
+                "name": "交通银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_06.png",
+                "name": "邮政储蓄银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_07.png",
+                "name": "广发银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_08.png",
+                "name": "浦东发展银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_09.png",
+                "name": "浙江泰隆商业银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_10.png",
+                "name": "招商银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_11.png",
+                "name": "民生银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_12.png",
+                "name": "兴业银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_13.png",
+                "name": "中信银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_14.png",
+                "name": "华夏银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_15.png",
+                "name": "光大银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_16.png",
+                "name": "北京银行"
+
+            },
+
+            {
+                "img": "../../../static/icon/bank/bank_17.png",
+                "name": "上海银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_18.png",
+                "name": "天津银行"
+
+            },
+
+            {
+                "img": "../../../static/icon/bank/bank_19.png",
+                "name": "大连银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_20.png",
+                "name": "杭州银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_21.png",
+                "name": "宁波银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_22.png",
+                "name": "厦门银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_23.png",
+                "name": "广州银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_24.png",
+                "name": "平安银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_25.png",
+                "name": "浙商银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_26.png",
+                "name": "上海农商银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_27.png",
+                "name": "重庆银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_28.png",
+                "name": "江苏银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_29.png",
+                "name": "北京农村商业银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_30.png",
+                "name": "济宁银行"
+
+            },
+
+            {
+                "img": "../../../static/icon/bank/bank_31.png",
+                "name": "台州银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_32.png",
+                "name": "深圳发展银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_33.png",
+                "name": "成都商业银行"
+
+            },
+            {
+                "img": "../../../static/icon/bank/bank_34.png",
+                "name": "徽商银行"
+
+            },
+
+        ],
+
         multiArray: [
 
-            ['中国银行', '农业银行','工商银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都商业银行', '徽商银行'],
+            ['中国银行', '农业银行', '工商银行', '建设银行', '交通银行', '邮政储蓄银行', '广发银行', '浦东发展银行', '浙江泰隆商业银行', '招商银行', '招商银行', '民生银行', '兴业银行', '中信银行', '华夏银行', '光大银行', '北京银行', '上海银行', '天津银行', '大连银行', '杭州银行', '宁波银行', '厦门银行', '广州银行', '平安银行', '浙商银行', '上海农商银行', '重庆银行', '江苏银行', '北京农村商业银行', '济宁银行', '台州银行', '深圳发展银行', '成都商业银行', '徽商银行'],
 
-             ['储蓄卡']
+            ['储蓄卡']
 
             //['储蓄卡', '信用卡']
 
         ],//银行卡
 
-        cardType:'',//卡类型
+        cardType: '',//卡类型
 
-        cardTypeNum:'',
+        cardTypeNum: '',
+
+        bankIcon:'../../../static/icon/bank/bank_33.png'
 
 
     },
@@ -105,9 +281,7 @@ Page({
         var that = this;
 
 
-
         var thatGetProvince = app.globalData.URL + getProvinces;
-
 
 
         //缓存jx_sid&&Authorization数据
@@ -140,9 +314,9 @@ Page({
                 console.log(res.data);
 
                 //code3003返回方法
-                app.globalData.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -150,16 +324,16 @@ Page({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
-                        success:function () {
+                        success: function () {
 
                             setTimeout(function () {
 
                                 wx.reLaunch({
 
-                                    url:'../../common/signin/signin'
+                                    url: '../../common/signin/signin'
                                 })
 
-                            },1500)
+                            }, 1500)
 
                         }
 
@@ -335,8 +509,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var regNeg =/^([1-9]\d{14,18})$/ ;
-
+        var regNeg = /^([1-9]\d{14,18})$/;
 
 
         /**
@@ -347,7 +520,7 @@ Page({
          * */
 
         //判断银行卡是否为空
-        if (!that.data.bankNo||that.data.bankNo.length<14) {
+        if (!that.data.bankNo || that.data.bankNo.length < 14) {
 
 
             wx.showToast({
@@ -360,7 +533,7 @@ Page({
 
         }
         //判断卡号是否有误
-        else if(!regNeg.test(that.data.bankNo)){
+        else if (!regNeg.test(that.data.bankNo)) {
 
             wx.showToast({
 
@@ -372,20 +545,20 @@ Page({
 
         }
 
-            //判断是否写了所属银行
-            else if (!that.data.bankName) {
+        //判断是否写了所属银行
+        else if (!that.data.bankName) {
 
-                wx.showToast({
+            wx.showToast({
 
-                    title: '请选择所属银行',
-                    icon: 'none',
+                title: '请选择所属银行',
+                icon: 'none',
 
-                })
-            }
+            })
+        }
 
         //判断是否写了开户地区
 
-            else if(!that.data.city||!that.data.province){
+        else if (!that.data.city || !that.data.province) {
 
 
             wx.showToast({
@@ -420,7 +593,7 @@ Page({
 
                     city: that.data.province,//开户城市
 
-                    cardType:that.data.cardTypeNum,//卡类型
+                    cardType: that.data.cardTypeNum,//卡类型
 
                 }),
 
@@ -449,7 +622,7 @@ Page({
 
                         })
 
-                        setTimeout(function(){
+                        setTimeout(function () {
 
 
                             wx.navigateBack({
@@ -458,9 +631,7 @@ Page({
 
                             })
 
-                        },2000)
-
-
+                        }, 2000)
 
 
                     }
@@ -491,10 +662,6 @@ Page({
         }
 
 
-
-
-
-
     },
 
 
@@ -514,6 +681,12 @@ Page({
 
         });
 
+        if (that.data.bankNo.length == '10') {
+
+            that.getBankNoFn(e)
+
+        }
+
 
     },
 
@@ -528,7 +701,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-        
+
 
         /**
          * 接口：卡号识别所属银行
@@ -567,30 +740,44 @@ Page({
 
                     bankName: res.data.data.bankName,
 
-                    cardTypeNum:res.data.data.type,
+                    cardTypeNum: res.data.data.type,
 
 
                 })
 
-                if(res.data.data.type=='1'){
+                if (res.data.data.type == '1') {
 
                     that.setData({
 
-                        cardType:'储蓄卡'
+                        cardType: '储蓄卡'
 
                     })
 
 
                 }
 
-                else if(res.data.data.type=='2'){
+                else if (res.data.data.type == '2') {
 
                     that.setData({
 
-                        cardType:'信用卡'
+                        cardType: '信用卡'
 
                     })
                 }
+
+                var bankImgList = that.data.addBankArray;
+
+                var _bankList=[],x;
+
+                for ( x in bankImgList){
+
+                    console.log(x)
+
+                    console.log(_bankList[x])
+
+
+                }
+
 
 
 
@@ -618,7 +805,7 @@ Page({
         //  console.log(that.data.multiArray[0])
         //
         //  console.log(that.data.multiArray[1])
-/*
+        /*
          console.log(that.data.multiArray[0][e.detail.value[0]])*/
 
         console.log(that.data.multiArray[1][e.detail.value[1]])
