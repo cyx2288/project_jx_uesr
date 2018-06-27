@@ -18,7 +18,8 @@ Page({
 
         verifyValue:'',//认证文案
 
-        idNumber:''//身份证号码
+        idNumber:'',//身份证号码
+
 
 
     },
@@ -97,6 +98,7 @@ Page({
                 else {
 
 
+
                     (function countDownAjax() {
 
                         ajaxCount--;
@@ -104,6 +106,8 @@ Page({
                         app.globalData.ajaxFinish(ajaxCount)
 
                     })();
+
+
 
                     wx.setStorageSync('idNumber', res.data.data.idNumber);
 
@@ -120,7 +124,7 @@ Page({
 
                     });
 
-                    console.log(that.data.mobile)
+                    //console.log(that.data.mobile)
 
                 }
 

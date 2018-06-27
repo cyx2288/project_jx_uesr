@@ -58,6 +58,8 @@ Page({
 
         cardType:'',//银行卡类型
 
+        autoFocus:true//是否弹出键盘
+
 
     },
 
@@ -101,13 +103,22 @@ Page({
 
         },1000)
 
-        //console.log(_isVerify)
+
 
         //没认证的去认证
         if (_isVerify == '0') {
 
             //存指定的页面
             wx.setStorageSync('hrefId','4');
+
+
+            //未认证情况下不弹出键盘
+            that.setData({
+
+                autoFocus:false//是否弹出键盘
+
+
+            })
 
             wx.showModal({
                 title: '提示',
@@ -133,6 +144,16 @@ Page({
                             delta: 1
                         })
                     }
+
+                    else {
+
+                        wx.navigateBack({
+                            delta: 1
+                        })
+
+
+                    }
+
                 }
             });
 
@@ -142,6 +163,13 @@ Page({
 
         else {
 
+
+            that.setData({
+
+                autoFocus:true//是否弹出键盘
+
+
+            })
 
             /**
              * 接口：检测用户发起提现操作
@@ -211,6 +239,8 @@ Page({
                                         delta: 1
                                     })
                                 }
+
+
                             }
                         });
                     }
@@ -253,9 +283,30 @@ Page({
                             cardType:that.data.userBankCardDTOList[0].cardType//银行卡类型
 
 
-
                         });
 
+
+
+                        //判断银行卡
+
+                        if(that.data.cardType=='1'){
+
+                            that.setData({
+
+                                cardTypeText:'（储蓄卡）'
+
+                            })
+
+                        }
+
+                        else {
+
+                            that.setData({
+
+                                cardTypeText:'（信用卡）'
+
+                            })
+                        }
 
 
 
@@ -273,26 +324,19 @@ Page({
 
                             var pickBankType = thisBankList[i].cardType;
 
+                            //遍历银行卡类型
                             if(pickBankType=='1'){
 
-                                that.setData({
 
-                                    cardTypeText:'储蓄卡'
-
-                                })
-
+                                var _pickChooseBank = pickBankName + '储蓄卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
                             }
 
-                            else {
+                            else if(pickBankType=='2'){
 
-                                that.setData({
-
-                                    cardTypeText:'储蓄卡'
-
-                                })
+                                var _pickChooseBank = pickBankName + '信用卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
                             }
 
-                            var _pickChooseBank = pickBankName + that.data.cardTypeText + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
+
 
                             //组成数组
                             pickChooseBank.push(_pickChooseBank);
@@ -378,7 +422,9 @@ Page({
         //console.log(that.data.userBankCardDTOList)
 
         //选择银行卡的
-        //console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
+        // console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
+        //
+        // console.log(that.data.userBankCardDTOList[e.detail.value].cardType);
 
         that.setData({
 
@@ -386,9 +432,35 @@ Page({
 
             bankNo: that.data.userBankCardDTOList[e.detail.value].bankNo,//银行卡号
 
-            bankCardId: that.data.userBankCardDTOList[e.detail.value].bankCardId//银行卡id
+            bankCardId: that.data.userBankCardDTOList[e.detail.value].bankCardId,//银行卡id
 
+            cardType: that.data.userBankCardDTOList[e.detail.value].cardType//银行卡id
         });
+
+
+        //判断什么卡
+
+        if(that.data.cardType=='1'){
+
+            that.setData({
+
+                cardTypeText:'（储蓄卡）'
+
+
+            })
+
+
+        }
+
+        else {
+
+            that.setData({
+
+                cardTypeText:'（信用卡）'
+
+
+            })
+        }
 
 
     },

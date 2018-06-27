@@ -195,7 +195,7 @@ Page({
                             setTimeout(function () {
 
                                 //跳转身份认证
-                                wx.navigateTo({
+                                wx.redirectTo({
 
                                     url: '../set_payment_psw/set_payment_psw'
                                 })
@@ -252,11 +252,12 @@ Page({
 
     onUnload:function () {
 
-        wx.switchTab({
+    /*        wx.switchTab({
 
-            url:'../../user/mine/mine'
-        })
+                url:'../../user/mine/mine'
+            })
 
+*/
 
     }
 

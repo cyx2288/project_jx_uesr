@@ -131,7 +131,62 @@ Page({
 
                     }
 
+                    else if(res.data.code == '-3'){
+
+                        wx.setStorageSync('payHtml','-3')
+
+                        wx.showModal({
+                            title: '提示',
+                            content: '您已连续输入错误3次，请点击忘记密码进行找回或30分钟过后再试',
+                            cancelText: '我知道了',
+                            confirmText: '忘记密码',
+                            confirmColor:'#fe9728',
+                            success: function(res) {
+                                if (res.confirm) {
+
+                                    wx.redirectTo({
+
+                                        url:'../code/code'
+                                    })
+
+                                } else if (res.cancel) {
+                                    console.log('用户点击取消')
+                                }
+                            }
+                        })
+
+                    }
+
+                    else if(res.data.code == '-4'){
+
+                        wx.setStorageSync('payHtml','-4')
+
+                        wx.showModal({
+                            title: '提示',
+                            content: '支付密码错误，您还可输入2次',
+                            cancelText: '忘记密码',
+                            confirmText: '重新输入',
+                            confirmColor:'#fe9728',
+                            success: function(res) {
+                                if (res.confirm) {
+
+                                    console.log('用户点击确定')
+
+                                } else if (res.cancel) {
+                                    wx.redirectTo({
+
+                                        url:'../code/code'
+                                    })
+
+                                }
+                            }
+                        })
+                    }
+
                     else {
+
+
+
 
                         wx.showToast({
 

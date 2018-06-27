@@ -219,14 +219,42 @@ Page({
 
                                 success: function () {
 
-                                    setTimeout(function () {
 
-                                        wx.switchTab({
+                                    var _payHref = wx.getStorageSync('payHtml')
 
-                                            url: '../../user/mine/mine'
-                                        })
+                                    console.log(_payHref)
 
-                                    }, 2000)
+                                    if(_payHref=='-4'||_payHref=='-3'){
+
+
+                                        setTimeout(function () {
+
+                                            wx.navigateBack({
+
+                                                delta: 1
+
+                                            })
+
+                                        }, 2000)
+
+
+                                    }
+
+                                    else {
+
+
+                                        setTimeout(function () {
+
+                                            wx.switchTab({
+
+                                                url: '../../user/mine/mine'
+                                            })
+
+                                        }, 2000)
+
+                                    }
+
+
 
 
                                 }
@@ -295,16 +323,39 @@ Page({
     },
   onUnload:function () {
 
-      wx.switchTab({
+      /*      var _payHref = wx.getStorageSync('payHtml')
 
-          url:'../../user/mine/mine'
-      })
+       if(_payHref=='-4'||_payHref=='-3'){
 
+
+       wx.redirectTo({
+
+       url: '../../user/cash/cash'
+       })
+
+       }
+
+       else {
+
+
+
+       wx.switchTab({
+
+       url:'../../user/mine/mine'
+       })
+
+
+       }
+
+
+
+
+       }
+
+
+       */
 
   }
-    
-    
-    
 
 
 

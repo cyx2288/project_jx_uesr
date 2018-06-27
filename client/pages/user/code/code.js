@@ -309,7 +309,7 @@ Page({
                                 setTimeout(function () {
 
                                     //跳转身份认证
-                                    wx.navigateTo({
+                                    wx.redirectTo({
 
                                         url:'../id_card/id_card'
                                     })

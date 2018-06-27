@@ -426,14 +426,7 @@ Page({
 
                 }
 
-                else {
 
-
-                    return false
-
-                    console.log('蒙版')
-
-                }
             }
         });
 
