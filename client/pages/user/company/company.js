@@ -72,24 +72,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+      /*              wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -206,37 +208,73 @@ Page({
 
                 console.log(res.data);
 
-                that.setData({
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                   type:res.data.data.type
+                if(res.data.code=='3001') {
 
-                })
+                    //console.log('登录');
 
-                //console.log('锁住'+that.data.type);
+                    setTimeout(function () {
 
-               //console.log('带加入'+that.data.state);
+                        wx.reLaunch({
 
-                if(that.data.state=='0'&&that.data.type=='1'){
+                            url:'../../common/signin/signin'
+                        })
 
-                    //
-                    // wx.navigateBack({
-                    //     delta: 2
-                    // })
+                    },1500)
 
-                   wx.navigateTo({
+                    /*              wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
-                        url:'../company_authentication/authentication'
 
-                    })
+
+                     }
+
+                     })*/
+
+                    return false
+
 
                 }
 
-                else if(res.data.data.type=='0'){
+                else {
 
-                    wx.navigateTo({
+                    that.setData({
 
-                        url:'../locked/locked'
+                        type: res.data.data.type
+
                     })
+
+                    //console.log('锁住'+that.data.type);
+
+                    //console.log('带加入'+that.data.state);
+
+                    if (that.data.state == '0' && that.data.type == '1') {
+
+                        //
+                        // wx.navigateBack({
+                        //     delta: 2
+                        // })
+
+                        wx.navigateTo({
+
+                            url: '../company_authentication/authentication'
+
+                        })
+
+                    }
+
+                    else if (res.data.data.type == '0') {
+
+                        wx.navigateTo({
+
+                            url: '../locked/locked'
+                        })
+
+                    }
 
                 }
 

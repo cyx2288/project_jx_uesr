@@ -85,6 +85,8 @@ Page({
 
             mobile:wx.getStorageSync('mobile'),
 
+            /*inputBalance:'',//输入框里value的值*/
+
 
         })
 
@@ -202,155 +204,188 @@ Page({
 
                     console.log(res.data);
 
-                    //console.log(that.data.userBankCardDTOList);
-                    that.setData({
 
-                        userBankCardDTOList:res.data.data.userBankCardDTOList
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    })
+                    if(res.data.code=='3001') {
 
-                    //console.log(that.data.userBankCardDTOList)
+                        //console.log('登录');
 
+                        setTimeout(function () {
 
-                    if(res.data.code=='-7'){
+                            wx.reLaunch({
 
+                                url:'../../common/signin/signin'
+                            })
 
-                        wx.showModal({
-                            title: '提示',
-                            content: res.data.msg,
-                            cancelText: '取消',
-                            confirmText: '去添加',
-                            confirmColor:'#fe9728',
-                            success: function (res) {
+                        },1500)
 
-                                if (res.confirm) {
-
-                                    wx.navigateTo({
-
-                                        url: '../add_card/add_card'
-
-                                    })
-
-                                }
-
-                                else if (res.cancel) {
-
-                                    wx.navigateBack({
-                                        delta: 1
-                                    })
-                                }
+                        /*           wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
-                            }
-                        });
+
+                         }
+
+                         })*/
+
+                        return false
+
+
                     }
 
                     else {
 
-                        var thisBankList = that.data.userBankCardDTOList;
-
-
+                        //console.log(that.data.userBankCardDTOList);
                         that.setData({
 
-                           //balance: res.data.data.balance,//提取现金
-
-                            amountMax: res.data.data.amountMax,//单笔最大限额
-
-                            amountMin: res.data.data.amountMin,//单笔最小限额
-
-                            dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
-
-                            monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
-
-                            rate: res.data.data.rate,//费率
-
-                            canCashBalance:res.data.data.balance,
-
-                            userBankCardDTOList:res.data.data.userBankCardDTOList,
+                            userBankCardDTOList: res.data.data.userBankCardDTOList
 
                         })
 
-
-                        //默认显示第一个银行卡
-                        that.setData({
-
-                            bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
-
-                            bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
-
-                            bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
-
-                            cardType:that.data.userBankCardDTOList[0].cardType//银行卡类型
+                        //console.log(that.data.userBankCardDTOList)
 
 
-                        });
+                        if (res.data.code == '-7') {
 
 
+                            wx.showModal({
+                                title: '提示',
+                                content: res.data.msg,
+                                cancelText: '取消',
+                                confirmText: '去添加',
+                                confirmColor: '#fe9728',
+                                success: function (res) {
 
-                        //判断银行卡
+                                    if (res.confirm) {
 
-                        if(that.data.cardType=='1'){
+                                        wx.navigateTo({
 
-                            that.setData({
+                                            url: '../add_card/add_card'
 
-                                cardTypeText:'（储蓄卡）'
+                                        })
 
-                            })
+                                    }
 
+                                    else if (res.cancel) {
+
+                                        wx.navigateBack({
+                                            delta: 1
+                                        })
+                                    }
+
+
+                                }
+                            });
                         }
 
                         else {
 
+                            var thisBankList = that.data.userBankCardDTOList;
+
+
                             that.setData({
 
-                                cardTypeText:'（信用卡）'
+                                //balance: res.data.data.balance,//提取现金
+
+                                amountMax: res.data.data.amountMax,//单笔最大限额
+
+                                amountMin: res.data.data.amountMin,//单笔最小限额
+
+                                dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                                monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                                rate: res.data.data.rate,//费率
+
+                                canCashBalance: res.data.data.balance,
+
+                                userBankCardDTOList: res.data.data.userBankCardDTOList,
 
                             })
-                        }
 
 
+                            //默认显示第一个银行卡
+                            that.setData({
 
-                        //获取银行卡的
-                        var pickChooseBank = [];
+                                bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
 
-                        //循环银行卡、银行名称及银行id
-                        for (var i = 0; i < thisBankList.length; i++) {
+                                bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
 
-                            var pickBankName = thisBankList[i].bankName;
+                                bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
 
-                            var pickBankNo = thisBankList[i].bankNo;
-
-                            var pickBankId = thisBankList[i].bankCardId;
-
-                            var pickBankType = thisBankList[i].cardType;
-
-                            //遍历银行卡类型
-                            if(pickBankType=='1'){
+                                cardType: that.data.userBankCardDTOList[0].cardType//银行卡类型
 
 
-                                var _pickChooseBank = pickBankName + '储蓄卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
+                            });
+
+
+                            //判断银行卡
+
+                            if (that.data.cardType == '1') {
+
+                                that.setData({
+
+                                    cardTypeText: '（储蓄卡）'
+
+                                })
+
                             }
 
-                            else if(pickBankType=='2'){
+                            else {
 
-                                var _pickChooseBank = pickBankName + '信用卡' + '('+ pickBankNo.substr(pickBankNo.length-4)+')';
+                                that.setData({
+
+                                    cardTypeText: '（信用卡）'
+
+                                })
                             }
 
 
+                            //获取银行卡的
+                            var pickChooseBank = [];
 
-                            //组成数组
-                            pickChooseBank.push(_pickChooseBank);
+                            //循环银行卡、银行名称及银行id
+                            for (var i = 0; i < thisBankList.length; i++) {
+
+                                var pickBankName = thisBankList[i].bankName;
+
+                                var pickBankNo = thisBankList[i].bankNo;
+
+                                var pickBankId = thisBankList[i].bankCardId;
+
+                                var pickBankType = thisBankList[i].cardType;
+
+                                //遍历银行卡类型
+                                if (pickBankType == '1') {
+
+
+                                    var _pickChooseBank = pickBankName + '储蓄卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                }
+
+                                else if (pickBankType == '2') {
+
+                                    var _pickChooseBank = pickBankName + '信用卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                }
+
+
+                                //组成数组
+                                pickChooseBank.push(_pickChooseBank);
+
+                            }
+
+
+                            that.setData({
+
+                                bankList: pickChooseBank
+
+                            })
+
 
                         }
-
-
-                        that.setData({
-
-                            bankList: pickChooseBank
-
-                        })
-
-
 
                     }
 
@@ -530,24 +565,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+    /*                wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -858,28 +895,34 @@ Page({
 
                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                    //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                    wx.setStorageSync('successVerify','true');
+
+
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
 
-                        wx.showToast({
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+   /*                     wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 

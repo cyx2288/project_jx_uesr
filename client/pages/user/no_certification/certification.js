@@ -191,24 +191,26 @@ Page({
 
                         //console.log('登录');
 
-                        wx.showToast({
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+/*                        wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 
@@ -226,8 +228,6 @@ Page({
 
                             //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
                             wx.setStorageSync('successVerify','true');
-
-
 
 
                             //认证成功后调用个人中心接口
@@ -254,9 +254,45 @@ Page({
 
                                 success: function (res) {
 
-                                    console.log(res.data);
+                                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                    wx.setStorageSync('userName', res.data.data.userName);
+                                    if(res.data.code=='3001') {
+
+                                        //console.log('登录');
+
+                                        setTimeout(function () {
+
+                                            wx.reLaunch({
+
+                                                url:'../../common/signin/signin'
+                                            })
+
+                                        },1500)
+
+                                        /*                        wx.showToast({
+                                         title: res.data.msg,
+                                         icon: 'none',
+                                         duration: 1500,
+                                         success:function () {
+
+
+
+                                         }
+
+                                         })*/
+
+                                        return false
+
+
+                                    }
+
+                                    else {
+
+                                        console.log(res.data);
+
+                                        wx.setStorageSync('userName', res.data.data.userName);
+
+                                    }
 
 
                                 },

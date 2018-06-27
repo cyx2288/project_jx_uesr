@@ -84,26 +84,26 @@ Page({
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
+                    setTimeout(function () {
 
-                    wx.showToast({
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+ /*                   wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
                     })
-
+*/
                     return false
 
 
@@ -289,35 +289,73 @@ Page({
 
                 success: function (res) {
 
-                    if(res.data.code=='0000'){
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        console.log(res.data.msg)
+                    if(res.data.code=='3001') {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 2000,
+                        //console.log('登录');
+                        setTimeout(function () {
 
-                            success:function () {
+                            wx.reLaunch({
 
-                                setTimeout(function () {
-                                    wx.redirectTo({url:'../payment_setting/payment_setting'})
-                                },2000)
+                                url:'../../common/signin/signin'
+                            })
 
-                            }
-                        })
+                        },1500)
+                        /*                   wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
+
+
+
+                         }
+
+                         })
+                         */
+                        return false
 
 
                     }
 
                     else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 2000,
+                        if (res.data.code == '0000') {
 
-                        })
+                            //存储有没有支付密码修改成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
+
+
+                            console.log(res.data.msg)
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                                success: function () {
+
+                                    setTimeout(function () {
+                                        wx.redirectTo({url: '../payment_setting/payment_setting'})
+                                    }, 2000)
+
+                                }
+                            })
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+
+                            })
+
+                        }
 
                     }
 
@@ -409,11 +447,45 @@ Page({
 
                 console.log(res.data.msg);
 
-                wx.showToast({
-                    title: res.data.msg,
-                    icon: 'none',
-                    duration: 2000
-                })
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+                    /*                   wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
+
+
+
+                     }
+
+                     })
+                     */
+                    return false
+
+
+                }
+
+                else {
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 2000
+                    })
+
+                }
 
             },
 

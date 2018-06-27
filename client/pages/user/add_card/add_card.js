@@ -326,24 +326,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+/*                    wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success: function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url: '../../common/signin/signin'
-                                })
-
-                            }, 1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -456,37 +458,75 @@ Page({
 
                 console.log(res.data);
 
-                var list = res.data.data;
+                //code3003返回方法
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                var provincelistArr = [];
+                if (res.data.code == '3001') {
 
-                for (var i = 0; i < list.length; i++) {
+                    //console.log('登录');
 
-                    var provinceList = res.data.data[i].addrName;
+                    setTimeout(function () {
 
-                    provincelistArr.push(provinceList)
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+                    /*                    wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success: function () {
+
+
+
+                     }
+
+                     })*/
+
+                    return false
+
 
                 }
 
+                else {
 
-                //储存省份
-                that.setData({
+                    var list = res.data.data;
 
-                    provinceArr: provincelistArr
+                    var provincelistArr = [];
 
-                });
+                    for (var i = 0; i < list.length; i++) {
 
-                that.setData({
+                        var provinceList = res.data.data[i].addrName;
 
-                    countries: [
+                        provincelistArr.push(provinceList)
 
-                        that.data.cityArr,
+                    }
 
-                        that.data.provinceArr
 
-                    ]
+                    //储存省份
+                    that.setData({
 
-                });
+                        provinceArr: provincelistArr
+
+                    });
+
+                    that.setData({
+
+                        countries: [
+
+                            that.data.cityArr,
+
+                            that.data.provinceArr
+
+                        ]
+
+                    });
+
+
+                }
 
 
             },
@@ -556,7 +596,7 @@ Page({
 
             wx.showToast({
 
-                title: '请填写正确的所属银行',
+                title: '不支持该银行卡',
                 icon: 'none',
 
             })
@@ -619,39 +659,77 @@ Page({
 
                     //银行卡添加成功 toast提示成功
 
-                    if (res.data.code == '0000') {
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                        wx.showToast({
+                    if (res.data.code == '3001') {
 
-                            title: res.data.msg,
-                            icon: 'none',
-
-                        })
+                        //console.log('登录');
 
                         setTimeout(function () {
 
+                            wx.reLaunch({
 
-                            wx.navigateBack({
-
-                                delta: 1
-
+                                url: '../../common/signin/signin'
                             })
 
-                        }, 2000)
+                        }, 1500)
+
+                        /*                    wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
+
+
+
+                         }
+
+                         })*/
+
+                        return false
 
 
                     }
 
-
                     else {
 
-                        wx.showToast({
 
-                            title: res.data.msg,
-                            icon: 'none',
+                        if (res.data.code == '0000') {
 
-                        })
+                            wx.showToast({
 
+                                title: res.data.msg,
+                                icon: 'none',
+
+                            })
+
+                            setTimeout(function () {
+
+
+                                wx.navigateBack({
+
+                                    delta: 1
+
+                                })
+
+                            }, 2000)
+
+
+                        }
+
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+
+                            })
+
+
+                        }
 
                     }
 
@@ -760,74 +838,111 @@ Page({
 
                 console.log(res.data);
 
-                that.setData({
+                //code3003返回方法
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                    bankName: res.data.data.bankName,
+                if (res.data.code == '3001') {
 
-                    cardTypeNum: res.data.data.type,
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+                    /*                    wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success: function () {
 
 
-                })
 
+                     }
 
-                if (JSON.stringify(res.data.data) == '{}') {
+                     })*/
 
-                    that.setData({
-
-                        bankName: '不支持该银行',
-
-                        cardTypeNum: '',
-
-                        bankIcon: '../../../static/icon/wages/bank_no.png'
-
-
-                    })
+                    return false
 
 
                 }
 
                 else {
 
-                    if (res.data.data.type == '1') {
+                    that.setData({
+
+                        bankName: res.data.data.bankName,
+
+                        cardTypeNum: res.data.data.type,
+
+
+                    })
+
+
+                    if (JSON.stringify(res.data.data) == '{}') {
 
                         that.setData({
 
-                            cardType: '储蓄卡'
+                            bankName: '不支持该银行',
+
+                            cardTypeNum: '',
+
+                            bankIcon: '../../../static/icon/wages/bank_no.png'
+
 
                         })
 
 
                     }
 
-                    else if (res.data.data.type == '2') {
+                    else {
 
-                        that.setData({
-
-                            cardType: '信用卡'
-
-                        })
-                    }
-
-
-                    var bankImgList = that.data.addBankArray;
-
-                    //遍历json中的银行卡名称找到对应的银行卡图标
-
-                    for (var x in bankImgList) {
-
-                        if (bankImgList[x].name == that.data.bankName) {
-
+                        if (res.data.data.type == '1') {
 
                             that.setData({
 
-                                bankIcon: bankImgList[x].img
+                                cardType: '储蓄卡'
 
                             })
 
+
                         }
 
-                    }
+                        else if (res.data.data.type == '2') {
 
+                            that.setData({
+
+                                cardType: '信用卡'
+
+                            })
+                        }
+
+
+                        var bankImgList = that.data.addBankArray;
+
+                        //遍历json中的银行卡名称找到对应的银行卡图标
+
+                        for (var x in bankImgList) {
+
+                            if (bankImgList[x].name == that.data.bankName) {
+
+
+                                that.setData({
+
+                                    bankIcon: bankImgList[x].img
+
+                                })
+
+                            }
+
+                        }
+
+
+                    }
 
                 }
 

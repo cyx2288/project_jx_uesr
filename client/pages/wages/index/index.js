@@ -171,6 +171,8 @@ Page({
 
 
 
+
+
             /**
              * 接口：工资提醒
              * 请求方式：GET
@@ -202,24 +204,26 @@ Page({
 
                         //console.log('登录');
 
-                        wx.showToast({
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+/*                        wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 
@@ -420,29 +424,66 @@ Page({
 
                                                     console.log(res.data);
 
-                                                    that.setData({
+                                                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                                        type:res.data.data.type
+                                                    if(res.data.code=='3001') {
 
-                                                    })
+                                                        //console.log('登录');
+
+                                                        setTimeout(function () {
+
+                                                            wx.reLaunch({
+
+                                                                url:'../../common/signin/signin'
+                                                            })
+
+                                                        },1500)
+
+                                                        /*                          wx.showToast({
+                                                         title: res.data.msg,
+                                                         icon: 'none',
+                                                         duration: 1500,
+                                                         success:function () {
 
 
-                                                    if(that.data.type=='1'){
 
-                                                        wx.navigateTo({
+                                                         }
 
-                                                            url: '../../common/authentication/authentication'
+                                                         })*/
 
-                                                        })
+                                                        return false
+
 
                                                     }
 
-                                                    else if(res.data.data.type=='0'){
+                                                    else {
 
-                                                        wx.navigateTo({
 
-                                                            url:'../../user/locked/locked'
+                                                        that.setData({
+
+                                                            type: res.data.data.type
+
                                                         })
+
+
+                                                        if (that.data.type == '1') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../common/authentication/authentication'
+
+                                                            })
+
+                                                        }
+
+                                                        else if (res.data.data.type == '0') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../user/locked/locked'
+                                                            })
+
+                                                        }
 
                                                     }
 
@@ -545,6 +586,8 @@ Page({
 
                                     console.log(res.data);
 
+
+
                                 },
 
 
@@ -631,15 +674,51 @@ Page({
 
                                     console.log(res.data);
 
-                                    var thisEntName = res.data.data;
+                                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                    //console.log(res.data.data)
+                                    if(res.data.code=='3001') {
 
-                                    that.setData({
+                                        //console.log('登录');
 
-                                        selectSalaryOptions: thisEntName,
+                                        setTimeout(function () {
 
-                                    });
+                                            wx.reLaunch({
+
+                                                url:'../../common/signin/signin'
+                                            })
+
+                                        },1500)
+
+                                        /*                          wx.showToast({
+                                         title: res.data.msg,
+                                         icon: 'none',
+                                         duration: 1500,
+                                         success:function () {
+
+
+
+                                         }
+
+                                         })*/
+
+                                        return false
+
+
+                                    }
+
+                                    else {
+
+                                        var thisEntName = res.data.data;
+
+                                        //console.log(res.data.data)
+
+                                        that.setData({
+
+                                            selectSalaryOptions: thisEntName,
+
+                                        });
+
+                                    }
 
 
 
@@ -688,12 +767,47 @@ Page({
 
                                 //wx.setStorageSync('wages', res.data.data);
 
+                                app.globalData.repeat(res.data.code,res.data.msg);
+
+                                if(res.data.code=='3001') {
+
+                                    //console.log('登录');
+
+                                    setTimeout(function () {
+
+                                        wx.reLaunch({
+
+                                            url:'../../common/signin/signin'
+                                        })
+
+                                    },1500)
+
+                                    /*                          wx.showToast({
+                                     title: res.data.msg,
+                                     icon: 'none',
+                                     duration: 1500,
+                                     success:function () {
+
+
+
+                                     }
+
+                                     })*/
+
+                                    return false
+
+
+                                }
+
+                                else {
+
+
                                 that.setData({
 
                                     wages: radixPointFn.splitK(res.data.data)//用户余额
 
                                 });
-
+                            }
 
                             },
 
@@ -796,24 +910,26 @@ Page({
 
                     //console.log('登录');
 
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+/*
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 

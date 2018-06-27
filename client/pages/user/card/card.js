@@ -223,24 +223,26 @@ Page({
 
                         //console.log('登录');
 
-                        wx.showToast({
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+             /*           wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 
@@ -354,11 +356,48 @@ Page({
 
             success: function(res) {
 
-                console.log(res.data);
 
-                wx.setStorageSync('userName', res.data.data.userName);
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                console.log('姓名'+wx.getStorageSync('userName'))
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    /*           wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
+
+
+
+                     }
+
+                     })*/
+
+                    return false
+
+
+                }
+
+                else {
+
+                    console.log(res.data);
+
+                    wx.setStorageSync('userName', res.data.data.userName);
+
+                    console.log('姓名' + wx.getStorageSync('userName'))
+
+                }
 
 
             },
@@ -465,12 +504,49 @@ Page({
 
                     console.log(res.data);
 
-                    wx.showToast({
-                        title: '删除成功',
-                        icon: 'success',
-                    });
 
-                    that.onShow();
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+                        /*           wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
+
+
+
+                         }
+
+                         })*/
+
+                        return false
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+                            title: '删除成功',
+                            icon: 'success',
+                        });
+
+                        that.onShow();
+
+                    }
 
 
                 },

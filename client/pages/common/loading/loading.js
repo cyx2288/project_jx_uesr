@@ -16,8 +16,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        //初始化变量
-        wx.setStorageSync('successVerify','true');
+        //初始化变量 - 实名认证&&提现成功&&有
+        wx.setStorageSync('successVerify', 'true');
 
 
         wx.showLoading({
@@ -26,8 +26,6 @@ Page({
             title: '跳转中',
 
         });
-
-
 
 
         //获取code标识
@@ -68,30 +66,32 @@ Page({
 
                         success: function (res) {
 
-                            app.globalData.repeat(res.data.code,res.data.msg);
+                            app.globalData.repeat(res.data.code, res.data.msg);
 
-                            if(res.data.code=='3001') {
+                            if (res.data.code == '3001') {
 
                                 //console.log('登录');
 
-                                wx.showToast({
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url: '../../common/signin/signin'
+                                    })
+
+                                }, 1500)
+
+          /*                      wx.showToast({
                                     title: res.data.msg,
                                     icon: 'none',
                                     duration: 1500,
-                                    success:function () {
+                                    success: function () {
 
-                                        setTimeout(function () {
 
-                                            wx.reLaunch({
-
-                                                url:'../../common/signin/signin'
-                                            })
-
-                                        },1500)
 
                                     }
 
-                                })
+                                })*/
 
                                 return false
 
@@ -111,7 +111,6 @@ Page({
 
 
                             }
-
 
 
                         },

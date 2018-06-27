@@ -67,24 +67,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+/*                    wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -142,24 +144,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+/*                    wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -328,24 +332,66 @@ Page({
 
                         console.log(res)
 
-                        if (res.data.code == '0000') {
+                        app.globalData.repeat(res.data.code,res.data.msg);
 
-                            console.log(res.data.msg)
+                        if(res.data.code=='3001') {
 
-                            /*提示信息*/
-                            wx.showToast({
-                                title: res.data.msg,
-                                icon: 'none',
-                                duration: 2000
-                            })
+                            //console.log('登录');
 
-                            /*按钮变为正常*/
-                            that.setData({
+                            setTimeout(function () {
 
-                                msgMode: true
+                                wx.reLaunch({
 
-                            });
+                                    url:'../../common/signin/signin'
+                                })
 
+                            },1500)
+
+                            /*                    wx.showToast({
+                             title: res.data.msg,
+                             icon: 'none',
+                             duration: 1500,
+                             success:function () {
+
+
+
+                             }
+
+                             })*/
+
+                            return false
+
+
+                        }
+
+                        else {
+
+
+                            if (res.data.code == '0000') {
+
+
+                                //存储时候修改支付方式 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                                wx.setStorageSync('successVerify', 'true');
+
+
+                                console.log(res.data.msg)
+
+                                /*提示信息*/
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    duration: 2000
+                                })
+
+                                /*按钮变为正常*/
+                                that.setData({
+
+                                    msgMode: true
+
+                                });
+
+
+                            }
 
                         }
 
@@ -503,6 +549,11 @@ Page({
                             console.log(res);
 
                             if (res.data.code == '0000') {
+
+
+                                wx.setStorageSync('successVerify','true');
+
+                                console.log('设置成功'+wx.getStorageSync('successVerify'))
 
                                 console.log(res.data.msg);
 
