@@ -104,24 +104,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+ /*                   wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -283,21 +285,57 @@ Page({
 
             console.log(res.data);
 
-            if (res.data.code == '0000') {
+            app.globalData.repeat(res.data.code,res.data.msg);
 
-                wx.redirectTo({
+            if(res.data.code=='3001') {
 
-                    url: '../pay_success/pay_success'
-                })
+                //console.log('登录');
+
+                setTimeout(function () {
+
+                    wx.reLaunch({
+
+                        url:'../../common/signin/signin'
+                    })
+
+                },1500)
+
+                /*                   wx.showToast({
+                 title: res.data.msg,
+                 icon: 'none',
+                 duration: 1500,
+                 success:function () {
+
+
+
+                 }
+
+                 })*/
+
+                return false
+
 
             }
 
             else {
 
-                wx.redirectTo({
+                if (res.data.code == '0000') {
 
-                    url: '../pay_fail/pay_fail'
-                })
+                    wx.redirectTo({
+
+                        url: '../pay_success/pay_success'
+                    })
+
+                }
+
+                else {
+
+                    wx.redirectTo({
+
+                        url: '../pay_fail/pay_fail'
+                    })
+                }
+
             }
 
         },

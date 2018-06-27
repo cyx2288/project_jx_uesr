@@ -91,24 +91,26 @@ Page({
 
                         //console.log('登录');
 
-                        wx.showToast({
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+/*                        wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 
@@ -288,43 +290,82 @@ Page({
                 success: function (res) {
                     console.log(res.data);
 
-                    if (res.data.code == '0000') {
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        wx.showToast({
+                    if(res.data.code=='3001') {
 
-                            title: res.data.msg,
-                            icon: 'none',
-                            success:function () {
+                        //console.log('登录');
 
-                                setTimeout(function () {
+                        setTimeout(function () {
 
-                                    wx.navigateBack({
-                                        delta: 1
-                                    })
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+                        /*                        wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
-                                },1500)
 
-                            }
+                         }
+
+                         })*/
+
+                        return false
 
 
-                        });
+                    }
 
+                    else {
+
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                success:function () {
+
+                                    setTimeout(function () {
+
+                                        wx.navigateBack({
+                                            delta: 1
+                                        })
+
+
+                                    },1500)
+
+                                }
+
+
+                            });
+
+
+
+                        }
+
+
+                        else if (res.data.code == '-1') {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none'
+
+                            });
+
+                        }
 
 
                     }
 
-
-                    else if (res.data.code == '-1') {
-
-                        wx.showToast({
-
-                            title: res.data.msg,
-                            icon: 'none'
-
-                        });
-
-                    }
 
 
                 },

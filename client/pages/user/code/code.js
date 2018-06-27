@@ -151,24 +151,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+          /*          wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -299,47 +301,78 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='0000'){
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            success:function () {
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                setTimeout(function () {
+                    if(res.data.code=='3001') {
 
-                                    //跳转身份认证
-                                    wx.redirectTo({
+                        //console.log('登录');
 
-                                        url:'../id_card/id_card'
-                                    })
+                        setTimeout(function () {
 
-                                },1500)
+                            wx.reLaunch({
 
+                                url:'../../common/signin/signin'
+                            })
 
-                            }
+                        },1500)
 
-
-
-
-                        })
-
-                        //存取tokenMsg
-                        wx.setStorageSync('tokenMsg',res.data.data.tokenMsg);
+                        /*          wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
 
+                         }
 
+                         })*/
+
+                        return false
 
 
                     }
+
                     else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
+                        if (res.data.code == '0000') {
 
-                        })
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                success: function () {
+
+                                    setTimeout(function () {
+
+                                        //跳转身份认证
+                                        wx.redirectTo({
+
+                                            url: '../id_card/id_card'
+                                        })
+
+                                    }, 1500)
+
+
+                                }
+
+
+                            })
+
+                            //存取tokenMsg
+                            wx.setStorageSync('tokenMsg', res.data.data.tokenMsg);
+
+
+                        }
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+
+                            })
+
+                        }
 
                     }
 
@@ -471,28 +504,64 @@ Page({
 
                 console.log(res.data.code=='-1')
 
-                if(res.data.code=='0000'){
+
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    /*          wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
 
 
-                    wx.showToast({
+                     }
 
-                        title: res.data.msg,
+                     })*/
 
-                        icon: 'none',
+                    return false
 
-                    })
 
                 }
-                else if(res.data.code=='-1') {
 
-                    wx.showToast({
+                else {
 
-                        title: res.data.msg,
+                    if (res.data.code == '0000') {
 
-                        icon: 'none',
-                    })
 
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                    }
+                    else if (res.data.code == '-1') {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+                        })
+
+
+                    }
 
                 }
 

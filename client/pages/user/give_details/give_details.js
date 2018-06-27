@@ -106,24 +106,26 @@ Page({
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+/*                    wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -221,73 +223,107 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='0000'){
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    wx.showModal({
+                if(res.data.code=='3001') {
 
-                        title: '确认付款',
-                        content: '支付金额￥' + that.data.payAmount + ',提现金额￥'+that.data.orderAmount+',手续费￥'+that.data.rateAmount,
-                        confirmText: '确认付款',
-                        confirmColor:'#fe9728',
+                    //console.log('登录');
 
-                        success: function (res) {
+                    setTimeout(function () {
 
-                            if (res.confirm) {
+                        wx.reLaunch({
 
-                                if(_isSecurity=='1'){
+                            url:'../../common/signin/signin'
+                        })
 
-                                    console.log('开启短信验证');
+                    },1500)
 
-                                    wx.navigateTo({
-
-                                        url: '../sms_verification/sms_verification'
-                                    })
-
-
-
-                                }
-
-                                else if(_isSecurity=='2'){
-
-                                    console.log('开启支付密码');
-
-                                    wx.navigateTo({
-
-                                        url: '../pws_verification/pws_verification'
-                                    })
-
-
-                                }
-
-                                else if(_isSecurity=='3'){
-
-                                    console.log('啥都没开启');
-
-                                    confirmation()
-
-                                }
+                    /*                    wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
 
 
-                            }
+                     }
 
-                            else if (res.cancel) {
+                     })*/
 
-
-                            }
-                        }
-                    });
+                    return false
 
 
                 }
+
                 else {
 
+                    if (res.data.code == '0000') {
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1000
-                    })
+                        wx.showModal({
+
+                            title: '确认付款',
+                            content: '支付金额￥' + that.data.payAmount + ',提现金额￥' + that.data.orderAmount + ',手续费￥' + that.data.rateAmount,
+                            confirmText: '确认付款',
+                            confirmColor: '#fe9728',
+
+                            success: function (res) {
+
+                                if (res.confirm) {
+
+                                    if (_isSecurity == '1') {
+
+                                        console.log('开启短信验证');
+
+                                        wx.navigateTo({
+
+                                            url: '../sms_verification/sms_verification'
+                                        })
+
+
+                                    }
+
+                                    else if (_isSecurity == '2') {
+
+                                        console.log('开启支付密码');
+
+                                        wx.navigateTo({
+
+                                            url: '../pws_verification/pws_verification'
+                                        })
+
+
+                                    }
+
+                                    else if (_isSecurity == '3') {
+
+                                        console.log('啥都没开启');
+
+                                        confirmation()
+
+                                    }
+
+
+                                }
+
+                                else if (res.cancel) {
+
+
+                                }
+                            }
+                        });
+
+
+                    }
+                    else {
+
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1000
+                        })
+
+                    }
 
                 }
             },

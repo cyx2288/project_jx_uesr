@@ -86,30 +86,32 @@ Page({
 
                 console.log(res.data);
 
-
+                app.globalData.repeat(res.data.code,res.data.msg);
 
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+    /*                wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -318,23 +320,59 @@ Page({
 
                 console.log(res.data);
 
-                var thisCode = res.data.code;
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                if(thisCode =='0000'){
+                if(res.data.code=='3001') {
 
-                    that.setData({
-
-                        comfrimBtn:2
-                    })
+                    //console.log('登录');
 
                     setTimeout(function () {
 
-                        wx.navigateBack({
-                            delta: 1
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
                         })
 
-                    },500)
+                    },1500)
 
+                    /*                wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
+
+
+
+                     }
+
+                     })*/
+
+                    return false
+
+
+                }
+
+                else {
+
+                    var thisCode = res.data.code;
+
+                    if (thisCode == '0000') {
+
+                        that.setData({
+
+                            comfrimBtn: 2
+                        })
+
+                        setTimeout(function () {
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+                        }, 500)
+
+
+                    }
 
                 }
 

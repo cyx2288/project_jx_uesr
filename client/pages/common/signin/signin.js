@@ -141,9 +141,6 @@ data:{
 
                                             if (res.confirm) {
 
-                                                console.log(that.data.password)
-
-
                                                 wx.login({
 
                                                     success: function (res) {

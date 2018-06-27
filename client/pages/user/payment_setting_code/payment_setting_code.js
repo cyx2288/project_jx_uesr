@@ -128,25 +128,25 @@ Page({
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
+                        setTimeout(function () {
 
-                        wx.showToast({
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+    /*                    wx.showToast({
                             title: res.data.msg,
                             icon: 'none',
                             duration: 1500,
                             success:function () {
 
-                                setTimeout(function () {
 
-                                    wx.reLaunch({
-
-                                        url:'../../common/signin/signin'
-                                    })
-
-                                },1500)
 
                             }
 
-                        })
+                        })*/
 
                         return false
 
@@ -157,7 +157,13 @@ Page({
 
                         if (res.data.code == '0000') {
 
+
                             console.log(res.data.msg)
+
+                            //存储有没有支付密码修改成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify','true');
+
+
 
                             wx.showToast({
                                 title: res.data.msg,

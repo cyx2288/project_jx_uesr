@@ -287,37 +287,76 @@ Page({
 
                 console.log(res.data);
 
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                //缓存点单号
-                wx.setStorageSync('cashOrderId',res.data.data);
+                if(res.data.code=='3001') {
 
-                if (res.data.code == '0000') {
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    /*                          wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
 
-                    wx.showToast({
 
-                        title: res.data.msg,
+                     }
 
-                        icon: 'none',
+                     })*/
 
-                    })
+                    return false
 
-                    wx.redirectTo({
-
-                        url: '../pay_success/pay_success'
-                    })
 
                 }
 
                 else {
 
-                    wx.showToast({
 
-                        title: res.data.msg,
+                    //缓存点单号
+                    wx.setStorageSync('cashOrderId', res.data.data);
 
-                        icon: 'none',
+                    //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                    wx.setStorageSync('successVerify', 'true');
 
-                    })
+                    if (res.data.code == '0000') {
+
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+                        wx.redirectTo({
+
+                            url: '../pay_success/pay_success'
+                        })
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+                    }
+
                 }
 
             },
@@ -426,27 +465,64 @@ Page({
 
                 console.log(res.data);
 
-                if(res.data.code=='0000'){
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    wx.showToast({
+                if(res.data.code=='3001') {
 
-                        title: res.data.msg,
+                    //console.log('登录');
 
-                        icon: 'none',
+                    setTimeout(function () {
 
-                    })
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    /*                          wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
+
+
+
+                     }
+
+                     })*/
+
+                    return false
 
 
                 }
+
                 else {
 
-                    wx.showToast({
 
-                        title: res.data.msg,
+                    if (res.data.code == '0000') {
 
-                        icon: 'none',
-                    })
+                        wx.showToast({
 
+                            title: res.data.msg,
+
+                            icon: 'none',
+
+                        })
+
+
+                    }
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+
+                            icon: 'none',
+                        })
+
+
+                    }
 
                 }
 

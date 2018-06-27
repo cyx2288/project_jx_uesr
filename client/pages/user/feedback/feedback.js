@@ -116,29 +116,32 @@ Page({
 
                 console.log(res.data);
 
+                app.globalData.repeat(res.data.code,res.data.msg);
 
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
 
-                    wx.showToast({
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+      /*              wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1500,
                         success:function () {
 
-                            setTimeout(function () {
 
-                                wx.reLaunch({
-
-                                    url:'../../common/signin/signin'
-                                })
-
-                            },1500)
 
                         }
 
-                    })
+                    })*/
 
                     return false
 
@@ -146,6 +149,10 @@ Page({
                 }
 
                 else {
+
+                    //存储有没有点击进入反馈详情 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                    wx.setStorageSync('successVerify','true');
+
 
                     var list = res.data.data;
 
@@ -259,29 +266,32 @@ Page({
 
                     console.log(res.data);
 
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
+                        setTimeout(function () {
 
-                                setTimeout(function () {
+                            wx.reLaunch({
 
-                                    wx.reLaunch({
+                                url:'../../common/signin/signin'
+                            })
 
-                                        url:'../../common/signin/signin'
-                                    })
+                        },1500)
 
-                                },1500)
+                        /*               wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
-                            }
 
-                        })
+
+                         }
+
+                         })*/
 
                         return false
 
@@ -291,65 +301,98 @@ Page({
                     else {
 
 
-                        if (res.data.code == '0000') {
+                        if (res.data.code == '3001') {
 
+                            //console.log('登录');
 
                             wx.showToast({
-
                                 title: res.data.msg,
                                 icon: 'none',
-                                duration: 2000
+                                duration: 1500,
+                                success: function () {
 
-                            });
+                                    setTimeout(function () {
 
+                                        wx.reLaunch({
 
-                            var userImf = {
-                                feedBackDetailId: "1",
-                                feedBackId: "123",
-                                content: that.data.contentTitle,
-                                type: "1",
-                                sendDate: Date.parse(new Date())
+                                            url: '../../common/signin/signin'
+                                        })
 
-                            }
+                                    }, 1500)
 
-                            var _list = that.data.feedBackList;
-
-
-                            _list.push(userImf)
-
-                            //消息清空
-                            that.setData({
-
-                                contentTitle: '',
-
-                                feedBackList: _list,//反馈消息列表
+                                }
 
                             })
 
+                            return false
 
-                            //平滑到底部
-
-                            setTimeout(function () {
-
-                                wx.pageScrollTo({
-
-                                    scrollTop: 999999
-                                })
-
-                            }, 200)
 
                         }
 
                         else {
 
-                            wx.showToast({
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                duration: 2000
+                            if (res.data.code == '0000') {
 
 
-                            });
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    duration: 2000
+
+                                });
+
+
+                                var userImf = {
+                                    feedBackDetailId: "1",
+                                    feedBackId: "123",
+                                    content: that.data.contentTitle,
+                                    type: "1",
+                                    sendDate: Date.parse(new Date())
+
+                                }
+
+                                var _list = that.data.feedBackList;
+
+
+                                _list.push(userImf)
+
+                                //消息清空
+                                that.setData({
+
+                                    contentTitle: '',
+
+                                    feedBackList: _list,//反馈消息列表
+
+                                })
+
+
+                                //平滑到底部
+
+                                setTimeout(function () {
+
+                                    wx.pageScrollTo({
+
+                                        scrollTop: 999999
+                                    })
+
+                                }, 200)
+
+                            }
+
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    duration: 2000
+
+
+                                });
+
+                            }
 
                         }
 
