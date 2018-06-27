@@ -64,11 +64,9 @@ Page({
 
         lookWages: true,//看不看余额
 
-        type:'',//是否锁定
+        type:'',//是否认证锁定
 
-        pickList:[],
-
-        num:'',
+        num:'',//选择全部&单个企业 1为单个企业 2为全部
 
 
 
@@ -91,6 +89,7 @@ Page({
         wx.setStorageSync('goHtml','4');
 
 
+        //初始化数据
         that.setData({
 
 
@@ -134,6 +133,8 @@ Page({
 
             type:'',//是否锁定
 
+            num:'',//选择全部&单个企业 1为单个企业 2为全部
+
 
         })
 
@@ -152,9 +153,8 @@ Page({
         //发薪企业
         var thisSalaryUrl = app.globalData.URL + salaryUrl;
 
-        //时候锁定状态
+        //是否锁定状态
         var thisUrl = app.globalData.URL + companyUrl;
-
 
         //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
@@ -162,31 +162,14 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
 
-/*            if(!jx_sid||!Authorization){
-
-
-
-                setTimeout(function () {
-
-                    wx.reLaunch({
-
-                        url:'../../common/signin/signin'
-                    })
-
-                },2000)
-
-            }
-
-            else {
-
- */
-
         wx.showLoading({
 
             mask:true,
             title: '加载中',
 
         });
+
+
 
             /**
              * 接口：工资提醒
@@ -739,13 +722,6 @@ Page({
 
 
 
-        /*}*/
-
-
-
-
-
-
     },
 
     //工资条发放列表 入参数企业id,分页数，
@@ -889,7 +865,6 @@ Page({
 
                             nowList[j].realAmount = radixPointFn.splitK(nowList[j].realAmount)
 
-                            //console.log(nowList[j].realAmount)
 
                         }
 
@@ -1127,6 +1102,8 @@ Page({
             hasCompany: false,//有没有企业
 
             type:'',//是否锁定
+
+            num:'',//选择全部&单个企业 1为单个企业 2为全部
 
             //lookWages:true,//看不看余额
 

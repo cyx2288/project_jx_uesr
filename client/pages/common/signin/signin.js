@@ -12,6 +12,7 @@ const header = require( '../../../static/libs/script/header.js' );//json转换�
 
 const signUrl ='/jx/action/login';//登录的url
 
+const checkOutUrl = '/jx/action/checkloginexc'//登录异常
 
 
 Page({
@@ -45,6 +46,8 @@ data:{
     signin:function () {
 
       var url = app.globalData.URL+signUrl;
+
+
 
         var that=this;
 
@@ -82,109 +85,342 @@ data:{
       else {
 
 
-          /**
-           * 接口：登录
-           * 请求方式：POST
-           * 接口：/jx/action/login
-           * 入参：mobile，password
-           **/
 
-          wx.request({
+            //获取code标识
+            wx.login({
 
-              url:  url,
+                success: function (res) {
 
-              method:'POST',
+                    if (res.code) {
 
-              data: json2FormFn.json2Form({
+                        console.log(res.code)
 
-                  mobile:that.data.mobile,
+                        /**
+                         * 接口：校验登录异常
+                         * 请求方式：POST
+                         * 接口：/jx/action/checkloginexc
+                         * 入参：mobile，code
+                         **/
 
-                  password:md5.hexMD5(that.data.password),
+                        wx.request({
 
-              }),
+                            url: app.globalData.URL+checkOutUrl,
 
-              header: {
+                            method: 'POST',
 
-                  'content-type': 'application/x-www-form-urlencoded' // post请求
+                            data: json2FormFn.json2Form({
 
-              },
+                                mobile: that.data.mobile,
 
-              success: function(res) {
-
-                  var code = res.data.code;
-
-                  console.log(res.data);
-
-                  if(code == '-1'){
-
-                      wx.showToast({
-
-                          title: res.data.msg,
-                          icon: 'none',
-                          duration:2000
+                                code:res.code,
 
 
-                      });
+                            }),
 
-                      return false;
+                            header: {
 
+                                'content-type': 'application/x-www-form-urlencoded' // post请求
 
-                  }
+                            },
 
-                  else if(code == '0000'){
+                            success: function (res) {
 
-                      var Authorization = res.data.token.access_token;//Authorization数据
+                                var code = res.data.code;
 
-                      var jx_sid = res.header.jxsid;//jx_sid数据
+                                console.log(res.data);
 
-                      //登录成功后调用
-                      (function countDownAjax() {
+                                if(code=='-7'){
 
-                          ajaxCount--;
+                                    wx.showModal({
+                                        title: '提示',
+                                        content: res.data.msg,
+                                        cancelText: '取消',
+                                        confirmText: '确定',
+                                        confirmColor:'#fe9728',
+                                        success: function (res) {
 
-                          app.globalData.ajaxFinish(ajaxCount)
+                                            if (res.confirm) {
 
-                      })();
-
-                      //存储数据
-                      wx.setStorageSync('jxsid', jx_sid);
-
-                      wx.setStorageSync('Authorization', Authorization);
-
-                      wx.setStorageSync('idNumber', res.data.data.idNumber);
-
-                      wx.setStorageSync('userName', res.data.data.userName);
-
-                      wx.setStorageSync('isVerify',res.data.data.isVerify);
-
-/*
-                      console.log('用户姓名：'+ wx.getStorageSync('userName'));
-
-                      console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
-
-                      console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
-*/
+                                                console.log(that.data.password)
 
 
+                                                wx.login({
+
+                                                    success: function (res) {
+
+                                                        if (res.code) {
+
+                                                            console.log(res.code)
+
+                                                            /**
+                                                             * 接口：登录
+                                                             * 请求方式：POST
+                                                             * 接口：/jx/action/login
+                                                             * 入参：mobile，password,code
+                                                             **/
+
+                                                            wx.request({
+
+                                                                url: url,
+
+                                                                method: 'POST',
+
+                                                                data: json2FormFn.json2Form({
+
+                                                                    mobile: that.data.mobile,
+
+                                                                    password: md5.hexMD5(that.data.password),
+
+                                                                    code: res.code,
 
 
-                      //console.log(header.header(Authorization,jx_sid));
+                                                                }),
 
-                      wx.switchTab({
+                                                                header: {
 
-                          url:'../../wages/index/index'
-                      })
-                  }
+                                                                    'content-type': 'application/x-www-form-urlencoded' // post请求
+
+                                                                },
+
+                                                                success: function (res) {
+
+                                                                    var code = res.data.code;
+
+                                                                    console.log(res.data);
+
+                                                                    if (code == '-1') {
+
+                                                                        wx.showToast({
+
+                                                                            title: res.data.msg,
+                                                                            icon: 'none',
+                                                                            duration: 2000
 
 
-              },
+                                                                        });
 
-              fail:function (res) {
+                                                                        return false;
 
-                  console.log(res)
-              }
 
-          })
+                                                                    }
+
+                                                                    else if (code == '0000') {
+
+                                                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                                                        var jx_sid = res.header.jxsid;//jx_sid数据
+
+                                                                        //登录成功后调用
+                                                                        (function countDownAjax() {
+
+                                                                            ajaxCount--;
+
+                                                                            app.globalData.ajaxFinish(ajaxCount)
+
+                                                                        })();
+
+                                                                        //存储数据
+                                                                        wx.setStorageSync('jxsid', jx_sid);
+
+                                                                        wx.setStorageSync('Authorization', Authorization);
+
+                                                                        wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                                                                        wx.setStorageSync('userName', res.data.data.userName);
+
+                                                                        wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                                                                        /*
+                                                                         console.log('用户姓名：'+ wx.getStorageSync('userName'));
+
+                                                                         console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
+
+                                                                         console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+                                                                         */
+
+
+                                                                        //console.log(header.header(Authorization,jx_sid));
+
+                                                                        wx.switchTab({
+
+                                                                            url: '../../wages/index/index'
+                                                                        })
+                                                                    }
+
+
+                                                                },
+
+                                                                fail: function (res) {
+
+                                                                    console.log(res)
+                                                                }
+
+                                                            })
+
+                                                        }
+
+                                                    }
+
+                                                })
+
+
+                                            }
+
+                                            else if (res.cancel) {
+
+
+                                            }
+
+                                        }
+                                    });
+
+
+
+                                }
+
+
+                                else if(code=='0000'){
+
+                                    wx.login({
+
+                                        success: function (res) {
+
+                                            if (res.code) {
+
+                                                console.log(res.code)
+
+
+                                                /**
+                                                 * 接口：登录
+                                                 * 请求方式：POST
+                                                 * 接口：/jx/action/login
+                                                 * 入参：mobile，password,code
+                                                 **/
+
+                                                wx.request({
+
+                                                    url: url,
+
+                                                    method: 'POST',
+
+                                                    data: json2FormFn.json2Form({
+
+                                                        mobile: that.data.mobile,
+
+                                                        password: md5.hexMD5(that.data.password),
+
+                                                        code:res.code,
+
+
+                                                    }),
+
+                                                    header: {
+
+                                                        'content-type': 'application/x-www-form-urlencoded' // post请求
+
+                                                    },
+
+                                                    success: function (res) {
+
+                                                        var code = res.data.code;
+
+                                                        console.log(res.data);
+
+                                                        if (code == '-1') {
+
+                                                            wx.showToast({
+
+                                                                title: res.data.msg,
+                                                                icon: 'none',
+                                                                duration: 2000
+
+
+                                                            });
+
+                                                            return false;
+
+
+                                                        }
+
+                                                        else if (code == '0000') {
+
+                                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                                            var jx_sid = res.header.jxsid;//jx_sid数据
+
+                                                            //登录成功后调用
+                                                            (function countDownAjax() {
+
+                                                                ajaxCount--;
+
+                                                                app.globalData.ajaxFinish(ajaxCount)
+
+                                                            })();
+
+                                                            //存储数据
+                                                            wx.setStorageSync('jxsid', jx_sid);
+
+                                                            wx.setStorageSync('Authorization', Authorization);
+
+                                                            wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                                                            wx.setStorageSync('userName', res.data.data.userName);
+
+                                                            wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                                                            /*
+                                                             console.log('用户姓名：'+ wx.getStorageSync('userName'));
+
+                                                             console.log('用户身份证：'+ wx.getStorageSync('idNumber'));
+
+                                                             console.log('是否已注册：'+ wx.getStorageSync('isVerify'));
+                                                             */
+
+
+                                                            //console.log(header.header(Authorization,jx_sid));
+
+                                                            wx.switchTab({
+
+                                                                url: '../../wages/index/index'
+                                                            })
+                                                        }
+
+
+                                                    },
+
+                                                    fail: function (res) {
+
+                                                        console.log(res)
+                                                    }
+
+                                                })
+
+                                            }
+
+                                        }
+
+                                    })
+
+
+                                }
+                            },
+
+                            fail: function (res) {
+
+                                console.log(res)
+                            }
+
+                        })
+
+
+
+
+
+
+                    }
+
+                }
+            })
 
       }
 

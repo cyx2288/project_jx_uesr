@@ -1,14 +1,7 @@
 /**
  * Created by ZHUANGYI on 2018/5/14.
  */
-var addBankList = {
-
-
-
-
-
-
-}
+var addBankList = {}
 const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
@@ -245,7 +238,7 @@ Page({
 
         cardTypeNum: '',
 
-        bankIcon:'../../../static/icon/wages/bank_orc.png'
+        bankIcon: '../../../static/icon/wages/bank_orc.png'
 
 
     },
@@ -257,6 +250,19 @@ Page({
         var _isVerify = wx.getStorageSync('isVerify');
 
         var _userName = wx.getStorageSync('userName');
+
+        wx.showLoading({
+
+            mask: true,
+            title: '加载中',
+
+        });
+
+        setTimeout(function () {
+
+            wx.hideLoading();
+
+        }, 500);
 
 
         that.setData({
@@ -546,7 +552,7 @@ Page({
         }
 
         //判断是否写了所属银行
-        else if (!that.data.bankName||that.data.bankName=='不支持该银行') {
+        else if (!that.data.bankName || that.data.bankName == '不支持该银行') {
 
             wx.showToast({
 
@@ -681,9 +687,10 @@ Page({
 
         });
 
-        //银行卡输入十位后执行方法
 
-        if (that.data.bankNo.length == 10) {
+        //银行卡输入十位后并且黏贴后执行方法
+
+        if (that.data.bankNo.length == 10 || that.data.bankNo.length >= 15) {
 
             that.getBankNoFn(e)
 
@@ -691,7 +698,7 @@ Page({
 
         //不满足10位的话数据初始化
 
-       else if(that.data.bankNo.length < 10){
+        else if (that.data.bankNo.length < 10) {
 
             that.setData({
 
@@ -699,7 +706,7 @@ Page({
 
                 cardType: '',
 
-                bankIcon:'../../../static/icon/wages/bank_orc.png'
+                bankIcon: '../../../static/icon/wages/bank_orc.png'
             })
 
         }
@@ -753,90 +760,76 @@ Page({
 
                 console.log(res.data);
 
+                that.setData({
+
+                    bankName: res.data.data.bankName,
+
+                    cardTypeNum: res.data.data.type,
+
+
+                })
+
+
+                if (JSON.stringify(res.data.data) == '{}') {
+
                     that.setData({
 
-                        bankName: res.data.data.bankName,
+                        bankName: '不支持该银行',
 
-                        cardTypeNum: res.data.data.type,
+                        cardTypeNum: '',
+
+                        bankIcon: '../../../static/icon/wages/bank_no.png'
 
 
                     })
 
 
-                   if(JSON.stringify(res.data.data) == '{}'){
+                }
 
-                       that.setData({
+                else {
 
-                           bankName: '不支持该银行',
+                    if (res.data.data.type == '1') {
 
-                           cardTypeNum: '',
+                        that.setData({
 
-                           bankIcon:'../../../static/icon/wages/bank_no.png'
+                            cardType: '储蓄卡'
 
-
-                       })
-
-
-                   }
-
-                   else {
-
-                       if (res.data.data.type == '1') {
-
-                           that.setData({
-
-                               cardType: '储蓄卡'
-
-                           })
+                        })
 
 
-                       }
+                    }
 
-                       else if (res.data.data.type == '2') {
+                    else if (res.data.data.type == '2') {
 
-                           that.setData({
+                        that.setData({
 
-                               cardType: '信用卡'
+                            cardType: '信用卡'
 
-                           })
-                       }
-
-
-                       var bankImgList = that.data.addBankArray;
-
-                       //遍历json中的银行卡名称找到对应的银行卡图标
-
-                       for ( var x in bankImgList){
-
-                           if(bankImgList[x].name==that.data.bankName){
+                        })
+                    }
 
 
-                               that.setData({
+                    var bankImgList = that.data.addBankArray;
 
-                                   bankIcon:bankImgList[x].img
+                    //遍历json中的银行卡名称找到对应的银行卡图标
 
-                               })
+                    for (var x in bankImgList) {
 
-                           }
-
-
+                        if (bankImgList[x].name == that.data.bankName) {
 
 
-                       }
+                            that.setData({
+
+                                bankIcon: bankImgList[x].img
+
+                            })
+
+                        }
+
+                    }
 
 
-
-                   }
-
-
-
-
-
-
-
-
-
-
+                }
 
 
             },

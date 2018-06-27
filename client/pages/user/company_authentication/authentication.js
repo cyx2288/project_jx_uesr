@@ -93,6 +93,8 @@ Page({
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');

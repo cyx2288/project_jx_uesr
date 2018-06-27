@@ -18,8 +18,7 @@ Page({
 
         isVerify:'',//是否认证
 
-        hasUserName:true
-
+        hasUserName:true,//有没有用户姓名
 
     },
 
@@ -36,15 +35,15 @@ Page({
 
         //console.log('是否认证'+_isVerify);
 
-        console.log('名字'+thisUserName)
+      /*  console.log('名字'+thisUserName)
 
-        console.log('身份证'+thisIdNumber)
+        console.log('身份证'+thisIdNumber)*/
 
         that.setData({
 
             isVerify:_isVerify,
 
-        })
+        });
 
 
         if(thisUserName){
@@ -151,9 +150,9 @@ Page({
 
 
             /**
-             * 接口：
+             * 接口：实名认证
              * 请求方式：POST
-             * 接口：/user/center/usercenter
+             * 接口：/user/center/userverify
              * 入参：userName,idNumber
              **/
             wx.request({
@@ -222,7 +221,14 @@ Page({
 
                         if (_code == '0000') {
 
+                            //存储实名认证状态
                             wx.setStorageSync('isVerify', '1');
+
+                            //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify','true');
+
+
+
 
                             //认证成功后调用个人中心接口
                             /**
@@ -275,10 +281,12 @@ Page({
                             }, 500)
 
 
-                            console.log('未设置支付密码' + thisPayPwd);
+                           /* console.log('未设置支付密码' + thisPayPwd);
 
-                            console.log('从未设置跳转' + _hrefId);
+                            console.log('从未设置跳转' + _hrefId);*/
 
+
+                            //判断退回的页面
 
                             if (thisPayPwd == '0' && _hrefId == '8') {
 

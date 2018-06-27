@@ -23,7 +23,7 @@
                        </view>
 
                       <view class="weui_left">
-                          <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}（{{cardTypeText}}）</view>
+                          <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}{{cardTypeText}}</view>
                       </view>
 
                      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -59,7 +59,7 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder=""  placeholder-style="color:#bbb"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="{{autoFocus}}" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder=""  placeholder-style="color:#bbb"/>
                     </label>
 
                 </lable>
