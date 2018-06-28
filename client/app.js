@@ -9,24 +9,35 @@ App({
 
         URL: 'http://jxtest.99payroll.cn/jx-user',
 
-       /*URL:'http://172.18.1.62:8091/jx-user',*/
+        /*URL:'http://172.18.1.62:8092/jx-user',*/
 
         ajaxFinish: function (ajaxCount) {
 
-            wx.showLoading({
+     /*       wx.showLoading({
 
                 mask: true,
                 title: '加载中',
 
-            });
+            });*/
+
+            wx.showNavigationBarLoading();
 
             if (ajaxCount == 0) {
 
+/*
                 setTimeout(function () {
 
                     wx.hideLoading();
 
                 }, 500);
+*/
+
+                setTimeout(function () {
+
+                    wx.hideNavigationBarLoading()
+
+                },500);
+
 
 
             }
@@ -76,6 +87,27 @@ App({
                     }
                 }
             })
+        },
+
+        loadingFn:function () {
+
+
+
+            wx.showLoading({
+
+             mask: true,
+             title: '加载中',
+
+             });
+
+
+            setTimeout(function () {
+
+                wx.hideLoading();
+
+            }, 500);
+
+
         }
 
     },

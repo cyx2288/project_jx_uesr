@@ -20,13 +20,13 @@ Page({
 
         hasJoinEnt: true,//默认不显示有新的邀请 true为不显示 false为显示
 
-        isVerify:'',//是否认证
+        isVerify: '',//是否认证
 
-        hasNewMsg:true,//默认不显示有新消息 true为不显示 false为显示
+        hasNewMsg: true,//默认不显示有新消息 true为不显示 false为显示
 
-        needRefresh:true,//刷新的开关 false为不刷新 true为刷新
+        needRefresh: true,//刷新的开关 false为不刷新 true为刷新
 
-        timestamp:'',//时间戳
+
 
 
     },
@@ -34,36 +34,39 @@ Page({
     onShow: function () {
 
 
+        var that = this;
+
         //防止忘记密码倒退 导航名字
         wx.setNavigationBarTitle({
 
-            title:'我的'
-        })
+            title: '我的'
+        });
 
+        //首页和我的来回切换
+        //wx.setStorageSync('successVerify','true')
 
-        var that = this;
-
-        //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+        //实名认证 & 工资余额 & 是否加入新企业 & 新消息 & 支付认证 & 是否设置支付密码 - 存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
         var _successVerify = wx.getStorageSync('successVerify');
 
-        /*console.log(_successVerify)*/
+        console.log('我的刷新'+wx.getStorageSync('successVerify'))
 
         //如果操作了某个需要变动的数据 赋值
-        if(_successVerify){
+        if (_successVerify) {
 
             that.setData({
 
-                needRefresh:_successVerify
+                needRefresh: _successVerify
 
             })
 
         }
 
-        else{
+
+        else {
 
             that.setData({
 
-                needRefresh:'true'
+                needRefresh: 'true'
 
             })
 
@@ -75,24 +78,26 @@ Page({
             //获取当前时间戳
             var timestamp = Date.parse(new Date());
 
-            return timestamp/1000
+            return timestamp / 1000
 
         }
 
+
         function ajax() {
+
 
             ajaxShow();
 
             //ajax 加载后存储变量值改变 - 认证成功
-            wx.setStorageSync('successVerify','false');
+            wx.setStorageSync('successVerify', 'false');
 
-            var _time=timestamp();
+            var _time = timestamp();
 
-            wx.setStorageSync('mineTimer',_time);
+            wx.setStorageSync('mineTimer', _time);
 
         }
 
-        if(that.data.needRefresh == 'true'){
+        if (that.data.needRefresh == 'true') {
 
             //console.log('变量控制刷新');
 
@@ -104,9 +109,9 @@ Page({
 
             var _mineTimer = wx.getStorageSync('mineTimer');
 
-            if(timestamp()-_mineTimer>=120){
+            if (timestamp() - _mineTimer >= 120) {
 
-                //console.log('超时刷新 超时：'+(timestamp()-_mineTimer))
+                //console.log('超时刷新 超时：' + (timestamp() - _mineTimer))
 
                 ajax()
 
@@ -114,14 +119,14 @@ Page({
 
             else {
 
-                //console.log('不刷新')
+                console.log('不刷新')
 
             }
 
         }
 
 
-        function ajaxShow() {
+        function ajaxShow(){
 
 
             //有几个ajax请求
@@ -140,7 +145,7 @@ Page({
             var Authorization = wx.getStorageSync('Authorization');
 
             //存储从哪儿过来
-            wx.setStorageSync('goHtml','3');
+            wx.setStorageSync('goHtml', '3');
 
 
             /**
@@ -168,30 +173,32 @@ Page({
 
                     console.log(res.data);
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                    if(res.data.code=='3001') {
+                    if (res.data.code == '3001') {
 
                         //console.log('登录');
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
+                        setTimeout(function () {
 
-                                setTimeout(function () {
+                            wx.reLaunch({
 
-                                    wx.reLaunch({
+                                url: '../../common/signin/signin'
+                            })
 
-                                        url:'../../common/signin/signin'
-                                    })
+                        }, 1500)
 
-                                },1500)
+                        /*                        wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
 
-                            }
 
-                        })
+
+                         }
+
+                         })*/
 
                         return false
 
@@ -232,48 +239,38 @@ Page({
                         wx.setStorageSync('isVerify', res.data.data.isVerify);
 
 
-                            //存储手机号码
+                        //存储手机号码
+                        that.setData({
+
+                            mobile: _mobile,
+
+                            isVerify: wx.getStorageSync('isVerify')
+
+
+                        });
+
+
+                        //判断是否有新消息
+
+                        if (ishasNewMsg == '1') {
+
                             that.setData({
 
-                                mobile: _mobile,
+                                hasNewMsg: false,
 
-                                isVerify:wx.getStorageSync('isVerify')
+                            })
 
+                        }
 
+                        else {
 
+                            that.setData({
 
-                            });
+                                hasNewMsg: true
 
+                            })
 
-
-                            //判断是否有新消息
-
-                            if (ishasNewMsg == '1') {
-
-                                that.setData({
-
-                                    hasNewMsg: false,
-
-                                })
-
-                            }
-
-                            else {
-
-                                that.setData({
-
-                                    hasNewMsg: true
-
-                                })
-
-                            }
-
-
-
-
-
-
-
+                        }
 
 
                     }
@@ -314,30 +311,33 @@ Page({
 
                     //判断是否显示有新邀请
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                    if(res.data.code=='3001') {
+
+                    if (res.data.code == '3001') {
 
                         //console.log('登录');
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
+                        setTimeout(function () {
 
-                                setTimeout(function () {
+                            wx.reLaunch({
 
-                                    wx.reLaunch({
+                                url: '../../common/signin/signin'
+                            })
 
-                                        url:'../../common/signin/signin'
-                                    })
+                        }, 1500)
 
-                                },1500)
+                        /*                       wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
 
-                            }
 
-                        })
+
+                         }
+
+                         })*/
 
                         return false
 
@@ -356,6 +356,7 @@ Page({
                         //判断是否有加入企业
 
                         if (hasEntType == '1') {
+
 
                             that.setData({
 
@@ -376,7 +377,6 @@ Page({
                         }
 
 
-
                         (function countDownAjax() {
 
                             ajaxCount--;
@@ -384,7 +384,6 @@ Page({
                             app.globalData.ajaxFinish(ajaxCount)
 
                         })();
-
 
 
                     }
@@ -424,30 +423,32 @@ Page({
 
                     console.log(res.data);
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                    if(res.data.code=='3001') {
+                    if (res.data.code == '3001') {
 
                         //console.log('登录');
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
+                        setTimeout(function () {
 
-                                setTimeout(function () {
+                            wx.reLaunch({
 
-                                    wx.reLaunch({
+                                url: '../../common/signin/signin'
+                            })
 
-                                        url:'../../common/signin/signin'
-                                    })
+                        }, 1500)
 
-                                },1500)
+                        /*                        wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
 
-                            }
 
-                        })
+
+                         }
+
+                         })*/
 
                         return false
 
@@ -475,13 +476,10 @@ Page({
                         })();
 
 
-
-
                     }
 
 
                 },
-
 
 
                 fail: function (res) {
@@ -493,10 +491,7 @@ Page({
             })
 
 
-
         }
-
-
 
 
 
@@ -508,7 +503,7 @@ Page({
         return {
             title: '嘉薪平台',
             path: '/pages/common/signin/signin',
-            imageUrl:'/static/icon/logo/share.jpg'
+            imageUrl: '/static/icon/logo/share.jpg'
 
         }
     },
