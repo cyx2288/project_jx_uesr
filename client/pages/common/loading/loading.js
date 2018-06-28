@@ -19,6 +19,10 @@ Page({
         //初始化变量 - 实名认证&&提现成功&&有
         wx.setStorageSync('successVerify', 'true');
 
+        wx.setStorageSync('successRefresh', 'true');
+
+
+
 
         wx.showLoading({
 

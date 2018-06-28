@@ -96,6 +96,8 @@ Page({
                 //存储有没有加入成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
                 wx.setStorageSync('successVerify','true');
 
+                wx.setStorageSync('successRefresh','true');
+
 
 
                 if(res.data.code=='3001') {

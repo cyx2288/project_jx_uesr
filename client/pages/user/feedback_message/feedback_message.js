@@ -40,7 +40,7 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
              moreText:'没有更多数据啦~',//无数据显示暂无数据
 
-             noData: true,//是否显示暂无数据 true为隐藏 false为显示
+             noData: true,//是否显示暂无数据 true为正在加载 false为暂无数据
 
          })
 
@@ -63,155 +63,196 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
          //有几个ajax请求
          var ajaxCount = 1;
 
-         /**
-          * 接口：获取工资条反馈
-          * 请求方式：POST
-          * 接口：/salary/home/feedbacklist
-          * 入参：pageNum,pageSize
-          **/
 
-         wx.request({
+         if(that.data.noData) {//如果数据没有见底
 
-             url: app.globalData.URL + feedbackUrl,
+             /**
+              * 接口：获取工资条反馈
+              * 请求方式：POST
+              * 接口：/salary/home/feedbacklist
+              * 入参：pageNum,pageSize
+              **/
 
-             method: 'POST',
+             wx.request({
 
-             data: json2FormFn.json2Form({
+                 url: app.globalData.URL + feedbackUrl,
 
-                 pageNum: that.data.pageNum,
+                 method: 'POST',
 
-                 pageSize: that.data.pageSize
+                 data: json2FormFn.json2Form({
 
+                     pageNum: that.data.pageNum,
 
-             }),
-
-             header: {
-
-                 'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                 'jxsid': jx_sid,
-
-                 'Authorization': Authorization
-
-             },
+                     pageSize: that.data.pageSize
 
 
-             success: function (res) {
+                 }),
 
-                 console.log(res.data);
+                 header: {
 
-                 app.globalData.repeat(res.data.code, res.data.msg);
+                     'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                 if (res.data.code == '3001') {
+                     'jxsid': jx_sid,
 
-                     //console.log('登录');
+                     'Authorization': Authorization
 
-                     setTimeout(function () {
-
-                         wx.reLaunch({
-
-                             url: '../../common/signin/signin'
-                         })
-
-                     }, 1500)
-
-/*                     wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success: function () {
+                 },
 
 
+                 success: function (res) {
+
+                     console.log(res.data);
+
+                     app.globalData.repeat(res.data.code, res.data.msg);
+
+                     if (res.data.code == '3001') {
+
+                         //console.log('登录');
+
+                         setTimeout(function () {
+
+                             wx.reLaunch({
+
+                                 url: '../../common/signin/signin'
+                             })
+
+                         }, 1500)
+
+                         /*                     wx.showToast({
+                          title: res.data.msg,
+                          icon: 'none',
+                          duration: 1500,
+                          success: function () {
+
+
+
+                          }
+
+                          })*/
+
+                         return false
+
+
+                     }
+
+                     else {
+
+                         (function countDownAjax() {
+
+                             ajaxCount--;
+
+                             app.globalData.ajaxFinish(ajaxCount)
+
+                         })();
+
+                         var _feedBackList = res.data.data.list;
+
+                         //console.log(_feedBackList)
+
+
+                         if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
+
+
+                             //如果第一页就没有数据显示暂无数据
+
+                             if (that.data.pageNum == '1') {
+
+                                 that.setData({
+
+                                     noData: false,
+
+                                     moreText: '暂无数据',
+
+
+                                 })
+
+                             }
+
+                             else {
+
+                                 that.setData({
+
+                                     noData: false,
+
+                                 })
+
+
+                             }
 
                          }
 
-                     })*/
-
-                     return false
+                         else if(res.data.data.list.length<10){
 
 
-                 }
-
-                 else {
-
-                     (function countDownAjax() {
-
-                         ajaxCount--;
-
-                         app.globalData.ajaxFinish(ajaxCount)
-
-                     })();
-
-                     var _feedBackList = res.data.data.list;
-
-                     //console.log(_feedBackList)
+                             if(that.data.pageNum=='1') {
 
 
-                     if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
+
+                                 that.setData({
+
+                                     noData: false,
+
+                                     feedBackList: _feedBackList
+
+                                 })
+
+                             }
+
+                             else {
 
 
-                         //如果第一页就没有数据显示暂无数据
+                                 that.setData({
 
-                         if(that.data.pageNum=='1'){
+                                     noData: false,
 
-                             that.setData({
-
-                                 noData: false,
-
-                                 moreText: '暂无数据',
+                                     feedBackList: that.data.feedBackList.concat(_feedBackList),
 
 
-                             })
+                                 })
+
+
+                             }
+
+
 
                          }
 
                          else {
 
+                             console.log('刷新')
+
+                             //console.log(that.data.feedBackList)
+
+                             /* console.log(that.data.pageNum)
+
+                              console.log(that.data.feedBackList)*/
+
+
+                             //增加数组内容
                              that.setData({
 
-                                 noData: false,
+                                 pageNum: that.data.pageNum + 1,//加一页
+
+                                 feedBackList: that.data.feedBackList.concat(_feedBackList),
 
                              })
-
 
                          }
 
                      }
 
 
-                     else {
+                 },
 
-                         //console.log('刷新')
+                 fail: function (res) {
 
-                         //console.log(that.data.feedBackList)
-
-                         /* console.log(that.data.pageNum)
-
-                          console.log(that.data.feedBackList)*/
-
-
-                         //增加数组内容
-                         that.setData({
-
-                             pageNum: that.data.pageNum + 1,//加一页
-
-                             feedBackList:that.data.feedBackList.concat(_feedBackList),
-
-                         })
-
-                     }
-
+                     console.log(res)
                  }
 
+             })
 
-             },
 
-             fail: function (res) {
-
-                 console.log(res)
-             }
-
-         })
+         }
 
 
 

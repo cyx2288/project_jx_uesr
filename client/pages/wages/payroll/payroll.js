@@ -322,6 +322,8 @@ Page({
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -354,9 +356,15 @@ Page({
 
                 else {
 
+
+
                     var thisCode = res.data.code;
 
                     if (thisCode == '0000') {
+
+                        wx.setStorageSync('successRefresh','true');
+
+                        console.log('工资条确认'+wx.getStorageSync('successRefresh'))
 
                         that.setData({
 
