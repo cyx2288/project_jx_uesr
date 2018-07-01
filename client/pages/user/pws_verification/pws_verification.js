@@ -109,17 +109,6 @@ Page({
 
                         },1500)
 
-/*                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
 
                         return false
 
@@ -147,15 +136,22 @@ Page({
 
                             })
 
-                            wx.redirectTo({
+                            setTimeout(function () {
 
-                                url: '../pay_success/pay_success'
-                            })
+                                wx.redirectTo({
+
+                                    url: '../pay_success/pay_success'
+                                })
+
+                            },1500)
+
+
 
                         }
 
                         else if(res.data.code == '-3'){
 
+                            //在设置支付密码中取值
                             wx.setStorageSync('payHtml','-3')
 
                             wx.showModal({
@@ -167,7 +163,7 @@ Page({
                                 success: function(res) {
                                     if (res.confirm) {
 
-                                        wx.redirectTo({
+                                        wx.navigateTo({
 
                                             url:'../code/code'
                                         })
@@ -187,6 +183,7 @@ Page({
 
                         else if(res.data.code == '-4'){
 
+                            //在设置支付密码中取值
                             wx.setStorageSync('payHtml','-4')
 
                             wx.showModal({
@@ -201,7 +198,7 @@ Page({
                                         console.log('用户点击确定')
 
                                     } else if (res.cancel) {
-                                        wx.redirectTo({
+                                        wx.navigateTo({
 
                                             url:'../code/code'
                                         })

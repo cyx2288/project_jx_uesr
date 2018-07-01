@@ -8,7 +8,7 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const paymsg='/jx/action/closepaymsg';//短信验证
 
-const updatepaymode='/user/set/updatepaymode';//设置支付方式
+const updatepaymode='/user/set/updatepaymodesecond';//设置支付方式
 
 Page({
 
@@ -460,18 +460,7 @@ Page({
                         })
 
                     },1500)
-                    /*                   wx.showToast({
-                     title: res.data.msg,
-                     icon: 'none',
-                     duration: 1500,
-                     success:function () {
 
-
-
-                     }
-
-                     })
-                     */
                     return false
 
 

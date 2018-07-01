@@ -268,6 +268,7 @@ Page({
 
         else {
 
+
             /**
              * 接口：校验支付密码验证码
              * 请求方式：POST
@@ -343,15 +344,18 @@ Page({
                                 icon: 'none',
                                 success: function () {
 
-                                    setTimeout(function () {
 
-                                        //跳转身份认证
-                                        wx.redirectTo({
+                                        setTimeout(function () {
 
-                                            url: '../id_card/id_card'
-                                        })
+                                            //跳转设置密码
+                                            wx.redirectTo({
 
-                                    }, 1500)
+                                                url: '../set_payment_psw/set_payment_psw'
+                                            })
+
+                                        }, 1500)
+
+
 
 
                                 }

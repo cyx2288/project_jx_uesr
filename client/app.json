@@ -3,6 +3,10 @@
 
     "pages/common/loading/loading",
 
+    "pages/user/payment_setting/payment_setting",
+
+
+
     "pages/user/feedback_message/feedback_message",
 
 
@@ -55,7 +59,7 @@
     "pages/user/locked/locked",
     "pages/user/sms_verification/sms_verification",
     "pages/user/card/card",
-    "pages/user/payment_setting/payment_setting",
+
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
     "pages/user/balance/balance",
@@ -89,7 +93,11 @@
     "example/toast/toast",
     "example/navbar/navbar",
     "example/tabbar/tabbar",
-    "example/searchbar/searchbar"
+    "example/searchbar/searchbar",
+
+    "component/toastLoading/loading"
+
+
   ],
   "window": {
     "backgroundTextStyle": "light",

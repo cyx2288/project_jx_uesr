@@ -6,7 +6,7 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const updatepaymode='/user/set/updatepaymode';//设置支付方式
+const updatepaymode='/user/set/updatepaymodesecond';//设置支付方式
 
 
 const md5 = require( '../../../static/libs/script/md5.js' );//md5加密

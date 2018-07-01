@@ -10,6 +10,8 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const setpaypwdUrl = '/user/set/setpaypwd';// 设置支付密码
 
+const updatepaymode = '/user/set/updatepaymodesecond';//设置支付方式
+
 Page({
 
     data:{
@@ -158,7 +160,7 @@ Page({
 
                     confirmPassword:md5.hexMD5(that.data.confirmPassword),
 
-                    tokenMsg:_tokenMsg,
+                    //tokenMsg:_tokenMsg,
 
 
                 }),
@@ -221,10 +223,14 @@ Page({
 
                                 success: function () {
 
+                                    var _payHref = wx.getStorageSync('payHtml');
 
-                                    var _payHref = wx.getStorageSync('payHtml')
+                                    var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
 
-                                    console.log(_payHref)
+                                    var _paySetting = wx.getStorageSync('paySetting');
+
+
+                                    //如果是从提现页面的忘记支付密码来的
 
                                     if(_payHref=='-4'||_payHref=='-3'){
 
@@ -242,7 +248,74 @@ Page({
 
                                     }
 
-                                    else {
+                                    //如果是从设置支付方式来的 后退页面并且调用设置支付方式
+
+                                    else if(_paySettingAuthentication=='1'||_paySetting=='1'){
+
+                                        setTimeout(function () {
+
+                                            wx.navigateBack({
+
+                                                delta: 1
+
+                                            })
+
+                                        }, 2000)
+
+
+                                        //判断要不要修改支付方式
+                                        //var _paySettingHref = wx.getStorageSync('paySettingHref');
+
+                                            /**
+                                             * 接口：设置支付方式
+                                             * 请求方式：POST
+                                             * 接口：/user/set/getpaymode
+                                             **/
+                                            wx.request({
+
+                                                url: app.globalData.URL + updatepaymode,
+
+                                                method: 'POST',
+
+                                                header: {
+
+                                                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                                    'jxsid': jx_sid,
+
+                                                    'Authorization': Authorization
+
+                                                },
+
+                                                data: json2FormFn.json2Form({
+
+                                                    msgMode: 0,
+
+                                                    pwdMode: 1
+
+                                                }),
+
+                                                success: function (res) {
+
+                                                    console.log(res);
+
+
+                                                },
+
+                                                fail: function (res) {
+
+                                                    console.log(res)
+                                                }
+
+                                            })
+
+
+
+
+                                    }
+
+
+/*                                    else {
 
 
                                         setTimeout(function () {
@@ -254,14 +327,18 @@ Page({
 
                                         }, 2000)
 
-                                    }
+                                    }*/
 
 
 
 
                                 }
 
-                            })
+                            });
+
+
+
+
 
 
                         }
