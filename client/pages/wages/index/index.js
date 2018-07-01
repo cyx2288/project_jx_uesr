@@ -68,7 +68,7 @@ Page({
 
         num:'',//选择全部&单个企业 1为单个企业 2为全部
 
-
+        needRefresh: true,//刷新的开关 false为不刷新 true为刷新
 
 
     },
@@ -85,89 +85,175 @@ Page({
 
         var that = this;
 
-        //存储从哪儿过来
-        wx.setStorageSync('goHtml','4');
+
+        //实名认证 & 工资余额 & 是否加入新企业 & 新消息 & 支付认证 & 是否设置支付密码 - 存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+        var _successRefresh = wx.getStorageSync('successRefresh');
+
+        console.log('首页刷新'+_successRefresh)
 
 
-        //初始化数据
-        that.setData({
+        //如果操作了某个需要变动的数据 赋值
+
+        if (_successRefresh) {
+
+            that.setData({
+
+                needRefresh: _successRefresh
+
+            })
+
+        }
 
 
-            firstOptions: '筛选',//默认选项
+        else {
 
-            selectSalary: true,//选择企业 true为隐藏 false为显示
+            that.setData({
 
-            selectArea: false,
+                needRefresh: 'true'
 
-            wages: '--.--',//获取用户余额信息
+            })
 
-            moreText:'没有更多数据啦~',//加载更多数据
+        }
 
-            salaryDetailId: '',//发薪企业明细id
+        //时间戳
+        function timestamp() {
 
-            wagesList: [],//发薪企业列表
+            //获取当前时间戳
+            var timestamp = Date.parse(new Date());
 
-            thisWagesListLength: 0,//获取当前发薪企业列表的长度
+            return timestamp / 1000
 
-            selectSalaryOptions: [],//获取企业列表
-
-            isAllCom: true,//判断是不是全部企业
-
-            entId: '',//发薪企业id
-
-            pageNum: 1,//初始值为1
-
-            pageSize: 10,//一页的数量
-
-            hasMoreData: true,//是否可以加载更多
-
-            noData: true,//是否显示暂无数据 true为隐藏 false为显示
-
-            userName: '',//姓名
-
-            idNumber: '',//身份证号码
-
-            dataText: true,//true为隐藏 false为显示
-
-            hasCompany: false,//有没有企业
-
-            type:'',//是否锁定
-
-            num:'',//选择全部&单个企业 1为单个企业 2为全部
+        }
 
 
-        })
-
-        //工资提醒
-        var thisRemaidUrl = app.globalData.URL + remindUrl;
-
-        //获取用户余额
-        var thisBalanceUrl = app.globalData.URL + balanceUrl;
-
-        //暂不查看工资单
-        var thisNoSeeUrl = app.globalData.URL + noSeeUrl;
-
-        //暂不加入工资条
-        var thisNoJoinUrl = app.globalData.URL + noJoinUrl;
-
-        //发薪企业
-        var thisSalaryUrl = app.globalData.URL + salaryUrl;
-
-        //是否锁定状态
-        var thisUrl = app.globalData.URL + companyUrl;
-
-        //获取用户数据
-        var jx_sid = wx.getStorageSync('jxsid');
-
-        var Authorization = wx.getStorageSync('Authorization');
+        function ajax() {
 
 
-        wx.showLoading({
+            ajaxShow();
 
-            mask:true,
-            title: '加载中',
+            //ajax 加载后存储变量值改变 - 认证成功
+            wx.setStorageSync('successRefresh', 'false');
 
-        });
+            var _time = timestamp();
+
+            wx.setStorageSync('mineTimer', _time);
+
+        }
+
+        if (that.data.needRefresh == 'true') {
+
+            console.log('变量控制刷新');
+
+            ajax()
+
+        }
+
+        else {
+
+            var _mineTimer = wx.getStorageSync('mineTimer');
+
+            if (timestamp() - _mineTimer >= 120) {
+
+                //console.log('超时刷新 超时：' + (timestamp() - _mineTimer))
+
+                ajax()
+
+            }
+
+            else {
+
+                console.log('不刷新')
+
+            }
+
+
+        }
+
+
+        //ajaxShow();
+
+
+
+        function ajaxShow(){
+
+
+            that.setData({
+
+                firstOptions: '筛选',//默认选项
+
+                selectSalary: true,//选择企业 true为隐藏 false为显示
+
+                selectArea: false,
+
+                wages: '--.--',//获取用户余额信息
+
+                moreText:'没有更多数据啦~',//加载更多数据
+
+                salaryDetailId: '',//发薪企业明细id
+
+                wagesList: [],//发薪企业列表
+
+                thisWagesListLength: 0,//获取当前发薪企业列表的长度
+
+                selectSalaryOptions: [],//获取企业列表
+
+                isAllCom: true,//判断是不是全部企业
+
+                entId: '',//发薪企业id
+
+                pageNum: 1,//初始值为2
+
+                pageSize: 10,//一页的数量
+
+                hasMoreData: true,//是否可以加载更多
+
+                noData: true,//是否显示暂无数据 true为隐藏 false为显示
+
+                userName: '',//姓名
+
+                idNumber: '',//身份证号码
+
+                dataText: true,//true为隐藏 false为显示
+
+                hasCompany: false,//有没有企业
+
+                lookWages: true,//看不看余额
+
+                type:'',//是否认证锁定
+
+                num:'',//选择全部&单个企业 1为单个企业 2为全部
+
+                needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+
+
+            })
+            //存储从哪儿过来
+            wx.setStorageSync('goHtml','4');
+
+
+            //工资提醒
+            var thisRemaidUrl = app.globalData.URL + remindUrl;
+
+            //获取用户余额
+            var thisBalanceUrl = app.globalData.URL + balanceUrl;
+
+            //暂不查看工资单
+            var thisNoSeeUrl = app.globalData.URL + noSeeUrl;
+
+            //暂不加入工资条
+            var thisNoJoinUrl = app.globalData.URL + noJoinUrl;
+
+            //发薪企业
+            var thisSalaryUrl = app.globalData.URL + salaryUrl;
+
+            //是否锁定状态
+            var thisUrl = app.globalData.URL + companyUrl;
+
+            //获取用户数据
+            var jx_sid = wx.getStorageSync('jxsid');
+
+            var Authorization = wx.getStorageSync('Authorization');
+
 
 
 
@@ -213,17 +299,17 @@ Page({
 
                         },1500)
 
-/*                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
+                        /*                        wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
 
-                            }
+                         }
 
-                        })*/
+                         })*/
 
                         return false
 
@@ -253,6 +339,15 @@ Page({
                         if (thisType == 1) {
 
 
+                            wx.showLoading({
+
+                                mask:true,
+                                title: '加载中',
+
+                            });
+
+
+
                             var thisEnName = res.data.data[0].entName;
 
                             var thisSalaryMonth = res.data.data[0].salaryMonth;
@@ -280,7 +375,7 @@ Page({
 
                                         if (res.confirm) {
 
-
+                                            wx.setStorageSync('successRefresh','true');
                                             /**
                                              * 接口：锁定状态查询
                                              * 请求方式：POST
@@ -332,6 +427,8 @@ Page({
                                                     }
 
 
+
+
                                                 },
 
                                                 fail: function (res) {
@@ -376,6 +473,15 @@ Page({
                         else if (thisType == 2) {
 
 
+                            wx.showLoading({
+
+                                mask:true,
+                                title: '加载中',
+
+                            });
+
+
+
                             var thisEnName = res.data.data[0].entName;
 
                             setTimeout(function () {
@@ -398,7 +504,7 @@ Page({
 
                                         if (res.confirm) {
 
-
+                                            wx.setStorageSync('successRefresh','true');
 
                                             /**
                                              * 接口：锁定状态查询
@@ -484,6 +590,8 @@ Page({
                                                             })
 
                                                         }
+
+
 
                                                     }
 
@@ -588,6 +696,8 @@ Page({
 
 
 
+
+
                                 },
 
 
@@ -633,6 +743,9 @@ Page({
                                 success: function (res) {
 
                                     console.log(res.data);
+
+
+
 
 
                                 },
@@ -718,6 +831,9 @@ Page({
 
                                         });
 
+
+
+
                                     }
 
 
@@ -802,12 +918,14 @@ Page({
                                 else {
 
 
-                                that.setData({
 
-                                    wages: radixPointFn.splitK(res.data.data)//用户余额
 
-                                });
-                            }
+                                    that.setData({
+
+                                        wages: radixPointFn.splitK(res.data.data)//用户余额
+
+                                    });
+                                }
 
                             },
 
@@ -823,6 +941,8 @@ Page({
                     }
 
 
+
+
                 },
 
 
@@ -833,6 +953,14 @@ Page({
                 }
 
             });
+
+
+
+        }
+
+
+
+
 
 
 
@@ -977,9 +1105,11 @@ Page({
                         }
 
 
-                        for (var j = 0; j < nowList.length; j++) {
+                        //获取的data的list加上千分位
 
-                            nowList[j].realAmount = radixPointFn.splitK(nowList[j].realAmount)
+                        for (var j = 0; j < thislist.length; j++) {
+
+                            thislist[j].realAmount = radixPointFn.splitK(thislist[j].realAmount)
 
 
                         }
@@ -1150,6 +1280,8 @@ Page({
 
             num:1,
 
+            needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+
 
 
         });
@@ -1221,12 +1353,18 @@ Page({
 
             num:'',//选择全部&单个企业 1为单个企业 2为全部
 
+            needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+
             //lookWages:true,//看不看余额
 
 
         });
 
+        wx.setStorageSync('successRefresh', 'true');
+
+
         this.onShow();
+
 
         wx.stopPullDownRefresh();
 

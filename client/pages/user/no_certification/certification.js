@@ -229,6 +229,9 @@ Page({
                             //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
                             wx.setStorageSync('successVerify','true');
 
+                            //看是不是从支付设置的未认证页面过来
+                            var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
+
 
                             //认证成功后调用个人中心接口
                             /**
@@ -321,6 +324,8 @@ Page({
 
                             console.log('从未设置跳转' + _hrefId);*/
 
+                           console.log('从支付设置来应该是1='+_paySettingAuthentication)
+
 
                             //判断退回的页面
 
@@ -332,6 +337,22 @@ Page({
                                     url: '../code/code'
 
                                 })
+
+
+                            }
+
+                            //支付设置页面未实名认证跳转到设置支付密码
+                            else if(_paySettingAuthentication=='1'){
+
+                                setTimeout(function () {
+
+                                    wx.redirectTo({
+
+                                        url: '../set_payment_psw/set_payment_psw'
+
+                                    })
+
+                                },1000)
 
 
                             }

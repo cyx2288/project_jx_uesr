@@ -90,20 +90,29 @@ Page({
 
         })
 
+        wx.showNavigationBarLoading();
+
+        setTimeout(function () {
+
+            wx.hideNavigationBarLoading()
+
+        },500);
 
 
-        wx.showLoading({
 
-            title: '加载中',
-            mask:true,
+        /*
+                wx.showLoading({
 
-        })
+                    title: '加载中',
+                    mask:true,
 
-        setTimeout(function(){
+                })
 
-            wx.hideLoading()
+                setTimeout(function(){
 
-        },1000)
+                    wx.hideLoading()
+
+                },1000)*/
 
 
 
