@@ -48,7 +48,7 @@ Page({
         //实名认证 & 工资余额 & 是否加入新企业 & 新消息 & 支付认证 & 是否设置支付密码 - 存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
         var _successVerify = wx.getStorageSync('successVerify');
 
-        console.log('我的刷新'+wx.getStorageSync('successVerify'))
+        //console.log('我的刷新'+wx.getStorageSync('successVerify'))
 
         //如果操作了某个需要变动的数据 赋值
         if (_successVerify) {

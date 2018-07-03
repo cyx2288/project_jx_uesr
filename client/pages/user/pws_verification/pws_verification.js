@@ -24,6 +24,35 @@ Page({
 
 
     },
+
+    onShow:function () {
+
+
+        var that = this;
+
+
+        //如果设置成功的话 返回输入页面值清空
+
+        var _clearPsw = wx.getStorageSync('clearPsw');
+
+
+        //存储在设置支付密码成功之后8为正常 4为要调用支付设置接口
+        wx.setStorageSync('paySettingHref','8');
+
+        if(_clearPsw=='6'){
+
+
+            that.setData({
+
+                payPassword:'',//支付密码
+
+            })
+
+        }
+
+
+
+    },
     clickCash:function () {
 
         var that = this;
@@ -48,6 +77,7 @@ Page({
                 title: '请输入支付密码！',
 
                 icon: 'none',
+                mask:true,
 
             })
 
@@ -133,6 +163,7 @@ Page({
                                 title: res.data.msg,
 
                                 icon: 'none',
+                                mask:true,
 
                             })
 
@@ -153,6 +184,9 @@ Page({
 
                             //在设置支付密码中取值
                             wx.setStorageSync('payHtml','-3')
+
+                            //存储在设置支付密码成功之后8为正常 4为要调用支付设置接口
+                            wx.setStorageSync('paySettingHref','8');
 
                             wx.showModal({
                                 title: '提示',
@@ -186,6 +220,8 @@ Page({
                             //在设置支付密码中取值
                             wx.setStorageSync('payHtml','-4')
 
+                            wx.setStorageSync('paySettingHref','8');
+
                             wx.showModal({
                                 title: '提示',
                                 content: res.data.msg,
@@ -218,6 +254,7 @@ Page({
                                 title: res.data.msg,
 
                                 icon: 'none',
+                                mask:true,
 
                             })
                         }

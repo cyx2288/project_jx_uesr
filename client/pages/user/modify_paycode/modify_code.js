@@ -49,7 +49,8 @@ Page({
             wx.showToast({
 
                 title: '请输入6位验证码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -60,7 +61,8 @@ Page({
             wx.showToast({
 
                 title: '请输入6位新验证码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -71,7 +73,8 @@ Page({
             wx.showToast({
 
                 title: '密码包含非法字符',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -83,7 +86,8 @@ Page({
             wx.showToast({
 
                 title: '请输入非连续、重复的6位密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -95,7 +99,8 @@ Page({
             wx.showToast({
 
                 title: '请输入非连续、重复的6位密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -106,7 +111,8 @@ Page({
             wx.showToast({
 
                 title: '请两次输入相同的验证码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -187,6 +193,7 @@ Page({
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
+                                mask:true,
                             });
 
                         } else if (res.data.code == '0000') {
@@ -194,6 +201,7 @@ Page({
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
+                                mask:true,
                             });
 
                             setTimeout(function () {

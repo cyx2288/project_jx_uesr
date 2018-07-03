@@ -1,6 +1,8 @@
 {
   "pages": [
 
+
+
     "pages/common/loading/loading",
 
     "pages/user/payment_setting/payment_setting",
@@ -37,6 +39,7 @@
 
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",
+    "pages/user/payment_setting_certification/certification",
     "pages/user/set_payment_psw/set_payment_psw",
     "pages/common/revise_password/revise_password",
     "pages/user/add_card/add_card",

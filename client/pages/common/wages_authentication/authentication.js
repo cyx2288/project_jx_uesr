@@ -151,7 +151,8 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            mask:true,
 
                         });
 

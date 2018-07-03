@@ -42,7 +42,8 @@ Page({
             wx.showToast({
 
                 title: '请输入原密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -53,7 +54,8 @@ Page({
             wx.showToast({
 
                 title: '请输入正确的新密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -65,7 +67,8 @@ Page({
             wx.showToast({
 
                 title: '请再次输入正确的密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -76,7 +79,8 @@ Page({
             wx.showToast({
 
                 title: '密码包含非法字符',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -87,7 +91,8 @@ Page({
             wx.showToast({
 
                 title: '密码长度为6-20位',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -98,7 +103,8 @@ Page({
             wx.showToast({
 
                 title: '密码需包含数字和字母',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -108,7 +114,8 @@ Page({
             wx.showToast({
 
                 title: '两次密码输入不一致',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -200,6 +207,7 @@ Page({
 
                                 title: res.data.msg,
                                 icon: 'success',
+                                mask:true,
                             });
 
                             setTimeout(function () {
@@ -218,6 +226,7 @@ Page({
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
+                                mask:true,
                             });
 
                         }

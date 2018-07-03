@@ -159,7 +159,7 @@
 
 const app = getApp();
 
-const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
+const bankCardJson = require('../../../static/libs/script/bankCardJson.js');//银行卡图标
 
 const mineUrl ='/user/center/usercenter';//用户中心
 
@@ -178,6 +178,7 @@ Page({
         bankNo:'',//银行卡号
 
 
+
     },
 
     onShow:function () {
@@ -190,6 +191,9 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
+        //有几个ajax请求
+        var ajaxCount = 1;
 
 
             /**
@@ -230,19 +234,8 @@ Page({
                                 url:'../../common/signin/signin'
                             })
 
-                        },1500)
+                        },1500);
 
-             /*           wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
 
                         return false
 
@@ -250,6 +243,15 @@ Page({
                     }
 
                     else {
+
+                        (function countDownAjax() {
+
+                            ajaxCount--;
+
+                            app.globalData.ajaxFinish(ajaxCount)
+
+                        })();
+
 
                         //存储银行卡
                         wx.setStorageSync('bankList', res.data.data);
@@ -260,8 +262,42 @@ Page({
 
                         })
 
+                  //0703 写的 不要删掉
+            /*            var _bankList = res.data.data
+
                         //console.log(that.data.bankList)
 
+
+                        for(var x in _bankList){
+
+                            //console.log(that.data.bankList[x].bankName)
+
+                            for (var y in bankCardJson.bankCardJson){
+
+                                if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
+
+                                    break;
+
+                                }
+
+                            }
+
+
+                            _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
+
+                            //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
+
+                        }
+
+                        that.setData({
+
+                            bankList:_bankList
+
+                        })
+
+
+
+*/
                     }
 
 

@@ -123,6 +123,7 @@ Page({
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
+                        mask:true,
 
                     })
 
@@ -234,6 +235,7 @@ Page({
 
                 title: '请输入验证码',
                 icon: 'none',
+                mask:true,
 
             })
 
@@ -247,6 +249,7 @@ Page({
 
                 title: '输入的验证码有误',
                 icon: 'none',
+                mask:true,
 
             })
 
@@ -333,6 +336,7 @@ Page({
                                 title: res.data.msg,
                                 icon: 'none',
                                 duration: 2000,
+                                mask:true,
 
                                 success: function () {
 
@@ -352,6 +356,7 @@ Page({
                                 title: res.data.msg,
                                 icon: 'none',
                                 duration: 2000,
+                                mask:true,
 
                             })
 
@@ -471,7 +476,8 @@ Page({
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
-                        duration: 2000
+                        duration: 2000,
+                        mask:true,
                     })
 
                 }

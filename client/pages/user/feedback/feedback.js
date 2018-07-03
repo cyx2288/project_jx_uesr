@@ -26,6 +26,9 @@ Page({
 
         scrollHeight: '',//scroll-view的高度
 
+        repeatSend: 1,//防止重复提交
+
+
     },
 
     onShow: function () {
@@ -64,22 +67,9 @@ Page({
 
                 }
 
-/*                wx.createSelectorQuery().selectAll('.feedback_content').boundingClientRect(function (rects) {
-
-                    rects.forEach(function (rect) {
-
-                        that.setData({
-
-                            scrollHeight: viewHigt - rect.bottom
-
-                        });
-                    })
-                }).exec();*/
-
 
             }
         })
-
 
 
         /**
@@ -116,9 +106,9 @@ Page({
 
                 console.log(res.data);
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -126,22 +116,11 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url: '../../common/signin/signin'
                         })
 
-                    },1500)
+                    }, 1500)
 
-      /*              wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-
-
-                        }
-
-                    })*/
 
                     return false
 
@@ -151,7 +130,7 @@ Page({
                 else {
 
                     //存储有没有点击进入反馈详情 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
-                    wx.setStorageSync('successVerify','true');
+                    wx.setStorageSync('successVerify', 'true');
 
 
                     var list = res.data.data;
@@ -188,7 +167,6 @@ Page({
                     }
 
 
-
                 }
 
             },
@@ -210,7 +188,6 @@ Page({
 
         var that = this;
 
-
         //判断输入内容
         if (!that.data.contentTitle) {
 
@@ -218,13 +195,22 @@ Page({
 
                 title: '请输入反馈内容',
                 icon: 'none',
+                mask: true,
 
             })
 
         }
 
-        else {
 
+        //控制不重复发送
+        else if (that.data.repeatSend) {
+
+            //控制ajax加载 加载成功之后放开
+            that.setData({
+
+                repeatSend: 0
+
+            });
 
             /**
              * 接口：工资条反馈
@@ -266,9 +252,16 @@ Page({
 
                     console.log(res.data);
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
-                    if(res.data.code=='3001') {
+                    //成功之后解锁
+                    that.setData({
+
+                        repeatSend: 1
+
+                    });
+
+                    if (res.data.code == '3001') {
 
                         //console.log('登录');
 
@@ -276,22 +269,10 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url: '../../common/signin/signin'
                             })
 
-                        },1500)
-
-                        /*               wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success:function () {
-
-
-
-                         }
-
-                         })*/
+                        }, 1500)
 
                         return false
 
@@ -334,12 +315,11 @@ Page({
 
                             if (res.data.code == '0000') {
 
-
                                 wx.showToast({
 
                                     title: res.data.msg,
                                     icon: 'none',
-                                    duration: 2000
+                                    mask: true,
 
                                 });
 
@@ -351,10 +331,10 @@ Page({
                                     type: "1",
                                     sendDate: Date.parse(new Date())
 
-                                }
+                                };
+
 
                                 var _list = that.data.feedBackList;
-
 
                                 _list.push(userImf)
 
@@ -365,7 +345,7 @@ Page({
 
                                     feedBackList: _list,//反馈消息列表
 
-                                })
+                                });
 
 
                                 //平滑到底部
@@ -387,7 +367,8 @@ Page({
 
                                     title: res.data.msg,
                                     icon: 'none',
-                                    duration: 2000
+                                    duration: 2000,
+                                    mask: true,
 
 
                                 });

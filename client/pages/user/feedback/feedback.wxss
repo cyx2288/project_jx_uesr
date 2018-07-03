@@ -49,6 +49,12 @@ button.send{
 
 }
 
+button.send[disabled] {
+    color:rgba(255, 255, 255,1);
+
+}
+
+
 button.send::after{
     border: none;
 

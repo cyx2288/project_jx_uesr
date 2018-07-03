@@ -4,7 +4,7 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
-const repeat=require('../../../static/libs/script/accountException.js');//3003
+const repeat=require('../../../static/libs/script/bankCardJson.js');//3003
 
 const salaryUrl = '/salary/home/getselectent';//发薪企业
 
@@ -299,18 +299,6 @@ Page({
 
                         },1500)
 
-                        /*                        wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success:function () {
-
-
-
-                         }
-
-                         })*/
-
                         return false
 
 
@@ -453,6 +441,7 @@ Page({
 
                                                 title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位”中继续加入',
                                                 icon: 'none',
+                                                mask:true,
 
                                             })
 
@@ -545,17 +534,7 @@ Page({
 
                                                         },1500)
 
-                                                        /*                          wx.showToast({
-                                                         title: res.data.msg,
-                                                         icon: 'none',
-                                                         duration: 1500,
-                                                         success:function () {
 
-
-
-                                                         }
-
-                                                         })*/
 
                                                         return false
 
@@ -619,6 +598,7 @@ Page({
 
                                                 title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
                                                 icon: 'none',
+                                                mask:true,
 
                                             })
 

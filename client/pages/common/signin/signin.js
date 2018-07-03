@@ -39,7 +39,14 @@ data:{
 
     onShow:function () {
 
+        //首页变量初始化
+        wx.setStorageSync('successRefresh', 'true');
+
+        wx.setStorageSync('successVerify', 'true');
+
         //console.log(wx.getStorageSync('Authorization'));
+
+
 
     },
 
@@ -64,7 +71,8 @@ data:{
           wx.showToast({
 
               title: '请输入手机号',
-              icon: 'none'
+              icon: 'none',
+              mask:true,
 
           });
 
@@ -75,7 +83,8 @@ data:{
             wx.showToast({
 
                 title: '请输入密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -191,7 +200,8 @@ data:{
 
                                                                             title: res.data.msg,
                                                                             icon: 'none',
-                                                                            duration: 2000
+                                                                            duration: 2000,
+                                                                            mask:true,
 
 
                                                                         });
@@ -329,7 +339,8 @@ data:{
 
                                                                 title: res.data.msg,
                                                                 icon: 'none',
-                                                                duration: 2000
+                                                                duration: 2000,
+                                                                mask:true,
 
 
                                                             });

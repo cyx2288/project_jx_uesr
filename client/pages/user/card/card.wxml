@@ -18,6 +18,8 @@
 
                             <view class="jx_record">
 
+                                <!--<image src="{{item.bankImg}}"  class="reset_go" />-->
+
                                 <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
                             </view>
 
