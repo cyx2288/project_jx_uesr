@@ -19,10 +19,8 @@ Page({
         //初始化变量 - 实名认证&&提现成功&&有
         wx.setStorageSync('successVerify', 'true');
 
+        //首页变量初始化
         wx.setStorageSync('successRefresh', 'true');
-
-
-
 
         wx.showLoading({
 
@@ -83,19 +81,7 @@ Page({
                                         url: '../../common/signin/signin'
                                     })
 
-                                }, 1500)
-
-          /*                      wx.showToast({
-                                    title: res.data.msg,
-                                    icon: 'none',
-                                    duration: 1500,
-                                    success: function () {
-
-
-
-                                    }
-
-                                })*/
+                                }, 1500);
 
                                 return false
 

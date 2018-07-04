@@ -52,6 +52,7 @@ App({
                 wx.showToast({
                     title: msg,
                     icon: 'none',
+                    mask:true,
                     success: function () {
 
                         setTimeout(function () {

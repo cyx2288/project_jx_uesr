@@ -80,6 +80,7 @@ Page({
 
                 title: '请输入密码',
                 icon: 'none',
+                mask:true,
 
             })
 
@@ -169,6 +170,7 @@ Page({
                                 title: res.data.msg,
                                 icon: 'none',
                                 duration: 2000,
+                                mask:true,
 
                                 success: function () {
 
@@ -188,6 +190,7 @@ Page({
                                 title: res.data.msg,
                                 icon: 'none',
                                 duration: 2000,
+                                mask:true,
 
                             })
 

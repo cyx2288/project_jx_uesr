@@ -59,7 +59,7 @@ Page({
 
             wx.setNavigationBarTitle({
 
-                title:'设置支付密码'
+                title:'安全验证'
             })
         }
 

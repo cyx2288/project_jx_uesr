@@ -39,7 +39,7 @@
 <view class="weui-cells weui-cells_after-title feedback-box {{fixedInput ? 'moveInput' :''}} {{isIpx ? 'fix-iphonex-button':''}}" >
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd feedback_input">
-            <input class="weui-input" value="{{contentTitle}}" bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px" adjust-position="false" confirm-type="done" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
+            <input class="weui-input" value="{{contentTitle}}" bindfocus="changeInput" bindblur="inputBlur" bindinput="inputChange" placeholder-class="phcolor" cursor-spacing="100px"  adjust-position="false" confirm-type="done" placeholder="如有疑问，请提交反馈给HR，200字以内" maxlength="200"/>
             <button class="send" catchtap="sendMsgFn">发送</button>
         </view>
     </view>

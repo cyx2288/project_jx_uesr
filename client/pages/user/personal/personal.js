@@ -35,6 +35,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+         //存取数据 在认证页面
+         wx.setStorageSync('personCenter','1');
+
         //有几个ajax请求
         var ajaxCount = 1;
 
@@ -227,19 +230,8 @@ Page({
                                 url:'../../common/signin/signin'
                             })
 
-                        },1500)
+                        },1500);
 
-          /*              wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
 
                         return false
 

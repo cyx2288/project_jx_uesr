@@ -19,7 +19,9 @@ Page({
         password:'',
 
         confirmPassword:'',
-        
+
+        pswSetSucess:'',
+
 
     },
 
@@ -141,6 +143,16 @@ Page({
 
         else {
 
+
+            //储存清除支付密码的变量 当设置密码成功后input清空 没有成功则不成功（在支付密码中取出）
+
+            wx.setStorageSync('clearPsw','6');
+
+
+            //判断要不要修改支付方式
+            var _paySettingHref = wx.getStorageSync('paySettingHref');
+
+
             /**
              * 接口：设置支付密码
              * 请求方式：POST
@@ -223,112 +235,15 @@ Page({
 
                                 success: function () {
 
-                                    var _payHref = wx.getStorageSync('payHtml');
+                                    setTimeout(function () {
 
-                                    var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
+                                        wx.navigateBack({
 
-                                    var _paySetting = wx.getStorageSync('paySetting');
+                                            delta: 1
 
+                                        })
 
-                                    //如果是从提现页面的忘记支付密码来的
-
-                                    if(_payHref=='-4'||_payHref=='-3'){
-
-
-                                        setTimeout(function () {
-
-                                            wx.navigateBack({
-
-                                                delta: 1
-
-                                            })
-
-                                        }, 2000)
-
-
-                                    }
-
-                                    //如果是从设置支付方式来的 后退页面并且调用设置支付方式
-
-                                    else if(_paySettingAuthentication=='1'||_paySetting=='1'){
-
-                                        setTimeout(function () {
-
-                                            wx.navigateBack({
-
-                                                delta: 1
-
-                                            })
-
-                                        }, 2000)
-
-
-                                        //判断要不要修改支付方式
-                                        //var _paySettingHref = wx.getStorageSync('paySettingHref');
-
-                                            /**
-                                             * 接口：设置支付方式
-                                             * 请求方式：POST
-                                             * 接口：/user/set/getpaymode
-                                             **/
-                                            wx.request({
-
-                                                url: app.globalData.URL + updatepaymode,
-
-                                                method: 'POST',
-
-                                                header: {
-
-                                                    'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                                                    'jxsid': jx_sid,
-
-                                                    'Authorization': Authorization
-
-                                                },
-
-                                                data: json2FormFn.json2Form({
-
-                                                    msgMode: 0,
-
-                                                    pwdMode: 1
-
-                                                }),
-
-                                                success: function (res) {
-
-                                                    console.log(res);
-
-
-                                                },
-
-                                                fail: function (res) {
-
-                                                    console.log(res)
-                                                }
-
-                                            })
-
-
-
-
-                                    }
-
-
-/*                                    else {
-
-
-                                        setTimeout(function () {
-
-                                            wx.switchTab({
-
-                                                url: '../../user/mine/mine'
-                                            })
-
-                                        }, 2000)
-
-                                    }*/
-
+                                    }, 2000)
 
 
 
@@ -336,9 +251,65 @@ Page({
 
                             });
 
+                            //设置支付密码之后
+                            if(_paySettingHref=='4'){
+
+                                /**
+                                 * 接口：设置支付方式
+                                 * 请求方式：POST
+                                 * 接口：/user/set/getpaymode
+                                 **/
+                                wx.request({
+
+                                    url: app.globalData.URL + updatepaymode,
+
+                                    method: 'POST',
+
+                                    header: {
+
+                                        'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                        'jxsid': jx_sid,
+
+                                        'Authorization': Authorization
+
+                                    },
+
+                                    data: json2FormFn.json2Form({
+
+                                        msgMode: 0,
+
+                                        pwdMode: 1
+
+                                    }),
+
+                                    success: function (res) {
+
+                                        console.log(res);
+
+                                        console.log('变成0和1')
+
+                                        //设置成功之后 储存一个值显示Toast'开启成功'（在支付设置页面取出）
+
+                                        that.setData({
+
+                                            pswSetSucess:'5',
+                                        })
+
+
+                                    },
+
+                                    fail: function (res) {
+
+                                        console.log(res)
+                                    }
+
+                                })
 
 
 
+
+                            }
 
 
                         }
@@ -367,6 +338,11 @@ Page({
 
             })
 
+
+
+
+
+
         }
 
 
@@ -374,7 +350,7 @@ Page({
 
 
     },
-    
+
     payPassWordFn:function (e) {
 
         var that = this;
@@ -385,7 +361,7 @@ Page({
 
 
         })
-        
+
     },
 
     confirmPasswordFn:function (e) {
@@ -400,7 +376,26 @@ Page({
         })
 
     },
-  onUnload:function () {
+
+    onUnload:function () {
+
+        //判断要不要修改支付方式
+        var _paySettingHref = wx.getStorageSync('paySettingHref');
+
+        if(_paySettingHref=='4'){
+
+            setTimeout(function () {
+
+                /*提示信息*/
+                wx.showToast({
+                    title: '开启成功',
+                    icon: 'none',
+                    mask:true,
+                });
+
+            },800)
+
+        }
 
       /*      var _payHref = wx.getStorageSync('payHtml')
 

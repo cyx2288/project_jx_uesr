@@ -19,7 +19,6 @@ Page({
 
         mobile:'',
 
-
     },
 
     onLoad:function () {
@@ -96,6 +95,8 @@ Page({
                 //存储有没有加入成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
                 wx.setStorageSync('successVerify','true');
 
+
+                //要刷新首页
                 wx.setStorageSync('successRefresh','true');
 
 
@@ -112,18 +113,8 @@ Page({
                             url:'../../common/signin/signin'
                         })
 
-                    },1500)
+                    },1500);
 
- /*                   wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-
-                        }
-
-                    })*/
 
                     return false
 

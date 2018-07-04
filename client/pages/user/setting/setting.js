@@ -116,17 +116,6 @@ Page({
 
                              },1500)
 
-   /*                          wx.showToast({
-                                 title: res.data.msg,
-                                 icon: 'none',
-                                 duration: 1500,
-                                 success:function () {
-
-
-
-                                 }
-
-                             })*/
 
                              return false
 
@@ -169,6 +158,7 @@ Page({
                          console.log(res)
                      }
 
+
                  })
 
     },
@@ -183,7 +173,9 @@ Page({
             //存指定的页面
             wx.setStorageSync('hrefId','8');
 
-            console.log(wx.getStorageSync('hrefId'));
+            //区别是在设置页面修改密码成功还是在提现中忘记密码设置成功（在设置密码成功后取值）
+            //4为从设置支付方式按钮
+            wx.setStorageSync('paySettingHref','8');
 
             wx.showModal({
                 title: '提示',
@@ -197,7 +189,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../no_certification/certification'
+                            url: '../payment_setting_certification/certification'
 
                         })
 
@@ -216,6 +208,10 @@ Page({
 
         else {
 
+            //区别是在设置页面修改密码成功还是在提现中忘记密码设置成功（在设置密码成功后取值）
+            //4为从设置支付方式按钮
+            wx.setStorageSync('paySettingHref','8');
+
             wx.navigateTo({
 
                 url: '../code/code'
@@ -229,6 +225,10 @@ Page({
     },
 
     onclickPws:function () {
+
+
+        //区别是在设置页面修改密码成功还是在提现中忘记密码设置成功（在设置密码成功后取值）
+        wx.setStorageSync('paySettingHref','8');
 
         wx.navigateTo({
 

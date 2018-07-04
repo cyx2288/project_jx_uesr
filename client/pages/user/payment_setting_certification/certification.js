@@ -104,12 +104,6 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        //存指定的页面
-
-        var _hrefId = wx.getStorageSync('hrefId');
-
-        var thisPayPwd =  wx.getStorageSync('isPayPwd');
-
 
         var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
 
@@ -120,6 +114,7 @@ Page({
                 title: '请输入姓名和身份证号',
                 icon: 'none',
                 mask:true,
+
 
             })
 
@@ -225,14 +220,6 @@ Page({
 
                         var _code = res.data.code;
 
-                        //看是不是从支付设置的未认证页面过来
-                        var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
-
-                        var _personCenter = wx.getStorageSync('personCenter');
-
-                        var _hrefId = wx.getStorageSync('hrefId');
-
-
                         if (_code == '0000') {
 
                             //存储实名认证状态
@@ -316,39 +303,9 @@ Page({
 
                                 })
 
-                            }, 500)
-
-/*
-
-                            console.log('未设置支付密码' + thisPayPwd);
-
-                            console.log('从未设置跳转' + _hrefId);
-*/
-
-                           //console.log('从支付设置来应该是1='+_paySettingAuthentication);
-
-                           //console.log('从个人中心过来应该是1='+_personCenter)
+                            }, 500);
 
 
-                            //判断退回的页面
-
-    /*                        if (thisPayPwd=='0'&&_hrefId == '8') {
-
-
-                                wx.redirectTo({
-
-                                    url: '../code/code'
-
-                                })
-
-
-                            }*/
-
-                            //支付设置页面未实名认证跳转到设置支付密码
-/*
-                            else if(_paySettingAuthentication=='1'){
-
-                               console.log('从支付页面')
 
                                 setTimeout(function () {
 
@@ -361,42 +318,9 @@ Page({
                                 },1000)
 
 
-                            }
-
-
-
-*/
-
-                             if(_personCenter=='1'){
-
-                                console.log('从个人中心')
-
-                                wx.navigateBack({
-
-                                    delta: 1,
-
-                                })
-
-                                that.onLoad();
-
-                            }
-
-                             else if(_hrefId=='4'){
-
-                                console.log('从提现')
-
-                                wx.navigateBack({
-
-                                    delta: 1,
-
-                                })
-
-                            }
 
 
                         }
-
-
 
                         else {
 
@@ -406,6 +330,7 @@ Page({
                                 title: res.data.msg,
                                 icon: 'none',
                                 mask:true,
+
 
                             })
 

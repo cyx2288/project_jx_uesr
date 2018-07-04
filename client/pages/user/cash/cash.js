@@ -119,7 +119,7 @@ Page({
         //没认证的去认证
         if (_isVerify == '0') {
 
-            //存指定的页面
+            //存指定的页面  （在实名认证中取值）
             wx.setStorageSync('hrefId','4');
 
 

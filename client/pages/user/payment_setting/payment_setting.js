@@ -36,8 +36,12 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+
         //区别是在设置页面修改密码成功还是在提现中忘记密码设置成功（在设置密码成功后取值）
-        //wx.setStorageSync('paySettingHref','4');
+        wx.setStorageSync('paySettingHref','4');
+
+
+
 
         /**
          * 接口：用户中心
@@ -202,6 +206,7 @@ Page({
         })
 
 
+
     },
 
     changMessageModelFn: function (e) {
@@ -288,7 +293,8 @@ Page({
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
-                                duration: 2000
+                                duration: 2000,
+                                mask:true,
                             })
 
                             /*按钮变为正常*/
@@ -391,7 +397,8 @@ Page({
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
-                                duration: 2000
+                                duration: 2000,
+                                mask:true,
                             })
 
                             /*按钮变为正常*/
@@ -620,7 +627,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        console.log(_isPayPwd)
+
+
+        //console.log(_isPayPwd)
 
         //console.log(that.data.pwdMode);//现在的支付提示状态
 
@@ -728,13 +737,12 @@ Page({
 
             var isPayPwd = wx.getStorageSync('isPayPwd');//是不是设置过支付密码
 
-            console.log('是否设置过支付密码=' + isPayPwd)
+            //console.log('是否设置过支付密码=' + isPayPwd)
 
 
             if (isPayPwd == 1) {//设置过 直接打开就行
 
-                console.log('设置过')
-
+                //console.log('设置过')
 
                 /**
                  * 接口：设置支付方式
@@ -774,11 +782,11 @@ Page({
                             //刷新跟人中心
                             wx.setStorageSync('successVerify', 'true');
 
-                            console.log('设置成功' + wx.getStorageSync('successVerify'))
+                            //console.log('设置成功' + wx.getStorageSync('successVerify'))
 
-                            console.log('时候实名认证了='+_isVerify)
+                            //console.log('时候实名认证了='+_isVerify)
 
-                            console.log(res.data.msg);
+                            //console.log(res.data.msg);
 
                             /*提示信息*/
                             wx.showToast({
@@ -829,7 +837,7 @@ Page({
 
             else {//如果没有设置过 先判断有没有实名认证
 
-                console.log('没设置过');
+                //console.log('没设置过');
 
                 //先不让swtich打开
                 that.setData({
@@ -853,12 +861,10 @@ Page({
 
                             if (res.confirm) {
 
-                                //储存一下从设置密码过去 在实名认证中区分是返回上一页还是跳到设置密码(实名认证中取出值)
-                                wx.setStorageSync('paySettingAuthentication','1')
 
                                 wx.navigateTo({
 
-                                    url: '../no_certification/certification'
+                                    url: '../payment_setting_certification/certification'
 
                                 })
 
@@ -884,10 +890,6 @@ Page({
 
                     //储存一下从设置密码过去
 
-                    //储存一下从设置密码过去 用于判断后退还是跳连接(在设置密码中取出值)
-                    wx.setStorageSync('paySetting','1')
-
-
                     wx.showModal({
 
                         title: '提示',
@@ -903,14 +905,14 @@ Page({
 
                             if (res.confirm) {
 
-                                console.log('用户点击确定')
+
 
                                 wx.navigateTo({url: '../code/code'})
 
+
+
                             } else if (res.cancel) {
-
-
-                                console.log('用户点击取消');
+                                ;
 
                                 that.setData({
 

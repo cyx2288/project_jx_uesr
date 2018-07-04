@@ -44,7 +44,8 @@ Page({
             wx.showToast({
 
                 title: '请输入正确的手机号',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -86,7 +87,8 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            mask:true,
 
                         });
 
@@ -109,7 +111,8 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            mask:true,
 
                         });
 
@@ -150,7 +153,8 @@ Page({
             wx.showToast({
 
                 title: '请输入正确的手机号',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -162,7 +166,8 @@ Page({
             wx.showToast({
 
                 title: '请输入正确的短信验证码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -174,7 +179,8 @@ Page({
             wx.showToast({
 
                 title: '密码包含非法字符',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -186,7 +192,8 @@ Page({
             wx.showToast({
 
                 title: '密码长度为6-20位',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -197,7 +204,8 @@ Page({
             wx.showToast({
 
                 title: '密码需包含数字和字母',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -254,7 +262,8 @@ Page({
                             wx.showToast({
 
                                 title: res.data.msg,
-                                icon: 'none'
+                                icon: 'none',
+                                mask:true,
 
                             });
 
@@ -265,7 +274,8 @@ Page({
                             wx.showToast({
 
                                 title:'注册成功',
-                                icon: 'none'
+                                icon: 'none',
+                                mask:true,
 
                             });
 
@@ -327,7 +337,8 @@ Page({
             wx.showToast({
 
                 title: '请输入正确手机号',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -338,7 +349,8 @@ Page({
             wx.showToast({
 
                 title: '密码包含非法字符',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -350,7 +362,8 @@ Page({
             wx.showToast({
 
                 title: '请输入6位到20位密码',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -362,7 +375,8 @@ Page({
             wx.showToast({
 
                 title: '密码需包含数字和字母',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -417,7 +431,8 @@ Page({
                         wx.showToast({
 
                             title: res.data.msg,
-                            icon: 'none'
+                            icon: 'none',
+                            mask:true,
 
                         });
 
