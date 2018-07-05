@@ -9,6 +9,18 @@
 
 
 
+    "pages/user/transfer_accounts/transfer_accounts",
+    "pages/user/girokonto/girokonto",
+
+    "pages/user/account_cash/account_cash",
+
+
+    "pages/user/transfer_details/transfer_details",
+    "pages/user/historical_cashier/historical_cashier",
+    "pages/user/transfer_success/transfer_success",
+
+
+
     "pages/user/feedback_message/feedback_message",
 
 
@@ -36,6 +48,8 @@
     "pages/common/user_agreement/user_agreement",
     "pages/user/details/details",
     "pages/user/bill/bill",
+
+
 
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",

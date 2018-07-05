@@ -48,7 +48,7 @@ Page({
 
             wx.showToast({
 
-                title: '请输入6位验证码',
+                title: '请输入原支付密码',
                 icon: 'none',
                 mask:true,
 
@@ -60,7 +60,7 @@ Page({
 
             wx.showToast({
 
-                title: '请输入6位新验证码',
+                title: '输入6位新支付密码',
                 icon: 'none',
                 mask:true,
 
@@ -110,7 +110,7 @@ Page({
 
             wx.showToast({
 
-                title: '请两次输入相同的验证码',
+                title: '请两次输入相同的密码',
                 icon: 'none',
                 mask:true,
 

@@ -1,0 +1,79 @@
+
+@import "../mine/mine.wxss";
+
+.mine_welfare{
+   display: flex;
+   justify-content: flex-start;
+    align-items: center;
+
+}
+
+.account{
+    width: 44px;
+    height: 44px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.personal_message{
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #4a4a4a;
+}
+.personal_name{
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-line-clamp: 1;
+}
+.account_all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+    width: 94%;
+}
+.weui-accounts{
+    display: flex;
+    align-items: center;
+}
+
+.all_right{
+    padding-left: 5px;
+}
+.reset_go{
+    width: 20px;
+    height: 20px;
+
+}
+
+.password_image{
+
+    color: #4a4a4a;
+}
+
+
+
+.personal_tel{
+color: #ababab;
+}
+
+.transfer_accounts{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #8a8a8a;
+
+}
+
+.all_right{
+    color: #fe9728;
+}
+

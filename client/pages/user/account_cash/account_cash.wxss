@@ -1,0 +1,132 @@
+@import "../mine/mine.wxss";
+@import "../details/details.wxss";
+
+.account_personal{
+    margin: 5px auto;
+    text-align: center;
+    color: #4a4a4a;
+    padding-top: 15px;
+}
+
+.personal_message{
+    padding: 10px 0 0 0;
+}
+
+.personal_tel{
+    color: #8a8a8a;
+}
+
+.reset_go{
+    width: 68px;
+    height: 68px;
+}
+.jx_record{
+    padding-right: 0;
+}
+
+.weui-input{
+    padding: 0;
+    font-size: 14px;
+}
+
+.weui-media-box{
+    padding: 0 15px;
+
+}
+
+.account_money{
+    color: #4a4a4a;
+}
+hr{
+    width: 100%;
+}
+
+.account_money{
+    padding: 15px 0;
+}
+
+
+.weui-media-box__info {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 0;
+}
+
+
+
+
+.icon_canel{
+    padding-left: 200px;
+}
+
+.cash_prompt{
+
+    display: flex;
+    vertical-align: middle;
+}
+
+
+label.cash_input{
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+
+
+}
+.amount_box{
+    padding-left: 0;
+}
+
+label.cash_input>.account_information_tel{
+
+    width: 100%;
+    font-size: 30px;
+    color: #fe9728;
+    overflow: auto;
+    line-height: 30px;
+    height: 2rem;
+
+}
+
+
+
+span.money_style{
+
+    vertical-align: middle;
+    color: #fe9728;
+    display: inline-block;
+    font-size: 24px;
+    margin-top:18px;
+
+}
+
+
+
+.orange{
+   color:  #fe9728;
+    white-space: nowrap;
+}
+
+.inputClass{
+    color: #ababab;
+    font-size:20px;
+
+}
+
+.cash_btn >button[disabled][type=primary]{
+    background: #ababab;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+

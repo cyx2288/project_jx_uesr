@@ -74,8 +74,9 @@ Page({
 
             wx.showToast({
 
-                title: '请输入正确的6位支付密码',
-                icon: 'none'
+                title: '请输入6位支付密码',
+                icon: 'none',
+                mask:true,
 
             });
 
@@ -85,8 +86,10 @@ Page({
 
             wx.showToast({
 
-                title: '请输入正确的6位支付密码',
-                icon: 'none'
+                title: '请再次输入6位支付密码',
+                icon: 'none',
+                mask:true,
+
 
             });
 
@@ -97,7 +100,9 @@ Page({
             wx.showToast({
 
                 title: '密码包含非法字符',
-                icon: 'none'
+                icon: 'none',
+                mask:true,
+
 
             });
 
@@ -134,7 +139,7 @@ Page({
         else if(that.data.password!=that.data.confirmPassword){
             wx.showToast({
 
-                title: '请两次输入相同的验证码',
+                title: '请两次输入相同的密码',
                 icon: 'none'
 
             });
@@ -226,6 +231,9 @@ Page({
 
                         if (res.data.code == '0000') {
 
+
+                            //修改成功之后存储的值 用于区别是否有修改成功页面卸载的时候提示开启成功 （在该页面卸载的时候取出）
+                            wx.setStorageSync('successPsw','6');
 
                             wx.showToast({
 
@@ -382,7 +390,9 @@ Page({
         //判断要不要修改支付方式
         var _paySettingHref = wx.getStorageSync('paySettingHref');
 
-        if(_paySettingHref=='4'){
+        var _successPsw = wx.getStorageSync('successPsw');
+
+        if(_paySettingHref=='4'&&_successPsw=='6'){
 
             setTimeout(function () {
 

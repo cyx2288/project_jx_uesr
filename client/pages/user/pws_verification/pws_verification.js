@@ -231,6 +231,11 @@ Page({
                                 success: function(res) {
                                     if (res.confirm) {
 
+                                        //重新输入 密码清空
+                                        that.setData({
+
+                                            payPassword:'',//支付密码
+                                        })
                                         console.log('用户点击确定')
 
                                     } else if (res.cancel) {

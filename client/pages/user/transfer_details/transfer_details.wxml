@@ -1,0 +1,182 @@
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+<!--提现详情-->
+
+<view class="wages_middle">
+
+
+
+    <view class="jx_asset">
+
+        <view class="asset_money">
+            <image src="../../../static/icon/wages/jx_money.png"></image>
+            转出金额（元）
+        </view>
+
+        <!--金额显示-->
+        <text class="money_number">{{orderAmount}}</text>
+
+
+    </view>
+
+    <view class="wages_middle wages_box">
+
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单状态</view>
+                    <view wx:if="{{orderState=='0'}}" class="weui_confirm">待支付</view>
+                    <view wx:elif="{{orderState=='1'}}" class="weui_confirm">完成</view>
+                    <view wx:elif="{{orderState=='2'}}" class="weui_confirm">提交成功</view>
+                    <view wx:elif="{{orderState=='3'}}" class="weui_confirm">处理中</view>
+                    <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
+                    <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
+                    <view wx:elif="{{orderState=='7'}}" class="weui_confirm">退款中</view>
+
+                </view>
+
+            </view>
+
+        </view>
+
+        <hr/>
+
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">转账金额</view>
+                    <view class="weui_confirm">￥{{orderAmount}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <hr/>
+
+
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">转账类型</view>
+                    <view wx:if="{{orderState=='0'}}" class="weui_confirm">转入</view>
+                    <view wx:elif="{{orderState=='1'}}" class="weui_confirm">转出</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+    </view>
+
+    <view class="wages_middle wages_box">
+        <!--明细-->
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
+                    <view class="weui_confirm">{{filter.formatTime(createTime,'-')}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <!--明细-->
+
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单号</view>
+                    <view class="weui_confirm">{{orderId}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <!--明细-->
+
+        <!--明细-->
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">对方账号</view>
+                    <view class="weui_confirm">{{bankNo}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">对方账号</view>
+                    <view class="weui_confirm">{{bankNo}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+        <hr/>
+
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">转账备注</view>
+                    <view class="weui_confirm">B类工资互转</view>
+                </view>
+
+            </view>
+
+        </view>
+    </view>
+
+</view>
+
+<view class="weui-btn-area {{orderState=='0'?'show_btn':'hide'}}">
+
+    <button class="weui-btn orange_btn" type="primary" bindtap="payFn">去支付</button>
+
+</view>
+
+
+<!--提示-->
+<view class="weui-help">
+
+    <button class="kf_button" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">
+
+        <view class="jx_right">联系客服</view>
+
+    </button>
+
+</view>
+
