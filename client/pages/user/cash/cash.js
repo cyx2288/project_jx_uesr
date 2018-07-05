@@ -521,7 +521,7 @@ Page({
             })
 
 
-        console.log(that.data.inputBalance)
+        //console.log(that.data.inputBalance)
 
 
     },

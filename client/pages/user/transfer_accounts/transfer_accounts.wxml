@@ -1,0 +1,133 @@
+
+<!--我的账单-->
+<view class="weui-cells">
+
+    <navigator url="../girokonto/girokonto" class="mine_welfare">
+
+       <image src="../../../static/icon/wages/jx_accounts.png"  class="account"/>
+
+       <text class="password_image">转账给其他账户</text>
+
+
+</navigator>
+
+</view>
+
+<navigator url="../historical_cashier/historical_cashier" class="transfer_accounts">
+    <text class="payee_left">转给最近收款人</text>
+
+    <view class="weui-accounts">
+        <image src="../../../static/icon/wages/jx_payee.png"  class="reset_go"/>
+        <text class="all_right">全部收款人</text>
+    </view>
+</navigator>
+
+
+
+
+<!--转账记录-->
+<view class="weui-cells">
+
+    <view class="account_all">
+
+    <view class="mine_welfare">
+
+
+          <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
+
+          <navigator url="../account_cash/account_cash"  class="personal_message">
+            <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
+            <view class="personal_tel">183****8193</view>
+          </navigator>
+    </view>
+
+        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+
+    </view>
+
+    <hr/>
+
+
+    <view class="account_all">
+
+        <view class="mine_welfare">
+
+
+            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
+
+            <navigator url="../account_cash/account_cash"  class="personal_message">
+                <text class="personal_name">橙子</text>
+                <view class="personal_tel">183****8193</view>
+            </navigator>
+        </view>
+
+        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+
+    </view>
+
+    <hr/>
+
+
+    <view class="account_all">
+
+        <view class="mine_welfare">
+
+
+            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
+
+            <navigator url="../account_cash/account_cash"  class="personal_message">
+                <text class="personal_name">橙子</text>
+                <view class="personal_tel">183****8193</view>
+            </navigator>
+        </view>
+
+        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+
+    </view>
+
+    <hr/>
+
+
+    <view class="account_all">
+
+        <view class="mine_welfare">
+
+
+            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
+
+            <navigator url="../account_cash/account_cash"  class="personal_message">
+                <text class="personal_name">橙子</text>
+                <view class="personal_tel">183****8193</view>
+            </navigator>
+        </view>
+
+        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+
+    </view>
+
+    <hr/>
+
+    <view class="account_all">
+
+        <view class="mine_welfare">
+
+
+            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
+
+            <navigator url="../account_cash/account_cash"  class="personal_message">
+                <text class="personal_name">橙子</text>
+                <view class="personal_tel">183****8193</view>
+            </navigator>
+        </view>
+
+        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+
+    </view>
+
+</view>
+

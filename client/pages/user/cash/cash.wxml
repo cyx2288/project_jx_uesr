@@ -17,14 +17,27 @@
 
                 <view class="weui_title">
 
-                       <view class="jx_record">
+
+                    <!-- 银行卡-->
+                    <view class="weui_card_list">
+
+                        <view class="jx_record">
 
                           <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
+
                        </view>
 
-                      <view class="weui_left">
-                          <view class="weui-media-box__title weui-media-box__title_in-text">{{bankName}}{{cardTypeText}}</view>
-                      </view>
+
+                        <view class="weui_left">
+
+                            <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
+                        </view>
+
+                    </view>
+
+
+
+                    <!-- 箭头-->
 
                      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 

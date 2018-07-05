@@ -25,7 +25,9 @@ Page({
 
     onShow: function () {
 
+
         var that = this;
+
 
         var thisgetpaymodeUrl = app.globalData.URL + getpaymodeUrl;
 
@@ -41,8 +43,6 @@ Page({
         wx.setStorageSync('paySettingHref','4');
 
 
-
-
         /**
          * 接口：用户中心
          * 请求方式：POST
@@ -51,26 +51,26 @@ Page({
          **/
         wx.request({
 
-            url:  thisMineurl,
+            url: thisMineurl,
 
-            method:'POST',
+            method: 'POST',
 
             header: {
                 'content-type': 'application/x-www-form-urlencoded', // post请求
 
-                'jxsid':jx_sid,
+                'jxsid': jx_sid,
 
-                'Authorization':Authorization
+                'Authorization': Authorization
 
             },
 
-            success: function(res) {
+            success: function (res) {
 
                 console.log(res.data);
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -78,22 +78,22 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url: '../../common/signin/signin'
                         })
 
-                    },1500)
+                    }, 1500)
 
-/*                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
+                    /*                    wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
 
 
-                        }
+                     }
 
-                    })*/
+                     })*/
 
                     return false
 
@@ -110,13 +110,12 @@ Page({
 
             },
 
-            fail:function (res) {
+            fail: function (res) {
 
                 console.log(res)
             }
 
-        })
-
+        });
 
 
         /**
@@ -124,7 +123,6 @@ Page({
          * 请求方式：POST
          * 接口：/user/set/getpaymode
          **/
-
         wx.request({
 
             url: thisgetpaymodeUrl,
@@ -145,9 +143,9 @@ Page({
 
                 console.log(res)
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -155,10 +153,10 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url: '../../common/signin/signin'
                         })
 
-                    },1500)
+                    }, 1500)
 
 
                     return false
@@ -184,9 +182,9 @@ Page({
 
                         that.setData({
 
-                            msgMode: false,
+                            msgMode: false,//关闭
 
-                            pwdMode: true
+                            pwdMode: true//打开
 
                         });
 
@@ -203,7 +201,8 @@ Page({
                 console.log(res)
             }
 
-        })
+        });
+
 
 
 
@@ -213,20 +212,227 @@ Page({
 
         var that = this;
 
-        //console.log(that.data.msgMode);//现在的短信提示状态
+        console.log(that.data.msgMode);//现在的短信提示状态
 
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        //短信打开的时候
-        if(e.detail.value==true){
+        var _isPayPwd = wx.getStorageSync('isPayPwd')
 
-            /**
+/*        if(that.data.msgMode){
+
+            console.log('短信验证关闭')
+
+            /!**
              * 接口：设置支付方式
              * 请求方式：POST
              * 接口：/user/set/getpaymode
-             **/
+             **!/
+            /!*wx.request({
+
+                url: app.globalData.URL + updatepaymode,
+
+                method: 'POST',
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                data: json2FormFn.json2Form({
+
+                    msgMode: 0,
+
+                    pwdMode: 1,
+
+                }),
+
+                success: function (res) {
+
+                    console.log(res)
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if (res.data.code == '0000') {
+
+
+                            //存储时候修改支付方式 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
+
+
+
+                            /!*提示信息*!/
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+                                mask:true,
+                            })
+
+                            /!*按钮变为正常*!/
+                            that.setData({
+
+                                pwdMode:true,
+
+                            })
+
+                        }
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })*!/
+        }
+
+        else if(!that.data.msgMode){
+
+            console.log('短信验证打开')
+
+            /!**
+             * 接口：设置支付方式
+             * 请求方式：POST
+             * 接口：/user/set/getpaymode
+             **!/
+            /!*wx.request({
+
+                url: app.globalData.URL + updatepaymode,
+
+                method: 'POST',
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                data: json2FormFn.json2Form({
+
+                    msgMode: 1,
+
+                    pwdMode: 0,
+
+                }),
+
+                success: function (res) {
+
+                    console.log(res)
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if (res.data.code == '0000') {
+
+
+                            //存储时候修改支付方式 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
+
+
+                            console.log(res.data.msg)
+
+                            /!*提示信息*!/
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+                                mask:true,
+                            })
+
+                            /!*按钮变为正常*!/
+
+                            that.setData({
+
+                                pwdMode: false,
+
+                            })
+
+                        }
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })*!/
+
+
+
+
+        }*/
+
+/*
+        //短信打开的时候
+        if(e.detail.value==true){
+
+            /!**
+             * 接口：设置支付方式
+             * 请求方式：POST
+             * 接口：/user/set/getpaymode
+             **!/
             wx.request({
 
                 url: app.globalData.URL + updatepaymode,
@@ -289,7 +495,7 @@ Page({
 
                             console.log(res.data.msg)
 
-                            /*提示信息*/
+                            /!*提示信息*!/
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
@@ -297,7 +503,7 @@ Page({
                                 mask:true,
                             })
 
-                            /*按钮变为正常*/
+                            /!*按钮变为正常*!/
 
                             that.setData({
 
@@ -326,11 +532,11 @@ Page({
         else if(e.detail.value==false){
 
             console.log('关')
-            /**
+            /!**
              * 接口：设置支付方式
              * 请求方式：POST
              * 接口：/user/set/getpaymode
-             **/
+             **!/
             wx.request({
 
                 url: app.globalData.URL + updatepaymode,
@@ -393,7 +599,7 @@ Page({
 
                             console.log(res.data.msg)
 
-                            /*提示信息*/
+                            /!*提示信息*!/
                             wx.showToast({
                                 title: res.data.msg,
                                 icon: 'none',
@@ -401,7 +607,7 @@ Page({
                                 mask:true,
                             })
 
-                            /*按钮变为正常*/
+                            /!*按钮变为正常*!/
                             that.setData({
 
                                 pwdMode:true,
@@ -425,10 +631,332 @@ Page({
 
 
 
+
+        }
+*/
+
+
+        if (that.data.msgMode) {//现在的状态是不是打开
+
+            console.log('短信状态打开的时候触发')
+
+      /*     that.setData({
+
+             msgMode: false
+
+             });*/
+
+            var _isVerify = wx.getStorageSync('isVerify');
+
+            if(_isPayPwd == 1){
+
+                /**
+                 * 接口：设置支付方式
+                 * 请求方式：POST
+                 * 接口：/user/set/getpaymode
+                 **/
+                wx.request({
+
+                    url: app.globalData.URL + updatepaymode,
+
+                    method: 'POST',
+
+                    header: {
+
+                        'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                        'jxsid': jx_sid,
+
+                        'Authorization': Authorization
+
+                    },
+
+                    data: json2FormFn.json2Form({
+
+                        msgMode: 0,
+
+                        pwdMode: 1,
+
+                    }),
+
+                    success: function (res) {
+
+                        console.log(res)
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                        if(res.data.code=='3001') {
+
+                            //console.log('登录');
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+
+
+                            return false
+
+
+                        }
+
+                        else {
+
+
+                            if (res.data.code == '0000') {
+
+
+                                //存储时候修改支付方式 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                                wx.setStorageSync('successVerify', 'true');
+
+
+                                /*提示信息*/
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    duration: 2000,
+                                    mask:true,
+                                })
+
+                                /*按钮变为正常*/
+                                that.setData({
+
+                                    pwdMode:true,
+
+                                    msgMode: false
+
+                                })
+
+
+
+                            }
+
+                        }
+
+                    },
+
+                    fail: function (res) {
+
+                        console.log(res)
+                    }
+
+                })
+
+            }
+
+            else {
+
+                //先不让swtich关闭 true为打开
+                that.setData({
+
+                    msgMode: true
+
+                });
+
+                //没有认证的先去认证 再设置支付密码
+                if (_isVerify == '0') {
+
+
+
+
+                    wx.showModal({
+                        title: '提示',
+                        content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
+                        cancelText: '取消',
+                        confirmText: '去认证',
+                        confirmColor: '#fe9728',
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                wx.navigateTo({
+
+                                    url: '../payment_setting_certification/certification'
+
+                                })
+
+
+                            }
+
+                            else if (res.cancel) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+
+                            }
+                        }
+                    });
+
+
+                }
+
+                else {
+
+                    //储存一下从设置密码过去
+
+
+                    wx.showModal({
+
+                        title: '提示',
+
+                        cancelText: '取消',
+
+                        confirmText: '去设置',
+
+                        content: '还未设置支付密码，设置后即可开启',
+
+                        confirmColor: '#fe9728',
+
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                wx.navigateTo({url: '../code/code'})
+
+
+
+                            } else if (res.cancel) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+
+                            }
+
+                        }
+
+                    })
+
+
+                }
+
+            }
+
+
         }
 
+        else if(!that.data.msgMode){
+
+            console.log('短信状态关闭的触发')
+
+         /*   that.setData({
+
+                msgMode:true
+
+            });*/
+
+        /**
+            * 接口：设置支付方式
+            * 请求方式：POST
+            * 接口：/user/set/getpaymode
+            **/
+            wx.request({
+
+                url: app.globalData.URL + updatepaymode,
+
+                method: 'POST',
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                data: json2FormFn.json2Form({
+
+                    msgMode: 1,
+
+                    pwdMode: 0,
+
+                }),
+
+                success: function (res) {
+
+                    console.log(res)
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
 
 
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if (res.data.code == '0000') {
+
+
+                            //存储时候修改支付方式 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
+
+
+                            //console.log(res.data.msg)
+
+                            /*提示信息*/
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000,
+                                mask:true,
+                            })
+
+                            /*按钮变为正常*/
+
+                            that.setData({
+
+                                pwdMode: false,
+
+                                msgMode:true
+
+                            })
+
+
+
+                        }
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })
+
+
+        }
 
 
 
@@ -620,13 +1148,12 @@ Page({
 
         var that = this;
 
-        var _isPayPwd = wx.getStorageSync('isPayPwd')
+
 
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-
 
 
         //console.log(_isPayPwd)
@@ -638,16 +1165,16 @@ Page({
 
         if (that.data.pwdMode){
 
-            console.log('支付密码关闭')
+            console.log('支付密码打开的时候触发')
 
             //关闭的时候要去验证支付密码
 
-            that.setData({
+  /*          that.setData({
 
                 pwdMode: false
 
             });
-
+*/
 
             /**
              * 接口：设置支付方式
@@ -687,9 +1214,9 @@ Page({
                         //刷新跟人中心
                         wx.setStorageSync('successVerify', 'true');
 
-                        console.log('设置成功' + wx.getStorageSync('successVerify'))
+                        /*console.log('设置成功' + wx.getStorageSync('successVerify'))
 
-                        console.log(res.data.msg);
+                        console.log(res.data.msg);*/
 
                         /*提示信息*/
                         wx.showToast({
@@ -703,6 +1230,8 @@ Page({
                         that.setData({
 
                             msgMode:true,
+
+                            pwdMode: false
 
 
                         });
@@ -729,9 +1258,9 @@ Page({
 
     }
 
-        else {
+        else if(!that.data.pwdMode){
 
-            console.log('支付密码打开')
+            console.log('支付密码关闭的时候触发')
 
             //支付密码打开的时候
 
@@ -801,24 +1330,12 @@ Page({
 
                                 pwdMode: true,
 
+                                msgMode:false,
+
+
+
 
                             });
-
-                            if(that.data.pwdMode){
-
-                                that.setData({
-
-                                    msgMode:false,
-
-
-                                });
-
-                            }
-
-
-
-
-
 
 
                         }
@@ -937,87 +1454,6 @@ Page({
 
         }
 
-
-
-
-
-        // //支付密码关闭的时候
-        // else if(e.detail.value==false){
-        //
-        //     console.log('关闭的时候')
-        //
-        //     /**
-        //      * 接口：设置支付方式
-        //      * 请求方式：POST
-        //      * 接口：/user/set/getpaymode
-        //      **/
-        //     wx.request({
-        //
-        //         url: app.globalData.URL + updatepaymode,
-        //
-        //         method: 'POST',
-        //
-        //         header: {
-        //
-        //             'content-type': 'application/x-www-form-urlencoded', // post请求
-        //
-        //             'jxsid': jx_sid,
-        //
-        //             'Authorization': Authorization
-        //
-        //         },
-        //
-        //         data: json2FormFn.json2Form({
-        //
-        //             msgMode: 1,
-        //
-        //             pwdMode: 0
-        //
-        //         }),
-        //
-        //         success: function (res) {
-        //
-        //             console.log(res);
-        //
-        //             if (res.data.code == '0000') {
-        //
-        //                 //刷新跟人中心
-        //                 wx.setStorageSync('successVerify','true');
-        //
-        //                 console.log('设置成功'+wx.getStorageSync('successVerify'))
-        //
-        //                 console.log(res.data.msg);
-        //
-        //                 /*提示信息*/
-        //                 wx.showToast({
-        //                     title: res.data.msg,
-        //                     icon: 'none',
-        //                     duration: 2000
-        //                 });
-        //
-        //                 /*按钮变为正常*/
-        //                 that.setData({
-        //
-        //                     msgMode:true,
-        //
-        //                 })
-        //
-        //
-        //             }
-        //
-        //         },
-        //
-        //         fail: function (res) {
-        //
-        //             console.log(res)
-        //         }
-        //
-        //     })
-        //
-        //
-        //
-        //
-        // }
 
     /*            if (that.data.pwdMode) {//现在的状态是不是打开
 

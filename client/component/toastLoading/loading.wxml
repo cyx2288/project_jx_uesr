@@ -1,0 +1,10 @@
+<template name="toast">
+
+    <view class="toast_content_box" wx:if="{{isHide}}">
+
+
+    </view>
+
+
+
+</template>

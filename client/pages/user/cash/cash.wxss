@@ -11,9 +11,16 @@ hr{
 .weui_left{
     display: flex;
     justify-content: space-between;
-     width: 48%;
-     margin-right: 36%;
+/*     width: 48%;
+     margin-right: 36%;*/
     padding-top: 2px;
+}
+
+.weui_bank_details{
+
+    display:flex;
+    justify-content: inherit;
+
 }
 
 .title{
@@ -110,7 +117,15 @@ label.cash_input>.account_information_tel{
 
 }
 
+.weui_card_list{
 
+    display: flex;
+
+    justify-content: center;
+
+    align-content: flex-start;
+
+}
 
 span.money_style{
 

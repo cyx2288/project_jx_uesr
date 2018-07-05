@@ -1,0 +1,61 @@
+<!--提现-->
+
+<view class="cash_card">
+
+    <!--转账用户-->
+
+    <view class="account_personal">
+
+
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_photo_account.png"  class="reset_go" />
+        </view>
+
+        <view class="personal_message">
+            <text class="personal_name">橙子</text>
+            <view class="personal_tel">183****8193</view>
+        </view>
+
+    </view>
+
+
+    <!--转账金额-->
+    <view class="weui-cells">
+
+            <view class="weui-media-box">
+
+                <view class="account_money">转账金额</view>
+
+                <lable class="weui-media-box__info">
+
+                    <label class="cash_input">
+                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" placeholder="可转余额{{canTransferBalance}}元" value="{{inputBalance}}" maxlength="10" type="digit"  placeholder-style="color:#bbb" placeholder-class="inputClass"/>
+                    </label>
+
+                    <view bindtap="transferAllFn" class="weui_confirm orange">全部</view>
+                </lable>
+                <hr/>
+
+                <view class="weui_title">
+
+                    <view class="weui-cell__bd">
+                        <input class="weui-input" value="{{tips}}" type="text" bindinput="tipslFn"  placeholder="添加备注（20字以内）" maxlength="20"/>
+                    </view>
+                </view>
+
+            </view>
+
+    </view>
+
+    <!--button-->
+    <view class="page__bd page__bd_spacing cash_btn">
+
+        <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="cashFn">确认转账</button>
+
+
+    </view>
+
+
+
+</view>
+

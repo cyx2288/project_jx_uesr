@@ -1,0 +1,52 @@
+
+<view class="add_card">
+
+
+    <view class="weui_top">
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        </view>
+
+        <view class="weui-cells__title">资金将实时转入对方账户，无法退款</view>
+    </view>
+
+
+    <view class="weui-cells bottom_button">
+
+
+        <!--填写对方账户-->
+
+            <view class="weui-cell">
+
+                <view class="weui-cell__hd">
+                    <view class="weui-label"><span class="red_text"> </span>对方账户</view>
+                </view>
+
+                <view class="weui-cell__bd">
+                    <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" maxlength="11"/>
+                </view>
+
+                <navigator url="../historical_cashier/historical_cashier" class="jx_record">
+                    <image src="../../../static/icon/wages/jx_phone_orange.png"  class="phone" />
+                </navigator>
+
+            </view>
+
+
+    </view>
+
+
+
+
+    <view class="page__bd page__bd_spacing">
+
+        <button class="weui-btn orange"  bindtap="addBankFn">下一步</button>
+
+
+    </view>
+
+
+
+
+
+</view>
