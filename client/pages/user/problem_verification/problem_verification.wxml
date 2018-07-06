@@ -18,8 +18,8 @@
 
     <view class="weui-panel">
         <text class="question">2、HR发放工资时，您的身份证号是否填写正确，若填写错误，您可选择以下方式：</text>
-        <view class="question">1）可联系HR修改您的身份证号后，在【我的工作单位】中重新验证</view>
-        <view class="question">2）您也可以在【我的】—【个人中心】进行实名认证，认证成功后，即可使用新的身份信息在【我的工作单位】中重新验证</view>
+        <view class="question">1）可联系HR修改您的身份证号后，在【我的发薪企业】中重新验证</view>
+        <view class="question">2）您也可以在【我的】—【个人中心】进行实名认证，认证成功后，即可使用新的身份信息在【我的发薪企业】中重新验证</view>
     </view>
 
 
