@@ -6,6 +6,8 @@ const userVerify ='/user/center/userverify';//实名认证
 
 const mineUrl ='/user/center/usercenter';//用户中心
 
+const payeeUrl = '/record/selecthistoricalpayee';//查询历史收款人
+
 Page({
 
 
@@ -371,19 +373,25 @@ Page({
 
                                 console.log('从个人中心')
 
-                                wx.navigateBack({
+                                 setTimeout(function () {
 
-                                    delta: 1,
+                                     wx.navigateBack({
 
-                                })
+                                         delta: 1,
 
-                                that.onLoad();
+                                     })
+
+                                     that.onLoad();
+
+
+                                 },1000)
+
 
                             }
 
                              else if(_hrefId=='4'){
 
-                                console.log('从提现')
+                                 setTimeout(function () {
 
                                 wx.navigateBack({
 
@@ -391,7 +399,87 @@ Page({
 
                                 })
 
+                                 },1000)
+
                             }
+
+                             else if(_hrefId=='8'){
+
+                                 console.log('从转账');
+
+
+                                 /**
+                                  * 接口：查询历史收款人
+                                  * 请求方式：post
+                                  * 接口：/record/selecthistoricalpayee
+                                  * 入参：null
+                                  **/
+                                 wx.request({
+
+                                     url: app.globalData.URL + payeeUrl,
+
+                                     method: 'POST',
+
+                                     header: {
+
+                                         'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                                         'jxsid': jx_sid,
+
+                                         'Authorization': Authorization
+
+                                     },
+
+                                     success: function (res) {
+
+                                         console.log(res.data);
+
+                                         if(res.data.data){
+
+                                             console.log('有历史')
+
+                                             setTimeout(function () {
+
+                                             wx.redirectTo({
+
+                                                 url: '../transfer_accounts/transfer_accounts'
+
+                                             })
+
+                                             },1000)
+
+
+                                         }
+
+                                         else{
+
+                                             console.log('没历史')
+
+                                             setTimeout(function () {
+
+                                             wx.redirectTo({
+
+                                                 url: '../girokonto/girokonto'
+
+                                             })
+                                         },1000)
+
+                                         }
+
+                                     },
+
+
+                                     fail: function (res) {
+
+                                         console.log(res)
+
+                                     }
+
+                                 })
+
+
+
+                             }
 
 
                         }

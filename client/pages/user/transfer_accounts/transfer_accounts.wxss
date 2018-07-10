@@ -5,6 +5,7 @@
    display: flex;
    justify-content: flex-start;
     align-items: center;
+    width: 80%;
 
 }
 
@@ -15,11 +16,12 @@
     margin-right: 15px;
 }
 .personal_message{
-    width: 40%;
+
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #4a4a4a;
+    width: 200px;
 }
 .personal_name{
 
@@ -76,4 +78,7 @@ color: #ababab;
 .all_right{
     color: #fe9728;
 }
+.del_accounts{
 
+    padding: 15px;
+}

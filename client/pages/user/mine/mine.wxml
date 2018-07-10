@@ -137,7 +137,7 @@
                 <image src="../../../static/icon/wages/jx_unit.png"  class="reset_go" />
             </view>
 
-            <text class="password_balance">我的工作单位</text>
+            <text class="password_balance">我的发薪企业</text>
         </view>
 
 

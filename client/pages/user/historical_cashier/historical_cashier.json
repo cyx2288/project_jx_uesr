@@ -1,2 +1,6 @@
 {
-  "navigationBarTitleText": "历史收款人"}
+  "navigationBarTitleText": "历史收款人",
+
+  "enablePullDownRefresh": true
+
+}

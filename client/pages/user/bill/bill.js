@@ -48,6 +48,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //存取是从账单进入（在转账详情里面取出）
+        wx.setStorageSync('billHref','4')
 
         if(that.data.noData) {//如果数据没有见底
 
@@ -100,18 +102,6 @@ Page({
                             })
 
                         },1500)
-
-              /*          wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
 
                         return false
 
@@ -223,21 +213,25 @@ Page({
 
         that.setData({
 
-            orderId:e.currentTarget.dataset.no,
+             orderId:e.currentTarget.dataset.no,
+
+             orderType:e.currentTarget.dataset.type,
         })
 
-        console.log(e.currentTarget.dataset.no)
 
-        wx.setStorageSync('orderId',that.data.orderId)
+        wx.setStorageSync('orderId',that.data.orderId);
+
+        wx.setStorageSync('orderType',e.currentTarget.dataset.type)
 
         //console.log(wx.getStorageSync('orderId'))
 
-        wx.navigateTo({
+
+ /*       wx.navigateTo({
 
             url: '../give_details/give_details'
 
         })
-
+*/
 
 
 
