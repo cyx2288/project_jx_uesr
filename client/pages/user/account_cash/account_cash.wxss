@@ -117,14 +117,52 @@ span.money_style{
 }
 
 .cash_btn >button[disabled][type=primary]{
-    background: #ababab;
-    color: #fff;
+    background: #e5e5e5;
+    color: #8a8a8a;
 }
 
+.can_cash{
+
+    padding-top: 10px;
+    font-size: 14px;
+    color: #8a8a8a;
+}
+
+.box_contain{
+
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-bottom: 10px;
 
 
 
+}
+.all_transfer{
 
+    padding-top: 10px;
+}
+
+.tip_area{
+
+    color: #ababab;
+}
+
+.weui_tip{
+
+    background-color:#fff;
+    border-radius:5px;
+    width:94%;
+    margin:15px auto;
+
+}
+
+.weui_tip .weui-input{
+
+    padding:0 10px;
+
+}
 
 
 

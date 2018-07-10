@@ -3,20 +3,26 @@
 
 
 
+
     "pages/common/loading/loading",
 
     "pages/user/payment_setting/payment_setting",
 
 
+    "pages/user/balance/balance",
 
-    "pages/user/transfer_accounts/transfer_accounts",
     "pages/user/girokonto/girokonto",
 
-    "pages/user/account_cash/account_cash",
+
 
 
     "pages/user/transfer_details/transfer_details",
     "pages/user/historical_cashier/historical_cashier",
+
+
+
+    "pages/user/account_cash/account_cash",
+    "pages/user/transfer_accounts/transfer_accounts",
     "pages/user/transfer_success/transfer_success",
 
 
@@ -79,7 +85,7 @@
 
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
-    "pages/user/balance/balance",
+
     "pages/user/personal/personal",
     "pages/user/certification/certification",
     "pages/common/authentication/authentication",

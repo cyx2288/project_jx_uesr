@@ -3,103 +3,38 @@
 <!--转账记录-->
 <view class="weui-cells">
 
-    <view class="account_all">
+    <view class="account_all" wx:for="{{accountsList}}">
 
-        <view class="mine_welfare">
+        <view class="mine_welfare" bindtap="transferFn" data-name="{{item.userName}}" data-mobile="{{item.mobile}}">
 
 
             <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
 
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
+            <view class="personal_message">
+                <text class="personal_name">{{item.userName}}</text>
+                <view class="personal_tel">{{item.hideMobile}}</view>
+            </view>
         </view>
 
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+        <view class="del_accounts" data-user="{{item.recordId}}" bindtap="delFn">
 
+            <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+        </view>
 
     </view>
 
     <hr/>
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-   
 
 </view>
+
+<view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{moreText}}</view>
+</view>
+
+<view class="weui-loadmore" hidden="{{!noData}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+
 

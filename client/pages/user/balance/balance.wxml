@@ -12,20 +12,75 @@
 
 
 <!--我的账单-->
+<!--我的账单-->
 <view class="weui-cells">
 
-<navigator url="../details/details" class="mine_welfare">
+    <navigator url="../details/details" class="mine_welfare">
 
-    <text class="password_image">明细</text>
+        <view class="jx_mine_left">
 
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            <view class="jx_record ">
+                <image src="../../../static/icon/wages/jx_detailed.png"  class="reset_go" />
+            </view>
 
-</navigator>
+            <text class="password_balance">明细</text>
+
+        </view>
+
+
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+
+    </navigator>
 
 </view>
 
 
+<!--我的账单-->
+<view class="weui-cells">
+
+    <view  class="mine_welfare" bindtap="transferUrlFn">
+
+
+        <view class="jx_mine_left">
+
+            <view class="jx_record ">
+                <image src="../../../static/icon/wages/jx_transfer_accounts.png"  class="reset_go" />
+            </view>
+
+            <text class="password_balance">转账</text>
+
+        </view>
+
+
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+
+    </view>
+
+    <hr/>
+
+    <navigator url="../cash/cash" class="mine_welfare">
+
+        <view class="jx_mine_left">
+
+            <view class="jx_record ">
+                <image src="../../../static/icon/wages/jx_put_forward.png"  class="reset_go" />
+            </view>
+
+            <text class="password_balance">提现</text>
+
+        </view>
+
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+    </navigator>
+</view>
+
+
 <!--button-->
+<!--
 <navigator url="../cash/cash" class="page__bd page__bd_spacing">
     <button class="weui-btn" type="primary">提现</button>
 </navigator>
+-->

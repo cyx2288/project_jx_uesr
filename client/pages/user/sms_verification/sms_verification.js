@@ -10,6 +10,8 @@ const withdrawmsgUrl = '/jx/action/withdrawmsg';//提现发送短信认证
 
 const cashUrl = '/user/withdraw/dowithdraw';// 用户发起提现操作
 
+const transferUrl = '/user/transfer/dotransfer';//用户发起转账操作
+
 
 
 Page({
@@ -233,14 +235,26 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //提现
         var _balance = wx.getStorageSync('balance');
 
         var _bankCardId = wx.getStorageSync('bankCardId')
 
+        //转账
+
+        //转账部分
+        var _transferBalance = wx.getStorageSync('transferBalance');//转账金额
+
+        var _transferCash = wx.getStorageSync('transferCash');//转账金额页面
+
+        var _mobile = wx.getStorageSync('transferMobile');//转账手机号
+
+        var _transferTips = wx.getStorageSync('transferTips');//备注
+
 
         //console.log(that.data.code)
 
-        console.log({
+  /*      console.log({
 
             bankCardId: _bankCardId,//银行卡id
 
@@ -249,126 +263,254 @@ Page({
             code: that.data.code,//短信验证
 
 
-        })
+        })*/
 
-
-        /**
-         * 接口：获取账户提现记录
-         * 请求方式：GET
-         * 接口：/user/withdraw/dowithdraw
-         * 入参：bizId,bankCardId,balance,payPassword,code
-         * */
-
-        wx.request({
-
-            url: thisCashUrl,
-
-            method: 'GET',
-
-            data: {
-
-                bankCardId: _bankCardId,//银行卡id
-
-                balance: _balance,//提取现金
-
-                code: that.data.code,//短信验证
-
-
-            },
-            header: {
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            success: function (res) {
-
-                console.log(res.data);
-
-                app.globalData.repeat(res.data.code,res.data.msg);
-
-                if(res.data.code=='3001') {
-
-                    //console.log('登录');
-
-                    setTimeout(function () {
-
-                        wx.reLaunch({
-
-                            url:'../../common/signin/signin'
-                        })
-
-                    },1500)
-
-                    /*                          wx.showToast({
-                     title: res.data.msg,
-                     icon: 'none',
-                     duration: 1500,
-                     success:function () {
+        if(_transferCash=='5'){
 
 
 
-                     }
+            /**
+             * 接口：获取账户转账记录
+             * 请求方式：GET
+             * 接口：/user/transfer/dotransfer
+             * 入参：mobile,balance,code,remark
+             * */
 
-                     })*/
+            wx.request({
 
-                    return false
+                url: app.globalData.URL + transferUrl,
 
+                method: 'GET',
 
-                }
+                data: {
 
-                else {
+                    mobile: _mobile,//手机号
 
+                    balance: _transferBalance,//转账现金
 
-                    //缓存点单号
-                    wx.setStorageSync('cashOrderId', res.data.data);
+                    code: that.data.code,//短信验证
 
-                    //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
-                    wx.setStorageSync('successVerify', 'true');
-
-                    if (res.data.code == '0000') {
+                    remark:_transferTips
 
 
-                        wx.showToast({
+                },
+                header: {
 
-                            title: res.data.msg,
+                    'jxsid': jx_sid,
 
-                            icon: 'none',
+                    'Authorization': Authorization
 
-                        })
+                },
 
-                        wx.redirectTo({
+                success: function (res) {
 
-                            url: '../pay_success/pay_success'
-                        })
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+
+                        return false
+
 
                     }
 
                     else {
 
-                        wx.showToast({
 
-                            title: res.data.msg,
+                        //订单详情
+                        wx.setStorageSync('transferOrderId', res.data.data);
 
-                            icon: 'none',
+                        //console.log(wx.getStorageSync('transferOrderId'));
 
-                        })
+                        //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                        wx.setStorageSync('successVerify','true');
+
+
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask:true,
+
+                            })
+
+
+
+                            setTimeout(function () {
+
+                                wx.redirectTo({
+
+                                    url: '../transfer_success/transfer_success'
+                                })
+
+                            },1500)
+
+
+
+                        }
+
+                        else {
+
+
+
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+                                mask:true,
+
+                            })
+                        }
+
                     }
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
 
                 }
 
-            },
+            })
 
 
-            fail: function (res) {
+        }
 
-                console.log(res)
 
-            }
+        else {
 
-        })
+            /**
+             * 接口：获取账户提现记录
+             * 请求方式：GET
+             * 接口：/user/withdraw/dowithdraw
+             * 入参：bizId,bankCardId,balance,payPassword,code
+             * */
+
+            wx.request({
+
+                url: thisCashUrl,
+
+                method: 'GET',
+
+                data: {
+
+                    bankCardId: _bankCardId,//银行卡id
+
+                    balance: _balance,//提取现金
+
+                    code: that.data.code,//短信验证
+
+
+                },
+                header: {
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        //缓存点单号
+                        wx.setStorageSync('cashOrderId', res.data.data);
+
+                        //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                        wx.setStorageSync('successVerify', 'true');
+
+                        if (res.data.code == '0000') {
+
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+
+                            wx.redirectTo({
+
+                                url: '../pay_success/pay_success'
+                            })
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+                        }
+
+                    }
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+
+        }
+
+
+
 
 
 

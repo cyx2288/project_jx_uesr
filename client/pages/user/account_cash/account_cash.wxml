@@ -12,8 +12,8 @@
         </view>
 
         <view class="personal_message">
-            <text class="personal_name">橙子</text>
-            <view class="personal_tel">183****8193</view>
+            <text class="personal_name">{{userName}}</text>
+            <view class="personal_tel">{{hideMobile}}</view>
         </view>
 
     </view>
@@ -29,28 +29,39 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" placeholder="可转余额{{canTransferBalance}}元" value="{{inputBalance}}" maxlength="10" type="digit"  placeholder-style="color:#bbb" placeholder-class="inputClass"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="true" bindinput="bindKeyInput" placeholder="请输入转账金额" value="{{inputBalance}}" maxlength="10" type="digit"  placeholder-style="color:#bbb" placeholder-class="inputClass"/>
                     </label>
 
-                    <view bindtap="transferAllFn" class="weui_confirm orange">全部</view>
+
                 </lable>
+
                 <hr/>
 
-                <view class="weui_title">
+                <view class="box_contain">
 
-                    <view class="weui-cell__bd">
-                        <input class="weui-input" value="{{tips}}" type="text" bindinput="tipslFn"  placeholder="添加备注（20字以内）" maxlength="20"/>
-                    </view>
+                    <view class="can_cash">可转余额{{canTransferBalance}}元</view>
+
+                    <view bindtap="transferAllFn" class="weui_confirm orange all_transfer">全部</view>
+
                 </view>
+
+
 
             </view>
 
     </view>
 
+    <view class="weui_title weui_tip">
+
+        <view class="weui-cell__bd">
+            <input class="weui-input" value="{{tips}}" type="text" bindinput="tipsFn" placeholder-class="tip_area" placeholder="添加备注（20字以内）" maxlength="20"/>
+        </view>
+    </view>
+
     <!--button-->
     <view class="page__bd page__bd_spacing cash_btn">
 
-        <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="cashFn">确认转账</button>
+        <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="transferFn">确认转账</button>
 
 
     </view>

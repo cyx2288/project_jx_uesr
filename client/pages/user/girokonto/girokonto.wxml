@@ -2,16 +2,16 @@
 <view class="add_card">
 
 
-    <view class="weui_top">
+<!--    <view class="weui_top">
         <view class="jx_record">
             <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
         </view>
 
-        <view class="weui-cells__title">资金将实时转入对方账户，无法退款</view>
-    </view>
+        <view class="weui-cells__title"></view>
+    </view>-->
 
 
-    <view class="weui-cells bottom_button">
+    <view class="weui-cells bottom_button transfer_bottom">
 
 
         <!--填写对方账户-->
@@ -23,10 +23,10 @@
                 </view>
 
                 <view class="weui-cell__bd">
-                    <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" maxlength="11"/>
+                    <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" auto-focus="true" maxlength="11"/>
                 </view>
 
-                <navigator url="../historical_cashier/historical_cashier" class="jx_record">
+                <navigator hover-class="none" url="../historical_cashier/historical_cashier" class="jx_record">
                     <image src="../../../static/icon/wages/jx_phone_orange.png"  class="phone" />
                 </navigator>
 
@@ -35,12 +35,12 @@
 
     </view>
 
+    <view class="tips">* 资金将实时转入对方账户，无法退款</view>
 
 
+    <view class="page__bd page__bd_spacing cash_btn">
 
-    <view class="page__bd page__bd_spacing">
-
-        <button class="weui-btn orange"  bindtap="addBankFn">下一步</button>
+        <button class="weui-btn"  type="primary" disabled="{{disabled}}"  bindtap="nextTransferFn">下一步</button>
 
 
     </view>
@@ -49,4 +49,18 @@
 
 
 
+</view>
+
+
+<!--弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">收款账号{{mobile}}不存在</view>
+    <view class="modal-content">
+        <view>分享微信小程序，邀请好友注册'嘉薪'并实名认证，通过后即可给该好友转账</view>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+        <button open-type="share" class="btn-confirm" bindtap="onConfirm" data-status="confirm">去分享</button>
+    </view>
 </view>

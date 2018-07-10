@@ -1,4 +1,4 @@
-
+<wxs module="filter" src="../../../static/libs/wxs/mobileEllipsis.wxs"></wxs>
 <!--我的账单-->
 <view class="weui-cells">
 
@@ -13,7 +13,7 @@
 
 </view>
 
-<navigator url="../historical_cashier/historical_cashier" class="transfer_accounts">
+<navigator hover-class="none" url="../historical_cashier/historical_cashier" class="transfer_accounts">
     <text class="payee_left">转给最近收款人</text>
 
     <view class="weui-accounts">
@@ -28,106 +28,32 @@
 <!--转账记录-->
 <view class="weui-cells">
 
-    <view class="account_all">
+    <view class="account_all"  wx:for="{{accountsList}}">
 
-    <view class="mine_welfare">
+    <view class="mine_welfare" bindtap="transferFn" data-name="{{item.userName}}" data-mobile="{{item.mobile}}">
 
 
           <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
 
-          <navigator url="../account_cash/account_cash"  class="personal_message">
-            <text class="personal_name">橙子橙子橙子橙子橙子橙子</text>
-            <view class="personal_tel">183****8193</view>
-          </navigator>
+          <view url="../account_cash/account_cash"  class="personal_message">
+            <view class="personal_name">{{item.userName}}</view>
+            <view class="personal_tel">{{item.hideMobile}}</view>
+          </view>
     </view>
 
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+        <view class="del_accounts" data-user="{{item.recordId}}" bindtap="delFn">
+
+            <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
+
+        </view>
+
+
 
 
     </view>
 
     <hr/>
 
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
-
-    <hr/>
-
-    <view class="account_all">
-
-        <view class="mine_welfare">
-
-
-            <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>
-
-            <navigator url="../account_cash/account_cash"  class="personal_message">
-                <text class="personal_name">橙子</text>
-                <view class="personal_tel">183****8193</view>
-            </navigator>
-        </view>
-
-        <image src="../../../static/icon/wages/jx_delete_grey.png"  class="reset_go" />
-
-
-    </view>
 
 </view>
 
