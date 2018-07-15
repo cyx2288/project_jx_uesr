@@ -41,6 +41,8 @@ Page({
         //存储在设置支付密码成功之后8为正常 4为要调用支付设置接口
         wx.setStorageSync('paySettingHref','8');
 
+
+
         if(_clearPsw=='6'){
 
 
@@ -301,8 +303,7 @@ Page({
 
             }
 
-            else {
-
+            else if(_transferCash=='6'){
                 /**
                  * 接口：获取账户提现记录
                  * 请求方式：GET

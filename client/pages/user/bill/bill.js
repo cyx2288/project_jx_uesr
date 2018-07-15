@@ -22,17 +22,79 @@ Page({
 
         pageSize: 10,//一页的数量
 
+        orderTypes:'',//订单类型 01提现 02 03转入转出 全部订单不用传
+
+        moreText:'没有更多数据啦~',//无数据显示暂无数据
+
         noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
     },
 
-
-
-    onLoad:function () {
+    onShow:function () {
 
         var that=this;
 
-        that.loadList()
+        var _whichBill = wx.getStorageSync('whichBill');
+
+
+        //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
+
+        //1为
+        if(_whichBill=='1'){
+
+
+            console.log('提现')
+
+            that.setData({
+
+                orderTypes:'01',
+
+            })
+
+            //判断导航
+
+            wx.setNavigationBarTitle({
+
+                title:'提现账单'
+            });
+
+            that.loadList();
+
+        }
+
+        else if(_whichBill=='2'){
+
+            console.log('转账')
+
+            that.setData({
+
+                orderTypes:'02,03',
+
+            })
+            wx.setNavigationBarTitle({
+
+                title:'转账账单'
+            });
+
+            that.loadList();
+
+        }
+
+        else if(_whichBill=='3'){
+
+            console.log('我的');
+
+            wx.setNavigationBarTitle({
+
+                title:'我的账单'
+            });
+
+            that.loadList();
+
+        }
+
+
+
 
 
     },
@@ -49,7 +111,43 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         //存取是从账单进入（在转账详情里面取出）
-        wx.setStorageSync('billHref','4')
+        wx.setStorageSync('billHref','4');
+
+
+        //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
+        var _whichBill = wx.getStorageSync('whichBill');
+
+
+        console.log('传的是几：'+that.data.orderTypes);
+
+        if(_whichBill=='1'||_whichBill=='2'){
+
+            var dataList = {
+
+                pageNum: that.data.pageNum,
+
+                pageSize: that.data.pageSize,
+
+                orderTypes:that.data.orderTypes,
+
+            }
+
+        }
+
+        else if(_whichBill=='3'){
+
+            var dataList = {
+
+                pageNum: that.data.pageNum,
+
+                pageSize: that.data.pageSize,
+
+
+            }
+
+
+        }
+
 
         if(that.data.noData) {//如果数据没有见底
 
@@ -65,13 +163,7 @@ Page({
 
                 method: 'GET',
 
-                data: {
-
-                    pageNum: that.data.pageNum,
-
-                    pageSize: that.data.pageSize
-
-                },
+                data: dataList,
 
                 header: {
 
@@ -139,11 +231,33 @@ Page({
 
                         else if (!res.data.data.list || res.data.data.list.length == 0) {//这一组为空
 
-                            that.setData({
+                            if(that.data.pageNum == '1'){
 
-                                noData: false,
+                                that.setData({
 
-                            })
+                                    moreText:'暂无数据',//无数据显示暂无数据
+
+                                    noData: false,
+
+                                })
+
+
+
+                            }
+
+                            else {
+
+                                that.setData({
+
+                                    noData: false,
+
+                                    moreText:'没有更多数据啦~',//无数据显示暂无数据
+
+
+                                })
+                            }
+
+
 
                         }
 

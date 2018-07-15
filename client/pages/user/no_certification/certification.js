@@ -108,7 +108,6 @@ Page({
 
         //存指定的页面
 
-        var _hrefId = wx.getStorageSync('hrefId');
 
         var thisPayPwd =  wx.getStorageSync('isPayPwd');
 
@@ -233,6 +232,10 @@ Page({
                         var _personCenter = wx.getStorageSync('personCenter');
 
                         var _hrefId = wx.getStorageSync('hrefId');
+
+                        console.log('8是转账'+_hrefId)
+
+                        console.log('1是个人中心'+_personCenter)
 
 
                         if (_code == '0000') {
@@ -369,9 +372,9 @@ Page({
 
 */
 
-                             if(_personCenter=='1'){
+                             if(_hrefId=='1'){
 
-                                console.log('从个人中心')
+                                console.log('从个人中心');
 
                                  setTimeout(function () {
 
@@ -407,75 +410,15 @@ Page({
 
                                  console.log('从转账');
 
+                                 setTimeout(function () {
 
-                                 /**
-                                  * 接口：查询历史收款人
-                                  * 请求方式：post
-                                  * 接口：/record/selecthistoricalpayee
-                                  * 入参：null
-                                  **/
-                                 wx.request({
+                                     wx.redirectTo({
 
-                                     url: app.globalData.URL + payeeUrl,
+                                         url:'../girokonto/girokonto'
 
-                                     method: 'POST',
+                                     })
 
-                                     header: {
-
-                                         'content-type': 'application/x-www-form-urlencoded',// post请求
-
-                                         'jxsid': jx_sid,
-
-                                         'Authorization': Authorization
-
-                                     },
-
-                                     success: function (res) {
-
-                                         console.log(res.data);
-
-                                         if(res.data.data){
-
-                                             console.log('有历史')
-
-                                             setTimeout(function () {
-
-                                             wx.redirectTo({
-
-                                                 url: '../transfer_accounts/transfer_accounts'
-
-                                             })
-
-                                             },1000)
-
-
-                                         }
-
-                                         else{
-
-                                             console.log('没历史')
-
-                                             setTimeout(function () {
-
-                                             wx.redirectTo({
-
-                                                 url: '../girokonto/girokonto'
-
-                                             })
-                                         },1000)
-
-                                         }
-
-                                     },
-
-
-                                     fail: function (res) {
-
-                                         console.log(res)
-
-                                     }
-
-                                 })
+                                 },1000)
 
 
 

@@ -196,11 +196,15 @@ page {
 .wages_middle .weui_confirm{
 
     color: #4a4a4a;
+    width: calc(100% - 70px);
+    text-align: right;
 }
 
 .wages_middle .weui-media-box__title{
 
     color: #ababab;
+    text-align: left;
+    width: 70px;
 }
 
 .jx_right{

@@ -9,8 +9,8 @@
 
         <view class="asset_money">
             <image src="../../../static/icon/wages/jx_money.png"></image>
-            <view wx:if="{{orderType=='02'}}" class="weui_confirm">转出金额（元）</view>
-            <view wx:elif="{{orderType=='03'}}" class="weui_confirm">转入金额（元）</view>
+            <view wx:if="{{orderType=='02'}}">转出金额（元）</view>
+            <view wx:elif="{{orderType=='03'}}">转入金额（元）</view>
         </view>
 
         <!--金额显示-->
@@ -43,6 +43,22 @@
         <!--</view>-->
 
         <!--<hr/>-->
+
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单状态</view>
+                    <view wx:if="{{orderState=='1'}}" class="weui_confirm">成功</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <hr/>
 
         <!--明细-->
         <view class="cash_step">
@@ -137,7 +153,7 @@
 
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">对方账号</view>
-                    <view class="weui_confirm">{{userMobile}}</view>
+                    <view class="weui_confirm">{{mobile}}</view>
                 </view>
 
             </view>

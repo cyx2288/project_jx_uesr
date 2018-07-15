@@ -17,6 +17,26 @@ Page({
 
         showModal: false,
 
+        titleMsg:'',//弹框标题
+
+        titleContent:'',//弹框内容
+
+    },
+
+    onShow:function () {
+
+        var that = this;
+
+        wx.setStorageSync('hrefNum','3');
+
+
+        //手机号初始化
+        that.setData({
+
+            mobile:'',
+
+        })
+
     },
 
     nextTransferFn:function () {
@@ -95,9 +115,13 @@ Page({
                         })
 
 
-                        wx.setStorageSync('transferMobile',that.data.mobile);
+                        wx.setStorageSync('transferHideMobile',res.data.data.hideMobile);
 
                         wx.setStorageSync('transferName',res.data.data.userName);
+
+
+                        wx.setStorageSync('transferMobile',that.data.mobile);
+                        // wx.setStorageSync('transferHideName',res.data.data.hideMobile);
 
 
 
@@ -107,31 +131,43 @@ Page({
 
                         that.setData({
 
-                            showModal: true
+                            showModal: true,
+
+                            titleMsg:res.data.msg,
+
+                            titleContent:'分享微信小程序，邀请好友注册‘嘉薪’并实名认证，通过后即可给该好友转账',//弹框内容
+
+
 
                         })
 
-                        /*wx.showModal({
-                            title: '提示',
-                            content: '分享微信小程序，邀请好友注册【嘉薪】并实名认证，通过后即可给该好友转账',
-                            cancelText: '取消',
-                            confirmText: '去分享',
-                            confirmColor:'#fe9728',
-                            success: function (res) {
 
-                                if (res.confirm) {
+                    }
 
-                                }
+                    else if(res.data.code=='-9'){
 
-                                else if (res.cancel) {
+                        that.setData({
 
+                            showModal: true,
+
+                            titleMsg:res.data.msg,
+
+                            titleContent:'分享微信小程序，提醒好友完成实名认证，通过后即可给该好友转账',//弹框内容
 
 
-                                }
+                        })
 
 
-                            }
-                        });*/
+                    }
+
+                    else{
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            mask:true
+                        })
+
 
                     }
 
@@ -159,13 +195,58 @@ Page({
 
     telFn:function (e) {
 
-        var that = this
+        var that = this;
+
+        var reg = /[0-9]/ig
 
         that.setData({
 
             mobile:e.detail.value
 
         });
+
+        regMobile();
+        
+        function regMobile() {
+
+            var _test=that.data.mobile;
+
+            if(that.data.mobile.length>11){
+
+                //判断是否有空格
+                if(reg.test(that.data.mobile)){
+
+                    //替换字符串中的非数字
+                    _test = that.data.mobile.replace(/[^0-9]/ig,"");
+
+
+                }
+
+                //如果有86的话
+                if(_test.substr(0,2)=='86'){
+
+                     _test = that.data.mobile.substr(2);
+
+
+                }
+
+                if(_test.length>11){
+
+                    _test = _test.substr(0,11);
+
+                }
+
+                that.setData({
+
+                    mobile:_test
+
+                })
+
+
+            }
+
+            
+        }
 
 
         if(that.data.mobile){
@@ -204,11 +285,6 @@ Page({
      */
     preventTouchMove: function () {
 
-        that.setData({
-
-            showModal: false,
-
-        })
 
     },
     /**

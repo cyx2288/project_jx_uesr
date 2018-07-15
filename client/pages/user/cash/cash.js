@@ -77,15 +77,17 @@ Page({
 
         var _isVerify = wx.getStorageSync('isVerify');
 
+        //存储转账页面（在短信验证和支付密码页面中获取）来判断调用用户发起转账接口
+        wx.setStorageSync('transferCash','6');
+
 
         that.setData({
-
 
             userName:wx.getStorageSync('userName'),
 
             mobile:wx.getStorageSync('mobile'),
 
-            /*inputBalance:'',//输入框里value的值*/
+            inputBalance:'',//输入框里value的值
 
 
         })
@@ -1024,6 +1026,9 @@ Page({
                 console.log(res.tapIndex)
 
                 if (res.tapIndex == '0') {
+
+                    //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
+                    wx.setStorageSync('whichBill','1');
 
                     wx.navigateTo({
 

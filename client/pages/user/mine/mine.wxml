@@ -83,7 +83,7 @@
 
 
     <!--我的账单-->
-    <navigator url="../bill/bill" class="mine_welfare">
+    <view class="mine_welfare" bindtap="billFn">
 
         <view class="jx_mine_left">
 
@@ -99,7 +99,7 @@
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
 
-    </navigator>
+    </view>
     <hr/>
 
 

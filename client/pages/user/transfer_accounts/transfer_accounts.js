@@ -24,6 +24,7 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        wx.setStorageSync('hrefNum','2')
 
 
         /**
@@ -84,10 +85,13 @@ Page({
 
     transferFn:function (e) {
 
+        var _hideMobile = e.currentTarget.dataset.mobile
 
         wx.setStorageSync('transferMobile',e.currentTarget.dataset.mobile);
 
         wx.setStorageSync('transferName',e.currentTarget.dataset.name);
+
+        wx.setStorageSync('transferHideMobile',_hideMobile.substr(0, 3) + '****' + _hideMobile.substr(7));
 
         wx.navigateTo({
 
@@ -202,7 +206,22 @@ Page({
 
         }
 
+    },
+
+    transferListFn:function () {
+
+        //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
+        wx.setStorageSync('whichBill','2');
+
+        wx.navigateTo({
+
+            url: '../bill/bill'
+        })
+
+
     }
+
+
 
 
 });

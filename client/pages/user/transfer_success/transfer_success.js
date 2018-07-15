@@ -59,17 +59,15 @@ Page({
     },
 
     //关闭之前的页面 直接退回我的页面
-/*
     onUnload:function () {
 
-        wx.switchTab({
-
-
-            url:'../../user/mine/mine'
+  /*      wx.navigateBack({
+            delta: 1
         })
+*/
+
 
     }
-*/
 
 
 

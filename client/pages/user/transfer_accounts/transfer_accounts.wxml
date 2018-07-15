@@ -57,3 +57,13 @@
 
 </view>
 
+
+<!--提示-->
+<view class="weui-help">
+
+    <button  class="kf_button jx_right" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">联系客服</button>
+    <span class="line">|</span>
+    <text class="jx_right" bindtap="transferListFn">转账记录</text>
+
+</view>
+

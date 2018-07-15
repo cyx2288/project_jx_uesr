@@ -192,6 +192,8 @@ Page({
 
         wx.setStorageSync('transferName',e.currentTarget.dataset.name)
 
+        wx.setStorageSync('transferHideMobile',e.currentTarget.dataset.hidemobile)
+
         wx.navigateTo({
 
             url: '../account_cash/account_cash'

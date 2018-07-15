@@ -1,0 +1,64 @@
+@import "../../wages/index/index.wxss";
+@import "../setting/setting.wxss";
+
+page{
+
+    background-color: #f7f7f7;
+    width: 100%;
+    font-size: 14px;
+    color: #4a4a4a;
+
+}
+
+.page__bd {
+padding-bottom:0px;
+
+}
+
+
+.service_title {
+    display: block;
+    width: 100%;
+    color: #4a4a4a;
+    padding:15px;
+
+
+}
+
+
+.jx_cash{
+    width: 36px;
+    height: 32px;
+    padding-top: 5px;
+    padding-right: 10px;
+
+}
+
+.weui-help{
+    display: flex;
+    padding: 5px 15px;
+    width: 92%;
+    line-height: 10px;
+    margin: 0 auto;
+}
+
+hr {
+    display: block;
+    transform: scaleY(0.1);
+    width: 100%;
+    border:.1px solid #dddddd;
+}
+
+.help_service{
+    padding-bottom: 80px;
+}
+
+.bank_classify{
+    color: #8a8a8a;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.weui-cells{
+    margin: 0 auto;
+}
