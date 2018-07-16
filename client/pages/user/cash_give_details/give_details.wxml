@@ -76,6 +76,24 @@
 
          <hr/>
 
+         <!--退款原因-->
+         <view class="cash_step" hidden="{{errorMsg ? false : true}}">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">退款原因</view>
+                     <view class="weui_confirm">{{errorMsg}}</view>
+
+                 </view>
+
+             </view>
+
+         </view>
+
+         <view hidden="{{errorMsg ? false : true}}"><hr/></view>
+
+
          <!--明细-->
          <view class="cash_step">
 
@@ -134,7 +152,7 @@
 
                  <view class="weui_title">
                      <view class="weui-media-box__title weui-media-box__title_in-text">订单时间</view>
-                     <view class="weui_confirm">{{filter.formatTime(createTime,'-')}}</view>
+                     <view class="weui_confirm">{{filter.formatTime(createDate,'-')}}</view>
                  </view>
 
              </view>

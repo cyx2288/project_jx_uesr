@@ -107,6 +107,22 @@ page {
 
 }
 
+.cash_step .step_line{
+
+    position: relative;
+}
+
+.cash_step .step_line:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    height: 1px;
+
+}
+
 .wages_box{
 
     background-color:#fff;

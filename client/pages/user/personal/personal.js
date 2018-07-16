@@ -36,7 +36,7 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
          //存取数据 在认证页面
-         wx.setStorageSync('personCenter','1');
+         wx.setStorageSync('hrefId','1');
 
         //有几个ajax请求
         var ajaxCount = 1;

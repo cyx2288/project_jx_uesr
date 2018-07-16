@@ -82,3 +82,67 @@ color: #ababab;
 
     padding: 15px;
 }
+
+.weui-help{
+    line-height: 30px;
+    font-size:14px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.jx_left{
+    color: #fe9728;
+    text-align: right;
+    padding: 0;
+}
+
+.jx_right{
+    color: #fe9728;
+    text-align: left;
+}
+.orange{
+    color:  #fe9728;
+}
+
+
+.reset_icon{
+    width: 16px;
+    height: 16px;
+}
+
+span.line{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #bbb;
+}
+
+.font_small{
+
+    color: #ababab;
+    font-size: 14px;
+}
+
+button.kf_button {
+
+    position:relative;
+    display:block;
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right: 0;
+    box-sizing:border-box;
+    font-size:14px;
+    text-align:center;
+    text-decoration:none;
+    line-height:30px;
+    border-radius:0;
+    -webkit-tap-highlight-color:transparent;
+    overflow:hidden;
+    color: #fe9728;
+    background-color:transparent;
+
+}
+.kf_button::after{
+    border: 0px;
+}

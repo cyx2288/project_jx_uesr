@@ -1,19 +1,20 @@
 {
   "pages": [
-
-
-
-
+    "pages/user/choose_nationality/choose_nationality",
     "pages/common/loading/loading",
+
+    "pages/user/girokonto/girokonto",
+
+
 
     "pages/user/payment_setting/payment_setting",
 
 
     "pages/user/balance/balance",
 
-    "pages/user/girokonto/girokonto",
 
 
+    "pages/user/account_cash/account_cash",
 
 
     "pages/user/transfer_details/transfer_details",
@@ -21,7 +22,7 @@
 
 
 
-    "pages/user/account_cash/account_cash",
+
     "pages/user/transfer_accounts/transfer_accounts",
     "pages/user/transfer_success/transfer_success",
 
@@ -43,8 +44,6 @@
 
     "pages/wages/payroll/payroll",
 
-    "pages/jd/jdshop/jdshop",
-    "pages/jd/index/index",
     "pages/user/code/code",
     "pages/user/id_card/id_card",
     "pages/user/payment_setting_code/payment_setting_code",
@@ -56,7 +55,8 @@
     "pages/user/bill/bill",
 
 
-
+    "pages/discovery/discovery/discovery",
+    "pages/discovery/webView/index",
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",
     "pages/user/payment_setting_certification/certification",
@@ -138,7 +138,12 @@
         "iconPath": "static/icon/index_tab/jx_wages_grey.png",
         "selectedIconPath": "static/icon/index_tab/jx_wages_orange.png"
       },
-
+      {
+        "pagePath": "pages/discovery/discovery/discovery",
+        "text": "发现",
+        "iconPath": "static/icon/index_tab/jx_wages_grey.png",
+        "selectedIconPath": "static/icon/index_tab/jx_wages_orange.png"
+      },
       {
         "pagePath": "pages/user/mine/mine",
         "text": "我的",

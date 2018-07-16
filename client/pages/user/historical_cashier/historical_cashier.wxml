@@ -5,7 +5,7 @@
 
     <view class="account_all" wx:for="{{accountsList}}">
 
-        <view class="mine_welfare" bindtap="transferFn" data-name="{{item.userName}}" data-mobile="{{item.mobile}}">
+        <view class="mine_welfare" bindtap="transferFn" data-name="{{item.userName}}" data-mobile="{{item.mobile}}" data-hidemobile="{{item.hideMobile}}">
 
 
             <image src="../../../static/icon/wages/jx_photo.png"  class="account"/>

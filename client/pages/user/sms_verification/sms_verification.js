@@ -268,6 +268,8 @@ Page({
         if(_transferCash=='5'){
 
 
+            console.log('转账')
+
 
             /**
              * 接口：获取账户转账记录
@@ -396,7 +398,9 @@ Page({
         }
 
 
-        else {
+        else if(_transferCash=='6'){
+
+            console.log('提现')
 
             /**
              * 接口：获取账户提现记录

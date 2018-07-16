@@ -23,7 +23,7 @@
                 </view>
 
                 <view class="weui-cell__bd">
-                    <input class="weui-input" value="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" auto-focus="true" maxlength="11"/>
+                    <input class="weui-input" value="{{mobile}}" data-mobile="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" auto-focus="true" />
                 </view>
 
                 <navigator hover-class="none" url="../historical_cashier/historical_cashier" class="jx_record">
@@ -55,9 +55,9 @@
 <!--弹窗-->
 <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}">
-    <view class="modal-title">收款账号{{mobile}}不存在</view>
+    <view class="modal-title">{{titleMsg}}</view>
     <view class="modal-content">
-        <view>分享微信小程序，邀请好友注册'嘉薪'并实名认证，通过后即可给该好友转账</view>
+        <view>{{titleContent}}</view>
     </view>
     <view class="modal-footer">
         <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>

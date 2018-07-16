@@ -26,7 +26,7 @@ Page({
 
         rate: '',
 
-        createTime:'',
+        createDate:'',
 
         rateAmount: '',
 
@@ -35,6 +35,8 @@ Page({
         userName:'',
 
         mobile:'',
+
+        errorMsg:''
 
     },
 
@@ -148,10 +150,21 @@ Page({
 
                         rateAmount: res.data.data.rateAmount,
 
-                        createTime: res.data.data.createTime,
+                        createDate: res.data.data.createDate,
 
 
                     })
+
+                    if(res.data.data.errorMsg){
+
+
+                        that.setData({
+
+                            errorMsg: res.data.data.errorMsg,
+
+                        })
+
+                    }
 
                 }
 

@@ -20,6 +20,8 @@ const noJoinUrl = '/salary/home/updatejoinentstatus';//暂不加入企业
 
 const companyUrl = '/salary/home/selectlockstatus';//锁定状态查询
 
+const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
+
 Page({
 
     data: {
@@ -69,6 +71,10 @@ Page({
         num:'',//选择全部&单个企业 1为单个企业 2为全部
 
         needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+
+        frozenSalary:'--.--',//冻结资金
+
+        totalSalary:'--.--',//工资余额
 
 
     },
@@ -224,6 +230,10 @@ Page({
                 num:'',//选择全部&单个企业 1为单个企业 2为全部
 
                 needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+
+                frozenSalary:'--.--',//冻结资金
+
+                totalSalary:'--.--',//工资余额
 
 
             })
@@ -918,6 +928,91 @@ Page({
 
                         })
 
+                        /**
+                         * 接口：获取用户工资金额状况
+                         * 请求方式：GET
+                         * 接口：/user/bank/getsalarystatus
+                         * 入参：null
+                         **/
+                        wx.request({
+
+                            url: app.globalData.URL + statusUrl,
+
+                            method: 'GET',
+
+                            header: {
+
+                                'jxsid': jx_sid,
+
+                                'Authorization': Authorization
+
+                            },
+
+                            success: function (res) {
+
+                                //wx.setStorageSync('wages', res.data.data);
+
+                                app.globalData.repeat(res.data.code,res.data.msg);
+
+                                if(res.data.code=='3001') {
+
+                                    //console.log('登录');
+
+                                    setTimeout(function () {
+
+                                        wx.reLaunch({
+
+                                            url:'../../common/signin/signin'
+                                        })
+
+                                    },1500)
+
+                                    /*                          wx.showToast({
+                                     title: res.data.msg,
+                                     icon: 'none',
+                                     duration: 1500,
+                                     success:function () {
+
+
+
+                                     }
+
+                                     })*/
+
+                                    return false
+
+
+                                }
+
+                                else {
+
+                                    console.log(res.data)
+
+                                    that.setData({
+
+                                        frozenSalary:radixPointFn.splitK(res.data.data.frozenSalary),
+
+                                        enableSalary:radixPointFn.splitK(res.data.data.enableSalary),
+
+                                        totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+
+
+                                    })
+
+
+                                }
+
+                            },
+
+
+                            fail: function (res) {
+
+                                console.log(res)
+
+                            }
+
+                        })
+
                     }
 
 
@@ -1264,6 +1359,8 @@ Page({
 
 
 
+
+
         });
 
 
@@ -1336,6 +1433,10 @@ Page({
             needRefresh: true,//刷新的开关 false为不刷新 true为刷新
 
             //lookWages:true,//看不看余额
+
+            frozenSalary:'--.--',//冻结资金
+
+            totalSalary:'--.--',//工资余额
 
 
         });
@@ -1452,6 +1553,36 @@ Page({
 
             lookWages: !that.data.lookWages
         })
+
+    },
+
+    frozenFn:function () {
+
+
+        wx.showModal({
+            title: '冻结工资只可消费，不可提现',
+            content: '在’我的发薪企业’中同意企业邀请，身份验证通过后即可解冻资金',
+            cancelText: '取消',
+            confirmText: '去解冻',
+            confirmColor:'#fe9728',
+            success: function (res) {
+
+                if (res.confirm) {
+
+                    wx.navigateTo({
+
+                        url: '../../user/company/company'
+                    })
+
+                }
+
+                else if (res.cancel) {
+
+
+
+                }
+            }
+        });
 
     },
 

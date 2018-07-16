@@ -1,0 +1,97 @@
+
+<view>
+
+    <view class="title">生活助手</view>
+
+    <view class="content">
+
+        <!-- 加油卡 -->
+        <view  class="scene" bindtap="urlFn" data-url="{{jykUrl}}" data-name="加油卡充值">
+            <view>加油卡充值</view>
+            <view>中石油、中石化油卡充值</view>
+        </view>
+
+        <!-- 话费充值 -->
+        <view class="scene">
+            <view>话费充值</view>
+            <view>手机话费充值</view>
+        </view>
+
+
+        <!-- 火车票预订 -->
+        <view class="scene" bindtap="urlFn" data-url="{{trainUrl}}" data-name="高铁管家">
+            <view>火车票预订</view>
+            <view>网上预订火车票</view>
+        </view>
+
+
+        <!-- 滴滴出行 -->
+        <view class="scene" bindtap="urlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
+            <view>滴滴出行</view>
+            <view>滴滴快车，专车出行</view>
+        </view>
+
+    </view>
+
+
+
+</view>
+
+
+
+<view>
+
+    <view class="title">吃喝玩购</view>
+
+    <view class="content">
+
+        <!-- 加油卡 -->
+        <view  class="scene" bindtap="urlFn" data-url="{{jdUrl}}" data-name="京东商城">
+            <view>京东商城</view>
+            <view>中石油、中石化油卡充值</view>
+        </view>
+
+        <!-- 话费充值 -->
+        <view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">
+            <view>美团点评</view>
+            <view>手机话费充值</view>
+        </view>
+
+
+        <!-- 火车票预订 -->
+        <view class="scene">
+            <view>卡券商城</view>
+            <view>网上预订火车票</view>
+        </view>
+
+
+        <!-- 滴滴出行 -->
+        <view class="scene" bindtap="urlFn" data-url="{{codeUrl}}" data-name="二维码付款">
+            <view>二维码付款</view>
+            <view>滴滴快车，专车出行</view>
+        </view>
+
+    </view>
+
+
+
+</view>
+
+
+<view>
+
+    <view class="title">吃喝玩购</view>
+
+    <view class="content">
+
+        <!-- 加油卡 -->
+        <view  class="scene" bindtap="urlFn" data-url="{{jbtUrl}}" data-name="嘉白条">
+            <view>嘉白条</view>
+            <view>中石油、中石化油卡充值</view>
+        </view>
+
+    </view>
+
+
+
+</view>

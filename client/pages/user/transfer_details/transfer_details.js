@@ -58,10 +58,6 @@ Page({
 
         that.setData({
 
-            userName:wx.getStorageSync('transferName'),
-
-            userMobile:_mobile.substr(0,3)+"****"+_mobile.substr(7),
-
             orderType:_orderType
 
 
@@ -159,6 +155,11 @@ Page({
                             orderId: res.data.data.orderId,
 
                             orderType: res.data.data.orderType,
+
+                            userName:res.data.data.userName,
+
+                            mobile:res.data.data.mobile,
+
                            /* payAmount: res.data.data.payAmount,*/
 
                             createDate: res.data.data.createDate,
@@ -271,6 +272,10 @@ Page({
                             orderId: res.data.data.orderId,
 
                             orderType: res.data.data.orderType,
+
+                            userName:res.data.data.userName,
+
+                            mobile:res.data.data.mobile,
 
                            /* payAmount: res.data.data.payAmount,*/
 
@@ -466,11 +471,19 @@ Page({
 
     onUnload:function () {
 
- /*       wx.switchTab({
+        var _billHref = wx.getStorageSync('billHref')
+
+        if(_billHref=='6'){
+            wx.switchTab({
 
 
-            url:'../../user/mine/mine'
-        })*/
+                url:'../../user/mine/mine'
+            })
+
+
+
+        }
+
 
     }
 

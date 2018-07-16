@@ -5,9 +5,29 @@
 
     <text class="asset_money">工资余额（元）</text>
     <!--金额显示-->
-    <text class="money_number">{{wages}}</text>
+    <text class="money_number">{{totalSalary}}</text>
 
     <image class="jx_wave"  mode="widthFix" src="../../../static/icon/wages/jx_wave.png" />
+
+    <!-- 冻结资金 -->
+
+    <view class="other_momey">
+        <view class="money_detail">
+            <view>可提资金（元）</view>
+            <view>{{wages}}</view>
+
+        </view>
+
+        <view class="money_detail">
+            <view><span>冻结资金（元）</span><image bindtap="frozenFn" class="question_main" src="../../../static/icon/wages/jx_ask_mine.png"/></view>
+            <view>{{frozenSalary}}</view>
+
+        </view>
+
+
+    </view>
+
+
 </view>
 
 
