@@ -483,6 +483,8 @@ Page({
 
                     //银行卡添加成功 toast提示成功
 
+
+
                     //code3003返回方法
                     app.globalData.repeat(res.data.code, res.data.msg);
 

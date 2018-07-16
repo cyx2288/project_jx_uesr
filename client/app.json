@@ -1,62 +1,50 @@
 {
   "pages": [
-    "pages/user/choose_nationality/choose_nationality",
     "pages/common/loading/loading",
+    "pages/common/wages_authentication/authentication",
+    "pages/common/authentication/authentication",
+    "pages/common/forget_password/forget_password",
+    "pages/common/revise_login/revise_login",
+    "pages/common/signin/signin",
+    "pages/common/user_agreement/user_agreement",
 
+
+
+    "pages/wages/index/index",
+    "pages/wages/payroll/payroll",
+
+
+
+    "pages/discovery/discovery/discovery",
+    "pages/discovery/webView/index",
+    "pages/discovery/normal_webView/index",
+
+
+
+    "pages/user/support_added_bank/support_bank",
+    "pages/user/code/code",
+    "pages/user/id_card/id_card",
+    "pages/user/payment_setting_code/payment_setting_code",
+    "pages/user/payment_setting_message/payment_setting_message",
+    "pages/user/company/company",
+    "pages/user/details/details",
+    "pages/user/bill/bill",
     "pages/user/girokonto/girokonto",
-
-
-
+    "pages/user/choose_nationality/choose_nationality",
     "pages/user/payment_setting/payment_setting",
-
-
     "pages/user/balance/balance",
-
-
-
     "pages/user/account_cash/account_cash",
-
-
     "pages/user/transfer_details/transfer_details",
     "pages/user/historical_cashier/historical_cashier",
-
-
-
-
     "pages/user/transfer_accounts/transfer_accounts",
     "pages/user/transfer_success/transfer_success",
-
-
-
     "pages/user/feedback_message/feedback_message",
-
-
     "pages/user/feedback/feedback",
     "pages/user/give_details/give_details",
     "pages/user/mine/mine",
     "pages/user/cash/cash",
     "pages/user/help_service/help_service",
     "pages/user/company_authentication/authentication",
-    "pages/common/wages_authentication/authentication",
-    "pages/wages/index/index",
-
-    "pages/user/support_added_bank/support_bank",
-
-    "pages/wages/payroll/payroll",
-
-    "pages/user/code/code",
-    "pages/user/id_card/id_card",
-    "pages/user/payment_setting_code/payment_setting_code",
-    "pages/user/payment_setting_message/payment_setting_message",
-    "pages/common/signin/signin",
-    "pages/user/company/company",
-    "pages/common/user_agreement/user_agreement",
-    "pages/user/details/details",
-    "pages/user/bill/bill",
-
-
-    "pages/discovery/discovery/discovery",
-    "pages/discovery/webView/index",
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",
     "pages/user/payment_setting_certification/certification",
@@ -74,49 +62,18 @@
     "pages/user/problem_quota/problem_quota",
     "pages/user/problem_setting/problem_setting",
     "pages/user/problem_close/problem_close",
-    "pages/common/forget_password/forget_password",
     "pages/user/pay_success/pay_success",
-    "pages/common/revise_login/revise_login",
     "pages/user/modify_paycode/modify_code",
     "pages/user/pws_verification/pws_verification",
     "pages/user/locked/locked",
     "pages/user/sms_verification/sms_verification",
     "pages/user/card/card",
-
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
-
     "pages/user/personal/personal",
     "pages/user/certification/certification",
-    "pages/common/authentication/authentication",
 
-    "example/index",
-    "example/button/button",
-    "example/list/list",
-    "example/input/input",
-    "example/slider/slider",
-    "example/uploader/uploader",
-    "example/article/article",
-    "example/badge/badge",
-    "example/flex/flex",
-    "example/footer/footer",
-    "example/gallery/gallery",
-    "example/grid/grid",
-    "example/icons/icons",
-    "example/loadmore/loadmore",
-    "example/panel/panel",
-    "example/preview/preview",
-    "example/progress/progress",
-    "example/actionsheet/actionsheet",
-    "example/dialog/dialog",
-    "example/msg/msg",
-    "example/msg/msg_success",
-    "example/msg/msg_fail",
-    "example/picker/picker",
-    "example/toast/toast",
-    "example/navbar/navbar",
-    "example/tabbar/tabbar",
-    "example/searchbar/searchbar",
+
 
     "component/toastLoading/loading"
 
@@ -141,8 +98,8 @@
       {
         "pagePath": "pages/discovery/discovery/discovery",
         "text": "发现",
-        "iconPath": "static/icon/index_tab/jx_wages_grey.png",
-        "selectedIconPath": "static/icon/index_tab/jx_wages_orange.png"
+        "iconPath": "static/icon/index_tab/jx_discovery_grey.png",
+        "selectedIconPath": "static/icon/index_tab/jx_discovery_orange.png"
       },
       {
         "pagePath": "pages/user/mine/mine",

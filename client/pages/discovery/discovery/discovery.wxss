@@ -1,5 +1,69 @@
+@import "../../user/mine/mine.wxss";
 page{
-    background: #fff;
     width: 100%;
+    background-color: #f7f7f7;
 }
 
+.jx_welfare_mall{
+    background-color: #fff;
+    width: 92%;
+    border-radius: 5px;
+    margin: 15px auto;
+
+}
+
+
+.assistant_life{
+    display: flex;
+    padding: 10px 15px;
+    align-items: center;
+    color: #f77643;
+    font-size: 16px;
+}
+
+.title_line{
+    border: 2px solid #f77643;
+    margin-right: 10px;
+    height: 15px;
+}
+
+.content{
+    padding: 10px 5px;
+}
+
+.scene{
+    display:inline-block;
+    float:left;
+    width:33.333%;
+    text-align:center;
+    margin-bottom:20px;
+
+}
+
+.scene >view:last-child{
+    font-size: 24rpx;
+   white-space: nowrap;
+}
+.mall_service{
+    width: 48px;
+    height: 48px;
+}
+
+.service_title{
+    color: #4a4a4a;
+    font-size: 32rpx;
+}
+.service_text{
+    color: #ababab;
+}
+
+hr {
+
+    display: block;
+    background-color: #f3f3f3;
+    transform: scaleY(0.7);
+    height: .5px;
+    width: 92%;
+    text-align: center;
+    margin: 0 auto;
+}
