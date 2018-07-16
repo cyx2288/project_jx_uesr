@@ -562,6 +562,16 @@ Page({
 
     },
 
+    testUrl:function () {
+
+        wx.navigateTo({
+
+            url:"../webView/index"
+
+        });
+
+    }
+
 
 
 

@@ -1,1 +1,6 @@
 <web-view class="{{isIpx?'fix-iphonex-button':''}}" src="{{GoUrl}}"></web-view>
+
+
+<!--<web-view class="{{isIpx?'fix-iphonex-button':''}}" src="http://192.168.120.37/orientation-ele-move/demo/moveDemo.html?url=http://test.jia-fu.cn/app-gasoline/h5/sinopec/sinopecInput?sign=d912b8a4fa2e9f8c10f8ba7a1055d45d&timestamp=1531715818&uid=82956&source=jiaxin&ident=jf-zsh&eid=8883240577"></web-view>-->
+
+

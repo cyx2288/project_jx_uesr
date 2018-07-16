@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/user/choose_nationality/choose_nationality",
+
+
+    "pages/discovery/discovery/discovery",
+
     "pages/common/loading/loading",
 
     "pages/user/girokonto/girokonto",
 
+
+    "pages/user/choose_nationality/choose_nationality",
 
 
     "pages/user/payment_setting/payment_setting",
@@ -55,7 +60,7 @@
     "pages/user/bill/bill",
 
 
-    "pages/discovery/discovery/discovery",
+
     "pages/discovery/webView/index",
     "pages/user/cash_give_details/give_details",
     "pages/user/no_certification/certification",
@@ -89,35 +94,6 @@
     "pages/user/personal/personal",
     "pages/user/certification/certification",
     "pages/common/authentication/authentication",
-
-    "example/index",
-    "example/button/button",
-    "example/list/list",
-    "example/input/input",
-    "example/slider/slider",
-    "example/uploader/uploader",
-    "example/article/article",
-    "example/badge/badge",
-    "example/flex/flex",
-    "example/footer/footer",
-    "example/gallery/gallery",
-    "example/grid/grid",
-    "example/icons/icons",
-    "example/loadmore/loadmore",
-    "example/panel/panel",
-    "example/preview/preview",
-    "example/progress/progress",
-    "example/actionsheet/actionsheet",
-    "example/dialog/dialog",
-    "example/msg/msg",
-    "example/msg/msg_success",
-    "example/msg/msg_fail",
-    "example/picker/picker",
-    "example/toast/toast",
-    "example/navbar/navbar",
-    "example/tabbar/tabbar",
-    "example/searchbar/searchbar",
-
     "component/toastLoading/loading"
 
 

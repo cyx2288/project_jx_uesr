@@ -95,3 +95,22 @@
 
 
 </view>
+
+
+<view>
+
+    <view class="title">测试</view>
+
+    <view class="content">
+
+        <!-- 加油卡 -->
+        <view class="scene" bindtap="testUrl">
+            <view>测试</view>
+            <view>中石油、中石化油卡充值</view>
+        </view>
+
+    </view>
+
+
+
+</view>
