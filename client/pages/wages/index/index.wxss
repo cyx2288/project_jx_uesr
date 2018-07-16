@@ -34,11 +34,12 @@ page{
 
     display:flex ;
     justify-content: flex-start;
+    padding: 30rpx 6%;
 
 }
-.asset_left{
+.flex_center{
+    justify-content: space-between;
 
-    padding: 30rpx 6%;
 }
 .asset_money >.money_icon{
 
