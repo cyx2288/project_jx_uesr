@@ -24,6 +24,27 @@ page{
     justify-content: center;
 
 }
+.asset_right{
+
+    display:flex ;
+    justify-content: space-between;
+     padding:20rpx 6%
+}
+.asset_left{
+
+    display:flex ;
+    justify-content: flex-start;
+
+}
+.asset_left{
+
+    padding: 30rpx 6%;
+}
+.asset_money >.money_icon{
+
+    justify-content: flex-start;
+
+}
 
 
 .money_number{

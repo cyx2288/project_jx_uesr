@@ -13,9 +13,7 @@ Page({
 
         var that =this;
 
-        var _goUrl = 'http://192.168.120.37/orientation-ele-move/demo/moveDemo.html'+'?url='+encodeURIComponent(wx.getStorageSync('GoUrl'));
-
-        console.log(_goUrl)
+        var _goUrl = wx.getStorageSync('GoUrl');
 
         var _goNav = wx.getStorageSync('GoNav');
 

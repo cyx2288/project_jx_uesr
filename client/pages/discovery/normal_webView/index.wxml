@@ -1,0 +1,3 @@
+<web-view class="{{isIpx?'fix-iphonex-button':''}}" src="{{GoUrl}}"></web-view>
+
+
