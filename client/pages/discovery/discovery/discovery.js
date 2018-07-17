@@ -562,26 +562,6 @@ Page({
 
     },
 
-    urlNoramlFn:function (e) {
-
-
-        wx.navigateTo({
-
-            url:"../normal_webView/index"
-
-        });
-
-
-        wx.setStorageSync('GoUrl',e.currentTarget.dataset.url);
-
-        wx.setStorageSync('GoNav',e.currentTarget.dataset.name);
-
-        console.log(wx.getStorageSync('GoUrl'));
-
-        console.log(wx.getStorageSync('GoNav'));
-
-    },
-
 
 
 

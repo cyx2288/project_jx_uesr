@@ -148,6 +148,7 @@ Page({
         var thisUrl = app.globalData.URL + companyUrl;
 
 
+
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 

@@ -25,7 +25,7 @@
 
 
         <!-- 火车票预订 -->
-        <view class="scene" bindtap="urlNoramlFn" data-url="{{trainUrl}}" data-name="高铁管家">
+        <view class="scene" bindtap="urlFn" data-url="{{trainUrl}}" data-name="高铁管家">
             <image src="../../../static/icon/wages/jx_train_ticket.png"  class="mall_service"/>
             <view class="service_title">火车票预订</view>
             <view class="service_text">网上预订火车票</view>
@@ -33,7 +33,7 @@
 
 
         <!-- 滴滴出行 -->
-        <view class="scene" bindtap="urlNoramlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
+        <view class="scene" bindtap="urlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
             <image src="../../../static/icon/wages/jx_dripping.png"  class="mall_service"/>
             <view class="service_title">滴滴出行</view>
             <view class="service_text">滴滴快车/专车出行</view>
@@ -58,14 +58,14 @@
     <view class="content">
 
         <!-- 加油卡 -->
-        <view  class="scene" bindtap="urlNoramlFn" data-url="{{jdUrl}}" data-name="京东商城">
+        <view  class="scene" bindtap="urlFn" data-url="{{jdUrl}}" data-name="京东商城">
             <image src="../../../static/icon/wages/jx_jdong.png"  class="mall_service"/>
             <view class="service_title">京东商城</view>
             <view class="service_text">京东自营商品</view>
         </view>
 
         <!-- 话费充值 -->
-        <view class="scene" bindtap="urlNoramlFn" data-url="{{mtUrl}}" data-name="美团点评">
+        <view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">
             <image src="../../../static/icon/wages/jx_meituan.png"  class="mall_service"/>
             <view class="service_title">美团点评</view>
             <view class="service_text">美团大众点评餐饮服务</view>
@@ -105,7 +105,7 @@
     <view class="content">
 
         <!-- 嘉白条 -->
-        <view  class="scene" bindtap="urlNoramlFn" data-url="{{jbtUrl}}" data-name="嘉白条">
+        <view  class="scene" bindtap="urlFn" data-url="{{jbtUrl}}" data-name="嘉白条">
             <image src="../../../static/icon/wages/jx_white_bar.png"  class="mall_service"/>
             <view class="service_title">嘉白条</view>
             <view class="service_text">中石油/中石化油卡充值</view>

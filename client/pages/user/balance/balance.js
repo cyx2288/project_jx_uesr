@@ -13,7 +13,7 @@ Page({
 
     data:{
 
-        wages:'--.--',//工资余额
+        wages:'--.--',//可提资金
 
         frozenSalary:'--.--',//冻结资金
 
@@ -152,19 +152,7 @@ Page({
                             url:'../../common/signin/signin'
                         })
 
-                    },1500)
-
-                    /*                          wx.showToast({
-                     title: res.data.msg,
-                     icon: 'none',
-                     duration: 1500,
-                     success:function () {
-
-
-
-                     }
-
-                     })*/
+                    },1500);
 
                     return false
 
@@ -350,6 +338,9 @@ Page({
             success: function (res) {
 
                 if (res.confirm) {
+
+                    //点击去解冻 储存 用于判断跳回哪个页面(再实名认证成功之后获取）
+                    wx.setStorageSync('goFrozen','1');
 
                     wx.navigateTo({
 
