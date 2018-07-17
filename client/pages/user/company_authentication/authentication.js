@@ -27,6 +27,10 @@ Page({
 
         var thisMobile = wx.getStorageSync('mobile');
 
+        var _goFrozen = wx.getStorageSync('goFrozen');
+
+        console.log('1是去解冻，2是正常 这次是：'+wx.getStorageSync('goFrozen'));
+
         //console.log('姓名'+userName)
 
         this.setData({
@@ -86,7 +90,7 @@ Page({
 
                 var thisCode = res.data.code;
 
-                console.log(res.data);
+
 
                 //console.log(res.data.data[0].entId)
 
@@ -155,9 +159,32 @@ Page({
                         //关闭当前页面
 
 
-                         wx.navigateBack({
-                             delta: 1
-                         })
+                        if(_goFrozen=='1'){
+
+                            console.log('解冻回工资余额')
+
+                            wx.navigateBack({
+                                delta: 2
+                            })
+
+                        }
+                        else if(_goFrozen=='2'){
+
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+                        }
+
+                        else {
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+                        }
+
 
                     /*    wx.redirectTo({
 

@@ -71,7 +71,7 @@
 
              <view class="password_image">
 
-                   <text class="reset_money">{{wages}}</text>
+                   <text class="reset_money">{{totalSalary}}</text>
 
                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
@@ -130,7 +130,7 @@
 
 
        <!--我的工作单位-->
-       <navigator url="../company/company" class="mine_welfare">
+       <view bindtap='companyFn' class="mine_welfare">
 
         <view class="jx_mine_left">
             <view class="jx_record">
@@ -149,7 +149,7 @@
 
         </view>
 
-    </navigator>
+    </view>
          <hr/>
 
       <!--消息-->

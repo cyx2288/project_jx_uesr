@@ -9,6 +9,21 @@ Page({
 
     data: {
 
+        countryList:[{
+
+            value:'',
+
+            list:[{
+
+                name:'',
+
+                enName:''
+            }]
+
+        }],
+
+
+
 
 
     },
@@ -47,6 +62,8 @@ Page({
 
             success: function (res) {
 
+                var countryListData=[];//导进去的对象
+
                 console.log(res.data.data);
 
                 //code3003返回方法
@@ -73,11 +90,55 @@ Page({
 
                 else {
 
-                    var countrylist = res.data.data
+                    var countryList = res.data.data
 
-                    for(var x in countrylist){
+                    console.log(countryList)
 
-                        console.log(x)
+                    for(var ii in countryList) {
+
+                        var onData = {
+
+                            value: '',
+
+                            list: []
+
+                        };
+
+                        if (ii.length == 1||ii=='hotCountry') {
+
+                            if(ii=='hotCountry'){
+
+                                onData.value='热门城市'
+
+                            }
+
+                            else {
+
+                                onData.value = ii;
+
+                            }
+
+                            for (var jj = 0; jj < countryList[ii].length; jj++) {
+
+                                onData.list.push({
+
+                                    name: countryList[ii][jj].shortName,
+
+                                    enName: countryList[ii][jj].englishName
+
+                                })
+
+                            }
+
+                            countryListData.push(onData)
+
+                        }
+
+                        that.setData({
+
+                            countryList: countryListData,
+                        })
+
                     }
 
 

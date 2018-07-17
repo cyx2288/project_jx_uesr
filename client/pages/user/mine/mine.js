@@ -8,6 +8,8 @@ const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
+const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
+
 
 Page({
 
@@ -16,7 +18,7 @@ Page({
 
         mobile: '',//个人中心手机号
 
-        wages: '',//工资余额
+        totalSalary: '',//工资余额
 
         hasJoinEnt: true,//默认不显示有新的邀请 true为不显示 false为显示
 
@@ -399,14 +401,14 @@ Page({
             })
 
             /**
-             * 接口：获取用户余额
+             * 接口：获取用户工资金额状况
              * 请求方式：GET
-             * 接口：/user/account/getbalance
+             * 接口：/user/bank/getsalarystatus
              * 入参：null
              **/
             wx.request({
 
-                url: thisBalanceUrl,
+                url: app.globalData.URL + statusUrl,
 
                 method: 'GET',
 
@@ -420,12 +422,11 @@ Page({
 
                 success: function (res) {
 
+                    //wx.setStorageSync('wages', res.data.data);
 
-                    console.log(res.data);
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    app.globalData.repeat(res.data.code, res.data.msg);
-
-                    if (res.data.code == '3001') {
+                    if(res.data.code=='3001') {
 
                         //console.log('登录');
 
@@ -433,22 +434,10 @@ Page({
 
                             wx.reLaunch({
 
-                                url: '../../common/signin/signin'
+                                url:'../../common/signin/signin'
                             })
 
-                        }, 1500)
-
-                        /*                        wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success: function () {
-
-
-
-                         }
-
-                         })*/
+                        },1500);
 
                         return false
 
@@ -457,15 +446,16 @@ Page({
 
                     else {
 
+                        console.log(res.data);
 
                         that.setData({
 
-                            wages: radixPointFn.splitK(res.data.data)//用户余额
+                            totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+
 
                         });
 
-                        //获取余额
-                        wx.setStorageSync('wages', res.data.data);
+
 
                         (function countDownAjax() {
 
@@ -478,7 +468,6 @@ Page({
 
                     }
 
-
                 },
 
 
@@ -489,6 +478,7 @@ Page({
                 }
 
             })
+
 
 
         }
@@ -509,12 +499,23 @@ Page({
 
         })
 
+    },
 
+    companyFn:function () {
 
+        //点击去解冻&点击我的发薪企业后储存 用于判断跳回企业还是工资余额(再实名认证成功之后获取）
+        wx.setStorageSync('goFrozen','2');
+
+        wx.navigateTo({
+
+            url:"../company/company"
+
+        })
     },
 
     //转发
     onShareAppMessage: function () {
+
         return {
             title: '嘉薪平台',
             path: '/pages/common/signin/signin',

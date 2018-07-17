@@ -42,9 +42,9 @@
     </view>
 </view>
 <!-- 列表-->
-<view class="help_service">
+<view class="help_service" >
 
-    <view class="bank_classify">热门</view>
+<!--    <view class="bank_classify">热门</view>
 
     <view class="weui-cells">
 
@@ -116,28 +116,27 @@
             <text class="service_title">中国邮政储蓄银行</text>
         </view>
         <hr/>
-    </view>
+    </view>-->
 
-    <!--按字母分类-->
+    <view wx:for="{{countryList}}">
 
-    <view class="bank_classify">A</view>
-    <view class="weui-cells">
+        <!--按字母分类-->
 
-        <view class="weui-help">
+        <view class="bank_classify">{{item.value}}</view>
+        <view class="weui-cells" wx:for="{{item.list}}" wx:for-item="list">
 
-            <text class="service_title">北京农村商业银行</text>
-        </view>
-        <hr/>
+            <view class="weui-help">
+
+                <view class="service_title">{{list.name}}<span class="en_name">{{list.enName}}</span></view>
+            </view>
+            <hr/>
 
 
-
-        <view class="weui-help">
-
-            <text class="service_title">北京银行</text>
         </view>
 
-
     </view>
+
+
 
 
 

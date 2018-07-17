@@ -1,5 +1,9 @@
 {
   "pages": [
+
+
+
+
     "pages/common/loading/loading",
     "pages/common/wages_authentication/authentication",
     "pages/common/authentication/authentication",
@@ -9,6 +13,8 @@
     "pages/common/user_agreement/user_agreement",
 
 
+    "pages/user/choose_nationality/choose_nationality",
+
 
     "pages/wages/index/index",
     "pages/wages/payroll/payroll",
@@ -17,7 +23,6 @@
 
     "pages/discovery/discovery/discovery",
     "pages/discovery/webView/index",
-    "pages/discovery/normal_webView/index",
 
 
 
@@ -30,7 +35,7 @@
     "pages/user/details/details",
     "pages/user/bill/bill",
     "pages/user/girokonto/girokonto",
-    "pages/user/choose_nationality/choose_nationality",
+
     "pages/user/payment_setting/payment_setting",
     "pages/user/balance/balance",
     "pages/user/account_cash/account_cash",
