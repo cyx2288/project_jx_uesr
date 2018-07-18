@@ -137,7 +137,7 @@
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">限额说明：单卡单笔50,000.00元，当日100,000.00元，当月100,000.00元</view>
+                <view class="weui-media-box__desc font_small">限额说明：单卡单笔49,000元，当日100,000.00元，当月100,000.00元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 

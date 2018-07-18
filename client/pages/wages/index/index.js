@@ -871,6 +871,8 @@ Page({
 
                             success: function (res) {
 
+
+
                                 //wx.setStorageSync('wages', res.data.data);
 
                                 app.globalData.repeat(res.data.code,res.data.msg);
@@ -888,17 +890,7 @@ Page({
 
                                     },1500)
 
-                                    /*                          wx.showToast({
-                                     title: res.data.msg,
-                                     icon: 'none',
-                                     duration: 1500,
-                                     success:function () {
 
-
-
-                                     }
-
-                                     })*/
 
                                     return false
 
@@ -907,14 +899,17 @@ Page({
 
                                 else {
 
+                                    console.log(res.data)
+
+                                        that.setData({
+
+                                            wages: radixPointFn.splitK(res.data.data)//用户余额
+
+                                        });
 
 
 
-                                    that.setData({
 
-                                        wages: radixPointFn.splitK(res.data.data)//用户余额
-
-                                    });
                                 }
 
                             },
@@ -967,17 +962,7 @@ Page({
 
                                     },1500)
 
-                                    /*                          wx.showToast({
-                                     title: res.data.msg,
-                                     icon: 'none',
-                                     duration: 1500,
-                                     success:function () {
 
-
-
-                                     }
-
-                                     })*/
 
                                     return false
 
@@ -988,16 +973,38 @@ Page({
 
                                     console.log(res.data)
 
-                                    that.setData({
+                                    console.log('总资产'+res.data.data)
 
-                                        frozenSalary:radixPointFn.splitK(res.data.data.frozenSalary),
-
-                                        enableSalary:radixPointFn.splitK(res.data.data.enableSalary),
-
-                                        totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+                                    if(!res.data.data.totalSalary){
 
 
-                                    })
+                                        that.setData({
+
+                                            totalSalary:'--.--'
+
+                                        })
+
+
+
+                                    }
+
+                                    else {
+
+                                        that.setData({
+
+                                            frozenSalary:radixPointFn.splitK(res.data.data.frozenSalary),
+
+                                            enableSalary:radixPointFn.splitK(res.data.data.enableSalary),
+
+                                            totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+
+
+                                        })
+
+                                    }
+
+
+
 
 
                                 }

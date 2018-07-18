@@ -446,14 +446,34 @@ Page({
 
                     else {
 
-                        console.log(res.data);
 
-                        that.setData({
-
-                            totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+                        if(!res.data.data.totalSalary){
 
 
-                        });
+                            that.setData({
+
+                                totalSalary:'--.--'
+
+                            })
+
+
+
+                        }
+
+                        else {
+
+                            console.log(res.data);
+
+                            that.setData({
+
+                                totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+
+
+                            });
+
+                        }
+
+
 
 
 

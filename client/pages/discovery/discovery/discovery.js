@@ -28,6 +28,12 @@ Page({
 
         didiUrl:'',//滴滴
 
+        mtUrl:'',//美团
+
+        jbtUrl:'',//嘉白条
+
+        jdUrl:'',//京东
+
     },
     onShow: function () {
 
@@ -188,7 +194,7 @@ Page({
         })
 
         //二维码
-        wx.request({//注册
+        /*wx.request({//注册
 
             url: app.globalData.URL + codeUrl,
 
@@ -205,7 +211,7 @@ Page({
 
             success: function (res) {
 
-                //console.log(res.data);
+                console.log(res.data.data);
 
                 //code3003返回方法
                 app.globalData.repeat(res.data.code,res.data.msg);
@@ -255,7 +261,7 @@ Page({
                 console.log(res)
             }
 
-        })
+        })*/
 
         //滴滴
         wx.request({//注册

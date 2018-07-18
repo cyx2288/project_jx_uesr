@@ -29,6 +29,12 @@ Page({
 
         var _goFrozen = wx.getStorageSync('goFrozen');
 
+
+        this.setData({
+
+            
+        })
+
         console.log('1是去解冻，2是正常 这次是：'+wx.getStorageSync('goFrozen'));
 
         //console.log('姓名'+userName)
@@ -102,7 +108,6 @@ Page({
 
                 //要刷新首页
                 wx.setStorageSync('successRefresh','true');
-
 
 
                 if(res.data.code=='3001') {
