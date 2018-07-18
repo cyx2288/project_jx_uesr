@@ -14,7 +14,20 @@ page{
 padding-bottom:0px;
 
 }
+.weui-cells {
+    border-radius:0;
+    width: auto;
 
+
+}
+.bank_box{
+
+    border-radius:5px;
+    margin:0 auto;
+    overflow:hidden;
+    width: 94%;
+
+}
 
 .service_title {
     display: block;
@@ -38,7 +51,6 @@ padding-bottom:0px;
 
 .weui-help{
     display: flex;
-    padding: 5px 15px;
     width: 92%;
     line-height: 10px;
     margin: 0 auto;
@@ -65,5 +77,5 @@ hr {
     margin: 0 auto;
 }
 .en_name{
-
+margin-left: 10px;
 }

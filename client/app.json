@@ -4,7 +4,9 @@
 
 
 
+
     "pages/common/loading/loading",
+
     "pages/common/wages_authentication/authentication",
     "pages/common/authentication/authentication",
     "pages/common/forget_password/forget_password",
@@ -12,9 +14,14 @@
     "pages/common/signin/signin",
     "pages/common/user_agreement/user_agreement",
 
-
     "pages/user/choose_nationality/choose_nationality",
 
+
+    "pages/user/mainland_certification/mainland",
+
+
+
+    "pages/user/details/details",
 
     "pages/wages/index/index",
     "pages/wages/payroll/payroll",
@@ -32,7 +39,7 @@
     "pages/user/payment_setting_code/payment_setting_code",
     "pages/user/payment_setting_message/payment_setting_message",
     "pages/user/company/company",
-    "pages/user/details/details",
+
     "pages/user/bill/bill",
     "pages/user/girokonto/girokonto",
 

@@ -27,6 +27,7 @@ Page({
 
         that.loadList()
 
+
     },
 
     loadList:function () {
@@ -92,19 +93,7 @@ Page({
                                 url:'../../common/signin/signin'
                             })
 
-                        },1500)
-
-         /*               wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
+                        },1500);
 
                         return false
 
@@ -115,7 +104,32 @@ Page({
 
                         var _balanceList = res.data.data.list;
 
-                        console.log(res.data.data.list)
+                        console.log(res.data.data.list);
+
+                        console.log(res.data.data.totalCount)
+
+                        function addList() {
+
+                            function comma(num) {
+
+                                var source = String(num).split(".");//按小数点分成2部分
+                                source[0] = source[0].replace(new RegExp('(\\d)(?=(\\d{3})+$)','ig'),"$1,");//只将整数部分进行都好分割
+                                return source.join(".");//再将小数部分合并进来
+
+                            }
+
+
+
+                            for (var j = 0; j < _balanceList.length; j++) {
+
+                                _balanceList[j].transAmt = comma(_balanceList[j].transAmt)
+
+
+                            }
+
+
+
+                        }
 
                         //如果没有数据
                         if (!that.data.noData) {
@@ -135,7 +149,11 @@ Page({
                         }
 
 
-                        else if (res.data.data.list.length < 10) {//这一组小于十个
+                        else if (res.data.data.totalCount <= 10) {//这一组小于十个
+
+                            console.log('小于10')
+
+                            addList()
 
                             //增加数组内容
                             that.setData({
@@ -148,35 +166,33 @@ Page({
                             })
 
 
-                            for (var j = 0; j < that.data.balanceList.length; j++) {
-
-                                that.data.balanceList[j].transAmt = radixPointFn.splitK(that.data.balanceList[j].transAmt)
-
-
-                            }
-
 
                         }
 
                         else {
 
-                            console.log('增加成功')
-
-                            //增加数组内容
-                            that.setData({
-
-                                balanceList: that.data.balanceList.concat(_balanceList),
-
-                                pageNum: that.data.pageNum + 1//加一页
-
-                            })
-
-                            for (var j = 0; j < that.data.balanceList.length; j++) {
-
-                                that.data.balanceList[j].transAmt = radixPointFn.splitK(that.data.balanceList[j].transAmt)
 
 
-                            }
+
+                                console.log('增加成功')
+
+                                addList()
+
+                                //增加数组内容
+                                that.setData({
+
+                                    balanceList: that.data.balanceList.concat(_balanceList),
+
+                                    pageNum: that.data.pageNum + 1//加一页
+
+                                })
+
+
+
+
+
+
+
 
 
                         }

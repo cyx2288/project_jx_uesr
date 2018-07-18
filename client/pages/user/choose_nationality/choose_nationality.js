@@ -9,18 +9,19 @@ Page({
 
     data: {
 
-        countryList:[{
+        countryCityList:[{
 
-            value:'',
+            initial:'',
 
-            list:[{
-
-                name:'',
-
-                enName:''
-            }]
+            list:[]
 
         }],
+
+        inputShowed: false,
+
+        inputVal: '',
+
+        searchInitial:'',//首字母
 
 
 
@@ -50,6 +51,12 @@ Page({
 
             method: 'POST',
 
+            data:json2FormFn.json2Form({
+
+                countryName:that.data.searchInitial
+
+            }),
+
             header: {
 
                 'content-type': 'application/x-www-form-urlencoded', // post请求
@@ -61,8 +68,6 @@ Page({
             },
 
             success: function (res) {
-
-                var countryListData=[];//导进去的对象
 
                 console.log(res.data.data);
 
@@ -80,7 +85,7 @@ Page({
                             url: '../../common/signin/signin'
                         })
 
-                    }, 1500)
+                    }, 1500);
 
 
                     return false
@@ -90,56 +95,84 @@ Page({
 
                 else {
 
-                    var countryList = res.data.data
+                    var _list = res.data.data;//得到的数据
 
-                    console.log(countryList)
+                    //console.log(_list)
 
-                    for(var ii in countryList) {
+                    var countryListData=[];//导进去的对象
 
-                        var onData = {
 
-                            value: '',
 
-                            list: []
+                    //对数组的属性进行循环
+                    for(var x in _list){
 
-                        };
 
-                        if (ii.length == 1||ii=='hotCountry') {
+                        //字母和热门城市进行渲染 其他不要渲染
 
-                            if(ii=='hotCountry'){
+                        if(x.length==1 || (x=='hotCountry'&&!that.data.searchInitial)){
 
-                                onData.value='热门城市'
+
+                            //单个小数据
+                            var aDataList = {
+
+                                initial: '',//首字母
+
+                                list: []//城市名字
+
+                            };
+
+
+                            //首字母是hotCountry的改成热门城市 不然还是按abcd渲染
+
+                            if(x=='hotCountry'){
+
+                                aDataList.initial='热门城市';
 
                             }
 
                             else {
 
-                                onData.value = ii;
+                                aDataList.initial=x;
 
                             }
 
-                            for (var jj = 0; jj < countryList[ii].length; jj++) {
+                            //循环每个数组的value
 
-                                onData.list.push({
+                            for(var z=0;z<_list[x].length;z++){
 
-                                    name: countryList[ii][jj].shortName,
+                                //中文名和英文名建立数组
+                                var _nameList={
 
-                                    enName: countryList[ii][jj].englishName
+                                    name:'',
 
-                                })
+                                    enName:'',
+
+                                }
+
+                                //吧每个value代进去
+                                   _nameList.name = _list[x][z].shortName;
+
+                                    _nameList.enName = _list[x][z].englishName;
+
+
+                                //把中文名和英文的放到新的数组
+                                aDataList.list.push(_nameList)
 
                             }
 
-                            countryListData.push(onData)
+                            //把小数组放到大的模型里面
+                            countryListData.push(aDataList)
 
                         }
 
-                        that.setData({
-
-                            countryList: countryListData,
-                        })
 
                     }
+
+                    that.setData({
+
+                        countryCityList:countryListData
+
+                    })
 
 
                 }
@@ -160,5 +193,85 @@ Page({
 
 
     },
+
+
+
+    chooseCityFn:function (e) {
+
+        console.log(e.currentTarget.dataset.name)
+
+        wx.setStorageSync('chooseCity',e.currentTarget.dataset);
+
+
+
+
+
+
+
+    },
+
+    showInput: function () {
+
+        this.setData({
+
+
+            inputShowed: true
+        });
+
+
+    },
+
+    hideInput: function () {
+
+        var that = this;
+
+        that.setData({
+            inputVal: '',
+            searchInitial:'',//首字母
+            inputShowed: false
+        });
+
+        that.onShow();
+
+
+
+
+    },
+
+    clearInput: function () {
+        this.setData({
+            inputVal: '',
+            searchInitial:'',//首字母
+        });
+        this.onShow();
+    },
+
+    inputTyping: function (e) {
+
+        this.setData({
+            inputVal: e.detail.value
+        });
+
+    },
+
+    inputValueGain:function (e) {
+
+        var that = this;
+
+        var reg = /^[a-zA-Z\u4e00-\u9fa5]+$/;
+
+        that.setData({
+
+            searchInitial:e.detail.value
+
+        })
+
+
+
+        that.onShow()
+
+    },
+
+
 
 })

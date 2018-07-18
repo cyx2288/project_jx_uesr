@@ -10,3 +10,15 @@
     background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
     font-size: 16px;
 }
+.bottom_tips{
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #ababab;
+    font-size: 24rpx;
+    text-align: center;
+    padding: 20rpx;
+    box-sizing: border-box;
+
+}

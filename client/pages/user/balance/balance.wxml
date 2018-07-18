@@ -13,13 +13,13 @@
 
     <view class="other_momey">
         <view class="money_detail">
-            <view>可提资金（元）</view>
+            <view>可提工资（元）</view>
             <view>{{wages}}</view>
 
         </view>
 
         <view class="money_detail">
-            <view><span>冻结资金（元）</span><image bindtap="frozenFn" class="question_main" src="../../../static/icon/wages/jx_ask_mine.png"/></view>
+            <view><span>冻结工资（元）</span><image bindtap="frozenFn" class="question_main" src="../../../static/icon/wages/jx_ask_mine.png"/></view>
             <view>{{frozenSalary}}</view>
 
         </view>
@@ -104,3 +104,10 @@
     <button class="weui-btn" type="primary">提现</button>
 </navigator>
 -->
+
+<view class="bottom_tips">
+
+    <view>账户资金由以下机构进行委托管理：</view>
+
+    <view>平安付科技服务有限公司、汇潮支付有限公司、新浪支付有限公司</view>
+</view>
