@@ -1,5 +1,5 @@
 
-<view class="jx_welfare_mall">
+<!--<view class="jx_welfare_mall">
 
     <view class="assistant_life">
           <view class="title_line"></view>
@@ -9,14 +9,14 @@
     <hr/>
     <view class="content">
 
-        <!-- 加油卡 -->
+        &lt;!&ndash; 加油卡 &ndash;&gt;
         <view  class="scene" bindtap="urlFn" data-url="{{jykUrl}}" data-name="加油卡充值">
             <image src="../../../static/icon/wages/jx_fuel_card.png"  class="mall_service"/>
             <view class="service_title">加油卡充值</view>
 
         </view>
 
-        <!-- 话费充值 -->
+        &lt;!&ndash; 话费充值 &ndash;&gt;
         <view class="scene">
             <image src="../../../static/icon/wages/jx_recharge.png"  class="mall_service"/>
             <view class="service_title">话费充值</view>
@@ -24,7 +24,7 @@
         </view>
 
 
-        <!-- 火车票预订 -->
+        &lt;!&ndash; 火车票预订 &ndash;&gt;
         <view class="scene" bindtap="urlFn" data-url="{{trainUrl}}" data-name="高铁管家">
             <image src="../../../static/icon/wages/jx_train_ticket.png"  class="mall_service"/>
             <view class="service_title">火车票预订</view>
@@ -32,7 +32,7 @@
         </view>
 
 
-        <!-- 滴滴出行 -->
+        &lt;!&ndash; 滴滴出行 &ndash;&gt;
         <view class="scene" bindtap="urlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
             <image src="../../../static/icon/wages/jx_dripping.png"  class="mall_service"/>
             <view class="service_title">滴滴出行</view>
@@ -44,14 +44,14 @@
 
 
 
-</view>
+</view>-->
 
 
 
 <view class="jx_welfare_mall">
     <view class="assistant_life">
         <view class="title_line"></view>
-        <view class="title">吃喝玩购</view>
+        <view class="title">购物</view>
     </view>
 
     <hr/>
@@ -65,19 +65,19 @@
         </view>
 
         <!-- 话费充值 -->
-        <view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">
+        <!--<view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">
             <image src="../../../static/icon/wages/jx_meituan.png"  class="mall_service"/>
             <view class="service_title">美团点评</view>
 
-        </view>
+        </view>-->
 
 
         <!-- 火车票预订 -->
-        <view class="scene">
+<!--        <view class="scene">
             <image src="../../../static/icon/wages/jx_card_mall.png"  class="mall_service"/>
             <view class="service_title">卡券商城</view>
 
-        </view>
+        </view>-->
 
 
         <!-- 滴滴出行 -->

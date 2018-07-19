@@ -513,44 +513,43 @@ Page({
 
         })
 
-/*
-        if(!reg1.test(lastInputBalace)){
+        /*
+         if(!reg1.test(lastInputBalace)){
 
-            console.log('判断上次')
+         console.log('判断上次')
 
-            that.setData({
+         that.setData({
 
-                disabled:true
+         disabled:true
 
-            })
+         })
 
-        }
+         }
 
-        else if(!reg1.test(thisInputBalance)){
+         else if(!reg1.test(thisInputBalance)){
 
-            console.log('')
-
-
-            that.setData({
-
-                disabled:true
-
-            })
+         console.log('')
 
 
-        }
+         that.setData({
 
-        else {
+         disabled:true
 
-            that.setData({
+         })
 
-                disabled:false
 
-            })
+         }
 
-        }
-*/
+         else {
 
+         that.setData({
+
+         disabled:false
+
+         })
+
+         }
+         */
 
 
         console.log('上次：' + !reg1.test(lastInputBalace))

@@ -19,6 +19,8 @@ Page({
 
         mobile:'',
 
+        goFrozenValue:''
+
     },
 
     onLoad:function () {
@@ -27,15 +29,11 @@ Page({
 
         var thisMobile = wx.getStorageSync('mobile');
 
-        var _goFrozen = wx.getStorageSync('goFrozen');
 
 
-        this.setData({
+        //console.log('1是去解冻，2是正常 这次是：'+wx.getStorageSync('goFrozen'));
 
-            
-        })
-
-        console.log('1是去解冻，2是正常 这次是：'+wx.getStorageSync('goFrozen'));
+        //console.log(this.data.goFrozenValue)
 
         //console.log('姓名'+userName)
 
@@ -53,7 +51,6 @@ Page({
 
         var thisDentityUrl = app.globalData.URL+dentityUrl;
 
-
         //缓存jx_sid&&Authorization数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -61,7 +58,11 @@ Page({
 
         var thisEntId = wx.getStorageSync('entId');
 
+        var goFrozenValue = wx.getStorageSync('goFrozen');
+
         //console.log(thisEntId)
+
+        console.log('点击')
 
 
         /**
@@ -97,6 +98,7 @@ Page({
                 var thisCode = res.data.code;
 
 
+                console.log(res.data)
 
                 //console.log(res.data.data[0].entId)
 
@@ -164,7 +166,7 @@ Page({
                         //关闭当前页面
 
 
-                        if(_goFrozen=='1'){
+                        if(goFrozenValue=='1'){
 
                             console.log('解冻回工资余额')
 
@@ -173,7 +175,7 @@ Page({
                             })
 
                         }
-                        else if(_goFrozen=='2'){
+                        else if(goFrozenValue=='2'){
 
 
                             wx.navigateBack({

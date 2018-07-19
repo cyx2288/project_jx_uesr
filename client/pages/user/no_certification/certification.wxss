@@ -3,9 +3,65 @@
 .password_image{
 
     color: #8a8a8a;
+    line-height: 38px;
 }
 
 .account_information_tel {
     color:#4a4a4a;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding: 6px;
+    font-size: 16px;
 
 }
+.weui-label{
+
+    color: #8a8a8a;
+}
+
+.select_certification{
+
+    text-align: right;
+     font-size: 16px;
+}
+
+.city_box{
+
+    display: flex;
+    align-items: center;
+    padding-right: 20rpx;
+    justify-content:flex-end;
+    min-width:200px;
+
+}
+
+.tel_special{
+
+    padding-right: 10px;
+}
+
+/*
+.weui-cell__hd_in-select-after{
+
+    padding-left: 0px;
+    color: #8a8a8a;
+
+
+}
+.account_information_tel{
+    margin-right: 10rpx;
+    line-height: 38px;
+    padding-top:0;
+    padding-bottom:0;
+
+
+}
+
+.tel_special{
+    padding-top:3px;
+    padding-bottom:6px;
+
+
+}*/

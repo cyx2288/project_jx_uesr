@@ -175,6 +175,9 @@ Page({
                 wx.removeStorageSync('Authorization');
 
 
+                wx.clearStorageSync();
+
+
                 logOut();
 
 
