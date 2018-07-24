@@ -168,7 +168,7 @@ Page({
         var _isVerify = wx.getStorageSync('isVerify');
 
         //判断是否认证
-        if(_isVerify=='0'){
+        if(_isVerify=='0'||_isVerify == '3'){
 
             //存指定的页面
             wx.setStorageSync('hrefId','8');
@@ -205,6 +205,38 @@ Page({
 
 
         }
+
+        else if(_isVerify == '2'){
+
+            //存指定的页面
+            wx.setStorageSync('hrefId','8');
+
+            //区别是在设置页面修改密码成功还是在提现中忘记密码设置成功（在设置密码成功后取值）
+            //4为从设置支付方式按钮
+            wx.setStorageSync('paySettingHref','8');
+
+            wx.showModal({
+                title: '提示',
+                content: '实名认证审核中，审核通过后即可设置支付密码',
+                showCancel:false,
+                confirmText: '我知道了',
+                confirmColor:'#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+
+                    }
+
+                    else if (res.cancel) {
+
+
+                    }
+                }
+            });
+
+        }
+
 
         else {
 

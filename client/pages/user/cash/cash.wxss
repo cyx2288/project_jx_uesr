@@ -105,6 +105,11 @@ label.cash_input{
 .amount_box{
     padding-left: 0;
 }
+.max_img{
+
+    width: 60rpx;
+    height: 60rpx;
+}
 
 label.cash_input>.account_information_tel{
 
@@ -126,6 +131,12 @@ label.cash_input>.account_information_tel{
     align-content: flex-start;
 
 }
+.card_card_content{
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+
+}
 
 span.money_style{
 
@@ -133,6 +144,11 @@ span.money_style{
     color: #fe9728;
     display: inline-block;
 
+}
+.jx_record{
+
+    width: 60rpx;
+    height: 60rpx;
 }
 
 .details_date{

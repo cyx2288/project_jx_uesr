@@ -2,14 +2,19 @@
   "pages": [
 
 
-
-
+    "component/actionSheet/actionSheet",
 
     "pages/common/loading/loading",
-
+    "pages/user/cash/cash",
     "pages/user/no_certification/certification",
+    "pages/user/choose_nationality/choose_nationality",
+
+    "pages/user/upload_success/upload_success",
+    "pages/user/upload_fail/upload_fail",
 
 
+    "pages/user/mainland_certification/mainland",
+    "pages/user/passport_certification/passport",
 
     "pages/common/wages_authentication/authentication",
     "pages/common/authentication/authentication",
@@ -17,22 +22,6 @@
     "pages/common/revise_login/revise_login",
     "pages/common/signin/signin",
     "pages/common/user_agreement/user_agreement",
-
-    "pages/user/choose_nationality/choose_nationality",
-
-
-
-
-
-
-
-
-
-    "pages/user/mainland_certification/mainland",
-
-
-
-
 
 
 
@@ -59,6 +48,7 @@
     "pages/user/girokonto/girokonto",
 
     "pages/user/payment_setting/payment_setting",
+
     "pages/user/balance/balance",
     "pages/user/account_cash/account_cash",
     "pages/user/transfer_details/transfer_details",
@@ -69,7 +59,7 @@
     "pages/user/feedback/feedback",
     "pages/user/give_details/give_details",
     "pages/user/mine/mine",
-    "pages/user/cash/cash",
+
     "pages/user/help_service/help_service",
     "pages/user/company_authentication/authentication",
     "pages/user/cash_give_details/give_details",
@@ -103,6 +93,8 @@
 
 
     "component/toastLoading/loading"
+
+
 
 
   ],

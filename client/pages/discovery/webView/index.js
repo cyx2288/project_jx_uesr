@@ -15,6 +15,13 @@ Page({
 
         var _goUrl = wx.getStorageSync('GoUrl');
 
+        wx.setNavigationBarColor({
+
+            frontColor: '#000000',
+            backgroundColor: '#eeeeee',
+
+        });
+
         console.log(_goUrl)
 
         var _goNav = wx.getStorageSync('GoNav');

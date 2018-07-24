@@ -23,6 +23,8 @@ Page({
 
         searchInitial:'',//首字母
 
+        noCity:true,//不显示
+
 
 
 
@@ -70,6 +72,27 @@ Page({
             success: function (res) {
 
                 console.log(res.data.data);
+
+                console.log(res.data.data.firstLetter.length==0)
+
+              if(res.data.data.firstLetter.length==0){
+
+                    that.setData({
+
+                        noCity:false,//不显示
+                    })
+
+                }
+
+                else {
+
+                  that.setData({
+
+                      noCity:true,//不显示
+                  })
+              }
+
+
 
                 //code3003返回方法
                 app.globalData.repeat(res.data.code, res.data.msg);
@@ -174,6 +197,8 @@ Page({
 
                     })
 
+                    //console.log(that.data.countryCityList)
+
 
                 }
 
@@ -193,8 +218,6 @@ Page({
 
 
     },
-
-
 
     chooseCityFn:function (e) {
 
@@ -226,13 +249,26 @@ Page({
 
         var that = this;
 
+        console.log('取消')
+
         that.setData({
+
             inputVal: '',
             searchInitial:'',//首字母
             inputShowed: false
+
         });
 
         that.onShow();
+
+        setTimeout(function () {
+
+            wx.navigateBack({
+                delta: 1
+            })
+
+        },500)
+
 
 
 
@@ -260,6 +296,11 @@ Page({
         var that = this;
 
         var reg = /^[a-zA-Z\u4e00-\u9fa5]+$/;
+
+
+        var regCh = /[\u4e00-\u9fa5]/g;
+
+        //console.log(e.detail.value.match(regCh))
 
         that.setData({
 

@@ -229,12 +229,19 @@ Page({
                         //是否实名认证
                         wx.setStorageSync('isVerify', res.data.data.isVerify);
 
-                        //证件类型
-                        wx.setStorageSync('idType',res.data.data.idStyle);
-
+                        //证件类型 只有花名册导入的时候有
+                        wx.setStorageSync('idType',res.data.data.idType);
 
                         //国籍
                         wx.setStorageSync('nationality',res.data.data.nationality);
+
+
+                        //如果审核不通过的话 存储一下不通过的原因
+                        if(wx.getStorageSync('isVerify')=='3'){
+
+                            wx.setStorageSync('refuseReason',res.data.data.refuseReason);
+
+                        }
 
 
 

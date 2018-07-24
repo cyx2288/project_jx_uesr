@@ -8,6 +8,8 @@ const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
 
 const getpaymode =  '/user/set/getpaymode';//查询支付验证方式
 
+const bankCardJson = require('../../../static/libs/script/bankCardJson.js');//银行卡图标
+
 
 Page({
 
@@ -27,6 +29,8 @@ Page({
         payPassword: '',//支付密码
 
         code: '',//短信验证
+
+        bankIcon:'',
 
         /*bankList: [],//银行卡列表数组*/
 
@@ -100,26 +104,7 @@ Page({
 
         },500);
 
-
-
-        /*
-                wx.showLoading({
-
-                    title: '加载中',
-                    mask:true,
-
-                })
-
-                setTimeout(function(){
-
-                    wx.hideLoading()
-
-                },1000)*/
-
-
-
-        //没认证的去认证
-        if (_isVerify == '0') {
+        if (_isVerify == '0'||_isVerify == '3') {
 
             //存指定的页面  （在实名认证中取值）
             wx.setStorageSync('hrefId','4');
@@ -173,7 +158,57 @@ Page({
 
 
         }
+        else if (_isVerify == '2') {
 
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId','4');
+
+
+            //未认证情况下不弹出键盘
+            that.setData({
+
+                autoFocus:false//是否弹出键盘
+
+
+            })
+
+            wx.showModal({
+                title: '提示',
+                content: '实名认证审核中，审核通过后方可提现',
+                showCancel:false,
+                confirmText: '我知道了',
+                confirmColor:'#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+
+                    }
+
+                    else if (res.cancel) {
+
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }
+
+                    else {
+
+                        wx.navigateBack({
+                            delta: 1
+                        })
+
+
+                    }
+
+                }
+            });
+
+
+
+        }
         else {
 
 
@@ -251,13 +286,49 @@ Page({
                     else {
 
                         //console.log(that.data.userBankCardDTOList);
+
                         that.setData({
 
                             userBankCardDTOList: res.data.data.userBankCardDTOList
 
+                        });
+
+
+
+                        //0703 写的 不要删掉
+                        var _bankList = res.data.data.userBankCardDTOList
+
+                        //console.log(that.data.bankList)
+
+
+                        for(var x in _bankList){
+
+                            //console.log(that.data.bankList[x].bankName)
+
+                            for (var y in bankCardJson.bankCardJson){
+
+                                if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
+
+                                    break;
+
+                                }
+
+                            }
+
+
+                            _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
+
+                            //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
+
+                        }
+
+                        that.setData({
+
+                            userBankCardDTOList:_bankList
+
                         })
 
-                        //console.log(that.data.userBankCardDTOList)
+                        console.log(that.data.userBankCardDTOList)
 
 
                         if (res.data.code == '-7') {
@@ -328,7 +399,9 @@ Page({
 
                                 bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
 
-                                cardType: that.data.userBankCardDTOList[0].cardType//银行卡类型
+                                cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
+
+                                bankIcon:that.data.userBankCardDTOList[0].bankImg//银行卡类型
 
 
                             });
@@ -480,7 +553,9 @@ Page({
 
             bankCardId: that.data.userBankCardDTOList[e.detail.value].bankCardId,//银行卡id
 
-            cardType: that.data.userBankCardDTOList[e.detail.value].cardType//银行卡id
+            cardType: that.data.userBankCardDTOList[e.detail.value].cardType,//银行卡id
+
+            bankIcon: that.data.userBankCardDTOList[e.detail.value].bankImg//银行卡id
         });
 
 

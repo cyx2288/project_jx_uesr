@@ -1,0 +1,9 @@
+@import "../pay_success/pay_success.wxss";
+
+
+
+.weui-msg__desc {
+    font-size: 16px;
+    color: #8a8a8a;
+
+}

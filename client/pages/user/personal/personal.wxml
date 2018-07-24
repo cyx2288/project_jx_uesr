@@ -21,9 +21,10 @@
 
         <view class="password_image">
 
-            <text class="reset_money" wx:if="{{isVerify==1}}">已认证</text>
-
-            <text class="reset_money" wx:else>未认证</text>
+            <text class="reset_money" wx:if="{{isVerify=='1'}}">已认证</text>
+            <text class="reset_money" wx:elif="{{isVerify=='0'}}">未认证</text>
+            <text class="reset_money" wx:elif="{{isVerify=='2'}}">审核中</text>
+            <text class="reset_money" wx:elif="{{isVerify=='3'}}">审核未通过</text>
 
             <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
 

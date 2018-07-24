@@ -11,7 +11,6 @@ const upLoadImgUrl = '/jx/uploadimg/oss';//上传图片
 
 const userVerify ='/user/center/verifyuserinfo';//实名认证
 
-const mineUrl ='/user/center/usercenter';//用户中心
 
 Page({
 
@@ -19,31 +18,21 @@ Page({
 
         idNumber:'',
 
-        file:'',
+    file:'',
 
-        userName:'',
+    userName:'',
 
-        idType:'',
+    idType:'',
 
-        nationality:'',
+    nationality:'',
 
-        faceImg:'../../../static/icon/wages/jx_passport_face.png',
-
-        backImg:'../../../static/icon/wages/jx_passport_opposite.png',
-
-        modal: {
-
-            isShow:false,// 图文弹框是否显示
-
-
-        },
-
-
+    faceImg:'../../../static/icon/wages/jx_passport_face.png',
     },
     onShow: function () {
 
         var that = this;
-         //存身份证号
+
+        //存身份证号
         var thisNextIdNumber = wx.getStorageSync('NextIdNumber');
 
         //存姓名
@@ -67,15 +56,6 @@ Page({
 
         });
 
-        console.log('证件号'+that.data.idNumber)
-
-        console.log('名字'+that.data.userName)
-
-        console.log('证件类型'+that.data.idType)
-
-        console.log('国籍'+that.data.nationality)
-
-
     },
 
     uploadPhotoFn: function () {
@@ -86,7 +66,6 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-
 
         wx.showActionSheet({
             itemList: ['拍摄', '从相册选择照片'],
@@ -273,273 +252,6 @@ Page({
         })
     },
 
-    uploadPhotoBackFn: function () {
-
-        var that = this;
-
-        //获取数据
-        var jx_sid = wx.getStorageSync('jxsid');
-
-        var Authorization = wx.getStorageSync('Authorization');
-
-
-        wx.showActionSheet({
-            itemList: ['拍摄', '从相册选择照片'],
-            itemColor: "#ee6934",
-            success: function (res) {
-
-                if(res.tapIndex=='0'){
-
-                    wx.chooseImage({
-                        count: 1, // 默认9
-                        sizeType:  ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                        sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
-                        success: function (res) {
-                            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                            var tempFilePaths = res.tempFilePaths;
-
-                            wx.uploadFile({
-
-
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
-
-                                header:{
-
-                                    'jxsid': jx_sid,
-
-                                    'Authorization': Authorization
-
-                                },
-
-                                filePath: tempFilePaths[0],
-
-                                name: 'File',
-
-                                success: function(res){
-
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
-
-                                    if (res.data.code == '3001') {
-
-                                        //console.log('登录');
-
-                                        setTimeout(function () {
-
-                                            wx.reLaunch({
-
-                                                url: '../../common/signin/signin'
-                                            })
-
-                                        }, 1500);
-
-
-                                        return false
-
-
-                                    }
-
-                                    else {
-
-                                        console.log(res)
-
-
-                                        //console.log(JSON.parse(res.data).data.url);
-
-                                        if(JSON.parse(res.data).code=='0000'){
-
-
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
-                                        }
-
-                                        that.setData({
-
-                                            backImg:JSON.parse(res.data).data.url
-
-                                        })
-
-
-                                    }
-
-
-                                }
-                            })
-
-                        }
-                    })
-
-                }
-
-                else {
-
-                    wx.chooseImage({
-                        count: 1, // 默认9 一张图
-                        sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                        sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
-                        success: function (res) {
-                            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                            var tempFilePaths = res.tempFilePaths;
-
-                            wx.uploadFile({
-
-
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
-
-                                header:{
-
-                                    'jxsid': jx_sid,
-
-                                    'Authorization': Authorization
-
-                                },
-
-                                filePath: tempFilePaths[0],
-
-                                name: 'File',
-
-                                success: function(res){
-
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
-
-                                    if (res.data.code == '3001') {
-
-                                        //console.log('登录');
-
-                                        setTimeout(function () {
-
-                                            wx.reLaunch({
-
-                                                url: '../../common/signin/signin'
-                                            })
-
-                                        }, 1500);
-
-
-                                        return false
-
-
-                                    }
-
-                                    else {
-
-                                        console.log(res)
-
-
-                                        //console.log(JSON.parse(res.data).data.url);
-
-                                        if(JSON.parse(res.data).code=='0000'){
-
-
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
-                                        }
-
-                                        that.setData({
-
-                                            backImg:JSON.parse(res.data).data.url
-
-                                        })
-
-
-                                    }
-
-
-                                }
-                            })
-
-
-                        }
-                    })
-
-                }
-
-            },
-            fail: function (res) {
-                console.log(res.errMsg)
-            }
-        })
-    },
-
-    preventTouchMove: function () {
-
-
-    },
-
-    showFaceTipFn:function () {
-
-        var that = this;
-
-        console.log(1);
-
-        that.setData({
-
-           modal: {
-
-               isShow: true,// 图文弹框是否显示
-
-               title:'证件示例',// 标题
-
-               src:'../../../static/icon/wages/jx_example_paper.jpg',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
-
-               ok:'确定',// 确定按钮文本
-
-           }
-
-        })
-
-
-    },
-
-    showBackTipFn:function () {
-
-        var that = this;
-
-        console.log(1);
-
-        that.setData({
-
-            modal: {
-
-                isShow: true,// 图文弹框是否显示
-
-                title:'证件示例',// 标题
-
-                src:'../../../static/icon/wages/jx_example_back.jpg',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
-
-                ok:'确定',// 确定按钮文本
-
-            }
-
-        })
-
-
-    },
-
-    modalClick:function () {
-
-        var that = this;
-
-        that.setData({
-
-            modal: {
-
-                isShow: false,// 图文弹框是否显示
-
-            }
-
-        })
-
-
-    },
-
     submitVerifyFn:function () {
 
         var that = this;
@@ -561,15 +273,6 @@ Page({
 
         }
 
-        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'){
-
-            wx.showToast({
-                title: '请上传证件照反面',
-                icon: 'none',
-                mask:true,
-            })
-
-        }
 
         else {
 
@@ -595,7 +298,7 @@ Page({
 
                     nationality:that.data.nationality,
 
-                    urls:[that.data.faceImg,that.data.backImg],
+                    urls:that.data.faceImg,
 
 
                 }),
@@ -701,8 +404,47 @@ Page({
 
 
 
-    }
+    },
+
+    showFaceTipFn:function () {
+
+        var that = this;
 
 
+        that.setData({
+
+            modal: {
+
+                isShow: true,// 图文弹框是否显示
+
+                title:'证件示例',// 标题
+
+                src:'../../../static/icon/wages/jx_example_password.jpg',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
+
+                ok:'确定',// 确定按钮文本
+
+            }
+
+        })
+
+
+    },
+
+    modalClick:function () {
+
+        var that = this;
+
+        that.setData({
+
+            modal: {
+
+                isShow: false,// 图文弹框是否显示
+
+            }
+
+        })
+
+
+    },
 
 })

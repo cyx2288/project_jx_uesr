@@ -30,6 +30,9 @@ Page({
 
         var that = this;
 
+        //初始化变量 - 实名认证&&提现成功&&有
+        wx.setStorageSync('successVerify', 'true');
+
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -81,19 +84,6 @@ Page({
                         })
 
                     },1500)
-
-
-    /*                wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-
-
-                        }
-
-                    })*/
 
                     return false
 
@@ -308,6 +298,29 @@ Page({
                 url:"../no_certification/certification"
             })
 
+
+        }
+
+        //审核中
+        else if(_isVerify=='2'){
+
+            wx.navigateTo({
+
+
+                url:"../upload_success/upload_success"
+            })
+
+        }
+
+        //审核不通过
+        else if(_isVerify=='3'){
+
+
+            wx.navigateTo({
+
+
+                url:"../upload_fail/upload_fail"
+            })
 
         }
 

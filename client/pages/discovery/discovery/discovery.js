@@ -631,7 +631,7 @@ Page({
 
         var that = this;
 
-        if(that.data.isOpen=='0'){
+        if((that.data.isOpen=='0'&&that.data.isVerify == '3')||(that.data.isOpen=='0'&&that.data.isVerify == '0')){
 
             //存指定的页面  （在实名认证中取值）
             wx.setStorageSync('hrefId','6');
@@ -664,6 +664,37 @@ Page({
 
                 }
             });
+
+        }
+
+        else if(that.data.isOpen=='0'&&that.data.isVerify == '2'){
+
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId','6');
+
+
+            wx.showModal({
+                title: '提示',
+                content: '实名认证审核中，审核通过后即可使用账户消费',
+                showCancel:false,
+                confirmText: '我知道了',
+                confirmColor:'#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+                    }
+
+                    else if (res.cancel) {
+
+
+                    }
+
+
+
+                }
+            });
+
 
         }
 

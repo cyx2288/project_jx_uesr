@@ -15,10 +15,35 @@
         </view>
 
         <hr/>
-        <!--身份证号-->
+        <!--国籍-->
         <view  class="mine_welfare">
 
-            <text class="password_image">身份证号</text>
+            <text class="password_image">国籍</text>
+
+            <text class="account_information_tel">{{nationality}}</text>
+
+        </view>
+
+        <hr/>
+
+        <!--证件类型-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">证件类型</text>
+
+            <view wx:if="{{idType=='1'}}" class="account_information_tel">身份证</view>
+            <view wx:elif="{{idType=='2'}}" class="account_information_tel">护照</view>
+            <view wx:elif="{{idType=='3'}}" class="account_information_tel">港澳居民来往内地通行证</view>
+            <view wx:elif="{{idType=='4'}}" class="account_information_tel">台湾居民来往内地通行证</view>
+
+        </view>
+
+        <hr/>
+
+        <!--证件证号-->
+        <view  class="mine_welfare">
+
+            <text class="password_image">证件号码</text>
 
             <text class="account_information_tel">{{idNumber}}</text>
 
