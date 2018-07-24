@@ -120,7 +120,7 @@ Page({
 
             wx.showModal({
                 title: '提示',
-                content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
+                content: ' 当前账户尚未进行实名认证，完成认证后方可提现',
                 cancelText: '取消',
                 confirmText: '去认证',
                 confirmColor:'#fe9728',

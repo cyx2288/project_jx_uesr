@@ -200,7 +200,7 @@ Page({
         var checkMainLandTW =/^[a-z0-9A-Z]{8}$/;
 
         //护照
-        var checkPassPort = /^[a-zA-Z0-9]{5,20}$/;
+        var checkPassPort = /^[a-zA-Z0-9]{6,20}$/;
 
 
 

@@ -234,16 +234,6 @@ Page({
 
                     },1500)
 
-/*                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-
-                        }
-
-                    })*/
 
                     return false
 
@@ -253,10 +243,6 @@ Page({
                 else {
 
                     var thisCode = res.data.code;
-
-
-
-                    //console.log(res.data.data[0].entId)
 
                     (function countDownAjax() {
 
