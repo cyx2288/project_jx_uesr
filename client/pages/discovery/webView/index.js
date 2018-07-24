@@ -19,13 +19,6 @@ Page({
 
         var _goNav = wx.getStorageSync('GoNav');
 
-        wx.showToast({
-            title: '加载中',
-            icon: 'loading',
-            duration: 2000
-        })
-
-
             wx.setNavigationBarTitle({
 
                 title: _goNav

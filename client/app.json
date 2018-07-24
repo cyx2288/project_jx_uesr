@@ -7,6 +7,10 @@
 
     "pages/common/loading/loading",
 
+    "pages/user/no_certification/certification",
+
+
+
     "pages/common/wages_authentication/authentication",
     "pages/common/authentication/authentication",
     "pages/common/forget_password/forget_password",
@@ -17,7 +21,18 @@
     "pages/user/choose_nationality/choose_nationality",
 
 
+
+
+
+
+
+
+
     "pages/user/mainland_certification/mainland",
+
+
+
+
 
 
 
@@ -58,7 +73,7 @@
     "pages/user/help_service/help_service",
     "pages/user/company_authentication/authentication",
     "pages/user/cash_give_details/give_details",
-    "pages/user/no_certification/certification",
+
     "pages/user/payment_setting_certification/certification",
     "pages/user/set_payment_psw/set_payment_psw",
     "pages/common/revise_password/revise_password",

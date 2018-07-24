@@ -22,6 +22,14 @@ Page({
 
         hasUserName:true,//有没有用户姓名
 
+        city:'中国',
+
+        cardChoose:'身份证',
+
+        idType:'',
+
+        idStyle:['身份证','港澳居民来往内地通行证','台湾居民来往内地通行证','护照']
+
     },
 
 
@@ -35,19 +43,32 @@ Page({
 
         var  _isVerify= wx.getStorageSync('isVerify');
 
+        var _idType = wx.getStorageSync('idType');
+
+        var _nationality =  wx.getStorageSync('nationality');
+
+        var _city = wx.getStorageSync('chooseCity');
+
+        that.setData({
+
+            city:_city
+        })
+
+
 
         //console.log('是否认证'+_isVerify);
 
       /*  console.log('名字'+thisUserName)
 
         console.log('身份证'+thisIdNumber)*/
-
         that.setData({
 
             isVerify:_isVerify,
 
         });
 
+
+        //有姓名的就是后台添加的 如果没有就是自助注册用户
 
         if(thisUserName){
 
@@ -58,7 +79,12 @@ Page({
 
                 idNumber:thisIdNumber,
 
-                hasUserName:true
+                hasUserName:true,
+
+                cardChoose:_nationality,
+
+
+
 
 
             });
@@ -203,19 +229,7 @@ Page({
                                 url:'../../common/signin/signin'
                             })
 
-                        },1500)
-
-/*                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
+                        },1500);
 
                         return false
 
@@ -424,6 +438,25 @@ Page({
 
                              }
 
+                             else if(_hrefId=='6'){
+
+                                 console.log('从京东');
+
+
+                                 setTimeout(function () {
+
+                                     wx.switchTab({
+
+                                         url:'../../discovery/discovery/discovery'
+                                     })
+
+                                 },1000)
+
+
+
+
+                             }
+
 
                         }
 
@@ -471,6 +504,15 @@ Page({
 
     },
 
+    chooseCityPageFn:function () {
+
+        wx.navigateTo({
+
+            url:'../choose_nationality/choose_nationality'
+
+        });
+
+    },
     nameFn:function (e) {
 
         var that = this;
@@ -491,6 +533,23 @@ Page({
             idNumber: e.detail.value
 
         });
+
+    },
+
+    bindPickerChange: function(e) {
+
+        var that = this;
+
+        //console.log('picker发送选择改变，携带值为', e.detail.value)
+
+        //console.log(that.data.idStyle[e.detail.value]);
+
+        that.setData({
+
+            cardChoose:that.data.idStyle[e.detail.value]
+
+        })
+
 
     },
 

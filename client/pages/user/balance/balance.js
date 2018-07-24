@@ -15,6 +15,8 @@ Page({
 
         wages:'--.--',//可提资金
 
+        enableSalary:'--.--',
+
         frozenSalary:'--.--',//冻结资金
 
         totalSalary:'--.--',//工资余额
@@ -161,18 +163,41 @@ Page({
 
                 else {
 
-                    console.log(res.data)
+                    if(!res.data.data.frozenSalary&&!res.data.data.totalSalary){
 
-                    that.setData({
+                        that.setData({
 
-                        frozenSalary:radixPointFn.splitK(res.data.data.frozenSalary),
+                            frozenSalary:'0.00',
 
-                        enableSalary:radixPointFn.splitK(res.data.data.enableSalary),
+                            enableSalary:'0.00',
 
-                        totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+                            totalSalary:'0.00',
 
 
-                    })
+                        })
+
+
+                    }
+
+                    else {
+
+                        console.log(res.data)
+
+                        that.setData({
+
+                            frozenSalary:radixPointFn.splitK(res.data.data.frozenSalary),
+
+                            enableSalary:radixPointFn.splitK(res.data.data.enableSalary),
+
+                            totalSalary:radixPointFn.splitK(res.data.data.totalSalary),
+
+
+                        })
+
+
+                    }
+
+
 
 
                 }

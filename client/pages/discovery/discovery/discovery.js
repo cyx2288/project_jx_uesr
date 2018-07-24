@@ -14,6 +14,8 @@ const jdUrl = '/open/jd/redirect';//京东
 
 const mtUrl ='/open/mt/redirect';//美团
 
+const mineUrl = '/user/center/usercenter';//用户中心
+
 
 
 Page({
@@ -34,6 +36,8 @@ Page({
 
         jdUrl:'',//京东
 
+        isOpen:''//是否在
+
     },
     onShow: function () {
 
@@ -42,6 +46,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
         wx.showNavigationBarLoading();
 
@@ -121,7 +126,7 @@ Page({
                 console.log(res)
             }
 
-        })
+        });
 
         //火车票
         wx.request({//注册
@@ -546,10 +551,129 @@ Page({
         })
 
 
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url: app.globalData.URL + mineUrl,
+
+            method: 'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+
+                    return false
+
+
+                }
+
+                else {
+
+                    console.log(res.data.data);
+
+
+                    that.setData({
+
+                        isOpen:res.data.data.isOpen
+
+                    })
+
+                }
+
+
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        })
+
+
+
+
+
     },
 
     urlFn:function (e) {
 
+        var that = this;
+
+        if(that.data.isOpen=='0'){
+
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId','6');
+
+
+            wx.showModal({
+                title: '提示',
+                content: '为保障账户资金安全，实名用户才能使用账户消费，请先完成实名认',
+                cancelText: '取消',
+                confirmText: '去认证',
+                confirmColor:'#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+                        wx.navigateTo({
+
+                            url: '../../user/no_certification/certification'
+
+                        })
+
+                    }
+
+                    else if (res.cancel) {
+
+
+                    }
+
+
+
+                }
+            });
+
+        }
+
+        else {
+
+            //初始化变量 - 实名认证&&提现成功&&有
+            wx.setStorageSync('successVerify', 'true');
+
+            //首页变量初始化
+            wx.setStorageSync('successRefresh', 'true');
 
             wx.navigateTo({
 
@@ -557,10 +681,12 @@ Page({
 
             });
 
+            wx.setStorageSync('GoUrl',e.currentTarget.dataset.url);
 
-        wx.setStorageSync('GoUrl',e.currentTarget.dataset.url);
+            wx.setStorageSync('GoNav',e.currentTarget.dataset.name);
 
-        wx.setStorageSync('GoNav',e.currentTarget.dataset.name);
+        }
+
 
         console.log(wx.getStorageSync('GoUrl'));
 

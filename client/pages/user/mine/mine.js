@@ -190,17 +190,6 @@ Page({
 
                         }, 1500)
 
-                        /*                        wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success: function () {
-
-
-
-                         }
-
-                         })*/
 
                         return false
 
@@ -239,6 +228,16 @@ Page({
 
                         //是否实名认证
                         wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                        //证件类型
+                        wx.setStorageSync('idType',res.data.data.idStyle);
+
+
+                        //国籍
+                        wx.setStorageSync('nationality',res.data.data.nationality);
+
+
+
 
 
                         //存储手机号码
@@ -498,6 +497,9 @@ Page({
                 }
 
             })
+
+
+
 
 
 

@@ -200,12 +200,13 @@ Page({
 
         console.log(e.currentTarget.dataset.name)
 
-        wx.setStorageSync('chooseCity',e.currentTarget.dataset);
+        wx.setStorageSync('chooseCity',e.currentTarget.dataset.name);
 
+        wx.navigateBack({
 
+            delta: 1
 
-
-
+        })
 
 
     },
