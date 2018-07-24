@@ -1,4 +1,3 @@
-
 <!--未认证-未收到企业邀请-->
 
 <view class="no_invitation">
@@ -6,14 +5,15 @@
     <view class="weui-cells">
 
         <!--姓名-->
-        <view  class="mine_welfare">
+        <view class="mine_welfare">
 
             <text class="password_image">姓名</text>
 
-            <text  hidden="{{!hasUserName}}"class="account_information_tel">{{userName}}</text>
+            <text hidden="{{!hasUserName}}" class="account_information_tel tel_special">{{userName}}</text>
 
-           <label hidden="{{hasUserName}}">
-                <input class="account_information_tel" type="text" auto-focus="{{hasUserName==true? '' : 'true'}}" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb" maxlength="18"/>
+            <label hidden="{{hasUserName}}">
+                <input class="account_information_tel tel_special" type="text" auto-focus="{{hasUserName==true? '' : 'true'}}" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb"
+                       maxlength="20"/>
             </label>
 
         </view>
@@ -21,28 +21,62 @@
         <hr/>
 
 
-        <!--身份证号-->
-        <view  class="mine_welfare">
 
-            <text class="password_image">身份证号</text>
+        <!-- 国籍 -->
+        <view class="mine_welfare">
 
-            <label>
+            <view class="password_image">国籍（地区）</view>
 
-                <label>
-                    <input class="account_information_tel" type="idcard" bindinput="idFn" auto-focus="true" value="{{idNumber}}" placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
-                </label>
+            <view class="city_box" bindtap="chooseCityPageFn">
 
-            </label>
+                <view class="account_information_tel">{{city}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+            </view>
+
+
+
 
         </view>
+         <hr/>
 
-       </view>
+        <!-- 身份类型-->
+
+        <view class="weui-cell" style="justify-content: space-between">
+            <view class="weui-cell__hd">
+                <view class="weui-label">证件类型</view>
+            </view>
+
+            <view hidden="{{!hasUserName}}" class="account_information_tel tel_special">{{cardChoose}}</view>
+            <view hidden="{{hasUserName}}" class="weui-cell__bd">
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{idStyle}}">
+                    <view class="weui-select select_certification">{{cardChoose}}</view>
+                </picker>
+            </view>
+        </view>
+
+        <hr/>
+
+<!--身份证号-->
+<view class="mine_welfare">
+
+    <text class="password_image">证件号码</text>
+
+    <label>
 
 
+            <input class="account_information_tel tel_special" bindinput="idFn" auto-focus="true" value="{{idNumber}}"
+                   placeholder="请输入证件号码" placeholder-style="color:#bbb"/>
+
+    </label>
+
+</view>
+
+</view>
     <!--button-->
-    <view class="page__bd page__bd_spacing">
+    <view class="page__bd page__bd_spacing" bindtap="submitVerifyFn">
 
-        <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
+        <button class="weui-btn" type="primary">提交</button>
 
     </view>
 
