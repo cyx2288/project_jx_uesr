@@ -1,0 +1,39 @@
+
+<!--支付失败-->
+<view class="page">
+    <view class="weui-msg">
+
+
+        <view class="weui-media-box__hd">
+
+            <image src="../../../static/icon/wages/jx_fail.png" class="jx_cash"/>
+
+            <view class="weui-circle">
+
+                <view class="circle_bot"> </view>
+                <view class="circle_mid"> </view>
+
+            </view>
+
+        </view>
+
+        <image src="../../../static/icon/wages/jx_background.png" class="jx_background"/>
+
+
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">实名认证审核不通过</view>
+            <view class="weui-msg__desc">很抱歉，您提交的认证资料未通过审核</view>
+            <text class="failure_reason">原因：{{errorCause}}</text>
+        </view>
+
+
+        <view class="weui-msg__opr-area">
+
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="goAgainFn">重新认证</button>
+
+            </view>
+        </view>
+
+    </view>
+</view>

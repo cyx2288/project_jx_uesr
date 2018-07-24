@@ -13,7 +13,7 @@
 
             <label hidden="{{hasUserName}}">
                 <input class="account_information_tel tel_special" type="text" auto-focus="{{hasUserName==true? '' : 'true'}}" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb"
-                       maxlength="18"/>
+                       maxlength="20"/>
             </label>
 
         </view>
@@ -65,22 +65,20 @@
     <label>
 
 
-            <input class="account_information_tel tel_special" type="idcard" bindinput="idFn" auto-focus="true" value="{{idNumber}}"
-                   placeholder="请输入身份证号码" placeholder-style="color:#bbb"/>
+            <input class="account_information_tel tel_special" bindinput="idFn" auto-focus="true" value="{{idNumber}}"
+                   placeholder="请输入证件号码" placeholder-style="color:#bbb"/>
 
     </label>
 
 </view>
 
 </view>
+    <!--button-->
+    <view class="page__bd page__bd_spacing" bindtap="submitVerifyFn">
 
+        <button class="weui-btn" type="primary">提交</button>
 
-<!--button-->
-<view class="page__bd page__bd_spacing">
-
-    <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
-
-</view>
+    </view>
 
 
 </view>

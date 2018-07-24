@@ -58,7 +58,7 @@
     color: #fff;
     border: 1px solid #f7f7f7;
     border-radius: 50px;
-    width: 75px;
+    padding: 0 10rpx;
     height: 23px;
     display: flex;
 
@@ -72,7 +72,9 @@
 }
 
 .unauthorized{
-font-size: 14px;
+    font-size: 14px;
+    padding-right:10rpx;
+
 }
 
 

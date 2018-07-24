@@ -9,13 +9,23 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const upLoadImgUrl = '/jx/uploadimg/oss';//上传图片
 
+const userVerify ='/user/center/verifyuserinfo';//实名认证
 
+const mineUrl ='/user/center/usercenter';//用户中心
 
 Page({
 
     data: {
 
+        idNumber:'',
+
         file:'',
+
+        userName:'',
+
+        idType:'',
+
+        nationality:'',
 
         faceImg:'../../../static/icon/wages/jx_passport_face.png',
 
@@ -26,17 +36,47 @@ Page({
             isShow:false,// 图文弹框是否显示
 
 
-
-
         },
 
 
     },
-    onLoad: function () {
+    onShow: function () {
+
+        var that = this;
+         //存身份证号
+        var thisNextIdNumber = wx.getStorageSync('NextIdNumber');
+
+        //存姓名
+        var thisNextUserName = wx.getStorageSync('NextUserName');
+
+        //存idType
+        var thisNextIdType = wx.getStorageSync('NextIdType');
+
+        //存国籍
+        var thisNextNationality = wx.getStorageSync('NextNationality');
+
+        that.setData({
+
+            idNumber:thisNextIdNumber,
+
+            userName:thisNextUserName,
+
+            idType:thisNextIdType,
+
+            nationality:thisNextNationality,
+
+        });
+
+        console.log('证件号'+that.data.idNumber)
+
+        console.log('名字'+that.data.userName)
+
+        console.log('证件类型'+that.data.idType)
+
+        console.log('国籍'+that.data.nationality)
 
 
     },
-
 
     uploadPhotoFn: function () {
 
@@ -62,6 +102,8 @@ Page({
                         success: function (res) {
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
+
+
 
                             wx.uploadFile({
 
@@ -109,15 +151,14 @@ Page({
                                         console.log(res)
 
 
-                                        //console.log(JSON.parse(res.data).data.url);
-
-                                        if(res.data.code=='0000'){
-
+                                        if(JSON.parse(res.data).code=='0000'){
 
                                             wx.showToast({
                                                 title: '上传成功',
+                                                icon:'none',
                                                 mask: true,
                                             })
+
                                         }
 
                                         that.setData({
@@ -194,15 +235,16 @@ Page({
                                         console.log(res)
 
 
-                                        //console.log(JSON.parse(res.data).data.url);
+                                        console.log(JSON.parse(res.data).code);
 
-                                        if(res.data.code=='0000'){
-
+                                        if(JSON.parse(res.data).code=='0000'){
 
                                             wx.showToast({
                                                 title: '上传成功',
+                                                icon:'none',
                                                 mask: true,
                                             })
+
                                         }
 
                                         that.setData({
@@ -304,11 +346,12 @@ Page({
 
                                         //console.log(JSON.parse(res.data).data.url);
 
-                                        if(res.data.code=='0000'){
+                                        if(JSON.parse(res.data).code=='0000'){
 
 
                                             wx.showToast({
                                                 title: '上传成功',
+                                                icon:'none',
                                                 mask: true,
                                             })
                                         }
@@ -389,11 +432,12 @@ Page({
 
                                         //console.log(JSON.parse(res.data).data.url);
 
-                                        if(res.data.code=='0000'){
+                                        if(JSON.parse(res.data).code=='0000'){
 
 
                                             wx.showToast({
                                                 title: '上传成功',
+                                                icon:'none',
                                                 mask: true,
                                             })
                                         }
@@ -443,11 +487,36 @@ Page({
 
                title:'证件示例',// 标题
 
-               src:'../../../static/icon/wages/jx_passport_face.png',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
+               src:'../../../static/icon/wages/jx_example_paper.jpg',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
 
                ok:'确定',// 确定按钮文本
 
            }
+
+        })
+
+
+    },
+
+    showBackTipFn:function () {
+
+        var that = this;
+
+        console.log(1);
+
+        that.setData({
+
+            modal: {
+
+                isShow: true,// 图文弹框是否显示
+
+                title:'证件示例',// 标题
+
+                src:'../../../static/icon/wages/jx_example_back.jpg',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
+
+                ok:'确定',// 确定按钮文本
+
+            }
 
         })
 
@@ -464,17 +533,172 @@ Page({
 
                 isShow: false,// 图文弹框是否显示
 
-                title:'证件示例',// 标题
-
-                src:'../../../static/icon/wages/jx_example_paper.png',// 图片地址，必填，如果没有图片，请直接使用wx.showModal
-
-                ok:'确定',// 确定按钮文本
-
-
-
             }
 
         })
+
+
+    },
+
+    submitVerifyFn:function () {
+
+        var that = this;
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
+        if(that.data.faceImg=='../../../static/icon/wages/jx_passport_face.png'){
+
+            wx.showToast({
+                title: '请上传证件照正面',
+                icon: 'none',
+                mask:true,
+
+            })
+
+        }
+
+        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'){
+
+            wx.showToast({
+                title: '请上传证件照反面',
+                icon: 'none',
+                mask:true,
+            })
+
+        }
+
+        else {
+
+            /**
+             * 接口：实名认证
+             * 请求方式：POST
+             * 接口：/user/center/userverify
+             * 入参：userName,idNumber,idType,nationality,urls
+             **/
+            wx.request({
+
+                url:app.globalData.URL + userVerify,
+
+                method: 'POST',
+
+                data: json2FormFn.json2Form({
+
+                    userName:that.data.userName,
+
+                    idNumber:that.data.idNumber,
+
+                    idType:that.data.idType,
+
+                    nationality:that.data.nationality,
+
+                    urls:[that.data.faceImg,that.data.backImg],
+
+
+                }),
+
+                header: {
+
+                    'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500);
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        if(res.data.code=='0000'){
+
+                            wx.showToast({
+                                title:res.data.msg,
+                                icon: 'none',
+                                mask:true,
+                            })
+
+
+                            wx.navigateTo({
+                                url: '../upload_success/upload_success'
+                            })
+
+
+
+
+
+                        }
+
+                        else if(res.data.code=='-1'){
+
+                            wx.showToast({
+                                title:res.data.msg,
+                                icon: 'none',
+                                mask:true,
+                            })
+                        }
+
+
+
+                    }
+
+
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

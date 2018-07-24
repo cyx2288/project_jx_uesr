@@ -83,17 +83,6 @@ Page({
 
                     }, 1500)
 
-                    /*                    wx.showToast({
-                     title: res.data.msg,
-                     icon: 'none',
-                     duration: 1500,
-                     success:function () {
-
-
-
-                     }
-
-                     })*/
 
                     return false
 
@@ -640,12 +629,6 @@ Page({
 
             console.log('短信状态打开的时候触发')
 
-      /*     that.setData({
-
-             msgMode: false
-
-             });*/
-
             var _isVerify = wx.getStorageSync('isVerify');
 
             if(_isPayPwd == 1){
@@ -762,8 +745,6 @@ Page({
                 if (_isVerify == '0') {
 
 
-
-
                     wx.showModal({
                         title: '提示',
                         content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
@@ -795,6 +776,72 @@ Page({
                         }
                     });
 
+
+                }
+
+                else if(_isVerify == '2'){
+
+                    wx.showModal({
+                        title: '提示',
+                        content: '实名认证审核中，审核通过后即可设置支付密码',
+                        showCancel:false,
+                        confirmText: '我知道了',
+                        confirmColor:'#fe9728',
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+                            }
+
+                            else if (res.cancel) {
+
+
+                            }
+
+
+
+                        }
+                    });
+
+                }
+
+                else if(_isVerify == '3'){
+
+                    wx.showModal({
+                        title: '提示',
+                        content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
+                        cancelText: '取消',
+                        confirmText: '去认证',
+                        confirmColor: '#fe9728',
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                wx.navigateTo({
+
+                                    url: '../upload_fail/upload_fail'
+
+                                })
+
+
+                            }
+
+                            else if (res.cancel) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+
+                            }
+                        }
+                    });
 
                 }
 
@@ -847,7 +894,7 @@ Page({
 
         else if(!that.data.msgMode){
 
-            console.log('短信状态关闭的触发')
+            console.log('短信状态关闭的触发');
 
          /*   that.setData({
 
@@ -1400,6 +1447,72 @@ Page({
                         }
                     });
 
+
+                }
+
+                else if(_isVerify == '2'){
+
+                    wx.showModal({
+                        title: '提示',
+                        content: '实名认证审核中，审核通过后即可设置支付密码',
+                        showCancel:false,
+                        confirmText: '我知道了',
+                        confirmColor:'#fe9728',
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+                            }
+
+                            else if (res.cancel) {
+
+
+                            }
+
+
+
+                        }
+                    });
+
+                }
+
+                else if(_isVerify == '3'){
+
+                    wx.showModal({
+                        title: '提示',
+                        content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
+                        cancelText: '取消',
+                        confirmText: '去认证',
+                        confirmColor: '#fe9728',
+                        success: function (res) {
+
+                            if (res.confirm) {
+
+                                wx.navigateTo({
+
+                                    url: '../upload_fail/upload_fail'
+
+                                })
+
+
+                            }
+
+                            else if (res.cancel) {
+
+                                that.setData({
+
+                                    msgMode: true,
+
+                                })
+
+                            }
+                        }
+                    });
 
                 }
 

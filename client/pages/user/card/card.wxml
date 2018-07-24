@@ -3,57 +3,49 @@
     <!--银行卡-->
     <view class="weui-cells brankl_ist" wx:for="{{bankList}}">
 
-        <view class="weui-media-box weui-media-box_text">
-
-            <view class="icon_record">
-
-
-                    <view class="weui-media-box__title weui-media-box__title_in-text">
+        <view class="jx_background">
+            <image src="../../../static/icon/wages/jx_background_money.png"  class="jx_background_money" />
+        </view>
 
 
-                        <view class="weui_title">
+        <view class="jx_card_all">
 
-                            <view class="jx_record">
+            <view class="jx_card">
+                <!--左图标-->
+                <view class="jx_record">
 
-                                <!--<image src="{{item.bankImg}}"  class="reset_go" />-->
+                    <image src="{{item.bankImg}}"  class="reset_go" />
+                    <!--<image src="../../../static/icon/bank/bank_01.png"  class="reset_go" />-->
 
-                                <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
-                            </view>
-
-                            <view class="weui-media-box__title weui-media-box__title_in-text bank">{{item.bankName}}<span wx:if="{{item.cardType=='1'}}" class="card_style">储蓄卡</span><span wx:if="{{item.cardType=='2'}}" class="card_style">信用卡</span></view>
-
-
-
-
-                        </view>
-
-
-                    </view>
-                    <view class="weui_title bank_id">
-
-
-                        <text class="details_date">{{item.bankNo}}</text>
-
-                        <view class="weui-cell__ft">
-
-                            <view class="weui_confirm orange" data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" bindtap="detCardFn">删除</view>
-
-
-                        </view>
-                    </view>
                 </view>
 
+                <!--银行卡信息-->
+                <view class="jx_card_message">
+
+                    <view class="jx_bank">{{item.bankName}}<span wx:if="{{item.cardType=='1'}}" class="card_style">储蓄卡</span><span wx:if="{{item.cardType=='2'}}" class="card_style">信用卡</span></view>
+
+                    <text class="details_date">{{item.bankNo}}</text>
+
+                </view>
+            </view>
+
+            <!--删除-->
+
+            <image src="../../../static/icon/wages/jx_delate.png"  class="weui_confirm orange"   data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" bindtap="detCardFn"/>
 
         </view>
+
+
+
 
     </view>
 
 
 
 
-    <view class="page__bd page__bd_spacing">
+    <view class="page__bd add_card_btn">
 
-        <button class="weui-btn" type="primary" bindtap="addCardFn">+ 添加银行卡</button>
+        <view class="add_bank" type="primary" bindtap="addCardFn" style="color: #bbb;">+ 添加银行卡</view>
 
     </view>
 

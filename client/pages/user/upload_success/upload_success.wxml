@@ -1,0 +1,37 @@
+<!--支付成功-->
+
+<view class="page">
+    <view class="weui-msg">
+
+
+
+        <view class="weui-media-box__hd">
+
+
+            <image src="../../../static/icon/wages/jx_success.png" class="jx_cash"/>
+
+
+            <view class="weui-circle">
+
+
+                <view class="circle_bot"> </view>
+                <view class="circle_mid"> </view>
+
+
+            </view>
+
+
+        </view>
+
+        <image src="../../../static/icon/wages/jx_background.png" class="jx_background"/>
+
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">实名认证审核已提交</view>
+            <view class="weui-msg__desc">您的证件已提交审核，预计1-2个工作日内完成，请耐心等待</view>
+        </view>
+
+
+    </view>
+</view>
+
+

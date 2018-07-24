@@ -1,0 +1,15 @@
+@import "../pay_fail/pay_fail.wxss";
+
+.weui-msg__desc {
+    font-size: 18px;
+    color: #8a8a8a;
+
+}
+
+
+.failure_reason{
+    display: block;
+    color: #fe9625;
+    padding-top: 20px;
+    font-size: 18px;
+}

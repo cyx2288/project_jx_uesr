@@ -9,7 +9,7 @@
 
         <view  class="mainland_certification">
 
-            <text class="password_prompt">请上传（证件号：M111111）对应的证件照片</text>
+            <text class="password_prompt">请上传（证件号：{{idNumber}}）对应的证件照片</text>
 
 
             <view class="jx_password_image" bindtap="uploadPhotoFn">
@@ -75,9 +75,7 @@
         <view class="modal-body">
             <view>{{modal.desc}}</view>
 
-                <image src="{{modal.src}}" mode="widthFix"/>
-
-
+                <image src="{{modal.src}}"/>
 
         </view>
 

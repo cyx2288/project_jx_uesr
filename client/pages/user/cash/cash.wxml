@@ -15,7 +15,7 @@
             <view class="bank_list" data-id="{{bankCardId}}">
 
 
-                <view class="weui_title">
+                <view class="weui_title card_content">
 
 
                     <!-- 银行卡-->
@@ -23,19 +23,24 @@
 
                         <view class="jx_record">
 
-                          <image src="../../../static/icon/wages/bank.png"  class="reset_go" />
+                          <image src="{{bankIcon}}"  class="reset_go max_img" />
 
                        </view>
 
 
-                        <view class="weui_left">
+                        <view class="card_name">
 
-                            <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
+                            <view class="weui_left">
+
+                                <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
+                            </view>
+
+                            <view class="details_date">{{bankNo}}</view>
+
                         </view>
 
+
                     </view>
-
-
 
                     <!-- 箭头-->
 
@@ -44,7 +49,7 @@
                 </view>
 
 
-                    <text class="details_date">{{bankNo}}</text>
+
 
 
             </view>

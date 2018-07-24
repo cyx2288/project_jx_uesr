@@ -262,8 +262,8 @@ Page({
 
                         })
 
-                  //0703 写的 不要删掉
-            /*            var _bankList = res.data.data
+                        //0703 写的 不要删掉
+                        var _bankList = res.data.data
 
                         //console.log(that.data.bankList)
 
@@ -297,7 +297,6 @@ Page({
 
 
 
-*/
                     }
 
 
@@ -315,12 +314,14 @@ Page({
 
     addCardFn:function () {
 
+        var that = this;
+
         var thisMineurl = app.globalData.URL+ mineUrl;
 
         var _isVerify = wx.getStorageSync('isVerify');
 
         //判断是否认证
-        if(_isVerify=='0'){
+        if(_isVerify=='0'||_isVerify=='3'){
 
             wx.showModal({
                 title: '提示',
@@ -350,6 +351,51 @@ Page({
                     }
                 }
             });
+
+
+        }
+
+        else if (_isVerify == '2') {
+
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId','4');
+
+
+            //未认证情况下不弹出键盘
+            that.setData({
+
+                autoFocus:false//是否弹出键盘
+
+
+            })
+
+            wx.showModal({
+                title: '提示',
+                content: '实名认证审核中，审核通过后即可添加银行卡',
+                showCancel:false,
+                confirmText: '我知道了',
+                confirmColor:'#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+                    }
+
+                    else if (res.cancel) {
+
+
+                    }
+
+                    else {
+
+
+
+
+                    }
+
+                }
+            });
+
 
 
         }

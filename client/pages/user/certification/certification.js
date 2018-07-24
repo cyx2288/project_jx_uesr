@@ -1,14 +1,11 @@
 const app = getApp();
 
-const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
-
-const userVerify ='/user/center/userverify';//实名认证
+const mineUrl = '/user/center/usercenter';//用户中心
 
 Page({
 
 
     data: {
-
 
         userName:'',//姓名
 
@@ -16,7 +13,9 @@ Page({
 
         isVerify:'',//是否认证
 
+        nationality:'',//国籍
 
+        idType:''//证件类型
 
     },
 
@@ -25,80 +24,24 @@ Page({
 
         var that = this;
 
-        var thisUserName = wx.getStorageSync('userName');
-
-        var thisIdNumber = wx.getStorageSync('idNumber');
-
-        var  _isVerify= wx.getStorageSync('isVerify');
-
-        console.log('是否认证'+_isVerify);
-
-        console.log('名字'+thisUserName)
-
-        console.log('身份证'+thisIdNumber)
-
-        that.setData({
-
-            isVerify:_isVerify,
-
-            userName:thisUserName,
-
-            idNumber:thisIdNumber
-
-        });
-
-
-
-
-
-    },
-
-    submitVerifyFn:function () {
-
-        var thisUserVerify = app.globalData.URL + userVerify;
-
-        var that = this;
-
-        //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var thisUserName = wx.getStorageSync('userName');
-
-        var thisIdNumber = wx.getStorageSync('idNumber');
-
-        wx.showToast({
-
-            title: '认证中',
-            icon: 'loading',
-
-        })
-
-
         /**
-         * 接口：
+         * 接口：用户中心
          * 请求方式：POST
          * 接口：/user/center/usercenter
-         * 入参：userName,idNumber
+         * 入参：mobile
          **/
         wx.request({
 
-            url:thisUserVerify,
+            url: app.globalData.URL + mineUrl,
 
             method: 'POST',
 
-            data: json2FormFn.json2Form({
-
-                userName:thisUserName,
-
-                idNumber:thisIdNumber
-
-            }),
-
             header: {
-
-                'content-type': 'application/x-www-form-urlencoded',// post请求
+                'content-type': 'application/x-www-form-urlencoded', // post请求
 
                 'jxsid': jx_sid,
 
@@ -106,17 +49,13 @@ Page({
 
             },
 
-
-
             success: function (res) {
 
                 console.log(res.data);
 
-                var _code = res.data.code;
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                app.globalData.repeat(res.data.code,res.data.msg);
-
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -124,22 +63,11 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url: '../../common/signin/signin'
                         })
 
-                    },1500)
+                    }, 1500)
 
-    /*                wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
-
-
-
-                        }
-
-                    })*/
 
                     return false
 
@@ -148,58 +76,39 @@ Page({
 
                 else {
 
-                    if (_code == '0000') {
+
+                    that.setData({
+
+                        isVerify:res.data.data.isVerify,
+
+                        userName:res.data.data.userName,
+
+                        idNumber:res.data.data.idNumber,
+
+                        nationality:res.data.data.nationality,//国籍
+
+                        idType:res.data.data.idType//证件类型
+
+                    });
 
 
-                        setTimeout(function () {
 
-                            wx.showToast({
-
-                                title: '认证成功',
-                                icon: 'success',
-
-                            })
-
-                        }, 500)
-
-                        wx.redirectTo({
-
-                            url: '../personal/personal'
-                        });
-
-                        that.onLoad();
-
-
-                    }
-
-                    else {
-
-                        wx.showToast({
-
-                            title: '认证失败',
-                            icon: 'none',
-
-
-                        })
-                    }
                 }
-
-
-
 
             },
 
             fail: function (res) {
 
                 console.log(res)
-
             }
 
         })
 
 
 
+
     },
+
 
 
 })

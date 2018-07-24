@@ -1,5 +1,5 @@
 
-<!--<view class="jx_welfare_mall">
+<view class="jx_welfare_mall">
 
     <view class="assistant_life">
           <view class="title_line"></view>
@@ -9,42 +9,48 @@
     <hr/>
     <view class="content">
 
-        &lt;!&ndash; 加油卡 &ndash;&gt;
+        <!-- 加油卡 -->
         <view  class="scene" bindtap="urlFn" data-url="{{jykUrl}}" data-name="加油卡充值">
             <image src="../../../static/icon/wages/jx_fuel_card.png"  class="mall_service"/>
             <view class="service_title">加油卡充值</view>
 
         </view>
 
-        &lt;!&ndash; 话费充值 &ndash;&gt;
-        <view class="scene">
+        <view  class="scene" bindtap="urlFn" data-url="{{jbtUrl}}" data-name="嘉白条">
+            <image src="../../../static/icon/wages/jx_white_bar.png"  class="mall_service"/>
+            <view class="service_title">嘉白条</view>
+
+        </view>
+
+        <!-- 话费充值 -->
+        <!--<view class="scene">
             <image src="../../../static/icon/wages/jx_recharge.png"  class="mall_service"/>
             <view class="service_title">话费充值</view>
 
-        </view>
+        </view>-->
 
 
-        &lt;!&ndash; 火车票预订 &ndash;&gt;
-        <view class="scene" bindtap="urlFn" data-url="{{trainUrl}}" data-name="高铁管家">
+        <!-- 火车票预订 -->
+        <!--<view class="scene" bindtap="urlFn" data-url="{{trainUrl}}" data-name="高铁管家">
             <image src="../../../static/icon/wages/jx_train_ticket.png"  class="mall_service"/>
             <view class="service_title">火车票预订</view>
 
-        </view>
+        </view>-->
 
 
-        &lt;!&ndash; 滴滴出行 &ndash;&gt;
-        <view class="scene" bindtap="urlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
+        <!-- 滴滴出行 -->
+        <!--<view class="scene" bindtap="urlFn" data-url="{{didiUrl}}" data-name="滴滴出行">
             <image src="../../../static/icon/wages/jx_dripping.png"  class="mall_service"/>
             <view class="service_title">滴滴出行</view>
 
-        </view>
+        </view>-->
 
         <view  style="clear: both"></view>
     </view>
 
 
 
-</view>-->
+</view>
 
 
 
@@ -95,8 +101,7 @@
 </view>
 
 
-<!--
-<view class="jx_welfare_mall">
+<!--<view class="jx_welfare_mall">
 
     <view class="assistant_life">
         <view class="title_line"></view>

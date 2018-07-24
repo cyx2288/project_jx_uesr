@@ -2,7 +2,7 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
-const userVerify ='/user/center/userverify';//实名认证
+const userVerify ='/user/center/verifyuserinfo';//实名认证
 
 const mineUrl ='/user/center/usercenter';//用户中心
 
@@ -22,11 +22,13 @@ Page({
 
         hasUserName:true,//有没有用户姓名
 
-        city:'中国',
+        city:'',//国籍
 
-        cardChoose:'身份证',
+        cardChoose:'',//证件类型
 
-        idType:'',
+        index:0,
+
+        idType:'1',//证件类型 1-身份证 2-护照 3-港澳通行证 4-台湾通行证
 
         idStyle:['身份证','港澳居民来往内地通行证','台湾居民来往内地通行证','护照']
 
@@ -43,32 +45,26 @@ Page({
 
         var  _isVerify= wx.getStorageSync('isVerify');
 
-        var _idType = wx.getStorageSync('idType');
+        var _city = wx.getStorageSync('chooseCity');
 
         var _nationality =  wx.getStorageSync('nationality');
 
-        var _city = wx.getStorageSync('chooseCity');
+        /*console.log('国家'+that.data.city)*/
 
-        that.setData({
+        /* console.log('是否认证'+_isVerify);
 
-            city:_city
-        })
-
-
-
-        //console.log('是否认证'+_isVerify);
-
-      /*  console.log('名字'+thisUserName)
+        console.log('名字'+thisUserName)
 
         console.log('身份证'+thisIdNumber)*/
-        that.setData({
 
-            isVerify:_isVerify,
+        //console.log('证件类型：'+wx.getStorageSync('idType'));
 
-        });
+        //console.log('国籍：'+_nationality);
+
+        //console.log('选择国籍：'+_city);
 
 
-        //有姓名的就是后台添加的 如果没有就是自助注册用户
+        //有姓名的就是后台添加的
 
         if(thisUserName){
 
@@ -81,11 +77,9 @@ Page({
 
                 hasUserName:true,
 
-                cardChoose:_nationality,
+                city:wx.getStorageSync('nationality'),
 
-
-
-
+                idType:wx.getStorageSync('idType')
 
             });
 
@@ -94,14 +88,17 @@ Page({
 
         else {
 
+
+            //自助注册
             that.setData({
 
                 userName:that.data.userName,
 
                 idNumber:that.data.idNumber,
 
-                hasUserName:false
+                hasUserName:false,
 
+                city:wx.getStorageSync('nationality'),
 
             });
 
@@ -109,7 +106,64 @@ Page({
 
         }
 
+        if(that.data.idType=='1'){
 
+
+            that.setData({
+
+                cardChoose:'身份证'
+
+            })
+        }
+
+        else if(that.data.idType=='2'){
+
+            that.setData({
+
+                cardChoose:'护照'
+
+            })
+
+        }
+
+        else if(that.data.idType=='3'){
+
+            that.setData({
+
+                cardChoose:'港澳居民来往内地通行证'
+
+            })
+
+        }
+
+        else if(that.data.idType=='4'){
+
+            that.setData({
+
+                cardChoose:'台湾居民来往内地通行证'
+
+            })
+
+        }
+
+        that.setData({
+
+            isVerify:_isVerify,
+
+
+        });
+
+
+        //城市存储
+        if(_city){
+
+            that.setData({
+
+                city:_city,
+
+
+            });
+        }
 
 
 
@@ -133,18 +187,28 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         //存指定的页面
-
-
         var thisPayPwd =  wx.getStorageSync('isPayPwd');
 
 
         var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
 
-        if(!that.data.userName||!that.data.idNumber){
+
+        //港澳
+        var checkMainLandHK = /^[a-z0-9A-Z]{11}$/;
+
+        //台湾
+        var checkMainLandTW =/^[a-z0-9A-Z]{8}$/;
+
+        //护照
+        var checkPassPort = /^[a-zA-Z0-9]{5,20}$/;
+
+
+
+            if(!that.data.userName){
 
             wx.showToast({
 
-                title: '请输入姓名和身份证号',
+                title: '请输入姓名',
                 icon: 'none',
                 mask:true,
 
@@ -154,352 +218,470 @@ Page({
 
         }
 
-        else if(!check.test(that.data.idNumber)){
+            else if(!that.data.idNumber){
 
             wx.showToast({
 
-                title: '身份证号格式错误',
+                title: '请输入证件号码',
                 icon: 'none',
                 mask:true,
 
             })
 
 
-
         }
 
-        else {
+            else if(that.data.idType=='1'&&!check.test(that.data.idNumber)){
 
 
-            wx.showToast({
+                wx.showToast({
 
-                title: '认证中',
-                icon: 'loading',
-                mask:true,
+                    title: '身份证号格式错误',
+                    icon: 'none',
+                    mask:true,
 
-            })
+                })
 
 
-            /**
-             * 接口：实名认证
-             * 请求方式：POST
-             * 接口：/user/center/userverify
-             * 入参：userName,idNumber
-             **/
-            wx.request({
 
-                url:thisUserVerify,
+            }
 
-                method: 'POST',
+             else {
 
-                data: json2FormFn.json2Form({
 
-                    userName:that.data.userName,
+            if(that.data.cardChoose=='身份证'){
 
-                    idNumber:that.data.idNumber
 
-                }),
+                wx.showToast({
 
-                header: {
+                    title: '认证中',
+                    icon: 'loading',
+                    mask:true,
 
-                    'content-type': 'application/x-www-form-urlencoded',// post请求
+                })
 
-                    'jxsid': jx_sid,
 
-                    'Authorization': Authorization
+                /**
+                 * 接口：实名认证
+                 * 请求方式：POST
+                 * 接口：/user/center/userverify
+                 * 入参：userName,idNumber,idType,nationality,urls
+                 **/
+                wx.request({
 
-                },
+                    url:thisUserVerify,
 
+                    method: 'POST',
 
+                    data: json2FormFn.json2Form({
 
-                success: function (res) {
+                        userName:that.data.userName,
 
-                    console.log(res.data);
+                        idNumber:that.data.idNumber,
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                        idType:that.data.idType,
 
-                    if(res.data.code=='3001') {
+                        nationality:that.data.city,
 
-                        //console.log('登录');
 
-                        setTimeout(function () {
+                    }),
 
-                            wx.reLaunch({
+                    header: {
 
-                                url:'../../common/signin/signin'
-                            })
+                        'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                        },1500);
+                        'jxsid': jx_sid,
 
-                        return false
+                        'Authorization': Authorization
 
+                    },
 
-                    }
 
-                    else {
 
-                        var _code = res.data.code;
+                    success: function (res) {
 
-                        //看是不是从支付设置的未认证页面过来
-                        var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
+                        console.log(res.data);
 
-                        var _personCenter = wx.getStorageSync('personCenter');
+                        app.globalData.repeat(res.data.code,res.data.msg);
 
-                        var _hrefId = wx.getStorageSync('hrefId');
+                        if(res.data.code=='3001') {
 
-                        console.log('8是转账'+_hrefId)
-
-                        console.log('1是个人中心'+_personCenter)
-
-
-                        if (_code == '0000') {
-
-                            //存储实名认证状态
-                            wx.setStorageSync('isVerify', '1');
-
-                            //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
-                            wx.setStorageSync('successVerify','true');
-
-                            //认证成功后调用个人中心接口
-
-                            /**
-                             * 接口：用户中心
-                             * 请求方式：POST
-                             * 接口：/user/center/usercenter
-                             * 入参：mobile
-                             **/
-                            wx.request({
-
-                                url: thisMineurl,
-
-                                method: 'POST',
-
-                                header: {
-                                    'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                                    'jxsid': jx_sid,
-
-                                    'Authorization': Authorization
-
-                                },
-
-                                success: function (res) {
-
-                                    app.globalData.repeat(res.data.code,res.data.msg);
-
-                                    if(res.data.code=='3001') {
-
-                                        //console.log('登录');
-
-                                        setTimeout(function () {
-
-                                            wx.reLaunch({
-
-                                                url:'../../common/signin/signin'
-                                            })
-
-                                        },1500);
-
-
-                                        return false
-
-
-                                    }
-
-                                    else {
-
-                                        console.log(res.data);
-
-                                        wx.setStorageSync('userName', res.data.data.userName);
-
-                                    }
-
-
-                                },
-
-                                fail: function (res) {
-
-                                    console.log(res)
-                                }
-
-                            })
-
+                            //console.log('登录');
 
                             setTimeout(function () {
 
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500);
+
+                            return false
+
+
+                        }
+
+                        else {
+
+                            var _code = res.data.code;
+
+                            //看是不是从支付设置的未认证页面过来
+                            var _paySettingAuthentication = wx.getStorageSync('paySettingAuthentication');
+
+                            var _personCenter = wx.getStorageSync('personCenter');
+
+                            var _hrefId = wx.getStorageSync('hrefId');
+
+                            console.log('8是转账'+_hrefId)
+
+                            console.log('1是个人中心'+_personCenter)
+
+
+                            if (_code == '0000') {
+
+                                //存储实名认证状态
+                                wx.setStorageSync('isVerify', '1');
+
+                                //存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                                wx.setStorageSync('successVerify','true');
+
+                                //认证成功后调用个人中心接口
+
+                                /**
+                                 * 接口：用户中心
+                                 * 请求方式：POST
+                                 * 接口：/user/center/usercenter
+                                 * 入参：mobile
+                                 **/
+                                wx.request({
+
+                                    url: thisMineurl,
+
+                                    method: 'POST',
+
+                                    header: {
+                                        'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                        'jxsid': jx_sid,
+
+                                        'Authorization': Authorization
+
+                                    },
+
+                                    success: function (res) {
+
+                                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                                        if(res.data.code=='3001') {
+
+                                            //console.log('登录');
+
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url:'../../common/signin/signin'
+                                                })
+
+                                            },1500);
+
+
+                                            return false
+
+
+                                        }
+
+                                        else {
+
+                                            console.log(res.data);
+
+                                            wx.setStorageSync('userName', res.data.data.userName);
+
+                                        }
+
+
+                                    },
+
+                                    fail: function (res) {
+
+                                        console.log(res)
+                                    }
+
+                                })
+
+
+                                setTimeout(function () {
+
+                                    wx.showToast({
+
+                                        title: '认证成功',
+                                        icon: 'success',
+                                        mask:true,
+
+                                    })
+
+                                }, 500)
+
+
+                                if(_hrefId=='1'){
+
+                                    console.log('从个人中心');
+
+                                    setTimeout(function () {
+
+                                        wx.navigateBack({
+
+                                            delta: 1,
+
+                                        })
+
+                                        that.onLoad();
+
+
+                                    },1000)
+
+
+                                }
+
+                                else if(_hrefId=='4'){
+
+                                    setTimeout(function () {
+
+                                        wx.navigateBack({
+
+                                            delta: 1,
+
+                                        })
+
+                                    },1000)
+
+                                }
+
+                                else if(_hrefId=='8'){
+
+                                    console.log('从转账');
+
+                                    setTimeout(function () {
+
+                                        wx.redirectTo({
+
+                                            url:'../girokonto/girokonto'
+
+                                        })
+
+                                    },1000)
+
+
+
+                                }
+
+                                else if(_hrefId=='6'){
+
+                                    console.log('从京东');
+
+
+                                    setTimeout(function () {
+
+                                        wx.switchTab({
+
+                                            url:'../../discovery/discovery/discovery'
+                                        })
+
+                                    },1000)
+
+
+
+
+                                }
+
+
+                            }
+
+
+
+                            else {
+
+
                                 wx.showToast({
 
-                                    title: '认证成功',
-                                    icon: 'success',
+                                    title: res.data.msg,
+                                    icon: 'none',
                                     mask:true,
 
                                 })
 
-                            }, 500)
-
-/*
-
-                            console.log('未设置支付密码' + thisPayPwd);
-
-                            console.log('从未设置跳转' + _hrefId);
-*/
-
-                           //console.log('从支付设置来应该是1='+_paySettingAuthentication);
-
-                           //console.log('从个人中心过来应该是1='+_personCenter)
-
-
-                            //判断退回的页面
-
-    /*                        if (thisPayPwd=='0'&&_hrefId == '8') {
-
-
-                                wx.redirectTo({
-
-                                    url: '../code/code'
-
-                                })
-
-
-                            }*/
-
-                            //支付设置页面未实名认证跳转到设置支付密码
-/*
-                            else if(_paySettingAuthentication=='1'){
-
-                               console.log('从支付页面')
-
-                                setTimeout(function () {
-
-                                    wx.redirectTo({
-
-                                        url: '../set_payment_psw/set_payment_psw'
-
-                                    })
-
-                                },1000)
-
 
                             }
-
-
-
-*/
-
-                             if(_hrefId=='1'){
-
-                                console.log('从个人中心');
-
-                                 setTimeout(function () {
-
-                                     wx.navigateBack({
-
-                                         delta: 1,
-
-                                     })
-
-                                     that.onLoad();
-
-
-                                 },1000)
-
-
-                            }
-
-                             else if(_hrefId=='4'){
-
-                                 setTimeout(function () {
-
-                                wx.navigateBack({
-
-                                    delta: 1,
-
-                                })
-
-                                 },1000)
-
-                            }
-
-                             else if(_hrefId=='8'){
-
-                                 console.log('从转账');
-
-                                 setTimeout(function () {
-
-                                     wx.redirectTo({
-
-                                         url:'../girokonto/girokonto'
-
-                                     })
-
-                                 },1000)
-
-
-
-                             }
-
-                             else if(_hrefId=='6'){
-
-                                 console.log('从京东');
-
-
-                                 setTimeout(function () {
-
-                                     wx.switchTab({
-
-                                         url:'../../discovery/discovery/discovery'
-                                     })
-
-                                 },1000)
-
-
-
-
-                             }
-
 
                         }
 
 
 
-                        else {
 
+                    },
 
-                            wx.showToast({
+                    fail: function (res) {
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask:true,
-
-                            })
-
-
-                        }
+                        console.log(res)
 
                     }
 
+                })
 
 
 
-                },
 
-                fail: function (res) {
+            }
+            else if(that.data.cardChoose=='港澳居民来往内地通行证'){
 
-                    console.log(res)
+                //存身份证号
+                wx.setStorageSync('NextIdNumber',that.data.idNumber);
+
+                //存姓名
+                wx.setStorageSync('NextUserName',that.data.userName);
+
+                //存idType
+                wx.setStorageSync('NextIdType',that.data.idType);
+
+                //存国籍
+                wx.setStorageSync('NextNationality',that.data.city);
+
+                console.log(checkMainLandHK.test(that.data.idNumber))
+
+                if(!checkMainLandHK.test(that.data.idNumber)){
+
+
+                    wx.showToast({
+
+                        title: '港澳通行证号格式错误',
+                        icon: 'none',
+                        mask:true,
+
+                    })
+
 
                 }
 
-            })
+                else {
+
+
+                    wx.navigateTo({
+
+                        url: '../mainland_certification/mainland'
+
+                    })
+
+
+                }
+
+
+
+
+            }
+
+            else if(that.data.cardChoose=='台湾居民来往内地通行证'){
+
+                //存身份证号
+                wx.setStorageSync('NextIdNumber',that.data.idNumber);
+
+                //存姓名
+                wx.setStorageSync('NextUserName',that.data.userName);
+
+                //存idType
+                wx.setStorageSync('NextIdType',that.data.idType);
+
+                //存国籍
+                wx.setStorageSync('NextNationality',that.data.city);
+
+                console.log(checkMainLandTW.test(that.data.idNumber));
+
+
+                if(!checkMainLandTW.test(that.data.idNumber)){
+
+                    wx.showToast({
+
+                        title: '台湾通行证号格式错误',
+                        icon: 'none',
+                        mask:true,
+
+                    })
+
+
+                }
+
+                else {
+
+
+                    wx.navigateTo({
+
+                        url: '../mainland_certification/mainland'
+
+                    })
+
+
+                }
+
+
+            }
+
+            else {
+
+                //存身份证号
+                wx.setStorageSync('NextIdNumber',that.data.idNumber);
+
+                //存姓名
+                wx.setStorageSync('NextUserName',that.data.userName);
+
+                //存idType
+                wx.setStorageSync('NextIdType',that.data.idType);
+
+                //存国籍
+                wx.setStorageSync('NextNationality',that.data.city);
+
+                if(!checkPassPort.test(that.data.idNumber)){
+
+                    wx.showToast({
+
+                        title: '护照号格式错误',
+                        icon: 'none',
+                        mask:true,
+
+                    })
+
+
+                }
+
+                else {
+
+                    wx.navigateTo({
+
+                        url: '../passport_certification/passport'
+
+                    })
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
 
 
         }
-
-
-
-
-
-
-
 
 
     },
@@ -513,6 +695,7 @@ Page({
         });
 
     },
+
     nameFn:function (e) {
 
         var that = this;
@@ -534,6 +717,8 @@ Page({
 
         });
 
+
+
     },
 
     bindPickerChange: function(e) {
@@ -548,10 +733,72 @@ Page({
 
             cardChoose:that.data.idStyle[e.detail.value]
 
-        })
+
+        });
+
+
+        //根据选的证件类型返回对应的参数
+
+        if(e.detail.value=='0'){
+
+            //身份证 idType：1
+            that.setData({
+
+                idType:'1'
+
+
+            });
+            //console.log('pick的身份证：'+that.data.idType)
+
+
+        }
+
+        else if(e.detail.value=='1'){
+
+            //港澳通行证 idType：3
+            that.setData({
+
+                idType:'3'
+
+
+            });
+            console.log('pick的港澳：'+that.data.idType)
+
+        }
+
+        else if(e.detail.value=='2'){
+
+            //台湾通行证 idType：4
+            that.setData({
+
+                idType:'4'
+
+
+            });
+            //console.log('pick的台湾：'+that.data.idType)
+
+        }
+
+        else if(e.detail.value=='3'){
+
+            //护照 idType：2
+            that.setData({
+
+                idType:'2'
+
+
+            });
+            //console.log('pick的护照：'+that.data.idType)
+
+
+        }
+
+
 
 
     },
+
+
 
 
 })
