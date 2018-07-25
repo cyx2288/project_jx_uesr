@@ -93,6 +93,9 @@ Page({
 
         wx.setStorageSync('transferHideMobile',_hideMobile.substr(0, 3) + '****' + _hideMobile.substr(7));
 
+        //存储从哪个页面 在转账成功后获取 返回哪个页面
+        wx.setStorageSync('whichTransfer','2');
+
         wx.navigateTo({
 
             url: '../account_cash/account_cash'
@@ -218,6 +221,21 @@ Page({
             url: '../bill/bill'
         })
 
+
+    },
+
+    transferOtherFn:function () {
+
+        //存储从哪个页面 在转账成功后获取 返回哪个页面
+        wx.setStorageSync('whichTransfer','1');
+
+
+    },
+
+    transferAllFn:function () {
+
+        //存储从哪个页面 在转账成功后获取 返回哪个页面
+        wx.setStorageSync('whichTransfer','4');
 
     }
 

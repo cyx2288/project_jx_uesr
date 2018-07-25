@@ -453,7 +453,8 @@ Page({
 
                     else {
 
-                        console.log('没历史')
+                       //储存刚进来时候的状态 在转账成功的时候获取
+
 
                         wx.navigateTo({
 

@@ -326,6 +326,15 @@ Page({
         }
     },
 
+    seeHistoryFn:function () {
+
+        //存储从哪个页面 在转账成功后获取 返回哪个页面
+       wx.setStorageSync('whichTransfer','3');
+        
+    }
+
+
+
 
 
 });

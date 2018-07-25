@@ -2,7 +2,7 @@
 <!--我的账单-->
 <view class="weui-cells">
 
-    <navigator url="../girokonto/girokonto" class="mine_welfare">
+    <navigator url="../girokonto/girokonto" class="mine_welfare" bindtap="transferOtherFn">
 
        <image src="../../../static/icon/wages/jx_accounts.png"  class="account"/>
 
@@ -13,7 +13,7 @@
 
 </view>
 
-<navigator hover-class="none" url="../historical_cashier/historical_cashier" class="transfer_accounts">
+<navigator hover-class="none" url="../historical_cashier/historical_cashier" class="transfer_accounts" bindtap="transferAllFn">
     <text class="payee_left">转给最近收款人</text>
 
     <view class="weui-accounts">
