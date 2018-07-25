@@ -10,6 +10,8 @@ const getpaymode =  '/user/set/getpaymode';//查询支付验证方式
 
 const bankCardJson = require('../../../static/libs/script/bankCardJson.js');//银行卡图标
 
+const mineUrl = '/user/center/usercenter';//用户中心
+
 
 Page({
 
@@ -62,7 +64,9 @@ Page({
 
         cardType:'',//银行卡类型
 
-        autoFocus:true//是否弹出键盘
+        autoFocus:true,//是否弹出键盘
+
+        thisIsVerify:''//
 
 
     },
@@ -104,424 +108,502 @@ Page({
 
         },500);
 
-        if (_isVerify == '0'||_isVerify == '3') {
 
-            //存指定的页面  （在实名认证中取值）
-            wx.setStorageSync('hrefId','4');
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：null
+         **/
+        wx.request({
 
+            url: app.globalData.URL+ mineUrl,
 
-            //未认证情况下不弹出键盘
-            that.setData({
+            method: 'POST',
 
-                autoFocus:false//是否弹出键盘
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
 
+                'jxsid': jx_sid,
 
-            })
+                'Authorization': Authorization
 
-            wx.showModal({
-                title: '提示',
-                content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
-                cancelText: '取消',
-                confirmText: '去认证',
-                confirmColor:'#fe9728',
-                success: function (res) {
+            },
 
-                    if (res.confirm) {
+            success: function (res) {
 
-                        wx.navigateTo({
+                console.log(res.data);
 
-                            url: '../no_certification/certification'
+                app.globalData.repeat(res.data.code, res.data.msg);
 
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
                         })
 
-                    }
-
-                    else if (res.cancel) {
-
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                    }
-
-                    else {
-
-                        wx.navigateBack({
-                            delta: 1
-                        })
+                    }, 1500)
 
 
-                    }
+                    return false
+
 
                 }
-            });
+
+                else {
+
+                    that.setData({
+
+                        thisIsVerify:res.data.data.isVerify
+
+                    })
 
 
 
-        }
-        else if (_isVerify == '2') {
-
-            //存指定的页面  （在实名认证中取值）
-            wx.setStorageSync('hrefId','4');
+                    showVerify();
 
 
-            //未认证情况下不弹出键盘
-            that.setData({
-
-                autoFocus:false//是否弹出键盘
-
-
-            })
-
-            wx.showModal({
-                title: '提示',
-                content: '实名认证审核中，审核通过后方可提现',
-                showCancel:false,
-                confirmText: '我知道了',
-                confirmColor:'#fe9728',
-                success: function (res) {
-
-                    if (res.confirm) {
-                        wx.navigateBack({
-                            delta: 1
-                        })
-
-                    }
-
-                    else if (res.cancel) {
-
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                    }
-
-                    else {
-
-                        wx.navigateBack({
-                            delta: 1
-                        })
-
-
-                    }
 
                 }
-            });
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        });
 
 
 
-        }
-        else {
+
+        function showVerify() {
+
+            if (that.data.thisIsVerify == '0'||that.data.thisIsVerify == '3') {
+
+                console.log('没认证1')
+
+                //存指定的页面  （在实名认证中取值）
+                wx.setStorageSync('hrefId','4');
 
 
-            that.setData({
+                //未认证情况下不弹出键盘
+                that.setData({
 
-                autoFocus:true//是否弹出键盘
-
-
-            })
-
-            /**
-             * 接口：检测用户发起提现操作
-             * 请求方式：GET
-             * 接口：/user/work/checkwithdraw
-             * 入参：null
-             * */
-
-            wx.request({
-
-                url: thisCheckcashUrl,
-
-                method: 'GET',
-
-                data: {
-
-                    code: that.data.code,
+                    autoFocus:false//是否弹出键盘
 
 
-                },
-                header: {
+                })
 
-                    'jx_sid': jx_sid,
+                wx.showModal({
+                    title: '提示',
+                    content: ' 当前账户尚未进行实名认证，完成认证后方可提现',
+                    cancelText: '取消',
+                    confirmText: '去认证',
+                    confirmColor:'#fe9728',
+                    success: function (res) {
 
-                    'Authorization': Authorization
+                        if (res.confirm) {
 
-                },
+                            wx.navigateTo({
 
-                success: function (res) {
+                                url: '../no_certification/certification'
 
-                    console.log(res.data);
-
-
-                    app.globalData.repeat(res.data.code,res.data.msg);
-
-                    if(res.data.code=='3001') {
-
-                        //console.log('登录');
-
-                        setTimeout(function () {
-
-                            wx.reLaunch({
-
-                                url:'../../common/signin/signin'
                             })
-
-                        },1500)
-
-                        /*           wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success:function () {
-
-
-
-                         }
-
-                         })*/
-
-                        return false
-
-
-                    }
-
-                    else {
-
-                        //console.log(that.data.userBankCardDTOList);
-
-                        that.setData({
-
-                            userBankCardDTOList: res.data.data.userBankCardDTOList
-
-                        });
-
-
-
-                        //0703 写的 不要删掉
-                        var _bankList = res.data.data.userBankCardDTOList
-
-                        //console.log(that.data.bankList)
-
-
-                        for(var x in _bankList){
-
-                            //console.log(that.data.bankList[x].bankName)
-
-                            for (var y in bankCardJson.bankCardJson){
-
-                                if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
-
-                                    break;
-
-                                }
-
-                            }
-
-
-                            _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
-
-                            //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
 
                         }
 
-                        that.setData({
+                        else if (res.cancel) {
 
-                            userBankCardDTOList:_bankList
-
-                        })
-
-                        console.log(that.data.userBankCardDTOList)
-
-
-                        if (res.data.code == '-7') {
-
-
-                            wx.showModal({
-                                title: '提示',
-                                content: res.data.msg,
-                                cancelText: '取消',
-                                confirmText: '去添加',
-                                confirmColor: '#fe9728',
-                                success: function (res) {
-
-                                    if (res.confirm) {
-
-                                        wx.navigateTo({
-
-                                            url: '../add_card/add_card'
-
-                                        })
-
-                                    }
-
-                                    else if (res.cancel) {
-
-                                        wx.navigateBack({
-                                            delta: 1
-                                        })
-                                    }
-
-
-                                }
-                            });
+                            wx.navigateBack({
+                                delta: 1
+                            })
                         }
 
                         else {
 
-                            var thisBankList = that.data.userBankCardDTOList;
-
-
-                            that.setData({
-
-                                //balance: res.data.data.balance,//提取现金
-
-                                amountMax: res.data.data.amountMax,//单笔最大限额
-
-                                amountMin: res.data.data.amountMin,//单笔最小限额
-
-                                dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
-
-                                monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
-
-                                rate: res.data.data.rate,//费率
-
-                                canCashBalance: res.data.data.balance,
-
-                                userBankCardDTOList: res.data.data.userBankCardDTOList,
-
-                            })
-
-
-                            //默认显示第一个银行卡
-                            that.setData({
-
-                                bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
-
-                                bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
-
-                                bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
-
-                                cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
-
-                                bankIcon:that.data.userBankCardDTOList[0].bankImg//银行卡类型
-
-
-                            });
-
-
-                            //判断银行卡
-
-                            if (that.data.cardType == '1') {
-
-                                that.setData({
-
-                                    cardTypeText: '（储蓄卡）'
-
-                                })
-
-                            }
-
-                            else {
-
-                                that.setData({
-
-                                    cardTypeText: '（信用卡）'
-
-                                })
-                            }
-
-
-                            //获取银行卡的
-                            var pickChooseBank = [];
-
-                            //循环银行卡、银行名称及银行id
-                            for (var i = 0; i < thisBankList.length; i++) {
-
-                                var pickBankName = thisBankList[i].bankName;
-
-                                var pickBankNo = thisBankList[i].bankNo;
-
-                                var pickBankId = thisBankList[i].bankCardId;
-
-                                var pickBankType = thisBankList[i].cardType;
-
-                                //遍历银行卡类型
-                                if (pickBankType == '1') {
-
-
-                                    var _pickChooseBank = pickBankName + '储蓄卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
-                                }
-
-                                else if (pickBankType == '2') {
-
-                                    var _pickChooseBank = pickBankName + '信用卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
-                                }
-
-
-                                //组成数组
-                                pickChooseBank.push(_pickChooseBank);
-
-                            }
-
-
-                            that.setData({
-
-                                bankList: pickChooseBank
-
+                            wx.navigateBack({
+                                delta: 1
                             })
 
 
                         }
 
                     }
+                });
 
-                },
 
-
-                fail: function (res) {
-
-                    console.log(res)
-
-                }
-
-            });
-
-/*
-            //默认显示第一个银行卡
-            that.setData({
-
-                bankName: that.data.bankList[0].bankName,//银行名称
-
-                bankNo: that.data.bankList[0].bankNo,//银行卡号
-
-                bankCardId: that.data.bankList[0].bankCardId//银行卡id
-
-            });
-
-            //获取银行卡的
-            var pickChooseBank = [];
-
-            //循环银行卡、银行名称及银行id
-            for (var i = 0; i < thisBankList.length; i++) {
-
-                var pickBankName = thisBankList[i].bankName;
-
-                var pickBankNo = thisBankList[i].bankNo;
-
-                var pickBankId = thisBankList[i].bankCardId;
-
-                var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
-
-                //组成数组
-                pickChooseBank.push(_pickChooseBank);
 
             }
+            else if (that.data.thisIsVerify == '2') {
 
-            that.setData({
+                console.log('没认证2')
 
-                chooseBank: pickChooseBank
+                //存指定的页面  （在实名认证中取值）
+                wx.setStorageSync('hrefId','4');
 
-            })
-            */
 
+                //未认证情况下不弹出键盘
+                that.setData({
+
+                    autoFocus:false//是否弹出键盘
+
+
+                })
+
+                wx.showModal({
+                    title: '提示',
+                    content: '实名认证审核中，审核通过后方可提现',
+                    showCancel:false,
+                    confirmText: '我知道了',
+                    confirmColor:'#fe9728',
+                    success: function (res) {
+
+                        if (res.confirm) {
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+                        }
+
+                        else if (res.cancel) {
+
+                        }
+
+                        else {
+
+                            wx.navigateBack({
+                                delta: 1
+                            })
+
+
+                        }
+
+                    }
+                });
+
+
+
+            }
+            else {
+
+
+                that.setData({
+
+                    autoFocus:true//是否弹出键盘
+
+
+                })
+
+                /**
+                 * 接口：检测用户发起提现操作
+                 * 请求方式：GET
+                 * 接口：/user/work/checkwithdraw
+                 * 入参：null
+                 * */
+
+                wx.request({
+
+                    url: thisCheckcashUrl,
+
+                    method: 'GET',
+
+                    data: {
+
+                        code: that.data.code,
+
+
+                    },
+                    header: {
+
+                        'jx_sid': jx_sid,
+
+                        'Authorization': Authorization
+
+                    },
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                        if(res.data.code=='3001') {
+
+                            //console.log('登录');
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+
+
+                            return false
+
+
+                        }
+
+                        else {
+
+
+
+                            if (res.data.code == '-7') {
+
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: res.data.msg,
+                                    cancelText: '取消',
+                                    confirmText: '去添加',
+                                    confirmColor: '#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+                                            wx.navigateTo({
+
+                                                url: '../add_card/add_card'
+
+                                            })
+
+                                        }
+
+                                        else if (res.cancel) {
+
+                                            wx.navigateBack({
+                                                delta: 1
+                                            })
+                                        }
+
+
+                                    }
+                                });
+                            }
+
+                            else {
+
+                                var thisBankList = that.data.userBankCardDTOList;
+
+                                that.setData({
+
+                                    userBankCardDTOList: res.data.data.userBankCardDTOList
+
+                                });
+
+                                //0703 写的 不要删掉
+                                var _bankList = res.data.data.userBankCardDTOList
+
+                                //console.log(that.data.bankList)
+
+
+                                for(var x in _bankList){
+
+                                    //console.log(that.data.bankList[x].bankName)
+
+                                    for (var y in bankCardJson.bankCardJson){
+
+                                        if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
+
+                                            break;
+
+                                        }
+
+                                    }
+
+
+                                    _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
+
+                                    //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
+
+                                }
+
+                                that.setData({
+
+                                    userBankCardDTOList:_bankList
+
+                                })
+
+                                console.log(that.data.userBankCardDTOList)
+
+
+                                that.setData({
+
+                                    //balance: res.data.data.balance,//提取现金
+
+                                    amountMax: res.data.data.amountMax,//单笔最大限额
+
+                                    amountMin: res.data.data.amountMin,//单笔最小限额
+
+                                    dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                                    monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                                    rate: res.data.data.rate,//费率
+
+                                    canCashBalance: res.data.data.balance,
+
+                                    userBankCardDTOList: res.data.data.userBankCardDTOList,
+
+                                })
+
+
+                                //默认显示第一个银行卡
+                                that.setData({
+
+                                    bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
+
+                                    bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
+
+                                    bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
+
+                                    cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
+
+                                    bankIcon:that.data.userBankCardDTOList[0].bankImg//银行卡类型
+
+
+                                });
+
+
+                                //判断银行卡
+
+                                if (that.data.cardType == '1') {
+
+                                    that.setData({
+
+                                        cardTypeText: '（储蓄卡）'
+
+                                    })
+
+                                }
+
+                                else {
+
+                                    that.setData({
+
+                                        cardTypeText: '（信用卡）'
+
+                                    })
+                                }
+
+
+                                //获取银行卡的
+                                var pickChooseBank = [];
+
+                                //循环银行卡、银行名称及银行id
+                                for (var i = 0; i < thisBankList.length; i++) {
+
+                                    var pickBankName = thisBankList[i].bankName;
+
+                                    var pickBankNo = thisBankList[i].bankNo;
+
+                                    var pickBankId = thisBankList[i].bankCardId;
+
+                                    var pickBankType = thisBankList[i].cardType;
+
+                                    //遍历银行卡类型
+                                    if (pickBankType == '1') {
+
+
+                                        var _pickChooseBank = pickBankName + '储蓄卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                    }
+
+                                    else if (pickBankType == '2') {
+
+                                        var _pickChooseBank = pickBankName + '信用卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                    }
+
+
+                                    //组成数组
+                                    pickChooseBank.push(_pickChooseBank);
+
+                                }
+
+
+                                that.setData({
+
+                                    bankList: pickChooseBank
+
+                                })
+
+
+                            }
+
+
+
+                            //console.log(that.data.userBankCardDTOList);
+
+
+
+
+
+
+
+                        }
+
+                    },
+
+
+                    fail: function (res) {
+
+                        console.log(res)
+
+                    }
+
+                });
+
+                /*
+                 //默认显示第一个银行卡
+                 that.setData({
+
+                 bankName: that.data.bankList[0].bankName,//银行名称
+
+                 bankNo: that.data.bankList[0].bankNo,//银行卡号
+
+                 bankCardId: that.data.bankList[0].bankCardId//银行卡id
+
+                 });
+
+                 //获取银行卡的
+                 var pickChooseBank = [];
+
+                 //循环银行卡、银行名称及银行id
+                 for (var i = 0; i < thisBankList.length; i++) {
+
+                 var pickBankName = thisBankList[i].bankName;
+
+                 var pickBankNo = thisBankList[i].bankNo;
+
+                 var pickBankId = thisBankList[i].bankCardId;
+
+                 var _pickChooseBank = pickBankName + '（储蓄卡） ' + pickBankNo;
+
+                 //组成数组
+                 pickChooseBank.push(_pickChooseBank);
+
+                 }
+
+                 that.setData({
+
+                 chooseBank: pickChooseBank
+
+                 })
+                 */
+
+
+            }
 
         }
 

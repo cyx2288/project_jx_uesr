@@ -8,6 +8,8 @@ const payeeUrl = '/record/selecthistoricalpayee';//查询历史收款人
 
 const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
 
+const mineUrl = '/user/center/usercenter';//用户中心
+
 
 Page({
 
@@ -21,12 +23,14 @@ Page({
 
         totalSalary:'--.--',//工资余额
 
+        isVerify:'',
+
     },
 
     onShow:function () {
 
         //有几个ajax请求
-        var ajaxCount = 1;
+        var ajaxCount = 3;
 
         //获取用户余额
         var thisBalanceUrl = app.globalData.URL + balanceUrl;
@@ -37,8 +41,6 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
-
-
 
 
         /**
@@ -89,12 +91,6 @@ Page({
 
                 else {
 
-                    that.setData({
-
-                        wages: radixPointFn.splitK(res.data.data)//用户余额
-
-                    });
-
 
                     (function countDownAjax() {
 
@@ -103,6 +99,17 @@ Page({
                         app.globalData.ajaxFinish(ajaxCount)
 
                     })();
+
+
+
+                    that.setData({
+
+                        wages: radixPointFn.splitK(res.data.data)//用户余额
+
+                    });
+
+
+
 
                 }
 
@@ -181,7 +188,18 @@ Page({
 
                     else {
 
-                        console.log(res.data)
+                       /* console.log(res.data)*/
+
+
+                        (function countDownAjax() {
+
+                            ajaxCount--;
+
+                            app.globalData.ajaxFinish(ajaxCount)
+
+                        })();
+
+
 
                         that.setData({
 
@@ -193,6 +211,12 @@ Page({
 
 
                         })
+
+
+
+
+
+
 
 
                     }
@@ -213,6 +237,87 @@ Page({
 
         })
 
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url: app.globalData.URL+ mineUrl,
+
+            method: 'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+
+                    return false
+
+
+                }
+
+                else {
+
+
+                    (function countDownAjax() {
+
+                        ajaxCount--;
+
+                        app.globalData.ajaxFinish(ajaxCount)
+
+                    })();
+
+
+                    that.setData({
+
+                        isVerify:res.data.data.isVerify
+
+                    });
+
+
+
+
+
+                }
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        })
+
+
+
 
 
 
@@ -230,7 +335,7 @@ Page({
 
 
         //获取已认证未认证
-        var _isVerify = wx.getStorageSync('isVerify');
+        var _isVerify = that.data.isVerify;
 
 
         //没认证的去认证 已认证直接跳接口
@@ -348,7 +453,8 @@ Page({
 
                     else {
 
-                        console.log('没历史')
+                       //储存刚进来时候的状态 在转账成功的时候获取
+
 
                         wx.navigateTo({
 

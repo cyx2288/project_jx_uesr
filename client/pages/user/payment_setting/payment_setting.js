@@ -742,7 +742,7 @@ Page({
                 });
 
                 //没有认证的先去认证 再设置支付密码
-                if (_isVerify == '0') {
+                if (_isVerify == '0'||_isVerify == '3') {
 
 
                     wx.showModal({
@@ -810,40 +810,6 @@ Page({
 
                 }
 
-                else if(_isVerify == '3'){
-
-                    wx.showModal({
-                        title: '提示',
-                        content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
-                        cancelText: '取消',
-                        confirmText: '去认证',
-                        confirmColor: '#fe9728',
-                        success: function (res) {
-
-                            if (res.confirm) {
-
-                                wx.navigateTo({
-
-                                    url: '../upload_fail/upload_fail'
-
-                                })
-
-
-                            }
-
-                            else if (res.cancel) {
-
-                                that.setData({
-
-                                    msgMode: true,
-
-                                })
-
-                            }
-                        }
-                    });
-
-                }
 
                 else {
 
@@ -1413,7 +1379,7 @@ Page({
                 var _isVerify = wx.getStorageSync('isVerify');
 
                 //没有认证的先去认证 再设置支付密码
-                if (_isVerify == '0') {
+                if (_isVerify == '0'||_isVerify == '3') {
 
                     wx.showModal({
                         title: '提示',
@@ -1481,41 +1447,6 @@ Page({
 
                 }
 
-                else if(_isVerify == '3'){
-
-                    wx.showModal({
-                        title: '提示',
-                        content: '当前账户尚未进行实名认证，完成实名认证后即可设置支付密码',
-                        cancelText: '取消',
-                        confirmText: '去认证',
-                        confirmColor: '#fe9728',
-                        success: function (res) {
-
-                            if (res.confirm) {
-
-                                wx.navigateTo({
-
-                                    url: '../upload_fail/upload_fail'
-
-                                })
-
-
-                            }
-
-                            else if (res.cancel) {
-
-                                that.setData({
-
-                                    msgMode: true,
-
-                                })
-
-                            }
-                        }
-                    });
-
-                }
-
                 else {
 
                     //储存一下从设置密码过去
@@ -1523,6 +1454,7 @@ Page({
                     wx.showModal({
 
                         title: '提示',
+
                         cancelText: '取消',
 
                         confirmText: '去设置',

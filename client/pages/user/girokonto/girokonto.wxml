@@ -26,7 +26,7 @@
                     <input class="weui-input" value="{{mobile}}" data-mobile="{{mobile}}" type="number" bindinput="telFn" placeholder="请输入手机号" auto-focus="true" />
                 </view>
 
-                <navigator hover-class="none" url="../historical_cashier/historical_cashier" class="jx_record">
+                <navigator hover-class="none" url="../historical_cashier/historical_cashier" class="jx_record" bindtap="seeHistoryFn">
                     <image src="../../../static/icon/wages/jx_phone_orange.png"  class="phone" />
                 </navigator>
 

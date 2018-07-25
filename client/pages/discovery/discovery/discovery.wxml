@@ -3,20 +3,20 @@
 
     <view class="assistant_life">
           <view class="title_line"></view>
-         <view class="title">生活小助手</view>
+         <view class="title">金融服务</view>
     </view>
 
     <hr/>
     <view class="content">
 
         <!-- 加油卡 -->
-        <view  class="scene" bindtap="urlFn" data-url="{{jykUrl}}" data-name="加油卡充值">
-            <image src="../../../static/icon/wages/jx_fuel_card.png"  class="mall_service"/>
-            <view class="service_title">加油卡充值</view>
+        <!--<view  class="scene" bindtap="urlFn" data-url="{{jykUrl}}" data-name="加油卡充值">-->
+            <!--<image src="../../../static/icon/wages/jx_fuel_card.png"  class="mall_service"/>-->
+            <!--<view class="service_title">加油卡充值</view>-->
 
-        </view>
-
-        <view  class="scene" bindtap="urlFn" data-url="{{jbtUrl}}" data-name="嘉白条">
+        <!--</view>-->
+        <view  class="scene" bindtap="urlFn" data-url="{{jbtUrl}}" data-name
+="嘉白条">
             <image src="../../../static/icon/wages/jx_white_bar.png"  class="mall_service"/>
             <view class="service_title">嘉白条</view>
 

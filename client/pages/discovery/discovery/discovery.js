@@ -36,7 +36,9 @@ Page({
 
         jdUrl:'',//京东
 
-        isOpen:''//是否在
+        isOpen:'',//是否在
+
+        isVerify:''
 
     },
     onShow: function () {
@@ -604,7 +606,11 @@ Page({
 
                     that.setData({
 
-                        isOpen:res.data.data.isOpen
+                        isOpen:res.data.data.isOpen,
+
+                        isVerify:res.data.data.isVerify
+
+
 
                     })
 

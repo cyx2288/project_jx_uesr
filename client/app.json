@@ -2,12 +2,13 @@
   "pages": [
 
 
-    "component/actionSheet/actionSheet",
 
+    "pages/user/actionSheet/actionSheet",
     "pages/common/loading/loading",
     "pages/user/cash/cash",
     "pages/user/no_certification/certification",
     "pages/user/choose_nationality/choose_nationality",
+
 
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
@@ -26,7 +27,6 @@
 
 
     "pages/user/details/details",
-
     "pages/wages/index/index",
     "pages/wages/payroll/payroll",
 
