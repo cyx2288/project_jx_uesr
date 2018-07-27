@@ -1,5 +1,6 @@
-@import "../mine/mine.wxss";
-@import "../../common/register/register.wxss";
+@import "../../../pages/user/mine/mine.wxss";
+@import "../../../pages/common/register/register.wxss";
+
 
 
 page{

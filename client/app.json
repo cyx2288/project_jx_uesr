@@ -3,11 +3,12 @@
 
 
 
-    "pages/user/actionSheet/actionSheet",
+
     "pages/common/loading/loading",
     "pages/user/cash/cash",
     "pages/user/no_certification/certification",
     "pages/user/choose_nationality/choose_nationality",
+    "pages/user/actionSheet/actionSheet",
 
 
     "pages/user/upload_success/upload_success",
@@ -44,7 +45,7 @@
     "pages/user/payment_setting_message/payment_setting_message",
     "pages/user/company/company",
 
-    "pages/user/bill/bill",
+
     "pages/user/girokonto/girokonto",
 
     "pages/user/payment_setting/payment_setting",
@@ -59,44 +60,52 @@
     "pages/user/feedback/feedback",
     "pages/user/give_details/give_details",
     "pages/user/mine/mine",
-
-    "pages/user/help_service/help_service",
     "pages/user/company_authentication/authentication",
     "pages/user/cash_give_details/give_details",
-
     "pages/user/payment_setting_certification/certification",
     "pages/user/set_payment_psw/set_payment_psw",
     "pages/common/revise_password/revise_password",
-    "pages/user/add_card/add_card",
     "pages/common/register/register",
-    "pages/user/problem_nojoin/problem_nojoin",
-    "pages/user/problem_details/problem_details",
-    "pages/user/problem_verification/problem_verification",
-    "pages/user/problem_company/problem_company",
-    "pages/user/problem_account/problem_account",
-    "pages/user/problem_recall/problem_recall",
-    "pages/user/problem_fail/problem_fail",
-    "pages/user/problem_quota/problem_quota",
-    "pages/user/problem_setting/problem_setting",
-    "pages/user/problem_close/problem_close",
+
     "pages/user/pay_success/pay_success",
     "pages/user/modify_paycode/modify_code",
     "pages/user/pws_verification/pws_verification",
     "pages/user/locked/locked",
     "pages/user/sms_verification/sms_verification",
-    "pages/user/card/card",
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
     "pages/user/personal/personal",
     "pages/user/certification/certification",
-
-
-
     "component/toastLoading/loading"
 
+  ],
+
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/add_card/add_card",
+        "pages/card/card",
+        "pages/bill/bill",
+        "pages/exchange_number/exchange_number",
+        "pages/personal_number/personal_number",
+        "pages/setting_number/setting_number",
+        "pages/code/code",
+        "pages/help_service/help_service",
+        "pages/problem_nojoin/problem_nojoin",
+        "pages/problem_details/problem_details",
+        "pages/problem_verification/problem_verification",
+        "pages/problem_company/problem_company",
+        "pages/problem_account/problem_account",
+        "pages/problem_recall/problem_recall",
+        "pages/problem_fail/problem_fail",
+        "pages/problem_quota/problem_quota",
+        "pages/problem_setting/problem_setting",
+        "pages/problem_close/problem_close"
 
 
-
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

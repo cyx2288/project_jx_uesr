@@ -1,0 +1,31 @@
+<view class="weui_top">
+    <view class="jx_record">
+        <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+    </view>
+
+    <view class="weui-cells__title">更换登录账号，需验证当前登录账号身份</view>
+</view>
+<!-- 忘记支付密码跳转验证码-->
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">验证码</view>
+        </view>
+
+        <view class="weui-cell__bd">
+            <input class="weui-input" type="number" placeholder="请输入验证码" value="{{code}}" bindinput="codeFn" maxlength="6" focus="true"/>
+        </view>
+    </view>
+
+</view>
+
+<view class="weui-cells__title weui_code">验证码已发送至{{mobile}},{{last_time}}s后可<span class="{{locked==1 ? '' :'locked'}}" bindtap="hasCodeFn">重新获取</span></view>
+
+
+<!--button-->
+<view class="page__bd page__bd_spacing">
+
+    <button class="weui-btn" type="primary" bindtap="codeUrlFn">确认</button>
+
+</view>
+

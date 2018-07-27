@@ -1,5 +1,5 @@
 @import "../mine/mine.wxss";
-@import "../add_card/add_card.wxss";
+/*@import "../../../packageA/pages/add_card/add_card.wxss";*/
 
 
 /*提示*/
@@ -132,4 +132,52 @@ button.btn-confirm::after{
 .transfer_bottom{
 
     margin-bottom: 0;
+}
+
+/*button*/
+.weui-btn{
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 16px;
+
+}
+
+.bottom_button{
+    margin-bottom: 25px;
+}
+.card_type{
+
+    margin-right: 10px;
+}
+.choose_bank{
+
+    color: #4a4a4a;
+
+}
+.choose_bank>span{
+
+    margin-left: 10px;
+
+}
+
+.bank_label{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    width: auto;
+}
+.bank_label>image{
+
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.phcolor{
+
+    color: #ababab;
+}
+.look_more{
+
+    color: #E87B17;
+    line-height: 80rpx;
 }

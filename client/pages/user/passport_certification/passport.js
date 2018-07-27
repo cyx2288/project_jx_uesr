@@ -67,6 +67,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        console.log('张照片')
+
         wx.showActionSheet({
             itemList: ['拍摄', '从相册选择照片'],
             itemColor: "#ee6934",
@@ -82,6 +84,7 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            console.log('都可以');
 
 
                             wx.uploadFile({
@@ -90,6 +93,8 @@ Page({
                                 url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
                                 header:{
+
+                                    'content-type': 'multipart/form-data', // post请求
 
                                     'jxsid': jx_sid,
 
@@ -102,6 +107,8 @@ Page({
                                 name: 'File',
 
                                 success: function(res){
+
+                                    console.log('成功~')
 
                                     //code3003返回方法
                                     app.globalData.repeat(res.data.code, res.data.msg);
@@ -175,6 +182,8 @@ Page({
 
                                 header:{
 
+                                    'content-type': 'multipart/form-data', // post请求
+
                                     'jxsid': jx_sid,
 
                                     'Authorization': Authorization
@@ -244,7 +253,7 @@ Page({
                     })
 
                 }
-                console.log(res.tapIndex)
+                //console.log (res.tapIndex)
             },
             fail: function (res) {
                 console.log(res.errMsg)

@@ -1,0 +1,11 @@
+
+@import "../../../pages/common/register/register.wxss";
+
+
+.weui-input{
+   text-align: right;
+}
+
+.page__bd{
+    padding-bottom: 5px;
+}

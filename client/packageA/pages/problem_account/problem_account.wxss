@@ -1,4 +1,4 @@
-@import "../setting/setting.wxss";
+@import "../../../pages/user/setting/setting.wxss";
 
 .weui-panel{
 

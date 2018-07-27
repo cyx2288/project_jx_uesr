@@ -524,7 +524,7 @@ Page({
 
         wx.navigateTo({
 
-            url:"../bill/bill"
+            url:"../../../packageA/pages/bill/bill"
 
         })
 
