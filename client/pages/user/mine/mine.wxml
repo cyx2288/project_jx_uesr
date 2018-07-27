@@ -124,7 +124,7 @@
 
 
     <!--银行卡-->
-    <navigator url="../card/card" class="mine_welfare">
+    <navigator url="../../../packageA/pages/card/card" class="mine_welfare">
 
         <view class="jx_mine_left">
             <view class="jx_record">

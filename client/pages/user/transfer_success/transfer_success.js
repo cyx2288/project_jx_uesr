@@ -63,79 +63,56 @@ Page({
     //关闭之前的页面 直接退回我的页面
     onUnload:function () {
 
-        var that = this;
+        var _whichTransfer = wx.getStorageSync('whichTransfer');
 
-        //获取数据
-        var jx_sid = wx.getStorageSync('jxsid');
+        if(_whichTransfer=='1'){
 
-        var Authorization = wx.getStorageSync('Authorization');
+            console.log('点击其他转账')
 
-        /**
-         * 接口：查询历史收款人
-         * 请求方式：post
-         * 接口：/record/selecthistoricalpayee
-         * 入参：null
-         **/
-        wx.request({
-
-            url: app.globalData.URL + payeeUrl,
-
-            method: 'POST',
-
-            header: {
-
-                'content-type': 'application/x-www-form-urlencoded',// post请求
-
-                'jxsid': jx_sid,
-
-                'Authorization': Authorization
-
-            },
-
-            success: function (res) {
-
-                console.log(res.data);
-
-                console.log(res.data.data)
-
-                if(res.data.data.length !=0){
-
-                    //console.log('有历史')
-
-                    wx.navigateBack({
-                     delta: 1
-                     })
-
-                }
-
-                else {
-
-                    //console.log('没历史')
-                    wx.navigateBack({
-                        delta: 1
-                    })
+            wx.navigateBack({
+                delta: 2
+            })
 
 
-                }
+        }
 
-            },
+        else if(_whichTransfer=='2'){
 
+            console.log('点击历史人')
 
-            fail: function (res) {
+            wx.navigateBack({
+                delta: 1
+            })
 
-                console.log(res)
+        }
 
-            }
+        else if(_whichTransfer=='3'){
 
-        })
+            console.log('点击转账手机');
 
+            wx.navigateBack({
+                delta: 4
+            })
 
+        }
 
+        else if(_whichTransfer=='4'){
 
+            console.log('点击全部收款人');
 
-    },
+            wx.navigateBack({
+                delta: 2
+            })
 
-    onHide:function () {
+        }
+
+        else {
+
+            wx.navigateBack({
+                delta: 1
+            })
+
+        }
 
 
 

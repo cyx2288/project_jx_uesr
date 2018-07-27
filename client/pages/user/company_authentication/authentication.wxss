@@ -1,5 +1,4 @@
 @import "../mine/mine.wxss";
-@import "../add_card/add_card.wxss";
 @import "../id_card/id_card.wxss";
 
 
@@ -26,7 +25,7 @@ page{
 }
 
 .weui-cell__ft{
-    padding: 8px 0;
+    padding:8px 15px;
 }
 
 
@@ -83,3 +82,4 @@ button.kf_button {
 .kf_button::after{
     border: 0px;
 }
+

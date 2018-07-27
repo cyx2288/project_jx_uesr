@@ -112,6 +112,8 @@ Page({
 
                                 header:{
 
+                                    'content-type': 'multipart/form-data', // post请求
+
                                     'jxsid': jx_sid,
 
                                     'Authorization': Authorization
@@ -195,6 +197,8 @@ Page({
                                 url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
                                 header:{
+
+                                    'content-type': 'multipart/form-data', // post请求
 
                                     'jxsid': jx_sid,
 
@@ -305,6 +309,8 @@ Page({
 
                                 header:{
 
+                                    'content-type': 'multipart/form-data', // post请求
+
                                     'jxsid': jx_sid,
 
                                     'Authorization': Authorization
@@ -390,6 +396,8 @@ Page({
                                 url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
                                 header:{
+
+                                    'content-type': 'multipart/form-data', // post请求
 
                                     'jxsid': jx_sid,
 

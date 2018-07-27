@@ -1,0 +1,11 @@
+@import "../../../pages/common/register/register.wxss";
+@import "../../../pages/user/code/code.wxss";
+
+.weui-cells__title{
+
+}
+
+.weui_top{
+    padding: 15px 7px;
+
+}

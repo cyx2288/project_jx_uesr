@@ -1,0 +1,27 @@
+
+
+      <view class="weui-cells weui-cells_after-title">
+
+            <view class="weui-cell weui-cell_input">
+
+                   <view class="weui-cell__hd">
+                          <view class="weui-label">当前账户绑定账号：</view>
+                   </view>
+
+                   <view class="weui-cell__bd">
+                         <input class="weui-input" type="number" auto-focus="true"  maxlength="11" placeholder="159****5648" value="{{mobile}}" bindinput="mobileFn"/>
+                   </view>
+
+             </view>
+
+      </view>
+
+
+      <view class="page__bd page__bd_spacing">
+
+             <button class="weui-btn" type="primary" bindtap="changeNumFn">更换手机号</button>
+      </view>
+
+      <view  class="weui-cells__title" style="text-align: center">一个手机号只能绑定一个账户</view>
+
+

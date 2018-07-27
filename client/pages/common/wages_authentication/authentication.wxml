@@ -21,7 +21,7 @@
 
         <view class="weui-cell">
 
-                <input class="weui-input" value="{{idCard}}" auto-focus="true" type="idcard" maxlength="6" placeholder="请输入身份证后六位" bindinput="idCardFn"/>
+                <input class="weui-input" value="{{idCard}}" auto-focus="true" maxlength="6" placeholder="{{placeholderValue}}" bindinput="idCardFn"/>
 
         </view>
 

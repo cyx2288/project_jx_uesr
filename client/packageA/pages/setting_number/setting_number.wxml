@@ -1,0 +1,51 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+<!--提示-->
+    <view class="weui_top">
+        <view class="jx_record">
+            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        </view>
+
+        <view class="weui-cells__title">下次登录请使用更新的新手机号码，账户其他信息不变</view>
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+
+            <view class="jx_record">
+                <image src="../../../static/icon/wages/jx_phone.png"  class="reset_go" />
+            </view>
+
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入新的手机号码" value="{{mobile}}" bindinput="telFn" maxlength="11"/>
+            </view>
+
+        </view>
+
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="jx_record">
+                <image src="../../../static/icon/wages/jx_pen.png"  class="reset_go" />
+            </view>
+
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入验证码" value="{{checkCode}}" bindinput="codeFn"  maxlength="6"/>
+            </view>
+
+            <view class="weui-cell__ft">
+                <view disabled='{{disabled}}' class="weui-vcode-btn {{locked==1 ? '' :'locked'}}" bindtap="registmsg">{{time}}</view>
+            </view>
+        </view>
+
+
+    </view>
+
+
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="register">确认</button>
+    </view>
+
+
+
+
+</view>

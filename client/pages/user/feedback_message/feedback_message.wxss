@@ -1,4 +1,4 @@
-@import "../help_service/help_service.wxss";
+/*@import "../../../packageA/pages/help_service/help_service.wxss";*/
 
 .weui-cells{
     font-size: 16px;

@@ -1,5 +1,5 @@
-@import "../../wages/payroll/payroll.wxss";
-@import "../mine/mine.wxss";
+@import "../../../pages/wages/payroll/payroll.wxss";
+@import "../../../pages/user/mine/mine.wxss";
 
 
 .weui-cells{

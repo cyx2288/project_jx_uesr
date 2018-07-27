@@ -1,4 +1,4 @@
-@import "../mine/mine.wxss";
+@import "../../../pages/user/mine/mine.wxss";
 
 
 

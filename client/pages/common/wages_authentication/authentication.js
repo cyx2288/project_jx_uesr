@@ -8,6 +8,8 @@ const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json
 
 const dentityUrl = '/salary/home/salaryselectidnumber';//查看工资条身份验证
 
+const mineUrl = '/user/center/usercenter';//用户中心
+
 
 Page({
 
@@ -21,14 +23,18 @@ Page({
 
         salaryDetailId:'',
 
-        mobile:''
+        mobile:'',
+
+        placeholderValue:''
 
 
 
 
     },
 
-    onLoad:function () {
+    onShow:function () {
+
+        var that = this;
 
         var thisUserName = wx.getStorageSync('userName');
 
@@ -40,7 +46,123 @@ Page({
 
         //console.log('姓名'+userName)
 
-        this.setData({
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url: app.globalData.URL + mineUrl,
+
+            method: 'POST',
+
+            header: {
+
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                if (res.data.code == '3001') {
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+
+                    return false
+
+
+                }
+
+                else {
+
+
+                    if(res.data.data.idType=='1'){
+
+
+                        that.setData({
+
+                            placeholderValue:'请输入身份证后六位'
+
+                        })
+
+
+                    }
+                    else if(res.data.data.idType=='2'){
+
+
+                        that.setData({
+
+                            placeholderValue:'请输入护照后六位'
+
+                        })
+
+
+                    }
+
+                    else if(res.data.data.idType=='3'){
+
+
+                        that.setData({
+
+                            placeholderValue:'请输入回乡证后六位'
+
+                        })
+
+
+                    }
+
+                    else if(res.data.data.idType=='4'){
+
+
+                        that.setData({
+
+                            placeholderValue:'请输入台胞证后六位'
+
+                        })
+
+
+                    }
+
+
+
+
+
+
+                }
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        })
+
+        that.setData({
 
             userName:thisUserName,
 
