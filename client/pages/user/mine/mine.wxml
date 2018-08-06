@@ -77,7 +77,7 @@
      <view class="weui-cells">
 
      <!--工资余额-->
-            <navigator url="../balance/balance" class="mine_welfare">
+            <view bindtap="wagesFn" url="../balance/balance" class="mine_welfare">
 
             <view class="jx_mine_left">
                 <view class="jx_record">
@@ -95,7 +95,7 @@
 
               </view>
 
-        </navigator>
+        </view>
 
      <hr/>
 
@@ -124,8 +124,7 @@
 
 
     <!--银行卡-->
-    <navigator url="../../../packageA/pages/card/card" class="mine_welfare">
-
+    <view bindtap="bankFn" class="mine_welfare">
         <view class="jx_mine_left">
             <view class="jx_record">
                 <image src="../../../static/icon/wages/jx_bank.png"  class="reset_go" />
@@ -136,7 +135,7 @@
 
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-    </navigator>
+    </view>
 
      </view>
 
@@ -171,7 +170,7 @@
          <hr/>
 
       <!--消息-->
-       <navigator url="../feedback_message/feedback_message" class="mine_welfare">
+       <view bindtap="feedbackFn" class="mine_welfare">
 
               <view class="jx_mine_left">
                   <view class="jx_record">
@@ -190,7 +189,7 @@
 
               </view>
 
-          </navigator>
+          </view>
 
 
 
@@ -201,7 +200,7 @@
 
          <view class="weui-cells">
     <!--设置-->
-    <navigator url="../setting/setting" class="mine_welfare">
+    <view bindtap="settingFn" class="mine_welfare">
         <view class="jx_mine_left">
             <view class="jx_record">
                 <image src="../../../static/icon/wages/jx_set.png"  class="reset_go" />
@@ -213,11 +212,11 @@
 
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-    </navigator>
+    </view>
     <hr/>
 
     <!--帮助与客服-->
-    <navigator url="../help_service/help_service" class="mine_welfare">
+    <view bindtap="helpFn" class="mine_welfare">
         <view class="jx_mine_left">
             <view class="jx_record">
                 <image src="../../../static/icon/wages/jx_help.png"  class="reset_go" />
@@ -230,6 +229,6 @@
 
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-    </navigator>
+    </view>
 
 </view>

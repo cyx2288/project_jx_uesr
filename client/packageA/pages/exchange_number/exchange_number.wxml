@@ -1,20 +1,12 @@
 
 
-      <view class="weui-cells weui-cells_after-title">
+<view class="weui-cells">
 
-            <view class="weui-cell weui-cell_input">
+    <view class="weui_list">当前账户绑定手机号</view>
+    <view class="weui_list">{{mobile}}</view>
 
-                   <view class="weui-cell__hd">
-                          <view class="weui-label">当前账户绑定账号：</view>
-                   </view>
 
-                   <view class="weui-cell__bd">
-                         <input class="weui-input" type="number" auto-focus="true"  maxlength="11" placeholder="159****5648" value="{{mobile}}" bindinput="mobileFn"/>
-                   </view>
-
-             </view>
-
-      </view>
+</view>
 
 
       <view class="page__bd page__bd_spacing">

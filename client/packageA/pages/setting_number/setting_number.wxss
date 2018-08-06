@@ -9,3 +9,16 @@
     padding: 15px 7px;
 
 }
+
+.setting_tips{
+
+    font-size: 28rpx;
+}
+
+
+
+.reset_go {
+
+    width: 32rpx;
+    height: 32rpx;
+}

@@ -1,5 +1,5 @@
-@import "../../wages/index/index.wxss";
-@import "../setting/setting.wxss";
+@import "../../../pages/wages/index/index.wxss";
+@import "../../../pages/user/setting/setting.wxss";
 
 page{
 

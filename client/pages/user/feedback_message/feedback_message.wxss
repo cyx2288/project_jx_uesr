@@ -1,7 +1,22 @@
-/*@import "../../../packageA/pages/help_service/help_service.wxss";*/
 
+page{
+
+    background-color: #f7f7f7;
+    width: 100%;
+    font-size: 14px;
+    color: #4a4a4a;
+
+}
+.help_service{
+    padding-bottom: 120px;
+}
 .weui-cells{
     font-size: 16px;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 94%;
+    margin: 15px auto;
+
 }
 
 .weui-media-box__hd{
@@ -12,7 +27,12 @@
 }
 
 .service_title{
+    display: block;
+    width: 100%;
+    color: #fe7944;
     padding: 0;
+    vertical-align: middle;
+
 }
 
 .feedback_text{
@@ -30,6 +50,9 @@
     justify-content: space-between;
 
     padding: 5px 0;
+    width: 92%;
+    line-height: 30px;
+    margin: 0 auto;
 }
 
 .wages_month{

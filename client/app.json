@@ -10,6 +10,8 @@
     "pages/user/choose_nationality/choose_nationality",
     "pages/user/actionSheet/actionSheet",
 
+    "pages/user/personal/personal",
+
 
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
@@ -38,7 +40,7 @@
 
 
 
-    "pages/user/support_added_bank/support_bank",
+
     "pages/user/code/code",
     "pages/user/id_card/id_card",
     "pages/user/payment_setting_code/payment_setting_code",
@@ -64,7 +66,6 @@
     "pages/user/cash_give_details/give_details",
     "pages/user/payment_setting_certification/certification",
     "pages/user/set_payment_psw/set_payment_psw",
-    "pages/common/revise_password/revise_password",
     "pages/common/register/register",
 
     "pages/user/pay_success/pay_success",
@@ -74,7 +75,7 @@
     "pages/user/sms_verification/sms_verification",
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
-    "pages/user/personal/personal",
+
     "pages/user/certification/certification",
     "component/toastLoading/loading"
 
@@ -101,7 +102,10 @@
         "pages/problem_fail/problem_fail",
         "pages/problem_quota/problem_quota",
         "pages/problem_setting/problem_setting",
-        "pages/problem_close/problem_close"
+        "pages/problem_close/problem_close",
+        "pages/question/question",
+        "pages/revise_password/revise_password",
+        "pages/support_added_bank/support_bank"
 
 
       ]

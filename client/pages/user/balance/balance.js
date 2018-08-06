@@ -2,6 +2,8 @@ const app = getApp();
 
 const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
+const pageJumpFn = require('../../../static/libs/script/pageJump');//页面跳转
+
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 const payeeUrl = '/record/selecthistoricalpayee';//查询历史收款人
@@ -519,6 +521,24 @@ Page({
         });
 
     },
+
+    detailFn:function () {
+
+        pageJumpFn.pageJump('../details/details')
+
+    },
+
+    cashFn:function () {
+
+        pageJumpFn.pageJump('../cash/cash')
+
+    }
+
+
+
+
+
+
 
     
 

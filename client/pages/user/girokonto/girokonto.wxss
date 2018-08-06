@@ -1,9 +1,13 @@
 @import "../mine/mine.wxss";
+@import "../transfer_accounts/transfer_accounts.wxss";
 /*@import "../../../packageA/pages/add_card/add_card.wxss";*/
 
 
 /*提示*/
+.page__bd{
 
+    padding-bottom: 30px;
+}
 
 .phone{
     width: 26px;
@@ -141,9 +145,6 @@ button.btn-confirm::after{
 
 }
 
-.bottom_button{
-    margin-bottom: 25px;
-}
 .card_type{
 
     margin-right: 10px;

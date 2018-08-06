@@ -330,7 +330,7 @@ Page({
 
                     'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                    'jx_sid': jx_sid,
+                    'jxsid': jx_sid,
 
                     'Authorization': Authorization
 

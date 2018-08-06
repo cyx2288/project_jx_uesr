@@ -27,6 +27,9 @@ page{
 .weui-cell__ft{
     padding:8px 15px;
 }
+.weui-cell{
+    padding: 8px 15px;
+}
 
 
 .close{

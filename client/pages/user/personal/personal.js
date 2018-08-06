@@ -2,6 +2,8 @@ const app = getApp();
 
 const json2FormFn = require('../../../static/libs/script/json2Form.js');//json转换函数
 
+const pageJumpFn = require('../../../static/libs/script/pageJump');//页面跳转
+
 const userCenterUrl = '/user/center/usercenter';//用户中心的url
 
 const logOutUrl = '/user/set/logout';//退出登录url
@@ -45,7 +47,7 @@ Page({
         var ajaxCount = 1;
 
         /**
-         * 接口：
+         * 接口：个人中心
          * 请求方式：POST
          * 接口：/user/center/usercenter
          * 入参：null
@@ -108,6 +110,8 @@ Page({
 
                     wx.setStorageSync('isVerify', res.data.data.isVerify);
 
+                    wx.setStorageSync('source', res.data.data.source);
+
                     that.setData({
 
                         mobile: res.data.data.mobile.substr(0, 3) + '****' + res.data.data.mobile.substr(7),
@@ -136,7 +140,6 @@ Page({
 
 
     },
-
 
     logOutFn:function () {
 
@@ -262,7 +265,6 @@ Page({
 
     },
 
-
     onclickCertificationFn:function () {
 
 
@@ -276,11 +278,8 @@ Page({
 
         if(_isVerify=='1'){
 
-            wx.navigateTo({
+            pageJumpFn.pageJump("../certification/certification")
 
-
-                url:"../certification/certification"
-            })
 
         }
 
@@ -292,11 +291,8 @@ Page({
             //存指定的页面
             /*wx.setStorageSync('hrefId','1');*/
 
-            wx.navigateTo({
+            pageJumpFn.pageJump("../no_certification/certification")
 
-
-                url:"../no_certification/certification"
-            })
 
 
         }
@@ -304,11 +300,8 @@ Page({
         //审核中
         else if(_isVerify=='2'){
 
-            wx.navigateTo({
+            pageJumpFn.pageJump("../upload_success/upload_success")
 
-
-                url:"../upload_success/upload_success"
-            })
 
         }
 
@@ -316,26 +309,25 @@ Page({
         else if(_isVerify=='3'){
 
 
-            wx.navigateTo({
+            pageJumpFn.pageJump("../upload_fail/upload_fail")
 
-
-                url:"../upload_fail/upload_fail"
-            })
 
         }
 
 
 
 
+    },
+
+    changeNumFn:function () {
+
+
+        pageJumpFn.pageJump("../../../packageA/pages/exchange_number/exchange_number")
 
 
 
 
-
-
-
-
-    }
+    },
 
 
 

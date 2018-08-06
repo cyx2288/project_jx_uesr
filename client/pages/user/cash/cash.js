@@ -323,7 +323,7 @@ Page({
                     },
                     header: {
 
-                        'jx_sid': jx_sid,
+                        'jxsid': jx_sid,
 
                         'Authorization': Authorization
 
@@ -375,7 +375,7 @@ Page({
 
                                             wx.navigateTo({
 
-                                                url: '../add_card/add_card'
+                                                url: '../../../packageA/pages/add_card/add_card'
 
                                             })
 
@@ -395,13 +395,14 @@ Page({
 
                             else {
 
-                                var thisBankList = that.data.userBankCardDTOList;
 
                                 that.setData({
 
                                     userBankCardDTOList: res.data.data.userBankCardDTOList
 
                                 });
+
+                                console.log(res.data.data.userBankCardDTOList)
 
                                 //0703 写的 不要删掉
                                 var _bankList = res.data.data.userBankCardDTOList
@@ -436,7 +437,7 @@ Page({
 
                                 })
 
-                                console.log(that.data.userBankCardDTOList)
+                                //console.log(that.data.userBankCardDTOList)
 
 
                                 that.setData({
@@ -458,6 +459,7 @@ Page({
                                     userBankCardDTOList: res.data.data.userBankCardDTOList,
 
                                 })
+
 
 
                                 //默认显示第一个银行卡
@@ -502,16 +504,17 @@ Page({
                                 //获取银行卡的
                                 var pickChooseBank = [];
 
+
                                 //循环银行卡、银行名称及银行id
-                                for (var i = 0; i < thisBankList.length; i++) {
+                                for (var i = 0; i < _bankList.length; i++) {
 
-                                    var pickBankName = thisBankList[i].bankName;
+                                    var pickBankName = _bankList[i].bankName;
 
-                                    var pickBankNo = thisBankList[i].bankNo;
+                                    var pickBankNo = _bankList[i].bankNo;
 
-                                    var pickBankId = thisBankList[i].bankCardId;
+                                    var pickBankId = _bankList[i].bankCardId;
 
-                                    var pickBankType = thisBankList[i].cardType;
+                                    var pickBankType = _bankList[i].cardType;
 
                                     //遍历银行卡类型
                                     if (pickBankType == '1') {
@@ -529,6 +532,8 @@ Page({
                                     //组成数组
                                     pickChooseBank.push(_pickChooseBank);
 
+
+
                                 }
 
 
@@ -537,6 +542,8 @@ Page({
                                     bankList: pickChooseBank
 
                                 })
+
+
 
 
                             }
@@ -623,9 +630,9 @@ Page({
         //console.log(that.data.userBankCardDTOList)
 
         //选择银行卡的
-        // console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
-        //
-        // console.log(that.data.userBankCardDTOList[e.detail.value].cardType);
+ /*        console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
+
+        console.log(that.data.userBankCardDTOList[e.detail.value].cardType);*/
 
         that.setData({
 
@@ -717,7 +724,7 @@ Page({
 
                 'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                'jx_sid': jx_sid,
+                'jxsid': jx_sid,
 
                 'Authorization': Authorization
 
@@ -1153,7 +1160,7 @@ Page({
 
         wx.showModal({
             title: '提现限额说明',
-            content: '单卡单笔50,000.00元，当日100,000.00元，当月100,000.00元',
+            content: '单卡单笔49,000.00元，当日100,000.00元，当月100,000.00元',
             /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,
@@ -1189,7 +1196,7 @@ Page({
 
                     wx.navigateTo({
 
-                        url: '../bill/bill'
+                        url: '../../../packageA/pages/bill/bill'
                     })
 
                 }
@@ -1198,7 +1205,7 @@ Page({
 
                     wx.navigateTo({
 
-                        url: '../help_service/help_service'
+                        url: '../../../packageA/pages/help_service/help_service'
                     })
 
                 }

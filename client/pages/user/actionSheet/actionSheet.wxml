@@ -3,35 +3,25 @@
 
     <view class="container-column buydes-dialog-container" wx:if="{{showModalStatus}}">
         <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
-        <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom" >
+        <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
             <block>
-                <view class="actionsheet_content">
+                <view class="actionsheet_content" wx:for="{{actionSheetList}}">
 
-                    <view class="actionsheet_title">确认转账</view>
+                    <view class="actionsheet_title">{{title}}</view>
                     <view class="actionsheet_cancel" bindtap="hideModal">×</view>
                     <view class="title">
-                        <view>支付金额</view>
-                        <view class="text_big">￥100.00</view>
+                        <view>{{operationTitle}}</view>
+                        <view class="text_big">{{sum}}</view>
                     </view>
 
-                    <view class="list_content">
+                    <view class="list_content" >
                         <view>转账金额</view>
                         <view>￥100.00</view>
                     </view>
-                    <view class="list_content">
-                        <view>对方姓名</view>
-                        <view>于雅琪</view>
-                    </view>
-
-                    <view class="list_content">
-                        <view>对方账号</view>
-                        <view>15801755297</view>
-                    </view>
-
                 </view>
                 <view class="operation_btn" bindtap="hideModal">
 
-                    <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="transferFn">确认转账</button>
+                    <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="transferFn">{{btnTitle}}</button>
 
                 </view>
             </block>

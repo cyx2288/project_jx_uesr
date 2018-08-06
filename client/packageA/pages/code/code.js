@@ -6,9 +6,9 @@ const app = getApp();
 
 const json2FormFn = require( '../../../static/libs/script/json2Form.js' );//json转换函数
 
-const  paymsgUrl = '/jx/action/paymsg';//1、设置支付密码 onload调用
+const  paymsgUrl = '/jx/action/oldmobilecheck';//1、更换原有手机号-原手机号验证 onload调用
 
-const checkpaypwdcodeUrl = '/user/set/checkpaypwdcode';//2、校验支付密码验证码
+const checkpaypwdcodeUrl = '/user/set/oldmobilechange';//2、校验支付密码验证码
 
 
 
@@ -28,7 +28,11 @@ Page({
 
         disabled:true,//按钮的可点击
 
-        locked:1//0为锁住 1为解锁
+        locked:1,//0为锁住 1为解锁
+
+        repeatSend: 1,//防止重复提交
+
+
 
 
     },
@@ -46,30 +50,16 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        var _mobile = wx.getStorageSync('mobile');
+        var _mobile = wx.getStorageSync('changeMobile');
+
 
 
 
         var countdown = 60;
 
-        var _forgetTab = wx.getStorageSync('isPayPwd')
+        console.log(_mobile)
 
 
-        if(_forgetTab=='0'){
-
-            wx.setNavigationBarTitle({
-
-                title:'安全验证'
-            })
-        }
-
-        else {
-            wx.setNavigationBarTitle({
-
-                title:'忘记支付密码'
-            })
-
-        }
 
         that.setData({
 
@@ -191,6 +181,9 @@ Page({
 
                     if (res.data.code == '0000') {
 
+
+
+
                         wx.showToast({
 
                             title: res.data.msg,
@@ -265,84 +258,94 @@ Page({
             })
 
         }
+        else if (that.data.repeatSend=='1') {
 
-        else {
+            //控制ajax加载 加载成功之后放开
+            that.setData({
 
+                repeatSend: 0
 
-            /**
-             * 接口：校验支付密码验证码
-             * 请求方式：POST
-             * 接口：/user/set/checkpaypwdcode
-             * 入参：code
-             * */
-
-            wx.request({
-
-                url: thisCheckpaypwdcodeUrl,
-
-                method: 'POST',
-
-                data:json2FormFn.json2Form({
-
-                    code:that.data.code
-
-                }),
-
-                header:{
-
-                    'content-type': 'application/x-www-form-urlencoded', // post请求
-
-                    'jxsid':jx_sid,
-
-                    'Authorization':Authorization
-
-                },
-
-                success: function (res) {
-
-                    console.log(res.data);
+            });
 
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                /**
+                 * 接口：校验支付密码验证码
+                 * 请求方式：POST
+                 * 接口：/user/set/checkpaypwdcode
+                 * 入参：code
+                 * */
 
-                    if(res.data.code=='3001') {
+                wx.request({
 
-                        //console.log('登录');
+                    url: thisCheckpaypwdcodeUrl,
+
+                    method: 'POST',
+
+                    data:json2FormFn.json2Form({
+
+                        code:that.data.code
+
+                    }),
+
+                    header:{
+
+                        'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                        'jxsid':jx_sid,
+
+                        'Authorization':Authorization
+
+                    },
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
 
                         setTimeout(function () {
 
-                            wx.reLaunch({
+                            //成功之后解锁
+                            that.setData({
 
-                                url:'../../common/signin/signin'
-                            })
+                                repeatSend: 1
 
-                        },1500)
+                            });
 
-                        /*          wx.showToast({
-                         title: res.data.msg,
-                         icon: 'none',
-                         duration: 1500,
-                         success:function () {
+                        },1000);
 
 
 
-                         }
+                        if(res.data.code=='3001') {
 
-                         })*/
+                            //console.log('登录');
 
-                        return false
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+                            return false
 
 
-                    }
+                        }
 
-                    else {
+                        else {
 
-                        if (res.data.code == '0000') {
+                            if (res.data.code == '0000') {
 
-                            wx.showToast({
-                                title: res.data.msg,
-                                icon: 'none',
-                                success: function () {
+                                //存取tokenMsg在更换手机号页面取出
+                                wx.setStorageSync('changeTokenMsg', that.data.code);
+
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    success: function () {
 
 
                                         setTimeout(function () {
@@ -353,43 +356,44 @@ Page({
                                                 url: '../setting_number/setting_number'
                                             })
 
-                                        }, 1500)
+                                        },1000)
+
+
+
+                                    }
+
+
+                                })
 
 
 
 
-                                }
+                            }
+                            else {
 
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none',
 
-                            })
+                                })
 
-                            //存取tokenMsg
-                            wx.setStorageSync('tokenMsg', res.data.data.tokenMsg);
-
+                            }
 
                         }
-                        else {
 
-                            wx.showToast({
-                                title: res.data.msg,
-                                icon: 'none',
+                    },
 
-                            })
 
-                        }
+                    fail: function (res) {
+
+                        console.log(res)
 
                     }
 
-                },
+                })
 
 
-                fail: function (res) {
 
-                    console.log(res)
-
-                }
-
-            })
 
 
         }

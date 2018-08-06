@@ -1,21 +1,20 @@
-@import "../../../pages/wages/index/index.wxss";
-@import "../../../pages/user/setting/setting.wxss";
+
 
 page{
 
-    background-color: #f7f7f7;
-    width: 100%;
     font-size: 14px;
     color: #4a4a4a;
-
 }
+.weui-cells{
 
+    background-color: #fff;
+    border-radius: 5px;
+    width: 94%;
+    margin: 15px auto;
+}
 .weui-media-box__hd{
-
      display: flex;
      padding: 15px;
-
-
 }
 
 .service_title{
@@ -61,7 +60,7 @@ page{
 
 hr {
     display: block;
-    transform: scaleY(0.1);
+    transform: scaleY(0.2);
     width: 100%;
     border:.1px solid #dddddd;
 }
@@ -138,3 +137,4 @@ button.kf_button {
 .help_service{
     padding-bottom: 120px;
 }
+
