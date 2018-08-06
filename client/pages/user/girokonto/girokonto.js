@@ -193,6 +193,21 @@ Page({
 
     },
 
+    transferListFn:function () {
+
+        console.log(1)
+
+        //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
+        wx.setStorageSync('whichBill','2');
+
+        wx.navigateTo({
+
+            url: '../../../packageA/pages/bill/bill'
+        })
+
+
+    },
+
     telFn:function (e) {
 
         var that = this;

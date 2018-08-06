@@ -25,7 +25,6 @@ Page({
 
                 animationShowHeight = res.windowHeight;
 
-                console.log(res.windowHeight);
 
             }
         })

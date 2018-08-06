@@ -12,5 +12,32 @@
 	},
 	"appid": "wx59cb411f2045c7b8",
 	"projectname": "%E5%98%89%E8%96%AA",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "update",
+					"pathName": "pages/common/loading/loading",
+					"query": ""
+				}
+			]
+		}
+	}
 }

@@ -8,6 +8,7 @@ const mineUrl ='/user/center/usercenter';//用户中心
 
 const payeeUrl = '/record/selecthistoricalpayee';//查询历史收款人
 
+
 Page({
 
 
@@ -35,7 +36,10 @@ Page({
     },
 
 
-    onShow:function () {
+    onLoad:function () {
+
+
+        //获取数据
 
         var that = this;
 
@@ -45,9 +49,23 @@ Page({
 
         var  _isVerify= wx.getStorageSync('isVerify');
 
-        var _city = wx.getStorageSync('chooseCity');
-
         var _nationality =  wx.getStorageSync('nationality');
+
+        var _source = wx.getStorageSync('source');
+
+        wx.removeStorageSync('chooseCity');
+
+        console.log(thisUserName);
+
+        console.log('显示0和1'+_source);
+
+        console.log('身份证'+thisIdNumber)
+
+
+        //console.log(thisIdNumber)
+
+        //console.log('国家'+wx.getStorageSync('nationality'))
+
 
         /*console.log('国家'+that.data.city)*/
 
@@ -66,8 +84,9 @@ Page({
 
         //有姓名的就是后台添加的
 
-        if(thisUserName){
+        if(_source=='0'){
 
+            console.log('123');
 
             that.setData({
 
@@ -86,19 +105,21 @@ Page({
 
         }
 
-        else {
+        else if(_source=='1'){
 
 
             //自助注册
             that.setData({
 
-                userName:that.data.userName,
+                userName:thisUserName,
 
-                idNumber:that.data.idNumber,
+                idNumber:thisIdNumber,
 
                 hasUserName:false,
 
                 city:wx.getStorageSync('nationality'),
+
+                idType:wx.getStorageSync('idType')
 
             });
 
@@ -154,21 +175,66 @@ Page({
         });
 
 
-        //城市存储
-        if(_city){
+
+
+
+
+
+
+    },
+
+    onShow:function () {
+
+        console.log('显示')
+
+        var that = this;
+
+        var _source = wx.getStorageSync('source');
+
+        var _city = wx.getStorageSync('chooseCity');
+
+        console.log('国家'+wx.getStorageSync('nationality'))
+
+        console.log('选择后的国家'+ _city)
+
+        if(_source=='0'){
+
 
             that.setData({
 
-                city:_city,
+                city:wx.getStorageSync('nationality'),
+
+
+
+            });
+
+
+        }
+
+        else if(_source=='1') {
+
+
+            //自助注册
+            that.setData({
+
+                city: wx.getStorageSync('nationality'),
+
+
+            });
+
+        }
+
+        //城市存储
+        if (_city) {
+
+
+            that.setData({
+
+                city: _city
 
 
             });
         }
-
-
-
-
-
 
     },
 

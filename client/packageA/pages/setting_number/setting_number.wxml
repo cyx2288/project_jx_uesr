@@ -6,7 +6,7 @@
             <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
         </view>
 
-        <view class="weui-cells__title">下次登录请使用更新的新手机号码，账户其他信息不变</view>
+        <view class="weui-cells__title setting_tips">下次登录请使用更换的新手机号码，账户其他信息不变</view>
     </view>
 
 
@@ -33,7 +33,7 @@
             </view>
 
             <view class="weui-cell__ft">
-                <view disabled='{{disabled}}' class="weui-vcode-btn {{locked==1 ? '' :'locked'}}" bindtap="registmsg">{{time}}</view>
+                <view disabled='{{disabled}}' class="weui-vcode-btn {{locked==1 ? '' :'locked'}}" bindtap="getmsg">{{time}}</view>
             </view>
         </view>
 
@@ -42,7 +42,7 @@
 
 
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" bindtap="register">确认</button>
+        <button class="weui-btn" type="primary" bindtap="changeMobileFn">确认</button>
     </view>
 
 

@@ -59,7 +59,7 @@
 
         <!--更多-->
 
-        <navigator type="default" class="weui-cell weui-cell_access weui-cell_link" url="../../../packageA/pages/card/card">
+        <navigator type="default" class="weui-cell weui-cell_access weui-cell_link" url="../../../packageA/pages/add_card/add_card">
             <view class="weui-cell__bd">添加新卡</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </navigator>

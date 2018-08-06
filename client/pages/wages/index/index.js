@@ -22,6 +22,10 @@ const companyUrl = '/salary/home/selectlockstatus';//锁定状态查询
 
 const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
 
+const salarystateUrl = '/user/account/addsalarystate';//设置用户金额显示
+
+const getsalarystateUrl='/user/account/getsalarystate';//查询用户金额显示
+
 Page({
 
     data: {
@@ -79,11 +83,6 @@ Page({
 
     },
 
-    onLoad: function (options) {
-
-        // 页面初始化 options为页面跳转所带来的参数
-    },
-
     onShow: function () {
 
         // 页面显示
@@ -95,7 +94,7 @@ Page({
         //实名认证 & 工资余额 & 是否加入新企业 & 新消息 & 支付认证 & 是否设置支付密码 - 存储有没有认证操作成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
         var _successRefresh = wx.getStorageSync('successRefresh');
 
-        console.log('首页刷新'+_successRefresh)
+        console.log('首页刷新'+_successRefresh);
 
 
         //如果操作了某个需要变动的数据 赋值
@@ -263,10 +262,6 @@ Page({
             var jx_sid = wx.getStorageSync('jxsid');
 
             var Authorization = wx.getStorageSync('Authorization');
-
-
-
-
 
 
             /**
@@ -1037,6 +1032,77 @@ Page({
             });
 
 
+            /**
+             * 接口：查询用户金额显示
+             * 请求方式：GET
+             * 接口：/user/account/getsalarystate
+             * 入参：null
+             **/
+            wx.request({
+
+                url: app.globalData.URL + getsalarystateUrl,
+
+                method: 'GET',
+
+                header: {
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+                        return false
+
+
+                    }
+
+                    else {
+
+
+                        that.setData({
+
+                            lookWages:res.data.data
+
+                        })
+
+                    }
+
+
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            });
+
+
 
         }
 
@@ -1556,15 +1622,97 @@ Page({
 
         var that = this;
 
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
         that.setData({
 
             lookWages: !that.data.lookWages
+
         })
+
+        console.log('时候看金额'+that.data.lookWages);
+
+        /**
+         * 接口：设置用户金额显示
+         * 请求方式：GET
+         * 接口：/user/account/addsalarystate
+         * 入参：null
+         **/
+        wx.request({
+
+            url: app.globalData.URL + salarystateUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            data:{
+
+
+                salaryState:that.data.lookWages
+
+
+            },
+
+            success: function (res) {
+
+                //code3003返回方法
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    return false
+
+
+                }
+
+                else {
+
+                    console.log(res.data);
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        });
+
+
 
     },
 
     frozenFn:function () {
-
 
         wx.showModal({
             title: '冻结工资只可消费，不可提现',

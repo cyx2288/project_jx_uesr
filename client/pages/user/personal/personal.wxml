@@ -7,7 +7,7 @@
     <!--账号-->
 
     <!--账号-->
-    <navigator class="mine_welfare" url="../../../packageA/pages/exchange_number/exchange_number">
+    <view bindtap="changeNumFn" class="mine_welfare">
 
         <text class="password_image">账号</text>
 
@@ -18,7 +18,7 @@
             <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
 
         </view>
-    </navigator>
+    </view>
     <hr/>
 
     <!--实名认证-->

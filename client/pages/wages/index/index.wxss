@@ -259,12 +259,10 @@ text.weui-media-box__info__meta{
     border-left: 5px #ababab solid;
 }
 
-
 .weui-media-box__desc {
-    font-size: 16px;
+    font-size: 14px;
     color:#999;
     overflow: auto;
-
 }
 
 .other_momey{
@@ -273,18 +271,16 @@ text.weui-media-box__info__meta{
     justify-content:space-between;
     align-items: center;
     color: #ffffff;
-    padding: 20rpx 0;
+    padding: 40rpx 0;
 }
 
 .money_detail{
-
     width: 50%;
-
 }
 
 .money_detail >view:first-child{
-    color:#ffc7b0;
-    font-size: 14px;
+
+    font-size: 20px;
 
 }
 .money_detail image.question_main{
@@ -297,7 +293,8 @@ text.weui-media-box__info__meta{
 
 .money_detail >view +view{
 
-    font-size: 18px;
+    color:#ffc7b0;
+    font-size: 14px;
 
 
 }

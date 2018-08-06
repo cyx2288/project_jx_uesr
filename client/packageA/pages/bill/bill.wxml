@@ -5,7 +5,7 @@
 <view class="wages_middle bill_box">
 
     <!--明细-->
-    <navigator class="weui-panel" wx:for="{{billList}}" bindtap="clickBill" data-no="{{item.orderId}}" data-type="{{item.orderType}}" url="{{item.type == '02'||item.type == '03'? '../transfer_details/transfer_details' : '../give_details/give_details'}}" >
+    <navigator class="weui-panel" wx:for="{{billList}}" bindtap="clickBill" data-no="{{item.orderId}}" data-type="{{item.orderType}}" url="{{item.type == '02'||item.type == '03'? '../../../pages/user/transfer_details/transfer_details' : '../../../pages/user/give_details/give_details'}}" >
         <view class="weui-media-box weui-media-box_text box">
 
             <view class="icon_record">

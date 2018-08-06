@@ -1,4 +1,4 @@
-@import "../give_details/give_details.wxss";
+@import "../../../pages/user/give_details/give_details.wxss";
 
 
 .weui-panel{

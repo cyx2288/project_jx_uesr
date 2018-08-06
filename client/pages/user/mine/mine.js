@@ -4,11 +4,14 @@ const mineUrl = '/user/center/usercenter';//用户中心
 
 const radixPointFn = require('../../../static/libs/script/radixPoint');//ajax请求
 
+const pageJumpFn = require('../../../static/libs/script/pageJump');//页面跳转
+
 const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
 const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
+
 
 
 Page({
@@ -26,9 +29,9 @@ Page({
 
         hasNewMsg: true,//默认不显示有新消息 true为不显示 false为显示
 
-        needRefresh: true,//刷新的开关 false为不刷新 true为刷新
+        needRefresh: true,//刷新的开关 false为不刷新 true为刷新,
 
-
+        //controlNum:1,//控制重复点击
 
 
     },
@@ -234,6 +237,8 @@ Page({
 
                         //国籍
                         wx.setStorageSync('nationality',res.data.data.nationality);
+
+                        wx.setStorageSync('source',res.data.data.source)
 
 
                         //如果审核不通过的话 存储一下不通过的原因
@@ -517,29 +522,96 @@ Page({
 
     },
 
-    billFn:function () {
+    wagesFn:function () {
 
-        //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
-        wx.setStorageSync('whichBill','3');
 
-        wx.navigateTo({
 
-            url:"../../../packageA/pages/bill/bill"
+        pageJumpFn.pageJump("../../../pages/user/balance/balance")
 
-        })
+/*
+        if(that.data.controlNum=='1'){
+
+
+            that.setData({
+
+                    controlNum:0
+
+            })
+
+            wx.navigateTo({
+
+                url:"../../../pages/user/balance/balance"
+
+            })
+
+            that.setData({
+
+                controlNum:1
+
+            })
+
+
+
+        }
+*/
+
+
+
 
     },
 
+    //我的账单
+    billFn:function () {
+
+
+        wx.setStorageSync('whichBill','3');
+
+        pageJumpFn.pageJump("../../../packageA/pages/bill/bill")
+
+
+
+    },
+
+    //发薪企业
     companyFn:function () {
 
         //点击去解冻&点击我的发薪企业后储存 用于判断跳回企业还是工资余额(再实名认证成功之后获取）
         wx.setStorageSync('goFrozen','2');
 
-        wx.navigateTo({
+        pageJumpFn.pageJump("../company/company")
 
-            url:"../company/company"
+    },
 
-        })
+    //银行卡
+    bankFn:function () {
+
+        pageJumpFn.pageJump("../../../packageA/pages/card/card")
+
+
+    },
+
+    //消息
+    feedbackFn:function () {
+
+        pageJumpFn.pageJump("../feedback_message/feedback_message")
+
+
+    },
+
+    //设置
+    settingFn:function () {
+
+        pageJumpFn.pageJump("../setting/setting")
+
+
+    },
+
+    //帮助中心
+    helpFn:function () {
+
+        pageJumpFn.pageJump("../../../packageA/pages/help_service/help_service")
+
+
     },
 
     //转发

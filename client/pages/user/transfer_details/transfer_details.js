@@ -469,24 +469,6 @@ Page({
 
     },*/
 
-    onUnload:function () {
-
-        var _billHref = wx.getStorageSync('billHref')
-
-        if(_billHref=='6'){
-            wx.switchTab({
-
-
-                url:'../../user/mine/mine'
-            })
-
-
-
-        }
-
-
-    }
-
 
 
 });

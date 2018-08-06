@@ -13,14 +13,16 @@
 
     <view class="other_momey">
         <view class="money_detail">
-            <view>可提工资（元）</view>
             <view>{{wages}}</view>
+            <view>可提工资（元）</view>
+
 
         </view>
 
         <view class="money_detail">
-            <view><span>冻结工资（元）</span><image bindtap="frozenFn" class="question_main" src="../../../static/icon/wages/jx_ask_mine.png"/></view>
             <view>{{frozenSalary}}</view>
+            <view><span>冻结工资（元）</span><image bindtap="frozenFn" class="question_main" src="../../../static/icon/wages/jx_ask_mine.png"/></view>
+
 
         </view>
 
@@ -30,12 +32,10 @@
 
 </view>
 
-
-<!--我的账单-->
 <!--我的账单-->
 <view class="weui-cells">
 
-    <navigator url="../details/details" class="mine_welfare">
+    <view bindtap="detailFn" class="mine_welfare">
 
         <view class="jx_mine_left">
 
@@ -51,7 +51,7 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
 
-    </navigator>
+    </view>
 
 </view>
 
@@ -80,7 +80,7 @@
 
     <hr/>
 
-    <navigator url="../cash/cash" class="mine_welfare">
+    <view bindtap="cashFn" class="mine_welfare">
 
         <view class="jx_mine_left">
 
@@ -94,7 +94,7 @@
 
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-    </navigator>
+    </view>
 </view>
 
 

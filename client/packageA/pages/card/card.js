@@ -332,12 +332,12 @@ Page({
                 success: function (res) {
 
 
-
                     if (res.confirm) {
 
                         wx.navigateTo({
 
-                            url: '../no_certification/certification'
+
+                            url: '../../../pages/user/no_certification/certification'
 
                         })
 
