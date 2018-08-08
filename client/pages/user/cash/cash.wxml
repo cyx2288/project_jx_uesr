@@ -153,3 +153,35 @@
 
 </view>
 
+<!--index.wxml-->
+<view class="container-column">
+
+    <view class="container-column buydes-dialog-container" catchtouchmove="preventTouchMove" wx:if="{{showModalStatus}}">
+        <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
+        <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
+            <block>
+                <view class="actionsheet_content">
+
+                    <view class="actionsheet_title">确认提现</view>
+                    <view class="actionsheet_cancel" bindtap="hideModal">×</view>
+                    <view class="main_title">
+                        <view>支付金额</view>
+                        <view class="text_big">￥{{sum}}</view>
+                    </view>
+
+                    <view class="list_content" wx:for="{{list}}">
+                        <view>{{item.key}}</view>
+                        <view>{{item.value}}</view>
+                    </view>
+                </view>
+                <view class="operation_btn" bindtap="hideModal">
+
+                    <button class="weui-btn" disabled="{{disabled}}" type="primary" bindtap="trueCashFn">确认</button>
+
+                </view>
+            </block>
+        </view>
+    </view>
+
+</view>
+

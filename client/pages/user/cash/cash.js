@@ -6,11 +6,13 @@ const cashUrl = '/user/withdraw/dowithdraw';// 用户发起提现操作
 
 const checkcashUrl = '/user/work/checkwithdraw';//检测用户发起提现操作
 
-const getpaymode =  '/user/set/getpaymode';//查询支付验证方式
+const getpaymode = '/user/set/getpaymode';//查询支付验证方式
 
 const bankCardJson = require('../../../static/libs/script/bankCardJson.js');//银行卡图标
 
 const mineUrl = '/user/center/usercenter';//用户中心
+
+var animationShowHeight = 300;
 
 
 Page({
@@ -24,15 +26,15 @@ Page({
 
         //balance: '',//提取现金
 
-        inputBalance:'',//输入框里value的值
+        inputBalance: '',//输入框里value的值
 
-        canCashBalance:'',//可以提现的金额
+        canCashBalance: '',//可以提现的金额
 
         payPassword: '',//支付密码
 
         code: '',//短信验证
 
-        bankIcon:'',
+        bankIcon: '',
 
         /*bankList: [],//银行卡列表数组*/
 
@@ -52,21 +54,30 @@ Page({
 
         rate: '',//费率
 
-        userBankCardDTOList:[],//显示用的字符串
+        userBankCardDTOList: [],//显示用的字符串
 
         bankList: [],//传给后台的数组
 
-        userName:'',//客服-用户姓名
+        userName: '',//客服-用户姓名
 
-        mobile:'',//客服-用户电话
+        mobile: '',//客服-用户电话
 
-        cardTypeText:'',//银行卡类型名称
+        cardTypeText: '',//银行卡类型名称
 
-        cardType:'',//银行卡类型
+        cardType: '',//银行卡类型
 
-        autoFocus:true,//是否弹出键盘
+        autoFocus: true,//是否弹出键盘
 
-        thisIsVerify:''//
+        thisIsVerify: '',//时候认证
+
+        //弹框参数
+        animationData: "",
+
+        showModalStatus: false,
+
+        sum: '',//支付金额
+
+        list: '',//信息
 
 
     },
@@ -86,16 +97,27 @@ Page({
         var _isVerify = wx.getStorageSync('isVerify');
 
         //存储转账页面（在短信验证和支付密码页面中获取）来判断调用用户发起转账接口
-        wx.setStorageSync('transferCash','6');
+        wx.setStorageSync('transferCash', '6');
+
+
+        wx.getSystemInfo({
+
+            success: function (res) {
+
+                animationShowHeight = res.windowHeight;
+
+
+            }
+        })
 
 
         that.setData({
 
-            userName:wx.getStorageSync('userName'),
+            userName: wx.getStorageSync('userName'),
 
-            mobile:wx.getStorageSync('mobile'),
+            mobile: wx.getStorageSync('mobile'),
 
-            inputBalance:'',//输入框里value的值
+            inputBalance: '',//输入框里value的值
 
 
         })
@@ -106,7 +128,7 @@ Page({
 
             wx.hideNavigationBarLoading()
 
-        },500);
+        }, 500);
 
 
         /**
@@ -117,7 +139,7 @@ Page({
          **/
         wx.request({
 
-            url: app.globalData.URL+ mineUrl,
+            url: app.globalData.URL + mineUrl,
 
             method: 'POST',
 
@@ -159,14 +181,12 @@ Page({
 
                     that.setData({
 
-                        thisIsVerify:res.data.data.isVerify
+                        thisIsVerify: res.data.data.isVerify
 
                     })
 
 
-
                     showVerify();
-
 
 
                 }
@@ -181,22 +201,20 @@ Page({
         });
 
 
-
-
         function showVerify() {
 
-            if (that.data.thisIsVerify == '0'||that.data.thisIsVerify == '3') {
+            if (that.data.thisIsVerify == '0' || that.data.thisIsVerify == '3') {
 
                 console.log('没认证1')
 
                 //存指定的页面  （在实名认证中取值）
-                wx.setStorageSync('hrefId','4');
+                wx.setStorageSync('hrefId', '4');
 
 
                 //未认证情况下不弹出键盘
                 that.setData({
 
-                    autoFocus:false//是否弹出键盘
+                    autoFocus: false//是否弹出键盘
 
 
                 })
@@ -206,7 +224,7 @@ Page({
                     content: ' 当前账户尚未进行实名认证，完成认证后方可提现',
                     cancelText: '取消',
                     confirmText: '去认证',
-                    confirmColor:'#fe9728',
+                    confirmColor: '#fe9728',
                     success: function (res) {
 
                         if (res.confirm) {
@@ -239,20 +257,19 @@ Page({
                 });
 
 
-
             }
             else if (that.data.thisIsVerify == '2') {
 
                 console.log('没认证2')
 
                 //存指定的页面  （在实名认证中取值）
-                wx.setStorageSync('hrefId','4');
+                wx.setStorageSync('hrefId', '4');
 
 
                 //未认证情况下不弹出键盘
                 that.setData({
 
-                    autoFocus:false//是否弹出键盘
+                    autoFocus: false//是否弹出键盘
 
 
                 })
@@ -260,9 +277,9 @@ Page({
                 wx.showModal({
                     title: '提示',
                     content: '实名认证审核中，审核通过后方可提现',
-                    showCancel:false,
+                    showCancel: false,
                     confirmText: '我知道了',
-                    confirmColor:'#fe9728',
+                    confirmColor: '#fe9728',
                     success: function (res) {
 
                         if (res.confirm) {
@@ -290,14 +307,13 @@ Page({
                 });
 
 
-
             }
             else {
 
 
                 that.setData({
 
-                    autoFocus:true//是否弹出键盘
+                    autoFocus: true//是否弹出键盘
 
 
                 })
@@ -334,9 +350,9 @@ Page({
                         console.log(res.data);
 
 
-                        app.globalData.repeat(res.data.code,res.data.msg);
+                        app.globalData.repeat(res.data.code, res.data.msg);
 
-                        if(res.data.code=='3001') {
+                        if (res.data.code == '3001') {
 
                             //console.log('登录');
 
@@ -344,11 +360,10 @@ Page({
 
                                 wx.reLaunch({
 
-                                    url:'../../common/signin/signin'
+                                    url: '../../common/signin/signin'
                                 })
 
-                            },1500)
-
+                            }, 1500)
 
 
                             return false
@@ -357,7 +372,6 @@ Page({
                         }
 
                         else {
-
 
 
                             if (res.data.code == '-7') {
@@ -410,13 +424,13 @@ Page({
                                 //console.log(that.data.bankList)
 
 
-                                for(var x in _bankList){
+                                for (var x in _bankList) {
 
                                     //console.log(that.data.bankList[x].bankName)
 
-                                    for (var y in bankCardJson.bankCardJson){
+                                    for (var y in bankCardJson.bankCardJson) {
 
-                                        if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
+                                        if (bankCardJson.bankCardJson[y].name == _bankList[x].bankName) {
 
                                             break;
 
@@ -425,7 +439,7 @@ Page({
                                     }
 
 
-                                    _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
+                                    _bankList[x].bankImg = bankCardJson.bankCardJson[y].img
 
                                     //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
 
@@ -433,7 +447,7 @@ Page({
 
                                 that.setData({
 
-                                    userBankCardDTOList:_bankList
+                                    userBankCardDTOList: _bankList
 
                                 })
 
@@ -461,7 +475,6 @@ Page({
                                 })
 
 
-
                                 //默认显示第一个银行卡
                                 that.setData({
 
@@ -473,7 +486,7 @@ Page({
 
                                     cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
 
-                                    bankIcon:that.data.userBankCardDTOList[0].bankImg//银行卡类型
+                                    bankIcon: that.data.userBankCardDTOList[0].bankImg//银行卡类型
 
 
                                 });
@@ -533,7 +546,6 @@ Page({
                                     pickChooseBank.push(_pickChooseBank);
 
 
-
                                 }
 
 
@@ -544,18 +556,10 @@ Page({
                                 })
 
 
-
-
                             }
 
 
-
                             //console.log(that.data.userBankCardDTOList);
-
-
-
-
-
 
 
                         }
@@ -615,7 +619,9 @@ Page({
         }
 
 
+    },
 
+    preventTouchMove: function () {
 
 
     },
@@ -630,9 +636,9 @@ Page({
         //console.log(that.data.userBankCardDTOList)
 
         //选择银行卡的
- /*        console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
+        /*        console.log(that.data.userBankCardDTOList[e.detail.value].bankName);
 
-        console.log(that.data.userBankCardDTOList[e.detail.value].cardType);*/
+         console.log(that.data.userBankCardDTOList[e.detail.value].cardType);*/
 
         that.setData({
 
@@ -650,11 +656,11 @@ Page({
 
         //判断什么卡
 
-        if(that.data.cardType=='1'){
+        if (that.data.cardType == '1') {
 
             that.setData({
 
-                cardTypeText:'（储蓄卡）'
+                cardTypeText: '（储蓄卡）'
 
 
             })
@@ -666,7 +672,7 @@ Page({
 
             that.setData({
 
-                cardTypeText:'（信用卡）'
+                cardTypeText: '（信用卡）'
 
 
             })
@@ -680,11 +686,11 @@ Page({
 
         var that = this;
 
-            that.setData({
+        that.setData({
 
-                inputBalance: that.data.canCashBalance,
+            inputBalance: that.data.canCashBalance,
 
-            })
+        })
 
 
         //console.log(that.data.inputBalance)
@@ -734,9 +740,9 @@ Page({
 
                 console.log(res.data);
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                app.globalData.repeat(res.data.code, res.data.msg);
 
-                if(res.data.code=='3001') {
+                if (res.data.code == '3001') {
 
                     //console.log('登录');
 
@@ -744,22 +750,22 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url: '../../common/signin/signin'
                         })
 
-                    },1500)
+                    }, 1500)
 
-    /*                wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
+                    /*                wx.showToast({
+                     title: res.data.msg,
+                     icon: 'none',
+                     duration: 1500,
+                     success:function () {
 
 
 
-                        }
+                     }
 
-                    })*/
+                     })*/
 
                     return false
 
@@ -769,7 +775,7 @@ Page({
 
                 else {
 
-                    wx.setStorageSync('isSecurity',res.data.data.isSecurity);
+                    wx.setStorageSync('isSecurity', res.data.data.isSecurity);
 
                 }
 
@@ -787,9 +793,9 @@ Page({
 
 
         //缓存jx_sid&&Authorization数据
-/*        var jx_sid = wx.getStorageSync('jxsid');
+        /*        var jx_sid = wx.getStorageSync('jxsid');
 
-        var Authorization = wx.getStorageSync('Authorization');*/
+         var Authorization = wx.getStorageSync('Authorization');*/
 
 
         //缓存账户余额
@@ -797,11 +803,11 @@ Page({
 
         //console.log(_wages);
         //缓存余额和银行卡id
-        wx.setStorageSync('balance',that.data.inputBalance);//提现金额
+        wx.setStorageSync('balance', that.data.inputBalance);//提现金额
 
-        wx.setStorageSync('rate',that.data.rate);//汇率
+        wx.setStorageSync('rate', that.data.rate);//汇率
 
-        wx.setStorageSync('bankCardId',that.data.bankCardId);//银行卡id
+        wx.setStorageSync('bankCardId', that.data.bankCardId);//银行卡id
 
         var reg = /^\d+\.?(\d{1,2})?$/
 
@@ -811,7 +817,7 @@ Page({
 
 
         //时候没有值输入
-        if(!that.data.inputBalance){
+        if (!that.data.inputBalance) {
 
             wx.showToast({
                 title: '请输入金额',
@@ -822,57 +828,53 @@ Page({
 
         }
 
-         //小于最小额度
-         else if(parseFloat(that.data.inputBalance)<parseFloat(that.data.amountMin)){
+        //小于最小额度
+        else if (parseFloat(that.data.inputBalance) < parseFloat(that.data.amountMin)) {
 
-             wx.showToast({
-                 title: '单笔提现金额须大于'+that.data.amountMin+'元',
-                 icon: 'none',
-                 duration: 1000
-             })
-
-
-
-         }
-         //大于最大额度
-         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.amountMax)){
+            wx.showToast({
+                title: '单笔提现金额须大于' + that.data.amountMin + '元',
+                icon: 'none',
+                duration: 1000
+            })
 
 
-             wx.showToast({
-                 title: '单笔提现金额须小于'+that.data.amountMax+'元',
-                 icon: 'none',
-                 duration: 1000
-             })
-
-         }
-
-         else if (parseFloat(that.data.inputBalance)>parseFloat(that.data.dayMaxAmount)){
+        }
+        //大于最大额度
+        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.amountMax)) {
 
 
+            wx.showToast({
+                title: '单笔提现金额须小于' + that.data.amountMax + '元',
+                icon: 'none',
+                duration: 1000
+            })
 
-             wx.showToast({
-                 title: '提现金额超出当日最大限额',
-                 icon: 'none',
-                 duration: 1000
-             })
+        }
 
-
-         }
-
-         else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.monthMaxAmount)){
+        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.dayMaxAmount)) {
 
 
+            wx.showToast({
+                title: '提现金额超出当日最大限额',
+                icon: 'none',
+                duration: 1000
+            })
 
-             wx.showToast({
-                 title: '提现金额超出当月最大限额',
-                 icon: 'none',
-                 duration: 1000
-             })
 
-         }
+        }
 
-        else if(parseFloat(that.data.inputBalance)>parseFloat(that.data.canCashBalance)){
+        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.monthMaxAmount)) {
 
+
+            wx.showToast({
+                title: '提现金额超出当月最大限额',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.canCashBalance)) {
 
 
             wx.showToast({
@@ -883,7 +885,7 @@ Page({
         }
 
         //判断有几个小数点
-        else if(!dot.test(that.data.inputBalance)){
+        else if (!dot.test(that.data.inputBalance)) {
             wx.showToast({
                 title: '输入金额格式有误',
                 icon: 'none',
@@ -893,7 +895,7 @@ Page({
         }
 
         //默认输入小数点后两位
-        else if(!reg.test(that.data.inputBalance)) {
+        else if (!reg.test(that.data.inputBalance)) {
 
             wx.showToast({
                 title: '输入金额限小数点后两位',
@@ -905,7 +907,7 @@ Page({
         }
 
 
-        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
+        else if (parseFloat(that.data.monthMaxAmount) == 0 && parseFloat(that.data.dayMaxAmount) == 0) {
 
             wx.showToast({
                 title: '账户余额不足',
@@ -915,13 +917,13 @@ Page({
 
         }
 
-        else if(parseFloat(that.data.monthMaxAmount)==0&&parseFloat(that.data.dayMaxAmount)==0){
+        else if (parseFloat(that.data.monthMaxAmount) == 0 && parseFloat(that.data.dayMaxAmount) == 0) {
 
-                wx.showToast({
-                    title: '当月金额超限',
-                    icon: 'none',
-                    duration: 1000
-                })
+            wx.showToast({
+                title: '当月金额超限',
+                icon: 'none',
+                duration: 1000
+            })
 
         }
 
@@ -929,23 +931,23 @@ Page({
 
             var inputValue = that.data.inputBalance;
 
-            function returnFloat(value){
+            function returnFloat(value) {
 
-                var value=Math.round(parseFloat(value)*100)/100;
+                var value = Math.round(parseFloat(value) * 100) / 100;
 
-                var xsd=value.toString().split(".");
+                var xsd = value.toString().split(".");
 
-                if(xsd.length==1){
+                if (xsd.length == 1) {
 
-                    value=value.toString()+".00";
+                    value = value.toString() + ".00";
 
                     return value;
                 }
-                if(xsd.length>1){
+                if (xsd.length > 1) {
 
-                    if(xsd[1].length<2){
+                    if (xsd[1].length < 2) {
 
-                        value=value.toString()+"0";
+                        value = value.toString() + "0";
                     }
                     return value;
                 }
@@ -960,72 +962,145 @@ Page({
 
             var b = returnFloat(parseInt(that.data.inputBalance * (that.data.rate / 100 )));
 
-            var money = returnFloat(parseFloat(a)+parseFloat(b))
+            var money = returnFloat(parseFloat(a) + parseFloat(b))
 
             //缓存支付金额
-            wx.setStorageSync('money',money);
+            wx.setStorageSync('money', money);
 
             //console.log(returnFloat(parseFloat(a)+parseFloat(b)))
 
-            wx.showModal({
+            that.setData({
 
-                title: '确认提现',
-                content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
-                confirmText: '确认',
-                confirmColor:'#fe9728',
+                sum: returnFloat(parseFloat(a) + parseFloat(b)),
 
-                success: function (res) {
+                list: [
 
-                    if (res.confirm) {
+                    {
+                    key: '提现金额',
+                    value: '￥' + returnFloat(inputValue)
 
-                        if(_isSecurity=='1'){
-
-                            //console.log('开启短信验证');
-
-                            wx.navigateTo({
-
-                                url: '../sms_verification/sms_verification'
-                            })
-
-
-
-                        }
-
-                        else if(_isSecurity=='2'){
-
-                            //console.log('开启支付密码');
-
-                            wx.navigateTo({
-
-                                url: '../pws_verification/pws_verification'
-                            })
-
-
-                        }
-
-                        else if(_isSecurity=='3'){
-
-                            //console.log('啥都没开启');
-
-                            confirmation()
-
-                        }
-
-
+                },
+                    {
+                        key: '手续费',
+                        value: '￥' + b
 
                     }
 
-                    else if (res.cancel) {
+                    ]
 
 
-                    }
-                }
             });
+
+
+            this.showModal();
+
+
+            /*wx.showModal({
+
+             title: '确认提现',
+             content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
+             confirmText: '确认',
+             confirmColor:'#fe9728',
+
+             success: function (res) {
+
+             if (res.confirm) {
+
+             if(_isSecurity=='1'){
+
+             //console.log('开启短信验证');
+
+             wx.navigateTo({
+
+             url: '../sms_verification/sms_verification'
+             })
+
+
+
+             }
+
+             else if(_isSecurity=='2'){
+
+             //console.log('开启支付密码');
+
+             wx.navigateTo({
+
+             url: '../pws_verification/pws_verification'
+             })
+
+
+             }
+
+             else if(_isSecurity=='3'){
+
+             //console.log('啥都没开启');
+
+             confirmation()
+
+             }
+
+
+
+             }
+
+             else if (res.cancel) {
+
+
+             }
+             }
+             });*/
 
 
         }
 
 
+    },
+
+    trueCashFn: function () {
+
+        var that = this;
+
+        var thisCashUrl = app.globalData.URL + cashUrl;
+
+        //获取银行卡页面的银行卡
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
+        var _isSecurity = wx.getStorageSync('isSecurity');
+
+        if (_isSecurity == '1') {
+
+            //console.log('开启短信验证');
+
+            wx.navigateTo({
+
+                url: '../sms_verification/sms_verification'
+            })
+
+
+        }
+
+        else if (_isSecurity == '2') {
+
+            //console.log('开启支付密码');
+
+            wx.navigateTo({
+
+                url: '../pws_verification/pws_verification'
+            })
+
+
+        }
+
+        else if (_isSecurity == '3') {
+
+            //console.log('啥都没开启');
+
+            confirmation()
+
+        }
 
         function confirmation() {
 
@@ -1037,7 +1112,7 @@ Page({
              * */
 
 
-            console.log('提现金额'+that.data.inputBalance);
+            console.log('提现金额' + that.data.inputBalance);
 
             wx.request({
 
@@ -1068,15 +1143,15 @@ Page({
 
                     console.log(res.data);
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
                     //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
-                    wx.setStorageSync('successVerify','true');
+                    wx.setStorageSync('successVerify', 'true');
 
                     //存储有没有提现成功 如果操作成功则首页刷新 没成功或者没操作则不用刷新
-                    wx.setStorageSync('successRefresh','true');
+                    wx.setStorageSync('successRefresh', 'true');
 
-                    if(res.data.code=='3001') {
+                    if (res.data.code == '3001') {
 
                         //console.log('登录');
 
@@ -1084,22 +1159,10 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url: '../../common/signin/signin'
                             })
 
-                        },1500)
-
-   /*                     wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500,
-                            success:function () {
-
-
-
-                            }
-
-                        })*/
+                        }, 1500)
 
                         return false
 
@@ -1152,8 +1215,6 @@ Page({
 
 
         }
-
-
     },
 
     hasTipsFn: function () {
@@ -1164,7 +1225,7 @@ Page({
             /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
             confirmText: '确认',
             showCancel: false,
-            confirmColor:'#fe9728',
+            confirmColor: '#fe9728',
             success: function (res) {
 
                 if (res.confirm) {
@@ -1192,7 +1253,7 @@ Page({
                 if (res.tapIndex == '0') {
 
                     //存储从哪个页面跳到我的账单 来判断导航名称（在我的账单取到 1为提现记录 2为转账记录）
-                    wx.setStorageSync('whichBill','1');
+                    wx.setStorageSync('whichBill', '1');
 
                     wx.navigateTo({
 
@@ -1232,11 +1293,10 @@ Page({
         var thisInputBalance = e.detail.value;
 
 
-
-        if(thisInputBalance){
+        if (thisInputBalance) {
 
             //默认输入小数点后两位
-            if(!reg.test(thisInputBalance)) {
+            if (!reg.test(thisInputBalance)) {
 
 
                 wx.showToast({
@@ -1254,24 +1314,96 @@ Page({
         }
 
 
-
         that.setData({
 
             //balance: e.detail.value,
 
-            inputBalance:e.detail.value,
-
-
+            inputBalance: e.detail.value,
 
 
         });
 
 
+    },
+
+    showModal: function () {
 
 
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+
+            duration: 200,
+
+            timingFunction: "linear",
+
+            delay: 0
+
+        });
 
 
+        this.animation = animation;
+
+        animation.translateY(animationShowHeight).step();
+
+        console.log('Y轴高度' + animationShowHeight);
+
+        this.setData({
+
+            animationData: animation.export(),
+
+            showModalStatus: true
+
+        });
+
+        console.log(this.data.animationData)
+
+        setTimeout(function () {
+
+            animation.translateY(0).step();
+
+            this.setData({
+
+                animationData: animation.export()
+
+            })
+
+        }.bind(this), 200)
 
     },
+
+    hideModal: function () {
+        // 隐藏遮罩层
+        var animation = wx.createAnimation({
+
+            duration: 200,
+
+            timingFunction: "linear",
+
+            delay: 0
+
+        });
+
+        this.animation = animation;
+
+        animation.translateY(animationShowHeight).step()
+
+        this.setData({
+
+            animationData: animation.export(),
+
+        })
+        setTimeout(function () {
+
+            animation.translateY(0).step()
+
+            this.setData({
+
+                animationData: animation.export(),
+
+                showModalStatus: false
+            })
+        }.bind(this), 200)
+    },
+
 
 });

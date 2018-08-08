@@ -9,10 +9,8 @@
     "pages/user/no_certification/certification",
     "pages/user/choose_nationality/choose_nationality",
     "pages/user/actionSheet/actionSheet",
-
+    "pages/user/account_cash/account_cash",
     "pages/user/personal/personal",
-
-
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
 
@@ -53,7 +51,7 @@
     "pages/user/payment_setting/payment_setting",
 
     "pages/user/balance/balance",
-    "pages/user/account_cash/account_cash",
+
     "pages/user/transfer_details/transfer_details",
     "pages/user/historical_cashier/historical_cashier",
     "pages/user/transfer_accounts/transfer_accounts",

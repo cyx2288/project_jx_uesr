@@ -1,22 +1,22 @@
 <!--index.wxml-->
 <view class="container-column">
 
-    <view class="container-column buydes-dialog-container" wx:if="{{showModalStatus}}">
+    <view class="container-column buydes-dialog-container" catchtouchmove="preventTouchMove" wx:if="{{showModalStatus}}">
         <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
         <view animation="{{animationData}}" class="container-column buydes-dialog-container-bottom">
             <block>
-                <view class="actionsheet_content" wx:for="{{actionSheetList}}">
+                <view class="actionsheet_content">
 
                     <view class="actionsheet_title">{{title}}</view>
                     <view class="actionsheet_cancel" bindtap="hideModal">×</view>
                     <view class="title">
                         <view>{{operationTitle}}</view>
-                        <view class="text_big">{{sum}}</view>
+                        <view class="text_big">￥{{sum}}</view>
                     </view>
 
-                    <view class="list_content" >
-                        <view>转账金额</view>
-                        <view>￥100.00</view>
+                    <view class="list_content" wx:for="{{list}}">
+                        <view>{{item.key}}</view>
+                        <view>{{item.value}}</view>
                     </view>
                 </view>
                 <view class="operation_btn" bindtap="hideModal">
@@ -32,3 +32,17 @@
 </view>
 
 <view bindtap="showModal">点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>
+<view>点击</view>

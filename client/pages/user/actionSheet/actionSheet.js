@@ -9,12 +9,42 @@ const app = getApp();
 var animationShowHeight = 300;
 
 Page({
+
     data: {
 
         animationData: "",
 
         showModalStatus: false,
 
+        title: '确认转出',
+
+        operationTitle: '支付金额',
+
+        sum: '100',
+
+        list: [
+
+            {
+                key: '转账金额',
+                value: '￥100'
+
+            },
+            {
+                key: '对方姓名',
+                value: '庄中煲'
+
+            },
+            {
+
+                key: '转账金额',
+                value: '￥100'
+
+            }
+
+        ],
+
+
+        btnTitle: '确认转账'
     },
 
     onShow: function () {
@@ -28,6 +58,11 @@ Page({
 
             }
         })
+
+    },
+
+    preventTouchMove: function () {
+
 
     },
 
@@ -50,7 +85,7 @@ Page({
 
         animation.translateY(animationShowHeight).step();
 
-        console.log('Y轴高度'+animationShowHeight);
+        console.log('Y轴高度' + animationShowHeight);
 
         this.setData({
 
@@ -75,6 +110,7 @@ Page({
         }.bind(this), 200)
 
     },
+
     hideModal: function () {
         // 隐藏遮罩层
         var animation = wx.createAnimation({
