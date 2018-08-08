@@ -7,7 +7,7 @@ App({
 
         /*URL: 'https://user.99payroll.cn/jx-user',*///生产环境
 
-         URL: 'http://jxtest.99payroll.cn/jx-user',
+        URL: 'http://jxtest.99payroll.cn/jx-user',
 
         /*URL:'http://172.18.1.62:8092/jx-user',*/
 
@@ -107,7 +107,9 @@ App({
             }, 500);
 
 
-        }
+        },
+
+
 
     },
 

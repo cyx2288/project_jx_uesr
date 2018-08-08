@@ -252,6 +252,18 @@ Page({
         var _transferTips = wx.getStorageSync('transferTips');//备注
 
 
+        if(!that.data.code){
+
+            wx.showToast({
+                title: '请输入验证码',
+                icon: 'none',
+                duration: 1000
+            })
+
+
+        }
+
+
         //console.log(that.data.code)
 
   /*      console.log({
@@ -265,7 +277,7 @@ Page({
 
         })*/
 
-        if(_transferCash=='5'){
+        else if(_transferCash=='5'){
 
 
             console.log('转账')

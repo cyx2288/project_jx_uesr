@@ -221,3 +221,102 @@ button.kf_button {
 .kf_button::after{
     border: 0px;
 }
+
+.buydes-dialog-container{
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    background-color:rgba(15, 15, 26, 0.5);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+}
+
+.buydes-dialog-container-top{
+    flex-grow: 1;
+
+}
+
+.buydes-dialog-container-bottom{
+    background:#fff;
+    flex-grow:0;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    left:0;
+
+}
+
+.buydes-dialog-container-bottom-item{
+    padding:24rpx;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1rpx solid #eeeeee;
+}
+.actionsheet_content{
+    font-size: 16px;
+    margin-bottom: 30rpx;
+}
+
+.actionsheet_title{
+
+    position: relative;
+    font-size: 16px;
+}
+
+.actionsheet_title:after{
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    border-bottom: 1px solid #ddd;
+    width: 92%;
+    transform: scaleY(.6);
+}
+.actionsheet_cancel{
+    position:absolute;
+    font-size:28px;
+    right:15px;
+    top:0;
+    color: #ababab;
+
+
+}
+.main_title ,.actionsheet_title{
+
+    padding: 10px;
+    text-align: center;
+}
+.text_big{
+
+    font-size: 52rpx;
+
+}
+.list_content{
+
+    padding: 10px 30rpx ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.list_content>view:first-child{
+    color: #8a8a8a;
+
+}
+
+.operation_btn{
+    padding:0 15px 60rpx;
+
+}
+
+
+.operation_btn>.weui-btn{
+
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 16px;
+}
+
+
