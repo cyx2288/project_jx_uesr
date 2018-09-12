@@ -57,7 +57,7 @@
 <view class="jx_welfare_mall">
     <view class="assistant_life">
         <view class="title_line"></view>
-        <view class="title">生活服务</view>
+        <view class="title">购物</view>
     </view>
 
     <hr/>
@@ -71,11 +71,11 @@
         </view>
 
         <!-- 话费充值 -->
-        <view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">
-            <image src="../../../static/icon/wages/jx_meituan.png"  class="mall_service"/>
-            <view class="service_title">美团点评</view>
+        <!--<view class="scene" bindtap="urlFn" data-url="{{mtUrl}}" data-name="美团点评">-->
+            <!--<image src="../../../static/icon/wages/jx_meituan.png"  class="mall_service"/>-->
+            <!--<view class="service_title">美团点评</view>-->
 
-        </view>
+        <!--</view>-->
 
 
         <!-- 火车票预订 -->

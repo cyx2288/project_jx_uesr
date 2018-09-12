@@ -126,7 +126,14 @@ Page({
 
 
                 }
+                else if(res.data.code=='3004'){
 
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
                 else {
 
                     //存储有没有点击进入反馈详情 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
@@ -278,6 +285,14 @@ Page({
 
 
                     }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
 
                     else {
 
@@ -308,6 +323,14 @@ Page({
                             return false
 
 
+                        }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
                         }
 
                         else {

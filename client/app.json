@@ -13,6 +13,7 @@
     "pages/user/personal/personal",
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
+    "pages/user/locked/locked",
 
 
     "pages/user/mainland_certification/mainland",
@@ -69,7 +70,7 @@
     "pages/user/pay_success/pay_success",
     "pages/user/modify_paycode/modify_code",
     "pages/user/pws_verification/pws_verification",
-    "pages/user/locked/locked",
+
     "pages/user/sms_verification/sms_verification",
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
