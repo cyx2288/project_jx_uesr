@@ -321,6 +321,14 @@ Page({
 
 
                         }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
 
                         else {
 
@@ -333,7 +341,7 @@ Page({
 
                             var _hrefId = wx.getStorageSync('hrefId');
 
-                            console.log('8是转账'+_hrefId)
+                            console.log('10是转账'+_hrefId)
 
                             console.log('1是个人中心'+_personCenter)
 
@@ -390,6 +398,14 @@ Page({
                                             return false
 
 
+                                        }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
                                         }
 
                                         else {
@@ -460,6 +476,19 @@ Page({
 
                                 else if(_hrefId=='8'){
 
+                                    setTimeout(function () {
+
+                                        wx.redirectTo({
+
+                                            url:'../code/code'
+
+                                        })
+
+                                    },1000)
+                                }
+
+                                else if(_hrefId=='10'){
+
                                     console.log('从转账');
 
                                     setTimeout(function () {
@@ -473,8 +502,8 @@ Page({
                                     },1000)
 
 
-
                                 }
+
 
                                 else if(_hrefId=='6'){
 
@@ -491,6 +520,23 @@ Page({
                                     },1000)
 
 
+
+
+                                }
+
+                                else if(_hrefId=='3'){
+
+                                    console.log('从设置支付方式')
+
+                                    setTimeout(function () {
+
+                                        wx.navigateBack({
+
+                                            delta: 1,
+
+                                        })
+
+                                    },1000)
 
 
                                 }

@@ -116,6 +116,14 @@ Page({
 
 
                     }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
 
                     else {
 
@@ -321,6 +329,14 @@ Page({
                         return false
 
 
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
                     }
 
                     else {

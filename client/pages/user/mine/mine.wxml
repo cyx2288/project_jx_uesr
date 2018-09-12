@@ -160,7 +160,7 @@
 
         <view class="password_image">
 
-          <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>
+             <text hidden="{{hasJoinEnt}}" class="join_tip">您有新的企业邀请</text>
 
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 

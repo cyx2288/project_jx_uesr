@@ -90,6 +90,14 @@ Page({
 
 
                 }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
 
                 else {
 
@@ -168,6 +176,14 @@ Page({
                     return false
 
 
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
                 }
 
                 else {
@@ -284,6 +300,14 @@ Page({
 
 
                 }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
 
                 else {
 
@@ -344,7 +368,7 @@ Page({
         if (_isVerify == '0'||_isVerify == '3') {
 
             //存指定的页面  （在实名认证中取值）
-            wx.setStorageSync('hrefId','8');
+            wx.setStorageSync('hrefId','10');
 
             wx.setStorageSync('personCenter','2')
 
@@ -382,7 +406,7 @@ Page({
 
         else if(_isVerify == '2'){
             //存指定的页面  （在实名认证中取值）
-            wx.setStorageSync('hrefId','8');
+            wx.setStorageSync('hrefId','10');
 
             wx.setStorageSync('personCenter','2');
 
@@ -493,10 +517,10 @@ Page({
 
 
         wx.showModal({
-            title: '冻结工资只可消费，不可提现',
-            content: '在’我的发薪企业’中同意企业邀请，身份验证通过后即可解冻资金',
+            title: '不可提金额只可消费，不可提现',
+            content: '在“我的发薪企业”中同意企业邀请，身份验证通过后，即可提现',
             cancelText: '取消',
-            confirmText: '去解冻',
+            confirmText: '加入企业',
             confirmColor:'#fe9728',
             success: function (res) {
 

@@ -83,6 +83,73 @@ Page({
 
     },
 
+    onLoad:function () {
+
+        var _update = wx.getStorageSync('update');
+
+        console.log('存'+wx.getStorageSync('update'));
+
+        if(_update!='1'){
+
+            if (wx.canIUse('getUpdateManager')) {
+
+                const updateManager = wx.getUpdateManager();
+
+                updateManager.onCheckForUpdate(function (res) {
+
+
+                    console.log(res.hasUpdate)
+
+                    // 请求完新版本信息的回调
+                    if (res.hasUpdate) {
+
+                        updateManager.onUpdateReady(function () {
+
+                            wx.showModal({
+                                title: '更新提示',
+                                content: '新版本已经准备好，是否重启应用？',
+                                confirmColor: '#fe9728',
+
+                                success: function (res) {
+                                    if (res.confirm) {
+                                        // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                                        updateManager.applyUpdate()
+                                    }
+                                }
+
+
+
+                            })
+
+                        })
+                        updateManager.onUpdateFailed(function () {
+                            // 新的版本下载失败
+                            wx.showModal({
+                                title: '已经有新版本了哟~',
+                                content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~',
+                                confirmColor: '#fe9728',
+                            })
+                        })
+                    }
+                })
+            }
+
+            else {
+                // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+                wx.showModal({
+                    title: '提示',
+                    content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。',
+                    confirmColor: '#fe9728',
+
+                })
+            }
+
+
+        }
+
+
+    },
+
     onShow: function () {
 
         // 页面显示
@@ -137,7 +204,7 @@ Page({
             ajaxShow();
 
             //ajax 加载后存储变量值改变 - 认证成功
-            wx.setStorageSync('successRefresh', 'false');
+            wx.setStorageSync('successRefresh', 'true');
 
             var _time = timestamp();
 
@@ -157,19 +224,24 @@ Page({
 
             var _mineTimer = wx.getStorageSync('mineTimer');
 
-            if (timestamp() - _mineTimer >= 120) {
+          /*  if (timestamp() - _mineTimer >= 120) {
 
-                //console.log('超时刷新 超时：' + (timestamp() - _mineTimer))
+                console.log('超时刷新 超时：' + (timestamp() - _mineTimer))
 
                 ajax()
 
             }
 
             else {
+                console.log(timestamp())
+
+                console.log(_mineTimer)
+
+                console.log('超时刷新 超时：' + (timestamp() - _mineTimer))
 
                 console.log('不刷新')
 
-            }
+            }*/
 
 
         }
@@ -270,6 +342,7 @@ Page({
              * 接口：/salary/home/selecttiptype
              * 入参：null
              **/
+
             wx.request({
 
                 url: thisRemaidUrl,
@@ -307,6 +380,16 @@ Page({
                         return false
 
 
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        that.onShow()
+
+                        return false
                     }
 
                     else {
@@ -545,6 +628,17 @@ Page({
 
 
                                                     }
+                                                    else if(res.data.code=='3004'){
+
+                                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                                        wx.setStorageSync('Authorization', Authorization);
+
+                                                        that.onShow()
+
+                                                        return false
+                                                    }
+
 
                                                     else {
 
@@ -748,6 +842,8 @@ Page({
                         //发薪企业
                         function getSelectEnt() {
 
+
+                            var Authorization = wx.getStorageSync('Authorization');
                             /**
                              * 接口：发薪企业
                              * 请求方式：GET
@@ -803,7 +899,16 @@ Page({
 
 
                                     }
+                                    else if(res.data.code=='3004'){
 
+                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                        wx.setStorageSync('Authorization', Authorization);
+
+                                        that.onShow()
+
+                                        return false
+                                    }
                                     else {
 
                                         var thisEntName = res.data.data;
@@ -843,6 +948,7 @@ Page({
                         //发薪企业
                         getSelectEnt();
 
+                        var Authorization = wx.getStorageSync('Authorization');
 
                         /**
                          * 接口：获取用户余额
@@ -891,6 +997,16 @@ Page({
 
 
                                 }
+                                else if(res.data.code=='3004'){
+
+                                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                                    wx.setStorageSync('Authorization', Authorization);
+
+                                    that.onShow()
+
+                                    return false
+                                }
 
                                 else {
 
@@ -917,6 +1033,8 @@ Page({
                             }
 
                         })
+
+                        var Authorization = wx.getStorageSync('Authorization');
 
                         /**
                          * 接口：获取用户工资金额状况
@@ -962,6 +1080,16 @@ Page({
                                     return false
 
 
+                                }
+                                else if(res.data.code=='3004'){
+
+                                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                                    wx.setStorageSync('Authorization', Authorization);
+
+                                    that.onShow()
+
+                                    return false
                                 }
 
                                 else {
@@ -1076,6 +1204,16 @@ Page({
 
 
                     }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        that.onShow()
+
+                        return false
+                    }
 
                     else {
 
@@ -1126,6 +1264,7 @@ Page({
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
 
         //修改入参
         var thisIdData = {};
@@ -1210,6 +1349,16 @@ Page({
                     return false
 
 
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    that.onShow()
+
+                    return false
                 }
 
                 else {
@@ -1540,7 +1689,7 @@ Page({
 
         //console.log('到底');
 
-        //console.log('是否有更多数据'+that.data.hasMoreData);
+        console.log('是否有更多数据'+that.data.hasMoreData);
 
 
         if (that.data.hasMoreData) {
@@ -1685,6 +1834,16 @@ Page({
                     return false
 
 
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    that.onShow()
+
+                    return false
                 }
 
                 else {

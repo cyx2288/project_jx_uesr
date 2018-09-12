@@ -106,6 +106,14 @@ Page({
 
 
                 }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
 
                 else {
 
@@ -177,6 +185,14 @@ Page({
                     return false
 
 
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
                 }
 
                 else {
@@ -319,6 +335,15 @@ Page({
 
                 }
 
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
                 else {
 
                     that.setData({
@@ -387,6 +412,15 @@ Page({
                     return false
 
 
+                }
+
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
                 }
 
                 else {
@@ -460,6 +494,14 @@ Page({
 
 
                 }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
 
                 else {
 
@@ -531,6 +573,15 @@ Page({
 
                 }
 
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
                 else {
 
                     that.setData({
@@ -599,6 +650,15 @@ Page({
 
                 }
 
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
                 else {
 
                     console.log(res.data.data);
@@ -613,6 +673,31 @@ Page({
 
 
                     })
+
+                    //获取手机号
+                    wx.setStorageSync('mobile', res.data.data.mobile);
+
+                    //获取是否设置密码
+                    wx.setStorageSync('isPayPwd', res.data.data.isPayPwd);
+
+                    //是否开启验证
+                    wx.setStorageSync('isSecurity', res.data.data.isSecurity);
+
+                    //存姓名和身份证
+                    wx.setStorageSync('idNumber', res.data.data.idNumber);
+
+                    wx.setStorageSync('userName', res.data.data.userName);
+
+                    //是否实名认证
+                    wx.setStorageSync('isVerify', res.data.data.isVerify);
+
+                    //证件类型 只有花名册导入的时候有
+                    wx.setStorageSync('idType',res.data.data.idType);
+
+                    //国籍
+                    wx.setStorageSync('nationality',res.data.data.nationality);
+
+                    wx.setStorageSync('source',res.data.data.source)
 
                 }
 
@@ -645,7 +730,7 @@ Page({
 
             wx.showModal({
                 title: '提示',
-                content: '为保障账户资金安全，实名用户才能使用账户消费，请先完成实名认',
+                content: '为保障账户资金安全，实名用户才能使用账户消费，请先完成实名认证',
                 cancelText: '取消',
                 confirmText: '去认证',
                 confirmColor:'#fe9728',
@@ -723,11 +808,6 @@ Page({
             wx.setStorageSync('GoNav',e.currentTarget.dataset.name);
 
         }
-
-
-        console.log(wx.getStorageSync('GoUrl'));
-
-        console.log(wx.getStorageSync('GoNav'));
 
     },
 

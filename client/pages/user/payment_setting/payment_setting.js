@@ -89,6 +89,15 @@ Page({
 
                 }
 
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
                 else {
 
                     //获取是否设置密码
@@ -151,6 +160,15 @@ Page({
                     return false
 
 
+                }
+
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
                 }
 
                 else {
@@ -687,6 +705,14 @@ Page({
 
 
                         }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
 
                         else {
 
@@ -743,7 +769,6 @@ Page({
 
                 //没有认证的先去认证 再设置支付密码
                 if (_isVerify == '0'||_isVerify == '3') {
-
 
                     wx.showModal({
                         title: '提示',
@@ -921,6 +946,14 @@ Page({
                         return false
 
 
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
                     }
 
                     else {
@@ -1380,6 +1413,8 @@ Page({
 
                 //没有认证的先去认证 再设置支付密码
                 if (_isVerify == '0'||_isVerify == '3') {
+
+                    wx.setStorageSync('hrefId','3');
 
                     wx.showModal({
                         title: '提示',

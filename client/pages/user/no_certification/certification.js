@@ -39,7 +39,7 @@ Page({
     onLoad:function () {
 
 
-        //获取数据
+        console.log('加载')
 
         var that = this;
 
@@ -53,7 +53,14 @@ Page({
 
         var _source = wx.getStorageSync('source');
 
+
+
+
+
         wx.removeStorageSync('chooseCity');
+
+
+
 
         console.log(thisUserName);
 
@@ -107,6 +114,7 @@ Page({
 
         else if(_source=='1'){
 
+            console.log('自助注册');
 
             //自助注册
             that.setData({
@@ -252,6 +260,8 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        console.log(Authorization)
+
         //存指定的页面
         var thisPayPwd =  wx.getStorageSync('isPayPwd');
 
@@ -327,6 +337,7 @@ Page({
                 })
 
 
+
                 /**
                  * 接口：实名认证
                  * 请求方式：POST
@@ -387,6 +398,14 @@ Page({
 
 
                         }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
 
                         else {
 
@@ -398,6 +417,10 @@ Page({
                             var _personCenter = wx.getStorageSync('personCenter');
 
                             var _hrefId = wx.getStorageSync('hrefId');
+
+                            var jx_sid = wx.getStorageSync('jxsid');
+
+                            var Authorization = wx.getStorageSync('Authorization');
 
                             console.log('8是转账'+_hrefId)
 
@@ -457,6 +480,14 @@ Page({
 
 
                                         }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
 
                                         else {
 
@@ -510,7 +541,7 @@ Page({
 
                                 }
 
-                                else if(_hrefId=='4'){
+                                else if(_hrefId=='4'||_hrefId=='8'){
 
                                     setTimeout(function () {
 
@@ -524,7 +555,7 @@ Page({
 
                                 }
 
-                                else if(_hrefId=='8'){
+                                else if(_hrefId=='10'){
 
                                     console.log('从转账');
 
