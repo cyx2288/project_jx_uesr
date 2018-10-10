@@ -222,7 +222,7 @@ Page({
 
             header: {
 
-                'jx_sid': jx_sid,
+                'jxsid': jx_sid,
 
                 'Authorization': Authorization
 

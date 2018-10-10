@@ -66,7 +66,7 @@
         <!-- 加油卡 -->
         <view  class="scene" bindtap="urlFn" data-url="{{jdUrl}}" data-name="京东商城">
             <image src="../../../static/icon/wages/jx_jdong.png"  class="mall_service"/>
-            <view class="service_title">京东商城</view>
+            <view class="service_title">惠购商城</view>
 
         </view>
 

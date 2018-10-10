@@ -252,7 +252,7 @@ Page({
 
 
         //缓存jx_sid&&Authorization数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
@@ -276,7 +276,7 @@ Page({
 
             header: {
 
-                'jx_sid': jx_sid,
+                'jxsid': jx_sid,
 
                 'Authorization': Authorization
 
