@@ -153,7 +153,7 @@ Page({
         var that = this;
 
         //获取数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 

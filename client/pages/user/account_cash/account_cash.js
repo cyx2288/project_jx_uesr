@@ -533,6 +533,15 @@ Page({
 
         }
 
+        else if(thisCan=='0.00'){
+
+            that.setData({
+
+                disabled: true
+
+            });
+        }
+
 
     },
 
