@@ -5,7 +5,7 @@ App({
 
         userInfo: null,
 
-        /*URL: 'https://muser.99payroll.cn/jx-user',*///生产环境
+        /*URL: 'https://user.99payroll.cn/jx-user',*///生产环境
 
         URL: 'http://jxtest.99payroll.cn/jx-user',
 
