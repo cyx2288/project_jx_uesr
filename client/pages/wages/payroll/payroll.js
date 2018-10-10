@@ -4,7 +4,7 @@ const json2FormFn = require('../../../static/libs/script/json2Form.js');//json�
 
 const radixPointFn = require('../../../static/libs/script/radixPoint');//转换千位逗号
 
-const listUrl = '/salary/home/salarydetail';//工资发放明细
+const listUrl = '/salary/home/salarydetailALL';//工资发放明细
 
 const confirmUrl = '/salary/home/confirmsalary';//确认工资条
 
@@ -15,9 +15,11 @@ Page({
     data: {
 
 
-        addAmount: [],//应发明细
+        //addAmount: [],//应发明细
 
-        subtractAmount: [],//代扣明细
+        //subtractAmount: [],//代扣明细
+
+        salaryDetails:[],//发放明细
 
         payableAmount: '',//应发金额
 
@@ -33,7 +35,9 @@ Page({
 
         state:'',//工资确认状态 1是已确认 0是未确认
 
-        hiddenDot:true//默认不显示有新消息 true为不显示 false为显示
+        hiddenDot:true,//默认不显示有新消息 true为不显示 false为显示
+
+        salaryType:''//默认不显示有新消息 true为不显示 false为显示
 
     },
 
@@ -49,6 +53,8 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
+        console.log(thisSalaryDetailId)
 
         //有几个ajax请求
         var ajaxCount = 1;
@@ -84,7 +90,7 @@ Page({
             success: function (res) {
 
 
-                console.log(res.data);
+                console.log(res.data.data);
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
@@ -127,74 +133,122 @@ Page({
                     })();
 
                     //缓存salaryId - 反馈页面
-                    wx.setStorageSync('salaryId',res.data.data[0].salaryId);
+                    wx.setStorageSync('salaryId',res.data.data.salaryId);
 
-                    var _state = res.data.data[0].state;
+                    var _state = res.data.data.state;
+
+                    var ishasNewMsg = res.data.data.isHaveNewMsg;
+
+                    //type为6不显示应发金额 3显示应发金额
+                    that.setData({
+
+                        salaryType:res.data.data.salaryType
+
+                    });
+
+                    //console.log(ishasNewMsg)
+
+                    var _salaryDetails = JSON.parse(res.data.data.salaryDetails)
+
+                    var _salaryDetailsArray = [], x
+
+                    var re = /^[0-9]+.?[0-9]*$/
+
+                    for(x in _salaryDetails){
+
+                        if(_salaryDetails[x].length>12||!re.test(_salaryDetails[x])){
+                            /*添加数组*/
+                            _salaryDetailsArray.push({
+
+                                name: x,
+
+                                record: _salaryDetails[x]
+
+                            })
+
+                        }
+
+                        else {
+
+                            /*添加数组*/
+                            _salaryDetailsArray.push({
+
+                                name: x,
+
+                                record: radixPointFn.splitK(_salaryDetails[x])
+
+                            })
 
 
-                    var ishasNewMsg = res.data.data[0].isHaveNewMsg;
-
-                    console.log(ishasNewMsg)
+                        }
 
 
-
-                    //将给的数据转成字符串
-                    var _addAmount = JSON.parse(res.data.data[0].addAmount);
-
-                    console.log(_addAmount)
-
-                    var _addAmountArray = [], x;
-
-                    /*遍历json，产生可以渲染的data*/
-
-                    for (x in _addAmount) {
-
-                        /*添加数组*/
-                        _addAmountArray.push({
-
-                            name: x,
-
-                            record: radixPointFn.splitK(_addAmount[x])
-
-                        })
 
                     }
 
-                    //将给的数据转成字符串
-                    var _subtractAmount = JSON.parse(res.data.data[0].subtractAmount);
-
-                    var _subtractAmountArray = [], y;
 
 
-                    for (y in _subtractAmount) {
-
-                        /*添加数组*/
-                        _subtractAmountArray.push({
-
-                            name: y,
-
-                            record: radixPointFn.splitK(_subtractAmount[y])
-
-                        })
 
 
-                    }
+                    // //将给的数据转成字符串
+                    // var _addAmount = JSON.parse(res.data.data.addAmount);
+                    //
+                    // console.log(_addAmount)
+                    //
+                    // var _addAmountArray = [], x;
+                    //
+                    // /*遍历json，产生可以渲染的data*/
+                    //
+                    // for (x in _addAmount) {
+                    //
+                    //     /*添加数组*/
+                    //     _addAmountArray.push({
+                    //
+                    //         name: x,
+                    //
+                    //         record: radixPointFn.splitK(_addAmount[x])
+                    //
+                    //     })
+                    //
+                    // }
+                    //
+                    // //将给的数据转成字符串
+                    // var _subtractAmount = JSON.parse(res.data.data.subtractAmount);
+                    //
+                    // var _subtractAmountArray = [], y;
+                    //
+                    //
+                    // for (y in _subtractAmount) {
+                    //
+                    //     /*添加数组*/
+                    //     _subtractAmountArray.push({
+                    //
+                    //         name: y,
+                    //
+                    //         record: radixPointFn.splitK(_subtractAmount[y])
+                    //
+                    //     })
+                    //
+                    //
+                    // }
 
 
                     //获取entName数据
                     that.setData({
 
-                        entName: res.data.data[0].entName,//企业名称
+                        entName: res.data.data.entName,//企业名称
 
-                        addAmount: _addAmountArray,//基本工资
+                        salaryDetails:_salaryDetailsArray,//工资
 
-                        salaryMonth: res.data.data[0].salaryMonth,//发薪企业年月
+                        //addAmount: _addAmountArray,//基本工资
 
-                        payableAmount: radixPointFn.splitK(res.data.data[0].payableAmount),//实发金额
+                        salaryMonth: res.data.data.salaryMonth,//发薪企业年月
 
-                        subtractAmount: _subtractAmountArray,//代扣明细
+                        payableAmount: radixPointFn.splitK(res.data.data.payableAmount),//实发金额
 
-                        realAmount: radixPointFn.splitK(res.data.data[0].realAmount)//实发金额
+                        //subtractAmount: _subtractAmountArray,//代扣明细
+
+                        realAmount: radixPointFn.splitK(res.data.data.realAmount)//实发金额
 
                     });
 
@@ -274,7 +328,7 @@ Page({
         var that = this;
 
         //获取数据
-        var jx_sid = wx.getStorageSync('jx_sid');
+        var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 

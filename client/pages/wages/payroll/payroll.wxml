@@ -23,29 +23,67 @@
 
         <view class="weui-media-box weui-media-box_text">
 
+            <!-- 应发发金额 -->
+
+<!--
+            <view class="weui_title add_line" style="font-weight: bold" hidden="{{salaryType=='6' ? true:false}}">
+                <view class="weui-media-box__title weui-media-box__title_in-text" >应发金额</view>
+
+                <view class="weui_confirm orange">{{payableAmount}}</view>
+
+            </view>
+-->
+
+
+            <!-- 实发金额 -->
+            <view class="weui_title add_line" style="font-weight: bold">
+
+                <view class="weui-media-box__title weui-media-box__title_in-text" >实发金额</view>
+
+                <view class="weui_confirm orange">{{realAmount}}</view>
+
+            </view>
+
+
+
 
 
 
                 <!-- 基本信息 -->
 
-                <view class="weui_title add_line" wx:for="{{addAmount}}">
+
+            <view class="weui_title add_line" wx:for="{{salaryDetails}}">
+
+                <view class="weui-media-box__title weui-media-box__title_in-text ">{{item.name}}</view>
+
+                <view class="weui_confirm">{{item.record}}</view>
+
+            </view>
+
+        <!--        <view class="weui_title add_line" wx:for="{{addAmount}}">
 
                     <view class="weui-media-box__title weui-media-box__title_in-text ">{{item.name}}</view>
 
                     <view class="weui_confirm">{{item.record}}</view>
 
-                </view>
+                </view>-->
 
 
 
-                <!-- 应发发金额 -->
 
-                <view class="weui_title" style="font-weight: bold">
-                    <view class="weui-media-box__title weui-media-box__title_in-text" >应发金额</view>
 
-                    <view class="weui_confirm orange">{{payableAmount}}</view>
+            <!-- 扣除信息 -->
 
-                </view>
+       <!--     <view class="weui_title add_line" wx:for="{{subtractAmount}}">
+
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+
+                <view class="weui_confirm">{{item.record}}</view>
+
+            </view>
+-->
+
+
 
 
         </view>
@@ -53,35 +91,16 @@
     </view>
 
 
-    <view class="weui-panel">
+<!--    <view class="weui-panel">
 
         <view class="weui-media-box weui-media-box_text">
 
-                <!-- 扣除信息 -->
 
-                <view class="weui_title add_line" wx:for="{{subtractAmount}}">
-
-                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
-
-                    <view class="weui_confirm">{{item.record}}</view>
-
-                </view>
-
-
-
-                <!-- 实发金额 -->
-                <view class="weui_title" style="font-weight: bold">
-
-                    <view class="weui-media-box__title weui-media-box__title_in-text" >实发金额</view>
-
-                    <view class="weui_confirm orange">{{realAmount}}</view>
-
-                </view>
 
 
         </view>
 
-    </view>
+    </view>-->
 
 
 
