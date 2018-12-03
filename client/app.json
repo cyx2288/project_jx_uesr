@@ -127,12 +127,6 @@
         "selectedIconPath": "static/icon/index_tab/jx_wages_orange.png"
       },
       {
-        "pagePath": "pages/discovery/discovery/discovery",
-        "text": "发现",
-        "iconPath": "static/icon/index_tab/jx_discovery_grey.png",
-        "selectedIconPath": "static/icon/index_tab/jx_discovery_orange.png"
-      },
-      {
         "pagePath": "pages/user/mine/mine",
         "text": "我的",
         "iconPath": "static/icon/index_tab/jx_mine_grey.png",
