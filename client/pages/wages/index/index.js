@@ -712,6 +712,136 @@ Page({
 
                         }
 
+                        //是否查看个人综合所得
+                        else if (thisType == 3) {
+
+
+                            wx.showLoading({
+
+                                mask:true,
+                                title: '加载中',
+
+                            });
+
+
+
+                            var thisEnName = res.data.data[0].entName;
+
+                            var thisSalaryMonth = res.data.data[0].salaryMonth;
+
+                            setTimeout(function () {
+
+
+                                setTimeout(function () {
+
+                                    wx.hideLoading()
+
+                                },500);
+
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: '请查看【'+thisEnName + '】众包任务'+thisSalaryMonth+'便捷查看工资和工资条',
+                                    cancelText: '查看',
+                                    confirmText: '暂不查看',
+                                    confirmColor:'#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+                                            wx.setStorageSync('successRefresh','true');
+                                            /**
+                                             * 接口：锁定状态查询
+                                             * 请求方式：POST
+                                             * 接口：/salary/home/selectlockstatus
+                                             * 入参：null
+                                             **/
+                                            wx.request({
+
+                                                url: thisUrl,
+
+                                                method: 'GET',
+
+                                                header: {
+
+                                                    'jxsid': jx_sid,
+
+                                                    'Authorization': Authorization
+
+                                                },
+
+                                                success: function (res) {
+
+                                                    console.log(res.data);
+
+                                                    that.setData({
+
+                                                        type:res.data.data.type
+
+                                                    })
+
+
+                                                    if(that.data.type=='1'){
+
+                                                        wx.navigateTo({
+
+                                                            url: '../../common/wages_authentication/authentication'
+
+                                                        })
+
+                                                    }
+
+                                                    else if(res.data.data.type=='0'){
+
+                                                        wx.navigateTo({
+
+                                                            url:'../../user/locked/locked'
+                                                        })
+
+                                                    }
+
+
+
+
+                                                },
+
+                                                fail: function (res) {
+
+                                                    console.log(res)
+
+                                                }
+
+                                            })
+
+
+
+                                        }
+
+                                        else if (res.cancel) {
+
+
+                                            //调用暂不查看工资条
+                                            noSeeSalary();
+
+                                            wx.showToast({
+
+                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的发薪企业”中继续加入',
+                                                icon: 'none',
+                                                mask:true,
+
+                                            })
+
+
+                                        }
+                                    }
+                                });
+
+
+                            },1000)
+
+
+                        }
+
                         //未收到任何邀请
                         else if (thisType == 0) {
 

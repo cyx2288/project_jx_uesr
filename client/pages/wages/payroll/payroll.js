@@ -39,9 +39,11 @@ Page({
 
         salaryType:''//默认不显示有新消息 true为不显示 false为显示
 
+
     },
 
     onShow: function () {
+
 
         var thisListurl = app.globalData.URL + listUrl;
 
@@ -53,6 +55,8 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var thisSalaryDetailId = wx.getStorageSync('salaryDetailId');
+
+        console.log('type:'+that.data.salaryType)
 
         console.log(thisSalaryDetailId)
 
@@ -145,6 +149,24 @@ Page({
                         salaryType:res.data.data.salaryType
 
                     });
+
+
+                    if(that.data.salaryType=='8'){
+
+                        wx.setNavigationBarTitle({
+
+                            title:'个体经营所得明细'
+                        })
+                    }
+
+                    else {
+                        wx.setNavigationBarTitle({
+
+                            title:'工资条明细'
+                        })
+
+                    }
+
 
                     //console.log(ishasNewMsg)
 

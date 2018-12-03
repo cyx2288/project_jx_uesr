@@ -84,7 +84,7 @@
                     <image src="../../../static/icon/wages/jx_balance.png"  class="reset_go" />
                 </view>
 
-                <text class="password_balance">工资余额</text>
+                <text class="password_balance">收入余额</text>
              </view>
 
              <view class="password_image">

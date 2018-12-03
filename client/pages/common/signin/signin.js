@@ -25,12 +25,10 @@ data:{
     password:'',
 
 
-
 },
 
     onLoad:function () {
 
-    console.log('登录')
 
         if (wx.canIUse('getUpdateManager')) {
 

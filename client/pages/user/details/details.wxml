@@ -28,6 +28,8 @@
 
                 <view wx:elif="{{item.transType==10}}"class="weui-media-box__title weui-media-box__title_in-text">充值</view>
 
+                <view wx:elif="{{item.transType==14}}"class="weui-media-box__title weui-media-box__title_in-text">个人经营所得</view>
+
                 <!--<view wx:else class="weui-media-box__title weui-media-box__title_in-text"></view>-->
 
                 <view class="weui_confirm">{{item.transAmt}}</view>

@@ -3,7 +3,7 @@
 
 <view class="jx_asset">
 
-    <text class="asset_money">工资余额（元）</text>
+    <text class="asset_money">收入余额（元）</text>
     <!--金额显示-->
     <text class="money_number">{{totalSalary}}</text>
 

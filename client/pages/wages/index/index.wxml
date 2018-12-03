@@ -5,7 +5,7 @@
 
     <!-- 总资产 -->
 
-    <view class="asset_money asset_left">工资余额（元）</view>
+    <view class="asset_money asset_left">收入余额（元）</view>
 
     <view wx:if="{{lookWages}}" class="asset_left flex_center">
 
@@ -34,27 +34,27 @@
 
 
 <!--下拉选择-->
-<view hidden="{{hasCompany}}" class="phone_one" bindtap="clickSalary">
-    <view class="phone_personal">
+<!--<view hidden="{{hasCompany}}" class="phone_one" bindtap="clickSalary">-->
+    <!--<view class="phone_personal">-->
 
-            <span class="selected_box">
-            <span>{{firstOptions}}</span>
-            <image src="../../../static/icon/wages/go_yellow.png"
-                   class="personal_image {{selectArea ? 'rotateRight' :''}}"/>
+            <!--<span class="selected_box">-->
+            <!--<span>{{firstOptions}}</span>-->
+            <!--<image src="../../../static/icon/wages/go_yellow.png"-->
+                   <!--class="personal_image {{selectArea ? 'rotateRight' :''}}"/>-->
 
-                 </span>
+                 <!--</span>-->
 
-    </view>
+    <!--</view>-->
 
-</view>
+<!--</view>-->
 
-<view class="person_box">
+<!--<view class="person_box">
     <view class="phone_select" hidden="{{selectSalary}}">
         <view class="select_one {{num==1? 'is_checked':''}}" data-num='1' bindtap="mySelectAll"><image src="../../../static/icon/wages/jx_down.png"></image>全部</view>
         <view wx:for='{{selectSalaryOptions}}' class="select_one {{item.entId==entId&&num==2?'is_checked':''}}" data-id="{{item.entId}}" data-salary="{{item.entName}}" bindtap="mySelect"><image src="../../../static/icon/wages/jx_drop.png"></image>{{item.entName}}
         </view>
     </view>
-</view>
+</view>-->
 
 <view wx:if='{{dataText==false}}' class="asset_money">还未收到工资哦~</view>
 
@@ -76,19 +76,18 @@
 
                             <view>
                                 <image class="jx_money" mode="widthFix" src="../../../static/icon/wages/jx_money.png"/>
-                                <view class="weui-media-box__title weui-media-box__title_in-text">
-                                    {{item.salaryMonth}}工资
-                                </view>
+                                <view wx:if="{{item.salaryType==8}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
+                                <view wx:else class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}工资</view>
                             </view>
                             <view class="weui_confirm orange">{{item.state}}</view>
 
                         </view>
 
-                        <view class="weui-media-box__desc">发薪企业：{{item.entName}}</view>
+                        <view class="weui-media-box__desc"><span wx:if="{{item.salaryType==8}}">任务名称：</span><span wx:else>发薪企业：</span>{{item.entName}}</view>
 
                         <view wx:if="{{lookWages}}" class="weui-media-box__info">
-                            <view class="weui-media-box__info__meta">实发工资：<span
-                                    class="orange">{{item.realAmount}}元</span></view>
+                            <view class="weui-media-box__info__meta">
+                                <span wx:if="{{item.salaryType==8}}">实发金额：</span><span wx:else >实发工资：</span><span class="orange">{{item.realAmount}}元</span></view>
                         </view>
 
                         <view wx:else class="weui-media-box__info">
