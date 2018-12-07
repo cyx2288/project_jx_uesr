@@ -20,6 +20,10 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
          noData: true,//是否显示暂无数据 true为隐藏 false为显示
 
+         showModal: false,//弹框
+
+         imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
+
 
      },
 
@@ -275,27 +279,89 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
      },
 
-
      feedBackUrlFn:function (e) {
 
+         console.log(e.currentTarget.dataset.click)
 
-         wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
+         if(e.currentTarget.dataset.click=='0'){
 
-         wx.setStorageSync('salaryId',e.currentTarget.dataset.id);
+             wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
 
-         //console.log(wx.getStorageSync('salaryDetailId'))
+             wx.setStorageSync('salaryId',e.currentTarget.dataset.id);
+
+             //console.log(wx.getStorageSync('salaryDetailId'))
+
+             wx.navigateTo({
+
+                 url:'../../user/feedback/feedback'
+             })
+
+         }
 
 
 
-         wx.navigateTo({
 
-             url:'../../user/feedback/feedback'
+
+
+
+     },
+
+     modelFn:function () {
+
+         var that = this
+
+         that.setData({
+             showModal: true
+         });
+     },
+
+     showDialogBtn: function() {
+
+         var that = this;
+
+
+     },
+     /**
+      * 弹出框蒙层截断touchmove事件
+      */
+     preventTouchMove: function () {
+
+
+     },
+     /**
+      * 隐藏模态对话框
+      */
+     hideModal: function () {
+
+         var that = this
+
+         that.setData({
+             showModal: false
+         });
+     },
+     /**
+      * 对话框取消按钮点击事件
+      */
+     onCancel: function () {
+         var that = this;
+
+         that.hideModal();
+     },
+     /**
+      * 对话框确认按钮点击事件
+      */
+     onConfirm: function () {
+
+         var that = this;
+
+         that.hideModal();
+     },
+
+     previewImage: function (e) {
+         wx.previewImage({
+             current: this.data.imgalist, // 当前显示图片的http链接
+             urls: this.data.imgalist // 需要预览的图片http链接列表
          })
-
-
-
-
-     }
-
+     },
 
  });

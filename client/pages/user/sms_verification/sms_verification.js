@@ -30,6 +30,12 @@ Page({
 
         code:'',//验证码
 
+        showModal: false,//弹框
+
+        titleContent:'',//弹框内容
+
+        imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
+
 
 
     },
@@ -393,6 +399,18 @@ Page({
 
 
                         }
+                        else if(res.data.code == '-10'){
+
+                            that.setData({
+
+                                showModal: true,
+
+                                titleContent:'转账',//弹框内容
+
+                            })
+
+
+                        }
 
                         else {
 
@@ -519,6 +537,19 @@ Page({
 
                                 url: '../pay_success/pay_success'
                             })
+
+                        }
+
+                        else if(res.data.code == '-10'){
+
+                            that.setData({
+
+                                showModal: true,
+
+                                titleContent:'提现',//弹框内容
+
+                            })
+
 
                         }
 
@@ -732,7 +763,45 @@ Page({
 
 
 
-    }
+    },
+
+    /**
+     * 弹出框蒙层截断touchmove事件
+     */
+    preventTouchMove: function () {
+
+
+    },
+    /**
+     * 隐藏模态对话框
+     */
+    hideModal: function () {
+
+        var that = this
+
+        that.setData({
+            showModal: false
+        });
+    },
+
+    /**
+     * 对话框确认按钮点击事件
+     */
+    onConfirm: function () {
+
+        var that = this;
+
+        that.hideModal();
+    },
+
+
+    previewImage: function (e) {
+        wx.previewImage({
+            current: this.data.imgalist, // 当前显示图片的http链接
+            urls: this.data.imgalist // 需要预览的图片http链接列表
+        })
+    },
+
 
 
 
