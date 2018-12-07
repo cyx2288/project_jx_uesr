@@ -2,24 +2,26 @@
 
 <view  class="help_service">
 
-    <view wx:for="{{feedBackList}}" data-detail="{{item.salaryDetailId}}"  data-id="{{item.salaryId}}"bindtap="feedBackUrlFn" class="weui-cells">
+    <view wx:for="{{feedBackList}}" data-detail="{{item.salaryDetailId}}"  data-id="{{item.salaryId}}" data-click="{{item.isClick}}" bindtap="feedBackUrlFn" class="weui-cells">
 
         <view class="weui-media-box__hd ">
 
             <text wx:if="{{item.salaryType=='X'}}" class="service_title flex_box" >【企业消息】</text>
+            <text  wx:elif="{{item.salaryType=='Y'}}" class="service_title flex_box" >【合同签约提醒】</text>
             <text wx:else class="service_title flex_box" >【反馈处理结果】</text>
             <span class="new_title" wx:if="{{item.isUserHaveNew=='1'}}">New</span>
 
         </view>
 
 
-         <view class="feedback_text">{{item.contentTitle}}</view>
+         <view class="feedback_text">{{item.contentTitle}}<span class="click_class" bindtap="modelFn" wx:if="{{item.contentTitle=='您收到一份新合同,'}}">点击查看</span><span bindtap="modelFn" class="click_class" wx:elif="{{item.contentTitle=='签名资者已成功申请，去签署'}}">合同</span></view>
 
         <hr/>
 
         <view class="weui-help">
 
             <text wx:if="{{item.salaryType=='X'}}" class="wages_month">{{item.taskName}}</text>
+            <text wx:elif="{{item.salaryType=='Y'}}" class="wages_month">{{item.contractName}}</text>
             <text wx:elif="{{item.salaryType=='7'||item.salaryType=='8'}}" class="wages_month">{{item.salaryMonth}}个体经营所得</text>
             <text wx:else class="wages_month">{{item.salaryMonth}}工资</text>
             <text class="wages_time">{{filter.formatTime(item.sendDate,'-')}}</text>
@@ -38,4 +40,18 @@
 <view class="weui-loadmore" hidden="{{!noData}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
+</view>
+
+
+<!--弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <!--<view class="modal-title">{{titleMsg}}</view>-->
+    <view class="modal-content">
+        <view class="content_text">请微信关注"嘉工资"公众号，在"我的签约"中完成协议签署</view>
+        <view><image class="jx_code" mode="widthFix" bindtap="previewImage" src="../../../static/icon/wages/qrcode_jx.jpg"/></view>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
+    </view>
 </view>

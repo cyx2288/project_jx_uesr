@@ -12,6 +12,10 @@ const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
 
 const mineUrl = '/user/center/usercenter';//用户中心
 
+const transferUrl = '/user/work/checktransfer';//检测用户发起转账操作
+
+const cashUrl = '/user/work/checkwithdraw';//用户发起提现操作
+
 
 Page({
 
@@ -26,6 +30,12 @@ Page({
         totalSalary:'--.--',//工资余额
 
         isVerify:'',
+
+        showModal: false,//弹框
+
+        titleContent:'',//弹框内容
+
+        imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
 
     },
 
@@ -435,24 +445,29 @@ Page({
 
         }
 
-
         else{
 
             /**
-             * 接口：查询历史收款人
-             * 请求方式：post
-             * 接口：/record/selecthistoricalpayee
+             * 接口：用户发起转账操作
+             * 请求方式：get
+             * 接口：/user/transfer/dotransfer
              * 入参：null
              **/
             wx.request({
 
-                url: app.globalData.URL + payeeUrl,
+                url: app.globalData.URL + transferUrl,
 
-                method: 'POST',
+                method: 'GET',
+
+                data: {
+
+                    mobile: wx.getStorageSync('mobile'),
+
+
+                },
 
                 header: {
 
-                    'content-type': 'application/x-www-form-urlencoded',// post请求
 
                     'jxsid': jx_sid,
 
@@ -464,32 +479,91 @@ Page({
 
                     console.log(res.data);
 
-                    console.log(res.data.data)
+                    console.log(res.data.code)
 
-                    if(res.data.data.length !=0){
+                    if(res.data.code=='-10'){
 
-                        console.log('有历史')
+                        that.setData({
 
-                        wx.navigateTo({
+                            showModal: true,
 
-                            url: '../transfer_accounts/transfer_accounts'
+                            titleContent:'转账',//弹框内容
 
                         })
-                    }
 
+
+                    }
                     else {
 
-                       //储存刚进来时候的状态 在转账成功的时候获取
+
+                        /**
+                         * 接口：查询历史收款人
+                         * 请求方式：post
+                         * 接口：/record/selecthistoricalpayee
+                         * 入参：null
+                         **/
+                        wx.request({
+
+                            url: app.globalData.URL + payeeUrl,
+
+                            method: 'POST',
+
+                            header: {
+
+                                'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                                'jxsid': jx_sid,
+
+                                'Authorization': Authorization
+
+                            },
+
+                            success: function (res) {
+
+                                console.log(res.data);
+
+                                console.log(res.data.data)
+
+                                if(res.data.data.length !=0){
+
+                                    console.log('有历史')
+
+                                    wx.navigateTo({
+
+                                        url: '../transfer_accounts/transfer_accounts'
+
+                                    })
+                                }
+
+                                else {
+
+                                    //储存刚进来时候的状态 在转账成功的时候获取
 
 
-                        wx.navigateTo({
+                                    wx.navigateTo({
 
-                            url: '../girokonto/girokonto'
+                                        url: '../girokonto/girokonto'
+
+                                    })
+
+
+                                }
+
+                            },
+
+
+                            fail: function (res) {
+
+                                console.log(res)
+
+                            }
 
                         })
 
 
+
                     }
+
 
                 },
 
@@ -501,6 +575,7 @@ Page({
                 }
 
             })
+
 
 
 
@@ -554,16 +629,109 @@ Page({
 
     cashFn:function () {
 
-        pageJumpFn.pageJump('../cash/cash')
+        var that = this;
 
-    }
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：用户发起提现操作
+         * 请求方式：get
+         * 接口：/user/withdraw/dowithdraw
+         * 入参：null
+         **/
+        wx.request({
+
+            url: app.globalData.URL + cashUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                console.log(res.data.code)
+
+                if(res.data.code=='-10'){
+
+                    that.setData({
+
+                        showModal: true,
+
+                        titleContent:'提现',//弹框内容
+
+                    })
+
+
+                }
+                else {
+
+
+                    pageJumpFn.pageJump('../cash/cash')
+
+                }
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
 
 
 
+    },
+
+    /**
+     * 弹出框蒙层截断touchmove事件
+     */
+    preventTouchMove: function () {
 
 
+    },
+    /**
+     * 隐藏模态对话框
+     */
+    hideModal: function () {
+
+        var that = this
+
+        that.setData({
+            showModal: false
+        });
+    },
+
+    /**
+     * 对话框确认按钮点击事件
+     */
+    onConfirm: function () {
+
+        var that = this;
+
+        that.hideModal();
+    },
 
 
-    
+    previewImage: function (e) {
+        wx.previewImage({
+            current: this.data.imgalist, // 当前显示图片的http链接
+            urls: this.data.imgalist // 需要预览的图片http链接列表
+        })
+    },
+
 
 });

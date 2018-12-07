@@ -185,3 +185,20 @@
 
 </view>
 
+<!-- 弹窗-->
+
+<!--弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <!--<view class="modal-title">{{titleMsg}}</view>-->
+    <view class="modal-content">
+        <view class="content_text">您有协议待签署，微信关注"嘉工资"公众号，在"我的签约"中完成协议签署后再提现</view>
+        <view><image class="jx_code" mode="widthFix" bindtap="previewImage" src="../../../static/icon/wages/qrcode_jx.jpg"/></view>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
+    </view>
+</view>
+
+
+

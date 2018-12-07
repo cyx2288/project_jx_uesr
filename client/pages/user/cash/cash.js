@@ -79,6 +79,10 @@ Page({
 
         list: '',//信息
 
+        showModal: false,//二维码弹框
+
+        imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
+
 
     },
 
@@ -392,7 +396,19 @@ Page({
                         else {
 
 
-                            if (res.data.code == '-7') {
+                            //二维码弹窗
+                            if(res.data.code == '-10'){
+
+                                that.setData({
+
+                                    showModal: true,
+
+                                })
+
+                            }
+
+                            //添加银行卡
+                            else if (res.data.code == '-7') {
 
 
                                 wx.showModal({
