@@ -6,7 +6,7 @@
 
 
     <view class="page__hd">
-        <view class="page__title">首次查看需要进行身份验证，验证通过后即可接收该企业发放的工资和工资条</view>
+        <view class="page__title">首次查看需要进行身份验证，验证通过后即可接收该企业发放的个人收入金额或收入明细</view>
     </view>
 
 
