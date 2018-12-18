@@ -443,7 +443,7 @@ Page({
 
                                 wx.showModal({
                                     title: '提示',
-                                    content: thisEnName + '邀请您查看' + thisSalaryMonth + '工资',
+                                    content: thisEnName + '邀请您查看' + thisSalaryMonth + '收入',
                                     cancelText: '暂不查看',
                                     confirmText: '查看',
                                     confirmColor:'#fe9728',

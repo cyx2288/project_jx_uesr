@@ -77,7 +77,7 @@
                             <view>
                                 <image class="jx_money" mode="widthFix" src="../../../static/icon/wages/jx_money.png"/>
                                 <view wx:if="{{item.salaryType==8}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
-                                <view wx:else class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}工资</view>
+                                <view wx:else class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}收入</view>
                             </view>
                             <view class="weui_confirm orange">{{item.state}}</view>
 
