@@ -810,7 +810,8 @@ Page({
 
         that.setData({
 
-            idNumber: e.detail.value
+            idNumber: e.detail.value.replace(/\s+/g, '')
+
 
         });
 

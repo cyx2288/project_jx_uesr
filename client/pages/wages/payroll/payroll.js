@@ -162,7 +162,7 @@ Page({
                     else {
                         wx.setNavigationBarTitle({
 
-                            title:'工资条明细'
+                            title:'收入明细'
                         })
 
                     }
