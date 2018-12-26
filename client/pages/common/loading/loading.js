@@ -4,12 +4,16 @@ const mineUrl = '/user/center/usercenter';//用户中心
 
 const checkoutUrl = '/jx/action/checklogin';//校验登录状态
 
+const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
+
 
 Page({
 
     onShow: function () {
 
         var thisCheckoutUrl = app.globalData.URL + checkoutUrl;
+
+        var that = this;
 
         //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
@@ -28,6 +32,10 @@ Page({
             title: '跳转中',
 
         });
+
+
+
+
 
 
         //获取code标识

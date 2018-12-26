@@ -47,6 +47,9 @@ Page({
             title: '我的'
         });
 
+
+
+
         //首页和我的来回切换
         //wx.setStorageSync('successVerify','true')
 
@@ -92,6 +95,7 @@ Page({
 
 
             ajaxShow();
+
 
             //ajax 加载后存储变量值改变 - 认证成功
             wx.setStorageSync('successVerify', 'false');
@@ -151,6 +155,7 @@ Page({
 
             //存储从哪儿过来
             wx.setStorageSync('goHtml', '3');
+
 
 
             /**
@@ -216,6 +221,8 @@ Page({
 
                         var ishasNewMsg = res.data.data.isHaveNewMsg;
 
+
+
                         (function countDownAjax() {
 
                             ajaxCount--;
@@ -250,6 +257,8 @@ Page({
 
                         wx.setStorageSync('source',res.data.data.source)
 
+                        wx.setStorageSync('ishasNewMsg',ishasNewMsg)
+
 
                         //如果审核不通过的话 存储一下不通过的原因
                         if(wx.getStorageSync('isVerify')=='3'){
@@ -257,9 +266,6 @@ Page({
                             wx.setStorageSync('refuseReason',res.data.data.refuseReason);
 
                         }
-
-
-
 
 
                         //存储手机号码
@@ -294,6 +300,7 @@ Page({
                             })
 
                         }
+
 
 
                     }
@@ -378,11 +385,9 @@ Page({
 
                     else {
 
+                        console.log(res.data.data)
 
                         var hasEntType = res.data.data.type;
-
-
-                        console.log(res.data.data)
 
 
                         //判断是否有加入企业
@@ -416,6 +421,7 @@ Page({
                             app.globalData.ajaxFinish(ajaxCount)
 
                         })();
+
 
 
                     }
@@ -538,6 +544,20 @@ Page({
             })
 
 
+            setTimeout(function () {
+
+                that.showDot()
+
+            },500)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -637,6 +657,55 @@ Page({
     helpFn:function () {
 
         pageJumpFn.pageJump("../../../packageA/pages/help_service/help_service")
+
+
+    },
+
+    //显示小圆点
+    showDot:function () {
+
+        var that = this;
+
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
+        console.log('取值消息'+that.data.hasNewMsg)
+
+        console.log('取值企业'+that.data.hasJoinEnt)
+
+
+
+        if(!that.data.hasJoinEnt|| !that.data.hasNewMsg){
+
+            setTimeout(function () {
+
+                wx.showTabBarRedDot({
+
+                    index:1
+
+                })
+
+
+            },10)
+
+
+        }else {
+
+            setTimeout(function () {
+
+                wx.hideTabBarRedDot({
+
+                    index:1
+
+                })
+
+            },10)
+
+        }
 
 
     },
