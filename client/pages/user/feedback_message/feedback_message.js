@@ -33,8 +33,8 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
          var that = this;
 
-
          wx.setStorageSync('successVerify','true');
+
 
          that.setData({
 

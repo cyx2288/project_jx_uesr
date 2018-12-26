@@ -630,67 +630,166 @@ Page({
     cashFn:function () {
 
         var that = this;
-
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        /**
-         * 接口：用户发起提现操作
-         * 请求方式：get
-         * 接口：/user/withdraw/dowithdraw
-         * 入参：null
-         **/
-        wx.request({
+        //获取已认证未认证
+        var _isVerify = that.data.isVerify;
 
-            url: app.globalData.URL + cashUrl,
+        if (_isVerify == '0' || _isVerify == '3') {
 
-            method: 'GET',
+            console.log('没认证1')
 
-            header: {
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId', '4');
 
-                'jxsid': jx_sid,
 
-                'Authorization': Authorization
+            wx.showModal({
+                title: '提示',
+                content: ' 当前账户尚未进行实名认证，完成认证后方可提现',
+                cancelText: '取消',
+                confirmText: '去认证',
+                confirmColor: '#fe9728',
+                success: function (res) {
 
-            },
+                    if (res.confirm) {
 
-            success: function (res) {
+                        wx.navigateTo({
 
-                console.log(res.data);
+                            url: '../no_certification/certification'
 
-                console.log(res.data.code)
+                        })
 
-                if(res.data.code=='-10'){
+                    }
 
-                    that.setData({
+                    else if (res.cancel) {
 
-                        showModal: true,
+                      /*  wx.navigateBack({
+                            delta: 1
+                        })*/
+                    }
 
-                        titleContent:'提现',//弹框内容
+                    else {
 
-                    })
+                       /* wx.navigateBack({
+                            delta: 1
+                        })*/
 
+
+                    }
 
                 }
-                else {
+            });
 
 
-                    pageJumpFn.pageJump('../cash/cash')
+        }
+        else if (_isVerify == '2') {
+
+            console.log('没认证2')
+
+            //存指定的页面  （在实名认证中取值）
+            wx.setStorageSync('hrefId', '4');
+
+
+            wx.showModal({
+                title: '提示',
+                content: '实名认证审核中，审核通过后方可提现',
+                showCancel: false,
+                confirmText: '我知道了',
+                confirmColor: '#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+                      /*  wx.navigateBack({
+                            delta: 1
+                        })
+*/
+                    }
+
+                    else if (res.cancel) {
+
+                    }
+
+                    else {
+
+                        // wx.navigateBack({
+                        //     delta: 1
+                        // })
+
+
+                    }
+
+                }
+            });
+
+
+        }
+
+        else {
+
+            /**
+             * 接口：用户发起提现操作
+             * 请求方式：get
+             * 接口：/user/withdraw/dowithdraw
+             * 入参：null
+             **/
+            wx.request({
+
+                url: app.globalData.URL + cashUrl,
+
+                method: 'GET',
+
+                header: {
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    console.log(res.data.code)
+
+                    if(res.data.code=='-10'){
+
+                        that.setData({
+
+                            showModal: true,
+
+                            titleContent:'提现',//弹框内容
+
+                        })
+
+
+                    }
+                    else {
+
+
+                        pageJumpFn.pageJump('../cash/cash')
+
+                    }
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
 
                 }
 
-            },
+            })
+        }
 
 
-            fail: function (res) {
 
-                console.log(res)
 
-            }
-
-        })
 
 
 

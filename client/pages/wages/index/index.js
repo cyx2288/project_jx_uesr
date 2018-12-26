@@ -26,6 +26,10 @@ const salarystateUrl = '/user/account/addsalarystate';//设置用户金额显示
 
 const getsalarystateUrl='/user/account/getsalarystate';//查询用户金额显示
 
+const mineUrl = '/user/center/usercenter';//用户中心
+
+const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
+
 Page({
 
     data: {
@@ -79,6 +83,10 @@ Page({
         frozenSalary:'--.--',//冻结资金
 
         totalSalary:'--.--',//工资余额
+
+        hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
+
+        hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
 
 
     },
@@ -162,6 +170,10 @@ Page({
         var _successRefresh = wx.getStorageSync('successRefresh');
 
         console.log('首页刷新'+_successRefresh);
+
+
+        //显示原点
+        that.showDot()
 
 
         //如果操作了某个需要变动的数据 赋值
@@ -305,6 +317,11 @@ Page({
                 frozenSalary:'--.--',//冻结资金
 
                 totalSalary:'--.--',//工资余额
+
+                hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
+
+                hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
+
 
 
             })
@@ -742,8 +759,8 @@ Page({
                                 wx.showModal({
                                     title: '提示',
                                     content: '请查看【'+thisEnName + '】众包任务'+thisSalaryMonth+'便捷查看工资和工资条',
-                                    cancelText: '查看',
-                                    confirmText: '暂不查看',
+                                    cancelText: '暂不查看',
+                                    confirmText: '查看',
                                     confirmColor:'#fe9728',
                                     success: function (res) {
 
@@ -1790,6 +1807,12 @@ Page({
 
             totalSalary:'--.--',//工资余额
 
+            hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
+
+            hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
+
+
+
 
         });
 
@@ -2030,6 +2053,213 @@ Page({
 
     },
 
+    //显示小圆点
+    showDot:function () {
+
+        var that = this;
+
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：用户中心
+         * 请求方式：POST
+         * 接口：/user/center/usercenter
+         * 入参：mobile
+         **/
+        wx.request({
+
+            url: app.globalData.URL + mineUrl,
+
+            method: 'POST',
+
+            header: {
+                'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500);
+
+                    return false
+
+
+                }
+
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else {
+
+
+                    //wx.setStorageSync('ishasNewMsg',res.data.data.isHaveNewMsg)
+
+                    that.setData({
+
+                        hasNewMsg:res.data.data.isHaveNewMsg
+                    })
+
+
+                }
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        })
+
+
+        /**
+         * 接口：有待加入企业
+         * 请求方式：GET
+         * 接口：/user/workunit/selectisjoinent
+         * 入参：null
+         **/
+        wx.request({
+
+            url: app.globalData.URL + joinEntURL,
+
+            method: 'GET',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500);
+
+                    return false
+
+
+                }
+
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else {
+
+                    that.setData({
+
+                        hasJoinEnt:res.data.data.type
+                    })
+
+
+                }
+
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+            }
+
+        });
+
+
+        setTimeout(function () {
+
+            console.log('取值消息'+that.data.hasNewMsg);
+
+            console.log('取值企业'+that.data.hasJoinEnt);
+
+            if(that.data.hasNewMsg=='1'|| that.data.hasJoinEnt=='1'){
+
+                setTimeout(function () {
+
+                    wx.showTabBarRedDot({
+
+                        index:1
+
+                    })
+
+
+                },10)
+
+
+            }else {
+
+                setTimeout(function () {
+
+                    wx.hideTabBarRedDot({
+
+                        index:1
+
+                    })
+
+                },10)
+
+            }
+
+
+        },500)
+
+
+
+
+
+
+
+
+    },
     //转发
     onShareAppMessage: function () {
         return {
