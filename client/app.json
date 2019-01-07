@@ -104,7 +104,12 @@
         "pages/problem_close/problem_close",
         "pages/question/question",
         "pages/revise_password/revise_password",
-        "pages/support_added_bank/support_bank"
+        "pages/support_added_bank/support_bank",
+        "pages/IDCard_information/IDCard_information",
+        "pages/IDcard_certification/IDcard_certification",
+        "pages/choose_certification/choose_certification"
+
+
 
 
       ]

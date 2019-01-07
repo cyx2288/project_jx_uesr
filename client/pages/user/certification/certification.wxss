@@ -10,3 +10,9 @@
 
     color: #4a4a4a;
 }
+
+.red_text{
+
+    color: #ff4646;
+
+}

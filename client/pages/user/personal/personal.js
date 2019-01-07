@@ -307,7 +307,7 @@ Page({
             //存指定的页面
             /*wx.setStorageSync('hrefId','1');*/
 
-            pageJumpFn.pageJump("../no_certification/certification")
+            pageJumpFn.pageJump("../../../packageA/pages/choose_certification/choose_certification")
 
 
 

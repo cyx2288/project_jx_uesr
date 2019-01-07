@@ -1,0 +1,41 @@
+<!--个人中心-->
+
+<!--已认证-->
+<view class="personal_authenticated">
+    <view class="weui-cells">
+
+        <!--账号-->
+
+        <!--账号-->
+        <navigator url="../../../packageA/pages/IDcard_certification/IDcard_certification" class="mine_welfare">
+
+            <text class="password_image">身份证认证</text>
+
+            <view class="number_right">
+
+
+                <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+            </view>
+        </navigator>
+        <hr/>
+
+        <!--实名认证-->
+        <navigator class="mine_welfare"  url="">
+
+            <text class="password_image">其他证件认证</text>
+
+            <view class="password_image">
+
+                <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+            </view>
+
+        </navigator>
+
+    </view>
+
+
+</view>
+
+

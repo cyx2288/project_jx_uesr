@@ -15,7 +15,9 @@ Page({
 
         nationality:'',//国籍
 
-        idType:''//证件类型
+        idType:'',//证件类型
+
+        isHaveUserVerifyImg:'',//是否上传照片
 
     },
 
@@ -87,7 +89,11 @@ Page({
 
                         nationality:res.data.data.nationality,//国籍
 
-                        idType:res.data.data.idType//证件类型
+                        idType:res.data.data.idType,//证件类型
+
+                        isHaveUserVerifyImg:res.data.data.isHaveUserVerifyImg,//是否上传照片
+
+
 
                     });
 
@@ -108,6 +114,12 @@ Page({
 
 
     },
+
+    uploadUserImgFn:function () {
+
+        pageJumpFn.pageJump("../certification/certification")
+
+    }
 
 
 
