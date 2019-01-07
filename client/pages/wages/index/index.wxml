@@ -91,7 +91,7 @@
                         </view>
 
                         <view wx:else class="weui-media-box__info">
-                            <view class="weui-media-box__info__meta">实发工资：<span
+                            <view class="weui-media-box__info__meta"><span wx:if="{{item.salaryType==8}}">实发金额：</span><span wx:else >实发工资：</span><span
                                     class="orange">******元</span></view>
                         </view>
 
@@ -190,3 +190,15 @@
 
 
 </view>
+ <!--弹窗-->
+ <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+ <view class="modal-dialog" wx:if="{{showModal}}">
+     <!--<view class="modal-title">{{titleMsg}}</view>-->
+     <view class="modal-content">
+         <view class="content_text">您有新的合同待签署，微信关注“嘉工资”公众号，点击“自由客”登录，在“我的”-“我的签约”中完成协议签署</view>
+         <view><image class="jx_code" mode="widthFix" bindtap="previewImage" src="../../../static/icon/wages/qrcode_jx.jpg"/></view>
+     </view>
+     <view class="modal-footer">
+         <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
+     </view>
+ </view>

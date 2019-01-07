@@ -1,0 +1,104 @@
+<!--未认证-未收到企业邀请-->
+
+<view class="no_invitation">
+
+    <view class="weui-cells">
+
+        <!--姓名-->
+        <view class="mine_welfare">
+
+            <text class="password_image">姓名</text>
+
+            <label>
+                <input class="account_information_tel tel_special" type="text" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb"/>
+            </label>
+
+        </view>
+
+        <hr/>
+
+        <!--身份证-->
+        <view class="mine_welfare">
+
+            <text class="password_image">身份证号</text>
+
+            <text class="account_information_tel tel_special">{{idNumber}}</text>
+
+
+        </view>
+
+        <hr/>
+
+
+        <!-- 性别-->
+
+        <view class="weui-cell" style="justify-content: space-between">
+            <view class="weui-cell__hd">
+                <view class="weui-label">性别</view>
+            </view>
+
+            <view class="weui-cell__bd">
+                <picker bindchange="sexChange" mode='selector' value="{{sex}}" range="{{sexArray}}">
+                    <view class="weui-select select_certification">{{sex}}</view>
+                </picker>
+            </view>
+        </view>
+
+        <hr/>
+
+        <!--民族-->
+        <view class="mine_welfare">
+
+            <text class="password_image">民族</text>
+
+            <label>
+                <input class="account_information_tel tel_special" type="text"  bindinput="nationFn" value="{{nation}}" placeholder="请输入民族" placeholder-style="color:#bbb"/>
+            </label>
+
+        </view>
+
+        <hr/>
+
+        <!--出生日期-->
+
+        <view class="weui-cell" style="justify-content: space-between">
+            <view class="weui-cell__hd">
+                <view class="weui-label">出生日期</view>
+            </view>
+
+            <view class="weui-cell__bd">
+                <picker mode="date" value="{{birth}}" start="1992-09-03" end="2020-01-01" bindchange="bindDateChange"><view class="weui-select select_certification">{{birth}}</view></picker>
+            </view>
+        </view>
+
+        <hr/>
+
+        <!--地址-->
+        <view class="mine_welfare">
+
+            <text class="password_image">地址</text>
+
+            <label>
+                <textarea class="account_information_tel tel_special" bindinput="addressFn" auto-height value="{{address}}" placeholder="请输入地址" placeholder-style="color:#bbb"/>
+            </label>
+
+        </view>
+
+        <hr/>
+
+
+
+</view>
+    <!--button-->
+    <view class="page__bd page__bd_spacing" bindtap="submitVerifyFn">
+
+        <button class="weui-btn" type="primary">提交认证</button>
+
+    </view>
+
+
+</view>
+
+
+
+

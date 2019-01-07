@@ -1,0 +1,38 @@
+@import "../../../pages/user/mine/mine.wxss";
+@import "../../../pages/common/register/register.wxss";
+
+
+page{
+    background-color: #f7f7f7;
+
+}
+.account_information_tel{
+
+    font-size: 16px;
+    text-align: right;
+
+}
+
+.password_image{
+
+    color: #8a8a8a;
+}
+
+.reset_money {
+    font-size:14px;
+    margin-top:3px;
+    padding-right:5px;
+    line-height: normal;
+
+}
+
+
+.account_information_tel{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.password_image{
+
+    color: #4a4a4a;
+}

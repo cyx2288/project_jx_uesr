@@ -49,6 +49,37 @@
 
         </view>
 
+        <hr/>
+
+        <!--证件证号-->
+        <view  class="mine_welfare">
+
+            <text class="password_image" wx:if="{{cardType == '身份证'&&isHaveUserVerifyImg =='1'}}">身份证照片</text>
+
+            <text class="password_image" wx:elif="{{cardType == '身份证'&&isHaveUserVerifyImg =='0'}}">补充身份证照片</text>
+
+            <text class="password_image" wx:else>证件照片</text>
+
+
+            <view wx:if="{{isHaveUserVerifyImg == '1'}}">
+
+                <text class="account_information_tel red_text">已上传</text>
+
+
+            </view>
+
+
+            <view wx:else bindtap="uploadUserImgFn">
+
+                <text class="account_information_tel red_text">未上传</text>
+
+                <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+            </view>
+
+
+        </view>
+
     </view>
 
 </view>

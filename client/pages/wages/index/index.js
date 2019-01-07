@@ -30,6 +30,10 @@ const mineUrl = '/user/center/usercenter';//用户中心
 
 const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
+const contractRemindUrl = '/user/contract/get/contract/remind';//签约弹框提醒
+
+const lookContractUrl = '/user/contract/update/contract/remind';//查看签约提醒
+
 Page({
 
     data: {
@@ -87,6 +91,10 @@ Page({
         hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
 
         hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
+
+        showModal: false,//弹框
+
+        imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
 
 
     },
@@ -321,6 +329,10 @@ Page({
                 hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
 
                 hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
+
+                showModal: false,//弹框
+
+                imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
 
 
 
@@ -1387,6 +1399,90 @@ Page({
 
             });
 
+            /**
+             * 接口：签约弹框提醒
+             * 请求方式：POST
+             * 接口：/user/account/getsalarystate
+             * 入参：null
+             **/
+            wx.request({
+
+                url: app.globalData.URL + contractRemindUrl,
+
+                method: 'POST',
+
+                header: {
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+                        return false
+
+
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        that.onShow()
+
+                        return false
+                    }
+
+                    else {
+
+
+                        if(res.data.data.type=='1'){
+
+                            that.setData({
+                                showModal: true
+                            });
+                        }
+
+
+
+
+                    }
+
+
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            });
+
 
 
         }
@@ -1810,6 +1906,11 @@ Page({
             hasJoinEnt: '',//默认不显示有新的邀请 true为不显示 false为显示
 
             hasNewMsg: '',//默认不显示有新消息 true为不显示 false为显示
+
+            showModal: false,//弹框
+
+            imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
+
 
 
 
@@ -2268,6 +2369,140 @@ Page({
             imageUrl:'/static/icon/logo/share.jpg'
 
         }
+    },
+
+    showDialogBtn: function() {
+
+        var that = this;
+
+
+    },
+    /**
+     * 弹出框蒙层截断touchmove事件
+     */
+    preventTouchMove: function () {
+
+
+    },
+    /**
+     * 隐藏模态对话框
+     */
+    hideModal: function () {
+
+        var that = this
+
+        that.setData({
+            showModal: false
+        });
+    },
+    /**
+     * 对话框取消按钮点击事件
+     */
+    onCancel: function () {
+        var that = this;
+
+        that.hideModal();
+    },
+    /**
+     * 对话框确认按钮点击事件
+     */
+    onConfirm: function () {
+
+        var that = this;
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：查看弹框提醒
+         * 请求方式：POST
+         * 接口：/user/contract/update/contract/remind
+         * 入参：null
+         **/
+        wx.request({
+
+            url: app.globalData.URL + lookContractUrl,
+
+            method: 'POST',
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                //code3003返回方法
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    return false
+
+
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    that.onShow()
+
+                    return false
+                }
+
+                else {
+
+
+                    that.hideModal()
+
+
+
+                }
+
+
+
+
+            },
+
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        });
+
+
+
+
+    },
+
+    previewImage: function (e) {
+        wx.previewImage({
+            current: this.data.imgalist, // 当前显示图片的http链接
+            urls: this.data.imgalist // 需要预览的图片http链接列表
+        })
     },
 
 });
