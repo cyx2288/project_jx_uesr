@@ -16,7 +16,6 @@
     "pages/user/locked/locked",
 
 
-    "pages/user/mainland_certification/mainland",
     "pages/user/passport_certification/passport",
 
     "pages/common/wages_authentication/authentication",
@@ -107,7 +106,8 @@
         "pages/support_added_bank/support_bank",
         "pages/IDCard_information/IDCard_information",
         "pages/IDcard_certification/IDcard_certification",
-        "pages/choose_certification/choose_certification"
+        "pages/choose_certification/choose_certification",
+        "pages/another_certification/another_certification"
 
 
 

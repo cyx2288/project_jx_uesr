@@ -21,7 +21,7 @@
         <hr/>
 
         <!--实名认证-->
-        <navigator class="mine_welfare"  url="">
+        <navigator class="mine_welfare"  url="../../../packageA/pages/another_certification/another_certification">
 
             <text class="password_image">其他证件认证</text>
 

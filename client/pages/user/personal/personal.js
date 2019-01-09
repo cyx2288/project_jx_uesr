@@ -113,8 +113,12 @@ Page({
                     })();
 
 
+                    if(res.data.data.idNumber){
 
-                    wx.setStorageSync('idNumber', res.data.data.idNumber);
+                        wx.setStorageSync('idNumber', res.data.data.idNumber);
+                    }
+
+
 
                     wx.setStorageSync('isVerify', res.data.data.isVerify);
 

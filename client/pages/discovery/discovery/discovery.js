@@ -740,7 +740,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../../user/no_certification/certification'
+                            url: '../../../packageA/pages/choose_certification/choose_certification'
 
                         })
 

@@ -97,7 +97,7 @@ Page({
 
                         wx.reLaunch({
 
-                            url: '../../common/signin/signin'
+                            url:'../../../pages/common/signin/signin'
                         })
 
                     }, 1500)
@@ -126,6 +126,8 @@ Page({
                         isHaveUserVerifyImg : res.data.data.isHaveUserVerifyImg,
 
                         idNumberAll : res.data.data.idNumberAll,
+
+                        userName:res.data.data.userName
 
 
                     });
@@ -188,6 +190,7 @@ Page({
             itemColor: "#ee6934",
             success: function (res) {
 
+
                 if(res.tapIndex=='0'){
 
                     wx.chooseImage({
@@ -198,6 +201,11 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            wx.showLoading({
+                                title:'图片上传中',
+                                mask:true,
+
+                            })
 
 
                             wx.uploadFile({
@@ -232,7 +240,7 @@ Page({
 
                                             wx.reLaunch({
 
-                                                url: '../../common/signin/signin'
+                                                url:'../../../pages/common/signin/signin'
                                             })
 
                                         }, 1500);
@@ -255,6 +263,8 @@ Page({
                                     else {
 
                                         console.log(res)
+
+                                        wx.hideLoading()
 
 
                                         if(JSON.parse(res.data).code=='0000'){
@@ -295,6 +305,12 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            wx.showLoading({
+                                title:'图片上传中',
+                                mask:true,
+
+                            })
+
                             wx.uploadFile({
 
 
@@ -327,7 +343,7 @@ Page({
 
                                             wx.reLaunch({
 
-                                                url: '../../common/signin/signin'
+                                                url:'../../../pages/common/signin/signin'
                                             })
 
                                         }, 1500);
@@ -393,6 +409,7 @@ Page({
 
         var that = this;
 
+
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
@@ -413,6 +430,15 @@ Page({
                         success: function (res) {
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
+
+                            wx.showLoading({
+
+                                title:'图片上传中',
+                                mask:true,
+
+                            })
+
+
 
                             wx.uploadFile({
 
@@ -446,7 +472,7 @@ Page({
 
                                             wx.reLaunch({
 
-                                                url: '../../common/signin/signin'
+                                                url:'../../../pages/common/signin/signin'
                                             })
 
                                         }, 1500);
@@ -468,6 +494,8 @@ Page({
                                     else {
 
                                         console.log(res)
+
+                                        wx.hideLoading();
 
 
                                         //console.log(JSON.parse(res.data).data.url);
@@ -510,6 +538,13 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            wx.showLoading({
+
+                                title:'图片上传中',
+                                mask:true,
+
+                            })
+
                             wx.uploadFile({
 
 
@@ -542,7 +577,7 @@ Page({
 
                                             wx.reLaunch({
 
-                                                url: '../../common/signin/signin'
+                                                url:'../../../pages/common/signin/signin'
                                             })
 
                                         }, 1500);
@@ -734,6 +769,7 @@ Page({
             }
 
 
+            wx.setStorageSync('urls',[that.data.faceImg,that.data.backImg]);
 
             /**
              * 接口：保存用户证件URL
@@ -783,7 +819,7 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         },1500);
@@ -804,13 +840,17 @@ Page({
                     else {
 
                         if(res.data.code=='-1'){
+
+                            wx.hideLoading()
+
                             wx.showToast({
                                 title:res.data.msg,
                                 icon: 'none',
                                 mask:true,
+                                duration: 2000
                             })
 
-                            wx.hideLoading()
+
 
 
                         }
@@ -863,14 +903,19 @@ Page({
 
                         }
 
-                        else if(res.data.code=='-1'){
+                        /*else if(res.data.code=='-1'){
+
+
+
 
                             wx.showToast({
                                 title:res.data.msg,
                                 icon: 'none',
                                 mask:true,
+                                duration: 5000
+
                             })
-                        }
+                        }*/
 
 
 

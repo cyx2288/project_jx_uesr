@@ -187,7 +187,7 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         },1500)

@@ -1,17 +1,28 @@
-@import "../id_card/id_card.wxss";
+@import "../../../pages/user/id_card/id_card.wxss";
 
 .pages{
     background-color: #f7f7f7;
     width: 100%;
 }
 
+.password_image{
 
+    line-height:35px;
+
+}
 .mainland_certification{
      background-color:#fff;
      border-radius:5px;
      width: 94%;
      margin: 15px auto;
 
+}
+
+.city_box{
+    line-height: 35px;
+    display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
 }
 
 .password_prompt{
@@ -42,6 +53,7 @@
 .password_text{
     color: #8a8a8a;
     padding-right: 10px;
+
 }
 
 .password_example{
@@ -51,9 +63,7 @@
 /*提示*/
 
 .mianland_prompt{
-    position:absolute;
-    bottom: 25rpx;
-    padding-left: 15px;
+    padding: 15px;
     color: #ababab;
     font-size: 14px;
 }
@@ -68,6 +78,20 @@
     left: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
+
+
+}
+
+.select_certification{
+
+    padding-left: 0;
+    font-size:16px;
+
+}
+.weui-cell__bd{
+    display: flex;
+    justify-content: flex-end;
+    vertical-align: middle;
 
 
 }
@@ -146,7 +170,7 @@
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1;
-    color: #09BB07;
+    color: #eb5e26;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position: relative;

@@ -42,26 +42,11 @@
     padding-right: 10px;
 }
 
-/*
-.weui-cell__hd_in-select-after{
-
-    padding-left: 0px;
-    color: #8a8a8a;
-
-
+textarea{
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
-.account_information_tel{
-    margin-right: 10rpx;
-    line-height: 38px;
-    padding-top:0;
-    padding-bottom:0;
-
-
-}
-
-.tel_special{
-    padding-top:3px;
-    padding-bottom:6px;
-
-
-}*/

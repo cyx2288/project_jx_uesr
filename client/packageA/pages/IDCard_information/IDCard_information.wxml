@@ -38,7 +38,7 @@
             </view>
 
             <view class="weui-cell__bd">
-                <picker bindchange="sexChange" mode='selector' value="{{sex}}" range="{{sexArray}}">
+                <picker bindchange="sexChange" mode='selector' value="{{sexIndex}}" range="{{sexArray}}">
                     <view class="weui-select select_certification">{{sex}}</view>
                 </picker>
             </view>
@@ -67,7 +67,7 @@
             </view>
 
             <view class="weui-cell__bd">
-                <picker mode="date" value="{{birth}}" start="1992-09-03" end="2020-01-01" bindchange="bindDateChange"><view class="weui-select select_certification">{{birth}}</view></picker>
+                <picker mode="date" value="{{changeBirthForm}}" start="1968-01-01" end="2020-01-01" bindchange="bindDateChange"><view class="weui-select select_certification">{{birth}}</view></picker>
             </view>
         </view>
 
@@ -79,7 +79,7 @@
             <text class="password_image">地址</text>
 
             <label>
-                <textarea class="account_information_tel tel_special" bindinput="addressFn" auto-height value="{{address}}" placeholder="请输入地址" placeholder-style="color:#bbb"/>
+                <textarea bindinput="addressFn" auto-height adjust-position value="{{address}}" placeholder="请输入地址" placeholder-style="color:#bbb"/>
             </label>
 
         </view>

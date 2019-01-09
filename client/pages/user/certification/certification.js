@@ -117,7 +117,12 @@ Page({
 
     uploadUserImgFn:function () {
 
-        pageJumpFn.pageJump("../certification/certification")
+        wx.navigateTo({
+
+            url: '../../../packageA/pages/IDcard_certification/IDcard_certification'
+
+        })
+
 
     }
 
