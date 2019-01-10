@@ -80,7 +80,7 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url:'../../../pages/common/signin/signin'
                         })
 
                     },1500 )
@@ -227,8 +227,7 @@ Page({
                         setTimeout(function ( ) {
 
                             wx.reLaunch({
-
-                                url:'../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         },1500) ;
@@ -255,7 +254,7 @@ Page({
                             //跳回登录页
                             wx.reLaunch({
 
-                                url: '../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         }

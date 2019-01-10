@@ -47,8 +47,7 @@
                 <view class="weui-label">证件类型</view>
             </view>
 
-            <view hidden="{{!hasUserName}}" class="account_information_tel tel_special">{{cardChoose}}</view>
-            <view hidden="{{hasUserName}}" class="weui-cell__bd">
+            <view class="weui-cell__bd">
                 <picker bindchange="bindPickerChange" value="{{index}}" range="{{idStyle}}">
                     <view class="weui-select select_certification">{{cardChoose}}</view>
                 </picker>

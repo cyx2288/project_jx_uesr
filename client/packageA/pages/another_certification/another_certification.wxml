@@ -1,0 +1,171 @@
+
+<!--未认证-未收到企业邀请-->
+
+<view class="no_invitation">
+
+
+    <view class="weui-cells">
+
+        <!--姓名-->
+        <view class="mine_welfare">
+
+            <text class="password_image">姓名</text>
+
+            <label wx:if="{{(isVerify == 0||isVerify == 3)&&source==1}}">
+                <input class="account_information_tel tel_special" type="text" auto-focus="{{hasUserName==true? '' : 'true'}}" bindinput="nameFn" value="{{userName}}" placeholder="请输入姓名" placeholder-style="color:#bbb"
+                       maxlength="20"/>
+            </label>
+
+            <text  wx:else class="account_information_tel tel_special">{{userName}}</text>
+
+
+
+        </view>
+
+        <hr/>
+
+
+
+        <!-- 国籍 -->
+        <view class="mine_welfare">
+
+            <view class="password_image">国籍（地区）</view>
+
+            <view class="city_box" bindtap="chooseCityPageFn">
+
+                <view class="account_information_tel">{{city}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+            </view>
+
+
+
+
+        </view>
+        <hr/>
+
+        <!-- 身份类型-->
+
+        <view class="weui-cell" style="justify-content: space-between">
+            <view class="weui-cell__hd">
+                <view class="weui-label">证件类型</view>
+            </view>
+
+            <view class="weui-cell__bd">
+                <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{idStyle}}">
+                    <view class="weui-select select_certification">{{cardChoose}}</view>
+                </picker>
+            </view>
+        </view>
+
+        <hr/>
+
+        <!--身份证号-->
+        <view class="mine_welfare">
+
+            <text class="password_image">证件号码</text>
+
+            <label>
+
+                <input class="account_information_tel tel_special" bindinput="idFn" value="{{idNumberAll}}" placeholder="请输入证件号码" placeholder-style="color:#bbb"/>
+
+            </label>
+
+        </view>
+
+    </view>
+
+    <view class="mianland_weui-cells">
+
+        <!--上传港、澳、台通行证正面-->
+
+        <view  class="mainland_certification">
+
+
+            <view class="jx_password_image" bindtap="uploadPhotoFn">
+                <image class="password_face"  src="{{faceImg}}"></image>
+            </view>
+
+
+            <view class="password_title">
+
+                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证正面</text><text wx:elif="{{idType==4}}">台胞证正面</text><text wx:else>护照照片</text></text>
+                <text class="password_example" bindtap="showFaceTipFn">示例</text>
+            </view>
+
+        </view>
+
+
+        <!--上传港、澳、台通行证反面-->
+
+        <view  class="mainland_certification" hidden="{{idType==2}}">
+
+            <view class="jx_password_image" bindtap="uploadPhotoBackFn">
+                <image class="password_face"  src="{{backImg}}"></image>
+            </view>
+
+
+            <view class="password_title">
+
+                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证正面</text><text wx:elif="{{idType==4}}">台湾通行证正面</text></text>
+                <text class="password_example" bindtap="showBackTipFn">示例</text>
+            </view>
+
+
+        </view>
+
+
+
+    </view>
+
+
+
+    <!--button-->
+
+    <view class="page__bd page__bd_spacing">
+
+        <button class="weui-btn" type="primary" bindtap="submitVerifyFn">提交</button>
+
+    </view>
+
+
+    <!--提示-->
+    <view class="mianland_prompt">
+        <text class="prompt_text">此信息仅用于身份验证，平台不会向第三方透露用户信息</text>
+    </view>
+</view>
+
+<!-- 弹框 -->
+
+<view class="modal-image-text" wx:if="{{modal.isShow}}">
+    <view class="modal-mask" catchtouchmove="preventTouchMove"></view>
+    <view class="modal-content">
+        <view class="modal-header">{{modal.title}}</view>
+
+        <view class="modal-body">
+            <view>{{modal.desc}}</view>
+
+                <image src="{{modal.src}}"/>
+
+        </view>
+
+        <view class="modal-footer">
+           <!-- <view class="modal-btn modal-ok {{modal.cancel?'width50':''}}">{{modal.cancel}}</view>-->
+            <view class="modal-btn modal-cancel width50" bindtap="{{!buttonClicked?'modalClick':''}}">{{modal.ok}}</view>
+
+
+        </view>
+
+    </view>
+
+
+
+</view>
+
+
+
+
+
+
+
+

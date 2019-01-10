@@ -394,7 +394,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../no_certification/certification'
+                            url: '../../../packageA/pages/choose_certification/choose_certification'
 
                         })
 
@@ -658,7 +658,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../no_certification/certification'
+                            url: '../../../packageA/pages/choose_certification/choose_certification'
 
                         })
 

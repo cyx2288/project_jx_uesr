@@ -231,7 +231,7 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         },1500);
@@ -353,7 +353,7 @@ Page({
                         wx.navigateTo({
 
 
-                            url: '../../../pages/user/no_certification/certification'
+                            url: '../choose_certification/choose_certification'
 
                         })
 
@@ -465,7 +465,7 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url:'../../../pages/common/signin/signin'
                         })
 
                     },1500)
@@ -622,7 +622,7 @@ Page({
 
                             wx.reLaunch({
 
-                                url:'../../common/signin/signin'
+                                url:'../../../pages/common/signin/signin'
                             })
 
                         },1500)

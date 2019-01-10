@@ -9,8 +9,7 @@
 
         <view  class="mainland_certification">
 
-            <text class="password_prompt"  wx:if="{{isVerify=='1'}}&&{{isHaveUserVerifyImg=='0'}}">上传身份证照片，请确保证件照片完整、清晰</text>
-            <text class="password_prompt" wx:else>上传<span wx:if="{{userName}}">（姓名：{{userName}}）</span>身份证照片，请确保证件照片完整、清晰</text>
+            <text class="password_prompt">上传<text wx:if="{{userName}}">（姓名：{{userName}}）</text>身份证照片，请确保证件照片完整、清晰</text>
 
             <view class="jx_password_image" bindtap="uploadPhotoFn">
                 <image class="password_face"  src="{{faceImg}}"></image>

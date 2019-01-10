@@ -108,7 +108,7 @@ Page({
 
         wx.redirectTo({
 
-            url: '../no_certification/certification'
+            url: '../../../packageA/pages/choose_certification/choose_certification'
 
         })
 
