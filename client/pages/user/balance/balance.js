@@ -593,7 +593,7 @@ Page({
 
         wx.showModal({
             title: '不可提金额只可消费，不可提现',
-            content: '在“我的发薪企业”中同意企业邀请，身份验证通过后，即可提现',
+            content: '在“发薪企业”中同意企业邀请，身份验证通过后，即可提现',
             cancelText: '取消',
             confirmText: '加入企业',
             confirmColor:'#fe9728',

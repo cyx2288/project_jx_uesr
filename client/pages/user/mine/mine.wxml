@@ -109,7 +109,7 @@
                 <image src="../../../static/icon/wages/jx_bill.png"  class="reset_go" />
             </view>
 
-            <text class="password_balance">我的账单</text>
+            <text class="password_balance">我的订单</text>
 
         </view>
 
@@ -154,7 +154,7 @@
                 <image src="../../../static/icon/wages/jx_unit.png"  class="reset_go" />
             </view>
 
-            <text class="password_balance">我的发薪企业</text>
+            <text class="password_balance">发薪企业</text>
         </view>
 
 
