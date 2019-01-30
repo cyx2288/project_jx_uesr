@@ -554,13 +554,26 @@ Page({
                                             //调用暂不查看工资条
                                             noSeeSalary();
 
-                                            wx.showToast({
+                                            wx.showModal({
+                                                title: '提示',
+                                                content: '首次查看需进行身份验证，在“我的”-“发薪企业”中同意企业邀请，验证通过后即可查看',
+                                                showCancel:false,
+                                                confirmText: '我知道了',
+                                                confirmColor:'#fe9728',
+                                                success: function (res) {
 
-                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的发薪企业”中继续加入',
-                                                icon: 'none',
-                                                mask:true,
+                                                    if (res.confirm) {
 
-                                            })
+                                                    }
+
+                                                    else if (res.cancel) {
+
+
+                                                    }
+                                                }
+                                            });
+
+
 
 
                                         }
@@ -724,7 +737,7 @@ Page({
 
                                             wx.showToast({
 
-                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的工作单位',
+                                                title: '必须加入企业才可查看工资条哦~关闭后可在“发薪企业”中查看',
                                                 icon: 'none',
                                                 mask:true,
 
@@ -852,13 +865,26 @@ Page({
                                             //调用暂不查看工资条
                                             noSeeSalary();
 
-                                            wx.showToast({
 
-                                                title: '必须加入企业才可查看工资条哦~关闭后可在“我的发薪企业”中继续加入',
-                                                icon: 'none',
-                                                mask:true,
+                                            wx.showModal({
+                                                title: '提示',
+                                                content: '首次查看需进行身份验证，在“我的”-“发薪企业”中同意企业邀请，验证通过后即可查看',
+                                                showCancel:false,
+                                                confirmText: '我知道了',
+                                                confirmColor:'#fe9728',
+                                                success: function (res) {
 
-                                            })
+                                                    if (res.confirm) {
+
+                                                    }
+
+                                                    else if (res.cancel) {
+
+
+                                                    }
+                                                }
+                                            });
+
 
 
                                         }

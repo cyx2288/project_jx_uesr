@@ -847,7 +847,7 @@ Page({
                                 title:res.data.msg,
                                 icon: 'none',
                                 mask:true,
-                                duration: 2000
+                                duration: 3000
                             })
 
 

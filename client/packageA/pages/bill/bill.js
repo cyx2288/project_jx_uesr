@@ -55,7 +55,7 @@ Page({
 
             wx.setNavigationBarTitle({
 
-                title:'提现账单'
+                title:'提现订单'
             });
 
             that.loadList();
@@ -73,7 +73,7 @@ Page({
             })
             wx.setNavigationBarTitle({
 
-                title:'转账账单'
+                title:'转账订单'
             });
 
             that.loadList();
@@ -86,7 +86,7 @@ Page({
 
             wx.setNavigationBarTitle({
 
-                title:'我的账单'
+                title:'我的订单'
             });
 
             that.loadList();
