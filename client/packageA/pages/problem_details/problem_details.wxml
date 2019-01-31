@@ -13,7 +13,7 @@
     </view>
 
     <view url="" class="weui-panel">
-        <text class="question">手机登录嘉薪账户，进入【我的】—【设置】—【重置支付密码】 </text>
+        <text class="question">手机登录账户，进入【我的】—【设置】—【重置支付密码】 </text>
     </view>
 
     <view url="" class="weui-panel">
@@ -21,7 +21,7 @@
     </view>
 
     <view class="weui-panel">
-        <text class="question">若您忘记支付密码，可通过【忘记支付密码】，验证手机号和身份证后，设置新密码即可修改您的支付密码</text>
+        <text class="question">若您忘记支付密码，可通过【忘记支付密码】，验证手机号后，设置新密码即可修改您的支付密码</text>
     </view>
 
 </view>

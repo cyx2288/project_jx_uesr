@@ -2155,7 +2155,7 @@ Page({
 
         wx.showModal({
             title: '冻结工资只可消费，不可提现',
-            content: '在’我的发薪企业’中同意企业邀请，身份验证通过后即可解冻资金',
+            content: '在’发薪企业’中同意企业邀请，身份验证通过后即可解冻资金',
             cancelText: '取消',
             confirmText: '去解冻',
             confirmColor:'#fe9728',

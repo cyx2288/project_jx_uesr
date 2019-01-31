@@ -622,7 +622,7 @@ Page({
     //发薪企业
     companyFn:function () {
 
-        //点击去解冻&点击我的发薪企业后储存 用于判断跳回企业还是工资余额(再实名认证成功之后获取）
+        //点击去解冻&点击发薪企业后储存 用于判断跳回企业还是工资余额(再实名认证成功之后获取）
         wx.setStorageSync('goFrozen','2');
 
         pageJumpFn.pageJump("../company/company")

@@ -16,7 +16,7 @@
     </view>
 
     <view class="weui-panel">
-        <text class="question">手机登录嘉薪账户，进入【我的】—【设置】—【设置支付密码】，验证手机号和身份证后，设置支付密码即可。</text>
+        <text class="question">手机登录账户，进入【我的】—【设置】—【设置支付密码】，验证手机号后，设置支付密码即可。</text>
     </view>
 
 
