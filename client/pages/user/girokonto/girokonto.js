@@ -105,69 +105,115 @@ Page({
 
                     console.log(res.data);
 
-                    if(res.data.code=='0000'){
+                    app.globalData.repeat(res.data.code, res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
 
-                        wx.navigateTo({
+                    if (res.data.code == '3001') {
 
-                            url: '../account_cash/account_cash'
+                        //console.log('登录');
 
-                        })
+                        setTimeout(function () {
 
+                            wx.reLaunch({
 
-                        wx.setStorageSync('transferHideMobile',res.data.data.hideMobile);
+                                url: '../../common/signin/signin'
+                            })
 
-                        wx.setStorageSync('transferName',res.data.data.userName);
+                        }, 1500)
 
-
-                        wx.setStorageSync('transferMobile',that.data.mobile);
-                        // wx.setStorageSync('transferHideName',res.data.data.hideMobile);
-
-
-
-                    }
-
-                    else if(res.data.code=='-8'){
-
-                        that.setData({
-
-                            showModal: true,
-
-                            titleMsg:res.data.msg,
-
-                            titleContent:'分享微信小程序，邀请好友注册‘嘉薪’并实名认证，通过后即可给该好友转账',//弹框内容
+                        /*                     wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
 
 
 
-                        })
+                         }
+
+                         })*/
+
+                        return false
 
 
                     }
 
-                    else if(res.data.code=='-9'){
+                    else if(res.data.code=='3004'){
 
-                        that.setData({
+                        var Authorization = res.data.token.access_token;//Authorization数据
 
-                            showModal: true,
+                        wx.setStorageSync('Authorization', Authorization);
 
-                            titleMsg:res.data.msg,
-
-                            titleContent:'分享微信小程序，提醒好友完成实名认证，通过后即可给该好友转账',//弹框内容
-
-
-                        })
-
-
+                        return false
                     }
 
-                    else{
+                    else {
 
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            mask:true
-                        })
 
+                        if (res.data.code == '0000') {
+
+
+                            wx.navigateTo({
+
+                                url: '../account_cash/account_cash'
+
+                            })
+
+
+                            wx.setStorageSync('transferHideMobile', res.data.data.hideMobile);
+
+                            wx.setStorageSync('transferName', res.data.data.userName);
+
+
+                            wx.setStorageSync('transferMobile', that.data.mobile);
+                            // wx.setStorageSync('transferHideName',res.data.data.hideMobile);
+
+
+                        }
+
+                        else if (res.data.code == '-8') {
+
+                            that.setData({
+
+                                showModal: true,
+
+                                titleMsg: res.data.msg,
+
+                                titleContent: '分享微信小程序，邀请好友注册‘嘉薪’并实名认证，通过后即可给该好友转账',//弹框内容
+
+
+                            })
+
+
+                        }
+
+                        else if (res.data.code == '-9') {
+
+                            that.setData({
+
+                                showModal: true,
+
+                                titleMsg: res.data.msg,
+
+                                titleContent: '分享微信小程序，提醒好友完成实名认证，通过后即可给该好友转账',//弹框内容
+
+
+                            })
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true
+                            })
+
+
+                        }
 
                     }
 

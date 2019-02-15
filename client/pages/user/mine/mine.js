@@ -185,6 +185,7 @@ Page({
 
                     app.globalData.repeat(res.data.code, res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
 
 
                     if (res.data.code == '3001') {
@@ -343,6 +344,8 @@ Page({
 
                     app.globalData.repeat(res.data.code, res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
+
 
                     if (res.data.code == '3001') {
 
@@ -461,6 +464,8 @@ Page({
                     //wx.setStorageSync('wages', res.data.data);
 
                     app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
 
                     if(res.data.code=='3001') {
 

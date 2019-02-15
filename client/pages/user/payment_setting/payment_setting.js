@@ -70,6 +70,8 @@ Page({
 
                 app.globalData.repeat(res.data.code, res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if (res.data.code == '3001') {
 
                     //console.log('登录');
@@ -142,6 +144,8 @@ Page({
                 console.log(res)
 
                 app.globalData.repeat(res.data.code, res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if (res.data.code == '3001') {
 
@@ -686,6 +690,8 @@ Page({
 
                         app.globalData.repeat(res.data.code,res.data.msg);
 
+                        app.globalData.token(res.header.Authorization)
+
                         if(res.data.code=='3001') {
 
                             //console.log('登录');
@@ -927,6 +933,8 @@ Page({
                     console.log(res)
 
                     app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
 
                     if(res.data.code=='3001') {
 
@@ -1255,38 +1263,79 @@ Page({
 
                     console.log(res);
 
-                    if (res.data.code == '0000') {
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        //刷新跟人中心
-                        wx.setStorageSync('successVerify', 'true');
+                    app.globalData.token(res.header.Authorization)
 
-                        /*console.log('设置成功' + wx.getStorageSync('successVerify'))
+                    if(res.data.code=='3001') {
 
-                        console.log(res.data.msg);*/
+                        //console.log('登录');
 
-                        /*提示信息*/
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 2000
-                        });
+                        setTimeout(function () {
 
+                            wx.reLaunch({
 
-                        //直接打开短信的
-                        that.setData({
+                                url:'../../common/signin/signin'
+                            })
 
-                            msgMode:true,
+                        },1500)
 
-                            pwdMode: false
-
-
-                        });
+                        /*                        wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
 
+                         }
+
+                         })*/
+
+                        return false
 
 
+                    }
+                    else if(res.data.code=='3004'){
 
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        if (res.data.code == '0000') {
+
+                            //刷新跟人中心
+                            wx.setStorageSync('successVerify', 'true');
+
+                            /*console.log('设置成功' + wx.getStorageSync('successVerify'))
+
+                             console.log(res.data.msg);*/
+
+                            /*提示信息*/
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 2000
+                            });
+
+
+                            //直接打开短信的
+                            that.setData({
+
+                                msgMode: true,
+
+                                pwdMode: false
+
+
+                            });
+
+
+                        }
 
                     }
 

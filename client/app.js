@@ -74,6 +74,21 @@ App({
 
         },
 
+        token:function (token) {
+
+
+            if(token){
+
+                var Authorization = token;//Authorization数据
+
+                wx.setStorageSync('Authorization', Authorization);
+
+            }
+
+
+
+        },
+
         isIpx: function () {
 
             wx.getSystemInfo({

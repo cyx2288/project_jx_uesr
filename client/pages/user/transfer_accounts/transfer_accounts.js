@@ -53,20 +53,52 @@ Page({
 
                 console.log(res.data);
 
-                that.setData({
+                app.globalData.repeat(res.data.code,res.data.msg);
 
-                    accountsList:res.data.data
+                app.globalData.token(res.header.Authorization)
 
-                })
+                if(res.data.code=='3001') {
 
-                var thisList = that.data.accountsList;
+                    //console.log('登录');
 
-                that.setData({
+                    setTimeout(function () {
 
-                    accountsList:thisList
+                        wx.reLaunch({
 
-                })
+                            url:'../../../pages/common/signin/signin'
+                        })
 
+                    },1500)
+
+                    return false
+
+
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else {
+
+                    that.setData({
+
+                        accountsList: res.data.data
+
+                    })
+
+                    var thisList = that.data.accountsList;
+
+                    that.setData({
+
+                        accountsList: thisList
+
+                    })
+                }
 
 
             },

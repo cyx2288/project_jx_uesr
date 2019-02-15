@@ -75,6 +75,8 @@ Page({
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -226,6 +228,8 @@ Page({
                     var thisCode = res.data.code;
 
                     app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
 
                     if(res.data.code=='3001') {
 

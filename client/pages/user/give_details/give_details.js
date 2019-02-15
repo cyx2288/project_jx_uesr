@@ -104,6 +104,8 @@ Page({
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -233,6 +235,9 @@ Page({
                 console.log(res.data);
 
                 app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
+
 
                 if(res.data.code=='3001') {
 
@@ -396,22 +401,69 @@ Page({
 
             console.log(res.data);
 
-            if (res.data.code == '0000') {
+            app.globalData.repeat(res.data.code, res.data.msg);
 
-                wx.redirectTo({
+            app.globalData.token(res.header.Authorization)
 
-                    url: '../pay_success/pay_success'
-                })
+            if (res.data.code == '3001') {
 
+                //console.log('登录');
+
+                setTimeout(function () {
+
+                    wx.reLaunch({
+
+                        url: '../../common/signin/signin'
+                    })
+
+                }, 1500)
+
+                /*                     wx.showToast({
+                 title: res.data.msg,
+                 icon: 'none',
+                 duration: 1500,
+                 success: function () {
+
+
+
+                 }
+
+                 })*/
+
+                return false
+
+
+            }
+
+            else if(res.data.code=='3004'){
+
+                var Authorization = res.data.token.access_token;//Authorization数据
+
+                wx.setStorageSync('Authorization', Authorization);
+
+                return false
             }
 
             else {
 
-                wx.showToast({
-                    title: res.data.msg,
-                    icon: 'none',
-                    duration: 1000
-                })
+                if (res.data.code == '0000') {
+
+                    wx.redirectTo({
+
+                        url: '../pay_success/pay_success'
+                    })
+
+                }
+
+                else {
+
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1000
+                    })
+                }
+
             }
 
         },

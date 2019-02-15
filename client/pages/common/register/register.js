@@ -249,6 +249,8 @@ Page({
 
                     console.log(res.data);
 
+
+
                         (function countDownAjax() {
 
                             ajaxCount--;
