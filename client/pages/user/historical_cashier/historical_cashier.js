@@ -95,68 +95,112 @@ Page({
 
                     console.log(res.data);
 
-                    var thisList = res.data.data.list;
 
 
-                    if(!that.data.noData){
+                    app.globalData.repeat(res.data.code, res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+                    if (res.data.code == '3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }, 1500)
+
+                        /*                     wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
 
 
+
+                         }
+
+                         })*/
+
+                        return false
 
 
                     }
 
+                    else if(res.data.code=='3004'){
 
-                    //没数据的时候
-                    else if(!res.data.data.list || res.data.data.list.length == 0){
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        var thisList = res.data.data.list;
+
+
+                        if (!that.data.noData) {
+
+
+                        }
+
+
+                        //没数据的时候
+                        else if (!res.data.data.list || res.data.data.list.length == 0) {
 
                             console.log('后面没有')
 
                             that.setData({
 
-                                moreText:'没有更多数据啦~',//无数据显示暂无数据
+                                moreText: '没有更多数据啦~',//无数据显示暂无数据
 
                                 noData: false,//是否显示暂无数据 true为隐藏 false为显示
 
                             })
 
 
+                        }
 
-                    }
-
-                    else if(thisList.length < that.data.pageSize){
-
-
-                        console.log('小于10')
-                        //数量小于10的时候
-                        //增加数组内容
-                        that.setData({
-
-                            accountsList: that.data.accountsList.concat(thisList),
-
-                            noData: false,
-
-                        })
+                        else if (thisList.length < that.data.pageSize) {
 
 
+                            console.log('小于10')
+                            //数量小于10的时候
+                            //增加数组内容
+                            that.setData({
 
-                    }
+                                accountsList: that.data.accountsList.concat(thisList),
 
-                    else {
+                                noData: false,
 
-                        console.log('增加')
-
-
-                        //增加数组内容
-                        that.setData({
-
-                            accountsList: that.data.accountsList.concat(thisList),
-
-                            pageNum: that.data.pageNum + 1,//加一页
+                            })
 
 
-                        })
+                        }
+
+                        else {
+
+                            console.log('增加')
 
 
+                            //增加数组内容
+                            that.setData({
+
+                                accountsList: that.data.accountsList.concat(thisList),
+
+                                pageNum: that.data.pageNum + 1,//加一页
+
+
+                            })
+
+
+                        }
 
                     }
 
@@ -290,11 +334,60 @@ Page({
 
                     console.log(res.data);
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 2000
-                    })
+
+
+                    app.globalData.repeat(res.data.code, res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+                    if (res.data.code == '3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }, 1500)
+
+                        /*                     wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success: function () {
+
+
+
+                         }
+
+                         })*/
+
+                        return false
+
+
+                    }
+
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 2000
+                        })
+
+                    }
 
 
                 },

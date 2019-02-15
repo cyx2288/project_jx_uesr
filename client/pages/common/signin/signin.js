@@ -216,6 +216,8 @@ data:{
 
                         var jx_sid = res.header.jxsid;//jx_sid数据
 
+
+
                         //登录成功后调用
                         (function countDownAjax() {
 

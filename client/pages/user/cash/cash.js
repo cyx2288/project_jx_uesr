@@ -162,6 +162,8 @@ Page({
 
                 app.globalData.repeat(res.data.code, res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if (res.data.code == '3001') {
 
                     //console.log('登录');
@@ -364,6 +366,8 @@ Page({
 
 
                         app.globalData.repeat(res.data.code, res.data.msg);
+
+                        app.globalData.token(res.header.Authorization)
 
                         if (res.data.code == '3001') {
 
@@ -776,6 +780,8 @@ Page({
 
                 app.globalData.repeat(res.data.code, res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if (res.data.code == '3001') {
 
                     //console.log('登录');
@@ -1187,6 +1193,8 @@ Page({
                     console.log(res.data);
 
                     app.globalData.repeat(res.data.code, res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
 
                     //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
                     wx.setStorageSync('successVerify', 'true');

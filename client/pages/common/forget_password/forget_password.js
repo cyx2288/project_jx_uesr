@@ -87,6 +87,8 @@ Page({
                     //code3003返回方法
                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
+
                     if(res.data.code=='3001') {
 
                         //console.log('登录');

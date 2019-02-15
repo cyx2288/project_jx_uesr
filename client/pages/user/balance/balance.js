@@ -82,6 +82,8 @@ Page({
 
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -169,6 +171,8 @@ Page({
                 //wx.setStorageSync('wages', res.data.data);
 
                 app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if(res.data.code=='3001') {
 
@@ -291,6 +295,8 @@ Page({
                 console.log(res.data);
 
                 app.globalData.repeat(res.data.code, res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if (res.data.code == '3001') {
 
@@ -481,86 +487,157 @@ Page({
 
                     console.log(res.data.code)
 
-                    if(res.data.code=='-10'){
+                    //code3003返回方法
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        that.setData({
+                    app.globalData.token(res.header.Authorization)
 
-                            showModal: true,
 
-                            titleContent:'转账',//弹框内容
+                    if (res.data.code == '3001') {
 
-                        })
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }, 1500)
+
+
+                        return false
 
 
                     }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
                     else {
 
+                        if (res.data.code == '-10') {
 
-                        /**
-                         * 接口：查询历史收款人
-                         * 请求方式：post
-                         * 接口：/record/selecthistoricalpayee
-                         * 入参：null
-                         **/
-                        wx.request({
+                            that.setData({
 
-                            url: app.globalData.URL + payeeUrl,
+                                showModal: true,
 
-                            method: 'POST',
+                                titleContent: '转账',//弹框内容
 
-                            header: {
+                            })
 
-                                'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                                'jxsid': jx_sid,
+                        }
+                        else {
 
-                                'Authorization': Authorization
 
-                            },
+                            /**
+                             * 接口：查询历史收款人
+                             * 请求方式：post
+                             * 接口：/record/selecthistoricalpayee
+                             * 入参：null
+                             **/
+                            wx.request({
 
-                            success: function (res) {
+                                url: app.globalData.URL + payeeUrl,
 
-                                console.log(res.data);
+                                method: 'POST',
 
-                                console.log(res.data.data)
+                                header: {
 
-                                if(res.data.data.length !=0){
+                                    'content-type': 'application/x-www-form-urlencoded',// post请求
 
-                                    console.log('有历史')
+                                    'jxsid': jx_sid,
 
-                                    wx.navigateTo({
+                                    'Authorization': Authorization
 
-                                        url: '../transfer_accounts/transfer_accounts'
+                                },
 
-                                    })
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+                                    console.log(res.data.data)
+
+                                    app.globalData.repeat(res.data.code, res.data.msg);
+
+                                    app.globalData.token(res.header.Authorization)
+
+                                    if (res.data.code == '3001') {
+
+                                        //console.log('登录');
+
+                                        setTimeout(function () {
+
+                                            wx.reLaunch({
+
+                                                url: '../../common/signin/signin'
+                                            })
+
+                                        }, 1500)
+
+
+                                        return false
+
+
+                                    }
+                                    else if(res.data.code=='3004'){
+
+                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                        wx.setStorageSync('Authorization', Authorization);
+
+                                        return false
+                                    }
+
+                                    else {
+
+                                        if (res.data.data.length != 0) {
+
+                                            console.log('有历史')
+
+                                            wx.navigateTo({
+
+                                                url: '../transfer_accounts/transfer_accounts'
+
+                                            })
+                                        }
+
+                                        else {
+
+                                            //储存刚进来时候的状态 在转账成功的时候获取
+
+
+                                            wx.navigateTo({
+
+                                                url: '../girokonto/girokonto'
+
+                                            })
+
+
+                                        }
+
+                                    }
+
+                                },
+
+
+                                fail: function (res) {
+
+                                    console.log(res)
+
                                 }
 
-                                else {
-
-                                    //储存刚进来时候的状态 在转账成功的时候获取
+                            })
 
 
-                                    wx.navigateTo({
-
-                                        url: '../girokonto/girokonto'
-
-                                    })
-
-
-                                }
-
-                            },
-
-
-                            fail: function (res) {
-
-                                console.log(res)
-
-                            }
-
-                        })
-
-
+                        }
 
                     }
 

@@ -197,6 +197,8 @@ Page({
 
                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
+
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
@@ -270,6 +272,12 @@ Page({
                             //设置支付密码之后
                             if(_paySettingHref=='4'){
 
+
+                                //缓存jx_sid&&Authorization数据
+                                var jx_sid = wx.getStorageSync('jxsid');
+
+                                var Authorization = wx.getStorageSync('Authorization');
+
                                 /**
                                  * 接口：设置支付方式
                                  * 请求方式：POST
@@ -305,13 +313,48 @@ Page({
 
                                         console.log('变成0和1')
 
-                                        //设置成功之后 储存一个值显示Toast'开启成功'（在支付设置页面取出）
 
-                                        that.setData({
+                                        app.globalData.repeat(res.data.code,res.data.msg);
 
-                                            pswSetSucess:'5',
-                                        })
+                                        app.globalData.token(res.header.Authorization)
 
+                                        if(res.data.code=='3001') {
+
+                                            //console.log('登录');
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url:'../../common/signin/signin'
+                                                })
+
+                                            },1500)
+
+                                            return false
+
+
+                                        }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
+
+                                        else {
+
+
+
+                                            //设置成功之后 储存一个值显示Toast'开启成功'（在支付设置页面取出）
+
+                                            that.setData({
+
+                                                pswSetSucess: '5',
+                                            })
+
+                                        }
 
                                     },
 

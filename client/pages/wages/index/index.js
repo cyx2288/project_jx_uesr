@@ -395,6 +395,8 @@ Page({
                     //code3003返回方法
                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
+
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
@@ -507,33 +509,64 @@ Page({
 
                                                     console.log(res.data);
 
-                                                    that.setData({
+                                                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                                        type:res.data.data.type
+                                                    app.globalData.token(res.header.Authorization)
 
-                                                    })
+                                                    if(res.data.code=='3001') {
 
+                                                        //console.log('登录');
+                                                        setTimeout(function () {
 
-                                                    if(that.data.type=='1'){
+                                                            wx.reLaunch({
 
-                                                        wx.navigateTo({
+                                                                url:'../../common/signin/signin'
+                                                            })
 
-                                                            url: '../../common/wages_authentication/authentication'
+                                                        },1500)
 
-                                                        })
+                                                        return false
+
 
                                                     }
+                                                    else if(res.data.code=='3004'){
 
-                                                    else if(res.data.data.type=='0'){
+                                                        var Authorization = res.data.token.access_token;//Authorization数据
 
-                                                        wx.navigateTo({
+                                                        wx.setStorageSync('Authorization', Authorization);
 
-                                                            url:'../../user/locked/locked'
-                                                        })
-
+                                                        return false
                                                     }
 
+                                                    else {
 
+                                                        that.setData({
+
+                                                            type: res.data.data.type
+
+                                                        });
+
+
+                                                        if (that.data.type == '1') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../common/wages_authentication/authentication'
+
+                                                            })
+
+                                                        }
+
+                                                        else if (res.data.data.type == '0') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../user/locked/locked'
+                                                            })
+
+                                                        }
+
+                                                    }
 
 
                                                 },
@@ -652,6 +685,8 @@ Page({
                                                     console.log(res.data);
 
                                                     app.globalData.repeat(res.data.code,res.data.msg);
+
+                                                    app.globalData.token(res.header.Authorization)
 
                                                     if(res.data.code=='3001') {
 
@@ -818,33 +853,71 @@ Page({
 
                                                     console.log(res.data);
 
-                                                    that.setData({
 
-                                                        type:res.data.data.type
+                                                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                                                    })
+                                                    app.globalData.token(res.header.Authorization)
+
+                                                    if(res.data.code=='3001') {
+
+                                                        //console.log('登录');
+
+                                                        setTimeout(function () {
+
+                                                            wx.reLaunch({
+
+                                                                url:'../../common/signin/signin'
+                                                            })
+
+                                                        },1500)
 
 
-                                                    if(that.data.type=='1'){
 
-                                                        wx.navigateTo({
+                                                        return false
 
-                                                            url: '../../common/wages_authentication/authentication'
+
+                                                    }
+                                                    else if(res.data.code=='3004'){
+
+                                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                                        wx.setStorageSync('Authorization', Authorization);
+
+                                                        that.onShow()
+
+                                                        return false
+                                                    }
+
+
+                                                    else {
+
+                                                        that.setData({
+
+                                                            type: res.data.data.type
 
                                                         })
 
+
+                                                        if (that.data.type == '1') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../common/wages_authentication/authentication'
+
+                                                            })
+
+                                                        }
+
+                                                        else if (res.data.data.type == '0') {
+
+                                                            wx.navigateTo({
+
+                                                                url: '../../user/locked/locked'
+                                                            })
+
+                                                        }
+
                                                     }
-
-                                                    else if(res.data.data.type=='0'){
-
-                                                        wx.navigateTo({
-
-                                                            url:'../../user/locked/locked'
-                                                        })
-
-                                                    }
-
-
 
 
                                                 },
@@ -1057,6 +1130,8 @@ Page({
 
                                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                                    app.globalData.token(res.header.Authorization)
+
                                     if(res.data.code=='3001') {
 
                                         //console.log('登录');
@@ -1165,6 +1240,8 @@ Page({
 
                                 app.globalData.repeat(res.data.code,res.data.msg);
 
+                                app.globalData.token(res.header.Authorization)
+
                                 if(res.data.code=='3001') {
 
                                     //console.log('登录');
@@ -1248,6 +1325,8 @@ Page({
                                 //wx.setStorageSync('wages', res.data.data);
 
                                 app.globalData.repeat(res.data.code,res.data.msg);
+
+                                app.globalData.token(res.header.Authorization)
 
                                 if(res.data.code=='3001') {
 
@@ -1374,6 +1453,8 @@ Page({
                     //code3003返回方法
                     app.globalData.repeat(res.data.code,res.data.msg);
 
+                    app.globalData.token(res.header.Authorization)
+
                     if(res.data.code=='3001') {
 
                         //console.log('登录');
@@ -1453,6 +1534,8 @@ Page({
 
                     //code3003返回方法
                     app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
 
                     if(res.data.code=='3001') {
 
@@ -1591,6 +1674,10 @@ Page({
             success: function (res) {
 
                 console.log(res.data);
+
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if(res.data.code=='3001') {
 
@@ -2100,6 +2187,8 @@ Page({
                 //code3003返回方法
                 app.globalData.repeat(res.data.code,res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if(res.data.code=='3001') {
 
                     //console.log('登录');
@@ -2220,6 +2309,8 @@ Page({
 
                 app.globalData.repeat(res.data.code, res.data.msg);
 
+                app.globalData.token(res.header.Authorization)
+
                 if (res.data.code == '3001') {
 
                     //console.log('登录');
@@ -2295,6 +2386,8 @@ Page({
                 console.log(res.data);
 
                 app.globalData.repeat(res.data.code, res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if (res.data.code == '3001') {
 
@@ -2469,6 +2562,8 @@ Page({
 
                 //code3003返回方法
                 app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
 
                 if(res.data.code=='3001') {
 
