@@ -1,0 +1,54 @@
+
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+<!--loading-->
+
+<view class="task_news">
+
+
+
+    <!-- 标题-->
+    <view class="name_title">
+        <view class="title">任务名称</view>
+        <view class="content">
+            <view>{{taskName}}</view>
+            <view class="color_text" bindtap="modelFn">查看</view>
+        </view>
+    </view>
+
+    <view class="task_details">
+
+        <view class="title">消息列表</view>
+        <view class="list">
+            <view class="list_detail" wx:for="{{taskList}}">
+                <view class="picture"><image src="../../../static/icon/wages/task_news.png"></image></view>
+                <view class="details">
+                    <view>{{item.msgContent}}</view>
+                    <view>{{filter.formatTime(item.createDate,'-')}}</view>
+                </view>
+
+            </view>
+        </view>
+
+
+
+
+    </view>
+
+
+
+
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <!--<view class="modal-title">{{titleMsg}}</view>-->
+    <view class="modal-content">
+        <view class="content_text">请微信关注“嘉薪”公众号，点击“自由客”，在“我的”-“众包任务”中查看任务详情</view>
+        <view><image class="jx_code" mode="widthFix" bindtap="previewImage" src="../../../static/icon/wages/qrcode_jx.jpg"/></view>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
+    </view>
+</view>
+

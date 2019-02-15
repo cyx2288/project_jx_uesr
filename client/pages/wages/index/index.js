@@ -364,6 +364,8 @@ Page({
 
             var Authorization = wx.getStorageSync('Authorization');
 
+            console.log('首页传的token'+Authorization)
+
 
             /**
              * 接口：工资提醒

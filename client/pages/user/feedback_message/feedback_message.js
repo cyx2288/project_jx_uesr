@@ -286,16 +286,45 @@ const feedbackUrl ='/salary/home/feedbacklist';//获取工资条反馈详情的u
 
          if(e.currentTarget.dataset.click=='0'){
 
-             wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
 
-             wx.setStorageSync('salaryId',e.currentTarget.dataset.id);
 
-             //console.log(wx.getStorageSync('salaryDetailId'))
+             if(e.currentTarget.dataset.type=='X'){
 
-             wx.navigateTo({
+                 /*      console.log(e.currentTarget.dataset.detail)
 
-                 url:'../../user/feedback/feedback'
-             })
+                  console.log(e.currentTarget.dataset.name)*/
+
+                 wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
+
+                 wx.setStorageSync('taskName',e.currentTarget.dataset.name)
+
+                 wx.navigateTo({
+
+                     url:'../../user/task_news/task_news'
+                 })
+
+
+
+             }
+             else{
+
+                 wx.setStorageSync('salaryDetailId',e.currentTarget.dataset.detail);
+
+                 wx.setStorageSync('salaryId',e.currentTarget.dataset.id);
+
+                 //console.log(wx.getStorageSync('salaryDetailId'))
+
+                 wx.navigateTo({
+
+                     url:'../../user/feedback/feedback'
+                 })
+
+
+             }
+
+
+
+
 
          }
 
