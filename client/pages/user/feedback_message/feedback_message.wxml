@@ -2,11 +2,11 @@
 
 <view  class="help_service">
 
-    <view wx:for="{{feedBackList}}" data-detail="{{item.salaryDetailId}}"  data-id="{{item.salaryId}}" data-click="{{item.isClick}}" bindtap="feedBackUrlFn" class="weui-cells">
+    <view wx:for="{{feedBackList}}" data-detail="{{item.salaryDetailId}}"  data-id="{{item.salaryId}}" data-click="{{item.isClick}}" data-name="{{item.taskName}}" data-type="{{item.salaryType}}"  bindtap="feedBackUrlFn" class="weui-cells">
 
         <view class="weui-media-box__hd ">
 
-            <text wx:if="{{item.salaryType=='X'}}" class="service_title flex_box" >【企业消息】</text>
+            <text wx:if="{{item.salaryType=='X'}}" class="service_title flex_box" >【众包任务通知】</text>
             <text  wx:elif="{{item.salaryType=='Y'}}" class="service_title flex_box" >【合同签约提醒】</text>
             <text wx:else class="service_title flex_box" >【反馈处理结果】</text>
             <span class="new_title" wx:if="{{item.isUserHaveNew=='1'}}">New</span>

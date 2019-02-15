@@ -2,7 +2,7 @@ const app = getApp();
 
 const mineUrl = '/user/center/usercenter';//用户中心
 
-const checkoutUrl = '/jx/action/checklogin';//校验登录状态
+const checkoutUrl = '/miniprograms';//校验登录状态
 
 const joinEntURL = '/user/workunit/selectisjoinent';//有带加入企业
 
@@ -47,10 +47,12 @@ Page({
 
                     console.log(res.code)
 
+                    wx.setStorageSync('loadingCode', res.code);
+
                     /**
                      * 接口：校验登录状态
                      * 请求方式：POST
-                     * 接口：/jx/action/checklogin
+                     * 接口：/miniprograms
                      * 入参：code
                      **/
                     wx.request({
@@ -60,17 +62,19 @@ Page({
                         method: 'POST',
 
                         header: {
+
                             'content-type': 'application/x-www-form-urlencoded', // post请求
 
                             'jxsid': jx_sid,
 
-                            'Authorization': Authorization
 
                         },
 
                         data: {
 
-                            code: res.code
+                            code: res.code,
+
+                            device:'mini'
                         },
 
 
@@ -105,7 +109,12 @@ Page({
                                 return false
                             }
 
-                            else {
+                            else if (res.data.code=='0000'){
+
+                                var Authorization = res.data.token.access_token;//Authorization数据
+
+                                wx.setStorageSync('Authorization', Authorization);
+
 
                                 setTimeout(function () {
 
@@ -132,13 +141,13 @@ Page({
 
             }
         });
-
+/*
         if (jx_sid && Authorization) {
 
 
 
 
-            /*   /!**
+            /!*   /!**
              * 接口：用户中心
              * 请求方式：POST
              * 接口：/user/center/usercenter
@@ -214,13 +223,14 @@ Page({
              console.log(res)
              }
 
-             })*/
+             })*!/
 
 
         }
 
         else {
 
+            console.log('缺參數')
 
             setTimeout(function () {
 
@@ -233,7 +243,7 @@ Page({
             }, 1500)
 
 
-        }
+        }*/
     }
 
 

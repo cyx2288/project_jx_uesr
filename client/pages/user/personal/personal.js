@@ -6,7 +6,7 @@ const pageJumpFn = require('../../../static/libs/script/pageJump');//页面跳�
 
 const userCenterUrl = '/user/center/usercenter';//用户中心的url
 
-const logOutUrl = '/user/set/logout';//退出登录url
+const logOutUrl = '/logout';//退出登录url
 
 
 Page({
@@ -202,7 +202,7 @@ Page({
             /**
              * 接口：
              * 请求方式：POST
-             * 接口：/user/set/logout
+             * 接口：/logout
              * 入参：null
              **/
             wx.request({

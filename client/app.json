@@ -14,6 +14,8 @@
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
     "pages/user/locked/locked",
+    "pages/user/task_news/task_news",
+
 
 
     "pages/user/passport_certification/passport",
