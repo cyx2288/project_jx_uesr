@@ -8,8 +8,9 @@ const registerUrl = '/jx/action/register';//注册的url地址
 
 const registmsg = '/jx/action/registmsg';//发送短信验证码
 
+const signUrl ='/login';//登录的url
 
-const signUrl ='/jx/action/login';//登录的url
+const checkoutUrl = '/miniprograms';//校验登录状态
 
 
 Page({
@@ -312,6 +313,7 @@ Page({
 
 
 
+
         }
 
 
@@ -324,6 +326,9 @@ Page({
         var url = app.globalData.URL+signUrl;
 
         var that=this;
+
+        //获取用户数据
+        var jx_sid = wx.getStorageSync('jxsid');
 
 
         //有几个ajax请求
@@ -390,7 +395,7 @@ Page({
             /**
              * 接口：登录
              * 请求方式：POST
-             * 接口：/jx/action/login
+             * 接口：/login
              * 入参：mobile，password
              **/
 
@@ -405,6 +410,12 @@ Page({
                     mobile:that.data.mobile,
 
                     password:md5.hexMD5(that.data.password),
+
+                    device: 'mini',
+
+                    code:wx.getStorageSync('loadingCode')
+
+
 
                 }),
 
@@ -489,6 +500,11 @@ Page({
                 }
 
             })
+
+
+
+
+
 
         }
 
