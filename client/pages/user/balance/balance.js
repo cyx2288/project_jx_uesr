@@ -536,6 +536,11 @@ Page({
                         }
                         else {
 
+                            //获取数据
+                            var jx_sid = wx.getStorageSync('jxsid');
+
+                            var Authorization = wx.getStorageSync('Authorization');
+
 
                             /**
                              * 接口：查询历史收款人

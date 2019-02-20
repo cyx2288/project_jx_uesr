@@ -179,7 +179,10 @@ Page({
 
                 wx.removeStorageSync('jxsid');
 
-                wx.removeStorageSync('Authorization');
+
+
+                    wx.removeStorageSync('Authorization');
+
 
 
                 wx.clearStorageSync();
@@ -262,6 +265,7 @@ Page({
 
 
                         if (thisCode == '0000') {
+
 
                             //跳回登录页
                             wx.reLaunch({

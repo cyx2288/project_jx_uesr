@@ -97,67 +97,101 @@ Page({
 
                     console.log(res.data);
 
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                    if (res.data.code == '0000') {
+                    app.globalData.token(res.header.Authorization)
 
-                        wx.showToast({
+                    if(res.data.code=='3001') {
 
-                            title: res.data.msg,
-                            icon: 'none',
-                            mask:true,
+                        //console.log('登录');
 
-                        });
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
 
 
-                        //倒计时开始
-                        that.getCode();
-
-                        //锁定
-                        that.setData({
-
-                            disabled:true
-
-                        });
+                        return false
 
 
                     }
+                    else if(res.data.code=='3004'){
 
-                    else if(res.data.code=='-7'){
+                        var Authorization = res.data.token.access_token;//Authorization数据
 
+                        wx.setStorageSync('Authorization', Authorization);
 
-                        wx.showModal({
-                            title: '提示',
-                            content: res.data.msg,
-                            showCancel:false,
-                            confirmText: '我知道了',
-                            confirmColor:'#fe9728',
-                            success: function (res) {
-
-                                if (res.confirm) {
-
-                                }
-
-                                else if (res.cancel) {
-
-
-                                }
-
-
-
-                            }
-                        });
-
+                        return false
                     }
 
                     else {
 
-                        wx.showToast({
 
-                            title: res.data.msg,
-                            icon: 'none',
-                            mask:true,
+                        if (res.data.code == '0000') {
 
-                        });
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+
+                            //倒计时开始
+                            that.getCode();
+
+                            //锁定
+                            that.setData({
+
+                                disabled: true
+
+                            });
+
+
+                        }
+
+                        else if (res.data.code == '-7') {
+
+
+                            wx.showModal({
+                                title: '提示',
+                                content: res.data.msg,
+                                showCancel: false,
+                                confirmText: '我知道了',
+                                confirmColor: '#fe9728',
+                                success: function (res) {
+
+                                    if (res.confirm) {
+
+                                    }
+
+                                    else if (res.cancel) {
+
+
+                                    }
+
+
+                                }
+                            });
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+                        }
 
                     }
 
@@ -261,18 +295,54 @@ Page({
 
                 success: function (res) {
 
-                        if(res.data.code=='-1'){
+
+                    console.log(res.data.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+
+                        return false
+
+
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        if (res.data.code == '-1') {
 
                             wx.showToast({
 
                                 title: res.data.msg,
                                 icon: 'none',
-                                mask:true,
+                                mask: true,
 
                             });
 
                         }
-
 
 
                         else {
@@ -282,27 +352,23 @@ Page({
 
                                 wx.showToast({
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask:true,
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    mask: true,
 
-                               });
+                                });
 
-                            },800);
-
-
-
-                                wx.navigateBack({
-                                    delta: 2
-                                })
+                            }, 800);
 
 
-
+                            wx.navigateBack({
+                                delta: 2
+                            })
 
 
                         }
 
-
+                    }
 
 
                 },
