@@ -256,89 +256,112 @@ Page({
                             var tempFilePaths = res.tempFilePaths;
 
 
+                            if(res.tempFiles[0].size<1024*1024*2){
 
-                            wx.uploadFile({
+                                wx.showToast({
+                                    title: '图片大于2M！',
+                                    icon:'none',
+                                    mask: true,
+                                })
+
+                            }
+
+                            else {
+
+                                wx.showLoading({
+                                    title:'图片上传中',
+                                    mask:true,
+
+                                })
 
 
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
+                                wx.uploadFile({
 
-                                header:{
 
-                                    'content-type': 'multipart/form-data', // post请求
+                                    url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
-                                    'jxsid': jx_sid,
+                                    header:{
 
-                                    'Authorization': Authorization
+                                        'content-type': 'multipart/form-data', // post请求
 
-                                },
+                                        'jxsid': jx_sid,
 
-                                filePath: tempFilePaths[0],
+                                        'Authorization': Authorization
 
-                                name: 'File',
+                                    },
 
-                                success: function(res){
+                                    filePath: tempFilePaths[0],
 
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
+                                    name: 'File',
 
-                                    app.globalData.token(res.header.Authorization)
+                                    success: function(res){
 
-                                    if (res.data.code == '3001') {
+                                        //code3003返回方法
+                                        app.globalData.repeat(res.data.code, res.data.msg);
 
-                                        //console.log('登录');
 
-                                        setTimeout(function () {
+                                        if (res.data.code == '3001') {
 
-                                            wx.reLaunch({
+                                            //console.log('登录');
 
-                                                url:'../../../pages/common/signin/signin'
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url:'../../../pages/common/signin/signin'
+
+                                                })
+
+                                            }, 1500);
+
+
+                                            return false
+
+
+                                        }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
+
+
+                                        else {
+
+                                            console.log(res)
+
+
+                                            if(JSON.parse(res.data).code=='0000'){
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon:'none',
+                                                    mask: true,
+                                                })
+
+                                            }
+
+                                            that.setData({
+
+                                                faceImg:JSON.parse(res.data).data.url
 
                                             })
 
-                                        }, 1500);
-
-
-                                        return false
-
-
-                                    }
-                                    else if(res.data.code=='3004'){
-
-                                        var Authorization = res.data.token.access_token;//Authorization数据
-
-                                        wx.setStorageSync('Authorization', Authorization);
-
-                                        return false
-                                    }
-
-
-                                    else {
-
-                                        console.log(res)
-
-
-                                        if(JSON.parse(res.data).code=='0000'){
-
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
 
                                         }
 
-                                        that.setData({
-
-                                            faceImg:JSON.parse(res.data).data.url
-
-                                        })
-
 
                                     }
+                                })
 
 
-                                }
-                            })
+                            }
+
+
+
 
                         }
                     })
@@ -355,88 +378,112 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                            wx.uploadFile({
+
+                            if(res.tempFiles[0].size<1024*1024*2){
+
+                                wx.showToast({
+                                    title: '图片大于2M！',
+                                    icon:'none',
+                                    mask: true,
+                                })
+
+                            }
+
+                            else {
 
 
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
+                                wx.showLoading({
+                                    title:'图片上传中',
+                                    mask:true,
 
-                                header:{
+                                })
 
-                                    'content-type': 'multipart/form-data', // post请求
+                                wx.uploadFile({
 
-                                    'jxsid': jx_sid,
 
-                                    'Authorization': Authorization
+                                    url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
-                                },
+                                    header:{
 
-                                filePath: tempFilePaths[0],
+                                        'content-type': 'multipart/form-data', // post请求
 
-                                name: 'File',
+                                        'jxsid': jx_sid,
 
-                                success: function(res){
+                                        'Authorization': Authorization
 
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
+                                    },
 
-                                    app.globalData.token(res.header.Authorization)
+                                    filePath: tempFilePaths[0],
 
-                                    if (res.data.code == '3001') {
+                                    name: 'File',
 
-                                        //console.log('登录');
+                                    success: function(res){
 
-                                        setTimeout(function () {
+                                        //code3003返回方法
+                                        app.globalData.repeat(res.data.code, res.data.msg);
 
-                                            wx.reLaunch({
 
-                                                url:'../../../pages/common/signin/signin'
+                                        if (res.data.code == '3001') {
+
+                                            //console.log('登录');
+
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url:'../../../pages/common/signin/signin'
+                                                })
+
+                                            }, 1500);
+
+
+                                            return false
+
+
+                                        }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
+
+                                        else {
+
+                                            console.log(res)
+
+
+                                            console.log(JSON.parse(res.data).code);
+
+                                            if(JSON.parse(res.data).code=='0000'){
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon:'none',
+                                                    mask: true,
+                                                })
+
+                                            }
+
+                                            that.setData({
+
+                                                faceImg:JSON.parse(res.data).data.url
+
                                             })
 
-                                        }, 1500);
-
-
-                                        return false
-
-
-                                    }
-                                    else if(res.data.code=='3004'){
-
-                                        var Authorization = res.data.token.access_token;//Authorization数据
-
-                                        wx.setStorageSync('Authorization', Authorization);
-
-                                        return false
-                                    }
-
-                                    else {
-
-                                        console.log(res)
-
-
-                                        console.log(JSON.parse(res.data).code);
-
-                                        if(JSON.parse(res.data).code=='0000'){
-
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
 
                                         }
 
-                                        that.setData({
-
-                                            faceImg:JSON.parse(res.data).data.url
-
-                                        })
-
 
                                     }
+                                })
+
+                            }
 
 
-                                }
-                            })
+
 
 
                         }
@@ -476,88 +523,110 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                            wx.uploadFile({
 
 
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
+                            if(res.tempFiles[0].size<1024*1024*2){
 
-                                header:{
+                                wx.showToast({
+                                    title: '图片大于2M！',
+                                    icon:'none',
+                                    mask: true,
+                                })
 
-                                    'content-type': 'multipart/form-data', // post请求
+                            }
 
-                                    'jxsid': jx_sid,
-
-                                    'Authorization': Authorization
-
-                                },
-
-                                filePath: tempFilePaths[0],
-
-                                name: 'File',
-
-                                success: function(res){
-
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
-
-                                    app.globalData.token(res.header.Authorization)
-
-                                    if (res.data.code == '3001') {
-
-                                        //console.log('登录');
-
-                                        setTimeout(function () {
-
-                                            wx.reLaunch({
-
-                                                url:'../../../pages/common/signin/signin'
-                                            })
-
-                                        }, 1500);
+                            else {
 
 
-                                        return false
+                                wx.showLoading({
+                                    title: '图片上传中',
+                                    mask: true,
+
+                                })
+
+                                wx.uploadFile({
 
 
-                                    }
-                                    else if(res.data.code=='3004'){
+                                    url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
-                                        var Authorization = res.data.token.access_token;//Authorization数据
+                                    header: {
 
-                                        wx.setStorageSync('Authorization', Authorization);
+                                        'content-type': 'multipart/form-data', // post请求
 
-                                        return false
-                                    }
+                                        'jxsid': jx_sid,
 
-                                    else {
+                                        'Authorization': Authorization
 
-                                        console.log(res)
+                                    },
+
+                                    filePath: tempFilePaths[0],
+
+                                    name: 'File',
+
+                                    success: function (res) {
+
+                                        //code3003返回方法
+                                        app.globalData.repeat(res.data.code, res.data.msg);
 
 
-                                        //console.log(JSON.parse(res.data).data.url);
+                                        if (res.data.code == '3001') {
 
-                                        if(JSON.parse(res.data).code=='0000'){
+                                            //console.log('登录');
+
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url: '../../../pages/common/signin/signin'
+                                                })
+
+                                            }, 1500);
 
 
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
+                                            return false
+
+
+                                        }
+                                        else if (res.data.code == '3004') {
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
                                         }
 
-                                        that.setData({
+                                        else {
 
-                                            backImg:JSON.parse(res.data).data.url
+                                            console.log(res)
 
-                                        })
+
+                                            //console.log(JSON.parse(res.data).data.url);
+
+                                            if (JSON.parse(res.data).code == '0000') {
+
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+                                            }
+
+                                            that.setData({
+
+                                                backImg: JSON.parse(res.data).data.url
+
+                                            })
+
+
+                                        }
 
 
                                     }
+                                })
 
-
-                                }
-                            })
+                            }
 
                         }
                     })
@@ -574,90 +643,109 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                            wx.uploadFile({
+
+                            if(res.tempFiles[0].size<1024*1024*2){
+
+                                wx.showToast({
+                                    title: '图片大于2M！',
+                                    icon:'none',
+                                    mask: true,
+                                })
+
+                            }
+
+                            else {
 
 
-                                url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
+                                wx.showLoading({
+                                    title: '图片上传中',
+                                    mask: true,
 
-                                header:{
+                                })
 
-                                    'content-type': 'multipart/form-data', // post请求
-
-                                    'jxsid': jx_sid,
-
-                                    'Authorization': Authorization
-
-                                },
-
-                                filePath: tempFilePaths[0],
-
-                                name: 'File',
-
-                                success: function(res){
-
-                                    //code3003返回方法
-                                    app.globalData.repeat(res.data.code, res.data.msg);
-
-                                    app.globalData.token(res.header.Authorization)
+                                wx.uploadFile({
 
 
-                                    if (res.data.code == '3001') {
+                                    url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
 
-                                        //console.log('登录');
+                                    header: {
 
-                                        setTimeout(function () {
+                                        'content-type': 'multipart/form-data', // post请求
 
-                                            wx.reLaunch({
+                                        'jxsid': jx_sid,
 
-                                                url:'../../../pages/common/signin/signin'
-                                            })
+                                        'Authorization': Authorization
 
-                                        }, 1500);
+                                    },
 
+                                    filePath: tempFilePaths[0],
 
-                                        return false
+                                    name: 'File',
 
+                                    success: function (res) {
 
-                                    }
-
-                                    else if(res.data.code=='3004'){
-
-                                        var Authorization = res.data.token.access_token;//Authorization数据
-
-                                        wx.setStorageSync('Authorization', Authorization);
-
-                                        return false
-                                    }
-
-                                    else {
-
-                                        console.log(res)
+                                        //code3003返回方法
+                                        app.globalData.repeat(res.data.code, res.data.msg);
 
 
-                                        //console.log(JSON.parse(res.data).data.url);
+                                        if (res.data.code == '3001') {
 
-                                        if(JSON.parse(res.data).code=='0000'){
+                                            //console.log('登录');
+
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url: '../../../pages/common/signin/signin'
+                                                })
+
+                                            }, 1500);
 
 
-                                            wx.showToast({
-                                                title: '上传成功',
-                                                icon:'none',
-                                                mask: true,
-                                            })
+                                            return false
+
+
                                         }
 
-                                        that.setData({
+                                        else if (res.data.code == '3004') {
 
-                                            backImg:JSON.parse(res.data).data.url
+                                            var Authorization = res.data.token.access_token;//Authorization数据
 
-                                        })
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
+
+                                        else {
+
+                                            console.log(res)
+
+
+                                            //console.log(JSON.parse(res.data).data.url);
+
+                                            if (JSON.parse(res.data).code == '0000') {
+
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+                                            }
+
+                                            that.setData({
+
+                                                backImg: JSON.parse(res.data).data.url
+
+                                            })
+
+
+                                        }
 
 
                                     }
-
-
-                                }
-                            })
+                                })
+                            }
 
 
                         }
