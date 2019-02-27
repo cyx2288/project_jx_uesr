@@ -202,19 +202,6 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
-
                                 wx.showLoading({
                                     title:'图片上传中',
                                     mask:true,
@@ -285,19 +272,27 @@ Page({
 
                                             if(JSON.parse(res.data).code=='0000'){
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon:'none',
-                                                    mask: true,
+
+                                                that.setData({
+
+                                                    faceImg:JSON.parse(res.data).data.url
+
                                                 })
 
                                             }
 
-                                            that.setData({
+                                            setTimeout(function () {
 
-                                                faceImg:JSON.parse(res.data).data.url
 
-                                            })
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+
+                                            },10)
+
+
 
 
                                         }
@@ -305,8 +300,6 @@ Page({
 
                                     }
                                 })
-
-                            }
 
 
 
@@ -325,19 +318,6 @@ Page({
                         success: function (res) {
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
-
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
-
 
                                 wx.showLoading({
                                     title:'图片上传中',
@@ -407,19 +387,29 @@ Page({
 
                                             if(JSON.parse(res.data).code=='0000'){
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon:'none',
-                                                    mask: true,
+                                                that.setData({
+
+                                                    faceImg:JSON.parse(res.data).data.url
+
                                                 })
+
 
                                             }
 
-                                            that.setData({
 
-                                                faceImg:JSON.parse(res.data).data.url
 
-                                            })
+                                            setTimeout(function () {
+
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+
+                                            },10)
+
+
 
 
                                         }
@@ -427,8 +417,6 @@ Page({
 
                                     }
                                 })
-
-                            }
 
 
 
@@ -471,17 +459,6 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else{
 
 
                                 wx.showLoading({
@@ -553,22 +530,29 @@ Page({
 
                                             //console.log(JSON.parse(res.data).data.url);
 
-                                            if(JSON.parse(res.data).code=='0000'){
+                                            if (JSON.parse(res.data).code == '0000') {
+
+                                                that.setData({
+
+                                                    backImg: JSON.parse(res.data).data.url
+
+                                                })
+
+
+                                            }
+
+
+
+                                            setTimeout(function () {
 
 
                                                 wx.showToast({
                                                     title: '上传成功',
-                                                    icon:'none',
+                                                    icon: 'none',
                                                     mask: true,
                                                 })
-                                            }
 
-                                            that.setData({
-
-                                                backImg:JSON.parse(res.data).data.url
-
-                                            })
-
+                                            }, 100)
 
                                         }
 
@@ -576,7 +560,6 @@ Page({
                                     }
                                 })
 
-                            }
 
 
 
@@ -595,18 +578,6 @@ Page({
                         success: function (res) {
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
-
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
 
 
                                 wx.showLoading({
@@ -679,18 +650,28 @@ Page({
                                             if (JSON.parse(res.data).code == '0000') {
 
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon: 'none',
-                                                    mask: true,
-                                                })
-                                            }
-
                                             that.setData({
 
                                                 backImg: JSON.parse(res.data).data.url
 
                                             })
+
+
+                                            }
+
+
+                                            setTimeout(function () {
+
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+
+                                            },10)
+
+
 
 
                                         }
@@ -699,7 +680,6 @@ Page({
                                     }
                                 })
 
-                            }
 
 
                         }

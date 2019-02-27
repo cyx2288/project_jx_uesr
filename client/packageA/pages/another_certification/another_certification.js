@@ -256,18 +256,6 @@ Page({
                             var tempFilePaths = res.tempFilePaths;
 
 
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
-
                                 wx.showLoading({
                                     title:'图片上传中',
                                     mask:true,
@@ -336,19 +324,28 @@ Page({
 
                                             if(JSON.parse(res.data).code=='0000'){
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon:'none',
-                                                    mask: true,
+
+                                                that.setData({
+
+                                                    faceImg:JSON.parse(res.data).data.url
+
                                                 })
+
+                                                setTimeout(function () {
+
+                                                    wx.showToast({
+                                                        title: '上传成功',
+                                                        icon:'none',
+                                                        mask: true,
+                                                    })
+
+
+                                                },10)
+
 
                                             }
 
-                                            that.setData({
 
-                                                faceImg:JSON.parse(res.data).data.url
-
-                                            })
 
 
                                         }
@@ -362,8 +359,6 @@ Page({
 
 
 
-
-                        }
                     })
 
                 }
@@ -377,19 +372,6 @@ Page({
                         success: function (res) {
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
-
-
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
 
 
                                 wx.showLoading({
@@ -459,19 +441,27 @@ Page({
 
                                             if(JSON.parse(res.data).code=='0000'){
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon:'none',
-                                                    mask: true,
+                                                that.setData({
+
+                                                    faceImg:JSON.parse(res.data).data.url
+
                                                 })
+
+                                                setTimeout(function () {
+
+                                                    wx.showToast({
+                                                        title: '上传成功',
+                                                        icon:'none',
+                                                        mask: true,
+                                                    })
+
+                                                },10)
+
+
 
                                             }
 
-                                            that.setData({
 
-                                                faceImg:JSON.parse(res.data).data.url
-
-                                            })
 
 
                                         }
@@ -480,7 +470,6 @@ Page({
                                     }
                                 })
 
-                            }
 
 
 
@@ -525,18 +514,6 @@ Page({
 
 
 
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
-
 
                                 wx.showLoading({
                                     title: '图片上传中',
@@ -605,19 +582,23 @@ Page({
 
                                             if (JSON.parse(res.data).code == '0000') {
 
+                                                that.setData({
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon: 'none',
-                                                    mask: true,
+                                                    backImg: JSON.parse(res.data).data.url
+
                                                 })
+
+
+                                                setTimeout(function () {
+                                                    wx.showToast({
+                                                        title: '上传成功',
+                                                        icon: 'none',
+                                                        mask: true,
+                                                    })
+                                                },100)
                                             }
 
-                                            that.setData({
 
-                                                backImg: JSON.parse(res.data).data.url
-
-                                            })
 
 
                                         }
@@ -626,7 +607,7 @@ Page({
                                     }
                                 })
 
-                            }
+
 
                         }
                     })
@@ -644,18 +625,6 @@ Page({
                             var tempFilePaths = res.tempFilePaths;
 
 
-                            if(res.tempFiles[0].size<1024*1024*2){
-
-                                wx.showToast({
-                                    title: '图片大于2M！',
-                                    icon:'none',
-                                    mask: true,
-                                })
-
-                            }
-
-                            else {
-
 
                                 wx.showLoading({
                                     title: '图片上传中',
@@ -725,19 +694,26 @@ Page({
 
                                             if (JSON.parse(res.data).code == '0000') {
 
+                                                that.setData({
 
-                                                wx.showToast({
-                                                    title: '上传成功',
-                                                    icon: 'none',
-                                                    mask: true,
+                                                    backImg: JSON.parse(res.data).data.url
+
                                                 })
+
+                                                setTimeout(function () {
+
+                                                    wx.showToast({
+                                                        title: '上传成功',
+                                                        icon: 'none',
+                                                        mask: true,
+                                                    })
+
+                                                },100)
+
+
                                             }
 
-                                            that.setData({
 
-                                                backImg: JSON.parse(res.data).data.url
-
-                                            })
 
 
                                         }
@@ -745,7 +721,7 @@ Page({
 
                                     }
                                 })
-                            }
+
 
 
                         }
