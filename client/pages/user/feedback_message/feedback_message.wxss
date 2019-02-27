@@ -56,7 +56,12 @@ page{
 }
 
 .wages_month{
+    display: block;
     color: #8a8a8a;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    width: 50%;
 }
 
 .wages_time{
