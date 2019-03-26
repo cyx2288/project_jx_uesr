@@ -27,9 +27,9 @@ Page({
 
         index:'',//默认选择
 
-        idType:'3',//证件类型 1-身份证 2-护照 3-港澳通行证 4-台湾通行证
+        idType:'3',//证件类型 1-身份证 2-护照 3-港澳通行证 4-台湾通行证 5-临时身份证
 
-        idStyle:['港澳居民来往内地通行证','台湾居民来往内地通行证','护照'],
+        idStyle:['港澳居民来往内地通行证','台湾居民来往内地通行证','护照','临时身份证'],
 
         file:'',
 
@@ -179,7 +179,16 @@ Page({
                         })
 
                     }
+                    else if(that.data.idType == '5'){
 
+                        that.setData({
+
+                            cardChoose : '临时身份证',
+
+                            index:'3'
+                        })
+
+                    }
 
 
                 }
@@ -815,6 +824,29 @@ Page({
 
         }
 
+        else if(that.data.idType=='5'){
+
+            console.log('临时')
+
+            that.setData({
+
+                modal: {
+
+                    isShow: true,// 图文弹框是否显示
+
+                    title:'证件示例',// 标题
+
+                    ok:'确定',// 确定按钮文本
+
+                    src:'../../../static/icon/wages/jx_example_linshi_face.jpg',// 临时
+
+                }
+
+            })
+
+
+        }
+
     },
 
     showBackTipFn:function () {
@@ -872,6 +904,7 @@ Page({
 
 
 
+
     },
 
     modalClick:function () {
@@ -904,6 +937,8 @@ Page({
 
         var check = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
 
+        var idcardReg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+
         (that.data.idType == 1)&&(that.data.idType = 3);
 
         if(that.data.idType == 3){
@@ -918,6 +953,11 @@ Page({
 
             //护照
             check = /^[a-z0-9A-Z]{6,20}$/;
+        }
+
+        else if(that.data.idType == 5){
+
+            check = idcardReg
         }
 
 
@@ -966,7 +1006,7 @@ Page({
 
         }
 
-        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&that.data.idType!='2'){
+        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&that.data.idType!='2'||that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&that.data.idType!='5'){
 
             wx.showToast({
                 title: '请上传证件照反面',
@@ -1237,6 +1277,17 @@ Page({
             });
             //console.log('pick的护照：'+that.data.idType)
 
+
+        }
+
+        else if(e.detail.value=='3'){
+            //临时身份证
+            that.setData({
+
+                idType:'5'
+
+
+            });
 
         }
 

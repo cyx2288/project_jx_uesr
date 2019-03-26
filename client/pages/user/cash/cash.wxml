@@ -1,3 +1,11 @@
+<wxs module="phone">
+    var toHide = function(array) {
+    var mphone = '**** **** **** ' + array.substring(array.length-4);
+    return mphone;
+    }
+    module.exports.toHide = toHide;
+</wxs>
+
 <!--提现-->
 
 <view class="cash_card">
@@ -35,7 +43,7 @@
                                 <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
                             </view>
 
-                            <view class="details_date">{{bankNo}}</view>
+                            <view class="details_date">{{phone.toHide(bankNo)}}</view>
 
                         </view>
 

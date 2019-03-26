@@ -89,7 +89,7 @@
 
             <view class="password_title">
 
-                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证正面</text><text wx:elif="{{idType==4}}">台胞证正面</text><text wx:else>护照照片</text></text>
+                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证正面</text><text wx:elif="{{idType==4}}">台胞证正面</text><text wx:elif="{{idType==5}}">临时身份证正面</text><text wx:else>护照照片</text></text>
                 <text class="password_example" bindtap="showFaceTipFn">示例</text>
             </view>
 
@@ -98,7 +98,7 @@
 
         <!--上传港、澳、台通行证反面-->
 
-        <view  class="mainland_certification" hidden="{{idType==2}}">
+        <view  class="mainland_certification" hidden="{{idType==2||idType==5}}">
 
             <view class="jx_password_image" bindtap="uploadPhotoBackFn">
                 <image class="password_face"  src="{{backImg}}"></image>
@@ -107,7 +107,7 @@
 
             <view class="password_title">
 
-                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证正面</text><text wx:elif="{{idType==4}}">台湾通行证正面</text></text>
+                <text class="password_text">上传<text wx:if="{{idType == 3||idType == 1}}">港澳通行证反面</text><text wx:elif="{{idType==4}}">台湾通行证反面</text></text>
                 <text class="password_example" bindtap="showBackTipFn">示例</text>
             </view>
 

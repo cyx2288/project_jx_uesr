@@ -35,6 +35,7 @@
             <view wx:elif="{{idType=='2'}}" class="account_information_tel">护照</view>
             <view wx:elif="{{idType=='3'}}" class="account_information_tel">港澳居民来往内地通行证</view>
             <view wx:elif="{{idType=='4'}}" class="account_information_tel">台湾居民来往内地通行证</view>
+            <view wx:elif="{{idType=='5'}}" class="account_information_tel">临时身份证</view>
 
         </view>
 

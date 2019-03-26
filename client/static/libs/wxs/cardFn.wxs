@@ -1,0 +1,26 @@
+/**
+ * Created by ZHUANGYI on 2019/3/26.
+ */
+ var filter = {
+
+
+    cardFn: function (cardNumber) {
+
+        console.log('12'+cardNumber.substr(-4))
+
+        var card = cardNumber.substr(-4)
+
+        return card
+
+
+    }
+
+
+}
+
+
+ module.exports = {
+
+     cardFn: filter.cardFn
+
+ }
