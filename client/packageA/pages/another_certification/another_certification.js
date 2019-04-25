@@ -1006,7 +1006,7 @@ Page({
 
         }
 
-        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&that.data.idType!='2'||that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&that.data.idType!='5'){
+        else if(that.data.backImg=='../../../static/icon/wages/jx_passport_opposite.png'&&(that.data.idType!='2'&&that.data.idType!='5')){
 
             wx.showToast({
                 title: '请上传证件照反面',

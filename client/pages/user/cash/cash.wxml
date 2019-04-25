@@ -137,22 +137,31 @@
             <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
 
             <view class="cash_prompt">
-                <view class="jx_record">
+                <view>
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准，正常退款时间内，建议咨询相关银行
-                </view>
+                <view class="weui-media-box__desc font_small">订单提交后工作日一般2小时内处理，如出款失败，则5个工作日内退款至原支付账户，具体以银行时间为准</view>
             </view>
 
             <view class="cash_prompt">
-                <view class="jx_record">
+                <view>
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">限额说明：单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元</view>
+                <view class="weui-media-box__desc font_small">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
+
+            <view class="cash_prompt">
+                <view>
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
+                <view class="weui-media-box__desc font_small">若提现时系统频繁退款，建议您更换银行卡后重新提现或联系客服处理</view>
+                <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
+            </view>
+
 
         </view>
 

@@ -47,7 +47,7 @@ Page({
 
             that.setData({
 
-                orderTypes:'01',
+                orderTypes:'01,08',
 
             })
 
