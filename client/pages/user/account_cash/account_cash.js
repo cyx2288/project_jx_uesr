@@ -551,6 +551,8 @@ Page({
 
         if (that.data.security == '1') {
 
+            wx.setStorageSync('operation','transfer');
+
             wx.navigateTo({
 
                 url: '../sms_verification/sms_verification'

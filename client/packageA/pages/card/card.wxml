@@ -11,14 +11,14 @@
     <!--银行卡-->
     <view class="weui-cells brankl_ist" wx:for="{{bankList}}">
 
-        <view class="jx_background">
+     <!--   <view class="jx_background">
             <image src="../../../static/icon/wages/jx_background_money.png"  class="jx_background_money" />
         </view>
+-->
 
+        <view class="jx_card_all" >
 
-        <view class="jx_card_all">
-
-            <view class="jx_card">
+            <view class="jx_card" bindtap="chooseCardFn" data-card="{{item.bankCardId}}" data-num="{{item.bankNo}}" data-name="{{item.bankName}}" data-type="{{item.cardType}}" data-img="{{item.bankImg}}">
                 <!--左图标-->
                 <view class="jx_record">
 

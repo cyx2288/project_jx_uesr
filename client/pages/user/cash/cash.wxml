@@ -10,68 +10,160 @@
 
 <view class="cash_card">
 
+    <!-- tab 选择-->
+    <view class="movie-container">
+        <!-- 导航栏 -->
+        <view class="navbar">
+            <block wx:for="{{navbarTitle}}" wx:key="index">
+                <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
+                    <text>{{item}}</text>
+                </view>
+            </block>
+        </view>
+        <view class="nav_box"></view>
+    </view>
+
     <!--银行卡-->
-    <view class="weui-cells">
+    <view class="weui-cells" wx:if="{{navbarActiveIndex==0}}">
 
 
 
+        <navigator url="../../../packageA/pages/card/card" wx:if="{{userBankCardDTOList.length>0}}">
+
+            <view class="weui-media-box weui-media-box_text new_card_box">
+
+                <view class="bank_list" data-id="{{bankCardId}}" >
 
 
-        <picker bindchange="bindPickerChange" value="" range="{{bankList}}" class="weui-media-box weui-media-box_text">
+                    <view class="weui_title card_content">
 
 
-            <view class="bank_list" data-id="{{bankCardId}}">
+                        <!-- 银行卡-->
+                        <view class="weui_card_list">
 
+                            <view class="jx_record">
 
-                <view class="weui_title card_content">
+                                <image src="{{bankIcon}}"  class="reset_go max_img" />
 
-
-                    <!-- 银行卡-->
-                    <view class="weui_card_list">
-
-                        <view class="jx_record">
-
-                          <image src="{{bankIcon}}"  class="reset_go max_img" />
-
-                       </view>
-
-
-                        <view class="card_name">
-
-                            <view class="weui_left">
-
-                                <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
                             </view>
 
-                            <view class="details_date">{{phone.toHide(bankNo)}}</view>
+
+                            <view class="card_name">
+
+                                <view class="weui_left">
+
+                                    <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
+                                </view>
+
+                                <view class="details_date">{{phone.toHide(bankNo)}}</view>
+
+                            </view>
+
 
                         </view>
 
+                        <!-- 箭头-->
+
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
                     </view>
 
-                    <!-- 箭头-->
 
-                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+
 
                 </view>
+                <!-- 选择银行卡 -->
+                <!--   <picker bindchange="bindPickerChange" value="" range="{{bankList}}" class="weui-media-box weui-media-box_text">
 
 
 
-
-
+                   </picker>-->
             </view>
-        </picker>
+
+        </navigator>
+
+
+        <navigator class="weui-media-box weui-media-box_text new_card_box" url="../../../packageA/pages/add_card/add_card" wx:else>
+
+            <view class="add_circle">+</view>
+            <view>添加银行卡</view>
+
+        </navigator>
+
+
 
         <hr/>
-
-        <!--更多-->
-
-        <navigator type="default" class="weui-cell weui-cell_access weui-cell_link" url="../../../packageA/pages/add_card/add_card">
-            <view class="weui-cell__bd">添加新卡</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
     </view>
+
+    <!-- alipay-->
+    <view class="weui-cells" wx:elif="{{navbarActiveIndex==1}}">
+        <navigator url="../../../packageA/pages/zfb/zfb" wx:if="{{alipayList.length>0}}">
+
+            <view class="weui-media-box weui-media-box_text new_card_box">
+
+                <view class="bank_list" data-id="{{alipayId}}" >
+
+
+                    <view class="weui_title card_content">
+
+
+                        <!-- 银行卡-->
+                        <view class="weui_card_list">
+
+                            <view class="jx_record">
+
+                                <image src="../../../static/icon/wages/zfb.png"  class="reset_go max_img" />
+
+                            </view>
+
+
+                            <view class="card_name">
+
+                                <view class="weui_left">
+
+                                    <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{userName}}</view>
+                                </view>
+
+                                <view class="details_date">{{alipayNo}}</view>
+
+                            </view>
+
+
+                        </view>
+
+                        <!-- 箭头-->
+
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                    </view>
+
+
+
+
+
+                </view>
+                <!-- 选择银行卡 -->
+                <!--   <picker bindchange="bindPickerChange" value="" range="{{bankList}}" class="weui-media-box weui-media-box_text">
+
+
+
+                   </picker>-->
+            </view>
+
+        </navigator>
+
+
+        <navigator class="weui-media-box weui-media-box_text new_card_box" url="../../../packageA/pages/add_zfb/add_zfb" wx:else>
+
+            <view class="add_circle">+</view>
+            <view>添加支付宝账号</view>
+
+        </navigator>
+
+    </view>
+
+
 
     <!--输入金额-->
     <view url="../payroll/payroll" class="weui-cells">
@@ -129,8 +221,8 @@
     </view>
 
 
-    <!--温馨提示-->
-    <view class="weui-prompt weui-panel_access">
+    <!--温馨提示银行卡-->
+    <view class="weui-prompt weui-panel_access" wx:if="{{navbarActiveIndex==0}}">
 
         <view class="weui-media-box weui-media-box_text">
 
@@ -162,6 +254,42 @@
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 
+        </view>
+
+    </view>
+
+    <!--温馨提示zfb-->
+    <view class="weui-prompt weui-panel_access" wx:elif="{{navbarActiveIndex==1}}">
+
+        <view class="weui-media-box weui-media-box_text">
+
+            <view class="weui-media-box__title weui-media-box__title_in-text">温馨提示</view>
+
+            <view class="cash_prompt">
+                <view>
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
+                <view class="weui-media-box__desc font_small">提现支付宝账号须支付宝实名认证才能到账，到账时间为提交后1-2小时。</view>
+            </view>
+
+            <view class="cash_prompt">
+                <view>
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
+                <view class="weui-media-box__desc font_small">请提交订单前确认邮箱和手机绑定了单一支付宝账号，否则会提现失败。</view>
+                <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
+            </view>
+
+            <view class="cash_prompt">
+                <view>
+                    <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
+                </view>
+
+                <view class="weui-media-box__desc font_small">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
+                <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
+            </view>
 
         </view>
 

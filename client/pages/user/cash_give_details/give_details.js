@@ -35,6 +35,8 @@ Page({
         mobile:'',
 
         errorMsg:'',
+
+        alipayNo:'',
     },
 
 
@@ -54,6 +56,8 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var _orderId = wx.getStorageSync('cashOrderId');
+
+        var _orderType = wx.getStorageSync('orderType');
 
         //console.log('提现订单'+_orderId)
 
@@ -83,6 +87,8 @@ Page({
             data: {
 
                 orderId: _orderId,
+
+                orderType:_orderType
 
             },
 
@@ -151,12 +157,8 @@ Page({
                         app.globalData.ajaxFinish(ajaxCount)
 
                     })();
-
                     that.setData({
 
-                        bankName: res.data.data.bankName,
-
-                        bankNo: res.data.data.bankNo,
 
                         orderAmount: res.data.data.orderAmount,
 
@@ -172,17 +174,40 @@ Page({
 
                         createDate: res.data.data.createDate,
 
+                        orderType:res.data.data.orderType,
+
+
+
 
                     })
 
-                    if(res.data.data.errorMsg){
 
+
+                    if(res.data.data.bankName&&res.data.data.bankNo){
 
                         that.setData({
 
-                            errorMsg: res.data.data.errorMsg,
+
+                            bankName: res.data.data.bankName,
+
+                            bankNo: res.data.data.bankNo,
 
                         })
+
+
+
+                    }
+
+
+                    if(res.data.data.alipayNo){
+
+                        that.setData({
+
+                            alipayNo:res.data.data.alipayNo,
+
+                        })
+
+
 
                     }
 

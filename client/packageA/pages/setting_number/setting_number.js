@@ -21,7 +21,13 @@ Page({
 
         locked:1,//0为锁住 1为解锁
 
-        oldCodeMsg:''
+        oldCodeMsg:'',
+
+        hiddenText:true,
+
+        currentVoiceTime:60,//语音验证码倒计时
+
+
 
     },
     
@@ -443,11 +449,148 @@ Page({
 
                     currentTime:60,
 
-                    disabled: false
+                    disabled: false,
+
+                    hiddenText:false
                 })
             }
         }, 1000)
-    }
+    },
+
+    voiceFn:function () {
+
+        var url = app.globalData.URL + '/jx/action/newmobileaudiocheck';//发送语音验证码';
+
+        var that = this;
+
+        var currentVoiceTime = that.data.currentVoiceTime;
+
+        console.log(currentVoiceTime)
+
+
+        if(currentVoiceTime<60){
+
+            wx.showToast({
+
+                title: '操作过于频繁，请稍后再试',
+                icon: 'none',
+                mask: true,
+
+            });
+
+
+        }
+        else {
+
+            /**
+             * 接口：注册发送语音短信认证
+             * 请求方式：/jx/action/newmobileaudiocheck
+             * 接口：GET
+             * 入参：mobile
+             **/
+            wx.request({//注册
+
+                url: url,
+
+                method: 'GET',
+
+
+                data: {
+
+                    mobile: that.data.mobile
+
+                },
+
+
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    //存储数据
+                    var jx_sid = res.header.jxsid;//jx_sid数据
+
+                    //存储数据
+                    wx.setStorageSync('jxsid', jx_sid);
+
+
+                    if (res.data.code == '0000') {
+
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none',
+                            mask: true,
+
+                        });
+
+
+
+                        //倒计时开始
+                        var interval = setInterval(function () {
+
+                            currentVoiceTime--;
+
+                            that.setData({
+
+                                currentVoiceTime: currentVoiceTime
+
+                            });
+
+
+                            if (currentVoiceTime <= 0) {
+
+                                clearInterval(interval);
+
+                                that.setData({
+
+                                    currentVoiceTime:60,
+
+                                })
+
+                            }
+
+                        }, 1000)
+
+
+                    }
+
+                    else {
+
+                        wx.showToast({
+
+                            title: res.data.msg,
+                            icon: 'none',
+                            mask: true,
+
+                        });
+
+                    }
+
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+                }
+
+            })
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+    },
 
 
 });

@@ -1,0 +1,229 @@
+@import "../../../pages/wages/payroll/payroll.wxss";
+@import "../../../pages/user/mine/mine.wxss";
+
+
+.weui-cells{
+
+    background-color: #fda03c;
+    line-height: 1.8;
+}
+
+.jx_bank{
+    color: #fff;
+    font-size: 18px;
+}
+
+.alipay_middle .jx_record{
+    padding: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.alipay_all{
+
+    display:flex;
+    justify-content:space-between;
+    color:#fff;
+    z-index:500;
+
+}
+
+.alipay_card{
+    display:flex;
+    padding:20px 15px;
+    width:80%;
+
+
+}
+.jx_background{
+    overflow: hidden;
+    text-align: right;
+    top: -12px;
+    left: -50px;
+    opacity: .6;
+    z-index: 30;
+}
+.jx_background_money{
+    width: 110px;
+    height: 110px;
+}
+.reset_go{
+    width: 26px;
+    height: 26px;
+    margin: 0 auto;
+}
+.jx_alipay_message{
+    line-height: 20px;
+}
+
+hr{
+    width: 100%;
+}
+image.orange{
+
+    padding:15px;
+
+}
+
+.alipay_middle .card_style{
+    font-size: 14px;
+    margin-left: 30px;
+    color: #fff;
+}
+
+.alipay_middle .weui_middle{
+
+    width: 100%;
+}
+
+.alipay_middle .page__bd_spacing{
+    margin-top: 20px;
+}
+.no{
+    font-size: 18px;
+}
+.weui-media-box{
+    padding: 5px 15px;
+}
+
+/*自定义模态*/
+
+.show-btn {
+    margin-top: 100rpx;
+    color: #fe9728;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 540rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -180rpx 105rpx;
+    border-radius: 36rpx;
+}
+
+.modal-title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #030303;
+    text-align: center;
+}
+
+.modal-content {
+    padding: 50rpx 32rpx;
+}
+
+.modal-input {
+    display: flex;
+    background: #fff;
+    border: 2rpx solid #ddd;
+    border-radius: 4rpx;
+    font-size: 28rpx;
+}
+
+
+input {
+    width: 100%;
+    height: 82rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.input-holder {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 86rpx;
+    border-top: 1px solid #dedede;
+    font-size: 34rpx;
+    line-height: 86rpx;
+}
+
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+    width: 50%;
+    color: #ec5300;
+    text-align: center;
+}
+
+
+
+.weui-cell__ft{
+    border: 1px solid #fe9728;
+    border-radius: 5px;
+    color: #fe9728;
+    width: 50px;
+    text-align: center;
+    padding-top: 1px;
+}
+
+.reset_go{
+    width: 30px;
+    height: 30px;
+}
+
+.bank_delate{
+
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.weui_confirm{
+    width: 22px;
+    height: 22px;
+
+}
+
+.page__bd{
+    background-color: #fff;
+    width: 94%;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    margin: 20rpx auto;
+    padding: 0;
+    height: 60px;
+
+}
+
+.add_alipay{
+    padding-top: 15px;
+}
+
+

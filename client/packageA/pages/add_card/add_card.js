@@ -463,6 +463,14 @@ Page({
 
         else {
 
+            wx.showLoading({
+
+                mask: true,
+                title: '银行卡添加中',
+
+            });
+
+
 
             wx.request({
 
@@ -502,7 +510,7 @@ Page({
 
                     //银行卡添加成功 toast提示成功
 
-
+                    wx.hideLoading();
 
                     //code3003返回方法
                     app.globalData.repeat(res.data.code, res.data.msg);
@@ -549,16 +557,32 @@ Page({
 
                             })
 
-                            setTimeout(function () {
+
+
+
+
+                            if(wx.getStorageSync('transferCash')=='6'){
 
 
                                 wx.navigateBack({
 
-                                    delta: 1
+                                    delta: 2
 
                                 })
 
-                            }, 2000)
+                            }else {
+
+
+
+                                    wx.navigateBack({
+
+                                        delta: 1
+
+                                    })
+
+
+
+                            }
 
 
                         }

@@ -36,6 +36,10 @@ Page({
 
         imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
 
+        currentVoiceTime:60,//语音验证码
+
+        hiddenText:true,//是否显示语音验证码
+
 
 
     },
@@ -55,6 +59,16 @@ Page({
         var Authorization = wx.getStorageSync('Authorization');
 
         var _mobile = wx.getStorageSync('mobile');
+
+        var _operation = wx.getStorageSync('operation');
+
+        //0-提现到银行卡 1-提现到支付宝
+
+        var _chooseActive = wx.getStorageSync('chooseActive');
+
+      /*  console.log('到底是转账还是提现'+_operation);*/
+
+        console.log('1-支付宝 0-银行卡'+_chooseActive);
 
         var countdown = 60;
 
@@ -79,6 +93,9 @@ Page({
                 that.setData({
 
                     locked:1,
+
+                    hiddenText:false
+
                 })
 
 
@@ -110,128 +127,377 @@ Page({
 
         console.log(that.data.mobile)
 
-        /**
-         * 接口：提现发送短信认证
-         * 请求方式：GET
-         * 接口：/jx/action/withdrawmsg
-         * 入参：moblie
-         * */
 
-        wx.request({
+        if(_operation=='cash'){
 
-            url: thisWithdrawmsgUrl,
-
-            method: 'GET',
-
-            data:{
-
-                mobile:that.data.mobile,
+            //发送支付宝短信认证
+            if(_chooseActive=='1'){
 
 
-            },
-            header:{
+                /**
+                 * 接口：提现到支付宝 支付发送短信认证
+                 * 请求方式：GET
+                 * 接口：/jx/action/withdrawmsgalipay
+                 * 入参：moblie
+                 * */
 
-                'jxsid':jx_sid,
+                wx.request({
 
-                'Authorization':Authorization
+                    url: app.globalData.URL+'/jx/action/withdrawmsgalipay',
 
-            },
+                    method: 'GET',
 
-            success: function (res) {
+                    header:{
 
-                console.log(res.data);
+                        'jxsid':jx_sid,
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                        'Authorization':Authorization
 
-                app.globalData.token(res.header.Authorization)
+                    },
 
-                if(res.data.code=='3001') {
+                    success: function (res) {
 
-                    //console.log('登录');
+                        console.log(res.data);
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1500,
-                        success:function () {
+                        app.globalData.repeat(res.data.code,res.data.msg);
 
-                            setTimeout(function () {
+                        app.globalData.token(res.header.Authorization)
 
-                                wx.reLaunch({
+                        if(res.data.code=='3001') {
 
-                                    url:'../../common/signin/signin'
+                            //console.log('登录');
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1500,
+                                success:function () {
+
+                                    setTimeout(function () {
+
+                                        wx.reLaunch({
+
+                                            url:'../../common/signin/signin'
+                                        })
+
+                                    },1500)
+
+                                }
+
+                            })
+
+                            return false
+
+
+                        }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
+
+                        else {
+
+                            (function countDownAjax() {
+
+                                ajaxCount--;
+
+                                app.globalData.ajaxFinish(ajaxCount)
+
+                            })();
+
+
+                            if (res.data.code == '0000') {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
                                 })
 
-                            },1500)
+
+                            }
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+                                })
+
+
+                            }
 
                         }
 
-                    })
-
-                    return false
 
 
-                }
-                else if(res.data.code=='3004'){
 
-                    var Authorization = res.data.token.access_token;//Authorization数据
-
-                    wx.setStorageSync('Authorization', Authorization);
-
-                    return false
-                }
-
-                else {
-
-                    (function countDownAjax() {
-
-                        ajaxCount--;
-
-                        app.globalData.ajaxFinish(ajaxCount)
-
-                    })();
+                    },
 
 
-                    if (res.data.code == '0000') {
+                    fail: function (res) {
 
-                        wx.showToast({
-
-                            title: res.data.msg,
-
-                            icon: 'none',
-
-                        })
-
-
-                    }
-                    else {
-
-                        wx.showToast({
-
-                            title: res.data.msg,
-
-                            icon: 'none',
-                        })
-
+                        console.log(res)
 
                     }
 
-                }
+                })
+
+            }
+            else {
+
+
+                /**
+                 * 接口：提现发送短信认证
+                 * 请求方式：GET
+                 * 接口：/jx/action/withdrawmsg
+                 * 入参：moblie
+                 * */
+
+                wx.request({
+
+                    url: thisWithdrawmsgUrl,
+
+                    method: 'GET',
+
+                    header:{
+
+                        'jxsid':jx_sid,
+
+                        'Authorization':Authorization
+
+                    },
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                        app.globalData.token(res.header.Authorization)
+
+                        if(res.data.code=='3001') {
+
+                            //console.log('登录');
+
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'none',
+                                duration: 1500,
+                                success:function () {
+
+                                    setTimeout(function () {
+
+                                        wx.reLaunch({
+
+                                            url:'../../common/signin/signin'
+                                        })
+
+                                    },1500)
+
+                                }
+
+                            })
+
+                            return false
+
+
+                        }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
+
+                        else {
+
+                            (function countDownAjax() {
+
+                                ajaxCount--;
+
+                                app.globalData.ajaxFinish(ajaxCount)
+
+                            })();
+
+
+                            if (res.data.code == '0000') {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
+                                })
+
+
+                            }
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+                                })
+
+
+                            }
+
+                        }
 
 
 
 
-            },
+                    },
 
 
-            fail: function (res) {
+                    fail: function (res) {
 
-                console.log(res)
+                        console.log(res)
+
+                    }
+
+                })
 
             }
 
-        })
-        
+
+
+
+        }
+        else if(_operation=='transfer'){
+
+            /**
+             * 接口：转账发送短信认证
+             * 请求方式：GET
+             * 接口：/jx/action/dotransferp
+             * 入参：moblie
+             * */
+
+            wx.request({
+
+                url: app.globalData.URL+'/jx/action/dotransferp',
+
+                method: 'GET',
+
+                header:{
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
+
+
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        (function countDownAjax() {
+
+                            ajaxCount--;
+
+                            app.globalData.ajaxFinish(ajaxCount)
+
+                        })();
+
+
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+
+
+                        }
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+                            })
+
+
+                        }
+
+                    }
+
+
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+
+        }
+
+
 
 
 
@@ -251,13 +517,22 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
-        //提现
+        //提现--------------------------------------------------------------
+
         var _balance = wx.getStorageSync('balance');
 
-        var _bankCardId = wx.getStorageSync('bankCardId')
 
-        //转账
 
+        var _alipayId = wx.getStorageSync('alipayId');  //提现到支付宝
+
+        var _bankCardId = wx.getStorageSync('bankCardId'); //提现到银行卡
+
+
+
+
+
+
+        //转账---------------------------------------------------------------
         //转账部分
         var _transferBalance = wx.getStorageSync('transferBalance');//转账金额
 
@@ -279,19 +554,6 @@ Page({
 
         }
 
-
-        //console.log(that.data.code)
-
-  /*      console.log({
-
-            bankCardId: _bankCardId,//银行卡id
-
-            balance: _balance,//提取现金
-
-            code: that.data.code,//短信验证
-
-
-        })*/
 
         else if(_transferCash=='5'){
 
@@ -450,138 +712,286 @@ Page({
 
         else if(_transferCash=='6'){
 
-            console.log('提现')
 
-            /**
-             * 接口：获取账户提现记录
-             * 请求方式：GET
-             * 接口：/user/withdraw/dowithdraw
-             * 入参：bizId,bankCardId,balance,payPassword,code
-             * */
+            if(wx.getStorageSync('chooseActive')=='1'){
 
-            wx.request({
-
-                url: thisCashUrl,
-
-                method: 'GET',
-
-                data: {
-
-                    bankCardId: _bankCardId,//银行卡id
-
-                    balance: _balance,//提取现金
-
-                    code: that.data.code,//短信验证
+                wx.setStorageSync('orderdowithdraw','09')
 
 
-                },
-                header: {
+                /**
+                 * 接口：用户发起支付宝提现操作
+                 * 请求方式：GET
+                 * 接口：/user/withdraw/dowithdrawtoalipay
+                 * 入参：alipayId,balance,code
+                 * */
 
-                    'jxsid': jx_sid,
+                wx.request({
 
-                    'Authorization': Authorization
+                    url: app.globalData.URL+'/user/withdraw/dowithdrawtoalipay',
 
-                },
+                    method: 'GET',
 
-                success: function (res) {
+                    data: {
 
-                    console.log(res.data);
+                        alipayId: _alipayId,//银行卡id
 
-                    app.globalData.repeat(res.data.code,res.data.msg);
+                        balance: _balance,//提取现金
 
-                    app.globalData.token(res.header.Authorization)
-
-                    if(res.data.code=='3001') {
-
-                        //console.log('登录');
-
-                        setTimeout(function () {
-
-                            wx.reLaunch({
-
-                                url:'../../common/signin/signin'
-                            })
-
-                        },1500)
+                        code: that.data.code,//短信验证
 
 
+                    },
+                    header: {
 
-                        return false
+                        'jxsid': jx_sid,
+
+                        'Authorization': Authorization
+
+                    },
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                        app.globalData.token(res.header.Authorization)
+
+                        if(res.data.code=='3001') {
+
+                            //console.log('登录');
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
 
 
-                    }
-                    else if(res.data.code=='3004'){
 
-                        var Authorization = res.data.token.access_token;//Authorization数据
+                            return false
 
-                        wx.setStorageSync('Authorization', Authorization);
-
-                        return false
-                    }
-
-                    else {
-
-
-                        //缓存点单号
-                        wx.setStorageSync('cashOrderId', res.data.data);
-
-                        //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
-                        wx.setStorageSync('successVerify', 'true');
-
-                        if (res.data.code == '0000') {
-
-
-                            wx.showToast({
-
-                                title: res.data.msg,
-
-                                icon: 'none',
-
-                            })
-
-                            wx.redirectTo({
-
-                                url: '../pay_success/pay_success'
-                            })
 
                         }
+                        else if(res.data.code=='3004'){
 
-                        else if(res.data.code == '-10'){
+                            var Authorization = res.data.token.access_token;//Authorization数据
 
-                            that.setData({
+                            wx.setStorageSync('Authorization', Authorization);
 
-                                showModal: true,
-
-                                titleContent:'提现',//弹框内容
-
-                            })
-
-
+                            return false
                         }
 
                         else {
 
-                            wx.showToast({
 
-                                title: res.data.msg,
+                            //缓存点单号
+                            wx.setStorageSync('cashOrderId', res.data.data);
 
-                                icon: 'none',
+                            //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
 
-                            })
+                            if (res.data.code == '0000') {
+
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
+                                })
+
+                                wx.redirectTo({
+
+                                    url: '../pay_success/pay_success'
+                                })
+
+                            }
+
+                            else if(res.data.code == '-10'){
+
+                                that.setData({
+
+                                    showModal: true,
+
+                                    titleContent:'提现',//弹框内容
+
+                                })
+
+
+                            }
+
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
+                                })
+                            }
+
                         }
+
+                    },
+
+
+                    fail: function (res) {
+
+                        console.log(res)
 
                     }
 
-                },
+                })
 
 
-                fail: function (res) {
+            }
+            else {
 
-                    console.log(res)
+                wx.setStorageSync('orderdowithdraw','08')
 
-                }
 
-            })
+
+                /**
+                 * 接口：获取账户提现记录
+                 * 请求方式：GET
+                 * 接口：/user/withdraw/dowithdraw
+                 * 入参：bizId,bankCardId,balance,payPassword,code
+                 * */
+
+                wx.request({
+
+                    url: thisCashUrl,
+
+                    method: 'GET',
+
+                    data: {
+
+                        bankCardId: _bankCardId,//银行卡id
+
+                        balance: _balance,//提取现金
+
+                        code: that.data.code,//短信验证
+
+
+                    },
+                    header: {
+
+                        'jxsid': jx_sid,
+
+                        'Authorization': Authorization
+
+                    },
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+                        app.globalData.repeat(res.data.code,res.data.msg);
+
+                        app.globalData.token(res.header.Authorization)
+
+                        if(res.data.code=='3001') {
+
+                            //console.log('登录');
+
+                            setTimeout(function () {
+
+                                wx.reLaunch({
+
+                                    url:'../../common/signin/signin'
+                                })
+
+                            },1500)
+
+
+
+                            return false
+
+
+                        }
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
+
+                        else {
+
+
+                            //缓存点单号
+                            wx.setStorageSync('cashOrderId', res.data.data);
+
+                            //存储有没有提现成功 如果操作成功则个人中心刷新 没成功或者没操作则不用刷新
+                            wx.setStorageSync('successVerify', 'true');
+
+                            if (res.data.code == '0000') {
+
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
+                                })
+
+                                wx.redirectTo({
+
+                                    url: '../pay_success/pay_success'
+                                })
+
+                            }
+
+                            else if(res.data.code == '-10'){
+
+                                that.setData({
+
+                                    showModal: true,
+
+                                    titleContent:'提现',//弹框内容
+
+                                })
+
+
+                            }
+
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+
+                                    icon: 'none',
+
+                                })
+                            }
+
+                        }
+
+                    },
+
+
+                    fail: function (res) {
+
+                        console.log(res)
+
+                    }
+
+                })
+
+
+            }
+
+
 
 
         }
@@ -629,6 +1039,10 @@ Page({
 
                     locked:1,
 
+                    hiddenText:false,//是否显示语音验证码
+
+
+
                 });
 
                 countdown = 60;
@@ -653,121 +1067,469 @@ Page({
 
 
         }
-        /**
-         * 接口：提现发送短信认证
-         * 请求方式：GET
-         * 接口：/jx/action/withdrawmsg
-         * 入参：moblie
-         * */
 
-        wx.request({
-
-            url: thisWithdrawmsgUrl,
-
-            method: 'GET',
-
-            data:{
-
-                mobile:that.data.mobile,
+        if(wx.getStorageSync('operation')=='cash'){
 
 
-            },
-            header:{
+            /**
+             * 接口：提现发送短信认证
+             * 请求方式：GET
+             * 接口：/jx/action/withdrawmsg
+             * 入参：null
+             * */
 
-                'jxsid':jx_sid,
+            wx.request({
 
-                'Authorization':Authorization
+                url: thisWithdrawmsgUrl,
 
-            },
+                method: 'GET',
 
-            success: function (res) {
+                header:{
 
-                console.log(res.data);
+                    'jxsid':jx_sid,
 
-                app.globalData.repeat(res.data.code,res.data.msg);
+                    'Authorization':Authorization
 
-                app.globalData.token(res.header.Authorization)
+                },
 
-                if(res.data.code=='3001') {
+                success: function (res) {
 
-                    //console.log('登录');
+                    console.log(res.data);
 
-                    setTimeout(function () {
+                    app.globalData.repeat(res.data.code,res.data.msg);
 
-                        wx.reLaunch({
+                    app.globalData.token(res.header.Authorization)
 
-                            url:'../../common/signin/signin'
-                        })
+                    if(res.data.code=='3001') {
 
-                    },1500)
+                        //console.log('登录');
 
-                    /*                          wx.showToast({
-                     title: res.data.msg,
-                     icon: 'none',
-                     duration: 1500,
-                     success:function () {
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500)
+
+                        /*                          wx.showToast({
+                         title: res.data.msg,
+                         icon: 'none',
+                         duration: 1500,
+                         success:function () {
 
 
 
-                     }
+                         }
 
-                     })*/
+                         })*/
 
-                    return false
-
-
-                }
-                else if(res.data.code=='3004'){
-
-                    var Authorization = res.data.token.access_token;//Authorization数据
-
-                    wx.setStorageSync('Authorization', Authorization);
-
-                    return false
-                }
-
-                else {
-
-
-                    if (res.data.code == '0000') {
-
-                        wx.showToast({
-
-                            title: res.data.msg,
-
-                            icon: 'none',
-
-                        })
+                        return false
 
 
                     }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
                     else {
 
-                        wx.showToast({
 
-                            title: res.data.msg,
+                        if (res.data.code == '0000') {
 
-                            icon: 'none',
-                        })
+                            wx.showToast({
 
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+
+
+                        }
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+                            })
+
+
+                        }
 
                     }
 
+
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
                 }
 
+            })
 
 
 
-            },
+
+        }
+
+        else if(wx.getStorageSync('operation')=='transfer'){
+
+            /**
+             * 接口：转账发送短信认证
+             * 请求方式：GET
+             * 接口：/jx/action/dotransferp
+             * 入参：null
+             * */
+
+            wx.request({
+
+                url: app.globalData.URL+'/jx/action/dotransferp',
+
+                method: 'GET',
+
+                header:{
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 1500,
+                            success:function () {
+
+                                setTimeout(function () {
+
+                                    wx.reLaunch({
+
+                                        url:'../../common/signin/signin'
+                                    })
+
+                                },1500)
+
+                            }
+
+                        })
+
+                        return false
 
 
-            fail: function (res) {
+                    }
+                    else if(res.data.code=='3004'){
 
-                console.log(res)
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+                        (function countDownAjax() {
+
+                            ajaxCount--;
+
+                            app.globalData.ajaxFinish(ajaxCount)
+
+                        })();
+
+
+                        if (res.data.code == '0000') {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+
+                            })
+
+
+                        }
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+
+                                icon: 'none',
+                            })
+
+
+                        }
+
+                    }
+
+
+
+
+                },
+
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+        }
+
+
+
+    },
+
+    voiceFn:function () {
+
+
+        var that = this;
+
+        var currentVoiceTime = that.data.currentVoiceTime;
+
+        console.log(currentVoiceTime)
+
+
+        if(currentVoiceTime<60){
+
+            wx.showToast({
+
+                title: '操作过于频繁，请稍后再试',
+                icon: 'none',
+                mask: true,
+
+            });
+
+
+        }
+        else {
+
+            if(wx.getStorageSync('chooseActive')=='1'){
+
+                /**
+                 * 接口：提现到支付宝 支付发送语音短信认证
+                 * 请求方式：/jx/action/withdrawmsgalipayaudio
+                 * 接口：GET
+                 * 入参：null
+                 **/
+                wx.request({//注册
+
+                    url: app.globalData.URL + '/jx/action/withdrawmsgalipayaudio',
+
+                    method: 'GET',
+
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+                        //存储数据
+                        var jx_sid = res.header.jxsid;//jx_sid数据
+
+                        //存储数据
+                        wx.setStorageSync('jxsid', jx_sid);
+
+
+                        if (res.data.code == '0000') {
+
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+
+
+                            //倒计时开始
+                            var interval = setInterval(function () {
+
+                                currentVoiceTime--;
+
+                                that.setData({
+
+                                    currentVoiceTime: currentVoiceTime
+
+                                });
+
+
+                                if (currentVoiceTime <= 0) {
+
+                                    clearInterval(interval);
+
+                                    that.setData({
+
+                                        currentVoiceTime:60,
+
+                                    })
+
+                                }
+
+                            }, 1000)
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+                        }
+
+
+                    },
+
+                    fail: function (res) {
+
+                        console.log(res)
+                    }
+
+                })
+
+
+
+
 
             }
 
-        })
+            else {
+
+                /**
+                 * 接口：支付发送语音验证码
+                 * 请求方式：/jx/action/withdrawmsgaudio
+                 * 接口：GET
+                 * 入参：null
+                 **/
+                wx.request({//注册
+
+                    url: app.globalData.URL + '/jx/action/withdrawmsgaudio',
+
+                    method: 'GET',
+
+
+                    success: function (res) {
+
+                        console.log(res.data);
+
+                        //存储数据
+                        var jx_sid = res.header.jxsid;//jx_sid数据
+
+                        //存储数据
+                        wx.setStorageSync('jxsid', jx_sid);
+
+
+                        if (res.data.code == '0000') {
+
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+
+
+                            //倒计时开始
+                            var interval = setInterval(function () {
+
+                                currentVoiceTime--;
+
+                                that.setData({
+
+                                    currentVoiceTime: currentVoiceTime
+
+                                });
+
+
+                                if (currentVoiceTime <= 0) {
+
+                                    clearInterval(interval);
+
+                                    that.setData({
+
+                                        currentVoiceTime:60,
+
+                                    })
+
+                                }
+
+                            }, 1000)
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+                        }
+
+
+                    },
+
+                    fail: function (res) {
+
+                        console.log(res)
+                    }
+
+                })
+
+
+            }
+
+        }
+
+
+
+
+
+
 
 
 

@@ -58,6 +58,7 @@
       "root": "packageA",
       "pages": [
         "pages/add_card/add_card",
+        "pages/add_zfb/add_zfb",
         "pages/card/card",
         "pages/bill/bill",
         "pages/exchange_number/exchange_number",
@@ -81,7 +82,8 @@
         "pages/IDCard_information/IDCard_information",
         "pages/IDcard_certification/IDcard_certification",
         "pages/choose_certification/choose_certification",
-        "pages/another_certification/another_certification"
+        "pages/another_certification/another_certification",
+        "pages/zfb/zfb"
       ]
     }
   ],

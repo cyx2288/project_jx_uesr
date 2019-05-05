@@ -1,0 +1,62 @@
+<wxs module="phone">
+    var toHide = function(array) {
+    var mphone = '**** **** **** ' + array.substring(array.length-4);
+    return mphone;
+    }
+    module.exports.toHide = toHide;
+</wxs>
+
+<view class="alipay_middle">
+
+    <!--银行卡-->
+    <view class="weui-cells alipay_list" wx:for="{{alipayList}}">
+
+<!--
+        <view class="jx_background">
+            <image src="../../../static/icon/wages/jx_background_money.png"  class="jx_background_money" />
+        </view>
+-->
+
+
+        <view class="alipay_all">
+
+            <view class="alipay_card" bindtap="chooseZfbFn" data-id="{{item.alipayId}}" data-no="{{item.alipayNo}}">
+                <!--左图标-->
+                <view class="jx_record">
+
+                    <image src="../../../static/icon/wages/zfb.png"  class="reset_go" />
+
+                </view>
+
+                <!--银行卡信息-->
+                <view class="jx_alipay_message">
+
+                    <view class="name">{{item.userName}}</view>
+
+                    <text class="no">{{item.alipayNo}}</text>
+
+                </view>
+            </view>
+
+            <!--删除-->
+
+            <image src="../../../static/icon/wages/jx_delate.png"  class="weui_confirm orange"   data-alipay="{{item.alipayId}}" data-num="{{item.alipayNo}}" bindtap="detZfbFn"/>
+
+        </view>
+
+
+
+
+    </view>
+
+
+
+
+    <view class="page__bd add_card_btn">
+
+        <view class="add_alipay" type="primary" bindtap="addCardFn" style="color: #bbb;">+ 添加支付宝账号</view>
+
+    </view>
+
+
+</view>

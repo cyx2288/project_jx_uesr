@@ -30,3 +30,11 @@
         <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
     </view>
 </view>
+
+<!-- 语音码 -->
+
+<view class="register_text text_right"  hidden="{{hiddenText}}" >
+
+    <view>没有收到验证码？请尝试获取<span class="orange_text" bindtap="voiceFn">语音验证码</span></view>
+
+</view>

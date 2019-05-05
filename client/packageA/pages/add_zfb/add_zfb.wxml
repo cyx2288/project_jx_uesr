@@ -1,0 +1,50 @@
+
+<view class="add_card">
+
+
+
+
+            <view class="weui-cells bottom_button">
+
+                <!-- 输入支付宝账号-->
+
+                <view class="weui-cell">
+
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">支付宝账号</view>
+                    </view>
+
+                    <view class="weui-cell__bd">
+                        <input class="weui-input" auto-focus="true" placeholder="请输入手机号或者邮箱"  value="{{zfbNo}}"  bindinput="zfbNoFn"/>
+                    </view>
+
+                </view>
+
+
+                <hr/>
+                <!-- 输入姓名-->
+
+                <view class="weui-cell height_line">
+
+                    <view class="weui-label">姓名</view>
+                    <view class="weui-cell__ft">{{userName}}</view>
+
+                </view>
+
+            <hr/>
+            </view>
+
+
+
+
+    <view class="page__bd page__bd_spacing">
+
+        <button class="weui-btn" type="primary" bindtap="addZfbFn">添加</button>
+
+    </view>
+
+
+
+
+
+</view>

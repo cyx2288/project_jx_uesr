@@ -1,0 +1,135 @@
+@import "../../../pages/user/mine/mine.wxss";
+
+
+
+
+.weui-label {
+    color: #ababab;
+    width: 100px;
+}
+.weui-label >.red_text{
+
+    color: #ff4646;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.weui-cell{
+    padding:5px 15px;
+    font-size: 16px;
+
+}
+
+.height_line{
+    padding:11px 15px;
+}
+.weui-cells{
+
+    margin: 10px auto;
+}
+
+.weui-cell__ft{
+
+    color: #4a4a4a;
+    text-align: left;
+
+}
+
+.weui-input {
+
+    padding-left: 0;
+}
+
+
+.prompt{
+
+    color: #8a8a8a;
+
+    font-size: 14px;
+    padding: 0 20px;
+
+}
+
+
+.weui-select{
+    padding-left: 0;
+}
+
+/*提示*/
+.reset_go{
+
+    width: 20px;
+    height: 20px;
+    padding-top: 8px;
+}
+
+
+.weui_top{
+
+    background-color: #fff6f2;
+    height: 20px;
+    padding:15px 15px;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+    align-items:center;
+    vertical-align: middle;
+
+}
+
+.weui-cells__title{
+
+    color: #ee6934;
+    margin-top: .6em;
+}
+
+
+/*button*/
+.weui-btn{
+    background: -webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    font-size: 16px;
+
+}
+
+.bottom_button{
+    margin-bottom: 25px;
+}
+.card_type{
+
+    margin-right: 10px;
+}
+.choose_bank{
+
+    color: #4a4a4a;
+
+}
+.choose_bank>span{
+
+    margin-left: 10px;
+
+}
+
+.bank_label{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    width: auto;
+}
+.bank_label>image{
+
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.phcolor{
+
+    color: #ababab;
+}
+.look_more{
+
+    color: #E87B17;
+    line-height: 80rpx;
+}

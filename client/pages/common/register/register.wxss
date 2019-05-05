@@ -6,7 +6,7 @@ page{
 
 .register_text{
 
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
     text-align: center;
     color: #9b9b9b;
@@ -62,4 +62,11 @@ page{
     height: 26px;
     vertical-align: middle;
 
+}
+.text_right{
+    text-align: right;
+    padding: 0 15px;
+}
+.orange_text{
+    color:#fe9728;
 }

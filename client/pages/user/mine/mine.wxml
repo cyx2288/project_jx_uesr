@@ -1,6 +1,6 @@
 
 
-<view class="weui-mine">
+     <view class="weui-mine">
 
   <navigator url="../personal/personal" class="wechat_mine_personal">
 
@@ -232,3 +232,4 @@
     </view>
 
 </view>
+

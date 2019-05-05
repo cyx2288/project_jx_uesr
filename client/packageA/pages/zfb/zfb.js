@@ -1,11 +1,161 @@
 /**
  * Created by ZHUANGYI on 2018/5/14.
- */
+ *//*var bankList = {
 
+    data:[
+        {
+            icon:'',
+            bankName:'中国银行',
+        },
+        {
+            icon:'',
+            bankName:'农业银行',
+        },
+
+        {
+            icon:'',
+            bankName:'工商银行',
+        },
+        {
+            icon:'',
+            bankName:'建设银行',
+        },
+
+        {
+            icon:'',
+            bankName:'交通银行',
+        },
+        {
+            icon:'',
+            bankName:'中国邮政储蓄银行',
+        },
+        {
+            icon:'',
+            bankName:'广发银行',
+        },
+        {
+            icon:'',
+            bankName:'浦发银行',
+        },        {
+            icon:'',
+            bankName:'浙江泰隆商业银行',
+        },
+        {
+            icon:'',
+            bankName:'招商银行',
+        },
+
+        {
+            icon:'',
+            bankName:'民生银行',
+        },
+        {
+            icon:'',
+            bankName:'兴业银行',
+        },
+
+        {
+            icon:'',
+            bankName:'中信银行',
+        },
+        {
+            icon:'',
+            bankName:'华夏银行',
+        },
+        {
+            icon:'',
+            bankName:'光大银行',
+        },
+        {
+            icon:'',
+            bankName:'北京银行',
+        },
+        {
+            icon:'',
+            bankName:'上海银行',
+        },
+        {
+            icon:'',
+            bankName:'天津银行',
+        },
+
+        {
+            icon:'',
+            bankName:'大连银行',
+        },
+        {
+            icon:'',
+            bankName:'杭州商业银行',
+        },
+
+        {
+            icon:'',
+            bankName:'宁波银行',
+        },
+        {
+            icon:'',
+            bankName:'厦门银行',
+        },
+        {
+            icon:'',
+            bankName:'广州银行',
+        },
+        {
+            icon:'',
+            bankName:'平安银行',
+        },        {
+            icon:'',
+            bankName:'浙商银行',
+        },
+        {
+            icon:'',
+            bankName:'上海农商银行',
+        },
+
+        {
+            icon:'',
+            bankName:'重庆银行',
+        },
+        {
+            icon:'',
+            bankName:'江苏银行',
+        },
+
+        {
+            icon:'',
+            bankName:'北京农村商业银行',
+        },
+        {
+            icon:'',
+            bankName:'济宁银行',
+        },
+        {
+            icon:'',
+            bankName:'台州银行',
+        },
+        {
+            icon:'',
+            bankName:'深圳发展银行',
+        },
+        {
+            icon:'',
+            bankName:'成都银行',
+        },
+        {
+            icon:'',
+            bankName:'徽商银行',
+        },
+
+
+    ]
+
+
+
+
+
+}*/
 
 const app = getApp();
-
-const bankCardJson = require('../../../static/libs/script/bankCardJson.js');//银行卡图标
 
 const mineUrl ='/user/center/usercenter';//用户中心
 
@@ -17,21 +167,17 @@ Page({
 
     data:{
 
-        bankList:[],//银行卡列表
+        alipayList:[],//支付宝列表
 
-        bankCardId:'',//银行卡唯一id
+        alipayId:'',//支付宝唯一id
 
-        bankNo:'',//银行卡号
+        alipayNo:'',//支付宝号
 
-        bankName:'',//银行卡名称
 
-        cardType:'',//银行卡种类
 
     },
 
     onShow:function () {
-
-        var thisBankUrl = app.globalData.URL+bankUrl;
 
         var that = this;
 
@@ -45,15 +191,18 @@ Page({
 
 
 
+
+
             /**
-             * 接口：获取用户银行卡信息
+             * 接口：获取用户支付宝信息
              * 请求方式：GET
              * 接口：/user/bank/getbankcardinfo
              * 入参：null
              * */
+
             wx.request({
 
-                url: thisBankUrl,
+                url: app.globalData.URL+'/user/alipay/getuseralipayinfo',
 
                 method: 'GET',
 
@@ -120,46 +269,14 @@ Page({
 
 
                         //存储银行卡
-                        wx.setStorageSync('bankList', res.data.data);
+                        wx.setStorageSync('alipayList', res.data.data.list);
 
                         that.setData({
 
-                            bankList: res.data.data,
+                            alipayList: res.data.data.list,
 
                         })
 
-                        //0703 写的 不要删掉
-                        var _bankList = res.data.data
-
-                        //console.log(that.data.bankList)
-
-
-                        for(var x in _bankList){
-
-                            //console.log(that.data.bankList[x].bankName)
-
-                            for (var y in bankCardJson.bankCardJson){
-
-                                if(bankCardJson.bankCardJson[y].name==_bankList[x].bankName){
-
-                                    break;
-
-                                }
-
-                            }
-
-
-                            _bankList[x].bankImg=bankCardJson.bankCardJson[y].img
-
-                            //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
-
-                        }
-
-                        that.setData({
-
-                            bankList:_bankList
-
-                        })
 
 
 
@@ -176,9 +293,6 @@ Page({
             })
 
 
-
-
-
     },
 
     addCardFn:function () {
@@ -187,105 +301,12 @@ Page({
 
         var thisMineurl = app.globalData.URL+ mineUrl;
 
-        var _isVerify = wx.getStorageSync('isVerify');
-
-        //判断是否认证
-        if(_isVerify=='0'||_isVerify=='3'){
-
-            wx.showModal({
-                title: '提示',
-                content: ' 未完成实名认证的用户，需先完成实名认证才可添加银行卡',
-                cancelText: '取消',
-                confirmText: '去认证',
-                confirmColor:'#fe9728',
-                success: function (res) {
-
-
-                    if (res.confirm) {
-
-                        wx.navigateTo({
-
-
-                            url: '../choose_certification/choose_certification'
-
-                        })
-
-                    }
-
-                    else if (res.cancel) {
-
-
-
-
-                    }
-                }
-            });
-
-
-        }
-
-        else if (_isVerify == '2') {
-
-            //存指定的页面  （在实名认证中取值）
-            wx.setStorageSync('hrefId','4');
-
-
-            //未认证情况下不弹出键盘
-            that.setData({
-
-                autoFocus:false//是否弹出键盘
-
-
-            })
-
-            wx.showModal({
-                title: '提示',
-                content: '实名认证审核中，审核通过后即可添加银行卡',
-                showCancel:false,
-                confirmText: '我知道了',
-                confirmColor:'#fe9728',
-                success: function (res) {
-
-                    if (res.confirm) {
-
-                    }
-
-                    else if (res.cancel) {
-
-
-                    }
-
-                    else {
-
-
-
-
-                    }
-
-                }
-            });
-
-
-
-        }
-
-        else {
-
-
-                wx.navigateTo({
-
-                    url: '../add_card/add_card'
-
-                })
-
-
-
-        }
 
         //获取数据
         var jx_sid = wx.getStorageSync('jxsid');
 
         var Authorization = wx.getStorageSync('Authorization');
+
         /**
          * 接口：用户中心
          * 请求方式：POST
@@ -374,9 +395,17 @@ Page({
         })
 
 
+        wx.navigateTo({
+
+            url: '../add_zfb/add_zfb'
+
+        })
+
+
+
     },
 
-    detCardFn:function (e) {
+    detZfbFn:function (e) {
 
         var thisDetBankUrl = app.globalData.URL+detBankUrl;
 
@@ -387,28 +416,26 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        //选择支付宝账号后需要刷新页面
+
+        wx.setStorageSync('refreshCash','0')
+
+
+
 
         that.setData({
 
-            bankCardId:e.target.dataset.card,
+            alipayId:e.target.dataset.alipay,
 
-            bankNo:e.target.dataset.num,
 
 
         })
-
-
-        //取后银行卡四位
-        var str= that.data.bankNo;
-
-        var _thisBankNo = str.substr(str.length-4)
-
         //console.log(that.data.bankCardId)
 
 
        wx.showModal({
             title: '提示',
-            content: '确认删除尾号是'+ _thisBankNo +'的银行卡',
+            content: '确认删除该支付宝账号？',
             cancelText: '取消',
             confirmText: '确定',
            confirmColor:'#fe9728',
@@ -438,21 +465,21 @@ Page({
 
 
             /**
-             * 接口：删除银行卡信息
+             * 接口：删除用户支付宝信息
              * 请求方式：GET
-             * 接口：/user/bank/deletebankcardinfo
-             * 入参：bankCardId
+             * 接口：/user/alipay/delalipayinfo
+             * 入参：alipayId
              * */
 
             wx.request({
 
-                url: thisDetBankUrl,
+                url: app.globalData.URL+'/user/alipay/delalipayinfo',
 
                 method: 'GET',
 
                 data:{
 
-                    bankCardId:that.data.bankCardId
+                    alipayId:that.data.alipayId
 
                 },
 
@@ -542,7 +569,7 @@ Page({
 
     },
 
-    chooseCardFn:function (e) {
+    chooseZfbFn:function (e) {
 
 
         var pages = getCurrentPages();
@@ -552,30 +579,27 @@ Page({
 
         //在提现显示银行卡页面
 
-        wx.setStorageSync('chooseCard','0');
+        wx.setStorageSync('chooseCard','1');
 
         if(prevPage){
 
 
             prevPage.setData({
 
-                bankCardId:e.currentTarget.dataset.card,
+                alipayId:e.currentTarget.dataset.id,
 
-                bankNo:e.currentTarget.dataset.num,
+                alipayNo:e.currentTarget.dataset.no
 
-                bankName:e.currentTarget.dataset.name,
 
-                cardType:e.currentTarget.dataset.type,
 
-                bankIcon:e.currentTarget.dataset.img
 
 
             })
 
 
-             wx.navigateBack({
-               delta: 1
-             })
+            wx.navigateBack({
+                delta: 1
+            })
 
 
 
@@ -585,7 +609,4 @@ Page({
     }
 
 
-
-
 })
-

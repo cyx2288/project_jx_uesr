@@ -20,6 +20,7 @@ hr{
 
     display:flex;
     justify-content: inherit;
+    color: #fff;
 
 }
 
@@ -58,7 +59,6 @@ hr{
 }
 
 .weui-media-box__title {
-    color: #4a4a4a;
     font-size: 16px;
     display: flex;
     justify-content: flex-start;
@@ -107,8 +107,9 @@ label.cash_input{
 }
 .max_img{
 
-    width: 60rpx;
-    height: 60rpx;
+    width:80rpx;
+    height:80rpx;
+
 }
 
 label.cash_input>.account_information_tel{
@@ -152,8 +153,8 @@ span.money_style{
 }
 
 .details_date{
-    color: #bbb;
-    font-size: 18px;
+    color: #fff;
+    font-size: 16px;
 
 }
 
@@ -372,6 +373,21 @@ button.kf_button {
     color: #4a4a4a;
 
 }
+.new_card_box{
+    text-align: center;
+    color: #fff;
+    background:-webkit-linear-gradient(65deg,#ea5e26,#fe9728);
+    border-radius: 10px 10px 0 0;
+}
+.add_circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: rgba(255,255,255,0.5);
+    color: #fff;
+    margin:0 auto 10px;
+
+}
 .jx_code{
     width: 70%;
 }
@@ -407,7 +423,55 @@ button.kf_button {
     line-height: 96rpx;
 }
 
+/*tab*/
+.movie-container{
+    display: flex;
+    flex-direction: column;
+}
+.navbar{
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    text-align: center;
+    color: #A8A8A8;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #FFF;
+    border-bottom: 1rpx solid #DFDFDF;
+}
 
+.navbar-item{
+    flex: 1;
+    padding: 26rpx 0px;
+    position: relative;
+}
+.navbar-item-active{
 
+    transition: all 0.3s;
+   /* border-bottom: 10rpx solid #eb5e26;*/
+    color: #eb5e26;
+}
+.navbar-item-active:after{
+   content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 45%;
+    height: 5px;
+    transition: all 0.3s;
+    background-color: #eb5e26;
+}
+.movie-content-wrapper{
+    padding-top: 50px;
+}
+.nav_box{
+    height: 52px;
+    background-color: transparent;
+}
 
 

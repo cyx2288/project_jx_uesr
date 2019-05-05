@@ -78,7 +78,7 @@
 
 
         <!--明细-->
-        <view class="cash_step">
+        <!--<view class="cash_step">
 
             <view class="weui-media-box weui-media-box_text">
 
@@ -90,12 +90,31 @@
 
             </view>
 
-        </view>
+        </view>-->
 
 
     </view>
 
     <view class="wages_middle wages_box">
+
+
+        <!--订单类型-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">订单类型</view>
+                    <view wx:if="{{orderType=='02'}}" class="weui_confirm">转账-转出</view>
+                    <view wx:elif="{{orderType=='03'}}" class="weui_confirm">转账-转入</view>
+                </view>
+
+            </view>
+
+        </view>
+
+
+        <hr/>
         <!--明细-->
 
         <view class="cash_step">

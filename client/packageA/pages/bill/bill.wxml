@@ -11,16 +11,17 @@
             <view class="icon_record">
 
                 <view class="jx_record">
-                    <image wx:if="{{item.orderType=='01'||item.orderType=='08'}}" src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
+                    <image wx:if="{{item.orderType=='01'||item.orderType=='08'||item.orderType=='09'}}" src="../../../static/icon/wages/jx_record.png"  class="reset_go" />
                     <image wx:if="{{item.orderType=='02'}}" src="../../../static/icon/wages/jx_roll_out.png"  class="reset_go" />
                     <image wx:if="{{item.orderType=='03'}}" src="../../../static/icon/wages/jx_switch_to.png"  class="reset_go" />
                 </view>
 
                 <view class="weui_middle">
 
-                    <view wx:if="{{item.orderType=='01'||item.orderType=='08'}}" class="weui-media-box__title weui-media-box__title_in-text">余额提现</view>
-                    <view wx:if="{{item.orderType=='02'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转出</view>
-                    <view wx:if="{{item.orderType=='03'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转入</view>
+                    <view wx:if="{{item.orderType=='01'||item.orderType=='08'}}" class="weui-media-box__title weui-media-box__title_in-text">提现至银行卡</view>
+                    <view wx:elif="{{item.orderType=='09'}}" class="weui-media-box__title weui-media-box__title_in-text">提现至支付宝</view>
+                    <view wx:elif="{{item.orderType=='02'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转出</view>
+                    <view wx:elif="{{item.orderType=='03'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转入</view>
                     <text class="details_date">{{filter.formatTime(item.createTime,'-')}}</text>
                 </view>
             </view>
@@ -28,12 +29,12 @@
             <view class="weui_right">
                 <view class="weui_confirm">￥{{item.orderAmount}}</view>
                 <view wx:if="{{item.orderType=='01'&&item.orderState=='0'}}" class="weui_confirm orange">待支付</view>
-                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08')&&item.orderState=='1'}}" class="weui_confirm orange">完成</view>
+                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08'||item.orderType=='09')&&item.orderState=='1'}}" class="weui_confirm orange">完成</view>
                 <view wx:elif="{{item.orderType=='02'&& item.orderState=='1'}}" class="weui_confirm orange">成功</view>
                 <view wx:elif="{{item.orderType=='03'&& item.orderState=='1'}}" class="weui_confirm orange">成功</view>
                 <view wx:elif="{{item.orderType=='01'&&item.orderState=='2'}}"class="weui_confirm orange">提交成功</view>
-                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08')&&item.orderState=='3'}}" class="weui_confirm orange">处理中</view>
-                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08')&&item.orderState=='4'}}" class="weui_confirm gary">已退款</view>
+                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08'||item.orderType=='09')&&item.orderState=='3'}}" class="weui_confirm orange">处理中</view>
+                <view wx:elif="{{(item.orderType=='01'||item.orderType=='08'||item.orderType=='09')&&item.orderState=='4'}}" class="weui_confirm gary">已退款</view>
                 <view wx:elif="{{item.orderType=='01'&&item.orderState=='5'}}" class="weui_confirm gary">订单关闭</view>
                 <view wx:elif="{{item.orderType=='01'&&item.orderState=='7'}}" class="weui_confirm gary">退款中</view>
 

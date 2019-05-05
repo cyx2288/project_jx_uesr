@@ -144,7 +144,28 @@
      </view>
 
      <view class="wages_middle wages_box">
-         <!--明细-->
+
+
+         <!--订单类型-->
+
+         <view class="cash_step">
+
+             <view class="weui-media-box weui-media-box_text">
+
+                 <view class="weui_title">
+                     <view class="weui-media-box__title weui-media-box__title_in-text">订单类型</view>
+                     <view wx:if="{{orderType=='09'}}" class="weui_confirm">提现至支付宝</view>
+                     <view wx:elif="{{orderType=='01'||orderType=='08'}}" class="weui_confirm">提现至银行卡</view>
+                     <view wx:elif="{{orderType=='02'}}" class="weui_confirm">转账-转出</view>
+                     <view wx:elif="{{orderType=='03'}}" class="weui_confirm">转账-转入</view>
+                 </view>
+
+             </view>
+
+         </view>
+
+         <hr/>
+         <!--订单时间-->
 
          <view class="cash_step">
 
@@ -158,10 +179,10 @@
              </view>
 
          </view>
-         <!--明细-->
 
          <hr/>
 
+         <!--订单号-->
          <view class="cash_step">
 
              <view class="weui-media-box weui-media-box_text">
@@ -174,38 +195,77 @@
              </view>
 
          </view>
-         <!--明细-->
+
          <hr/>
 
-         <view class="cash_step">
+         <view wx:if="{{orderType=='01'||orderType=='08'}}">
+             <!-- 银行-->
+             <view class="cash_step">
 
-             <view class="weui-media-box weui-media-box_text">
+                 <view class="weui-media-box weui-media-box_text">
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">银行</view>
-                     <view class="weui_confirm">{{bankName}}</view>
+                     <view class="weui_title">
+                         <view class="weui-media-box__title weui-media-box__title_in-text">银行</view>
+                         <view class="weui_confirm">{{bankName}}</view>
+                     </view>
+
+                 </view>
+
+             </view>
+
+             <hr/>
+             <!--卡号-->
+             <view class="cash_step">
+
+                 <view class="weui-media-box weui-media-box_text">
+
+                     <view class="weui_title">
+                         <view class="weui-media-box__title weui-media-box__title_in-text">卡号</view>
+                         <view class="weui_confirm">{{bankNo}}</view>
+                     </view>
+
+                 </view>
+
+             </view>
+
+
+         </view>
+         <view wx:elif="{{orderType=='09'}}">
+
+             <!-- 用户姓名-->
+             <view class="cash_step">
+
+                 <view class="weui-media-box weui-media-box_text">
+
+                     <view class="weui_title">
+                         <view class="weui-media-box__title weui-media-box__title_in-text">用户姓名</view>
+                         <view class="weui_confirm">{{userName}}</view>
+                     </view>
+
+                 </view>
+
+             </view>
+
+             <hr/>
+             <!--支付宝账号-->
+             <view class="cash_step">
+
+                 <view class="weui-media-box weui-media-box_text">
+
+                     <view class="weui_title">
+                         <view class="weui-media-box__title weui-media-box__title_in-text">支付宝账号</view>
+                         <view class="weui_confirm">{{alipayNo}}</view>
+                     </view>
+
                  </view>
 
              </view>
 
          </view>
-         <!--明细-->
-         <hr/>
 
-         <view class="cash_step">
 
-             <view class="weui-media-box weui-media-box_text">
 
-                 <view class="weui_title">
-                     <view class="weui-media-box__title weui-media-box__title_in-text">卡号</view>
-                     <view class="weui_confirm">{{bankNo}}</view>
-                 </view>
-
-             </view>
-
-         </view>
-
-      </view>
+     </view>
 
  </view>
 

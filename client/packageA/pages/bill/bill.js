@@ -47,7 +47,7 @@ Page({
 
             that.setData({
 
-                orderTypes:'01,08',
+                orderTypes:'01,08,09',
 
             })
 
@@ -342,6 +342,8 @@ Page({
     clickBill:function (e) {
 
         var that = this;
+
+
 
         that.setData({
 

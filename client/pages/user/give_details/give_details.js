@@ -22,6 +22,8 @@ Page({
 
         orderState: '',
 
+        orderType: '',
+
         payAmount: '',
 
         rate: '',
@@ -36,7 +38,11 @@ Page({
 
         mobile:'',
 
-        errorMsg:''
+        errorMsg:'',
+
+        alipayNo:'',
+
+
 
     },
 
@@ -57,6 +63,8 @@ Page({
 
         var _orderId = wx.getStorageSync('orderId');
 
+        var _orderType = wx.getStorageSync('orderType')
+
 
         that.setData({
 
@@ -70,11 +78,15 @@ Page({
 
 
 
+        console.log('zfb为09 银行卡为08'+wx.getStorageSync('orderdowithdraw'))
+
+
+
         /**
          * 接口：
          * 请求方式：GET
          * 接口：/user/withdraw/getdetailrecord
-         * 入参：orderId
+         * 入参：orderId,orderType
          **/
         wx.request({
 
@@ -85,6 +97,8 @@ Page({
             data: {
 
                 orderId: _orderId,
+
+                orderType:_orderType,
 
             },
 
@@ -142,11 +156,13 @@ Page({
 
                     })();
 
+
+
+
+
+
                     that.setData({
 
-                        bankName: res.data.data.bankName,
-
-                        bankNo: res.data.data.bankNo,
 
                         orderAmount: res.data.data.orderAmount,
 
@@ -162,8 +178,43 @@ Page({
 
                         createDate: res.data.data.createDate,
 
+                        orderType:res.data.data.orderType,
+
+
+
 
                     })
+
+
+
+                    if(res.data.data.bankName&&res.data.data.bankNo){
+
+                        that.setData({
+
+
+                            bankName: res.data.data.bankName,
+
+                            bankNo: res.data.data.bankNo,
+
+                        })
+
+
+
+                    }
+
+
+                    if(res.data.data.alipayNo){
+
+                        that.setData({
+
+                            alipayNo:res.data.data.alipayNo,
+
+                        })
+
+
+
+                    }
+
 
                     if(res.data.data.errorMsg){
 
