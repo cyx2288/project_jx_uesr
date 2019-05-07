@@ -212,6 +212,8 @@ Page({
 
                             totalSalary:'0.00',
 
+                            wages:'0.00',
+
 
                         })
 

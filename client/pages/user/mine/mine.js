@@ -637,6 +637,10 @@ Page({
     //银行卡
     bankFn:function () {
 
+        wx.removeStorageSync('chooseActive');
+
+        wx.removeStorageSync('addCard')
+
         pageJumpFn.pageJump("../../../packageA/pages/card/card")
 
 

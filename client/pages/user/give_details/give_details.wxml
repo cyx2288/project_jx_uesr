@@ -78,6 +78,28 @@
 
         <hr/>
 
+        <view wx:if="{{orderType=='08'}}">
+
+            <!-- 提现方式 只有预约提现有-->
+            <view class="cash_step">
+
+                <view class="weui-media-box weui-media-box_text">
+
+                    <view class="weui_title">
+                        <view class="weui-media-box__title weui-media-box__title_in-text">提现方式</view>
+                        <view class="weui_confirm">预约提现</view>
+
+                    </view>
+
+                </view>
+
+            </view>
+
+            <hr/>
+
+        </view>
+
+
         <!--退款原因-->
         <view class="cash_step step_line" hidden="{{errorMsg ? false : true}}">
 

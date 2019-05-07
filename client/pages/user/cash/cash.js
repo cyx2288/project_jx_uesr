@@ -26,8 +26,6 @@ Page({
 
         bankCardId: '',//银行卡id
 
-        //balance: '',//提取现金
-
         inputBalance: '',//输入框里value的值
 
         canCashBalance: '',//可以提现的金额
@@ -38,7 +36,6 @@ Page({
 
         bankIcon: '',
 
-        /*bankList: [],//银行卡列表数组*/
 
         bankName: '',//银行名称
 
@@ -63,8 +60,6 @@ Page({
         userName: '',//客服-用户姓名
 
         mobile: '',//客服-用户电话
-
-        cardTypeText: '',//银行卡类型名称
 
         cardType: '',//银行卡类型
 
@@ -102,67 +97,75 @@ Page({
 
     onShow: function () {
 
-        var that = this;
+    var that = this;
 
-        var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
+    var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
 
-        //获取银行卡页面的银行卡
-        var jx_sid = wx.getStorageSync('jxsid');
+    //获取银行卡页面的银行卡
+    var jx_sid = wx.getStorageSync('jxsid');
 
-        var Authorization = wx.getStorageSync('Authorization');
+    var Authorization = wx.getStorageSync('Authorization');
 
-        var _isVerify = wx.getStorageSync('isVerify');
+    var _isVerify = wx.getStorageSync('isVerify');
 
-        //存储转账页面（在短信验证和支付密码页面中获取）来判断调用用户发起转账接口
-        wx.setStorageSync('transferCash', '6');
+    //存储转账页面（在短信验证和支付密码页面中获取）来判断调用用户发起转账接口
+    wx.setStorageSync('transferCash', '6');
 
-        //存储提现到支付宝还是提现到银行卡（在短信验证和支付密码页面中获取）来判断短信
+    //存储提现到支付宝还是提现到银行卡（在短信验证和支付密码页面中获取）来判断短信
 
-        wx.setStorageSync('chooseActive',that.data.navbarActiveIndex);
-
-
-        console.log('页面进来选的是银行卡还是支付宝'+wx.getStorageSync('chooseActive'))
+    wx.setStorageSync('chooseActive',that.data.navbarActiveIndex);
 
 
-        if(wx.getStorageSync('chooseActive')=='1'){
+    console.log('页面进来选的是银行卡还是支付宝'+wx.getStorageSync('chooseActive'))
 
-            wx.setStorageSync('orderType','09')
+        console.log('触发onshow')
+
+
+    if(wx.getStorageSync('chooseActive')=='1'){
+
+        wx.setStorageSync('orderType','09')
+
+
+
+    }
+    else {
+
+        wx.setStorageSync('orderType','08')
+
+
+    }
+
+    wx.getSystemInfo({
+
+        success: function (res) {
+
+            animationShowHeight = res.windowHeight;
+
 
         }
-        else {
-
-            wx.setStorageSync('orderType','08')
-        }
-
-        wx.getSystemInfo({
-
-            success: function (res) {
-
-                animationShowHeight = res.windowHeight;
+    })
 
 
-            }
-        })
+    that.setData({
+
+        userName: wx.getStorageSync('userName'),
+
+        mobile: wx.getStorageSync('mobile'),
+
+        inputBalance: '',//输入框里value的值
 
 
-        that.setData({
+    })
 
-            userName: wx.getStorageSync('userName'),
+    wx.showNavigationBarLoading();
 
-            mobile: wx.getStorageSync('mobile'),
+    setTimeout(function () {
 
-            inputBalance: '',//输入框里value的值
+        wx.hideNavigationBarLoading()
+
+    }, 500);
 
 
-        })
-
-        wx.showNavigationBarLoading();
-
-        setTimeout(function () {
-
-            wx.hideNavigationBarLoading()
-
-        }, 500);
 
         /**
          * 接口：用户中心
@@ -361,7 +364,39 @@ Page({
 
         }
 
+
+
+        //支付宝限额加载
         that.checkwithdrawAlipay();
+
+
+
+
+
+
+
+},
+
+    onLoad:function () {
+
+        var that = this;
+
+        var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
+
+        //获取银行卡页面的银行卡
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        console.log('触发onload事件')
+
+
+
+        that.withdrawRate();
+
+
+        that.alipayRate();
+
 
 
 
@@ -401,15 +436,31 @@ Page({
         });
 
 
-        //判断什么卡
 
-        if (that.data.cardType == '1') {
+    },
 
-            that.setData({
+    //全部提现
+    cashAllFn: function () {
 
-                cardTypeText: '（储蓄卡）'
+        var that = this;
+
+        if(that.data.userBankCardDTOList.length==0&&that.data.navbarActiveIndex==0){
+
+            wx.showToast({
+                title: '请先绑定银行卡',
+                icon: 'none',
+                duration: 1000
+            })
+
+        }
+
+        else if(that.data.alipayList.length==0&&that.data.navbarActiveIndex==1){
 
 
+            wx.showToast({
+                title: '请先绑定支付宝账号',
+                icon: 'none',
+                duration: 1000
             })
 
 
@@ -419,25 +470,13 @@ Page({
 
             that.setData({
 
-                cardTypeText: '（信用卡）'
-
+                inputBalance: that.data.canCashBalance,
 
             })
+
+
         }
 
-
-    },
-
-    //全部提现
-    cashAllFn: function () {
-
-        var that = this;
-
-        that.setData({
-
-            inputBalance: that.data.canCashBalance,
-
-        })
 
 
         //console.log(that.data.inputBalance)
@@ -577,7 +616,7 @@ Page({
         var _isSecurity = wx.getStorageSync('isSecurity');
 
         //判断有没有银行卡
-        if(that.data.userBankCardDTOList.length==0){
+        if(that.data.userBankCardDTOList.length==0&&that.data.navbarActiveIndex==0){
 
 
             wx.showToast({
@@ -587,6 +626,19 @@ Page({
             })
 
 
+            return
+
+        }
+
+        if(that.data.alipayList.length==0&&that.data.navbarActiveIndex==1){
+
+
+            wx.showToast({
+                title: '请先绑定支付宝账号',
+                icon: 'none',
+                duration: 1000
+            })
+
 
         }
 
@@ -594,7 +646,7 @@ Page({
         else if (!that.data.inputBalance) {
 
             wx.showToast({
-                title: '请输入金额',
+                title: '请输入提现金额',
                 icon: 'none',
                 duration: 1000
             })
@@ -606,7 +658,7 @@ Page({
         else if (parseFloat(that.data.inputBalance) < parseFloat(that.data.amountMin)) {
 
             wx.showToast({
-                title: '单笔提现金额须大于' + that.data.amountMin + '元',
+                title: '单笔提现金额需大于' + that.data.amountMin + '元',
                 icon: 'none',
                 duration: 1000
             })
@@ -618,7 +670,7 @@ Page({
 
 
             wx.showToast({
-                title: '单笔提现金额须小于' + that.data.amountMax + '元',
+                title: '单笔提现金额需小于' + that.data.amountMax + '元',
                 icon: 'none',
                 duration: 1000
             })
@@ -769,60 +821,6 @@ Page({
             this.showModal();
 
 
-            /*wx.showModal({
-
-             title: '确认提现',
-             content: '支付金额￥' + (returnFloat(parseFloat(a)+parseFloat(b)))+ ',提现金额￥'+returnFloat(inputValue)+',手续费￥'+ b,
-             confirmText: '确认',
-             confirmColor:'#fe9728',
-
-             success: function (res) {
-
-             if (res.confirm) {
-
-             if(_isSecurity=='1'){
-
-             //console.log('开启短信验证');
-
-             wx.navigateTo({
-
-             url: '../sms_verification/sms_verification'
-             })
-
-
-
-             }
-
-             else if(_isSecurity=='2'){
-
-             //console.log('开启支付密码');
-
-             wx.navigateTo({
-
-             url: '../pws_verification/pws_verification'
-             })
-
-
-             }
-
-             else if(_isSecurity=='3'){
-
-             //console.log('啥都没开启');
-
-             confirmation()
-
-             }
-
-
-
-             }
-
-             else if (res.cancel) {
-
-
-             }
-             }
-             });*/
 
 
         }
@@ -1006,25 +1004,63 @@ Page({
 
     hasTipsFn: function () {
 
-        wx.showModal({
-            title: '提现限额说明',
-            content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',
-            /*content: '单卡单笔'+this.data.amountMin+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',*/
-            confirmText: '确认',
-            showCancel: false,
-            confirmColor: '#fe9728',
-            success: function (res) {
+        if(this.data.navbarActiveIndex==1){
 
-                if (res.confirm) {
+            this.alipayRate()
+
+            wx.showModal({
+                title: '提现限额说明',
+                /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
+                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
+                confirmText: '确认',
+                showCancel: false,
+                confirmColor: '#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
 
 
+                    }
+
+                    else if (res.cancel) {
+
+                    }
                 }
+            });
 
-                else if (res.cancel) {
 
+        }
+
+        else {
+
+
+            this.withdrawRate();
+
+            wx.showModal({
+                title: '提现限额说明',
+                /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
+                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
+                confirmText: '确认',
+                showCancel: false,
+                confirmColor: '#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+
+                    }
+
+                    else if (res.cancel) {
+
+                    }
                 }
-            }
-        });
+            });
+
+
+
+        }
+
+
 
 
     },
@@ -1082,7 +1118,7 @@ Page({
 
         if (thisInputBalance) {
 
-            if(that.data.userBankCardDTOList.length==0){
+            if(that.data.userBankCardDTOList.length==0&&that.data.navbarActiveIndex==0){
 
 
                 wx.showToast({
@@ -1092,23 +1128,47 @@ Page({
                 })
 
                 e.detail.value = ''
+
+
             }
 
-            //默认输入小数点后两位
-            if (!reg.test(thisInputBalance)) {
+            if(that.data.alipayList.length==0&&that.data.navbarActiveIndex==1){
 
 
                 wx.showToast({
-                    title: '输入金额有误',
+                    title: '请先绑定支付宝账号',
                     icon: 'none',
                     duration: 1000
+                })
 
-                });
-
-                e.detail.value = lastInputBalace
+                e.detail.value = ''
 
 
             }
+
+
+             if(thisInputBalance=='00'){
+
+                 e.detail.value = 0
+
+
+            }
+             //默认输入小数点后两位
+             else if (isNaN(+thisInputBalance)||!reg.test(thisInputBalance)) {
+
+
+                 wx.showToast({
+                     title: '输入金额有误',
+                     icon: 'none',
+                     duration: 1000
+
+                 });
+
+                 e.detail.value = lastInputBalace
+
+
+             }
+
 
         }
 
@@ -1217,8 +1277,14 @@ Page({
         var navbarTapIndex = event.currentTarget.dataset.navbarIndex
         // 设置data属性中的navbarActiveIndex为当前点击的navbar
         vm.setData({
-            navbarActiveIndex: navbarTapIndex
+            navbarActiveIndex: navbarTapIndex,
+            autoFocus: true,//是否弹出键盘
+
+            inputBalance:''
+
         })
+
+
 
 
         console.log('点击的是几'+this.data.navbarActiveIndex)
@@ -1227,14 +1293,12 @@ Page({
 
             wx.setStorageSync('chooseActive','1');
 
-            wx.setStorageSync('orderType','09')
-
-
-            console.log('选择支付宝')
+            wx.setStorageSync('orderType','09');
 
             vm.alipayRate()
 
-            vm.checkwithdrawAlipay()
+
+            //vm.checkwithdrawAlipay()
 
 
 
@@ -1247,7 +1311,7 @@ Page({
 
             wx.setStorageSync('orderType','08')
 
-            vm.checkwithdraw();
+            vm.withdrawRate();
 
 
         }
@@ -1346,7 +1410,7 @@ Page({
 
                     else {
 
-                        that.setData({
+  /*                      that.setData({
 
                             //balance: res.data.data.balance,//提取现金
 
@@ -1364,105 +1428,147 @@ Page({
 
 
                         })
+*/
+
+
+                        var pages = getCurrentPages();
+
+                        var currPage = pages[pages.length - 1]; // 当前页面
+
+                        if(currPage.data.bankName&&wx.getStorageSync('chooseCard')=='0'){
+
+                            wx.removeStorageSync('chooseCard')
+
+
+                        }
+
+                        else {
+
+
+                            if(res.data.data.userBankCardDTOList){
+
+                                that.setData({
+
+                                    userBankCardDTOList: res.data.data.userBankCardDTOList
+
+                                })
 
 
 
+                                //0703 写的 不要删掉
+                                var _bankList = res.data.data.userBankCardDTOList
+
+                                //console.log(that.data.bankList)
 
 
-                        if(res.data.data.userBankCardDTOList){
+                                for (var x in _bankList) {
 
-                            that.setData({
+                                    //console.log(that.data.bankList[x].bankName)
 
-                                userBankCardDTOList: res.data.data.userBankCardDTOList
+                                    for (var y in bankCardJson.bankCardJson) {
 
-                            });
+                                        if (bankCardJson.bankCardJson[y].name == _bankList[x].bankName) {
 
+                                            break;
 
-
-
-
-                            //0703 写的 不要删掉
-                            var _bankList = res.data.data.userBankCardDTOList
-
-                            //console.log(that.data.bankList)
-
-
-                            for (var x in _bankList) {
-
-                                //console.log(that.data.bankList[x].bankName)
-
-                                for (var y in bankCardJson.bankCardJson) {
-
-                                    if (bankCardJson.bankCardJson[y].name == _bankList[x].bankName) {
-
-                                        break;
+                                        }
 
                                     }
+
+
+                                    _bankList[x].bankImg = bankCardJson.bankCardJson[y].img
+
+                                    //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
+
+                                }
+
+                                that.setData({
+
+                                    userBankCardDTOList: _bankList
+
+                                })
+
+
+                                //如果是上一页返回并赋值 不是就默认显示第一个
+
+                                var pages = getCurrentPages();
+
+                                var currPage = pages[pages.length - 1]; // 当前页面
+
+                                if(currPage.data.bankName&&wx.getStorageSync('chooseCard')=='0'){
+
+                                    wx.removeStorageSync('chooseCard')
+
+
+
+                                }
+                                else {
+
+
+                                    //默认显示第一个银行卡
+                                    that.setData({
+
+                                        bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
+
+                                        bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
+
+                                        bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
+
+                                        cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
+
+                                        bankIcon: that.data.userBankCardDTOList[0].bankImg//银行卡类型
+
+
+
+                                    })
+
+
 
                                 }
 
 
-                                _bankList[x].bankImg = bankCardJson.bankCardJson[y].img
-
-                                //console.log( _bankList[x].bankImg=bankCardJson.bankCardJson[y].img)
-
-                            }
-
-                            that.setData({
-
-                                userBankCardDTOList: _bankList
-
-                            })
 
 
-                            //如果是上一页返回并赋值 不是就默认显示第一个
-
-                            var pages = getCurrentPages();
-
-                            var currPage = pages[pages.length - 1]; // 当前页面
-
-                            if(currPage.data.bankName&&wx.getStorageSync('chooseCard')=='0'){
-
-                                wx.removeStorageSync('chooseCard')
+                                /*                                    //获取银行卡的
+                                 var pickChooseBank = [];
 
 
+                                 //循环银行卡、银行名称及银行id
+                                 for (var i = 0; i < _bankList.length; i++) {
 
-                            }
-                            else {
+                                 var pickBankName = _bankList[i].bankName;
 
+                                 var pickBankNo = _bankList[i].bankNo;
 
-                                //默认显示第一个银行卡
-                                that.setData({
+                                 var pickBankId = _bankList[i].bankCardId;
 
-                                    bankName: that.data.userBankCardDTOList[0].bankName,//银行名称
+                                 var pickBankType = _bankList[i].cardType;
 
-                                    bankNo: that.data.userBankCardDTOList[0].bankNo,//银行卡号
-
-                                    bankCardId: that.data.userBankCardDTOList[0].bankCardId,//银行卡id
-
-                                    cardType: that.data.userBankCardDTOList[0].cardType,//银行卡类型
-
-                                    bankIcon: that.data.userBankCardDTOList[0].bankImg//银行卡类型
+                                 //遍历银行卡类型
+                                 if (pickBankType == '1') {
 
 
+                                 var _pickChooseBank = pickBankName + '储蓄卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                 }
 
-                                })
+                                 else if (pickBankType == '2') {
+
+                                 var _pickChooseBank = pickBankName + '信用卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
+                                 }
 
 
+                                 //组成数组
+                                 pickChooseBank.push(_pickChooseBank);
 
-                            }
+
+                                 }
 
 
+                                 that.setData({
 
-                            //判断银行卡
+                                 bankList: pickChooseBank
 
-                            if (that.data.cardType == '1') {
-
-                                that.setData({
-
-                                    cardTypeText: '（储蓄卡）'
-
-                                })
+                                 })*/
 
                             }
 
@@ -1470,54 +1576,21 @@ Page({
 
                                 that.setData({
 
-                                    cardTypeText: '（信用卡）'
+                                    userBankCardDTOList: [],
 
                                 })
+
+
+
                             }
 
 
-                            /*                                    //获取银行卡的
-                             var pickChooseBank = [];
-
-
-                             //循环银行卡、银行名称及银行id
-                             for (var i = 0; i < _bankList.length; i++) {
-
-                             var pickBankName = _bankList[i].bankName;
-
-                             var pickBankNo = _bankList[i].bankNo;
-
-                             var pickBankId = _bankList[i].bankCardId;
-
-                             var pickBankType = _bankList[i].cardType;
-
-                             //遍历银行卡类型
-                             if (pickBankType == '1') {
-
-
-                             var _pickChooseBank = pickBankName + '储蓄卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
-                             }
-
-                             else if (pickBankType == '2') {
-
-                             var _pickChooseBank = pickBankName + '信用卡' + '(' + pickBankNo.substr(pickBankNo.length - 4) + ')';
-                             }
-
-
-                             //组成数组
-                             pickChooseBank.push(_pickChooseBank);
-
-
-                             }
-
-
-                             that.setData({
-
-                             bankList: pickChooseBank
-
-                             })*/
 
                         }
+
+
+
+
 
 
 
@@ -1543,7 +1616,6 @@ Page({
         });
 
     },
-
 
     checkwithdrawAlipay:function () {
 
@@ -1622,12 +1694,15 @@ Page({
                 else {
 
 
+                    if(res.data.data.list) {
 
-                    vm.setData({
 
-                        alipayList: res.data.data.list,
+                        vm.setData({
 
-                    })
+                            alipayList: res.data.data.list,
+
+                        })
+                    }
 
                     var pages = getCurrentPages();
 
@@ -1643,15 +1718,32 @@ Page({
 
                     else {
 
-                        //默认显示第一个银行卡
-                        vm.setData({
+                        if(res.data.data.list){
 
-                            alipayNo:res.data.data.list[0].alipayNo,//支付宝账号
+                            //默认显示第一个银行卡
+                            vm.setData({
 
-                            alipayId:res.data.data.list[0].alipayId,//支付宝Id
+                                alipayNo:res.data.data.list[0].alipayNo,//支付宝账号
+
+                                alipayId:res.data.data.list[0].alipayId,//支付宝Id
 
 
-                        })
+                            })
+
+
+
+                        }
+
+                        else{
+
+                            vm.setData({
+
+                                alipayList:[]
+
+                            })
+
+                        }
+
 
 
                     }
@@ -1676,8 +1768,7 @@ Page({
 
     },
 
-
-     alipayRate:function () {
+    alipayRate:function () {
 
          var vm = this;
 
@@ -1779,7 +1870,158 @@ Page({
          });
 
 
-     }
+     },
+
+    withdrawRate:function () {
+
+        var that = this;
+
+        var thisCheckcashUrl = app.globalData.URL + checkcashUrl;
+
+        //获取银行卡页面的银行卡
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+
+        /**
+         * 接口：检测用户发起提现操作
+         * 请求方式：GET
+         * 接口：/user/work/checkwithdraw
+         * 入参：null
+         * */
+
+        wx.request({
+
+            url: thisCheckcashUrl,
+
+            method: 'GET',
+
+            data: {
+
+                code: that.data.code,
+
+
+            },
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+
+                app.globalData.repeat(res.data.code, res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
+
+                if (res.data.code == '3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url: '../../common/signin/signin'
+                        })
+
+                    }, 1500)
+
+
+                    return false
+
+
+                }
+
+                else if (res.data.code == '3004') {
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else {
+
+
+                    //二维码弹窗
+                    if (res.data.code == '-10') {
+
+                        that.setData({
+
+                            showModal: true,
+
+                        })
+
+                    }
+
+
+                    else {
+
+                        that.setData({
+
+                            //balance: res.data.data.balance,//提取现金
+
+                            amountMax: res.data.data.amountMax,//单笔最大限额
+
+                            amountMin: res.data.data.amountMin,//单笔最小限额
+
+                            dayMaxAmount: res.data.data.dayMaxAmount,//日最大额度
+
+                            monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
+
+                            rate: res.data.data.rate,//费率
+
+                            canCashBalance: res.data.data.balance,
+
+
+                        })
+
+                    }
+
+                }
+
+            }
+
+        })
+
+
+                    },
+
+
+    addBankCard:function () {
+
+        //跳转为添加银行卡
+        wx.setStorageSync('addCard','1');
+
+        wx.navigateTo({
+
+            url: '../../../packageA/pages/add_card/add_card'
+        })
+
+
+    },
+
+    addZfb:function () {
+
+        //跳转为添加银行卡
+        wx.setStorageSync('addZfb','1');
+
+        wx.navigateTo({
+
+            url: '../../../packageA/pages/add_zfb/add_zfb'
+        })
+
+    }
+
+
 
 
 });

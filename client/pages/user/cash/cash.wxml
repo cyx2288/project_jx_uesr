@@ -52,7 +52,7 @@
 
                                 <view class="weui_left">
 
-                                    <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}{{cardTypeText}}</view>
+                                    <view class="weui-media-box__title weui-media-box__title_in-text weui_bank_details">{{bankName}}<span wx:if="{{cardType=='1'}}">（储蓄卡）</span><span wx:elif="{{cardType=='2'}}">（信用卡）</span></view>
                                 </view>
 
                                 <view class="details_date">{{phone.toHide(bankNo)}}</view>
@@ -84,12 +84,12 @@
         </navigator>
 
 
-        <navigator class="weui-media-box weui-media-box_text new_card_box" url="../../../packageA/pages/add_card/add_card" wx:else>
+        <view class="weui-media-box weui-media-box_text new_card_box none" bindtap="addBankCard" wx:else>
 
             <view class="add_circle">+</view>
             <view>添加银行卡</view>
 
-        </navigator>
+        </view>
 
 
 
@@ -98,6 +98,8 @@
 
     <!-- alipay-->
     <view class="weui-cells" wx:elif="{{navbarActiveIndex==1}}">
+
+
         <navigator url="../../../packageA/pages/zfb/zfb" wx:if="{{alipayList.length>0}}">
 
             <view class="weui-media-box weui-media-box_text new_card_box">
@@ -154,15 +156,14 @@
         </navigator>
 
 
-        <navigator class="weui-media-box weui-media-box_text new_card_box" url="../../../packageA/pages/add_zfb/add_zfb" wx:else>
+        <view class="weui-media-box weui-media-box_text new_card_box none"  bindtap="addZfb" wx:else>
 
             <view class="add_circle">+</view>
             <view>添加支付宝账号</view>
 
-        </navigator>
+        </view>
 
     </view>
-
 
 
     <!--输入金额-->
@@ -177,7 +178,7 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" auto-focus="{{autoFocus}}" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder=""  placeholder-style="color:#bbb"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" focus="{{autoFocus}}" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder="请输入提现金额"  placeholder-style="color:#bbb"/>
                     </label>
 
                 </lable>
@@ -241,7 +242,7 @@
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
+                <view class="weui-media-box__desc font_small">限额说明：单笔{{amountMax}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 
@@ -287,7 +288,7 @@
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
+                <view class="weui-media-box__desc font_small">限额说明：单笔{{amountMax}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 

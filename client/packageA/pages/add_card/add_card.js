@@ -84,6 +84,11 @@ Page({
         },500);
 
 
+        console.log('是不是从提现过来的'+wx.getStorageSync('chooseActive'))
+
+        console.log('本身没有银行卡'+wx.getStorageSync('addCard'))
+
+
 
         that.setData({
 
@@ -561,18 +566,9 @@ Page({
 
 
 
-                            if(wx.getStorageSync('transferCash')=='6'){
+                            if(wx.getStorageSync('chooseActive')=='0') {
 
-
-                                wx.navigateBack({
-
-                                    delta: 2
-
-                                })
-
-                            }else {
-
-
+                                if (wx.getStorageSync('addCard') == '1') {
 
                                     wx.navigateBack({
 
@@ -580,7 +576,26 @@ Page({
 
                                     })
 
+                                }
+                                else {
 
+
+                                    wx.navigateBack({
+
+                                        delta: 2
+
+                                    })
+
+                                }
+                            }
+
+                            else {
+
+                                wx.navigateBack({
+
+                                    delta: 1
+
+                                })
 
                             }
 

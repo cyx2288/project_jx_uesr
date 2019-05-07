@@ -61,7 +61,7 @@
 <view wx:else class="wages_middle">
 
     <!--工资列表-->
-    <view class="wages_form">
+    <view class="wages_form" style="padding:15px 0;">
 
 
         <block wx:for="{{wagesList}}">

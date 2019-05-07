@@ -4,7 +4,7 @@
 
 .weui-cells{
 
-    background-color: #fda03c;
+    background:-webkit-linear-gradient(65deg,#ea5e26,#fe9728);
     line-height: 1.8;
 }
 
@@ -35,7 +35,7 @@
 .alipay_card{
     display:flex;
     padding:20px 15px;
-    width:80%;
+    width:70%;
 
 
 }

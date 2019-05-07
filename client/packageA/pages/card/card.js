@@ -40,6 +40,9 @@ Page({
 
         var Authorization = wx.getStorageSync('Authorization');
 
+        wx.removeStorageSync('addCard');
+
+
         //有几个ajax请求
         var ajaxCount = 1;
 
@@ -567,7 +570,8 @@ Page({
 
                 cardType:e.currentTarget.dataset.type,
 
-                bankIcon:e.currentTarget.dataset.img
+                bankIcon:e.currentTarget.dataset.img,
+
 
 
             })

@@ -34,11 +34,11 @@ Page({
 
         titleContent:'',//弹框内容
 
+        locked:1,//0为锁住 1为解锁
+
         imgalist:['http://wechat.fbwin.cn/images/qrcode_jx.jpg'],
 
         currentVoiceTime:60,//语音验证码
-
-        hiddenText:true,//是否显示语音验证码
 
 
 
@@ -94,7 +94,6 @@ Page({
 
                     locked:1,
 
-                    hiddenText:false
 
                 })
 
@@ -124,8 +123,6 @@ Page({
 
 
         }
-
-        console.log(that.data.mobile)
 
 
         if(_operation=='cash'){
@@ -558,6 +555,7 @@ Page({
         else if(_transferCash=='5'){
 
 
+
             console.log('转账')
 
 
@@ -646,7 +644,7 @@ Page({
                             wx.showToast({
 
                                 title: res.data.msg,
-                                icon: 'none',
+                                icon: 'success',
                                 mask:true,
 
                             })
@@ -711,6 +709,8 @@ Page({
 
 
         else if(_transferCash=='6'){
+
+
 
 
             if(wx.getStorageSync('chooseActive')=='1'){
@@ -800,9 +800,8 @@ Page({
                                 wx.showToast({
 
                                     title: res.data.msg,
-
-                                    icon: 'none',
-
+                                    icon: 'success',
+                                    mask:true,
                                 })
 
                                 wx.redirectTo({
@@ -832,6 +831,8 @@ Page({
                                     title: res.data.msg,
 
                                     icon: 'none',
+
+                                    mask:true,
 
                                 })
                             }
@@ -939,8 +940,8 @@ Page({
                                 wx.showToast({
 
                                     title: res.data.msg,
-
-                                    icon: 'none',
+                                    icon: 'success',
+                                    mask:true,
 
                                 })
 
@@ -1038,9 +1039,6 @@ Page({
                 that.setData({
 
                     locked:1,
-
-                    hiddenText:false,//是否显示语音验证码
-
 
 
                 });
@@ -1317,7 +1315,10 @@ Page({
 
         var currentVoiceTime = that.data.currentVoiceTime;
 
-        console.log(currentVoiceTime)
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
 
         if(currentVoiceTime<60){
@@ -1349,69 +1350,99 @@ Page({
                     method: 'GET',
 
 
+                    header:{
+
+                        'jxsid':jx_sid,
+
+                        'Authorization':Authorization
+
+                    },
+
+
                     success: function (res) {
 
                         console.log(res.data);
 
-                        //存储数据
-                        var jx_sid = res.header.jxsid;//jx_sid数据
+                        if(res.data.code=='3001') {
 
-                        //存储数据
-                        wx.setStorageSync('jxsid', jx_sid);
+                            //console.log('登录');
 
+                            setTimeout(function () {
 
-                        if (res.data.code == '0000') {
+                                wx.reLaunch({
 
+                                    url:'../../../pages/common/signin/signin'
+                                })
 
-                            wx.showToast({
-
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask: true,
-
-                            });
+                            },1500);
 
 
+                            return false
 
-                            //倒计时开始
-                            var interval = setInterval(function () {
 
-                                currentVoiceTime--;
+                        }
+                        else if(res.data.code=='3004'){
 
-                                that.setData({
+                            var Authorization = res.data.token.access_token;//Authorization数据
 
-                                    currentVoiceTime: currentVoiceTime
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
+                        else {
+
+                            if (res.data.code == '0000') {
+
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    mask: true,
 
                                 });
 
 
-                                if (currentVoiceTime <= 0) {
+                                //倒计时开始
+                                var interval = setInterval(function () {
 
-                                    clearInterval(interval);
+                                    currentVoiceTime--;
 
                                     that.setData({
 
-                                        currentVoiceTime:60,
+                                        currentVoiceTime: currentVoiceTime
 
-                                    })
-
-                                }
-
-                            }, 1000)
+                                    });
 
 
-                        }
+                                    if (currentVoiceTime <= 0) {
 
-                        else {
+                                        clearInterval(interval);
 
-                            wx.showToast({
+                                        that.setData({
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask: true,
+                                            currentVoiceTime: 60,
 
-                            });
+                                        })
 
+                                    }
+
+                                }, 1000)
+
+
+                            }
+
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    mask: true,
+
+                                });
+
+                            }
                         }
 
 
@@ -1444,69 +1475,116 @@ Page({
 
                     method: 'GET',
 
+                    header:{
+
+                        'jxsid':jx_sid,
+
+                        'Authorization':Authorization
+
+                    },
+
 
                     success: function (res) {
 
                         console.log(res.data);
 
-                        //存储数据
-                        var jx_sid = res.header.jxsid;//jx_sid数据
+                        app.globalData.repeat(res.data.code,res.data.msg);
 
-                        //存储数据
-                        wx.setStorageSync('jxsid', jx_sid);
+                        app.globalData.token(res.header.Authorization)
 
+                        if(res.data.code=='3001') {
 
-                        if (res.data.code == '0000') {
+                            //console.log('登录');
 
+                            setTimeout(function () {
 
-                            wx.showToast({
+                                wx.reLaunch({
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask: true,
+                                    url:'../../../pages/common/signin/signin'
+                                })
 
-                            });
+                            },1500)
 
-
-
-                            //倒计时开始
-                            var interval = setInterval(function () {
-
-                                currentVoiceTime--;
-
-                                that.setData({
-
-                                    currentVoiceTime: currentVoiceTime
-
-                                });
+                            /*          wx.showToast({
+                             title: res.data.msg,
+                             icon: 'none',
+                             duration: 1500,
+                             success:function () {
 
 
-                                if (currentVoiceTime <= 0) {
 
-                                    clearInterval(interval);
+                             }
 
-                                    that.setData({
+                             })*/
 
-                                        currentVoiceTime:60,
-
-                                    })
-
-                                }
-
-                            }, 1000)
+                            return false
 
 
                         }
 
+                        else if(res.data.code=='3004'){
+
+                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                            wx.setStorageSync('Authorization', Authorization);
+
+                            return false
+                        }
+
                         else {
 
-                            wx.showToast({
+                            if (res.data.code == '0000') {
 
-                                title: res.data.msg,
-                                icon: 'none',
-                                mask: true,
 
-                            });
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    mask: true,
+
+                                });
+
+
+                                //倒计时开始
+                                var interval = setInterval(function () {
+
+                                    currentVoiceTime--;
+
+                                    that.setData({
+
+                                        currentVoiceTime: currentVoiceTime
+
+                                    });
+
+
+                                    if (currentVoiceTime <= 0) {
+
+                                        clearInterval(interval);
+
+                                        that.setData({
+
+                                            currentVoiceTime: 60,
+
+                                        })
+
+                                    }
+
+                                }, 1000)
+
+
+                            }
+
+                            else {
+
+                                wx.showToast({
+
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    mask: true,
+
+                                });
+
+                            }
 
                         }
 

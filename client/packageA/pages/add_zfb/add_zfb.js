@@ -52,6 +52,8 @@ Page({
 
         });
 
+        console.log('支付宝添加'+wx.getStorageSync('addZfb'))
+
 
 
     },
@@ -70,9 +72,9 @@ Page({
 
         var regNum=/^[0-9]+$/
 
-        var regMobile=/^1\d{10}$/;
+        var regMobile= /^1[3|4|5|6|7|8|9]\d{9}$/;
 
-        var regMail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
+        var regMail = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
 
 
 
@@ -82,7 +84,7 @@ Page({
 
             wx.showToast({
 
-                title: '请填写正确的支付宝账号',
+                title: '请填写支付宝账号',
                 icon: 'none',
                 mask:true,
 
@@ -92,34 +94,35 @@ Page({
 
         }
         //判断卡号是否有误
-        if ((regNum.test(that.data.zfbNo))) {
 
-            if(!regMobile.test(that.data.zfbNo)){
+
+        if(regNum.test(that.data.zfbNo)){
+
+
+            if (!regMobile.test(that.data.zfbNo)) {
 
                 wx.showToast({
 
                     title: '请填写正确的支付宝账号',
 
                     icon: 'none',
-                    mask:true,
+                    mask: true,
 
                 })
 
+             return
 
             }
 
-            else {
 
-                addZfb()
-
-
-            }
-
+            addZfb();
 
 
         }
 
-        else if(!regMail.test(that.data.zfbNo)){
+
+
+            else if(!regMail.test(that.data.zfbNo)){
 
             wx.showToast({
 
@@ -132,13 +135,21 @@ Page({
 
 
 
+            }
 
-        }
+            else {
 
-        else {
+                addZfb()
 
-            addZfb()
-        }
+            }
+
+
+
+
+
+
+
+
 
 
         function addZfb() {
@@ -224,7 +235,17 @@ Page({
 
                             })
 
-                            setTimeout(function () {
+
+                            if (wx.getStorageSync('addZfb') == '1') {
+
+                                wx.navigateBack({
+
+                                    delta: 1
+
+                                })
+
+                            }
+                            else {
 
 
                                 wx.navigateBack({
@@ -233,7 +254,10 @@ Page({
 
                                 })
 
-                            }, 2000)
+                            }
+
+
+
 
 
                         }

@@ -11,8 +11,22 @@
     <hr/>
 
     <view class="weui-panel">
+        <view class="question">1、提现至银行卡</view>
         <text class="question">单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元，若同一身份证绑定多个账户，则账户间共享提现额度。</text>
     </view>
+
+    <view class="weui-panel">
+        <view class="question">2、提现至支付宝</view>
+        <text class="question">单卡单笔49,000.00元，当日49,000.00元，当月49,000.00元。</text>
+    </view>
+
+
+    <view class="weui-panel">
+        <text class="question">3、提现至银行卡与提现至支付宝限额互不相关，两者分别计算额度。</text>
+    </view>
+
+
+
 
 </view>
 

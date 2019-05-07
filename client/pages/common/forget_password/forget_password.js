@@ -26,8 +26,6 @@ Page({
 
         locked: 1,//0为锁住 1为解锁
 
-        hiddenText:true,
-
         currentVoiceTime:60,//语音验证码倒计时
     },
 
@@ -484,7 +482,6 @@ Page({
 
                     disabled: false,
 
-                    hiddenText:false
                 })
             }
         }, 1000)

@@ -23,8 +23,6 @@ Page({
 
         oldCodeMsg:'',
 
-        hiddenText:true,
-
         currentVoiceTime:60,//语音验证码倒计时
 
 
@@ -451,7 +449,6 @@ Page({
 
                     disabled: false,
 
-                    hiddenText:false
                 })
             }
         }, 1000)
@@ -466,6 +463,11 @@ Page({
         var currentVoiceTime = that.data.currentVoiceTime;
 
         console.log(currentVoiceTime)
+
+        //缓存jx_sid&&Authorization数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
 
 
         if(currentVoiceTime<60){
@@ -483,7 +485,7 @@ Page({
         else {
 
             /**
-             * 接口：注册发送语音短信认证
+             * 接口：更换用户手机号—新手机号验证
              * 请求方式：/jx/action/newmobileaudiocheck
              * 接口：GET
              * 入参：mobile
@@ -494,6 +496,13 @@ Page({
 
                 method: 'GET',
 
+                header:{
+
+                    'jxsid':jx_sid,
+
+                    'Authorization':Authorization
+
+                },
 
                 data: {
 
@@ -507,64 +516,87 @@ Page({
 
                     console.log(res.data);
 
-                    //存储数据
-                    var jx_sid = res.header.jxsid;//jx_sid数据
+                    if(res.data.code=='3001') {
 
-                    //存储数据
-                    wx.setStorageSync('jxsid', jx_sid);
+                        //console.log('登录');
 
+                        setTimeout(function () {
 
-                    if (res.data.code == '0000') {
+                            wx.reLaunch({
 
+                                url:'../../../pages/common/signin/signin'
+                            })
 
-                        wx.showToast({
-
-                            title: res.data.msg,
-                            icon: 'none',
-                            mask: true,
-
-                        });
+                        },1500);
 
 
+                        return false
 
-                        //倒计时开始
-                        var interval = setInterval(function () {
 
-                            currentVoiceTime--;
+                    }
+                    else if(res.data.code=='3004'){
 
-                            that.setData({
+                        var Authorization = res.data.token.access_token;//Authorization数据
 
-                                currentVoiceTime: currentVoiceTime
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+                    else {
+
+
+                        if (res.data.code == '0000') {
+
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
 
                             });
 
 
-                            if (currentVoiceTime <= 0) {
+                            //倒计时开始
+                            var interval = setInterval(function () {
 
-                                clearInterval(interval);
+                                currentVoiceTime--;
 
                                 that.setData({
 
-                                    currentVoiceTime:60,
+                                    currentVoiceTime: currentVoiceTime
 
-                                })
-
-                            }
-
-                        }, 1000)
+                                });
 
 
-                    }
+                                if (currentVoiceTime <= 0) {
 
-                    else {
+                                    clearInterval(interval);
 
-                        wx.showToast({
+                                    that.setData({
 
-                            title: res.data.msg,
-                            icon: 'none',
-                            mask: true,
+                                        currentVoiceTime: 60,
 
-                        });
+                                    })
+
+                                }
+
+                            }, 1000)
+
+
+                        }
+
+                        else {
+
+                            wx.showToast({
+
+                                title: res.data.msg,
+                                icon: 'none',
+                                mask: true,
+
+                            });
+
+                        }
 
                     }
 

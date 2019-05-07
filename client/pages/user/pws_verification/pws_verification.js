@@ -109,9 +109,12 @@ Page({
         else {
 
 
+
+
+
+
+
             if(_transferCash=='5'){
-
-
 
 
 
@@ -155,6 +158,7 @@ Page({
                     success: function (res) {
 
                         console.log(res.data);
+
 
                         app.globalData.repeat(res.data.code,res.data.msg);
 
@@ -201,10 +205,13 @@ Page({
 
                             if (res.data.code == '0000') {
 
+
+
+
                                 wx.showToast({
 
                                     title: res.data.msg,
-                                    icon: 'none',
+                                    icon: 'success',
                                     mask:true,
 
                                 })
@@ -314,7 +321,6 @@ Page({
                                 wx.showToast({
 
                                     title: res.data.msg,
-
                                     icon: 'none',
                                     mask:true,
 
@@ -338,6 +344,8 @@ Page({
             }
 
             else if(_transferCash=='6'){
+
+
 
                 //支付宝
                 if(wx.getStorageSync('chooseActive')=='1'){
@@ -378,6 +386,7 @@ Page({
                         success: function (res) {
 
                             console.log(res.data);
+
 
                             app.globalData.repeat(res.data.code,res.data.msg);
 
@@ -426,8 +435,7 @@ Page({
                                     wx.showToast({
 
                                         title: res.data.msg,
-
-                                        icon: 'none',
+                                        icon: 'success',
                                         mask:true,
 
                                     })
@@ -535,7 +543,6 @@ Page({
                                     wx.showToast({
 
                                         title: res.data.msg,
-
                                         icon: 'none',
                                         mask:true,
 
@@ -597,6 +604,8 @@ Page({
 
                             console.log(res.data);
 
+                            wx.hideLoading();
+
                             app.globalData.repeat(res.data.code,res.data.msg);
 
                             app.globalData.token(res.header.Authorization)
@@ -644,8 +653,7 @@ Page({
                                     wx.showToast({
 
                                         title: res.data.msg,
-
-                                        icon: 'none',
+                                        icon: 'success',
                                         mask:true,
 
                                     })

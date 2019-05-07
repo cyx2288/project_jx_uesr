@@ -190,6 +190,9 @@ Page({
         var ajaxCount = 1;
 
 
+        wx.removeStorageSync('addZfb');
+
+
 
 
 
@@ -248,15 +251,6 @@ Page({
 
                         return false
                     }
-                    else if(res.data.code=='3004'){
-
-                        var Authorization = res.data.token.access_token;//Authorization数据
-
-                        wx.setStorageSync('Authorization', Authorization);
-
-                        return false
-                    }
-
                     else {
 
                         (function countDownAjax() {
@@ -271,13 +265,30 @@ Page({
                         //存储银行卡
                         wx.setStorageSync('alipayList', res.data.data.list);
 
-                        that.setData({
-
-                            alipayList: res.data.data.list,
-
-                        })
+                        if(res.data.data.list){
 
 
+                            that.setData({
+
+                                alipayList: res.data.data.list,
+
+                            })
+
+
+
+
+                        }
+
+                        else {
+
+                            that.setData({
+
+                                alipayList: [],
+
+                            })
+
+
+                        }
 
 
                     }

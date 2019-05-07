@@ -11,7 +11,7 @@
     <hr/>
 
     <view class="weui-panel">
-        <text class="question">提现申请提交成功后，工作日(9:00-17:30)一般2小时内到账，具体以银行为准</text>
+        <text class="question">提现申请提交成功后，工作日(9:00-17:30)一般2小时内到账，具体以银行和支付宝为准。</text>
     </view>
 
 </view>

@@ -144,6 +144,8 @@ span.money_style{
     vertical-align: middle;
     color: #fe9728;
     display: inline-block;
+    line-height:46px;
+
 
 }
 .jx_record{
@@ -374,18 +376,27 @@ button.kf_button {
 
 }
 .new_card_box{
-    text-align: center;
-    color: #fff;
+    text-align:center;
+    color:#fff;
     background:-webkit-linear-gradient(65deg,#ea5e26,#fe9728);
-    border-radius: 10px 10px 0 0;
+    border-radius:10px 10px 0 0;
+    height:86px;
+    box-sizing:border-box;
+
+}
+.none{
+
+    background:-webkit-linear-gradient(65deg,#f9a798,#feac80);
+
 }
 .add_circle{
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: #ff6841;
     color: #fff;
     margin:0 auto 10px;
+    line-height: 20px;
 
 }
 .jx_code{
