@@ -173,7 +173,7 @@
 
             <view class="weui-media-box ">
 
-                <view class="weui-media-box__desc amount_box">单笔￥{{amountMin}} - ￥{{amountMax}}（手续费{{rate}}%）</view>
+                <view class="weui-media-box__desc amount_box">单笔￥{{amountMin}} - ￥{{amountMax}}</view>
 
                 <lable class="weui-media-box__info">
 
