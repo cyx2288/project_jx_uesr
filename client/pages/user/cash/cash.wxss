@@ -115,7 +115,7 @@ label.cash_input{
 label.cash_input>.account_information_tel{
 
     width: 100%;
-    font-size: 30px;
+    font-size: 22px;
     color: #fe9728;
     overflow: auto;
     line-height: 30px;

@@ -178,7 +178,7 @@
                 <lable class="weui-media-box__info">
 
                     <label class="cash_input">
-                        <span class="money_style">￥</span><input class="account_information_tel" focus="{{autoFocus}}" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder="请输入提现金额"  placeholder-style="color:#bbb"/>
+                        <span class="money_style">￥</span><input class="account_information_tel" focus="{{autoFocus}}" bindinput="bindKeyInput" value="{{inputBalance}}" maxlength="10" type="digit" placeholder="本次最高可提现{{thisBalance}}元"  placeholder-style="color:#bbb"/>
                     </label>
 
                 </lable>
@@ -188,7 +188,9 @@
 
                     <view class="weui-media-box__title weui-media-box__title_in-text">
 
-                        <view class="weui-media-box__title weui-media-box__title_in-text">可提额度{{canCashBalance}}元</view>
+                        <view class="weui-media-box__title weui-media-box__title_in-text" wx:if="{{spend == 0}}">可提额度{{canCashBalance}}元</view>
+                        <view class="weui-media-box__title weui-media-box__title_in-text" wx:elif="{{spend != 0 && costType == 1}}">手续费{{spend}}元（费率{{rate}}%）</view>
+                        <view class="weui-media-box__title weui-media-box__title_in-text" wx:elif="{{spend != 0 && costType == 2}}">手续费{{spend}}元</view>
 
                         <image src="../../../static/icon/wages/jx_ask.png" class="ask" bindtap="hasTipsFn"/>
 
@@ -242,7 +244,7 @@
                     <image src="../../../static/icon/wages/jx_cash_prompt.png"  class="reset_icon" />
                 </view>
 
-                <view class="weui-media-box__desc font_small">限额说明：单笔{{amountMax}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>
+                <view class="weui-media-box__desc font_small">限额说明：单笔{{amountMax}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元，每人（同一实名认证信息）每月{{monthMaxAmountByIdNumber}}元</view>
                 <!--<view class="weui-media-box__desc">限额说明：单卡单笔{{amountMin}}元，当日{{dayMaxAmount}}元，当月{{monthMaxAmount}}元</view>-->
             </view>
 

@@ -50,6 +50,17 @@ Page({
         dayMaxAmount: '',//日最大额度
 
         monthMaxAmount: '',//月最大额度
+        thisBalance: '',//本次最高可提金额
+        floatMaxAmount: '',//最高手续费
+        floatMinAmount: '',//最低手续费
+        monthMaxAmountByIdNumber: '',//证件每月最大提现金额
+        monthSurplusAmount: '',//月剩余额度
+        monthSurplusAmountNumber: '',//余额剩余额度（按证件）
+        daySurplusAmount: '',//日剩余额度
+        costType: '',//手续费模式
+        fixedAmount: '',//固定手续费
+        fixedMinAmount: '',//固定最小金额
+        fixedMaxAmount: '',//固定最大金额
 
         rate: '',//费率
 
@@ -91,6 +102,8 @@ Page({
         alipayNo:'',//支付宝账号
 
         alipayId:'',//支付宝id
+
+        spend: '',//手续费
 
     },
 
@@ -470,9 +483,10 @@ Page({
 
             that.setData({
 
-                inputBalance: that.data.canCashBalance,
+                inputBalance: that.data.thisBalance,
+                spend: parseFloat(that.data.canCashBalance - that.data.thisBalance).toFixed(2)
 
-            })
+            });
 
 
         }
@@ -784,11 +798,11 @@ Page({
 
             //console.log('费率'+returnFloat(parseInt(that.data.inputBalance * (that.data.rate / 100 ))));
 
-            var a = returnFloat(inputValue)
+            var a = returnFloat(inputValue);
 
-            var b = returnFloat(parseInt(that.data.inputBalance * (that.data.rate / 100 )));
+            var b = parseFloat(this.data.spend);
 
-            var money = returnFloat(parseFloat(a) + parseFloat(b))
+            var money = returnFloat(parseFloat(a) + parseFloat(b));
 
             //缓存支付金额
             wx.setStorageSync('money', money);
@@ -808,7 +822,7 @@ Page({
                 },
                     {
                         key: '手续费',
-                        value: '￥' + b
+                        value: '￥' + b.toFixed(2)
 
                     }
 
@@ -1036,10 +1050,26 @@ Page({
 
             this.withdrawRate();
 
+            var message;
+
+            if((this.data.costType == 1 && this.data.rate == 0) || (this.data.costType == 2) && (this.data.fixedAmount == 0)){
+
+                message = '提现免手续费';
+
+            }else if(this.data.costType == 1){
+
+                message = '按[提现金额*'+this.data.rate+'%]收取手续费，最低收取'+this.data.floatMinAmount+'元，最高收取'+this.data.floatMaxAmount+'元';
+
+            }else if(this.data.costType == 2){
+
+                message = '提现区间'+this.data.fixedMinAmount+'-'+this.data.fixedMaxAmount+'元，收取'+this.data.fixedAmount+'元手续费';
+
+            }
+
             wx.showModal({
                 title: '提现限额说明',
                 /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
-                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
+                content: message,
                 confirmText: '确认',
                 showCancel: false,
                 confirmColor: '#fe9728',
@@ -1115,6 +1145,8 @@ Page({
         //这一次的金额
         var thisInputBalance = e.detail.value;
 
+        var a = parseFloat(e.detail.value);
+
 
         if (thisInputBalance) {
 
@@ -1170,6 +1202,10 @@ Page({
              }
 
 
+        }else {
+
+            a = 0;
+
         }
 
 
@@ -1181,6 +1217,62 @@ Page({
 
 
         });
+
+        var b = parseFloat(a * (parseFloat(that.data.rate) / 100 ));
+
+        if(b == 0){
+
+            this.setData({
+
+                spend: 0
+
+            });
+
+            return;
+
+        }else if(that.data.costType == 1){
+
+            if(b < that.data.floatMinAmount){
+
+                b = that.data.floatMinAmount;
+
+            }else if(b > that.data.floatMaxAmount){
+
+                b = that.data.floatMaxAmount;
+
+            }
+
+        }else if(that.data.costType == 2){
+
+            if(a > that.data.fixedMaxAmount || a < that.data.fixedMinAmount){
+
+                b = 0;
+
+            }else{
+
+                b = that.data.fixedAmount;
+
+            }
+
+        }
+
+        if(a!=0){
+
+            that.setData({
+
+                spend: parseFloat(b).toFixed(2)
+
+            });
+
+        }else{
+
+            this.setData({
+
+                spend: 0
+
+            });
+
+        }
 
 
     },
@@ -1979,10 +2071,38 @@ Page({
 
                             rate: res.data.data.rate,//费率
 
-                            canCashBalance: res.data.data.balance,
+                            canCashBalance: res.data.data.balance,//账户余额
+                            
+                            thisBalance : res.data.data.thisBalance,//本次最高可提金额
+                            
+                            monthMaxAmountByIdNumber : res.data.data.monthMaxAmountByIdNumber,//证件每月最大提现金额
+                            
+                            costType : res.data.data.costType,//手续费模式
+                            
+                            daySurplusAmount : res.data.data.daySurplusAmount,//日剩余额度
+                            
+                            monthSurplusAmount : res.data.data.monthSurplusAmount,//月剩余额度
+                            
+                            monthSurplusAmountNumber : res.data.data.monthSurplusAmountNumber,//证件每月最大提现金额
 
+                        });
 
-                        })
+                        if(res.data.data.costType == 1) {
+
+                            that.setData({
+                                floatMaxAmount : res.data.data.floatMaxAmount,
+                                floatMinAmount : res.data.data.floatMinAmount
+                            })
+
+                        }else if(res.data.data.costType == 2){
+
+                            that.setData({
+                                fixedAmount : res.data.data.fixedAmount,
+                                fixedMaxAmount : res.data.data.fixedMaxAmount,
+                                fixedMinAmount : res.data.data.fixedMinAmount,
+                            })
+
+                        }
 
                     }
 
