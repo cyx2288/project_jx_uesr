@@ -7,7 +7,7 @@
 
         <view class="people_list {{item.type=='1'? '':'sevice_left'}}">
 
-            <view class="feedback-time">{{filter.formatTime(item.sendDate,'-')}}</view>
+            <view class="feedback-time">{{filter.formatTime(item.sendTime,'-')}}</view>
 
             <!-- 用户发起的列表-->
             <view wx:if="{{item.type=='1'}}" class="tips_box">

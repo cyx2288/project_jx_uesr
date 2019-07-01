@@ -1,40 +1,33 @@
-@import "../../user/give_details/give_details.wxss";
 
-page{
-    background: #fff;
-    width: 100%;
+.help_service{
+    text-align: left;
 }
-
-
-
 .weui-panel{
-
-    margin-bottom: 0;
-    padding: 10px;
+    margin: 0;
+    padding: 10px 15px;
     font-size: 16px;
     background: #fff;
-    /*letter-spacing: .5px*/
 }
-
 .ask{
     color: #4a4a4a;
     width:100%;
-
-
+    font-size: 14px;
 }
-
 .question{
-    color: #8a8a8a;
-
+    color: #4a4a4a;
+    font-size: 14px;
 }
-
-
 .title{
-
     color: #4a4a4a;
     font-size: 18px;
     text-align: center;
     width: 100%;
-
 }
-
+.underline{
+    text-decoration: underline;
+    font-size: 14px;
+    color: #000000;
+}
+view{
+    text-indent: 24px;
+}

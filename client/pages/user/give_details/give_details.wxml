@@ -87,7 +87,7 @@
 
                     <view class="weui_title">
                         <view class="weui-media-box__title weui-media-box__title_in-text">提现方式</view>
-                        <view class="weui_confirm">预约提现</view>
+                        <view class="weui_confirm">自动提现</view>
 
                     </view>
 
@@ -177,8 +177,8 @@
 
                 <view class="weui_title">
                     <view class="weui-media-box__title weui-media-box__title_in-text">订单类型</view>
-                    <view wx:if="{{orderType=='09'}}" class="weui_confirm">提现至支付宝</view>
-                    <view wx:elif="{{orderType=='01'||orderType=='08'}}" class="weui_confirm">提现至银行卡</view>
+                    <view wx:if="{{orderType=='09'}}" class="weui_confirm">提现到支付宝</view>
+                    <view wx:elif="{{orderType=='01'||orderType=='08'}}" class="weui_confirm">提现到银行卡</view>
                     <view wx:elif="{{orderType=='02'}}" class="weui_confirm">转账-转出</view>
                     <view wx:elif="{{orderType=='03'}}" class="weui_confirm">转账-转入</view>
                 </view>

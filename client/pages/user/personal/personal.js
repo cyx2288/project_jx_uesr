@@ -357,6 +357,12 @@ Page({
 
     },
 
+    changeTelFn: function () {
+
+        pageJumpFn.pageJump("../../../packageA/pages/change_tel/change_tel")
+
+    }
+
 
 
 

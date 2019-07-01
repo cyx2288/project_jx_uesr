@@ -83,7 +83,9 @@
         "pages/IDcard_certification/IDcard_certification",
         "pages/choose_certification/choose_certification",
         "pages/another_certification/another_certification",
-        "pages/zfb/zfb"
+        "pages/zfb/zfb",
+        "pages/secret_agreement/secret_agreement",
+        "pages/change_tel/change_tel"
       ]
     }
   ],

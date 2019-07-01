@@ -66,7 +66,7 @@
 
 .weui_top{
 
-    background-color: #fff6f2;
+    background-color: #fff5f3;
     height: 20px;
     padding:15px 15px;
     display:-webkit-box;
@@ -81,10 +81,15 @@
 
 .weui-cells__title{
 
-    color: #ee6934;
+    font-size: 12px;
+    color: #ababab;
     margin-top: .6em;
+    padding-left: 10px;
 }
 
+.weui-cells__title text{
+    color: #ff7a3c;
+}
 
 /*button*/
 .weui-btn{

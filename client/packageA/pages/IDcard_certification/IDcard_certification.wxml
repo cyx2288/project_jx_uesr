@@ -91,10 +91,26 @@
 
 </view>
 
+<image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut" wx:if="{{cropperShow}}" bindcancelFn="cancelFn" bindconfirmFn="confirmFn" max_width="1000" max_height="1000" min_width="0" min_height="0"></image-cropper>
 
 
 
+<view class="error" wx:if="{{errorShow}}">
+    <view class="error_bg"></view>
+    <view class="error_message">
+        <view class="title">提示</view>
+        <view class="content">图片信息读取失败，您可以联系客服帮助认证或重新上传身份证照片</view>
+        <view class="button">
+            <view class="cancel" bindtap="closeError">重新上传</view>
+            <view class="confirm">
+                <button class="kf_button" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">
 
+                    <text class="help_title">在线客服</text>
 
+                </button>
+            </view>
+        </view>
+    </view>
+</view>
 
 

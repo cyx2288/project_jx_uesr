@@ -48,10 +48,36 @@ Page({
 
         btnName:'',//按钮名称
 
+        src: '',
+
+        width: 300,
+
+        height: 190,
+
+        cropperShow: false,
+
+        imgType: '',
+
+        errorShow: false
+
 
 
 
     },
+
+    onLoad: function () {
+
+        this.cropper = this.selectComponent("#image-cropper");
+
+        this.setData({
+
+            src:"https://raw.githubusercontent.com/1977474741/image-cropper/dev/image/code.jpg"
+
+        });
+
+    },
+
+
     onShow: function () {
 
         var that = this;
@@ -202,14 +228,18 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                                wx.showLoading({
-                                    title:'图片上传中',
-                                    mask:true,
+                                that.setData({
 
-                                })
+                                    src: tempFilePaths[0],
+
+                                    cropperShow: true,
+
+                                    imgType: 'face'
+
+                                });
 
 
-                                wx.uploadFile({
+                                /*wx.uploadFile({
 
 
                                     url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
@@ -299,7 +329,7 @@ Page({
 
 
                                     }
-                                })
+                                })*/
 
 
 
@@ -319,7 +349,19 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                                wx.showLoading({
+                            console.log(tempFilePaths);
+
+                            that.setData({
+
+                                src: tempFilePaths[0],
+
+                                cropperShow: true,
+
+                                imgType: 'face'
+
+                            });
+
+                                /*wx.showLoading({
                                     title:'图片上传中',
                                     mask:true,
 
@@ -416,7 +458,7 @@ Page({
 
 
                                     }
-                                })
+                                })*/
 
 
 
@@ -460,8 +502,17 @@ Page({
                             var tempFilePaths = res.tempFilePaths;
 
 
+                            that.setData({
 
-                                wx.showLoading({
+                                src: tempFilePaths[0],
+
+                                cropperShow: true,
+
+                                imgType: 'back'
+
+                            });
+
+                                /*wx.showLoading({
 
                                     title:'图片上传中',
                                     mask:true,
@@ -558,7 +609,7 @@ Page({
 
 
                                     }
-                                })
+                                })*/
 
 
 
@@ -579,8 +630,17 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            that.setData({
 
-                                wx.showLoading({
+                                src: tempFilePaths[0],
+
+                                cropperShow: true,
+
+                                imgType: 'back'
+
+                            });
+
+                                /*wx.showLoading({
 
                                     title: '图片上传中',
                                     mask: true,
@@ -678,7 +738,7 @@ Page({
 
 
                                     }
-                                })
+                                })*/
 
 
 
@@ -911,6 +971,18 @@ Page({
 
                         }
 
+                        else if(res.data.code == -7){
+
+                            wx.hideLoading();
+
+                            that.setData({
+
+                                errorShow: true
+
+                            });
+
+                        }
+
 
                         else if(res.data.code=='0000'){
 
@@ -1006,6 +1078,177 @@ Page({
 
 
 
+
+    },
+
+
+    cropperload(e){
+        console.log("cropper初始化完成");
+    },
+    loadimage(e){
+        console.log("图片加载完成",e.detail);
+        wx.hideLoading();
+    },
+    clickcut(e) {
+        console.log(e.detail);
+        //点击裁剪框阅览图片
+        wx.previewImage({
+            current: e.detail.url, // 当前显示图片的http链接
+            urls: [e.detail.url] // 需要预览的图片http链接列表
+        })
+    },
+
+    cancelFn: function () {
+
+        this.setData({
+
+            cropperShow: false,
+
+            src: ''
+
+        });
+
+    },
+
+
+    confirmFn: function (e) {
+
+        var that = this;
+
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        wx.showLoading({
+            title:'图片上传中',
+            mask:true,
+
+        });
+
+        console.log(e.detail);
+
+        wx.uploadFile({
+
+
+                                    url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
+
+                                    header:{
+
+                                        'content-type': 'multipart/form-data', // post请求
+
+                                        'jxsid': jx_sid,
+
+                                        'Authorization': Authorization
+
+                                    },
+
+                                    filePath: e.detail.url,
+
+                                    name: 'File',
+
+                                    success: function(res){
+
+                                        //code3003返回方法
+                                        app.globalData.repeat(res.data.code, res.data.msg);
+
+                                        //app.globalData.token(res.header.Authorization)
+
+                                        if (res.data.code == '3001') {
+
+                                            //console.log('登录');
+
+                                            setTimeout(function () {
+
+                                                wx.reLaunch({
+
+                                                    url:'../../../pages/common/signin/signin'
+                                                })
+
+                                            }, 1500);
+
+
+                                            return false
+
+
+                                        }
+                                        else if(res.data.code=='3004'){
+
+                                            var Authorization = res.data.token.access_token;//Authorization数据
+
+                                            wx.setStorageSync('Authorization', Authorization);
+
+                                            return false
+                                        }
+
+
+                                        else {
+
+                                            console.log(res)
+
+                                            wx.hideLoading()
+
+
+                                            if(JSON.parse(res.data).code=='0000'){
+
+
+                                                if(that.data.imgType == 'face'){
+
+                                                    that.setData({
+
+                                                        faceImg:JSON.parse(res.data).data.url,
+
+                                                        url: '',
+
+                                                        cropperShow: false
+
+                                                    })
+
+                                                }else if(that.data.imgType == 'back'){
+
+                                                    that.setData({
+
+                                                        backImg:JSON.parse(res.data).data.url,
+
+                                                        url: '',
+
+                                                        cropperShow: false
+
+                                                    })
+
+                                                }
+
+                                            }
+
+                                            setTimeout(function () {
+
+
+                                                wx.showToast({
+                                                    title: '上传成功',
+                                                    icon: 'none',
+                                                    mask: true,
+                                                })
+
+                                            },10)
+
+
+
+
+                                        }
+
+
+                                    }
+                                })
+
+    },
+
+
+    closeError: function () {
+
+        this.setData({
+
+            errorShow: false
+
+        })
 
     }
 

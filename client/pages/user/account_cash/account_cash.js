@@ -970,7 +970,7 @@ Page({
 
                 if (len1 == '.' && !lastInputBalace) {
 
-                    console.log('不亮')
+                    console.log('不亮');
 
 
                     that.setData({
@@ -998,16 +998,20 @@ Page({
             }
 
 
+            //第一位不能是点
+            if (len1 == '.') {
+
+                e.detail.value = '0.';
+
+                that.setData({
+
+                    thisInputBalance: '0.'
+
+                })
+            }
+
             //默认输入小数点后两位
-            if (!reg.test(thisInputBalance)) {
-
-
-                wx.showToast({
-                    title: '输入金额有误',
-                    icon: 'none',
-                    duration: 1000
-
-                });
+            else if (!reg.test(thisInputBalance)) {
 
                 e.detail.value = lastInputBalace
 
@@ -1017,35 +1021,9 @@ Page({
             //如果第一位是0，第二位不是点
             else if (thisInputBalance.length > 1 && len1 == 0 && len2 != '.') {
 
-                wx.showToast({
-                    title: '输入金额有误',
-                    icon: 'none',
-                    duration: 1000,
-                    mask: true,
-
-                });
-
                 e.detail.value = lastInputBalace
 
 
-            }
-
-            //第一位不能是点
-            else if (len1 == '.') {
-
-                wx.showToast({
-                    title: '输入金额有误',
-                    icon: 'none',
-                    duration: 1000
-
-                });
-
-
-                that.setData({
-
-                    thisInputBalance: ''
-
-                })
             }
 
 

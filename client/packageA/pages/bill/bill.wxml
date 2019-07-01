@@ -18,8 +18,8 @@
 
                 <view class="weui_middle">
 
-                    <view wx:if="{{item.orderType=='01'||item.orderType=='08'}}" class="weui-media-box__title weui-media-box__title_in-text">提现至银行卡</view>
-                    <view wx:elif="{{item.orderType=='09'}}" class="weui-media-box__title weui-media-box__title_in-text">提现至支付宝</view>
+                    <view wx:if="{{item.orderType=='01'||item.orderType=='08'}}" class="weui-media-box__title weui-media-box__title_in-text">提现到银行卡</view>
+                    <view wx:elif="{{item.orderType=='09'}}" class="weui-media-box__title weui-media-box__title_in-text">提现到支付宝</view>
                     <view wx:elif="{{item.orderType=='02'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转出</view>
                     <view wx:elif="{{item.orderType=='03'}}" class="weui-media-box__title weui-media-box__title_in-text">转账-转入</view>
                     <text class="details_date">{{filter.formatTime(item.createTime,'-')}}</text>

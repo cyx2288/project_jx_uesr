@@ -41,6 +41,21 @@
 
 </view>
 
+    <view class="weui-cells">
+
+        <view class="mine_welfare" bindtap="changeTelFn">
+
+            <text class="password_image">切换账号</text>
+
+            <view class="number_right">
+
+                <image src="../../../static/icon/wages/reset_go.png"  class="reset_go" />
+
+            </view>
+        </view>
+
+    </view>
+
 
 
 <!--button-->

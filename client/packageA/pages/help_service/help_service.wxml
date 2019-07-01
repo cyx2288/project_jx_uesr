@@ -17,7 +17,7 @@
               <hr/>
             <navigator  url="../problem_recall/problem_recall"  class="weui-media-box__title">提现提交后，可以撤回吗？</navigator>
               <hr/>
-            <navigator  url="../problem_fail/problem_fail" class="weui-media-box__title">提现失败如何处理？</navigator>
+            <navigator  url="../problem_fail/problem_fail" class="weui-media-box__title">提现失败，如何处理？</navigator>
               <hr/>
             <navigator  url="../problem_quota/problem_quota" class="weui-media-box__title">提现限额？</navigator>
         </view>
@@ -38,7 +38,7 @@
             <navigator  url="../problem_setting/problem_setting"  class="weui-media-box__title">如何设置支付密码？</navigator>
 
             <hr/>
-            <navigator  url="../problem_details/problem_details"  class="weui-media-box__title">忘记修改支付密码怎么办？</navigator>
+            <navigator  url="../problem_details/problem_details"  class="weui-media-box__title">忘记/修改支付密码怎么办？</navigator>
             <hr/>
             <navigator   url="../problem_close/problem_close" class="weui-media-box__title">如何关闭支付验证？</navigator>
 

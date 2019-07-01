@@ -39,7 +39,7 @@
     </view>
 
     <view class="register_text">
-        <text>点击注册，即表示您同意</text><navigator url="../user_agreement/user_agreement" class="register_text_code">《用户注册协议》</navigator>
+        <text>点击注册，即表示您同意</text><navigator url="../user_agreement/user_agreement" class="register_text_code">用户协议</navigator>和<navigator url="../../../packageA/pages/secret_agreement/secret_agreement" class="register_text_code">隐私政策</navigator>
 
     </view>
 

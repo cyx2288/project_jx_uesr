@@ -389,5 +389,60 @@ text.weui-media-box__info__meta{
     font-size: 16px;
     line-height: 96rpx;
 }
-
+.popup_bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.3;
+    z-index: 999;
+}
+.message_box {
+    width: 80vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border-radius: 3px;
+    z-index: 1000;
+}
+.message_box .title{
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+.message_box .content {
+    padding: 0 20px 20px;
+    font-size: 14px;
+}
+.message_box .content .orange{
+    color: #ff7a3c;
+    display: inline-block;
+}
+.message_box .content view{
+    margin: 10px 0;
+}
+.message_box .button {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.message_box .button view{
+    flex: 1;
+    white-space: nowrap;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+    font-size: 14px;
+    line-height: 50px;
+}
+.cancel{
+    color: #ababab;
+}
+.message_box .button view+view{
+    border-left: 1px solid #dddddd;
+}
 

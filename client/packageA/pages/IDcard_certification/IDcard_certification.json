@@ -1,2 +1,7 @@
 {
-  "navigationBarTitleText": ""}
+  "usingComponents": {
+    "image-cropper": "../image-cropper/image_cropper"
+  },
+  "navigationBarTitleText": "",
+  "disableScroll": true
+}

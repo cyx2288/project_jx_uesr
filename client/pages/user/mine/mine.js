@@ -12,6 +12,8 @@ const balanceUrl = '/user/account/getbalance';//获取用户余额
 
 const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
 
+const logOutUrl = '/logout';//退出登录url
+
 
 
 Page({
@@ -32,6 +34,8 @@ Page({
         needRefresh: true,//刷新的开关 false为不刷新 true为刷新,
 
         //controlNum:1,//控制重复点击
+
+        isPrivacy: false,
 
 
     },
@@ -277,6 +281,21 @@ Page({
                             isVerify: wx.getStorageSync('isVerify')
 
 
+                        });var isPrivacy;
+
+                        if(res.data.data.isPrivacy == 1){
+
+                            isPrivacy = false;
+
+                        }else{
+
+                            isPrivacy = true;
+
+                        }
+
+                        that.setData({
+
+                            isPrivacy: isPrivacy
                         });
 
 
@@ -670,6 +689,13 @@ Page({
 
     },
 
+
+    changeTelFn: function () {
+
+        pageJumpFn.pageJump("../../../packageA/pages/change_tel/change_tel")
+
+    },
+
     //显示小圆点
     showDot:function () {
 
@@ -729,6 +755,215 @@ Page({
 
         }
     },
+
+    logOutFn:function () {
+
+        var thisLogOutUrl = app.globalData.URL + logOutUrl;
+
+        var that = this;
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        wx.removeStorageSync('jxsid');
+
+        wx.removeStorageSync('Authorization');
+
+        wx.clearStorageSync();
+
+
+        logOut();
+
+
+        function logOut() {
+
+            /**
+             * 接口：
+             * 请求方式：POST
+             * 接口：/logout
+             * 入参：null
+             **/
+            wx.request({
+
+                url:thisLogOutUrl,
+
+                method: 'GET',
+
+                header: {
+
+                    'jxsid': jx_sid,
+
+                    'Authorization': Authorization
+
+                },
+
+                success: function (res) {
+
+                    console.log(res.data);
+
+                    var thisCode = res.data.code;
+
+                    app.globalData.repeat(res.data.code,res.data.msg);
+
+                    app.globalData.token(res.header.Authorization)
+
+                    if(res.data.code=='3001') {
+
+                        //console.log('登录');
+
+                        setTimeout(function () {
+
+                            wx.reLaunch({
+
+                                url:'../../common/signin/signin'
+                            })
+
+                        },1500);
+
+
+                        return false
+
+
+                    }
+                    else if(res.data.code=='3004'){
+
+                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                        wx.setStorageSync('Authorization', Authorization);
+
+                        return false
+                    }
+
+                    else {
+
+
+                        if (thisCode == '0000') {
+
+
+                            //跳回登录页
+                            wx.reLaunch({
+
+                                url: '../../common/signin/signin'
+                            })
+
+                        }
+
+                    }
+
+                },
+
+                fail: function (res) {
+
+                    console.log(res)
+
+                }
+
+            })
+
+
+        }
+
+
+    },
+
+    agree: function () {
+
+        var that = this;
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口：
+         * 请求方式：POST
+         * 接口：/logout
+         * 入参：null
+         **/
+        wx.request({
+
+            url:app.globalData.URL + '/user/set/updateisprovicystate',
+
+            method: 'GET',
+
+            data: {
+                isPrivacy: 1
+            },
+
+            header: {
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                var thisCode = res.data.code;
+
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500);
+
+
+                    return false
+
+
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else {
+
+
+                    if (thisCode == '0000') {
+
+                        that.setData({
+
+                            isPrivacy: false
+
+                        });
+
+                    }
+
+                }
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
+
+    }
 
 
 });

@@ -151,3 +151,49 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position: relative;
 }
+.error_message{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600rpx;
+    background-color: white;
+    border-radius: 2px;
+    z-index: 100;
+}
+.error_bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 99;
+}
+.error_message .title{
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    color: #4a4a4a;
+}
+.error_message .content{
+    font-size: 16px;
+    padding: 5px 10px 10px;
+    color: #4a4a4a;
+    border-bottom: 1px solid #dddddd;
+}
+.error_message .button{
+    display: flex;
+}
+.error_message .button view{
+    flex: 1;
+}
+.error_message .button .cancel{
+    text-align: center;
+    font-size: 18px;
+    line-height: 46px;
+}
+.error_message .button .confirm{
+    border-left: 1px solid #dddddd;
+}

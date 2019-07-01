@@ -21,39 +21,53 @@
                <view class="account_information_tel color_white">{{mobile}}</view>
 
 
-               <!--认证状态-->
-               <view wx:if="{{isVerify=='0'}}" class="authentication">
+               <view class="authentication_change">
 
-                  <!--未认证-->
-                   <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
+                   <!--认证状态-->
+                   <view wx:if="{{isVerify=='0'}}" class="authentication">
 
-                   <text class="unauthorized">未认证</text>
+                       <!--未认证-->
+                       <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
 
-               </view>
+                       <text class="unauthorized">未认证</text>
 
-               <view wx:elif="{{isVerify=='1'}}" class="authentication">
+                   </view>
 
-                   <!--已认证-->
-                  <image src="../../../static/icon/wages/jx_authentication.png"  class="icon_unauthorized" />
-                   <text class="unauthorized" >已认证</text>
+                   <view wx:elif="{{isVerify=='1'}}" class="authentication">
 
-               </view>
+                       <!--已认证-->
+                       <image src="../../../static/icon/wages/jx_authentication.png"  class="icon_unauthorized" />
+                       <text class="unauthorized" >已认证</text>
 
-               <!--认证状态-->
-               <view wx:if="{{isVerify=='2'}}" class="authentication">
+                   </view>
 
-                   <!--未认证-->
-                   <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
+                   <!--认证状态-->
+                   <view wx:if="{{isVerify=='2'}}" class="authentication">
 
-                   <text class="unauthorized">审核中</text>
+                       <!--未认证-->
+                       <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
 
-               </view>
+                       <text class="unauthorized">审核中</text>
 
-               <view wx:elif="{{isVerify=='3'}}" class="authentication">
+                   </view>
 
-                   <!--已认证-->
-                   <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
-                   <text class="unauthorized" >审核未通过</text>
+                   <view wx:elif="{{isVerify=='3'}}" class="authentication">
+
+                       <!--已认证-->
+                       <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
+                       <text class="unauthorized" >审核未通过</text>
+
+                   </view>
+
+                   <view class="change" bindtap="changeTelFn">
+
+                       <image src="../../../static/icon/wages/jx_change_tel.png" />
+
+                       <text>切换账号</text>
+
+                       <view class="change_button"></view>
+
+                   </view>
 
                </view>
 
@@ -233,3 +247,17 @@
 
 </view>
 
+     <view class="popup" wx:if="{{isPrivacy}}">
+         <view class="popup_bg"></view>
+         <view class="message_box">
+             <view class="title">隐私政策更新</view>
+             <view class="content">
+                 <view>为了加强对您个人信息的保护，根据最新法律法规要求，我们更新了隐私政策，以向您说明我们在收集和使用您相关个人信息时的处理规则。</view>
+                 <view>请您仔细阅读并确认“<navigator url="../../common/user_agreement/user_agreement" class="orange">用户隐私政策</navigator>”，我们将严格按照政策内容使用和保护您的个人信息，为您提供更好的服务</view>
+             </view>
+             <view class="button">
+                 <view class="cancel" bindtap="logOutFn">不同意，退出登录</view>
+                 <view class="confirm" bindtap="agree">同意，继续使用</view>
+             </view>
+         </view>
+     </view>

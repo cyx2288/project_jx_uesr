@@ -3,11 +3,11 @@
 
 
     <view class="weui_top">
-        <view class="jx_record">
-            <image src="../../../static/icon/wages/jx_prompt.png"  class="reset_go" />
+        <view class="tip_img">
+            <image src="../../../static/icon/wages/jx_reminder.png"  class="reset_go" />
         </view>
 
-        <view class="weui-cells__title">请绑定持卡人本人的银行卡</view>
+        <view class="weui-cells__title"><text>温馨提示：</text>请绑定持卡人本人的银行卡</view>
     </view>
 
 

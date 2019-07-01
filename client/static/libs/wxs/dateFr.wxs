@@ -24,7 +24,6 @@
    if (m < 10) m = "0" + m;
    if (s < 10) s = "0" + s;
 
-
    if (splitStr)
      return y +splitStr + M +splitStr+ d + '    '+ h +':'+ m+':'+s;
    else

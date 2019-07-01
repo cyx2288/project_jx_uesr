@@ -201,3 +201,17 @@
          <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">我知道了</view>
      </view>
  </view>
+ <view class="popup" wx:if="{{isPrivacy}}">
+     <view class="popup_bg"></view>
+     <view class="message_box">
+         <view class="title">隐私政策更新</view>
+         <view class="content">
+             <view>为了加强对您个人信息的保护，根据最新法律法规要求，我们更新了隐私政策，以向您说明我们在收集和使用您相关个人信息时的处理规则。</view>
+             <view>请您仔细阅读并确认“<navigator url="../../common/user_agreement/user_agreement" class="orange">用户隐私政策</navigator>”，我们将严格按照政策内容使用和保护您的个人信息，为您提供更好的服务</view>
+         </view>
+         <view class="button">
+             <view class="cancel" bindtap="logOutFn">不同意，退出登录</view>
+             <view class="confirm" bindtap="agree">同意，继续使用</view>
+         </view>
+     </view>
+ </view>

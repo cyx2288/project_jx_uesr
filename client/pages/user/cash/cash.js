@@ -484,7 +484,7 @@ Page({
             that.setData({
 
                 inputBalance: that.data.thisBalance,
-                spend: parseFloat(that.data.canCashBalance - that.data.thisBalance).toFixed(2)
+                spend: that.spend(parseFloat(that.data.thisBalance))
 
             });
 
@@ -689,81 +689,77 @@ Page({
                 duration: 1000
             })
 
-        }
+        }else if(parseFloat(that.data.inputBalance) > parseFloat(that.data.thisBalance)){
 
-        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.dayMaxAmount)) {
-
-
-            wx.showToast({
-                title: '提现金额超出当日最大限额',
-                icon: 'none',
-                duration: 1000
-            })
+            if (parseFloat(that.data.inputBalance) > parseFloat(that.data.canCashBalance)) {
 
 
-        }
-
-        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.monthMaxAmount)) {
-
-
-            wx.showToast({
-                title: '提现金额超出当月最大限额',
-                icon: 'none',
-                duration: 1000
-            })
-
-        }
-
-        else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.canCashBalance)) {
+                wx.showToast({
+                    title: '金额超出最高可提金额',
+                    icon: 'none',
+                    duration: 1000
+                })
+            }else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.monthSurplusAmount)) {
 
 
-            wx.showToast({
-                title: '金额已超过可提余额',
-                icon: 'none',
-                duration: 1000
-            })
-        }
+                wx.showToast({
+                    title: '金额超出当月最大限额',
+                    icon: 'none',
+                    duration: 1000
+                })
 
-        //判断有几个小数点
-        else if (!dot.test(that.data.inputBalance)) {
-            wx.showToast({
-                title: '输入金额格式有误',
-                icon: 'none',
-                duration: 1000
-            })
-
-        }
-
-        //默认输入小数点后两位
-        else if (!reg.test(that.data.inputBalance)) {
-
-            wx.showToast({
-                title: '输入金额限小数点后两位',
-                icon: 'none',
-                duration: 1000
-            })
+            }else if (parseFloat(that.data.inputBalance) > parseFloat(that.data.daySurplusAmount)) {
 
 
-        }
+                wx.showToast({
+                    title: '金额超出当日最大限额',
+                    icon: 'none',
+                    duration: 1000
+                })
 
 
-        else if (parseFloat(that.data.monthMaxAmount) == 0 && parseFloat(that.data.dayMaxAmount) == 0) {
+            }else{
 
-            wx.showToast({
-                title: '账户余额不足',
-                icon: 'none',
-                duration: 1000
-            })
+                wx.showToast({
+                    title: '金额超出最高可提金额',
+                    icon: 'none',
+                    duration: 1000
+                })
 
-        }
+            }
 
-        else if (parseFloat(that.data.monthMaxAmount) == 0 && parseFloat(that.data.dayMaxAmount) == 0) {
+        }else if(parseFloat(that.data.inputBalance) > parseFloat(that.data.monthSurplusAmountNumber)){
 
-            wx.showToast({
-                title: '当月金额超限',
-                icon: 'none',
-                duration: 1000
-            })
+            var message = '超过每人（同一实名认证信息）每月提现限额' + that.data.monthMaxAmountByIdNumber
+                +  '，您当月已提现' + (parseFloat(that.data.monthMaxAmountByIdNumber) - parseFloat(that.data.monthSurplusAmountNumber)) + '元，';
+
+            if(that.data.monthSurplusAmountNumber >= 0){
+
+                message = message + '剩余额度' + that.data.monthSurplusAmountNumber + '元';
+
+            }else{
+
+                message = message + '剩余额度0元';
+
+            }
+
+            wx.showModal({
+                title: '提示',
+                content: message,
+                confirmText: '确认',
+                confirmColor: '#fe9728',
+                success: function (res) {
+
+                    if (res.confirm) {
+
+
+                    }
+
+                    else if (res.cancel) {
+
+                    }
+                }
+            });
 
         }
 
@@ -1025,10 +1021,10 @@ Page({
             wx.showModal({
                 title: '提现限额说明',
                 /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
-                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元',
-                confirmText: '确认',
-                showCancel: false,
+                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元，每人（同一实名认证信息）每月' + this.data.monthMaxAmountByIdNumber + '元',
+                confirmText: '我知道了',
                 confirmColor: '#fe9728',
+                showCancel: false,
                 success: function (res) {
 
                     if (res.confirm) {
@@ -1145,8 +1141,6 @@ Page({
         //这一次的金额
         var thisInputBalance = e.detail.value;
 
-        var a = parseFloat(e.detail.value);
-
 
         if (thisInputBalance) {
 
@@ -1184,20 +1178,20 @@ Page({
                  e.detail.value = 0
 
 
-            }
+            }else if(thisInputBalance == '.'){
+
+                 e.detail.value = '0.';
+
+             }
              //默认输入小数点后两位
              else if (isNaN(+thisInputBalance)||!reg.test(thisInputBalance)) {
 
-
-                 wx.showToast({
-                     title: '输入金额有误',
-                     icon: 'none',
-                     duration: 1000
-
-                 });
-
                  e.detail.value = lastInputBalace
 
+
+             }else if(!thisInputBalance.indexOf(0) && parseFloat(thisInputBalance) >= 1){
+
+                 e.detail.value = 0;
 
              }
 
@@ -1218,17 +1212,29 @@ Page({
 
         });
 
-        var b = parseFloat(a * (parseFloat(that.data.rate) / 100 ));
+        var a = parseFloat(e.detail.value) || 0;
+
+        var b = that.spend(parseFloat(a));
+
+        that.setData({
+
+            spend: b
+
+        });
+
+
+    },
+
+
+    spend: function (money) {
+
+        var that = this;
+
+        var b = parseFloat(money * (parseFloat(that.data.rate) / 100 ));
 
         if(b == 0){
 
-            this.setData({
-
-                spend: 0
-
-            });
-
-            return;
+            return 0;
 
         }else if(that.data.costType == 1){
 
@@ -1244,7 +1250,7 @@ Page({
 
         }else if(that.data.costType == 2){
 
-            if(a > that.data.fixedMaxAmount || a < that.data.fixedMinAmount){
+            if(money > that.data.fixedMaxAmount || money < that.data.fixedMinAmount){
 
                 b = 0;
 
@@ -1256,26 +1262,19 @@ Page({
 
         }
 
-        if(a!=0){
+        if(money!=0){
 
-            that.setData({
-
-                spend: parseFloat(b).toFixed(2)
-
-            });
+            return parseFloat(b).toFixed(2);
 
         }else{
 
-            this.setData({
-
-                spend: 0
-
-            });
+            return 0;
 
         }
 
-
     },
+
+
 
     showModal: function () {
 
@@ -1773,17 +1772,7 @@ Page({
                     wx.setStorageSync('Authorization', Authorization);
 
                     return false
-                }
-                else if(res.data.code=='3004'){
-
-                    var Authorization = res.data.token.access_token;//Authorization数据
-
-                    wx.setStorageSync('Authorization', Authorization);
-
-                    return false
-                }
-
-                else {
+                }else {
 
 
                     if(res.data.data.list) {
@@ -1929,6 +1918,14 @@ Page({
 
                  else {
 
+                     var thisbalance = Math.min(parseFloat(res.data.data.monthSurplusAmount),parseFloat(res.data.data.daySurplusAmount),parseFloat(res.data.data.balance), parseFloat(res.data.data.amountMax)).toFixed(2);
+
+                     if(thisbalance < 0){
+
+                         thisbalance = 0;
+
+                     }
+
                      vm.setData({
 
 
@@ -1940,13 +1937,25 @@ Page({
 
                          monthMaxAmount: res.data.data.monthMaxAmount,//月最大额度
 
+                         monthSurplusAmount: res.data.data.monthSurplusAmount,//月剩余额度
+
+                         daySurplusAmount: res.data.data.daySurplusAmount,//日剩余额度
+
                          rate: res.data.data.rate,//费率
 
                          canCashBalance: res.data.data.balance,
 
+                         thisBalance: thisbalance,
 
+                         spend: 0,
 
-                     })
+                         monthMaxAmountByIdNumber: res.data.data.monthMaxAmountByIdNumber,//证件可提金额
+
+                         monthSurplusAmountNumber: res.data.data.monthSurplusAmountNumber,//证件剩余金额
+
+                         costType: false
+
+                     });
 
 
 

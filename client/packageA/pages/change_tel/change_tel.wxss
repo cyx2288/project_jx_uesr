@@ -1,0 +1,56 @@
+.change_tel{
+    padding-bottom: 10px;
+}
+.change_tel .title{
+    padding: 15px;
+    color: #ff7a3c;
+    font-size: 16px;
+}
+.change_tel .user_tels{
+    background-color: white;
+    padding: 0 15px;
+    margin: 0 15px;
+    border-radius: 8px;
+}
+.user_tels .user_tel{
+    padding: 15px 0;
+    position: relative;
+}
+.user_tels .user_tel .information{
+    display: flex;
+    align-items: center;
+}
+.user_tel .information .image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.information .image image{
+    width: 100%;
+    height: 100%;
+}
+.user_tel + .user_tel:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #f5f5f9;
+}
+.user_tel .choose{
+    width: 12px;
+    height: 6px;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+    transform: rotate(-45deg) translateY(-50%);
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    display: none;
+}
+.selected .choose{
+    display: block;
+}
