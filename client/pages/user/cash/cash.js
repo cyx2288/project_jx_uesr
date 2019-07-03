@@ -1014,77 +1014,45 @@ Page({
 
     hasTipsFn: function () {
 
-        if(this.data.navbarActiveIndex==1){
+        var message;
 
-            this.alipayRate()
+        if((this.data.costType == 1 && this.data.rate == 0) || (this.data.costType == 2) && (this.data.fixedAmount == 0)){
 
-            wx.showModal({
-                title: '提现限额说明',
-                /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
-                content: '单笔'+this.data.amountMax+'元,当日'+this.data.dayMaxAmount+',当月'+this.data.monthMaxAmount+'元，每人（同一实名认证信息）每月' + this.data.monthMaxAmountByIdNumber + '元',
-                confirmText: '我知道了',
-                confirmColor: '#fe9728',
-                showCancel: false,
-                success: function (res) {
+            message = '提现免手续费';
 
-                    if (res.confirm) {
+        }else if(this.data.costType == 1){
 
+            message = '按[提现金额*'+this.data.rate+'%]收取手续费，最低收取'+this.data.floatMinAmount+'元，最高收取'+this.data.floatMaxAmount+'元';
 
-                    }
+        }else if(this.data.costType == 2){
 
-                    else if (res.cancel) {
+            message = '提现区间'+this.data.fixedMinAmount+'-'+this.data.fixedMaxAmount+'元，收取'+this.data.fixedAmount+'元手续费';
 
-                    }
-                }
-            });
+        }else{
 
+            message = '提现免手续费';
 
         }
 
-        else {
+        wx.showModal({
+            title: '手续费说明',
+            /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
+            content: message,
+            confirmText: '确认',
+            showCancel: false,
+            confirmColor: '#fe9728',
+            success: function (res) {
+
+                if (res.confirm) {
 
 
-            this.withdrawRate();
+                }
 
-            var message;
+                else if (res.cancel) {
 
-            if((this.data.costType == 1 && this.data.rate == 0) || (this.data.costType == 2) && (this.data.fixedAmount == 0)){
-
-                message = '提现免手续费';
-
-            }else if(this.data.costType == 1){
-
-                message = '按[提现金额*'+this.data.rate+'%]收取手续费，最低收取'+this.data.floatMinAmount+'元，最高收取'+this.data.floatMaxAmount+'元';
-
-            }else if(this.data.costType == 2){
-
-                message = '提现区间'+this.data.fixedMinAmount+'-'+this.data.fixedMaxAmount+'元，收取'+this.data.fixedAmount+'元手续费';
-
+                }
             }
-
-            wx.showModal({
-                title: '提现限额说明',
-                /*content: '单卡单笔49,500.00元，当日99,000.00元，当月198,000.00元',*/
-                content: message,
-                confirmText: '确认',
-                showCancel: false,
-                confirmColor: '#fe9728',
-                success: function (res) {
-
-                    if (res.confirm) {
-
-
-                    }
-
-                    else if (res.cancel) {
-
-                    }
-                }
-            });
-
-
-
-        }
+        });
 
 
 

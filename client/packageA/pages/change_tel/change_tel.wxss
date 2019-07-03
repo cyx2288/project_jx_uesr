@@ -49,8 +49,4 @@
     position: absolute;
     right: 7px;
     top: 50%;
-    display: none;
-}
-.selected .choose{
-    display: block;
 }

@@ -14,6 +14,8 @@ const statusUrl = '/user/bank/getsalarystatus';//获取用户工资金额状况
 
 const logOutUrl = '/logout';//退出登录url
 
+const getAllMobileUrl = '/user/user/getswitchuserinfo';
+
 
 
 Page({
@@ -36,6 +38,8 @@ Page({
         //controlNum:1,//控制重复点击
 
         isPrivacy: false,
+
+        mobileNumber: ''
 
 
     },
@@ -321,6 +325,143 @@ Page({
 
                         }
 
+                        if(res.data.data.isConfirm === '0'){
+
+                            var message;
+
+                            if(!!res.data.data.mainMobile && res.data.data.isVerify === '1'){
+
+                                message = '您有一笔收入已到账，请切换至'+ res.data.data.mainMobile + '账号查看';
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: message,
+                                    cancelText: '我知道了',
+                                    confirmText: '立即切换',
+                                    confirmColor: '#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+                                            wx.navigateTo({
+
+                                                url: '../../../packageA/pages/change_tel/change_tel'
+
+                                            });
+
+                                        }
+
+                                        else if (res.cancel) {
+
+                                            confirmAccountGroup();
+
+                                        }
+
+                                    }
+                                });
+
+                            }else{
+
+                                (res.data.data.isVerify === '0') ?
+                                    (message = '系统检测到您在平台内已存在有效实名账号，本账号的收入余额将自动归集到您已实名的账户中，请登录'+res.data.data.mainMobile+'的账号查看') :
+                                    (message = '您有一笔收入已到账');
+
+                                wx.showModal({
+                                    title: '提示',
+                                    content: message,
+                                    showCancel: false,
+                                    confirmText: '我知道了',
+                                    confirmColor: '#fe9728',
+                                    success: function (res) {
+
+                                        if (res.confirm) {
+
+                                            confirmAccountGroup();
+
+                                        }
+
+                                    }
+                                });
+
+                            }
+
+                        }
+
+                        function confirmAccountGroup() {
+
+                            //获取数据
+                            var jx_sid = wx.getStorageSync('jxsid');
+
+                            var Authorization = wx.getStorageSync('Authorization');
+
+                            /**
+                             * 接口：确认资金归集
+                             * 请求方式：GET
+                             * 接口：/user/center/confirmaccountgroup
+                             * 入参：mobile
+                             **/
+                            wx.request({
+
+                                url: app.globalData.URL + '/user/center/confirmaccountgroup',
+
+                                method: 'GET',
+
+                                header: {
+                                    'content-type': 'application/x-www-form-urlencoded', // post请求
+
+                                    'jxsid': jx_sid,
+
+                                    'Authorization': Authorization
+
+                                },
+
+                                success: function (res) {
+
+                                    console.log(res.data);
+
+                                    app.globalData.repeat(res.data.code, res.data.msg);
+
+                                    app.globalData.token(res.header.Authorization)
+
+
+                                    if (res.data.code == '3001') {
+
+                                        //console.log('登录');
+
+                                        setTimeout(function () {
+
+                                            wx.reLaunch({
+
+                                                url: '../../common/signin/signin'
+                                            })
+
+                                        }, 1500)
+
+
+                                        return false
+
+
+                                    }
+
+                                    else if(res.data.code=='3004'){
+
+                                        var Authorization = res.data.token.access_token;//Authorization数据
+
+                                        wx.setStorageSync('Authorization', Authorization);
+
+                                    }
+
+                                },
+
+                                fail: function (res) {
+
+                                    console.log(res)
+                                }
+
+                            })
+
+                        }
+
 
 
                     }
@@ -565,7 +706,11 @@ Page({
 
                 }
 
-            })
+            });
+
+            that.getAllMobile();
+
+
 
 
             setTimeout(function () {
@@ -590,6 +735,97 @@ Page({
 
 
 
+
+    },
+
+    getAllMobile: function () {
+
+        var thisUserCenterUrl = app.globalData.URL + getAllMobileUrl;
+
+        var that = this;
+
+        //获取数据
+        var jx_sid = wx.getStorageSync('jxsid');
+
+        var Authorization = wx.getStorageSync('Authorization');
+
+        /**
+         * 接口： 获取用户切换信息
+         * 请求方式： GET
+         * 接口： /user/user/getswitchuserinfo
+         * 入参：null
+         **/
+        wx.request({
+
+            url: thisUserCenterUrl,
+
+            method: 'GET',
+
+            header: {
+
+                'content-type': 'application/x-www-form-urlencoded',// post请求
+
+                'jxsid': jx_sid,
+
+                'Authorization': Authorization
+
+            },
+
+
+            success: function (res) {
+
+                console.log(res.data);
+
+                app.globalData.repeat(res.data.code,res.data.msg);
+
+                app.globalData.token(res.header.Authorization)
+
+                if(res.data.code=='3001') {
+
+                    //console.log('登录');
+                    setTimeout(function () {
+
+                        wx.reLaunch({
+
+                            url:'../../common/signin/signin'
+                        })
+
+                    },1500)
+
+                    return false
+
+
+                }
+                else if(res.data.code=='3004'){
+
+                    var Authorization = res.data.token.access_token;//Authorization数据
+
+                    wx.setStorageSync('Authorization', Authorization);
+
+                    return false
+                }
+
+                else if(res.data.code == '0000') {
+
+                    console.log(res.data);
+
+                    that.setData({
+
+                        mobileNumber: res.data.data.length
+
+                    });
+
+                }
+
+            },
+
+            fail: function (res) {
+
+                console.log(res)
+
+            }
+
+        })
 
     },
 

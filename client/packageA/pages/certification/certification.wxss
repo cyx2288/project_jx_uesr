@@ -1,4 +1,4 @@
-@import "../id_card/id_card.wxss";
+@import "../../../pages/user/id_card/id_card.wxss";
 
 
 .password_image{

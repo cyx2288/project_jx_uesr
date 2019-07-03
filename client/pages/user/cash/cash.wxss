@@ -2,7 +2,7 @@
 @import "../../common/signin/signin.wxss";
 @import "../setting/setting.wxss";
 @import "../details/details.wxss";
-@import "../certification/certification.wxss";
+@import "../id_card/id_card.wxss";
 
 
 hr{
@@ -484,5 +484,19 @@ button.kf_button {
     height: 52px;
     background-color: transparent;
 }
+.password_image{
 
+    color: #8a8a8a;
+}
+
+.account_information_tel{
+
+    color: #4a4a4a;
+}
+
+.red_text{
+
+    color: #ff4646;
+
+}
 

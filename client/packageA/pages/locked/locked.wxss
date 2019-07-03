@@ -1,5 +1,5 @@
-@import "../../common/register/register.wxss";
-@import "../pay_success/pay_success.wxss";
+@import "../../../pages/common/register/register.wxss";
+@import "../../../pages/user/pay_success/pay_success.wxss";
 
 .weui-help{
     display: flex;

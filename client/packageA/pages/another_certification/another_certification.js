@@ -1195,7 +1195,7 @@ Page({
 
         wx.navigateTo({
 
-            url:'../../../pages/user/choose_nationality/choose_nationality'
+            url:'../choose_nationality/choose_nationality'
 
         });
 

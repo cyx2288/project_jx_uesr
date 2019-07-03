@@ -41,7 +41,7 @@
 
 </view>
 
-    <view class="weui-cells">
+    <view class="weui-cells"  wx:if="{{isVerify=='1' && mobileNumber > 1}}">
 
         <view class="mine_welfare" bindtap="changeTelFn">
 

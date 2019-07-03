@@ -2,9 +2,9 @@
 
     <view class="title">您有多个实名账户，可以切换登录</view>
 
-    <view class="user_tels">
+    <view class="user_tels" data-userid="none" bindtap="changeMobile" >
 
-        <view class="user_tel {{item.mobile == mobile ? 'selected' : ''}}" wx:for="{{mobileList}}" bindtap="changeMobile" wx:key="item.userId" data-userid="{{item.userId}}">
+        <view class="user_tel">
 
             <view class="information">
 
@@ -14,13 +14,29 @@
 
                 </view>
 
-                <text>{{item.mobile}}</text>
+                <text>{{showMobile}}</text>
 
             </view>
 
             <view class="choose">
 
 
+
+            </view>
+
+        </view>
+
+        <view class="user_tel" wx:for="{{mobileList}}" bindtap="changeMobile" wx:key="item.userId" data-userid="{{item.userId}}" wx:if="{{item.mobile != mobile}}">
+
+            <view class="information">
+
+                <view class="image">
+
+                    <image src="../../../static/icon/wages/jx_mine_image.png"></image>
+
+                </view>
+
+                <text>{{item.showMobile}}</text>
 
             </view>
 

@@ -1,4 +1,4 @@
-@import "../../user/mine/mine.wxss";
+@import "../../../pages/user/mine/mine.wxss";
 page{
     width: 100%;
     background-color: #f7f7f7;

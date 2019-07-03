@@ -1,6 +1,6 @@
 const app = getApp();
 
-const getAllMobileUrl = '/user/user/getswitchuserinfo';//用户中心的url
+const getAllMobileUrl = '/user/user/getswitchuserinfo';
 
 const changeMobile = '/user/user/switchuser';
 
@@ -12,7 +12,9 @@ Page({
 
         mobileList:'',//电话号码
 
-        mobile: ''
+        mobile: '',
+
+        showMobile: ''
 
 
 
@@ -21,6 +23,8 @@ Page({
     onShow: function () {
 
         this.setData({
+
+            showMobile: wx.getStorageSync('mobile').substr(0, 3) + '****' + wx.getStorageSync('mobile').substr(7),
 
             mobile: wx.getStorageSync('mobile')
 
@@ -73,7 +77,7 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url:'../../../pages/common/signin/signin'
                         })
 
                     },1500)
@@ -94,6 +98,12 @@ Page({
                 else if(res.data.code == '0000') {
 
                     console.log(res.data);
+
+                    for(var user of res.data.data){
+
+                        user.showMobile = user.mobile.substr(0, 3) + '****' + user.mobile.substr(7);
+
+                    }
 
                     that.setData({
 
@@ -122,7 +132,17 @@ Page({
 
         var userId = e.currentTarget.dataset.userid;
 
-        console.log(userId);
+        if(userId == 'none'){
+
+            wx.switchTab({
+
+                url: '../../../pages/user/mine/mine'
+
+            });
+
+            return false;
+
+        }
 
         var thisUserCenterUrl = app.globalData.URL + changeMobile;
 
@@ -179,7 +199,7 @@ Page({
 
                         wx.reLaunch({
 
-                            url:'../../common/signin/signin'
+                            url:'../../../pages/common/signin/signin'
                         })
 
                     },1500)
@@ -205,10 +225,9 @@ Page({
 
                     wx.setStorageSync('successVerify','true');
 
-                    wx.navigateBack({
+                    wx.reLaunch({
 
-                        delta: 1,
-
+                        url:'../../../pages/user/mine/mine'
                     });
 
                 }

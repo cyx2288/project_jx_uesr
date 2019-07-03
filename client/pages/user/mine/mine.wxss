@@ -36,10 +36,13 @@
 
 .account_information_tel{
 
-    font-size: 28px;
+    font-size: 18px;
     z-index: 800;
     padding-bottom: 3px;
 
+}
+.wechat_mine_personal .account_message .account_information_tel{
+    font-size: 24px;
 }
 .color_white{
     color: #fff;
@@ -59,11 +62,12 @@
 }
 
 .authentication{
-    color: #fff;
+    color: #ff7a3c;
     border: 1px solid #f7f7f7;
     border-radius: 50px;
     display: flex;
     padding: 0 3px;
+    background-color: #fff;
 
 }
 .change{
@@ -94,9 +98,9 @@
 }
 
 .icon_unauthorized{
-    width: 16px;
-    height: 16px;
-    padding-left: 3px;
+    width: 12px;
+    height: 12px;
+    margin: 2px 5px 0 3px ;
 
 }
 
@@ -290,4 +294,7 @@ hr {
 .message_box .button view+view{
     border-left: 1px solid #dddddd;
 }
-
+.navigator-hover{
+    opacity: 1;
+    background: none;
+}

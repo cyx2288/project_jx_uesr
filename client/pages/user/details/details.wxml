@@ -20,7 +20,7 @@
 
                 <view wx:elif="{{item.transType==5||item.transType==6||item.transType==11}}"class="weui-media-box__title weui-media-box__title_in-text">退款</view>
 
-                <view wx:elif="{{item.transType==3}}"class="weui-media-box__title weui-media-box__title_in-text">转账-转入</view>
+                <view wx:elif="{{item.transType==3 || item.transType == 17}}"class="weui-media-box__title weui-media-box__title_in-text">转账-转入</view>
 
                 <view wx:elif="{{item.transType==2}}"class="weui-media-box__title weui-media-box__title_in-text">转账-转出</view>
 

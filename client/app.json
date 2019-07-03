@@ -3,13 +3,11 @@
     "pages/common/loading/loading",
     "pages/user/cash/cash",
     "pages/user/no_certification/certification",
-    "pages/user/choose_nationality/choose_nationality",
     "pages/user/actionSheet/actionSheet",
     "pages/user/account_cash/account_cash",
     "pages/user/personal/personal",
     "pages/user/upload_success/upload_success",
     "pages/user/upload_fail/upload_fail",
-    "pages/user/locked/locked",
     "pages/user/task_news/task_news",
     "pages/user/passport_certification/passport",
     "pages/common/wages_authentication/authentication",
@@ -21,8 +19,6 @@
     "pages/user/details/details",
     "pages/wages/index/index",
     "pages/wages/payroll/payroll",
-    "pages/discovery/discovery/discovery",
-    "pages/discovery/webView/index",
     "pages/user/code/code",
     "pages/user/id_card/id_card",
     "pages/user/payment_setting_code/payment_setting_code",
@@ -50,7 +46,6 @@
     "pages/user/sms_verification/sms_verification",
     "pages/user/reset_payment/reset_payment",
     "pages/user/setting/setting",
-    "pages/user/certification/certification",
     "component/toastLoading/loading"
   ],
   "subPackages": [
@@ -61,9 +56,13 @@
         "pages/add_zfb/add_zfb",
         "pages/card/card",
         "pages/bill/bill",
+        "pages/discovery/discovery",
+        "pages/webView/index",
         "pages/exchange_number/exchange_number",
         "pages/personal_number/personal_number",
         "pages/setting_number/setting_number",
+        "pages/certification/certification",
+        "pages/locked/locked",
         "pages/code/code",
         "pages/help_service/help_service",
         "pages/problem_nojoin/problem_nojoin",
@@ -85,7 +84,8 @@
         "pages/another_certification/another_certification",
         "pages/zfb/zfb",
         "pages/secret_agreement/secret_agreement",
-        "pages/change_tel/change_tel"
+        "pages/change_tel/change_tel",
+        "pages/choose_nationality/choose_nationality"
       ]
     }
   ],

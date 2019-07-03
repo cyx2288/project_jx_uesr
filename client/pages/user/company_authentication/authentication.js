@@ -293,7 +293,7 @@ Page({
 
                         wx.redirectTo({
 
-                            url: '../../user/locked/locked'
+                            url: '../../../packageA/pages/locked/locked'
 
                         })
 

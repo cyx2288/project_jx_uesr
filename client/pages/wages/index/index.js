@@ -574,7 +574,7 @@ Page({
 
                                                             wx.navigateTo({
 
-                                                                url: '../../user/locked/locked'
+                                                                url: '../../../packageA/pages/locked/locked'
                                                             })
 
                                                         }
@@ -756,7 +756,7 @@ Page({
 
                                                             wx.navigateTo({
 
-                                                                url: '../../user/locked/locked'
+                                                                url: '../../../packageA/pages/locked/locked'
                                                             })
 
                                                         }
@@ -925,7 +925,7 @@ Page({
 
                                                             wx.navigateTo({
 
-                                                                url: '../../user/locked/locked'
+                                                                url: '../../../packageA/pages/locked/locked'
                                                             })
 
                                                         }

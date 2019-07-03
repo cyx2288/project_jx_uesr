@@ -281,7 +281,7 @@ Page({
 
                         wx.navigateTo({
 
-                            url: '../locked/locked'
+                            url: '../../../packageA/pages/locked/locked'
                         })
 
                     }
