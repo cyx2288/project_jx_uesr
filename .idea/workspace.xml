@@ -23,7 +23,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mine.wxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/pages/user/mine/mine.wxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="balance.wxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/pages/user/balance/balance.wxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="balance.wxss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/pages/user/balance/balance.wxss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
@@ -45,7 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>定位</find>
       <find>app</find>
       <find>helpFn</find>
       <find>request</find>
@@ -75,6 +110,7 @@
       <find>chooseCityPageFn</find>
       <find>lock</find>
       <find>locked</find>
+      <find>certification/cer</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -93,10 +129,10 @@
       <dir>D:\wamp\www\GitHub\project_jx_uesr\client\pages</dir>
       <dir>C:\git\project_jx_uesr\client\packageA</dir>
       <dir>C:\git\project_jx_uesr\client\packageA\pages</dir>
-      <dir>C:\git\project_jx_uesr</dir>
       <dir>C:\git\project_jx_uesr\client\pages</dir>
       <dir>C:\git\project_jx_uesr\client\pages\user</dir>
       <dir>C:\git\project_jx_uesr\client</dir>
+      <dir>C:\git\project_jx_uesr</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -105,8 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/pages/user/sms_verification/sms_verification.js" />
-        <option value="$PROJECT_DIR$/client/packageA/pages/problem_fail/problem_fail.js" />
         <option value="$PROJECT_DIR$/client/packageA/pages/help_service/help_service.wxml" />
         <option value="$PROJECT_DIR$/client/packageA/pages/problem_fail/problem_fail.wxss" />
         <option value="$PROJECT_DIR$/client/packageA/pages/problem_fail/problem_fail.wxml" />
@@ -127,7 +161,6 @@
         <option value="$PROJECT_DIR$/client/pages/wages/index/index.wxss" />
         <option value="$PROJECT_DIR$/client/pages/user/cash/cash.wxml" />
         <option value="$PROJECT_DIR$/client/pages/user/setting/setting.wxss" />
-        <option value="$PROJECT_DIR$/client/app.js" />
         <option value="$PROJECT_DIR$/client/packageA/pages/image-cropper/image_cropper.json" />
         <option value="$PROJECT_DIR$/client/packageA/pages/IDcard_certification/IDcard_certification.json" />
         <option value="$PROJECT_DIR$/client/packageA/pages/image-cropper/image_cropper.wxml" />
@@ -150,12 +183,15 @@
         <option value="$PROJECT_DIR$/client/packageA/pages/change_tel/change_tel.js" />
         <option value="$PROJECT_DIR$/client/pages/user/details/details.wxml" />
         <option value="$PROJECT_DIR$/client/packageA/pages/bill/bill.wxml" />
-        <option value="$PROJECT_DIR$/client/pages/user/mine/mine.wxml" />
         <option value="$PROJECT_DIR$/client/pages/user/mine/mine.wxss" />
         <option value="$PROJECT_DIR$/client/pages/user/cash/cash.wxss" />
         <option value="$PROJECT_DIR$/client/pages/user/mine/mine.js" />
         <option value="$PROJECT_DIR$/client/packageA/pages/another_certification/another_certification.js" />
         <option value="$PROJECT_DIR$/client/app.json" />
+        <option value="$PROJECT_DIR$/client/pages/user/mine/mine.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/user/balance/balance.wxml" />
+        <option value="$PROJECT_DIR$/client/pages/user/balance/balance.wxss" />
+        <option value="$PROJECT_DIR$/client/app.js" />
       </list>
     </option>
   </component>
@@ -171,10 +207,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1374" />
-    <option name="y" value="303" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-1567" />
+    <option name="y" value="411" />
+    <option name="width" value="1377" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -227,6 +263,22 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project_jx_uesr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_jx_uesr" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="balance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project_jx_uesr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_jx_uesr" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="mine" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -448,7 +500,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2000971000" />
+    <option name="totallyTimeSpent" value="2003634000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,27 +597,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/packageA/pages/IDcard_certification/IDcard_certification.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="157" column="37" lean-forward="true" selection-start-line="157" selection-start-column="37" selection-end-line="157" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/html.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/packageA/pages/card/card.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -734,8 +765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/pages/user/mine/mine.wxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="53" column="76" lean-forward="true" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
+        <state relative-caret-position="141">
+          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -829,10 +860,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/balance/balance.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/user/balance/balance.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/app.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
         </state>
       </provider>
     </entry>

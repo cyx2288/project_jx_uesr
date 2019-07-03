@@ -403,7 +403,7 @@ Page({
 
         if(_isVerify=='1'){
 
-            pageJumpFn.pageJump("../certification/certification")
+            pageJumpFn.pageJump("../../../packageA/pages/certification/certification")
 
 
         }

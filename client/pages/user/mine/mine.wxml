@@ -45,7 +45,7 @@
                    <view wx:if="{{isVerify=='2'}}" class="authentication">
 
                        <!--未认证-->
-                       <image src="../../../static/icon/wages/jx_doing.png"  class="icon_unauthorized" />
+                       <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
 
                        <text class="unauthorized">审核中</text>
 
@@ -54,7 +54,7 @@
                    <view wx:elif="{{isVerify=='3'}}" class="authentication">
 
                        <!--已认证-->
-                       <image src="../../../static/icon/wages/jx_authentication_fail.png"  class="icon_unauthorized" />
+                       <image src="../../../static/icon/wages/jx_uncertified.png"  class="icon_unauthorized" />
                        <text class="unauthorized" >审核未通过</text>
 
                    </view>
