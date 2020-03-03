@@ -106,7 +106,11 @@ page {
 
 
 }
+.cash_step  .weui_title{
+    align-content: flex-start;
+    align-items: flex-start;
 
+}
 .cash_step .step_line{
 
     position: relative;
@@ -212,11 +216,14 @@ page {
 .wages_middle .weui_confirm{
 
     color: #4a4a4a;
+    text-align: right;
 }
 
 .wages_middle .weui-media-box__title{
 
     color: #ababab;
+    flex-shrink: 0;
+    margin-right: 5px;
 }
 
 .jx_right{

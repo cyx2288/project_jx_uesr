@@ -1,0 +1,130 @@
+<wxs module="filter" src="../../../static/libs/wxs/dateFr.wxs"></wxs>
+
+<view class="bill_detail">
+    
+    <view class="details">
+        <view class="cash">
+            <view>
+                <view wx:if="{{orderType == '0008'}}">话费充值</view>
+                <view wx:elif="{{orderType == '0046'}}">惠购商城</view>
+                <view wx:elif="{{orderType == '0042'}}">火车票</view>
+                <view wx:elif="{{orderType == '0039'}}">美团订单</view>
+                <view wx:elif="{{orderType == '0081' || orderType == '0063'}}">银联付款</view>
+                <view wx:elif="{{orderType == '0041'}}">滴滴出行</view>
+                <view wx:elif="{{orderType == '0007'}}">加油卡充值</view>
+                <view wx:elif="{{orderType == '0062'}}">生活缴费</view>
+                <view wx:elif="{{orderType == '0061'}}">中银通卡充值</view>
+                <view wx:elif="{{orderType == '13'}}">嘉福商城</view>
+                <view>（元）</view>
+            </view>
+            <view>
+                <view>-{{orderAmount}}</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="details_list">
+        <view class="cell">
+            <view>订单状态</view>
+            <view wx:if="{{orderState=='0'}}">待支付</view>
+            <view wx:elif="{{orderState=='1'}}">完成</view>
+            <view wx:elif="{{orderState=='2'}}">提交成功</view>
+            <view wx:elif="{{orderState=='3'}}">处理中</view>
+            <view wx:elif="{{orderState=='4'}}">已退款</view>
+            <view wx:elif="{{orderState=='5'}}">订单关闭</view>
+            <view wx:elif="{{orderState=='7'}}">退款中</view>
+            <view wx:elif="{{orderState=='10'}}">部分退款</view>
+
+        </view>
+
+        <view class="cell" wx:if="{{refundTotal != ''}}">
+            <view>退款总金额</view>
+            <view>￥{{refundTotal}}</view>
+        </view>
+
+        <view class="cell">
+            <view>订单金额</view>
+            <view>￥{{orderAmount}}</view>
+        </view>
+
+        <view class="cell" wx:if="{{voucher != ''}}">
+            <view>券抵扣</view>
+            <view>- ￥{{voucher}}</view>
+        </view>
+
+
+        <view class="cell">
+            <view>支付金额</view>
+            <view>￥{{payAmount}}</view>
+        </view>
+
+        <view class="cell" wx:if="{{payAmount != '0.00'}}">
+            <view>支付方式</view>
+            <view wx:if="{{payType === '1'}}">收入余额</view>
+            <view wx:elif="{{payType === '2'}}">微信支付</view>
+            <view wx:elif="{{payType === '3'}}">工资预支</view>
+            <view wx:elif="{{payType === '4'}}">中银通卡</view>
+        </view>
+
+    </view>
+
+    <view class="details_list">
+
+        <view class="cell">
+            <view>订单类型</view>
+            <view wx:if="{{orderType == '0008'}}">话费充值</view>
+            <view wx:elif="{{orderType == '0046'}}">惠购商城</view>
+            <view wx:elif="{{orderType == '0042'}}">火车票</view>
+            <view wx:elif="{{orderType == '0039'}}">美团订单</view>
+            <view wx:elif="{{orderType == '0081' || orderType == '0063'}}">银联付款</view>
+            <view wx:elif="{{orderType == '0041'}}">滴滴出行</view>
+            <view wx:elif="{{orderType == '0007'}}">加油卡充值</view>
+            <view wx:elif="{{orderType == '0062'}}">生活缴费</view>
+            <view wx:elif="{{orderType == '0061'}}">中银通卡充值</view>
+            <view wx:elif="{{orderType == '13'}}">嘉福商城</view>
+        </view>
+
+
+        <view class="cell">
+            <view>订单时间</view>
+            <view>{{filter.formatTime(createDate,'-')}}</view>
+        </view>
+
+        <view class="cell">
+            <view>订单号</view>
+            <view>{{orderId}}</view>
+        </view>
+
+        <view class="cell" wx:if="{{itemName != ''}}">
+            <view>订单说明</view>
+            <view>{{itemName}}</view>
+        </view>
+
+        <view class="cell" wx:if="{{mobileNumber != ''}}">
+            <view>充值号码</view>
+            <view>{{mobileNumber}}</view>
+        </view>
+
+        <view class="cell" wx:if="{{faceValue != ''}}">
+            <view>充值面额</view>
+            <view>{{faceValue}}元</view>
+        </view>
+
+        <view class="cell" wx:if="{{cardNo != ''}}">
+            <view>充值卡号</view>
+            <view>{{cardNo}}</view>
+        </view>
+
+    </view>
+
+</view>
+
+<view class="weui-help">
+
+    <button class="kf_button" open-type="contact" session-from="姓名:{{userName}},电话:{{mobile}}">
+
+        <view class="jx_right">联系客服</view>
+
+    </button>
+
+</view>

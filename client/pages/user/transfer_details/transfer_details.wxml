@@ -8,7 +8,6 @@
     <view class="jx_asset">
 
         <view class="asset_money">
-            <image src="../../../static/icon/wages/jx_money.png"></image>
             <view wx:if="{{orderType=='02'}}">转出金额（元）</view>
             <view wx:elif="{{orderType=='03'}}">转入金额（元）</view>
         </view>

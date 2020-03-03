@@ -634,13 +634,25 @@ Component({
         img_width = this.data.img_height;
         img_height = this.data.img_width;
       }
-      left = this.data.cut_left + img_width * scale / 2 >= left ? left : this.data.cut_left + img_width * scale / 2;
-      left = this.data.cut_left + this.data.width - img_width * scale / 2 <= left ? left : this.data.cut_left + this.data.width - img_width * scale / 2;
-      top = this.data.cut_top + img_height * scale / 2 >= top ? top : this.data.cut_top + img_height * scale / 2;
-      top = this.data.cut_top + this.data.height - img_height * scale / 2 <= top ? top : this.data.cut_top + this.data.height - img_height * scale / 2;
+      if(this.data.cut_left !== null){
+
+          left = this.data.cut_left + img_width * scale / 2 >= left ? left : this.data.cut_left + img_width * scale / 2;
+          left = this.data.cut_left + this.data.width - img_width * scale / 2 <= left ? left : this.data.cut_left + this.data.width - img_width * scale / 2;
+          this.setData({
+              _img_left: left
+          });
+
+      }
+      if(this.data.cut_top !== null){
+
+          top = this.data.cut_top + img_height * scale / 2 >= top ? top : this.data.cut_top + img_height * scale / 2;
+          top = this.data.cut_top + this.data.height - img_height * scale / 2 <= top ? top : this.data.cut_top + this.data.height - img_height * scale / 2;
+          this.setData({
+              _img_top: top
+          })
+
+      }
       this.setData({
-        _img_left: left,
-        _img_top: top,
         scale: scale
       })
     },

@@ -580,7 +580,9 @@ Page({
 
                     code: that.data.code,//短信验证
 
-                    remark:_transferTips
+                    remark:_transferTips,
+
+                    channel: 2,//判断运行平台
 
 
                 },
@@ -739,6 +741,8 @@ Page({
 
                         code: that.data.code,//短信验证
 
+                        channel: 2,//判断运行平台
+
 
                     },
                     header: {
@@ -878,6 +882,8 @@ Page({
                         balance: _balance,//提取现金
 
                         code: that.data.code,//短信验证
+
+                        channel: 2,//判断运行平台
 
 
                     },

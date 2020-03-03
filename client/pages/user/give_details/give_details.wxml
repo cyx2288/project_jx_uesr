@@ -69,6 +69,7 @@
                     <view wx:elif="{{orderState=='4'}}" class="weui_confirm">已退款</view>
                     <view wx:elif="{{orderState=='5'}}" class="weui_confirm">订单关闭</view>
                     <view wx:elif="{{orderState=='7'}}" class="weui_confirm">退款中</view>
+                    <view wx:elif="{{orderState=='10'}}" class="weui_confirm">部分退款</view>
 
                 </view>
 
@@ -99,6 +100,37 @@
 
         </view>
 
+        <!--明细-->
+        <view class="cash_step">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
+                    <view class="weui_confirm">￥{{orderAmount}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <hr/>
+
+        <!--退款总金额-->
+        <view class="cash_step" wx:if="{{returnAmount !== ''}}">
+
+            <view class="weui-media-box weui-media-box_text">
+
+                <view class="weui_title">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">退款总金额</view>
+                    <view class="weui_confirm">￥{{returnAmount}}</view>
+                </view>
+
+            </view>
+
+        </view>
+
+        <view wx:if="{{returnAmount !== ''}}"><hr/></view>
 
         <!--退款原因-->
         <view class="cash_step step_line" hidden="{{errorMsg ? false : true}}">
@@ -116,22 +148,6 @@
         </view>
 
         <view hidden="{{errorMsg ? false : true}}"><hr/></view>
-
-        <!--明细-->
-        <view class="cash_step">
-
-            <view class="weui-media-box weui-media-box_text">
-
-                <view class="weui_title">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">提现金额</view>
-                    <view class="weui_confirm">￥{{orderAmount}}</view>
-                </view>
-
-            </view>
-
-        </view>
-
-        <hr/>
 
         <!--明细-->
         <view class="cash_step">

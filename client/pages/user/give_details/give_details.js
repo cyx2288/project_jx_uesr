@@ -42,6 +42,8 @@ Page({
 
         alipayNo:'',
 
+        returnAmount: '',
+
 
 
     },
@@ -180,7 +182,7 @@ Page({
 
                         orderType:res.data.data.orderType,
 
-
+                        returnAmount: res.data.data.returnAmount,
 
 
                     })

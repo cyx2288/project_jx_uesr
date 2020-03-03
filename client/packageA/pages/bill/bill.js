@@ -210,6 +210,12 @@ Page({
 
                     else {
 
+                        for(var obj of res.data.data.list){
+
+                            obj.createDate = that.timeChange(obj.createDate);
+
+                        }
+
 
                         var _billList = res.data.data.list;
 
@@ -350,12 +356,38 @@ Page({
              orderId:e.currentTarget.dataset.no,
 
              orderType:e.currentTarget.dataset.type,
-        })
+        });
 
 
         wx.setStorageSync('orderId',that.data.orderId);
 
-        wx.setStorageSync('orderType',e.currentTarget.dataset.type)
+        wx.setStorageSync('orderType',e.currentTarget.dataset.type);
+
+        var orderType = e.currentTarget.dataset.type;
+
+        if(orderType == '01' || orderType == '08' || orderType == '09'){
+
+            wx.navigateTo({
+                url: '../../../pages/user/give_details/give_details'
+            });
+
+        }else if(orderType == '02' || orderType == '03' || orderType == '17'){
+
+            wx.navigateTo({
+
+                url: '../../../pages/user/transfer_details/transfer_details'
+
+            });
+
+        }else {
+
+            wx.navigateTo({
+
+                url: '../pay_detail/pay_detail'
+
+            });
+
+        }
 
         //console.log(wx.getStorageSync('orderId'))
 
@@ -369,6 +401,39 @@ Page({
 
 
 
+
+    },
+
+
+    timeChange: function (date) {
+
+        var time = new Date(date);
+
+        var year = time.getFullYear();
+
+        var month = time.getMonth() + 1;
+
+        var day = time.getDate();
+
+        var hour = time.getHours();
+
+        var minuter = time.getMinutes();
+
+        var second = time.getSeconds();
+
+        function changeType (value) {
+
+            if(value < 10) {
+
+                return '0' + value;
+
+            }
+
+            return value;
+
+        }
+
+        return year + '-' + changeType(month) + '-' + changeType(day) + ' ' + changeType(hour) + ':' + changeType(minuter) + ':' + changeType(second);
 
     }
 

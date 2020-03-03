@@ -91,7 +91,7 @@
 
 </view>
 
-<image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut" wx:if="{{cropperShow}}" bindcancelFn="cancelFn" bindconfirmFn="confirmFn" max_width="1000" max_height="1000" min_width="0" min_height="0"></image-cropper>
+<image-cropper id="image-cropper" limit_move="{{limitMove}}" disable_rotate="{{disableRotate}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut" wx:if="{{cropperShow}}" bindcancelFn="cancelFn" bindconfirmFn="confirmFn" max_width="1000" max_height="1000" min_width="0" min_height="0"></image-cropper>
 
 
 

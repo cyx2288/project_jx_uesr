@@ -58,7 +58,11 @@ Page({
 
         imgType: '',
 
-        errorShow: false
+        errorShow: false,
+
+        limitMove: true,
+
+        disableRotate: true
 
 
 
@@ -228,6 +232,8 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
+                            if(res.tempFiles[0].size > 204800){
+
                                 that.setData({
 
                                     src: tempFilePaths[0],
@@ -238,8 +244,11 @@ Page({
 
                                 });
 
+                                return false;
 
-                                /*wx.uploadFile({
+                            }
+
+                                wx.uploadFile({
 
 
                                     url: app.globalData.URL + upLoadImgUrl, //仅为示例，非真实的接口地址
@@ -329,7 +338,7 @@ Page({
 
 
                                     }
-                                })*/
+                                })
 
 
 
@@ -351,21 +360,27 @@ Page({
 
                             console.log(tempFilePaths);
 
-                            that.setData({
+                            if(res.tempFiles[0].size > 204800){
 
-                                src: tempFilePaths[0],
+                                that.setData({
 
-                                cropperShow: true,
+                                    src: tempFilePaths[0],
 
-                                imgType: 'face'
+                                    cropperShow: true,
 
-                            });
+                                    imgType: 'face'
 
-                                /*wx.showLoading({
+                                });
+
+                                return false;
+
+                            }
+
+                                wx.showLoading({
                                     title:'图片上传中',
                                     mask:true,
 
-                                })
+                                });
 
                                 wx.uploadFile({
 
@@ -458,7 +473,7 @@ Page({
 
 
                                     }
-                                })*/
+                                })
 
 
 
@@ -502,22 +517,28 @@ Page({
                             var tempFilePaths = res.tempFilePaths;
 
 
-                            that.setData({
+                            if(res.tempFiles[0].size > 204800){
 
-                                src: tempFilePaths[0],
+                                that.setData({
 
-                                cropperShow: true,
+                                    src: tempFilePaths[0],
 
-                                imgType: 'back'
+                                    cropperShow: true,
 
-                            });
+                                    imgType: 'back'
 
-                                /*wx.showLoading({
+                                });
+
+                                return false;
+
+                            }
+
+                                wx.showLoading({
 
                                     title:'图片上传中',
                                     mask:true,
 
-                                })
+                                });
 
                                 wx.uploadFile({
 
@@ -609,7 +630,7 @@ Page({
 
 
                                     }
-                                })*/
+                                })
 
 
 
@@ -630,17 +651,23 @@ Page({
                             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                             var tempFilePaths = res.tempFilePaths;
 
-                            that.setData({
+                            if(res.tempFiles[0].size > 204800){
 
-                                src: tempFilePaths[0],
+                                that.setData({
 
-                                cropperShow: true,
+                                    src: tempFilePaths[0],
 
-                                imgType: 'back'
+                                    cropperShow: true,
 
-                            });
+                                    imgType: 'back'
 
-                                /*wx.showLoading({
+                                });
+
+                                return false;
+
+                            }
+
+                                wx.showLoading({
 
                                     title: '图片上传中',
                                     mask: true,
@@ -738,7 +765,7 @@ Page({
 
 
                                     }
-                                })*/
+                                })
 
 
 

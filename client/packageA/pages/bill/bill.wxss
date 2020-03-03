@@ -42,15 +42,15 @@
 
     color: #ababab;
 }
-.bill_box .icon_record {
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
+.bill_box .icon_record .weui_confirm {
+    padding-left: 10px;
 }
 
-.weui-media-box__title_in-text{
-    margin-bottom: 0;
+.bill_box .icon_record .weui_middle{
+    font-size: 14px;
+    color: #8a8a8a;
 }
+
 
 .details_date{
     color: #bbb;
@@ -63,10 +63,6 @@
     justify-content: space-between;
 }
 
-.icon_record {
-    display: flex;
-}
-
 .reset_go{
     vertical-align: middle;
     padding-top: 8px;
@@ -75,7 +71,7 @@
 }
 
 .weui_right{
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .weui_middle{
@@ -89,4 +85,7 @@
 .box{
     padding: 15px;
 }
-
+.weui_time{
+    font-size: 14px;
+    color: #ababab;
+}

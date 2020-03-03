@@ -141,7 +141,9 @@ Page({
 
                         payPassword: md5.hexMD5(that.data.payPassword),//密码
 
-                        remark:_transferTips
+                        remark:_transferTips,
+
+                        channel: 2,//判断运行平台
 
 
 
@@ -373,6 +375,8 @@ Page({
 
                             payPassword: md5.hexMD5(that.data.payPassword),//短信验证
 
+                            channel: 2,//判断运行平台
+
 
                         },
                         header: {
@@ -589,6 +593,8 @@ Page({
                             balance: _balance,//提取现金
 
                             payPassword: md5.hexMD5(that.data.payPassword),//短信验证
+
+                            channel: 2,//判断运行平台
 
 
                         },

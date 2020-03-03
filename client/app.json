@@ -85,7 +85,8 @@
         "pages/zfb/zfb",
         "pages/secret_agreement/secret_agreement",
         "pages/change_tel/change_tel",
-        "pages/choose_nationality/choose_nationality"
+        "pages/choose_nationality/choose_nationality",
+        "pages/pay_detail/pay_detail"
       ]
     }
   ],

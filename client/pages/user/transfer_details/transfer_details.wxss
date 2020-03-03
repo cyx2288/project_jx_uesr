@@ -165,31 +165,38 @@ page {
 
 .wages_middle .jx_asset{
 
-    background-color: #fff;
+    background:linear-gradient(to bottom, #ea5e26 , #fdae3b);
     padding: 0;
     width: 100%;
 }
 
 .wages_middle .asset_money{
 
-    color: #4a4a4a;
+    color: white;
     font-size: 14px;
     justify-content:center;
 
 }
 
-.wages_middle .asset_money >image{
+.wages_middle .asset_money >.image{
 
 
     width: 18px;
     height: 18px;
     margin-right: 5px;
+    border-radius: 50%;
+    background-color: white;
 
+}
+
+.wages_middle .asset_money >.image image{
+    width: 100%;
+    height: 100%;
 }
 
 .wages_middle .money_number{
 
-    color: #E87B17;
+    color: white;
     justify-content:center;
 }
 
