@@ -365,10 +365,10 @@ Page({
 
 
                             //跳回登录页
-                            wx.reLaunch({
+                            wx.redirectTo({
 
                                 url: '../../common/signin/signin'
-                            })
+                            });
 
                         }
 

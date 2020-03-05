@@ -1,7 +1,7 @@
  <!--工资-->
 
 
-<navigator class="jx_asset" url="../../user/balance/balance">
+<view class="jx_asset" bindtap="jumpTo">
 
     <!-- 总资产 -->
 
@@ -30,165 +30,77 @@
 
 
 
-</navigator>
+</view>
+
+<!--已登录-->
+<view wx:if="{{login}}">
+
+    <view wx:if='{{dataText==false}}' class="asset_money">还未收到工资哦~</view>
+
+    <view wx:else class="wages_middle">
+
+        <!--工资列表-->
+        <view class="wages_form" style="padding:15px 0;">
 
 
-<!--下拉选择-->
-<!--<view hidden="{{hasCompany}}" class="phone_one" bindtap="clickSalary">-->
-    <!--<view class="phone_personal">-->
+            <block wx:for="{{wagesList}}">
 
-            <!--<span class="selected_box">-->
-            <!--<span>{{firstOptions}}</span>-->
-            <!--<image src="../../../static/icon/wages/go_yellow.png"-->
-                   <!--class="personal_image {{selectArea ? 'rotateRight' :''}}"/>-->
-
-                 <!--</span>-->
-
-    <!--</view>-->
-
-<!--</view>-->
-
-<!--<view class="person_box">
-    <view class="phone_select" hidden="{{selectSalary}}">
-        <view class="select_one {{num==1? 'is_checked':''}}" data-num='1' bindtap="mySelectAll"><image src="../../../static/icon/wages/jx_down.png"></image>全部</view>
-        <view wx:for='{{selectSalaryOptions}}' class="select_one {{item.entId==entId&&num==2?'is_checked':''}}" data-id="{{item.entId}}" data-salary="{{item.entName}}" bindtap="mySelect"><image src="../../../static/icon/wages/jx_drop.png"></image>{{item.entName}}
-        </view>
-    </view>
-</view>-->
-
-<view wx:if='{{dataText==false}}' class="asset_money">还未收到工资哦~</view>
-
-<view wx:else class="wages_middle">
-
-    <!--工资列表-->
-    <view class="wages_form" style="padding:15px 0;">
-
-
-        <block wx:for="{{wagesList}}">
-
-            <view class="weui-panel {{item.state == '已确认'? '':'already_confirm'}}" bindtap="clickSeeList" data-detail="{{item.salaryDetailId}}">
-
-                <view class="weui-panel__bd">
-
-                    <view class="weui-media-box weui-media-box_text">
-
-                        <view class="weui_title wages_title">
-
-                            <view>
-                                <image class="jx_money" mode="widthFix" src="../../../static/icon/wages/jx_money.png"/>
-                                <view wx:if="{{item.salaryType==8}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
-                                <view wx:else class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}收入</view>
-                            </view>
-                            <view class="weui_confirm orange">{{item.state}}</view>
-
-                        </view>
-
-                        <view class="weui-media-box__desc"><span wx:if="{{item.salaryType==8}}">任务名称：</span><span wx:else>发薪企业：</span>{{item.entName}}</view>
-
-                        <view wx:if="{{lookWages}}" class="weui-media-box__info">
-                            <view class="weui-media-box__info__meta">
-                                <span>实发金额：</span><span class="orange">{{item.realAmount}}元</span></view>
-                        </view>
-
-                        <view wx:else class="weui-media-box__info">
-                            <view class="weui-media-box__info__meta"><span>实发金额：</span><span class="orange">******元</span></view>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </block>
-
-        <view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{moreText}}</view>
-        </view>
-
-        <view class="weui-loadmore" hidden="{{!noData}}">
-        <view class="weui-loading"></view>
-        <view class="weui-loadmore__tips">正在加载</view>
-        </view>
-
-
-        <!--    <navigator url="../payroll/payroll" class="weui-panel">
-
-
-                  <view class="weui-panel__bd">
-
-                      <view class="weui-media-box weui-media-box_text">
-                          <view class="weui_title">
-                              <view>
-                                  <image class="jx_money"  mode="widthFix" src="../../../static/icon/wages/jx_money.png" />
-                                  <view class="weui-media-box__title weui-media-box__title_in-text">2018年4月工资</view>
-                              </view>
-
-                              <view class="weui_confirm">待确认</view>
-                          </view>
-                          <view class="weui-media-box__desc">发薪企业：淘略数据有限公司</view>
-
-                          <view class="weui-media-box__info">
-                              <view class="weui-media-box__info__meta">实发工资：</view>
-                              <text class="weui-media-box__info__meta">500.00元</text>
-                          </view>
-
-                      </view>
-                  </view>
-
-            </navigator>
-
-            <navigator url="../payroll/payroll"  class="weui-panel already_confirm">
-
-
-                <view class="weui-panel__bd">
-
-                      <view class="weui-media-box weui-media-box_text">
-                        <view class="weui_title">
-                            <view>
-                                <image class="jx_money"  mode="widthFix" src="../../../static/icon/wages/jx_money.png" />
-                                <view class="weui-media-box__title weui-media-box__title_in-text">2018年4月工资</view>
-                            </view>
-
-                          <view class="weui_confirm">已确认</view>
-                        </view>
-                      <view class="weui-media-box__desc">发薪企业：淘略数据有限公司</view>
-
-                      <view class="weui-media-box__info">
-                          <view class="weui-media-box__info__meta">实发工资：</view>
-                          <text class="weui-media-box__info__meta">500.00元</text>
-                      </view>
-
-                         </view>
-                 </view>
-            </navigator>
-
-            <navigator url="../payroll/payroll"  class="weui-panel already_confirm">
-
+                <view class="weui-panel {{item.state == '已确认'? '':'already_confirm'}}" bindtap="clickSeeList" data-detail="{{item.salaryDetailId}}">
 
                     <view class="weui-panel__bd">
 
                         <view class="weui-media-box weui-media-box_text">
-                            <view class="weui_title">
+
+                            <view class="weui_title wages_title">
+
                                 <view>
-                                    <image class="jx_money"  mode="widthFix" src="../../../static/icon/wages/jx_money.png" />
-                                    <view class="weui-media-box__title weui-media-box__title_in-text">2018年4月工资</view>
+                                    <image class="jx_money" mode="widthFix" src="../../../static/icon/wages/jx_money.png"/>
+                                    <view wx:if="{{item.salaryType==8}}" class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}</view>
+                                    <view wx:else class="weui-media-box__title weui-media-box__title_in-text">{{item.salaryMonth}}收入</view>
                                 </view>
+                                <view class="weui_confirm orange">{{item.state}}</view>
 
-                                <view class="weui_confirm">已确认</view>
                             </view>
-                            <view class="weui-media-box__desc">发薪企业：淘略数据有限公司</view>
 
-                            <view class="weui-media-box__info">
-                                <view class="weui-media-box__info__meta">实发工资：</view>
-                                <text class="weui-media-box__info__meta">500.00元</text>
+                            <view class="weui-media-box__desc"><span wx:if="{{item.salaryType==8}}">任务名称：</span><span wx:else>发薪企业：</span>{{item.entName}}</view>
+
+                            <view wx:if="{{lookWages}}" class="weui-media-box__info">
+                                <view class="weui-media-box__info__meta">
+                                    <span>实发金额：</span><span class="orange">{{item.realAmount}}元</span></view>
+                            </view>
+
+                            <view wx:else class="weui-media-box__info">
+                                <view class="weui-media-box__info__meta"><span>实发金额：</span><span class="orange">******元</span></view>
                             </view>
 
                         </view>
                     </view>
-                </navigator>-->
+                </view>
+            </block>
+
+            <view class="weui-loadmore weui-loadmore_line" hidden="{{noData}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{moreText}}</view>
+            </view>
+
+            <view class="weui-loadmore" hidden="{{!noData}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+
+
+        </view>
 
     </view>
 
 
 </view>
+ <!--未登录-->
+
+ <view class="no_login" wx:else>
+    <view>登录后即可查看工资条</view>
+    <view class="btn" bindtap="jumpTo">立即登录</view>
+ </view>
+
  <!--弹窗-->
  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
  <view class="modal-dialog" wx:if="{{showModal}}">

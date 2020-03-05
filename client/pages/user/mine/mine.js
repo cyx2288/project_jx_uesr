@@ -43,7 +43,9 @@ Page({
 
         isConfirm: '',
 
-        mainMobile: ''
+        mainMobile: '',
+
+        login: true,
 
 
     },
@@ -60,6 +62,39 @@ Page({
         });
 
 
+        var Authorization = wx.getStorageSync('Authorization');
+        if(!Authorization){
+
+            this.setData({
+
+                hasJoinEnt: true,//默认不显示有新的邀请 true为不显示 false为显示
+
+                hasNewMsg: true,//默认不显示有新消息 true为不显示 false为显示
+
+            });
+
+            this.setData({
+
+                totalSalary: '******',
+                login: false,
+
+            });
+
+            wx.hideTabBarRedDot({
+                index: 1
+            });
+
+            return;
+
+        }else {
+
+            this.setData({
+
+                login: true,
+
+            });
+
+        }
 
 
         //首页和我的来回切换
@@ -801,7 +836,7 @@ Page({
     //设置
     settingFn:function () {
 
-        pageJumpFn.pageJump("../setting/setting")
+        pageJumpFn.pageJump("../setting/setting");
 
 
     },
@@ -809,7 +844,11 @@ Page({
     //帮助中心
     helpFn:function () {
 
-        pageJumpFn.pageJump("../../../packageA/pages/help_service/help_service")
+        wx.navigateTo({
+
+            url:"../../../packageA/pages/help_service/help_service"
+
+        });
 
 
     },
@@ -1233,6 +1272,29 @@ Page({
             })
 
         }
+    },
+
+    jumpTo: function () {
+
+        // url="../personal/personal"
+        var Authorization = wx.getStorageSync('Authorization');
+
+        if(!!Authorization){
+
+            wx.navigateTo({
+
+                url:'../personal/personal'
+            })
+
+        }else {
+
+            wx.navigateTo({
+
+                url:'../../common/signin/signin'
+            })
+
+        }
+
     }
 
 

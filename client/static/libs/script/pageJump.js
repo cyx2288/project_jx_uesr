@@ -5,6 +5,18 @@ var controlNum = false//控制重复点击
 
 function pageJump(url) {
 
+    var Authorization = wx.getStorageSync('Authorization');
+    if(!Authorization){
+
+        wx.navigateTo({
+
+            url:'../../common/signin/signin'
+        });
+
+        return;
+
+    }
+
     console.log('刚进来'+controlNum)
 
     if(!controlNum){

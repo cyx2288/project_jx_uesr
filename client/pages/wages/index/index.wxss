@@ -445,4 +445,23 @@ text.weui-media-box__info__meta{
 .message_box .button view+view{
     border-left: 1px solid #dddddd;
 }
-
+.no_login{
+    height: 50vh;
+    padding-top: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.no_login view{
+    font-size: 14px;
+    color: #ababab;
+}
+.no_login .btn{
+    font-size: 14px;
+    border: 1px solid #EB5E26;
+    color: #EB5E26;
+    border-radius: 5px;
+    padding: 0 15px;
+}

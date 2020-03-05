@@ -298,3 +298,13 @@ hr {
     opacity: 1;
     background: none;
 }
+.no_login{
+    color: #4a4a4a;
+}
+.no_login_title{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #f8f8f8;
+    z-index: 800;
+}

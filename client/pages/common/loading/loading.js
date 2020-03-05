@@ -86,11 +86,13 @@ Page({
 
                                 //console.log('登录');
 
+                                wx.removeStorageSync('Authorization');
+
                                 setTimeout(function () {
 
-                                    wx.reLaunch({
+                                    wx.switchTab({
 
-                                        url: '../../common/signin/signin'
+                                        url: '../../wages/index/index'
                                     })
 
                                 }, 1500);

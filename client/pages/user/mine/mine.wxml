@@ -2,7 +2,7 @@
 
      <view class="weui-mine">
 
-  <navigator url="../personal/personal" class="wechat_mine_personal">
+  <view class="wechat_mine_personal" bindtap="jumpTo">
 
       <view class="jx_background">
           <image src="../../../static/icon/wages/jx_square.png"  class="mine_background" />
@@ -16,7 +16,7 @@
 
            </view>
 
-           <view class="authentication_state">
+           <view class="authentication_state" wx:if="{{login}}">
 
                <view class="account_information_tel color_white">{{mobile}}</view>
 
@@ -73,6 +73,8 @@
 
            </view>
 
+           <view class="no_login_title" wx:else>登录/注册</view>
+
 
 
         </view>
@@ -81,7 +83,7 @@
       <view class="background_right">
           <image src="../../../static/icon/wages/jx_background_right.png"  class="mine_right"/>
       </view>
-   </navigator>
+   </view>
 
 
 </view>
@@ -103,7 +105,7 @@
 
              <view class="password_image">
 
-                   <text class="reset_money">{{totalSalary}}</text>
+                   <text class="reset_money {{login? '': 'no_login'}}">{{totalSalary}}</text>
 
                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 

@@ -100,6 +100,8 @@ Page({
 
         isPrivacy: false,//判断是否同意隐私协议
 
+        login: true,//判断登录状态
+
 
     },
 
@@ -177,12 +179,25 @@ Page({
 
         var that = this;
 
+        var Authorization = wx.getStorageSync('Authorization');
 
+        if(!!Authorization){
 
+            this.setData({
+                login: true,
+            });
 
+            //显示原点
+            that.showDot();
 
-        //显示原点
-        that.showDot();
+        }else{
+
+            this.setData({
+                login: false,
+                lookWages: false,
+            })
+
+        }
 
 
     },
@@ -2153,11 +2168,22 @@ Page({
 
         var that = this;
 
+        var Authorization = wx.getStorageSync('Authorization');
+
+        if(!Authorization){
+
+            wx.navigateTo({
+
+                url:'../../common/signin/signin'
+            });
+
+            return;
+
+        }
+
 
         //获取用户数据
         var jx_sid = wx.getStorageSync('jxsid');
-
-        var Authorization = wx.getStorageSync('Authorization');
 
         that.setData({
 
@@ -2866,6 +2892,31 @@ Page({
             }
 
         })
+
+    },
+
+
+    jumpTo: function () {
+
+        //url="../../user/balance/balance"
+        var Authorization = wx.getStorageSync('Authorization');
+
+        if(!!Authorization){
+
+            wx.navigateTo({
+
+                url:'../../user/balance/balance'
+            })
+
+        }else {
+
+            wx.navigateTo({
+
+                url:'../../common/signin/signin'
+            })
+
+        }
+
 
     }
 
